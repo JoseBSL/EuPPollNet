@@ -57,8 +57,8 @@ plants <- inner_join(i_to,n_to) %>% rename(Plant_species = taxonomy.name)
 data <- bind_cols(polls,plants, Freq) %>% 
   select(Plant_species, Pollinator_species, Interaction) %>%
   mutate(Sampling_method = "Focal_observations") %>%
-  mutate(Sampling_effort_minutes = 6) %>% #mirar como traducir esto
-  mutate(Sampling_area_square_meters = 100) %>%
+  mutate(Sampling_effort_minutes = (6*nlevels(factor(data$Plant_species)))) %>% 
+  mutate(Sampling_area_square_meters = 0.09) %>%
   mutate(Site_id = network$name) %>%
   mutate(Habitat = "Coastal shrubland") %>%
   mutate(Country = "Spain") %>%
@@ -70,36 +70,62 @@ data <- bind_cols(polls,plants, Freq) %>%
   bind_cols(Date) %>% 
   mutate(Comments = NA) %>%
   mutate(Temperature = NA) %>%
-  mutate(Humidity = NA) %>%
-  uncount(Interaction) %>% 
-  add_column(Interaction = 1, .after = "Pollinator_species")
+  mutate(Humidity = NA) 
 
 InteractionData[[i]] <- data
 
 
 }
 
-meta <- NULL
-meta <- as_tibble(meta) %>% 
-  mutate(Doi = NA) %>% 
-  mutate(Dataset_description = NA) %>%
-  mutate(Taxa_recorded = NA)
 
 
-authors <- NULL
-authors <- as_tibble(authors) %>% 
-  mutate(Coauthor_name = NA) %>% 
-  mutate(Orcid = NA) %>%
-  mutate(E_mail = NA)
+#Read flower counts
+flower_count <- read_csv("Data/Bartomeus_2005/Bartomeus_Ntw_meta.csv")
 
-  
+#Prepare data
+date_flower_count <- flower_count %>% 
+  separate(Date, sep="/", into = c("Day", "Month", "Year")) %>%
+  select(Day, Month, Year)
+
+#Add leading 0's
+date_flower_count$Month <- ifelse(as.numeric(date_flower_count$Month) < 10, paste0("0", date_flower_count$Month), date_flower_count$Month)
+date_flower_count$Year <- 2005
+
+flower_count <- date_flower_count %>% 
+  bind_cols(flower_count) %>% 
+  rename(Site_id = Site) %>% 
+  rename(Flower_count = Flower_numer_in_transect) %>%
+  select(Day, Month, Year, Site_id, Plant_species, Flower_count) %>%
+  mutate(Units = "Flower_units") %>%
+  mutate(Comment = NA)
+
+
+meta <- data.frame(
+  Doi = "https://doi.org/10.1007/s00442-007-0946-1",
+  Dataset_description = "Study site at Cap de Creus, Catalonia, Spain. 
+Sampling method of survey is 6 minuts per plant species. 
+All plant species where sampled for equal time period. 
+All floral visitors were collected. 
+We determined the total number of flowers or inflorescences (fower units) per plant species in 1-m2 areas located at 1-m intervals along the two 50 m transects. 
+Flower unit description is defined as the distance that a small bee (c. 1 cm length) would fly, rather than walk (Saville 1993). 
+For example, in the Asteraceae, a flower unit is the entire inflorescence while in the Rosaceae, a flower unit is a single flower.
+Publications with the dataset: Bartomeus et al. 2008 Oecologia. 
+Networks where only sampled April to June for Carpobrotus and June/July for Opuntia, Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
+  Taxa_recorded = "All floral visitors")
+
+
+authors <- data.frame(
+  Coauthor_name = "Ignasi Bartomeus",
+  Orcid = "0000-0001-7893-4389",
+  E_mail = "nacho.bartomeus@gmail.com")
+
 #Create metadata list
 Metadata <- list(meta) 
 Authorship <- list(authors) 
+FlowerCount <- list(flower_count) 
 
-Bartomeus_2005 <- list(InteractionData, Metadata, Authorship)
+Bartomeus_2005 <- list(InteractionData, FlowerCount, Metadata, Authorship)
 
-names(Bartomeus_2005) <- c("InteractionData","Metadata", "Authorship")
-
+names(Bartomeus_2005) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 
