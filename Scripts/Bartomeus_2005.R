@@ -91,6 +91,7 @@ date_flower_count <- flower_count %>%
 date_flower_count$Month <- ifelse(as.numeric(date_flower_count$Month) < 10, paste0("0", date_flower_count$Month), date_flower_count$Month)
 date_flower_count$Year <- 2005
 
+#Create FlowerCount dataset
 flower_count <- date_flower_count %>% 
   bind_cols(flower_count) %>% 
   rename(Site_id = Site) %>% 
@@ -99,7 +100,7 @@ flower_count <- date_flower_count %>%
   mutate(Units = "Flower_units") %>%
   mutate(Comment = NA)
 
-
+#Create Metadata dataset
 meta <- data.frame(
   Doi = "https://doi.org/10.1007/s00442-007-0946-1",
   Dataset_description = "Study site at Cap de Creus, Catalonia, Spain. 
@@ -113,7 +114,7 @@ Publications with the dataset: Bartomeus et al. 2008 Oecologia.
 Networks where only sampled April to June for Carpobrotus and June/July for Opuntia, Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
   Taxa_recorded = "All floral visitors")
 
-
+#Create Authorship dataset
 authors <- data.frame(
   Coauthor_name = "Ignasi Bartomeus",
   Orcid = "0000-0001-7893-4389",
