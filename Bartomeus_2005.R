@@ -56,8 +56,8 @@ plants <- inner_join(i_to,n_to) %>% rename(Plant_species = taxonomy.name)
 #Create dataframe with the cols of interest
 data <- bind_cols(polls,plants, Freq) %>% 
   select(Plant_species, Pollinator_species, Interaction) %>%
-  mutate(Sampling_method = "Transect") %>%
-  mutate(Sampling_effort_minutes = 6) %>%
+  mutate(Sampling_method = "Focal_observations") %>%
+  mutate(Sampling_effort_minutes = 6) %>% #mirar como traducir esto
   mutate(Sampling_area_square_meters = 100) %>%
   mutate(Site_id = network$name) %>%
   mutate(Habitat = "Coastal shrubland") %>%
@@ -65,7 +65,7 @@ data <- bind_cols(polls,plants, Freq) %>%
   mutate(Locality = "Cap de Creus Natural Park") %>%
   mutate(Latitude = network$geom_lat) %>%  
   mutate(Longitude = network$geom_lon) %>%
-  mutate(Coordinate_precision = NA) %>%
+  mutate(Coordinate_precision = "<100m") %>%
   mutate(Elevation = NA) %>% 
   bind_cols(Date) %>% 
   mutate(Comments = NA) %>%
