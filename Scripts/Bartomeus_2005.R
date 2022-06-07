@@ -80,7 +80,7 @@ InteractionData[[i]] <- data
 
 
 #Read flower counts
-flower_count <- read_csv("Data/Bartomeus/Raw_data/Bartomeus_Ntw_meta.csv")
+flower_count <- read_csv("Data/Bartomeus/Raw_data/Bartomeus_flower_count.csv")
 
 #Prepare data
 date_flower_count <- flower_count %>% 
