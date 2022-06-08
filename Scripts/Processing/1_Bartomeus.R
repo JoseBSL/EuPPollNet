@@ -1,4 +1,6 @@
 
+#DATASET NUMBER 1----
+
 #Install Mangal
 #remotes::install_github("ropensci/rmangal", force = TRUE)
 
@@ -78,9 +80,8 @@ InteractionData[[i]] <- data
 }
 
 
-
 #Read flower counts
-flower_count <- read_csv("Data/Bartomeus/Raw_data/Bartomeus_flower_count.csv")
+flower_count <- read_csv("Data/Raw_data/Bartomeus/1_Flower_count.csv")
 
 #Prepare data
 date_flower_count <- flower_count %>% 
@@ -125,8 +126,10 @@ Metadata <- list(meta)
 Authorship <- list(authors) 
 FlowerCount <- list(flower_count) 
 
-Bartomeus_2005 <- list(InteractionData, FlowerCount, Metadata, Authorship)
+Bartomeus <- list(InteractionData, FlowerCount, Metadata, Authorship)
 
-names(Bartomeus_2005) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
+names(Bartomeus) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
+#Save data
+saveRDS(Bartomeus, file="Data/Clean_data/1_Bartomeus.RData")
 
