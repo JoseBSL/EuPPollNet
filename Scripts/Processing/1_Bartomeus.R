@@ -1,15 +1,14 @@
 
-#DATASET NUMBER 1----
-
-#Install Mangal
-#remotes::install_github("ropensci/rmangal", force = TRUE)
+#DATASET NUMBER 1, Bartomeus
 
 #Load libraries
 library(rmangal)
 library(tidyverse)
 
+#Prepare interaction data ----
+#Install Mangal
+#remotes::install_github("ropensci/rmangal", force = TRUE)
 #search_references function not working, I'm having an issue with the certificate
-
 #This workaround fix the issue
 library(httr)
 library(curl)
@@ -79,8 +78,7 @@ InteractionData[[i]] <- data
 
 }
 
-
-#Read flower counts
+#Prepare flower count data ----
 flower_count <- read_csv("Data/Raw_data/Bartomeus/1_Flower_count.csv")
 
 #Prepare data
@@ -101,8 +99,8 @@ flower_count <- date_flower_count %>%
   mutate(Units = "Flower_units") %>%
   mutate(Comment = NA)
 
-#Create Metadata dataset
-meta <- data.frame(
+#Prepare metadata data ----
+meta <- tibble(
   Doi = "https://doi.org/10.1007/s00442-007-0946-1",
   Dataset_description = "Study site at Cap de Creus, Catalonia, Spain. 
 Sampling method of survey is 6 minuts per plant species. 
@@ -115,21 +113,20 @@ Publications with the dataset: Bartomeus et al. 2008 Oecologia.
 Networks where only sampled April to June for Carpobrotus and June/July for Opuntia, Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
   Taxa_recorded = "All floral visitors")
 
-#Create Authorship dataset
-authors <- data.frame(
+#Prepare authorship data ----
+authors <- tibble(
   Coauthor_name = "Ignasi Bartomeus",
   Orcid = "0000-0001-7893-4389",
   E_mail = "nacho.bartomeus@gmail.com")
 
+
+#Save data ----
 #Create metadata list
 Metadata <- list(meta) 
 Authorship <- list(authors) 
 FlowerCount <- list(flower_count) 
-
 Bartomeus <- list(InteractionData, FlowerCount, Metadata, Authorship)
-
 names(Bartomeus) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
-
 #Save data
 saveRDS(Bartomeus, file="Data/Clean_data/1_Bartomeus.RData")
 
