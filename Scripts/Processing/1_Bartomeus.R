@@ -1,5 +1,5 @@
 
-#DATASET NUMBER 1, Bartomeus
+#DATASET NUMBER 1; Bartomeus
 
 #Load libraries
 library(rmangal)

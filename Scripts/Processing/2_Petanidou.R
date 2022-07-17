@@ -1,4 +1,4 @@
-#DATASET NUMBER 2, Petanidou & Nakas
+#DATASET NUMBER 2; Petanidou & Nakas
 
 #Load libraries
 library(tidyverse)
@@ -14,7 +14,7 @@ rename(Latitude = latitude)  %>%
 rename(Longitude = longitude)  %>% 
 mutate(Coordinate_precision = "10m")  
 
-#Split interaction data into dataframes witin a list
+#Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)
 
 #Prepare flower count data ----
