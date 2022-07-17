@@ -11,6 +11,8 @@ data <- read_csv("Data/Raw_data/Petanidou/Interaction_data.csv")
 data <- data %>% 
 mutate(Plant_species = word(Plant_species, 1, 2), 
 Pollinator_species = word(Pollinator_species, 1, 2)) %>%
+rename(Latitude = latitude)  %>% 
+rename(Longitude = longitude)  %>% 
 mutate(Coordinate_precision = "10m")  
 
 #Split interaction data into dataframes witin a list
