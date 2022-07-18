@@ -28,7 +28,7 @@ mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.
 
 #Prepare flower count data ----
 flower_count = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
-                      Flower_count = NA, Unit = NA, Comment = NA)
+                      Flower_count = NA, Units = NA, Comment = NA)
 
 #Prepare metadata data ----
 meta <- tibble(
