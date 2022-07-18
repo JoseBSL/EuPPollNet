@@ -5,7 +5,7 @@ library(tidyverse)
 
 #Prepare interaction data ----
 #Read comma delimited
-data <- read_csv("Data/Raw_data/Michez/Michez.csv")
+data <- read_csv("Data/Raw_data/3_Michez/Michez.csv")
 #Check colnames and first 5 rows
 colnames(data)
 data %>% slice_head(n = 5)
@@ -25,6 +25,9 @@ select(Plant_species, Pollinator_species, Interaction,
        Coordinate_precision, Elevation, Day, Month, Year, Comments,
        Temperature, Humidiy) %>%
 mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.", "Bombus terrestris"))
+
+#Split data into different dataframes based on survey name
+InteractionData <- split(InteractionData, InteractionData$Site_id)
 
 #Prepare flower count data ----
 flower_count = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,

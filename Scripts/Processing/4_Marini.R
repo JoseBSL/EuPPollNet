@@ -1,12 +1,12 @@
-#DATASETS NUMBER 4; Cappellari & Marini
-#DATASETS NUMBER 5; Cappellari & Marini
-#DATASETS NUMBER 6; Cappellari, Gazzea & Marini
+#DATASET NUMBER 4; Cappellari & Marini
+#DATASET NUMBER 5; Cappellari & Marini
+#DATASET NUMBER 6; Cappellari, Gazzea & Marini
 
 #Load libraries
 library(tidyverse)
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/Marini/interaction_data_marini.csv")
+data = read.csv("Data/Raw_data/4_Marini/interaction_data_marini.csv")
 
 #Delete all underscores and space in one column
 data %>% 
@@ -25,7 +25,7 @@ InteractionData2 <- split(InteractionData2, InteractionData2$Site_id)
 InteractionData3 <- split(InteractionData3, InteractionData3$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/Marini/flower_count_marini.csv")
+flower_count = read.csv("Data/Raw_data/4_Marini/flower_count_marini.csv")
 
 #Delete all underscores
 FlowerCount = flower_count %>% 

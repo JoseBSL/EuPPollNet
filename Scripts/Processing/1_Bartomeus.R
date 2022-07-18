@@ -1,4 +1,3 @@
-
 #DATASET NUMBER 1; Bartomeus
 
 #Load libraries
@@ -79,7 +78,7 @@ InteractionData[[i]] <- data
 }
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/Bartomeus/1_Flower_count.csv")
+flower_count <- read_csv("Data/Raw_data/1_Bartomeus/1_Flower_count.csv")
 
 #Prepare data
 date_flower_count <- flower_count %>% 

@@ -4,7 +4,7 @@
 library(tidyverse)
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/Petanidou/Interaction_data.csv")
+data <- read_csv("Data/Raw_data/2_Petanidou/Interaction_data.csv")
 
 #Quick clean of the interaction data
 data <- data %>% 
@@ -18,7 +18,7 @@ mutate(Coordinate_precision = "10m")
 InteractionData <- split(data,data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/Petanidou/Flower_count.csv")
+flower_count <- read_csv("Data/Raw_data/2_Petanidou/Flower_count.csv")
 
 #Add leading 0's to days and month under 10
 flower_count$Month <- ifelse(as.numeric(flower_count$Month) < 10, paste0("0", flower_count$Month), flower_count$Month)
