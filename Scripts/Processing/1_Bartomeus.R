@@ -57,7 +57,7 @@ plants <- inner_join(i_to,n_to) %>% rename(Plant_species = taxonomy.name)
 data <- bind_cols(polls,plants, Freq) %>% 
   select(Plant_species, Pollinator_species, Interaction) %>%
   mutate(Sampling_method = "Focal_observations") %>%
-  mutate(Sampling_effort_minutes = (6*nlevels(factor(data$Plant_species)))) %>% 
+  mutate(Sampling_effort_minutes = (6*nlevels(factor(Plant_species)))) %>% 
   mutate(Sampling_area_square_meters = 0.09) %>%
   mutate(Site_id = network$name) %>%
   mutate(Habitat = "Coastal shrubland") %>%
@@ -74,23 +74,22 @@ data <- bind_cols(polls,plants, Freq) %>%
 
 InteractionData[[i]] <- data
 
+names(InteractionData)[i] <- str_replace(levels(factor(data$Site_id)), "bartomeus_2005_", "")
 
 }
 
+
 #Prepare flower count data ----
 flower_count <- read_csv("Data/Raw_data/1_Bartomeus/1_Flower_count.csv")
-
 #Prepare data
 date_flower_count <- flower_count %>% 
   separate(Date, sep="/", into = c("Day", "Month", "Year")) %>%
   select(Day, Month, Year)
-
 #Add leading 0's
 date_flower_count$Month <- ifelse(as.numeric(date_flower_count$Month) < 10, paste0("0", date_flower_count$Month), date_flower_count$Month)
 date_flower_count$Year <- 2005
-
 #Create FlowerCount dataset
-flower_count <- date_flower_count %>% 
+FlowerCount <- date_flower_count %>% 
   bind_cols(flower_count) %>% 
   rename(Site_id = Site) %>% 
   rename(Flower_count = Flower_numer_in_transect) %>%
@@ -98,8 +97,11 @@ flower_count <- date_flower_count %>%
   mutate(Units = "Flower_units") %>%
   mutate(Comment = NA)
 
+#Split flower count by Site_id
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
+
 #Prepare metadata data ----
-meta <- tibble(
+Metadata <- tibble(
   Doi = "https://doi.org/10.1007/s00442-007-0946-1",
   Dataset_description = "Study site at Cap de Creus, Catalonia, Spain. 
 Sampling method of survey is 6 minuts per plant species. 
@@ -113,17 +115,13 @@ Networks where only sampled April to June for Carpobrotus and June/July for Opun
   Taxa_recorded = "All floral visitors")
 
 #Prepare authorship data ----
-authors <- tibble(
+Authorship <- tibble(
   Coauthor_name = "Ignasi Bartomeus",
   Orcid = "0000-0001-7893-4389",
   E_mail = "nacho.bartomeus@gmail.com")
 
-
 #Save data ----
 #Create metadata list
-Metadata <- list(meta) 
-Authorship <- list(authors) 
-FlowerCount <- list(flower_count) 
 Bartomeus <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Bartomeus) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data

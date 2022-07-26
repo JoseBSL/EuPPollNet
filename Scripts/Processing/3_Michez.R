@@ -30,11 +30,11 @@ mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.
 InteractionData <- split(InteractionData, InteractionData$Site_id)
 
 #Prepare flower count data ----
-flower_count = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
+FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
                       Flower_count = NA, Units = NA, Comment = NA)
 
 #Prepare metadata data ----
-meta <- tibble(
+Metadata <- tibble(
   Doi = NA,
   Dataset_description = "This dataset documents 71 different sites in the province of Hainaut,
   Wallonia, Belgium. They have been collected for different master thesis and there are sites
@@ -46,7 +46,7 @@ meta <- tibble(
   Taxa_recorded = "Bees")
 
 #Prepare authorship data ----
-authors <- data.frame(
+Authorship <- data.frame(
   Coauthor_name = c("Denis Michez", "William Fiordaliso", "Sara Reverte"),
   Orcid = c("0000-0001-8880-1838", "0000-0002-9667-6800", "0000-0002-2924-3394"),
   E_mail = c("denis.michez@umons.ac.be", "william.fiordaliso@umons.ac.be", 
@@ -55,10 +55,6 @@ authors <- data.frame(
 
 #Save data ----
 #Create metadata list
-Metadata <- list(meta) 
-Authorship <- list(authors) 
-FlowerCount <- list(flower_count) 
-#Create list with all dataframes of interest
 Michez <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Michez) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")

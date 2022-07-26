@@ -35,9 +35,13 @@ select(!c(Total_flower_cover, Collected_insects))
 #Split data into different dataframes based on survey name
 split_flwdata <- split(FlowerCount, FlowerCount$Survey)
 #Convert to tibbles
-FlowerCount1 <- as_tibble(split_flwdata[[1]])
-FlowerCount2 <- as_tibble(split_flwdata[[2]])
-FlowerCount3 <- as_tibble(split_flwdata[[3]])
+FlowerCount1 <- as_tibble(split_flwdata[[1]]) %>%  select(!Survey)
+FlowerCount2 <- as_tibble(split_flwdata[[2]]) %>%  select(!Survey)
+FlowerCount3 <- as_tibble(split_flwdata[[3]]) %>%  select(!Survey)
+#Split by Site_id
+FlowerCount1 = split(FlowerCount1, FlowerCount1$Site_id)
+FlowerCount2 = split(FlowerCount2, FlowerCount1$Site_id)
+FlowerCount3 = split(FlowerCount3, FlowerCount1$Site_id)
 
 #Prepare metadata data ----
 Metadata1 <- tibble(
@@ -100,20 +104,7 @@ Authorship3 <- data.frame(
   Orcid = c("0000-0002-6726-1323", "0000-0002-3253-2146", "0000-0001-7429-7685"),
   E_mail = c("andree.cappellari@phd.unipd.it", "elena.gazzea@phd.unipd.it", "lorenzo.marini@unipd.it"))
 
-
 #Save data ----
-#Create flower_count list
-FlowerCount1 <- list(FlowerCount1) 
-FlowerCount2 <- list(FlowerCount2) 
-FlowerCount3 <- list(FlowerCount3)
-#Create metadata list
-Metadata1 <- list(Metadata1) 
-Metadata2 <- list(Metadata2) 
-Metadata3<- list(Metadata3) 
-#Create author list
-Authorship1 <- list(Authorship1) 
-Authorship2 <- list(Authorship2) 
-Authorship3 <- list(Authorship3) 
 #Create list with all dataframes of interest
 Marini1 <- list(InteractionData1, FlowerCount1, Metadata1, Authorship1)
 Marini2 <- list(InteractionData2, FlowerCount2, Metadata2, Authorship2)

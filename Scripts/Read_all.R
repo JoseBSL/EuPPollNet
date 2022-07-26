@@ -11,3 +11,5 @@ file_names <- dir("Data/Clean_data", pattern="*.RData", full.names=F)
 file_names = str_replace(file_names, ".RData", "")
 #Rename all elements of the list
 names(all_data) <- file_names
+
+
