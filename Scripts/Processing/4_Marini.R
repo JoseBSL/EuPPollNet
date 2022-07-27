@@ -40,8 +40,8 @@ FlowerCount2 <- as_tibble(split_flwdata[[2]]) %>%  select(!Survey)
 FlowerCount3 <- as_tibble(split_flwdata[[3]]) %>%  select(!Survey)
 #Split by Site_id
 FlowerCount1 = split(FlowerCount1, FlowerCount1$Site_id)
-FlowerCount2 = split(FlowerCount2, FlowerCount1$Site_id)
-FlowerCount3 = split(FlowerCount3, FlowerCount1$Site_id)
+FlowerCount2 = split(FlowerCount2, FlowerCount2$Site_id)
+FlowerCount3 = split(FlowerCount3, FlowerCount3$Site_id)
 
 #Prepare metadata data ----
 Metadata1 <- tibble(
