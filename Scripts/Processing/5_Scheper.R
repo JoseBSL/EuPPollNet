@@ -43,8 +43,11 @@ InteractionData <- split(data, data$Site_id)
 #Prepare flower count data ----
 flower_count = read.csv("Data/Raw_data/5_Scheper/flower_count_scheper.csv")
 
+FlowerCount <- split(flower_count, flower_count$Site_id)
+
+
 #Prepare metadata data ----
-meta <- tibble(
+Metadata <- tibble(
   Doi = "https://doi.org/10.1111/1365-2664.13658",
   Dataset_description = "Dataset on bees and hoverflies sampled in 25 grassland
   - field boundary pairs in the area around Chize, France, 2015.
@@ -54,17 +57,13 @@ meta <- tibble(
   Taxa_recorded = "Bees and hoverflies")
 
 #Prepare authorship data ----
-authors <- data.frame(
+Authorship <- data.frame(
   Coauthor_name = c("Jeroen Scheper", "Isabelle Badenhausser", "David Kleijn"),
   Orcid = c("0000-0002-4314-996X", "0000-0002-6919-8647", "0000-0003-2500-7164"),
   E_mail = c("jeroen.scheper@wur.nl", "Isabelle.Badenhausser@inrae.fr", "david.kleijn@wur.nl"))
 
 #Save data ----
 #Create metadata list
-Metadata <- list(meta) 
-Authorship <- list(authors) 
-FlowerCount <- list(flower_count) 
-#Create list with all dataframes of interest
 Scheper <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Scheper) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
