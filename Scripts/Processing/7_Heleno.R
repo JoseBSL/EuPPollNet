@@ -8,12 +8,18 @@ data = read.csv("Data/Raw_data/7_Heleno/interaction_data_heleno.csv")
 
 InteractionData = data %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", ""))
+#Split by site, just for createing the listed name in this case
+InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/7_Heleno/flower_count_heleno.csv")
+FlowerCount = read.csv("Data/Raw_data/7_Heleno/flower_count_heleno.csv")
+#Common excel mistake on id, fix
+FlowerCount$Site_id <- "Coimbra_2017"
+#Split by site, just for createing the listed name in this case
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
-meta <- tibble(
+Metadata <- tibble(
   Doi = "https://doi.org/10.1007/s00442-018-4281-5",
   Dataset_description = "This dataset documents flower visits in winter and
   spring in the Botanical Garden of the University of Coimbra.
@@ -27,17 +33,12 @@ meta <- tibble(
   Taxa_recorded = "All flower visitors")
 
 #Prepare authorship data ----
-authors <- data.frame(
+Authorship <- data.frame(
   Coauthor_name = c("Ruben Heleno", "Francisco López-Núñez", "Catherine O’Connor"),
   Orcid = c("0000-0003-2297-006X", "0000-0003-0773-9134", NA),
   E_mail = c("rheleno@uc.pt", "lnfran85@gmail.com", NA))
 
 #Save data ----
-#Create metadata list
-InteractionData <- list(InteractionData) 
-Metadata <- list(meta) 
-Authorship <- list(authors) 
-FlowerCount <- list(flower_count)
 #Create list with all dataframes of interest
 Heleno <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
