@@ -5,7 +5,7 @@ library(tidyverse)
 
 #Prepare interaction data ----
 #Read comma delimited
-data <- read_csv("Data/Raw_data/3_Michez/Michez.csv")
+data <- read_csv("Data/Raw_data/3_Michez/interaction_data_michez.csv")
 #Check colnames and first 5 rows
 colnames(data)
 data %>% slice_head(n = 5)

@@ -63,8 +63,8 @@ data <- bind_cols(polls,plants, Freq) %>%
   mutate(Habitat = "Coastal shrubland") %>%
   mutate(Country = "Spain") %>%
   mutate(Locality = "Cap de Creus Natural Park") %>%
-  mutate(Latitude = network$geom_lat) %>%  
-  mutate(Longitude = network$geom_lon) %>%
+  mutate(Latitude = as.numeric(unique(network$geom_lat))) %>%  
+  mutate(Longitude =  as.numeric(unique(network$geom_lon))) %>%
   mutate(Coordinate_precision = "<100m") %>%
   mutate(Elevation = NA) %>% 
   bind_cols(Date) %>% 
