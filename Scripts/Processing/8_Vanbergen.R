@@ -25,7 +25,7 @@ FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 Metadata <- tibble(
-  Doi = "NA",
+  Doi = NA,
   Dataset_description = "This dataset is part of the VOODOO-project.
   It consists of plant-pollinator networks in 12 different landscapes
   (4 agricultural, 4 rural, 4 urban), sampled over 3 periods in 2021
