@@ -17,29 +17,27 @@ mutate(Site = recode_factor(Site,
                             "Skov Olesen" = "Skov_Olesen"))
 
 
-
-
 #To separate sites by year paste year to Site_id
 data = data %>% 
-mutate(Site_id = paste0(`Plot ID`, "_", Year))
+mutate(Site_id = paste0(Site, "_", Year))
 
 
 #Check number of plots on years 2014 and 2015 and multiplied by 15, 
 #This woukld be the total number of mins
 time_locations_2004 <- data %>% 
-group_by(Site, Site_id, Year) %>% 
-summarise(Interaction = n()) %>% 
 filter(Year == 2004) %>% 
+group_by(`Plot ID`,Site_id) %>% 
+summarise(Interaction = n()) %>% 
 ungroup() %>% 
-group_by(Site) %>% 
+group_by(Site_id) %>% 
 summarise(Time = n()*15) #15 mins per site
 
 time_locations_2005 <- data %>% 
-  group_by(Site, Site_id, Year) %>% 
-  summarise(Interaction = n()) %>% 
   filter(Year == 2005) %>% 
+  group_by(`Plot ID`,Site_id) %>% 
+  summarise(Interaction = n()) %>% 
   ungroup() %>% 
-  group_by(Site) %>% 
+  group_by(Site_id) %>% 
   summarise(Time = n()*15) #15 mins per site
 
 #Rename columns and select cols of interest
@@ -54,21 +52,24 @@ data = data %>%
 drop_na(Plant_species, Pollinator_species) %>% 
 filter(!Pollinator_species == 0 | !Pollinator_species ==0) 
 
-#Group interactions by plot
-data = data %>% 
-group_by(across()) %>% 
-summarise(Interaction = n())  
-  
-
-
-
 #Split dates into 3 cols
 library(lubridate)
 data = data %>% 
 mutate(Date = dmy(Date)) %>% 
 mutate(Year = lubridate::year(Date), 
                 Month = lubridate::month(Date), 
-                Day = lubridate::day(Date)) %>% 
+                Day = lubridate::day(Date)) 
+
+
+#Group interactions by plot
+data = data %>% 
+  group_by(Site_id, Plant_species, Pollinator_species, Year, Locality) %>% 
+  summarise(Interaction = n())
+
+#Add other columns
+data = data %>% 
+mutate(Day = NA) %>% 
+mutate(Month = NA) %>% 
 mutate(Latitude = case_when(Locality == "Isen_Bjerg" ~ 56.0725, 
                 Locality == "Skov_Olesen"  ~ 56.104167,
                 Locality == "Horbylunde" ~ 56.141667)) %>% 
@@ -93,5 +94,15 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
                 Site_id, Habitat, Country, Locality, Latitude, Longitude,
                 Coordinate_precision, Elevation, Day, Month, Year, Comments,
                 Temperature, Humidity)
+
+
+
+
+
+  
+
+
+#Split by site, just for createing the listed name in this case
+InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
