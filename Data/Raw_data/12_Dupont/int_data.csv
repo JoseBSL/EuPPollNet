@@ -1,0 +1,1207 @@
+Plant_species,Pollinator_species,Interaction,Sampling_method,Sampling_effort_minutes,Sampling_area_square_meters,Site_id,Habitat,Country,Locality,Latitude,Longitude,Coordinate_precision,Elevation,Day,Month,Year,Comments,Temperature,Humidity
+Calluna vulgaris,Aglais urticae,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Anarta myrtilli,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Andrena fuscipes,11,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Apis mellifera,251,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Bellardia viarum,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Bombus lapidarius type,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Bombus terrestris/lucorum type,17,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Chrysogaster virescens,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Chrysotoxum bicinctum,5,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Conops quadrifasciatus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Cynomya mortuorum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Didea fasciata,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Dilophus febrilis,25,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Ectobius silvestris,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Episyrphus balteatus,365,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eriothrix rufomaculatus,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis abusiva,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis arbustorum,6,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis intricaria,8,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis lineata,52,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis pertinax,10,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis tenax,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eupeodes corollae,76,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Exorista larvarum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Formica fusca,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Helophilus pendulus,33,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Hydrotaea irritans,8,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Inachis io,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,"indet ""lille sort flue""",1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,"indet ""mellemstor brun svirreflue""",1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Lucilia caesar,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Lucilia cf. caesar,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Melanostoma mellinum,65,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Melinda viridicyanea,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Meliscaeva cinctella,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Mellinus arvensis,9,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Onesia floralis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Parasyrphus lineola,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Phaonia angelicae,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Pieris napi,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Platycheirus albimanus,5,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Pollenia amentaria,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Pollenia rudis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Rhagonycha fulva,19,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sarcophaga sp.,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Scaeva pyrastri,19,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sepsis cynipsea,5,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sericomyia silentis,11,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sicus ferrugineus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sphaerophoria scripta,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Syritta pipiens,23,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Syrphus torvus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Syrphus vitripennis,22,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Volucella bombylans,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Volucella pelluscens,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Bombus lapidarius type,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Bombus pascuorum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Episyrphus balteatus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Helophilus pendulus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Onesia floralis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Phaonia angelicae,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Sarcophaga sp.,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Sicus ferrugineus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Epilobium angustifolium,Volucella bombylans,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Andrena lapponica,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Apis mellifera,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Bombus jonellus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Bombus P. bohemicus,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Bombus pascuorum,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Bombus terrestris/lucorum type,12,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Chrysotoxum bicinctum,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Episyrphus balteatus,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Eristalis lineata,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Lycaena virgaureae,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Sericomyia silentis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Volucella bombylans,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Aplotarsus incanus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Athous subfuscus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Cantharis figurata,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Chrysotoxum bicinctum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Coenosia means,17,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Dasytes plumbeus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Formica fusca,12,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Hoplocampa sp.,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Ichneumon sp.1,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Lasius niger,6,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Leptura melanura,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Meligethes aeneus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Micropterix aruncella,6,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Mordella holomelaena,6,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Myrmica ruginodis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Phaonia angelicae,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Phyllopertha horticola,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Pipizella viduata,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Rhagonycha limbata,5,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Scatophaga stercoraria,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Melampyrum pratense,Bombus pascuorum,7,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Melampyrum pratense,Bombus terrestris/lucorum type,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Melampyrum pratense,Myrmica ruginodis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Melampyrum pratense,Platycheirus scutatus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Bellardia viarum,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Coenosia means,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Empis nuntia,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Gymnosoma nudifrons,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sarcophaga sp.,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sphaerophoria fatarum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sphaerophoria sp.,6,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Zophomyia temula,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Adela reamurella,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Amauronematus sp.,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Bellardia viarum,7,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Bibio marci,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Bombus terrestris/lucorum type,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Dilophus cf. febrilis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Eristalis lineata,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Fannia lustrator,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Lasioglossum sexmaculatum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Melanostoma mellinum,10,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Melanostoma scalare,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Meliscaeva cinctella,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Onesia floralis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Rhagonycha lignosa,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sphaerophoria fatarum,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sphaerophoria sp.,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Meligethes aeneus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Apis mellifera,6,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Chrysogaster virescens,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Dasytes plumbeus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Empis aestiva,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Helophilus pendulus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Oedemera lurida,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Sericomyia lappona,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Sericomyia silentis,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Trientalis europaea,Volucella bombylans,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Apis mellifera,10,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Bombus lapidarius type,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Bombus P. sylvestris,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Bombus pascuorum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Bombus terrestris/lucorum type,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Episyrphus balteatus,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium hybrid (vitis-idaeaXuliginosum),Melanostoma mellinum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Andrena fulva,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Andrena helvola,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Andrena lapponica,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Apis mellifera,34,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bellardia viarum,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bombus lapidarius type,9,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bombus P. sylvestris,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bombus pascuorum,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bombus terrestris/lucorum type,7,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Dasysyrphus hilaris,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Dolichovespula saxonica,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Eristalis intricaria,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Eristalis pertinax,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Formica sanguinea,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Melanostoma scalare,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Parasyrphus macularis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Parasyrphus malinellus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Platycheirus albimanus,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Rhagonycha lignosa,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Rhingia campestris,5,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Sphaerophoria sp.,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Vespula rufa,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Andrena fulva,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Andrena haemorrhoa,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Apis mellifera,34,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Belladia viarum,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Bellardia viarum,7,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Bombus lapidarius type,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Bombus terrestris/lucorum type,7,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Dolichovespula saxonica,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Eristalis lineata,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Eristalis pertinax,8,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Formica fusca,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Helophilus pendulus,11,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Melanostoma mellinum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Meliscaeva cinctella,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Parasyrphus lineola,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Rhingia campestris,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Sericomyia lappona,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Sericomyia silentis,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Vespula rufa,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Andrena lapponica,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Apis mellifera,72,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Bombus lapidarius type,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Bombus P. bohemicus,5,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Bombus terrestris/lucorum type,3,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Helophilus pendulus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Sericomyia lappona,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Sericomyia silentis,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Vaccinium vitis-idaea,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Apis mellifera,212,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Bombus lapidarius type,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Bombus terrestris/lucorum type,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Episyrphus balteatus,9,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Eristalis arbustorum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Eristalis lineata,2,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Eristalis pertinax,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Eristalis tenax,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Eupeodes corollae,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Helophilus pendulus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Lasioglossum lapponica,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Melanostoma mellinum,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Platycheirus albimanus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Sphaerophoria scripta,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Syritta pipiens,4,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Syrphus torvus,1,Nested plots,2625,50000,Horbylunde_2005,Heathland,Denmark,Horbylunde,56.141667,9.39,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Andrena fuscipes,9,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Apis mellifera,197,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bellardia vulgaris,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus (Psithyrus) bohemicus,7,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus lapidarius type,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus lucorum,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus terrestris/lucorum type,46,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Calliopum aeneum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Cerceris arenaria,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Cerceris rybyensis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Chrysotoxum fasciatum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Colletes succinctus,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Conops flavipes,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dilophus febrilis,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dolichovespula norwegica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dolichovespula norwegica/Vespula rufa,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dolichovespula saxonica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Empis sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Episyrphus balteatus,296,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eristalis horticola,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eristalis interrupta,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eristalis tenax,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eupeodes corollae,63,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Gymnosoma nudifrons,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Hedychrum nobile,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Helophilus pendulus,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Hydrotaea similis,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Inachis io,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Ischyrosyrphus glaucius,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Leptura melanura,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Melanostoma mellinum,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Meliscaeva cinctella,22,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Mellinus arvensis,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Nomada rufipes,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Parasyrphus lineola,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Platycheirus cyaneus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Pollenia angustigena,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Pollenia rudis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Rhagonycha fulva,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Scaeva selenitica,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Scatophaga stercoraria,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sepsis cynipsea,8,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sicus ferrugineus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sphaerophoria menthastri-group,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sphaerophoria scripta,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sphaerophoria sp.,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Syritta pipiens,22,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Syrphus torvus,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Tachina grossa,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Tachinidae sp.3,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Tachinidae sp.4,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Tricholinum sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Apis mellifera,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Episyrphus balteatus,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Empetrum nigrum,Apis mellifera,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Empetrum nigrum,"Diptera indet. ""lille flue""",2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Anarta myrtilli,29,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Andrena sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Andrena wilkella,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Apis mellifera,17,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus (Psithyrus) bohemicus,42,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus jonellus,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus lapidarius type,22,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus lucorum,14,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus muscorum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus pascuorum,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus pratorum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus terrestris/lucorum type,46,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Episyrphus balteatus,29,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Eristalis tenax,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Eupeodes corollae,13,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Lasioglossum fratellum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Leptura melanura,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Lycophotia porphyrea,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Meliscaeva cinctella,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Neomyia cornicina,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Parasyrphus lineola,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Sericomyia silentis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Syrphus ribesii,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Volucella bombylans,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Ammophila pubescens,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Coenosia means,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Episyrphus balteatus,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Eupeodes corollae,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Formica fusca,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Formica sanguinea,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Leptura melanura,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Meliscaeva cinctella,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Nomada panzeri,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Parasyrphus lineola,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Platycheirus cyaneus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Prosternon tessellatum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Syrphus torvus,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Bombus lapidarius type,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Coenosia sp.?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Eupeodes corollae,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Lasioglossum punctatissimum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Melanostoma mellinum,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Sphaerophoria sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Parasyrphus lineola,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus lapidarius type,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Episyrphus balteatus,50,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Eupeodes corollae,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Heterostylodes pratensis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Hyleaus sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Meliscaeva cinctella,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Parasyrphus lineola,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Platycheirus cyaneus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Scaeva selenitica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Sicus ferrugineus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Sphaerophoria menthastri-group,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Syrphus ribesii,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Syrphus torvus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Episyrphus balteatus,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Lasioglossum leucozonium,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Meliscaeva cinctella,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Parasyrphus lineola,9,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Scaeva selenitica,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Syrphus ribesii,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Syrphus torvus,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Anthomyiidae sp.,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Apis mellifera,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Bombus lapidarius type,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Bombus terrestris/lucorum type,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Calameuta pallipes,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Cephalops obtusinervis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Chrysotoxum fasciatum,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Coenosia femoralis,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Coenosia means,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,"Diptera indet ""lille bitte tyk sort flue""",1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,"Diptera indet. ""lille blank flue""",1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Episyrphus balteatus,92,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Eupeodes corollae,21,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Hercostomus sp.,53,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Hydrophoria lancifer,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Hyleaus brevicornis,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Lasioglossum fratellum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Lasioglossum punctatissimum,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Lasioglossum villosulum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Melanostoma mellinum,11,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Meligethes aeneus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Meliscaeva cinctella,11,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Mellinus arvensis,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Micropterix cf. aruncella,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Mimesa equestris,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Parasyrphus lineola,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Platycheirus cyaneus,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Scaeva selenitica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Scatophaga stercoraria,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sepsis cynipsea,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria menthastri-group,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria menthastri-group?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria sp.,14,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Syritta pipiens,44,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Syrphus ribesii,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Volucella bombylans,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena clarkella,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena fulva,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena haemorrhoa,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena praecox?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Anthomyiidae sp.,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Apis mellifera,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Athous subfuscus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bellardia vulgaris,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bibio lanigerus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bombus lapidarius,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bombus pascuorum,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Callophrys rubi,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Crossocerus leucostoma,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Dasysyrphus albostriatus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Dilophus febrilis,14,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,"Diptera indet. ""lille tynd flue""",1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Entomophaga nigrohalterata,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Ernestia rudis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Gonia picea,37,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Lasioglossum sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Lasiomma picipes,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Melanostoma mellinum,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Meligethes aeneus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Meliscaeva cinctella,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Myrmica ruginodis?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Nomada ruficornis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Phaonia serva,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Platycheirus cyaneus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Scatophaga stercoraria,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Sphaerophoria sp.,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Sphecodes geoffrellus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Sphecodes pellucidus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Zaira cinerea,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Adia cinerella,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena barbilabris,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena fulva,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena haemorrhoa,14,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena nigroaenea,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena praecox?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Anthomyiidae sp.,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Apis mellifera,44,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Aplotarsus incanus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Bellardia vulgaris,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Bombus lucorum,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Dasysyrphus albostriatus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Dasysyrphus albostriatus?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Dilophus humeralis,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Egle minuta,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Ernestia rudis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Formica rufa,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Gonia picea,17,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Gymnosoma nudifrons,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Lasioglossum punctatissimum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Lasioglossum sexmaculatum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Lasiomma picipes,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Megasyrphus erraticus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Megasyrphus erraticus?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Melanostoma mellinum,11,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Meligethes aeneus,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Meliscaeva cinctella,7,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Mesochorus sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Microgaster sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Phaonia incana,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Phyllopertha horticola,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Platycheirus cyaneus,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Scaeva selenitica,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Sphaerophoria sp.,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Scorzonea humilis,Andrena haemorrhoa,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Scorzonea humilis,Bombus pascuorum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Scorzonea humilis,Dasysyrphus tricinctus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Scorzonea humilis,Scaeva selenitica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Andrena lapponica???,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Apis mellifera,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Arge ustulata,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus jonellus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus lapidarius type,25,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus lucorum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus pascuorum,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus pratorum,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus terrestris/lucorum type,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Cerceris arenaria,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Episyrphus balteatus,39,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Eristalis arbustorum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Eristalis horticola,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Eristalis tenax,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Eupeodes corollae,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,"Formicidae ""gulbrun myre JMO1906-1""",1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Hyleaus annularis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Lasioglossum fratellum,16,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Lasioglossum punctatissimum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Lasioglossum sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Leptura melanura,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Meligethes aeneus,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Myrmica ruginodis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Nomada flava,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Oxybelus mandibularis,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Phaonia angelicae,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Scatophaga stercoraria,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Sicus ferrugineus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Sphaerophoria menthastri-group,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Sphaerophoria sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Syritta pipiens,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Tricholinum sp.,10,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Volucella bombylans,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Lasioglossum punctatissimum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Megasyrphus erraticus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Nomada panzeri,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Platycheirus cyaneus,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Sphaerophoria sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Syrphidae sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Andrena fulva,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Andrena haemorrhoa,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Apis mellifera,3,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bombus lapidarius type,8,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bombus pascuorum,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Formica rufa,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Gonia picea,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Sicus ferrugineus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Vespula vulgaris,6,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Andrena fulva,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Andrena lapponica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Apis mellifera,90,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bellardia vulgaris,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus lapidarius type,21,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus lucorum,4,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus pascuorum,7,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Callophrys rubi,5,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Dasysyrphus albostriatus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,"Diptera indet. ""mellem sort flue""",1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Gonia picea,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Lasioglossum punctatissimum,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Megasyrphus erraticus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Melanostoma mellinum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Melanostoma mellinum?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Parasyrphus lineola,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Sphaerophoria sp.,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Syrphus torvus?,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Vespula vulgaris,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Andrena lapponica,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Apis mellifera,97,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus lapidarius type,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus lucorum,7,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus pascuorum,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus terrestris/lucorum type,8,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Dolichovespula norwegica/Vespula rufa,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Dolichovespula saxonica,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Episyrphus balteatus,2,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Eupeodes corollae,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Melanostoma mellinum,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Platycheirus cyaneus,1,Nested plots,3525,50000,Isen_Bjerg_2004,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Aglais urticae,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Ammophila pubescens,9,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Anarta myrtilli,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Andrena sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Apis mellifera,324,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Bombus terrestris/lucorum type,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Dilophus febrilis,16,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Ectobius silvestris,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Ectobius sylvestris,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Episyrphus balteatus,287,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eriothrix rufomaculatus,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalinus sepulchralis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis abusiva,14,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis arbustorum,17,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis arbustorum?,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis intricaria,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis pertinax,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eristalis tenax,9,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Eupeodes corollae,61,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Hedychrum nobile,10,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Helophilus pendulus,19,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Hercostomus nigripennis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Hydrotaea irritans,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Hyposoter sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,"indet ""lille gråligt møl""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Leptura melanura,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Melanostoma,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Melanostoma mellinum,61,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Mellinus arvensis,18,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Oxybelus mandibularis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Platycheirus albimanus,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Platycheirus scutatus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Rhagonycha fulva,16,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Rhingia campestris,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sarcophaga sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Scaeva pyrastri,32,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sciara hemerobioides,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sepsis cynipsea,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sericomyia silentis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sicus ferrugineus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Sphaerophoria scripta,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Syritta pipiens,48,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Syrphus torvus,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Syrphus vitripennis,11,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Tachina grossa,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Tryphoninae sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Tytthaspis sedecimpunctata,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Calluna vulgaris,Xestia c-nigrum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Empetrum nigrum male,Apis mellifera,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Ammophila pubescens,15,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Anarta myrtilli,7,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Ancistrocerus ichneumonideus,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Apis mellifera,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Barycnemis sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Bombus P. bohemicus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Bombus terrestris/lucorum type,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Dolichopus rupestris,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Episyrphus balteatus,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Eriothrix rufomaculatus,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Eristalis pertinax,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Eupeodes corollae,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Hedychrum nobile,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Helophilus pendulus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Lasioglossum leucopus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Lycophotia porphyrea,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Microgaster sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Polietes ladarius,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Scaeva pyrastri,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Erica tetralix,Sphaerophoria scripta,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Ampedus balteatus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Calameuta pallipes,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Coenosia means,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Dolichopus discifer,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Formica sanguinea,27,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Helophilus pendulus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,"indet ""lille broget bille""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Lasius niger,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Lochmaea suturalis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Oxybelus mandibularis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Galium saxatile,Phyllopertha horticola,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Andrena clarkella,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Andrena haemorrhoa,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Coenosia means,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Eristalis arbustorum,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Halictus confusus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,"indet ""mellem lille sort flue""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Lasioglossum fratellum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Lasioglossum punctatissimum,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Melanostoma mellinum,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Genista anglica,Platycheirus albimanus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Hieracium pilosella,Heterostylodes nominabilis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Hieracium pilosella,Sphaerophoria virgata,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Ammophila pubescens,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Andrena lapponica,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Bellardia viarum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Calameuta pallipes,9,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Coenosia means,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Dasysyrphus pinastri,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Episyrphus balteatus,117,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Eriothrix rufomaculatus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Eristalis abusiva,16,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Eristalis arbustorum,9,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Eumerus strigatus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Eupeodes corollae,27,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Helophilus pendulus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Hercostomus nigripennis,71,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Hylaeus brevicornis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,"indet ""stor rødlig svirreflue""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Lasioglossum fratellum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Lasioglossum leucopus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Lasioglossum leucozonium,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Melanostoma mellinum,25,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Paragus (haemorrhous),1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Pipizella viduata,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Platycheirus albimanus,7,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Propylea quatuordecimpunctata,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Sitona lineatus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Sphaerophoria scripta,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Sphaerophoria sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Sphaerophoria virgata,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Syritta pipiens,70,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Syrphus vitripennis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Potentilla erecta,Tytthaspis sedecimpunctata,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix aurita male,Andrena nigroaenea,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix aurita male,Cheilosia urbana,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix aurita male,Pollenia amentaria,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix aurita male,Sicus ferrugineus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Anarta myrtilli,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Andrena barbilabris,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Andrena carantonica,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Andrena clarkella,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Andrena haemorrhoa,7,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Andrena nigroaenea,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Apis mellifera,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Appendicia truncata,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Bellardia viarum,46,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Bibio johannis,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Bombus P. bohemicus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Bombus terrestris/lucorum type,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Cheilosia psilophthalma,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Conops vesicularis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Dilophus cf. febrilis,24,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Dilophus febrilis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Dolichovespula saxonica,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Dolichovespula saxonica?,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Egle brevicornis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Eristalis pertinax,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Formica sanguinea,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Gonia picea,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Gymnocheta viridis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Gymnosoma nudifrons,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,"indet ""lille sort flue""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,"indet ""mellem grå Muscidae""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Lasioglossum semilucens,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Melanostoma mellinum,9,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Meligethes aeneus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Nomada goodeniana,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Onesia floralis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Parasyrphus malinellus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Platycheirus albimanus,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Rhamphomyia sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sarcophaga carnaria,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Scatophaga stercolaria,19,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sphaerophoria fatarum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sphecodes albilabris,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Sphecodes pellucidus,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Tachinidae sp. 1,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens female,Vespula rufa,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Adela cuprella,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Amauronematus sp.,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Anarta myrtilli,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena barbilabris,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena carantonica,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena clarkella,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena fulva,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena haemorrhoa,14,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena lapponica,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena nigroaenea,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Andrena praecox,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Anoplius sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Apis mellifera,19,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Appendicia truncata,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Bellardia viarum,11,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Bibio johannis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Bombus P. bohemicus,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Brachyopa testacea,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Callophrys rubi,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Cheilosia psilophthalma,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Coenosia means,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Dilophus cf. febrilis,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Dolichovespula saxonica?,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Egle brevicornis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Egle minuta,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Eristalis arbustorum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Eristalis pertinax,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Eristallinus sepulchralis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Eumerus strigatus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Fannia lustrator,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Fannia sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Gonia picea,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Gymnocheta viridis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Gymnosoma nudifrons,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Helophilus pendulus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,"indet ""lille sort flue""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,"indet ""mellem grå flue""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,"indet. ""grå flue""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Lasioglossum fratellum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Lasioglossum punctatissimum,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Melanostoma mellinum,25,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Meligethes aeneus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Meliscaeva cinctella,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Nomada goodeniana,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Nomada ruficornis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Parasyrphus lineola,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Parasyrphus malinellus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Parasyrphus punctulatus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Phorbia moliniaris,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Platycheirus albimanus,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Rhamphomyia sulcata,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Scatophaga stercolaria,7,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sericus brunneus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sicus ferrugineus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sphaerophoria fatarum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sphaerophoria sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Sphecodes pellucidus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Salix repens male,Syritta pipiens,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Scorzonera humilis,Calameuta pallipes,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Scorzonera humilis,Lasioglossum fratellum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Scorzonera humilis,Meligethes aeneus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Ammophila pubescens,18,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Cerceris arenaria,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Chrysotoxum bicinctum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Dalopius marginatus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Dilophus febrilis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Episyrphus balteatus,20,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Eriothrix rufomaculatus,19,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Eristalis abusiva,53,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Eristalis arbustorum,17,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Eristalis pertinax,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Eristalis tenax,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Hedychrum nobile,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Helophilus pendulus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,"indet ""lille sort flue med sorte vinger""",2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,"indet ""mellem sort hveps""",1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Lasioglossum albipes,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Lasioglossum calceatum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Lasioglossum fratellum,11,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Lasioglossum leucozonium,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Leptura melanura,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Melanostoma mellinum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Meligethes aeneus,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Nomada rufipes,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Oxybelus mandibularis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Polietes ladarius,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Rhagonycha fulva,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Sarcophaga subvicina,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Scaeva pyrastri,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Sicus ferrugineus,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Solidago virgaurea,Syritta pipiens,14,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Anarta myrtilli,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Andrena lapponica,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Appendicia truncata,10,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bellardia viarum,7,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Bombus lapidarius type,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Callophrys rubi,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Dolichovespula saxonica,9,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Dolichovespula saxonica?,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Dolichovespula sp.,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Formica fusca,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Formica sanguinea,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Lasioglossum punctatissimum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Lasioglossum punctatissumum,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Megasyrphus erraticus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Nomada panzeri,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium myrtillus,Vespula rufa,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Andrena fulva,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Andrena lapponica,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Andrena sp.,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Apis mellifera,10,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Appendicia truncata,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Bellardia viarum,15,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Bombus lapidarius type,11,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Bombus terrestris/lucorum type,7,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Callophrys rubi,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Dolichovespula adulterina,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Dolichovespula adulterina?,3,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Dolichovespula omissa,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Dolichovespula saxonica,23,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Dolichovespula saxonica?,20,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Eristalis pertinax,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Formica sanguinea,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Gymnocheta viridis,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Halictus tumulorum?,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Helophilus pendulus,6,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Lasioglossum fratellum,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Lasioglossum punctatissimum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Melanostoma mellinum,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Meliscaeva cinctella,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Nomada marshamella,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Nomada panzeri,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Parasyrphus lineola,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Platycheirus albimanus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Sericomyia lappona,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Sericomyia silentis,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Sicus ferrugineus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium uliginosum,Vespula rufa,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Andrena lapponica,4,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Apis mellifera,19,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Eupeodes corollae,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Helophilus pendulus,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Lasioglossum fratellum,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea,Vespula rufa,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Apis mellifera,5,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Bombus pascuorum,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Episyrphus balteatus,2,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Scaeva pyrastri,1,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Vaccinium vitis-idaea2,Syritta pipiens,8,Nested plots,2985,50000,Isen_Bjerg_2005,Heathland,Denmark,Isen_Bjerg,56.0725,9.275556,NA,NA,NA,NA,2005,NA,NA,NA
+Arnica montana,Aphanthopus hyperanthus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Bombus (Psithyrus) bohemicus,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Bombus terrestris/lucorum type,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Calameuta pallipes,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Cheilosia bergenstammi,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Coenonympha pamphilus,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Episyrphus balteatus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Hercostomus sp.,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Lasioglossum albipes,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Lasioglossum fratellum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Leptura melanura,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Meligethes aeneus,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,"Muscidae indet. ""lille""(defekt)",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Sicus ferrugineus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Syrphus torvus?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Arnica montana,Volucella bombylans,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Andrena fuscipes,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Apis mellifera,45,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bellardia vulgaris,8,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus lapidarius,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus lapidarius type,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus lucorum,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Bombus terrestris/lucorum type,21,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Chrysotoxum bicinctum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Colletes succinctus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dolichovespula saxonica,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dolichovespula saxonica???,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Dolichovespula saxonica/sylvestris,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Empis sp.,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Episyrphus balteatus,119,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eriothrix rufomaculatus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eristalis horticola,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eristalis tenax,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Eupeodes corollae,28,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Formica fusca,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Helina reversio,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Helophilus pendulus,8,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Leptura melanura,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Lucilia bufonivora,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Lycaena virgaureae,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Melanostoma mellinum,8,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Meliscaeva cinctella,14,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Mellinus arvensis,14,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Mimesa equestris,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Nomada rufipes,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Phaonia angelicae,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Platycheirus cyaneus,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Pollenia angustigena,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Pollenia rudis,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Prosena siberita,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Rhagonycha fulva,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sarcophaga sp.,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Scaeva selenitica,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sciara hemerobioides,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sciara sp.,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sepsis cynipsea,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sericomyia silentis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sicus ferrugineus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Siphona genuculata,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Sphaerophoria sp.,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Syritta pipiens,31,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Syrphus torvus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Syrphus torvus?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Calluna vulgaris,Vespula rufa,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Episyrphus balteatus,14,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Eupeodes corollae,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Formica fusca,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Lasioglossum leucopus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Melitta haemorrhoidalis,28,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Miarus campanulae,21,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Platycheirus cyaneus,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Syritta pipiens,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Campanula rotundifolia,Vespula rufa,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,Apis mellifera,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,Bombus lapidarius type,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,Bombus lucorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,Bombus pascuorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,Meligethes aeneus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,"Muscidae indet. ""lille"" (defekt)",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Cytisus scoparius,Phaonia incana,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Empetrum nigrum,Apis mellifera,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Apis mellifera,13,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Bombus lapidarius type,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Bombus pascuorum,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Dolichovespula saxonica,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Episyrphus balteatus,16,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Macropis europaea,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Melanostoma mellinum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Mellinus arvensis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Phaonia angelicae,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Platycheirus peltatus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Sarcophaga sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Sciara hemerobioides,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Syritta pipiens,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Epilobium angustifolium,Thymelicus lineola,8,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Anarta myrtilli,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus (Psithyrus) bohemicus,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus lapidarius type,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus pascuorum,12,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Bombus terrestris/lucorum type,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Episyrphus balteatus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Eupeodes corollae,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Formica fusca,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Maniola jurtina,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Erica tetralix,Parasyrphus lineola,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Coenosia means,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Formica fusca,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Formica sanguinea,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Micropterix cf. aruncella,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Myrmica ruginodis?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Phyllopertha horticola,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,Prosternon tessellatum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Galium saxatile,thrips,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Bellardia vulgaris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Bibio lanigerus,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Bombus lucorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Bombus pascuorum,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Episyrphus balteatus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Lasius niger,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Platycheirus cyaneus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Sphaerophoria batava,12,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista anglica,Syrphus torvus?,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista pilosa,Bombus pascuorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista pilosa,Formica fusca,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista pilosa,Microgaster sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Genista pilosa,Phyllopertha horticola,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Bibio lanigerus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Heterostylodes nominabilis,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,"Hymenoptera indet. ""hurtig sort hveps""",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Lasioglossum albipes,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Lasioglossum leucozonium,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Lasioglossum sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Lasioglossum villosulum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Melanostoma mellinum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Meligethes aeneus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Miarus campanulae,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,Phyllopertha horticola,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium pilosella,thrips,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Apis mellifera,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bellardia vulgaris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus (Psithyrus) bohemicus,8,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus lapidarius,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus lapidarius type,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus lucorum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus pascuorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus pratorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Bombus terrestris/lucorum type,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Cheilosia bergenstammi,16,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Chrysotoxum bicinctum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,"Diptera indet ""stor sort hurtig flue""",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Empis sp.,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Episyrphus balteatus,61,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Eristalinus sepulchralis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Eristalis horticola,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Eupeodes corollae,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Lasioglossum calceatum,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Lycaena virgaureae,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Macropis europaea,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Maniola jurtina,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Meligethes aeneus,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Meliscaeva cinctella,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Phaonia angelicae,12,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Platycheirus cyaneus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Platycheirus peltatus,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Rhagonycha fulva,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Scaeva selenitica,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Sicus ferrugineus,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Siphona pauciseta,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Sphaerophoria sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Syritta pipiens,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Syrphus torvus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Thymelicus lineola,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hieracium umbellatum,Zygaena cf. trifolii,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Episyrphus balteatus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Meliscaeva cinctella,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Hypochoeris radicata,Syrphus torvus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Andrena tarsata,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Bombus (Psithyrus) bohemicus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Bombus lapidarius type,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Bombus terrestris/lucorum type,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Calameuta pallipes,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Chrysotoxum bicinctum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Delia florilega,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,"Diptera indet ""lille hurtig glat sort flue""",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,"Diptera indet. ""lille hurtig sort flue""",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Empis sp.,22,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Episyrphus balteatus,48,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Eriothrix rufomaculatus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Eupeodes corollae,25,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Formica fusca,45,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Helophilus pendulus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Hercostomus sp.,39,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Huebneria affinis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Lasioglossum punctatissimum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Lasioglossum sp.,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Leptura melanura,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Melanostoma mellinum,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Meligethes aeneus,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Meliscaeva cinctella,20,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Miarus campanulae,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Mimesa equestris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Myrmica ruginodis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Parasyrphus lineola,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Phaonia angelicae,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Phaonia incana,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Pipizella viduata?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Platycheirus cyaneus,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Pyrgus malvae,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Scatophaga stercoraria,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sepsis cynipsea,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sericomyia silentis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria menthastri-group,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria rueppellii,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria scripta,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Sphaerophoria sp.,15,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Potentilla erecta,Syritta pipiens,55,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Adela cf. cuprella,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Alliopsis billbergi,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Amauronematus sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Anarta cordigera,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena fulva,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena haemorrhoa,12,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Andrena praecox,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bellardia vulgaris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bibio lanigerus,17,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Bruchidius villosus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Calliphoridae sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Cheilosia sp.?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Chrysomela collaris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Chrysomela populi,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Dilophus febrilis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Empis caudatula,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Empis chioptera,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Formica rufa,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Gonia picea,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Melanostoma mellinum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Meligethes aeneus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Meliscaeva cinctella,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Platycheirus sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Pollenia rudis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Rhamphomyia nigripennis,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Rhamphomyia sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Sarcophaga sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Scatophaga stercoraria,24,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Sicus ferrugineus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,"Syrphidae ""honningbisvirreflue""",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens female,Syrphus torvus?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena fulva,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena haemorrhoa,13,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Andrena praecox,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Apis mellifera,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Bibio lanigerus,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Bombus lucorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Callophrys rubi,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Cheilosia bergenstammi,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Cheilosia pagana,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Cheilosia psilophthalma,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Cheilosia sp.?,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Delia florilega,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Empis chioptera,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Gonia picea,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Melanostoma mellinum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Meligethes aeneus,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Meliscaeva cinctella,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Oscinella vastator,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Phasia pusilla,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,"Platycheirus sp. ""gulstribet lille svirreflue med vinrøde øjne""",1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Pollenia rudis,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Rhamphomyia nigripennis,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Rhamphomyia sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Scatophaga stercoraria,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Sciaridae sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Sphaerophoria menthastri-group,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Sphaerophoria sp.,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Salix repens male,Syrphus torvus?,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Aphanthopus hyperanthus,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Apis mellifera,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Barycnemis sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bellardia vulgaris,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus (Psithyrus) bohemicus,24,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus lapidarius type,32,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bombus pascuorum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Bruchidius villosus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Cantharis figurata,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Cheilosia psilophthalma,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Coenonympha pamphilus,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Delia diluta,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Ectobius silvestris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Elateridae sp. Prosternon tesselatum?,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Episyrphus balteatus,59,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Eriothrix rufomaculatus,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Eupeodes corollae,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Formica fusca,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Helophilus pendulus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Lasioglossum calceatum,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Lasioglossum fratellum,13,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Macropis europaea,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Meligethes aeneus,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Meliscaeva cinctella,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Miarus campanulae,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Oedemera lurida,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Phaonia angelicae,14,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Prosena siberita,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Reichertella genuculata,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Rhagonycha fulva,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Rhinophora lepida,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Sicus ferrugineus,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Siphonella oscinina,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Sphaerophoria scripta,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Sphaerophoria sp.,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Syritta pipiens,13,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Solidago virgaurea,Syrphus torvus,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Apis mellifera,17,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Bombus (Psithyrus) bohemicus,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Bombus lapidarius type,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Bombus pascuorum,32,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Bombus terrestris/lucorum type,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Episyrphus balteatus,16,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Eristalis horticola,15,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Eristalis tenax,20,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Helophilus pendulus,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Melanostoma mellinum,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Meliscaeva cinctella,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Phaonia angelicae,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Pollenia rudis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Prosena siberita,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Sciara sp.,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Sericomyia silentis,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Sicus ferrugineus,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Syritta pipiens,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Succisa pratensis,Thymelicus lineola,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Trientalis europaea,Rhagonycha limbata,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Anaspis frontalis,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Andrena haemorrhoa???,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bellardia vulgaris,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bombus lapidarius,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bombus lapidarius type,6,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bombus lucorum,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Bombus pascuorum,32,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Callophrys rubi,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Lasius niger,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium myrtillus,Vespula vulgaris,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Apis mellifera,34,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bellardia vulgaris,5,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus jonellus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus lapidarius type,12,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus pascuorum,7,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Bombus pratorum,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Eristalis pertinax,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Formica fusca,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Leucozona lucorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Megasyrphus erraticus?,2,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Sarcophaga subvicina,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium uliginosum,Vespula vulgaris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Anarta cordigera,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Apis mellifera,23,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bellardia vulgaris,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus jonellus,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus lapidarius type,13,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus lucorum,4,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Bombus pascuorum,10,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Callophrys rubi,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Dolichovespula saxonica,9,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Empis tessellata,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Formica fusca,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Lasioglossum fratellum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Leucozona lucorum,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Sericomyia lappona,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Syritta pipiens,3,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
+Vaccinium vitis-idaea,Vespula rufa,1,Nested plots,3720,50000,Skov_Olesen_2004,Heathland,Denmark,Skov_Olesen,56.104167,9.107778,NA,NA,NA,NA,2004,NA,NA,NA
