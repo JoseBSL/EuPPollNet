@@ -18,7 +18,7 @@ FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 Metadata <- tibble(
-  Doi = NA,
+  Doi = "Unpublished",
   Dataset_description = NA,
   Taxa_recorded = "All flower visitors")
 
