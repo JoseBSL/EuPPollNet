@@ -39,6 +39,12 @@ for (i in 1:length(file_names)) {
 #Rename list and 
 names(data) <- file_names
 data = bind_rows(data,  .id = 'Study_id')
+
+#Add manual jitter to these three points
+data = data %>% 
+mutate(Latitude = case_when(Study_id == "16_Manicor" ~ Latitude+0.25, TRUE ~ Latitude)) %>% mutate(Latitude = case_when(Study_id == "17_Manicor" ~ Latitude+0.25, TRUE ~ Latitude)) %>%
+mutate(Latitude = case_when(Study_id == "18_Manicor" ~ Latitude+0.25, TRUE ~ Latitude))
+
 data_coord <- st_as_sf(data, coords = c(3:4)) %>% 
 st_set_crs(4326) %>% 
 st_transform(3035)
