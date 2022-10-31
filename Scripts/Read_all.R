@@ -30,6 +30,12 @@ for (i in 1:length(file_names)) {
                 select(Longitude, Latitude)),  .id = 'Internal_id')
 }
 
+
+# install.packages("sf")
+library(sf)
+# install.packages("giscoR")
+library(giscoR)
+
 #Rename list and 
 names(data) <- file_names
 data = bind_rows(data,  .id = 'Study_id')
@@ -41,10 +47,6 @@ st_transform(3035)
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
 
 
-# install.packages("sf")
-library(sf)
-# install.packages("giscoR")
-library(giscoR)
 
 # Year
 year_ref <- 2016
