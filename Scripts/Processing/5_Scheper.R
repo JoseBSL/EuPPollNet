@@ -70,5 +70,5 @@ names(Scheper) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 7
-saveRDS(Scheper, file="Data/Clean_data/7_Scheper.RData") 
+saveRDS(Scheper, file="Data/Clean_data/7_Scheper.rds") 
 

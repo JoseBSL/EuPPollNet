@@ -1,4 +1,4 @@
-#DATASET NUMBER 19, 20, 21; Manincor
+#DATASET NUMBER 17; Manincor
 
 #Load libraries
 library(tidyverse)
@@ -18,25 +18,15 @@ unique(factor(data$Longitude))
 #Split data into different dataframes based on site id
 InteractionData <- split(data, data$Site_id)
 
-
 #Prepare flower count data ----
 flower_count = read_csv("Data/Raw_data/14_Manincor/flower_count_data2_manincor.csv", col_names = T)
 
 #Delete extra column that indicated that this dataset was number one
 flower_count = flower_count %>% 
-  select(!Comment_1)
+  select(!c(Comment...8, Comment...9))
 
 #Split data into different dataframes based on survey name
-split_flwdata <- split(flower_count, flower_count$Site_id)
-#Convert to tibbles
-FlowerCount1 <- as_tibble(split_flwdata[[1]]) 
-FlowerCount2 <- as_tibble(split_flwdata[[2]]) 
-FlowerCount3 <- as_tibble(split_flwdata[[3]]) 
-#Split by Site_id
-FlowerCount1 = split(FlowerCount1, FlowerCount1$Site_id)
-FlowerCount2 = split(FlowerCount2, FlowerCount2$Site_id)
-FlowerCount3 = split(FlowerCount3, FlowerCount3$Site_id)
-
+FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 Metadata <- tibble(
@@ -64,14 +54,10 @@ Authorship <- data.frame(
 
 #Save data ----
 #Create list with all dataframes of interest
-Manicor1 <- list(InteractionData1, FlowerCount1, Metadata, Authorship)
-Manicor2 <- list(InteractionData2, FlowerCount2, Metadata, Authorship)
-Manicor3 <- list(InteractionData3, FlowerCount3, Metadata, Authorship)
+Manicor <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
-names(Manicor1) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
-names(Manicor2) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
-names(Manicor3) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
+names(Manicor) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
+
 #Save data
-saveRDS(Manicor1, file="Data/Clean_data/19_Manicor.RData")
-saveRDS(Manicor2, file="Data/Clean_data/20_Manicor.RData")
-saveRDS(Manicor3, file="Data/Clean_data/21_Manicor.RData")
+saveRDS(Manicor, file="Data/Clean_data/17_Manicor.rds")
+

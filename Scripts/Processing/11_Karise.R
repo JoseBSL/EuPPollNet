@@ -60,5 +60,5 @@ names(Karise) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 13
-saveRDS(Karise, file="Data/Clean_data/13_Karise.RData") 
+saveRDS(Karise, file="Data/Clean_data/13_Karise.rds") 
 

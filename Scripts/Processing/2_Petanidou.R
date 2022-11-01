@@ -62,5 +62,5 @@ Petanidou <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Petanidou) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Petanidou, file="Data/Clean_data/2_Petanidou.RData")
+saveRDS(Petanidou, file="Data/Clean_data/2_Petanidou.rds")
 

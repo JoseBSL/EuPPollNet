@@ -46,4 +46,4 @@ names(Heleno) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 9
-saveRDS(Heleno, file="Data/Clean_data/9_Heleno.RData") 
+saveRDS(Heleno, file="Data/Clean_data/9_Heleno.rds") 

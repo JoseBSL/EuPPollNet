@@ -59,5 +59,5 @@ Michez <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Michez) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Michez, file="Data/Clean_data/3_Michez.RData")
+saveRDS(Michez, file="Data/Clean_data/3_Michez.rds")
 

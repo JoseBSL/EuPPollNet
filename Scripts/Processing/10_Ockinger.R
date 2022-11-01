@@ -11,7 +11,7 @@ data = read_csv2("Data/Raw_data/10_Ockinger/interaction_data_ockinger.csv")
 #Prepare interaction data with the same number of columns
 data = data %>% 
 remove_rownames() %>%
-column_to_rownames(var = 'X1') %>% 
+column_to_rownames(var = '...1') %>% 
 rename(Plant_species = flw_visited_by_pollin) %>% 
 rename(Pollinator_species = pollin_species) %>% 
 drop_na(Plant_species) %>% 
@@ -105,11 +105,11 @@ E_mail = c("erik.ockinger@slu.se", "marie.winsa@gmail.com"))
 
 #Save data ----
 #Create list with all dataframes of interest
-Heleno <- list(InteractionData, FlowerCount, Metadata, Authorship)
+ockinger <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
-names(Heleno) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
+names(ockinger) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 12
-saveRDS(Heleno, file="Data/Clean_data/12_Ockinger.RData") 
+saveRDS(ockinger, file="Data/Clean_data/12_Ockinger.rds") 
 

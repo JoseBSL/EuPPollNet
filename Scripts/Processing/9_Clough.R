@@ -78,4 +78,4 @@ names(Clough) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 11
-saveRDS(Clough, file="Data/Clean_data/11_Clough.RData") 
+saveRDS(Clough, file="Data/Clean_data/11_Clough.rds") 

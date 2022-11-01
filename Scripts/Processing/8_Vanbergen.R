@@ -53,4 +53,4 @@ names(Vanbergen) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 10
-saveRDS(Vanbergen, file="Data/Clean_data/10_Vanbergen.RData") 
+saveRDS(Vanbergen, file="Data/Clean_data/10_Vanbergen.rds") 

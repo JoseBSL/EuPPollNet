@@ -41,5 +41,5 @@ names(Biella) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 8
-saveRDS(Biella, file="Data/Clean_data/8_Biella.RData") 
+saveRDS(Biella, file="Data/Clean_data/8_Biella.rds") 
 

@@ -37,6 +37,6 @@ names(Magrach) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 15
-saveRDS(Magrach, file="Data/Clean_data/15_Magrach.RData") 
+saveRDS(Magrach, file="Data/Clean_data/15_Magrach.rds") 
 
 

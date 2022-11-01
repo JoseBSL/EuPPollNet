@@ -3,11 +3,10 @@
 #Load libraries
 library(tidyverse)
 
-
 #Prepare interaction data ----
 #Load interaction data
 data = read_csv("Data/Raw_data/12_Dupont/interaction_data_dupont.csv") %>% 
-  select(!X7)
+  select(!...7)
 
 #Rename two labels
 data = data %>% 
@@ -108,7 +107,7 @@ names(Dupont) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 14
-saveRDS(Dupont, file="Data/Clean_data/14_Dupont.RData") 
+saveRDS(Dupont, file="Data/Clean_data/14_Dupont.rds") 
 
 
 

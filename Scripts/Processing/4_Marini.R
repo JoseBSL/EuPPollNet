@@ -114,7 +114,7 @@ names(Marini1) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 names(Marini2) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 names(Marini3) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Marini1, file="Data/Clean_data/4_Marini.RData")
-saveRDS(Marini2, file="Data/Clean_data/5_Marini.RData")
-saveRDS(Marini3, file="Data/Clean_data/6_Marini.RData")
+saveRDS(Marini1, file="Data/Clean_data/4_Marini.rds")
+saveRDS(Marini2, file="Data/Clean_data/5_Marini.rds")
+saveRDS(Marini3, file="Data/Clean_data/6_Marini.rds")
 

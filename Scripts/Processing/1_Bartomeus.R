@@ -125,5 +125,5 @@ Authorship <- tibble(
 Bartomeus <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Bartomeus) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Bartomeus, file="Data/Clean_data/1_Bartomeus.RData")
+saveRDS(Bartomeus, file="Data/Clean_data/1_Bartomeus.rds")
 
