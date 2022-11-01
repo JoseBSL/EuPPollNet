@@ -2,7 +2,7 @@ library('gtools') #Library that allows to sort files by numerical order
 library(tidyverse)
 
 #Read all files with their paths
-files <- dir("Data/Clean_data", pattern="*.RData", full.names=T)
+files <- dir("Data/Clean_data", pattern="*.rds", full.names=T)
 files <- mixedsort(files)
 
 #Generate list of lists
@@ -10,14 +10,13 @@ all_data = files %>%
 map(readRDS) 
 
 #Read all file names
-file_names <- dir("Data/Clean_data", pattern="*.RData", full.names=F)
+file_names <- dir("Data/Clean_data", pattern="*rds", full.names=F)
 file_names <- mixedsort(file_names)
 
 #Delete extension
-file_names = str_replace(file_names, ".RData", "")
+file_names = str_replace(file_names, "rds", "")
 #Rename all elements of the list
 names(all_data) <- file_names
-
 
 
 #Select coordinates from the list of lists----

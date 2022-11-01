@@ -41,19 +41,21 @@ data = data %>%
 #Group interactions by plot
 data = data %>% 
   group_by(Plant_species, Pollinator_species, Year, Site_id, Locality) %>% 
-  summarise(Interaction = n())
+  summarise(Interaction = n()) %>%  ungroup()
 
 #Add other columns
 data = data %>% 
   mutate(Day = NA) %>% 
   mutate(Month = NA) %>% 
   mutate(Year = as.character(Year)) %>% 
-  mutate(Latitude = case_when(Locality == "Isen_Bjerg" ~ 56.0725, 
-                              Locality == "Skov_Olesen"  ~ 56.104167,
-                              Locality == "Horbylunde" ~ 56.141667)) %>% 
-  mutate(Longitude = case_when(Locality == "Isen_Bjerg" ~ 9.275556, 
-                               Locality == "Skov_Olesen"  ~ 9.107778,
-                               Locality == "Horbylunde" ~ 9.39)) %>% 
+  mutate(Latitude = case_when(Locality == "Isen_Bjerg_2004" ~ 56.0725, 
+                              Locality == "Isen_Bjerg_2005" ~ 56.0725, 
+                              Locality == "Skov_Olesen_2004"  ~ 56.104167,
+                              Locality == "Horbylunde_2005" ~ 56.141667)) %>% 
+  mutate(Longitude = case_when(Locality == "Isen_Bjerg_2004" ~ 9.275556, 
+                               Locality == "Isen_Bjerg_2005" ~ 9.275556, 
+                               Locality == "Skov_Olesen_2004"  ~ 9.107778,
+                               Locality == "Horbylunde_2005" ~ 9.39)) %>% 
   mutate(Country = "Denmark") %>% 
   mutate(Sampling_method = "Nested plots") %>% 
   mutate(Sampling_effort_minutes = 15) %>% 
@@ -72,8 +74,6 @@ data = data %>%
 
 
 #write_csv(data, "Data/Raw_data/12_Dupont/int_data.csv")
-
-glimpse(data)
 
 #Split by site, just for createing the listed name in this case
 InteractionData <- split(data, data$Locality)
