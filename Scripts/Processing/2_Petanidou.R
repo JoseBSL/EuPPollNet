@@ -32,6 +32,15 @@ mutate(Units = gsub("#", "Number", flower_count$Units))
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
+
+#Select unique cases of polls and plants from the list 
+for (i in InteractionData) {
+plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
+pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))}
+#Select unique cases
+plant_single_cases = distinct(plant_single_cases)
+pollinator_single_cases = distinct(pollinator_single_cases)
+
 Metadata <- tibble(
 Doi = NA,
 Dataset_description = "This dataset documents 6 different sites in Chios Island
@@ -47,7 +56,24 @@ the period that most pollinators are active and most plants are flowering
 but two more years are available.",
 Taxa_recorded = "All flower visitors belonging to the orders:
 Hymenoptera (with the exception of Formicidae), Diptera
-(we mainly focused in Syrphidae and Bombylidae), Coleoptera and Lepidoptera.")
+(we mainly focused in Syrphidae and Bombylidae), Coleoptera and Lepidoptera.",
+Sampling_sites = "6",
+Sampling_method = "Random walk",
+Sampling_area_details = "",
+Sampling_area_species_m2 = "",
+Sampling_area_total_m2 = "" ,
+Sampling_time_details = "",
+Sampling_time_species_min = "",
+Sampling_time_total_min = "",
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "Yes")
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
+
 
 #Prepare authorship data ----
 Authorship <- tibble(

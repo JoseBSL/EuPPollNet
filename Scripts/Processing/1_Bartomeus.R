@@ -78,7 +78,6 @@ names(InteractionData)[i] <- str_replace(levels(factor(data$Site_id)), "bartomeu
 
 }
 
-
 #Prepare flower count data ----
 flower_count <- read_csv("Data/Raw_data/1_Bartomeus/1_Flower_count.csv")
 #Prepare data
@@ -101,18 +100,48 @@ FlowerCount <- date_flower_count %>%
 FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
+
+#Check number of plants
+
+#Select unique cases of polls and plants from the list 
+for (i in InteractionData) {
+plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
+pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
+
+}
+plant_single_cases = distinct(plant_single_cases)
+pollinator_single_cases = distinct(pollinator_single_cases)
+
+
 Metadata <- tibble(
   Doi = "https://doi.org/10.1007/s00442-007-0946-1",
-  Dataset_description = "Study site at Cap de Creus, Catalonia, Spain. 
-Sampling method of survey is 6 minuts per plant species. 
-All plant species where sampled for equal time period. 
-All floral visitors were collected. 
-We determined the total number of flowers or inflorescences (fower units) per plant species in 1-m2 areas located at 1-m intervals along the two 50 m transects. 
-Flower unit description is defined as the distance that a small bee (c. 1 cm length) would fly, rather than walk (Saville 1993). 
-For example, in the Asteraceae, a flower unit is the entire inflorescence while in the Rosaceae, a flower unit is a single flower.
-Publications with the dataset: Bartomeus et al. 2008 Oecologia. 
-Networks where only sampled April to June for Carpobrotus and June/July for Opuntia, Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
-  Taxa_recorded = "All floral visitors")
+  Dataset_description = "Study site at Cap de Creus, Catalonia, Spain.
+  Sampling method of survey is 6 minuts per plant species. All plant species where sampled
+  for equal time period. All floral visitors were collected.
+  We determined the total number of flowers or inflorescences (fower units)
+  per plant species in 1-m2 areas located at 1-m intervals along the two 50 m transects.
+  Flower unit description is defined as the distance that a small bee (c. 1 cm length)
+  would fly, rather than walk (Saville 1993). For example, in the Asteraceae, a flower
+  unit is the entire inflorescence while in the Rosaceae, a flower unit is a single flower.
+  Networks where only sampled April to June for Carpobrotus and June/July for Opuntia,
+  Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
+  Taxa_recorded = "All floral visitors",
+  Sampling_sites = "12",
+  Sampling_method = "Focal observations",
+  Sampling_area_details = "6 observation areas of 0.3 * 0.3 m / species and site",
+  Sampling_area_species_m2 = as.character(0.3 * 0.3 * 6 * 12),
+  Sampling_area_total_m2 = as.character(0.3 * 0.3 * 6 * 12 * nrow(plant_single_cases)) ,
+  Sampling_time_details = "36 min / species and site",
+  Sampling_time_species_min = as.character(36 * 12),
+  Sampling_time_total_min = as.character(36 * nrow(plant_single_cases) * 12),
+  Total_plant_species = nrow(plant_single_cases),
+  Total_pollinator_species = nrow(pollinator_single_cases),
+  Floral_counts =  "Yes")
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- tibble(
