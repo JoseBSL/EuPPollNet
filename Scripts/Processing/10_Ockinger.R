@@ -59,7 +59,8 @@ group_by(across(-Interaction)) %>%
 summarise(Interaction = sum(Interaction, na.rm = TRUE)) %>%    
 relocate(Interaction, .after = Pollinator_species) %>% 
 mutate(Plant_species = str_replace(Plant_species, "_", " ")) %>% 
-mutate(Pollinator_species = str_replace(Pollinator_species, "_", " "))
+mutate(Pollinator_species = str_replace(Pollinator_species, "_", " ")) %>% 
+ungroup()
 
 #Split by site, just for createing the listed name in this case
 InteractionData <- split(data, data$Site_id)

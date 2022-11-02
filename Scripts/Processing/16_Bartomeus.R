@@ -25,7 +25,8 @@ mutate(Longitude = NA, .after = Latitude) %>%
 mutate(Coordinate_precision = NA, .after = Longitude) %>% 
 mutate(Elevation = NA, .after = Coordinate_precision) %>% 
 mutate(Comments = NA, .after = Year) %>% 
-mutate(Site_id = str_replace_all(Site_id, "_", ""))
+mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
+mutate(Sampling_method = "Transects")
 
 #Add coordinates
 sites <- data.frame(Site_id = c("Aznalcazar",

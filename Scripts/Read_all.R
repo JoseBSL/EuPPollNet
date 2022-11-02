@@ -1,5 +1,9 @@
 library('gtools') #Library that allows to sort files by numerical order
 library(tidyverse)
+# install.packages("sf")
+library(sf)
+# install.packages("giscoR")
+library(giscoR)
 
 #Read all files with their paths
 files <- dir("Data/Clean_data", pattern="*.rds", full.names=T)
@@ -10,11 +14,11 @@ all_data = files %>%
 map(readRDS) 
 
 #Read all file names
-file_names <- dir("Data/Clean_data", pattern="*rds", full.names=F)
+file_names <- dir("Data/Clean_data", pattern="*.rds", full.names=F)
 file_names <- mixedsort(file_names)
 
 #Delete extension
-file_names = str_replace(file_names, "rds", "")
+file_names = str_replace(file_names, ".rds", "")
 #Rename all elements of the list
 names(all_data) <- file_names
 
@@ -30,13 +34,14 @@ for (i in 1:length(file_names)) {
 }
 
 
-# install.packages("sf")
-library(sf)
-# install.packages("giscoR")
-library(giscoR)
+
 
 #Rename list and 
 names(data) <- file_names
+
+
+
+
 data = bind_rows(data,  .id = 'Study_id')
 data_coord <- st_as_sf(data, coords = c(3:4)) %>% 
 st_set_crs(4326) %>% 
