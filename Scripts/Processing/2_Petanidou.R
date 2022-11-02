@@ -58,7 +58,9 @@ Taxa_recorded = "All flower visitors belonging to the orders:
 Hymenoptera (with the exception of Formicidae), Diptera
 (we mainly focused in Syrphidae and Bombylidae), Coleoptera and Lepidoptera.",
 Sampling_sites = "6",
-Sampling_method = "Random walk",
+Year = 2015,
+Country = "Greece",
+Sampling_method = "Random walks",
 Sampling_area_details = "",
 Sampling_area_species_m2 = "",
 Sampling_area_total_m2 = "" ,

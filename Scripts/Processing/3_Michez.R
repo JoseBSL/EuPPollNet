@@ -34,16 +34,40 @@ FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_specie
                       Flower_count = NA, Units = NA, Comment = NA)
 
 #Prepare metadata data ----
+
+#Select unique cases of polls and plants from the list 
+#First for loop across datasets within the study
+for (i in InteractionData) {
+plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
+pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))}
+#Select unique cases
+plant_single_cases = distinct(plant_single_cases)
+pollinator_single_cases = distinct(pollinator_single_cases)
+
+#Build metadata
 Metadata <- tibble(
-  Doi = NA,
-  Dataset_description = "This dataset documents 71 different sites in the province of Hainaut,
-  Wallonia, Belgium. They have been collected for different master thesis and there are sites
-  on different habitats. The region is post industrial, so terrils (heat slap),
-  carrieres (quarries), ruderal sites, parks (urban), and prairies are included.
-  Samplings were performed on 2020. For COVID reasons, the sites were visited only from
-  May to September, 3 to 5 visits to each site were performed. We measured only wild bees.
-  Each sampling on each site consisted on a non-linear transect that lasted 20 minutes.",
-  Taxa_recorded = "Bees")
+Doi = NA,
+Dataset_description = "This dataset documents 71 different sites in the province of Hainaut,
+Wallonia, Belgium. They have been collected for different master thesis and there are sites
+on different habitats. The region is post industrial, so terrils (heat slap),
+carrieres (quarries), ruderal sites, parks (urban), and prairies are included.
+Samplings were performed on 2020. For COVID reasons, the sites were visited only from
+May to September, 3 to 5 visits to each site were performed. We measured only wild bees.
+Each sampling on each site consisted on a non-linear transect that lasted 20 minutes.",
+Taxa_recorded = "Bees",
+Sampling_sites = "71",
+Year = "2020",
+Country = "Belgium",
+Sampling_method = "Transects",
+Sampling_area_details = "Non-linear transects",
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA ,
+Sampling_time_details = "20 mins per site",
+Sampling_time_species_min = NA,
+Sampling_time_total_min = 20 * 71 * 4, #This number (71 * 4) can be refined, at the moment is the mean
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "No")
 
 #Prepare authorship data ----
 Authorship <- data.frame(
