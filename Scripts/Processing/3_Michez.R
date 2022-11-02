@@ -64,10 +64,15 @@ Sampling_area_species_m2 = NA,
 Sampling_area_total_m2 = NA ,
 Sampling_time_details = "20 mins per site",
 Sampling_time_species_min = NA,
-Sampling_time_total_min = 20 * 71 * 4, #This number (71 * 4) can be refined, at the moment is the mean
+Sampling_time_total_min = 20 * 71 * 4, #This number (71 * 4) can be refined, at the moment is an approximate time
 Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
 Floral_counts =  "No")
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(
