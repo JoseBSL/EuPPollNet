@@ -105,10 +105,18 @@ FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Select unique cases of polls and plants from the list 
 for (i in InteractionData) {
+#Generate sum of distinct plants per site
+plant_sum <- bind_rows(lapply(InteractionData, function(x) x %>% 
+                      select(Plant_species, Site_id) %>% 
+                      group_by(Site_id) %>% 
+                      summarise(Sum = n_distinct(Plant_species))))
+#Total unique cases 
 plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
 pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
-
 }
+
+#Plant sum should be the total number of plants sampled
+plant_sum = sum(plant_sum$Sum)
 plant_single_cases = distinct(plant_single_cases)
 pollinator_single_cases = distinct(pollinator_single_cases)
 
@@ -130,10 +138,10 @@ Metadata <- tibble(
   Sampling_method = "Focal observations",
   Sampling_area_details = "6 observation areas of 0.3 * 0.3 m / species and site",
   Sampling_area_species_m2 = as.character(0.3 * 0.3 * 6 * 12),
-  Sampling_area_total_m2 = as.character(0.3 * 0.3 * 6 * 12 * nrow(plant_single_cases)) ,
+  Sampling_area_total_m2 = as.character(0.3 * 0.3 * 6 * 12 * plant_sum) ,
   Sampling_time_details = "36 min / species and site",
   Sampling_time_species_min = as.character(36 * 12),
-  Sampling_time_total_min = as.character(36 * nrow(plant_single_cases) * 12),
+  Sampling_time_total_min = as.character(36 * plant_sum * 12),
   Total_plant_species = nrow(plant_single_cases),
   Total_pollinator_species = nrow(pollinator_single_cases),
   Floral_counts =  "Yes")
