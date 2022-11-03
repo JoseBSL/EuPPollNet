@@ -35,7 +35,9 @@ mutate(Pollinator_species = replace(Pollinator_species,
 mutate(Pollinator_species = replace(Pollinator_species, 
        Pollinator_species == "Sphaerophoria", "Sphaerophoria sp.")) %>% 
 mutate(Pollinator_species = replace(Pollinator_species, 
-       Pollinator_species == "Halictus/Lasioglossum", "	Halictidae sp."))  
+       Pollinator_species == "Halictus/Lasioglossum", "	Halictidae sp.")) %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+
 
 #Split data into different dataframes based on survey name
 InteractionData <- split(data, data$Site_id)
@@ -47,14 +49,55 @@ FlowerCount <- split(flower_count, flower_count$Site_id)
 
 
 #Prepare metadata data ----
+
+#Select unique cases of polls and plants from the list 
+for (i in InteractionData) {
+#Generate sum of distinct plants per site
+plant_sum <- bind_rows(lapply(InteractionData, function(x) x %>% 
+             select(Plant_species, Site_id) %>% 
+             group_by(Site_id) %>% 
+             summarise(Sum = n_distinct(Plant_species))))
+#Total unique cases 
+plant_single_cases <- bind_rows(lapply(InteractionData, 
+            function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
+pollinator_single_cases <- bind_rows(lapply(InteractionData, 
+            function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
+}
+
+#Plant sum should be the total number of plants sampled
+plant_sum = sum(plant_sum$Sum)
+plant_single_cases = distinct(plant_single_cases)
+pollinator_single_cases = distinct(pollinator_single_cases)
+
+
 Metadata <- tibble(
-  Doi = "https://doi.org/10.1111/1365-2664.13658",
-  Dataset_description = "Dataset on bees and hoverflies sampled in 25 grassland
-  - field boundary pairs in the area around Chize, France, 2015.
-  Flowers and plant-pollinator interactions were surveyed two to six times a year
-  (for most sites 4 times), in two 150m2 transects (15 min each)
-  per habitat on each occasion. Grasslands varied in land use intensity.",
-  Taxa_recorded = "Bees and hoverflies")
+Doi = "https://doi.org/10.1111/1365-2664.13658",
+Dataset_description = "Dataset on bees and hoverflies sampled in 25 grassland
+- field boundary pairs in the area around Chize, France, 2015.
+Flowers and plant-pollinator interactions were surveyed two to six times a year
+(for most sites 4 times), in two 150m2 transects (15 min each)
+per habitat on each occasion. Grasslands varied in land use intensity.",
+Taxa_recorded = "Bees and hoverflies",
+Sampling_sites = 25,
+Sampling_rounds = 4,
+Year = 2015,
+Country = "France",
+Sampling_method = "Transects",
+Sampling_area_details = "2 transects per round (transect size 1 or 2 m × 75 m; we use 1.5 m to calculate the total area)",
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = 1.5 * 75 * 2 * 25, #Average transect size (1.5) * 75 m long * 2 transects * 25 sites
+Sampling_time_details = "15 mins per transect and round",
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = 15 * 2 * 4 * 25, #15 mins * 2 transects per site * 4 rounds * 25 sites 
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "Yes")
+ 
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
+
 
 #Prepare authorship data ----
 Authorship <- data.frame(

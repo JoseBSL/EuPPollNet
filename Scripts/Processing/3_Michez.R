@@ -24,7 +24,8 @@ select(Plant_species, Pollinator_species, Interaction,
        Site_id, Habitat, Country, Locality, Latitude, Longitude,
        Coordinate_precision, Elevation, Day, Month, Year, Comments,
        Temperature, Humidiy) %>%
-mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.", "Bombus terrestris"))
+mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.", "Bombus terrestris")) %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
 #Split data into different dataframes based on survey name
 InteractionData <- split(InteractionData, InteractionData$Site_id)
@@ -56,6 +57,7 @@ May to September, 3 to 5 visits to each site were performed. We measured only wi
 Each sampling on each site consisted on a non-linear transect that lasted 20 minutes.",
 Taxa_recorded = "Bees",
 Sampling_sites = "71",
+Sampling_rounds = "3 to 5",
 Year = "2020",
 Country = "Belgium",
 Sampling_method = "Transects",
@@ -63,7 +65,7 @@ Sampling_area_details = "Non-linear transects",
 Sampling_area_species_m2 = NA,
 Sampling_area_total_m2 = NA ,
 Sampling_time_details = "20 mins per site",
-Sampling_time_species_min = NA,
+Sampling_time_species_round_min = NA,
 Sampling_time_total_min = 20 * 71 * 4, #This number (71 * 4) can be refined, at the moment is an approximate time
 Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),

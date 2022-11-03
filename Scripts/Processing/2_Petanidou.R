@@ -12,7 +12,8 @@ mutate(Plant_species = word(Plant_species, 1, 2),
 Pollinator_species = word(Pollinator_species, 1, 2)) %>%
 rename(Latitude = latitude)  %>% 
 rename(Longitude = longitude)  %>% 
-mutate(Coordinate_precision = "10m")  
+mutate(Coordinate_precision = "10m") %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)
@@ -57,16 +58,17 @@ but two more years are available.",
 Taxa_recorded = "All flower visitors belonging to the orders:
 Hymenoptera (with the exception of Formicidae), Diptera
 (we mainly focused in Syrphidae and Bombylidae), Coleoptera and Lepidoptera.",
-Sampling_sites = "6",
+Sampling_sites = 6,
+Sampling_rounds = 3,
 Year = 2015,
 Country = "Greece",
 Sampling_method = "Random walks",
-Sampling_area_details = "",
-Sampling_area_species_m2 = "",
-Sampling_area_total_m2 = "" ,
-Sampling_time_details = "",
-Sampling_time_species_min = "",
-Sampling_time_total_min = "",
+Sampling_area_details = NA,
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA,
+Sampling_time_details = "120 mins per site and round",
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = 6 * 3 * 120,
 Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
 Floral_counts =  "Yes")

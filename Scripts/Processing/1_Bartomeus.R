@@ -57,8 +57,6 @@ plants <- inner_join(i_to,n_to) %>% rename(Plant_species = taxonomy.name)
 data <- bind_cols(polls,plants, Freq) %>% 
   select(Plant_species, Pollinator_species, Interaction) %>%
   mutate(Sampling_method = "Focal_observations") %>%
-  mutate(Sampling_effort_minutes = (6*nlevels(factor(Plant_species)))) %>% 
-  mutate(Sampling_area_square_meters = 0.09) %>%
   mutate(Site_id = network$name) %>%
   mutate(Habitat = "Coastal shrubland") %>%
   mutate(Country = "Spain") %>%
@@ -135,14 +133,15 @@ Networks where only sampled April to June for Carpobrotus and June/July for Opun
 Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
 Taxa_recorded = "All floral visitors",
 Sampling_sites = "12",
+Sampling_rounds = "6",
 Year = "2015",
 Country = "Spain",
 Sampling_method = "Focal observations",
 Sampling_area_details = "6 observation areas of 0.3 * 0.3 m / species and site",
 Sampling_area_species_m2 = as.character(0.3 * 0.3 * 6 * 12),
 Sampling_area_total_m2 = as.character(0.3 * 0.3 * 6 * 12 * plant_sum) ,
-Sampling_time_details = "36 min / species and site",
-Sampling_time_species_min = as.character(36 * 12),
+Sampling_time_details = "1 min / species, site, round and observation area; 36 min per species and site",
+Sampling_time_species_round_min = 6,
 Sampling_time_total_min = as.character(36 * plant_sum * 12),
 Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
