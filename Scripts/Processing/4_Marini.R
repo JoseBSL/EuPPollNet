@@ -18,13 +18,13 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 #Split data into different dataframes based on survey name
 split_intdata <- split(data, data$Survey)
 #Convert to tibbles
-InteractionData1 <- as_tibble(split_intdata[[1]])
-InteractionData2 <- as_tibble(split_intdata[[2]])
-InteractionData3 <- as_tibble(split_intdata[[3]])
+data1 <- as_tibble(split_intdata[[1]])
+data2 <- as_tibble(split_intdata[[2]])
+data3 <- as_tibble(split_intdata[[3]])
 #Now create a list of the different networks (unique Site_id) for each survey
-InteractionData1 <- split(InteractionData1, InteractionData1$Site_id)
-InteractionData2 <- split(InteractionData2, InteractionData2$Site_id)
-InteractionData3 <- split(InteractionData3, InteractionData3$Site_id)
+InteractionData1 <- split(data1, data1$Site_id)
+InteractionData2 <- split(data2, data2$Site_id)
+InteractionData3 <- split(data3, data3$Site_id)
 
 #Prepare flower count data ----
 flower_count = read.csv("Data/Raw_data/4_Marini/flower_count_marini.csv")
@@ -49,22 +49,21 @@ FlowerCount3 = split(FlowerCount3, FlowerCount3$Site_id)
 
 #Prepare metadata data ----
 
-#Select unique cases of polls and plants from the list 
+#Plants sampled in each site
 for (i in InteractionData1) {
 #Generate sum of distinct plants per site
 plant_sum1 <- bind_rows(lapply(InteractionData1, function(x) x %>% 
                       select(Plant_species, Site_id) %>% 
                       group_by(Site_id) %>% 
                       summarise(Sum = n_distinct(Plant_species))))
-#Total unique cases 
-plant_single_cases1 <- bind_rows(lapply(InteractionData1, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases1 <- bind_rows(lapply(InteractionData1, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
-}
 
+}
 #Plant sum should be the total number of plants sampled
 plant_sum1 = sum(plant_sum1$Sum)
-plant_single_cases1 = distinct(plant_single_cases1)
-pollinator_single_cases1 = distinct(pollinator_single_cases1)
+
+#Store unique cases of plants and polls
+plant_single_cases1 = data1 %>% distinct(Plant_species)
+pollinator_single_cases1 = data1 %>%distinct(Pollinator_species)
 
 Metadata1 <- tibble(
 Doi = "https://doi.org/10.1111/ddi.13132",
@@ -80,10 +79,11 @@ the number of specimens observed on each plant species. The Flower_count column 
 Flower_availability sheet indicates the percentage cover of the species in the total
 site area.",
 Taxa_recorded = "Apoidea, hoverflies, conopids, tachinid flies, butterflies",
+Sampling_year = 2018,
+Country = "Italy",
+Habitat = "Open riparian habitat",
 Sampling_sites = 18,
 Sampling_rounds = 5,
-Year = 2018,
-Country = "Italy",
 Sampling_method = "Focal observations",
 Sampling_area_details = NA,
 Sampling_area_species_m2 = NA,
@@ -101,22 +101,22 @@ rownames_to_column() %>%
 rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 
-#Select unique cases of polls and plants from the list 
+#Plants sampled in each site
 for (i in InteractionData2) {
 #Generate sum of distinct plants per site
 plant_sum2 <- bind_rows(lapply(InteractionData2, function(x) x %>% 
                       select(Plant_species, Site_id) %>% 
                       group_by(Site_id) %>% 
                       summarise(Sum = n_distinct(Plant_species))))
-#Total unique cases 
-plant_single_cases2 <- bind_rows(lapply(InteractionData2, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases2 <- bind_rows(lapply(InteractionData2, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
-}
 
+}
 #Plant sum should be the total number of plants sampled
 plant_sum2 = sum(plant_sum2$Sum)
-plant_single_cases2 = distinct(plant_single_cases2)
-pollinator_single_cases2 = distinct(pollinator_single_cases2)
+
+
+#Store unique cases of plants and polls
+plant_single_cases2 = data2 %>% distinct(Plant_species)
+pollinator_single_cases2 = data2 %>%distinct(Pollinator_species)
 
 Metadata2 <- tibble(
 Doi = "https://doi.org/10.1007/s00442-022-05151-6",
@@ -130,10 +130,11 @@ observed on each plant species. The Flower_count column in the Flower_availabili
 indicates the percentage cover of the species out of 100%, while the Total_flower_cover
 column indicates the total percentage cover of all flowering plant species at each site.",
 Taxa_recorded = "Apoidea, hoverflies, tachinid flies, butterflies",
+Sampling_year = "2019",
+Country = "Italy",
+Habitat = "Grassland",
 Sampling_sites = 51,
 Sampling_rounds = 1,
-Year = "2019",
-Country = "Italy",
 Sampling_method = "Focal observations",
 Sampling_area_details = NA,
 Sampling_area_species_m2 = NA,
@@ -150,22 +151,22 @@ Metadata2 = as.data.frame(t(Metadata2)) %>%
 rownames_to_column() %>% 
 rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
-#Select unique cases of polls and plants from the list 
+
+
+#Plants sampled in each site
 for (i in InteractionData3) {
 #Generate sum of distinct plants per site
 plant_sum3 <- bind_rows(lapply(InteractionData3, function(x) x %>% 
                       select(Plant_species, Site_id) %>% 
                       group_by(Site_id) %>% 
                       summarise(Sum = n_distinct(Plant_species))))
-#Total unique cases 
-plant_single_cases3 <- bind_rows(lapply(InteractionData3, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases3 <- bind_rows(lapply(InteractionData3, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
-}
 
+}
 #Plant sum should be the total number of plants sampled
 plant_sum3 = sum(plant_sum3$Sum)
-plant_single_cases3 = distinct(plant_single_cases3)
-pollinator_single_cases3 = distinct(pollinator_single_cases3)
+#Store unique cases of plants and polls
+plant_single_cases3 = data3 %>% distinct(Plant_species)
+pollinator_single_cases3 = data3 %>% distinct(Pollinator_species)
 
 Metadata3 <- tibble(
 Doi = NA,
@@ -182,10 +183,11 @@ The Flower_count column in the Flower_availability sheet indicates the percentag
 cover of the species out of 100%, while the Total_flower_cover column indicates
 the total percentage cover of all flowering plant species at each site.",
 Taxa_recorded = "Bees, hoverflies",
+Sampling_year = 2020,
+Country = "Italy",
+Habitat = "Agricultural",
 Sampling_sites = 108,
 Sampling_rounds = 4,
-Year = 2020,
-Country = "Italy",
 Sampling_method = "Focal observations",
 Sampling_area_details = NA,
 Sampling_area_species_m2 = NA,

@@ -8,7 +8,9 @@ data = read.csv("Data/Raw_data/8_Vanbergen/interaction_data_vanbergen.csv")
 #Create cols of Temperature and humidity
 data = data %>% 
 mutate(Temperature = NA) %>% 
-mutate(Humidity = NA)
+mutate(Humidity = NA) %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+
 #Split by Site_id
 InteractionData <- split(data, data$Site_id)
 
@@ -24,20 +26,45 @@ select(!Inflorescence.type)
 FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
+
+#Store unique cases of plants and polls
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
+
 Metadata <- tibble(
-  Doi = NA,
-  Dataset_description = "This dataset is part of the VOODOO-project.
-  It consists of plant-pollinator networks in 12 different landscapes
-  (4 agricultural, 4 rural, 4 urban), sampled over 3 periods in 2021
-  (mid april, end may and mid july). Coordinates are the centroids of each landscape.
-  Transects were stratified in relation with the area of each type of pollinator habitat
-  within a 500 m radius around the centroid. Habitat is given for each individual catch,
-  not for the landscape as a whole. Transect length and duration are therefore pooled in
-  this file, rather than giving the sampling time in each habitat
-  (in total: 120 min per site visit, so 360 min in total, if the networks are pooled
-  over the 3 sampling periods). If requested, we can also provide sampling time from
-  each subtransect in different habitat types.",
-  Taxa_recorded = "All flying insects, except really small stuff (< 1 mm)")
+Doi = NA,
+Dataset_description = "This dataset is part of the VOODOO-project.
+It consists of plant-pollinator networks in 12 different landscapes
+(4 agricultural, 4 rural, 4 urban), sampled over 3 periods in 2021
+(mid april, end may and mid july). Coordinates are the centroids of each landscape.
+Transects were stratified in relation with the area of each type of pollinator habitat
+within a 500 m radius around the centroid. Habitat is given for each individual catch,
+not for the landscape as a whole. Transect length and duration are therefore pooled in
+this file, rather than giving the sampling time in each habitat
+(in total: 120 min per site visit, so 360 min in total, if the networks are pooled
+over the 3 sampling periods). If requested, we can also provide sampling time from
+each subtransect in different habitat types.",
+Taxa_recorded = "All flying insects, except really small stuff (< 1 mm)",
+Sampling_year = 2021,
+Country = "France",
+Habitat = "4 agricultural, 4 rural, 4 urban",
+Sampling_sites = 12,
+Sampling_rounds = 3,
+Sampling_method = "Transect",
+Sampling_area_details = NA,
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA,
+Sampling_time_details = NA,
+Sampling_time_species_round_min = 120,
+Sampling_time_total_min = 120 * 3 * 12, #120 mins * 3 rounds * 12 sites
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "Yes")
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(

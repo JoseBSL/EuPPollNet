@@ -101,23 +101,22 @@ FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Check number of plants
 
-#Select unique cases of polls and plants from the list 
+#Plants sampled in each site
 for (i in InteractionData) {
 #Generate sum of distinct plants per site
 plant_sum <- bind_rows(lapply(InteractionData, function(x) x %>% 
                       select(Plant_species, Site_id) %>% 
                       group_by(Site_id) %>% 
                       summarise(Sum = n_distinct(Plant_species))))
-#Total unique cases 
-plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
+
 }
 
 #Plant sum should be the total number of plants sampled
 plant_sum = sum(plant_sum$Sum)
-plant_single_cases = distinct(plant_single_cases)
-pollinator_single_cases = distinct(pollinator_single_cases)
 
+#Store unique cases of plants and polls
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 Metadata <- tibble(
 Doi = "https://doi.org/10.1007/s00442-007-0946-1",
@@ -132,10 +131,11 @@ unit is the entire inflorescence while in the Rosaceae, a flower unit is a singl
 Networks where only sampled April to June for Carpobrotus and June/July for Opuntia,
 Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart.",
 Taxa_recorded = "All floral visitors",
+Sampling_year = "2015",
+Country = "Spain",
+Habitat = "Mediterranean shrubland",
 Sampling_sites = "12",
 Sampling_rounds = "6",
-Year = "2015",
-Country = "Spain",
 Sampling_method = "Focal observations",
 Sampling_area_details = "6 observation areas of 0.3 * 0.3 m / species and site",
 Sampling_area_species_m2 = as.character(0.3 * 0.3 * 6 * 12),

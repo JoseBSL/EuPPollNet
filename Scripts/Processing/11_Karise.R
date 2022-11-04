@@ -24,7 +24,8 @@ rename(Longitude = Longitude1)
 #Mutate cols now with correct coordinates
 data =  data %>% 
 mutate(Latitude = coord$Latitude) %>% 
-mutate(Longitude = coord$Longitude)
+mutate(Longitude = coord$Longitude) %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
 
 #Split by site, just for createing the listed name in this case
@@ -36,15 +37,41 @@ FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_specie
 
 
 #Prepare metadata data ----
+
+#Select unique cases of plants and poll
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
+
 Metadata <- tibble(
-  Doi = NA,
-  Dataset_description = "66 different sites, from these 33 in Southern Estonia and 33 in
-  Northern-Central Estonia. Bumble bees on field edges (500 m x 2 m walking transect.
-  The entire transect on field edges or 400 m on field edges and 100 m inside entomophilous
-  crop if this excisted in the area). Monitoring is carried out annually since 2006,
-  but forage plant species was named only in years indicated. Also current year,
-  the dataset will be created.",
-  Taxa_recorded = "Just bumblebees")
+Doi = NA,
+Dataset_description = "66 different sites, from these 33 in Southern Estonia and 33 in
+Northern-Central Estonia. Bumble bees on field edges (500 m x 2 m walking transect.
+The entire transect on field edges or 400 m on field edges and 100 m inside entomophilous
+crop if this excisted in the area). Monitoring is carried out annually since 2006,
+but forage plant species was named only in years indicated. Also current year,
+the dataset will be created.",
+Taxa_recorded = "Just bumblebees",
+Sampling_year = "2014 to 2021",
+Country = "Estonia.",
+Habitat = "Field edges on agricultutal land",
+Sampling_sites = 66,
+Sampling_rounds = NA,
+Sampling_method = "Transect",
+Sampling_area_details = NA,
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA,
+Sampling_time_details = NA,
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = NA,
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "No")
+
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(

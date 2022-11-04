@@ -34,13 +34,9 @@ FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
-#Select unique cases of polls and plants from the list 
-for (i in InteractionData) {
-plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))}
-#Select unique cases
-plant_single_cases = distinct(plant_single_cases)
-pollinator_single_cases = distinct(pollinator_single_cases)
+#Store unique cases of plants and polls
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 Metadata <- tibble(
 Doi = NA,
@@ -58,10 +54,11 @@ but two more years are available.",
 Taxa_recorded = "All flower visitors belonging to the orders:
 Hymenoptera (with the exception of Formicidae), Diptera
 (we mainly focused in Syrphidae and Bombylidae), Coleoptera and Lepidoptera.",
+Sampling_year = 2015,
+Country = "Greece",
+Habitat = "Scrubland",
 Sampling_sites = 6,
 Sampling_rounds = 3,
-Year = 2015,
-Country = "Greece",
 Sampling_method = "Random walks",
 Sampling_area_details = NA,
 Sampling_area_species_m2 = NA,

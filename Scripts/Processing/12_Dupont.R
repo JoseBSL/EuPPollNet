@@ -70,7 +70,8 @@ data = data %>%
          Sampling_effort_minutes, Sampling_area_square_meters,
          Site_id, Habitat, Country, Locality, Latitude, Longitude,
          Coordinate_precision, Elevation, Day, Month, Year, Comments,
-         Temperature, Humidity)
+         Temperature, Humidity) %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
 
 #write_csv(data, "Data/Raw_data/12_Dupont/int_data.csv")
@@ -83,15 +84,40 @@ FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_specie
                      Flower_count = NA, Units = NA, Comment = NA)
 
 #Prepare metadata data ----
+
+#Select unique cases of plants and poll
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
+
 Metadata <- tibble(
-  Doi = NA,
-  Dataset_description = "This dataset includes plant-flower visitor observations throughout
-  the flowering season (April-October) at three sites in peninsular Jutland in Denmark.
-  Two sites were observed in one year (SO in 2004 and HL in 2005), one site (IB)
-  was observed during two years (2004-2005).
-  Networks were observed on (nearly) all days of favorable weather
-  (no rain and no strong winds). The habitat is dry heathland.",
-  Taxa_recorded = "All flower visitors")
+Doi = "https://doi.org/10.1111/j.1365-2656.2008.01501.x",
+Dataset_description = "This dataset includes plant-flower visitor observations throughout
+the flowering season (April-October) at three sites in peninsular Jutland in Denmark.
+Two sites were observed in one year (SO in 2004 and HL in 2005), one site (IB)
+was observed during two years (2004-2005).
+Networks were observed on (nearly) all days of favorable weather
+(no rain and no strong winds). The habitat is dry heathland.",
+Taxa_recorded = "All flower visitors",
+Sampling_year = "2004 and 2005",
+Country = "Denmark",
+Habitat = "Heathland",
+Sampling_sites = 3,
+Sampling_rounds = "Full flowering season",
+Sampling_method = "Plots of 1*1m",
+Sampling_area_details = NA,
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA,
+Sampling_time_details = NA,
+Sampling_time_species_round_min = 15,
+Sampling_time_total_min = NA,
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "No")
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(

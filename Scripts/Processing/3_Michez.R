@@ -36,14 +36,9 @@ FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_specie
 
 #Prepare metadata data ----
 
-#Select unique cases of polls and plants from the list 
-#First for loop across datasets within the study
-for (i in InteractionData) {
-plant_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases <- bind_rows(lapply(InteractionData, function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))}
-#Select unique cases
-plant_single_cases = distinct(plant_single_cases)
-pollinator_single_cases = distinct(pollinator_single_cases)
+#Store unique cases of plants and polls
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
 Metadata <- tibble(
@@ -56,10 +51,11 @@ Samplings were performed on 2020. For COVID reasons, the sites were visited only
 May to September, 3 to 5 visits to each site were performed. We measured only wild bees.
 Each sampling on each site consisted on a non-linear transect that lasted 20 minutes.",
 Taxa_recorded = "Bees",
+Sampling_year = "2020",
+Country = "Belgium",
+Habitat = "See Dataset_description",
 Sampling_sites = "71",
 Sampling_rounds = "3 to 5",
-Year = "2020",
-Country = "Belgium",
 Sampling_method = "Transects",
 Sampling_area_details = "Non-linear transects",
 Sampling_area_species_m2 = NA,

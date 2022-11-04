@@ -60,7 +60,9 @@ summarise(Interaction = sum(Interaction, na.rm = TRUE)) %>%
 relocate(Interaction, .after = Pollinator_species) %>% 
 mutate(Plant_species = str_replace(Plant_species, "_", " ")) %>% 
 mutate(Pollinator_species = str_replace(Pollinator_species, "_", " ")) %>% 
-ungroup()
+ungroup() %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
 
 #Split by site, just for createing the listed name in this case
 InteractionData <- split(data, data$Site_id)
@@ -89,6 +91,11 @@ select(Day, Month, Year, Site_id, Plant_species, Flower_count, Units, Comment)
 FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
+#Store unique cases of plants and polls
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
+
+
 Metadata <- tibble(
 Doi = "https://doi.org/10.1038/s41598-019-51912-4",
 Dataset_description = "38 semi-natural pastures in south central Sweden. There were
@@ -96,7 +103,27 @@ Dataset_description = "38 semi-natural pastures in south central Sweden. There w
 were selected along a connectivity gradient to continuously grazed semi-natural
 grasslands in the surrounding landscapes, and restored pastures ranged in time since
 restoration from 2–16 years.",
-Taxa_recorded = "Bees and hoverflies")
+Taxa_recorded = "Bees and hoverflies",
+Sampling_year = "2012",
+Country = "Sweden",
+Habitat = "Semi-natural pastures",
+Sampling_sites = 38,
+Sampling_rounds = 5,
+Sampling_method = "Transect",
+Sampling_area_details = "Four 50 * 2 m transect",
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = 4 * 50 * 2 * 5 * 38, #4 times
+Sampling_time_details = NA,
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = NA,
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "Yes")
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+rownames_to_column() %>% 
+rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(

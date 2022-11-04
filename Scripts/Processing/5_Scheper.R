@@ -50,24 +50,9 @@ FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 
-#Select unique cases of polls and plants from the list 
-for (i in InteractionData) {
-#Generate sum of distinct plants per site
-plant_sum <- bind_rows(lapply(InteractionData, function(x) x %>% 
-             select(Plant_species, Site_id) %>% 
-             group_by(Site_id) %>% 
-             summarise(Sum = n_distinct(Plant_species))))
-#Total unique cases 
-plant_single_cases <- bind_rows(lapply(InteractionData, 
-            function(x) x %>% select(Plant_species) %>% distinct(Plant_species)))
-pollinator_single_cases <- bind_rows(lapply(InteractionData, 
-            function(x) x %>% select(Pollinator_species) %>% distinct(Pollinator_species)))
-}
-
-#Plant sum should be the total number of plants sampled
-plant_sum = sum(plant_sum$Sum)
-plant_single_cases = distinct(plant_single_cases)
-pollinator_single_cases = distinct(pollinator_single_cases)
+#Store unique cases of plants and polls
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 
 Metadata <- tibble(
@@ -78,10 +63,11 @@ Flowers and plant-pollinator interactions were surveyed two to six times a year
 (for most sites 4 times), in two 150m2 transects (15 min each)
 per habitat on each occasion. Grasslands varied in land use intensity.",
 Taxa_recorded = "Bees and hoverflies",
+Sampling_year = 2015,
+Country = "France",
+Habitat = "Grassland",
 Sampling_sites = 25,
 Sampling_rounds = 4,
-Year = 2015,
-Country = "France",
 Sampling_method = "Transects",
 Sampling_area_details = "2 transects per round (transect size 1 or 2 m × 75 m; we use 1.5 m to calculate the total area)",
 Sampling_area_species_m2 = NA,
