@@ -26,7 +26,9 @@ mutate(Coordinate_precision = NA, .after = Longitude) %>%
 mutate(Elevation = NA, .after = Coordinate_precision) %>% 
 mutate(Comments = NA, .after = Year) %>% 
 mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
-mutate(Sampling_method = "Transects")
+mutate(Sampling_method = "Transects") %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
 
 #Add coordinates
 sites <- data.frame(Site_id = c("Aznalcazar",
@@ -81,13 +83,40 @@ filter(!Site_id == "Elhongo" & !Site_id =="Lagunadelojillo") #These ids do not m
 FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
+#Select unique cases of plants and poll
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
+
+
 Metadata <- tibble(
-  Doi = "https://doi.org/10.24072/pcjournal.1",
-  Dataset_description = "Data collection is done in 12 to 16 independent
-  sites in a gradient of land use intensity across the Guadalquivir valley.
-  All sites are sampled every ~ 15 days (weather permitting) for a total of 6
-  to 8 rounds per yea. All sites are situated in open pine woodlands with an understory dominated by Lavender, Rosemary and Cistaceas. Data collection covers the whole  season from early spring (February) to Summer (June). We only sample on good weather conditions (no rain, extreme cold or high wind speeds).",
-  Taxa_recorded = "All floral visitors")
+Doi = "https://doi.org/10.24072/pcjournal.1",
+Dataset_description = "Data collection is done in 12 to 16 independent
+sites in a gradient of land use intensity across the Guadalquivir valley.
+All sites are sampled every ~ 15 days (weather permitting) for a total of 6
+to 8 rounds per year. All sites are situated in open pine woodlands with an understory dominated by Lavender, Rosemary and Cistaceas. Data collection covers the whole  season from early spring (February) to Summer (June). We only sample on good weather conditions (no rain, extreme cold or high wind speeds).",
+Taxa_recorded = "All floral visitors",
+Sampling_year = "2015",
+Country = "Spain",
+Habitat = "Open pine woodlands",
+Sampling_sites = 16,
+Sampling_rounds = 8,
+Sampling_method = "Transect",
+Sampling_area_details = "100 m transect",
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = 100 * 16, #100 m long * 1 m wide *16 sites
+Sampling_time_details = "30 mins each transect",
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = 16 * 30 * 1 * 8, #16 sites * 30 mins * 1 transect * 8 rounds
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "Yes")
+
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+  rownames_to_column() %>% 
+  rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
+
 
 #Prepare authorship data ----
 Authorship <- tibble(
