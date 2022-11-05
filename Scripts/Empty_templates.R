@@ -4,7 +4,7 @@
 #Set up----
 library(cleanR)
 
-#First create TEMPLATE WITH ALL COLNAMES
+#First create interaction data TEMPLATE WITH ALL COLNAMES
 #Create an empty data file. 
 data = data.frame(Plant_species = NA, Pollinator_species = NA, Interaction =  NA, Sampling_method = NA,
                     Sampling_effort_minutes = NA, Sampling_area_square_meters = NA, Site_id = NA,
@@ -17,3 +17,15 @@ data = data.frame(Plant_species = NA, Pollinator_species = NA, Interaction =  NA
 data <- read.csv("Data/Processing/Interaction_data_empty_template.csv", stringsAsFactors=TRUE)
 #Set the dataframe to compare with
 check_interaction_data <- define_template(data, NA)
+
+
+#Second create flower count template
+FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
+                     Flower_count = NA, Units = NA, Comment = NA)
+
+#Save data
+#write.csv(FlowerCount, "Data/Processing/Flower_count_empty_template.csv", row.names = FALSE)
+FlowerCount = read.csv("Data/Processing/Flower_count_empty_template.csv", stringsAsFactors=TRUE)
+
+check_flower_count_data <- define_template(FlowerCount, NA)
+

@@ -25,6 +25,7 @@ flower_count <- read_csv("Data/Raw_data/2_Petanidou/Flower_count.csv")
 flower_count$Month <- ifelse(as.numeric(flower_count$Month) < 10, paste0("0", flower_count$Month), flower_count$Month)
 flower_count$Day <- ifelse(as.numeric(flower_count$Day) < 10, paste0("0", flower_count$Day), flower_count$Day)
 
+#Select cols of interest in order
 FlowerCount <- flower_count %>%
 select(Day, Month, Year, Site_id, Plant_species, Flower_count) %>%
 mutate(Units = gsub("#", "Number", flower_count$Units))
@@ -38,6 +39,8 @@ FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
+
+#Create metadata ordered
 Metadata <- tibble(
 Doi = NA,
 Dataset_description = "This dataset documents 6 different sites in Chios Island

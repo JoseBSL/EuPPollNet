@@ -40,6 +40,11 @@ str(data)
 #Reorder variables
 data <- drop_variables(check_interaction_data, data) 
 
+#Drop this last two columns that are going to be at the metadata
+data = data %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
+
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)
 
@@ -49,13 +54,41 @@ FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_specie
 
 
 #Prepare metadata data ----
+
+#Select unique cases of plants and poll
+plant_single_cases = data %>% distinct(Plant_species)
+pollinator_single_cases = data %>%distinct(Pollinator_species)
+
+#Create ordered metadata
 Metadata <- tibble(
-  Doi = "https://doi.org/10.1002/ecy.2569",
-  Dataset_description = "Pollinator-plant interaction records from 32
-  calcareous grassland sites near Goettingen, Germany. Records for each
-  site are aggregated over 6 sampling events conducted between April and
-  September 2004.",
-  Taxa_recorded = "Wild bees and hoverflies")
+Doi = "https://doi.org/10.1002/ecy.2569",
+Dataset_description = "Pollinator-plant interaction records from 32
+calcareous grassland sites near Goettingen, Germany. Records for each
+site are aggregated over 6 sampling events conducted between April and
+September 2004.",
+Taxa_recorded = "Wild bees and hoverflies",
+Sampling_year = 2004,
+Country = "Germany",
+Habitat = "Calcareous grassland",
+Sampling_sites = 32,
+Sampling_rounds = 6,
+Sampling_method = "Transect",
+Sampling_area_details = "Transect length varied (mean = 15.7 +/- 6.2 sd) and width of 4m",
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA,
+Sampling_time_details = "5 mins per transect but transect number varied per site size",
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = (20 + 40 + 60) * 6, #time spent in the different sites 20, 40 and 60 x 6 rounds
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "No")
+
+
+#Transpose metadata
+Metadata = as.data.frame(t(Metadata)) %>%  
+  rownames_to_column() %>% 
+  rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
+
 
 #Prepare authorship data ----
 Authorship <- data.frame(

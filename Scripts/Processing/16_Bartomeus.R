@@ -88,6 +88,7 @@ plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 
+#Create ordered metadata
 Metadata <- tibble(
 Doi = "https://doi.org/10.24072/pcjournal.1",
 Dataset_description = "Data collection is done in 12 to 16 independent

@@ -53,7 +53,7 @@ n_to <- as_tibble(nodes) %>% select(node_id, taxonomy.name) %>% rename(node_to =
 i_to <- as_tibble(interactions) %>% select(node_to) 
 plants <- inner_join(i_to,n_to) %>% rename(Plant_species = taxonomy.name)
 
-#Create dataframe with the cols of interest
+#Create dataframe with the cols of interest ordered
 data <- bind_cols(polls,plants, Freq) %>% 
   select(Plant_species, Pollinator_species, Interaction) %>%
   mutate(Sampling_method = "Focal_observations") %>%
@@ -99,9 +99,8 @@ FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
-#Check number of plants
 
-#Plants sampled in each site
+#Sum species per site to calculate sampling effort
 for (i in InteractionData) {
 #Generate sum of distinct plants per site
 plant_sum <- bind_rows(lapply(InteractionData, function(x) x %>% 
@@ -111,13 +110,14 @@ plant_sum <- bind_rows(lapply(InteractionData, function(x) x %>%
 
 }
 
-#Plant sum should be the total number of plants sampled
+#Sum the number of distintc plants per site
 plant_sum = sum(plant_sum$Sum)
 
 #Store unique cases of plants and polls
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
+#Create metadata ordered
 Metadata <- tibble(
 Doi = "https://doi.org/10.1007/s00442-007-0946-1",
 Dataset_description = "Study site at Cap de Creus, Catalonia, Spain.
@@ -147,7 +147,7 @@ Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
 Floral_counts =  "Yes")
 
-#Transpose metadata
+#Transpose metadata, so is in long instead of wide
 Metadata = as.data.frame(t(Metadata)) %>%  
 rownames_to_column() %>% 
 rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()

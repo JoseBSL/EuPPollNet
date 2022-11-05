@@ -54,7 +54,7 @@ FlowerCount <- split(flower_count, flower_count$Site_id)
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
-
+#Create metadata in order
 Metadata <- tibble(
 Doi = "https://doi.org/10.1111/1365-2664.13658",
 Dataset_description = "Dataset on bees and hoverflies sampled in 25 grassland
@@ -79,7 +79,7 @@ Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
 Floral_counts =  "Yes")
  
-#Transpose metadata
+#Transpose metadata so it is in long instead of wide format
 Metadata = as.data.frame(t(Metadata)) %>%  
 rownames_to_column() %>% 
 rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
