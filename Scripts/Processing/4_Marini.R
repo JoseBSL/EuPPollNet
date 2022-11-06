@@ -12,8 +12,9 @@ data = read.csv("Data/Raw_data/4_Marini/interaction_data_marini.csv")
 data = data %>% 
 mutate(across(everything(), function(x) str_replace_all(x,"_", " "))) %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
-
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Latitude = as.numeric(Latitude)) %>% 
+mutate(Longitude = as.numeric(Longitude))
 
 #Split data into different dataframes based on survey name
 split_intdata <- split(data, data$Survey)
