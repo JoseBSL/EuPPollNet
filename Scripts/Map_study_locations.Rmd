@@ -1,6 +1,8 @@
 ---
 title: "Study locations"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r, echo=FALSE, message=FALSE, cache=FALSE,  warning=FALSE}
