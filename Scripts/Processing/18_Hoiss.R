@@ -9,7 +9,7 @@ library(lubridate)
 data <- read_csv("Data/Raw_data/18_Hoiss/Interaction_data.csv")
 
 #Compare vars
-compare_variables(check_interaction_data, data)
+#compare_variables(check_interaction_data, data)
 
 #Covert day into three separate cols
 data = data %>% 
@@ -45,7 +45,7 @@ InteractionData <- split(data,data$Site_id)
 flower_count <- read_csv("Data/Raw_data/18_Hoiss/Flower_count.csv")
 
 #Compare vars
-compare_variables(check_flower_count_data, flower_count)
+#compare_variables(check_flower_count_data, flower_count)
 
 #Covert day into three separate cols
 flower_count = flower_count %>% 
@@ -89,6 +89,7 @@ Sampling_area_total_m2 = 4 * 4 * 4 * 15, #4*4m plot X 4 treatments X 15 sites
 Sampling_time_details = "Two observations of 5 mins per treatment and site",
 Sampling_time_species_round_min = NA,
 Sampling_time_total_min = 30 * 15 * 5, #30 mins per site X 15 sites X approximate 5 rounds
+Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
 Floral_counts =  "Yes")
 
