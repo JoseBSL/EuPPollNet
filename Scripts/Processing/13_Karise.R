@@ -6,7 +6,7 @@ library(tidyverse)
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/13_Karise/interaction_data_karise.csv")
+data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv")
 
 #Drop some rows with na's in plants and polls
 data = data %>% 

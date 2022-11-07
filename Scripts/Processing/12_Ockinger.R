@@ -6,7 +6,7 @@ library(tidyverse)
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv2("Data/Raw_data/12_Ockinger/interaction_data_ockinger.csv")
+data = read_csv2("Data/Raw_data/12_Ockinger/Interaction_data.csv")
 
 #Prepare interaction data with the same number of columns
 data = data %>% 
@@ -41,7 +41,7 @@ data = left_join(data, coord, by = c("PlatsID" = "site_ID")) %>%
 rename(Site_id = Site_name) 
 
 #Habitat type can be added from this other dataset
-habitat = read_csv2("Data/Raw_data/10_Ockinger/site_landscape_data.csv") %>% 
+habitat = read_csv2("Data/Raw_data/12_Ockinger/Habitat_data.csv") %>% 
 select(Category, PlatsID)
 
 #Bind datasets  
@@ -70,7 +70,7 @@ InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
 #I have aggregated the int data by site and I'm going to do the same here
-flower_count = read_csv("Data/Raw_data/10_Ockinger/flower_counts_ockinger.csv")
+flower_count = read_csv("Data/Raw_data/12_Ockinger/Flower_count.csv")
 
 flower_count = flower_count %>% 
 rename(Plant_species = plantsp_abund) %>% 

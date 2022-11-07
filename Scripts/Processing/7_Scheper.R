@@ -4,7 +4,7 @@
 library(tidyverse)
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/7_Scheper/interaction_data_scheper.csv")
+data = read.csv("Data/Raw_data/7_Scheper/Interaction_data.csv")
 
 #Standardaze poll species
 data = data %>% 
@@ -43,7 +43,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/7_Scheper/flower_count_scheper.csv")
+flower_count = read.csv("Data/Raw_data/7_Scheper/Flower_count.csv")
 
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

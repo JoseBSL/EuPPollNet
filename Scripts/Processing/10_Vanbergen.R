@@ -4,7 +4,7 @@
 library(tidyverse)
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/10_Vanbergen/interaction_data_vanbergen.csv")
+data = read.csv("Data/Raw_data/10_Vanbergen/Interaction_data.csv")
 #Create cols of Temperature and humidity
 data = data %>% 
 mutate(Temperature = NA) %>% 
@@ -16,7 +16,7 @@ InteractionData <- split(data, data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/10_Vanbergen/flower_count_vanbergen.csv")
+flower_count = read.csv("Data/Raw_data/10_Vanbergen/Flower_count.csv")
 
 #Filter out one column but saved the data
 flower_count = flower_count %>% 

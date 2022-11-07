@@ -1,0 +1,190 @@
+Plant_species,Pollinator_species,Interaction,Sampling_method,Sampling_effort_minutes,Sampling_area_square_meters,Site_id,Habitat,Country,Locality,Latitude,Longitude,Coordinate_precision,Elevation,Day,Month,Year,Comments,Temperature,Humidity
+Achillea millefolium,Lasioglossum fulvicorne,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Asperula cynanchica,Lasioglossum laticeps,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Asperula cynanchica,Osmia rufohirta,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Asperula cynanchica,Seladonia tumulorum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Campanula rapunculus,Seladonia tumulorum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Centaurium erythraea,Bombus terrestris,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Centaurium erythraea,Lasioglossum pauxillum,3,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Centaurium erythraea,Lasioglossum xanthopus,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Centaurium erythraea,Osmia rufohirta,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Centaurium erythraea,Seladonia tumulorum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Pilosella officinarum,Lasioglossum villosulum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Leontodon hispidus,Lasioglossum leucozonium,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Leontodon hispidus,Lasioglossum pauxillum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Leontodon hispidus,Lasioglossum villosulum,3,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Leontodon hispidus,Seladonia tumulorum,2,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Leucanthemum vulgare,Lasioglossum pauxillum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Andrena ovatula,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Andrena wilkella,3,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Bombus lapidarius,11,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Bombus pascuorum,6,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Lasioglossum fulvicorne,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Osmia aurulenta,4,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Osmia bicolor,3,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Osmia rufohirta,7,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Lotus corniculatus,Seladonia tumulorum,6,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Ononis repens,Bombus lapidarius,5,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Ononis repens,Bombus pascuorum,3,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Ononis repens,Bombus terrestris,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Ononis repens,Lasioglossum morio,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Ononis repens,Lasioglossum pauxillum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Ononis repens,Osmia rufohirta,2,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Prunella vulgaris,Ceratina cyanea,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Thymus praecox,Lasioglossum pauxillum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Thymus praecox,Osmia rufohirta,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Thymus praecox,Seladonia tumulorum,2,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Bombus hortorum,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Bombus lapidarius,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Bombus pascuorum,4,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Lasioglossum lativentre,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Osmia bicolor,1,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Osmia rufohirta,2,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Trifolium pratense,Seladonia tumulorum,2,Transect,240,10000,Riez_2016,Calcareous grassland,France,Noeux-lès-Auxi,"50°14'51.85""N","2°12'05.56""E",100 m,90,6,7,2016,Data from paper #2,25,55
+Allium sphaerocephalon,Anthidiellum strigatum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Allium sphaerocephalon,Bombus lapidarius,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Allium sphaerocephalon,Lasioglossum interruptum,5,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Allium sphaerocephalon,Seladonia tumulorum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Andrena flavipes,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Apis mellifera,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Bombus lapidarius,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Lasioglossum calceatum,16,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Lasioglossum fulvicorne,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Lasioglossum interruptum,23,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Lasioglossum leucozonium,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Lasioglossum morio,4,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Osmia rufohirta,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Anthericum ramosum,Seladonia tumulorum,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Asperula cynanchica,Lasioglossum morio,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Centaurea scabiosa,Bombus lapidarius,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Centaurea scabiosa,Halictus scabiosae,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Centaurea scabiosa,Lasioglossum interruptum,4,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Centaurea scabiosa,Osmia leaiana,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Centaurea scabiosa,Pseudoanthidium sp.,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Echium vulgare,Lasioglossum interruptum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Euphrasia stricta,Lasioglossum interruptum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Euphrasia stricta,Seladonia tumulorum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Helianthemum nummularium,Lasioglossum morio,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Leontodon hispidus,Andrena flavipes,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Leontodon hispidus,Hoplitis leucomelana,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Leontodon hispidus,Lasioglossum calceatum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Leontodon hispidus,Seladonia submediterranea,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Leontodon hispidus,Seladonia tumulorum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Anthidium manicatum,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Bombus lapidarius,6,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Bombus terrestris,3,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Lasioglossum interruptum,9,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Megachile pilidens,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Megachile willughbiella,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Ononis natrix,Osmia rufohirta,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Origanum vulgare,Lasioglossum interruptum,3,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Phyteuma orbiculare,Bombus lapidarius,8,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Phyteuma orbiculare,Bombus terrestris,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Phyteuma orbiculare,Lasioglossum morio,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Phyteuma orbiculare,Seladonia tumulorum,3,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Scabiosa columbaria,Bombus lapidarius,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Scabiosa columbaria,Ceratina cucurbitina,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Scabiosa columbaria,Lasioglossum interruptum,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Teucrium montanum,Bombus lapidarius,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Teucrium montanum,Ceratina cucurbitina,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Teucrium montanum,Lasioglossum interruptum,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Teucrium montanum,Osmia rufohirta,2,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Teucrium montanum,Trachusa byssina,1,Transect,240,10000,Chateau Gaillard_2016,Calcareous grassland,France,Les Andelys,"49°14'7.782""N","1°24'16.445""E",100 m,110,12,7,2016,Data from paper #2,22,66
+Allium sphaerocephalon,Bombus lapidarius,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Allium sphaerocephalon,Lasioglossum interruptum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Andrena ovatula,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Anthidium punctatum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Anthophora aestivalis,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Apis mellifera,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Bombus terrestris,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Lasioglossum subhirtum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Megachile circumcincta,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Anthyllis vulneraria,Osmia gallarum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Arenaria aggregata,Colletes foveolaris,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Arenaria aggregata,Lasioglossum malachurum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Arenaria aggregata,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Armeria arenaria,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Armeria arenaria,Seladonia submediterranea,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Asperula cynanchica,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Biscutella laevigata,Lasioglossum laticeps,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Biscutella laevigata,Lasioglossum lineare,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Campanula patula,Chelostoma distinctum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Apis mellifera,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Ceratina chalybea,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Ceratina cyanea,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Lasioglossum subhirtum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Megachile pilidens,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Osmia rufohirta,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Centaurea pectinata,Rhodanthidium septemdentatum,3,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Coronilla minima,Osmia tergestensis,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Crataegus monogyna,Apis mellifera,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Dorycnium pentaphyllum,Andrena ovatula,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Dorycnium pentaphyllum,Apis mellifera,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Dorycnium pentaphyllum,Colletes foveolaris,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Dorycnium pentaphyllum,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Echium vulgare,Ceratina cucurbitina,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Echium vulgare,Lasioglossum interruptum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Euphorbia nicaeensis,Colletes similis,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Euphrasia salisburgensis,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Fumana ericoides,Anthidium punctatum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Fumana ericoides,Ceratina cucurbitina,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Fumana ericoides,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Galium pumilum,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helianthemum nummularium,Ceratina cucurbitina,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helianthemum nummularium,Eucera cineraria,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helianthemum nummularium,Osmia rufohirta,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Colletes similis,19,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum aeratum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum fulvicorne,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum interruptum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum laticeps,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum lineare,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum malachurum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum pauxillum,4,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum setulellum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Helichrysum stoechas,Lasioglossum subhirtum,8,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Inula montana,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Inula montana,Lasioglossum subhirtum,11,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Inula montana,Tetraloniella fulvescens,4,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Knautia arvensis,Andrena hattorfiana,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Knautia arvensis,Apis mellifera,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Knautia arvensis,Osmia emarginata,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Linum suffruticosum,Hoplitis cf papaveris,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Linum suffruticosum,Lasioglossum pauxillum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Linum suffruticosum,Lasioglossum subhirtum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Linum suffruticosum,Lasioglossum tricinctum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Linum suffruticosum,Osmia tergestensis,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Anthidium punctatum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Eucera cineraria,4,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Eucera clypeata,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Megachile rufescens,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Melitta dimidiata,4,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Osmia tergestensis,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Onobrychis supina,Rhodanthidium septemdentatum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Ononis striata,Anthidium punctatum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Ononis striata,Megachile pilidens,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Ononis striata,Osmia tergestensis,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Andrena curvungula,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Apis mellifera,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Bombus lapidarius,6,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Bombus terrestris,7,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Eucera caspica,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Eucera nigrescens,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Halictus gr simplex,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Phyteuma orbiculare,Seladonia subaurata,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Salvia pratensis,Ceratina cucurbitina,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Salvia pratensis,Eucera hungarica,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Salvia pratensis,Lasioglossum maurusium,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Salvia pratensis,Lasioglossum pauxillum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Salvia pratensis,Xylocopa violacea,3,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Sedum album ssp micranthum,Lasioglossum subhirtum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Stachys recta,Bombus sylvarum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Stachys recta,Bombus terrestris,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Stachys recta,Osmia aurulenta,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Stachys recta,Rhophites algirus,4,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Teucrium montanum,Anthidium manicatum,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Teucrium montanum,Anthidium punctatum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Teucrium montanum,Ceratina cucurbitina,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Teucrium montanum,Megachile pilidens,2,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Teucrium rouyanum,Halictus patella,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30
+Thymus dolomiticus,Lasioglossum subhirtum,1,Transect,240,10000,Fourches_2016,Calcareous grassland,France,Blandas,"43°56'07.00""N","3°30'46.1""E",100 m,730,29,6,2016,Data from paper #2,29,30

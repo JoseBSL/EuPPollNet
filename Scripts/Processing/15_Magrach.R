@@ -5,7 +5,7 @@ library(tidyverse)
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/15_Magrach/interaction_data_magrach.csv", col_names = T) %>% 
+data = read_csv("Data/Raw_data/15_Magrach/Interaction_data.csv", col_names = T) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
 
@@ -13,7 +13,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/15_Magrach/flower_count_magrach.csv", col_names = T)
+flower_count = read_csv("Data/Raw_data/15_Magrach/Flower_count.csv", col_names = T)
 
 #Split data into different dataframes based on survey name
 FlowerCount <- split(flower_count, flower_count$Site_id)

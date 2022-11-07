@@ -4,7 +4,7 @@
 library(tidyverse)
 
 #Prepare interaction data ----
-data = read_csv("Data/Raw_data/11_Clough/interaction_data_clough.csv") %>% 
+data = read_csv("Data/Raw_data/11_Clough/Interaction_data.csv") %>% 
 select(Plant_species, Pollinator_species, Interaction, Sampling_method,
        Sampling_effort_minutes, Sampling_area_square_meters,
        Site_id, Habitat, Country, Locality, Latitude, Longitude,
@@ -26,7 +26,7 @@ InteractionData <- split(data, data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/11_Clough/flower_count_clough.csv")
+flower_count = read_csv("Data/Raw_data/11_Clough/Flower_count.csv")
 #Split data into different dataframes based on survey name
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

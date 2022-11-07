@@ -1,11 +1,12 @@
 #DATASET NUMBER 14; Dupont
+#Floral info not added yet (review)
 
 #Load libraries
 library(tidyverse)
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/14_Dupont/interaction_data_dupont.csv") %>% 
+data = read_csv("Data/Raw_data/14_Dupont/Interaction_data.csv") %>% 
   select(!...7)
 
 #Rename two labels
@@ -73,8 +74,6 @@ data = data %>%
          Temperature, Humidity) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
-
-#write_csv(data, "Data/Raw_data/12_Dupont/int_data.csv")
 
 #Split by site, just for createing the listed name in this case
 InteractionData <- split(data, data$Locality)

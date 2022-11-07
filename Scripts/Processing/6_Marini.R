@@ -4,7 +4,7 @@
 library(tidyverse)
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/4_5_6_Marini/interaction_data_marini.csv")
+data = read.csv("Data/Raw_data/4_5_6_Marini/Interaction_data.csv")
 
 #Delete all underscores and space in one column
 data = data %>% 
@@ -22,7 +22,7 @@ data3 <- as_tibble(split_intdata[[3]])
 InteractionData3 <- split(data3, data3$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/4_5_6_Marini/flower_count_marini.csv")
+flower_count = read.csv("Data/Raw_data/4_5_6_Marini/Flower_count.csv")
 
 #Delete all underscores
 FlowerCount = flower_count %>% 

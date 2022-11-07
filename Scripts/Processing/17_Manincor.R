@@ -5,7 +5,7 @@ library(tidyverse)
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/16_17_Manincor/interaction_data2_manincor.csv", col_names = T)
+data = read_csv("Data/Raw_data/16_17_Manincor/Interaction_data2.csv", col_names = T)
 
 #Convert coordinates in degree mins and seconds to lat long in decimal degrees
 data = data %>%
@@ -21,7 +21,7 @@ unique(factor(data$Longitude))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/16_17_Manincor/flower_count_data2_manincor.csv", col_names = T)
+flower_count = read_csv("Data/Raw_data/16_17_Manincor/Flower_count2.csv", col_names = T)
 
 #Delete extra column that indicated that this dataset was number one
 flower_count = flower_count %>% 
