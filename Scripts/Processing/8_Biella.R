@@ -18,7 +18,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/6_Biella/flower_count_biella.csv")
+flower_count = read.csv("Data/Raw_data/8_Biella/flower_count_biella.csv")
 #Split data into different dataframes based on survey name
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

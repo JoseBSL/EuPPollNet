@@ -26,7 +26,7 @@ InteractionData <- split(data, data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/9_Clough/flower_count_clough.csv")
+flower_count = read_csv("Data/Raw_data/11_Clough/flower_count_clough.csv")
 #Split data into different dataframes based on survey name
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

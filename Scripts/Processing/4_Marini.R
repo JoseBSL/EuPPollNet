@@ -23,7 +23,7 @@ data1 <- as_tibble(split_intdata[[1]])
 InteractionData1 <- split(data1, data1$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/4_Marini/flower_count_marini.csv")
+flower_count = read.csv("Data/Raw_data/4_5_6_Marini/flower_count_marini.csv")
 
 #Delete all underscores
 FlowerCount = flower_count %>% 

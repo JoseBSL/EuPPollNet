@@ -43,7 +43,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/5_Scheper/flower_count_scheper.csv")
+flower_count = read.csv("Data/Raw_data/7_Scheper/flower_count_scheper.csv")
 
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

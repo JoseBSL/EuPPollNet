@@ -21,7 +21,7 @@ unique(factor(data$Longitude))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/14_Manincor/flower_count_data2_manincor.csv", col_names = T)
+flower_count = read_csv("Data/Raw_data/16_17_Manincor/flower_count_data2_manincor.csv", col_names = T)
 
 #Delete extra column that indicated that this dataset was number one
 flower_count = flower_count %>% 

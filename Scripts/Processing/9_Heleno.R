@@ -14,7 +14,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount = read.csv("Data/Raw_data/7_Heleno/flower_count_heleno.csv")
+FlowerCount = read.csv("Data/Raw_data/9_Heleno/flower_count_heleno.csv")
 #Common excel mistake on id, fix
 FlowerCount$Site_id <- "Coimbra_2017"
 #Split by site, just for createing the listed name in this case

@@ -16,7 +16,7 @@ InteractionData <- split(data, data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/8_Vanbergen/flower_count_vanbergen.csv")
+flower_count = read.csv("Data/Raw_data/10_Vanbergen/flower_count_vanbergen.csv")
 
 #Filter out one column but saved the data
 flower_count = flower_count %>% 

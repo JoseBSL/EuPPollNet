@@ -42,7 +42,7 @@ InteractionData <- split(data,data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/19_Hopfenmuller/Flower_count.csv")
+flower_count <- read_csv("Data/Raw_data/21_Hopfenmuller/Flower_count.csv")
 
 #Compare vars
 compare_variables(check_flower_count_data, flower_count)

@@ -67,7 +67,7 @@ select(!c(Latitude1, Longitude1))
 InteractionData <- split(data,data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/16_Bartomeus/Flower_count.csv")
+flower_count <- read_csv("Data/Raw_data/18_Bartomeus/Flower_count.csv")
 
 #Order cols
 flower_count = flower_count %>% 

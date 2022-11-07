@@ -31,7 +31,7 @@ mutate(Temperature = NA) %>%
 mutate(Humidity = NA) 
 
 #Coordinates are in another dataset, load it
-coord = read_csv("Data/Raw_data/10_Ockinger/coordinate_data_ockinger.csv") %>% 
+coord = read_csv("Data/Raw_data/12_Ockinger/coordinate_data_ockinger.csv") %>% 
 rename(Latitude = Lat_WGS84) %>% 
 rename(Longitude = Long_WGS84) %>% 
 select(Name, site_ID, Latitude, Longitude)
