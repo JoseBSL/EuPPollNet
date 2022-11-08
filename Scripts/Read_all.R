@@ -48,7 +48,7 @@ st_transform(3035)
 
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
 #Save data
-write_csv(data_coord, "Data/Processing/data_coord.csv")
+st_write(data_coord, "Data/Processing/data_coord.shp")
 
 # Year
 year_ref <- 2016
@@ -58,7 +58,7 @@ cntries <- gisco_get_countries(year = year_ref,
         resolution = 03) %>%
         st_transform(3035)
 #Save data
-write_csv(cntries, "Data/Processing/cntries.csv")
+st_write(cntries, "Data/Processing/cntries.shp")
 
 set.seed(1)
 
