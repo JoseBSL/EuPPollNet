@@ -1,0 +1,635 @@
+Study_id,Metadata_fields,Metadata_info
+1_Bartomeus,Doi,https://doi.org/10.1007/s00442-007-0946-1
+1_Bartomeus,Dataset_description,"Study site at Cap de Creus, Catalonia, Spain.
+Sampling method of survey is 6 minuts per plant species. All plant species where sampled
+for equal time period. All floral visitors were collected.
+We determined the total number of flowers or inflorescences (fower units)
+per plant species in 1-m2 areas located at 1-m intervals along the two 50 m transects.
+Flower unit description is defined as the distance that a small bee (c. 1 cm length)
+would fly, rather than walk (Saville 1993). For example, in the Asteraceae, a flower
+unit is the entire inflorescence while in the Rosaceae, a flower unit is a single flower.
+Networks where only sampled April to June for Carpobrotus and June/July for Opuntia,
+Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart."
+1_Bartomeus,Taxa_recorded,All floral visitors
+1_Bartomeus,Sampling_year,2015
+1_Bartomeus,Country,Spain
+1_Bartomeus,Habitat,Mediterranean shrubland
+1_Bartomeus,Sampling_sites,12
+1_Bartomeus,Sampling_rounds,6
+1_Bartomeus,Sampling_method,Focal observations
+1_Bartomeus,Sampling_area_details,6 observation areas of 0.3 * 0.3 m / species and site
+1_Bartomeus,Sampling_area_species_m2,6.48
+1_Bartomeus,Sampling_area_total_m2,732.24
+1_Bartomeus,Sampling_time_details,"1 min / species, site, round and observation area; 36 min per species and site"
+1_Bartomeus,Sampling_time_species_round_min,6
+1_Bartomeus,Sampling_time_total_min,48816
+1_Bartomeus,Total_plant_species,9
+1_Bartomeus,Total_pollinator_species,26
+1_Bartomeus,Floral_counts,Yes
+2_Petanidou,Doi,NA
+2_Petanidou,Dataset_description,"This dataset documents 6 different sites in Chios Island
+Greece. The purpose of the samplings was to study post-fire succession
+of plant-pollinator system so we have included data from two sites that
+they were burnt three years before sampling. The remaining four sites
+are unburnt scrublands with two of them being in the margins of cultivations
+(olive grove and mastic trees). Each year 3 visits to each site
+were performed and in each visit we measured both plant-pollinator
+interactions and flower abundance. All samplings were performed during
+the period that most pollinators are active and most plants are flowering
+(April – End of June). We have included data of one year of sampling
+but two more years are available."
+2_Petanidou,Taxa_recorded,"All flower visitors belonging to the orders:
+Hymenoptera (with the exception of Formicidae), Diptera
+(we mainly focused in Syrphidae and Bombylidae), Coleoptera and Lepidoptera."
+2_Petanidou,Sampling_year,2015
+2_Petanidou,Country,Greece
+2_Petanidou,Habitat,Scrubland
+2_Petanidou,Sampling_sites,6
+2_Petanidou,Sampling_rounds,3
+2_Petanidou,Sampling_method,Random walks
+2_Petanidou,Sampling_area_details,NA
+2_Petanidou,Sampling_area_species_m2,NA
+2_Petanidou,Sampling_area_total_m2,NA
+2_Petanidou,Sampling_time_details,120 mins per site and round
+2_Petanidou,Sampling_time_species_round_min,NA
+2_Petanidou,Sampling_time_total_min,2160
+2_Petanidou,Total_plant_species,65
+2_Petanidou,Total_pollinator_species,207
+2_Petanidou,Floral_counts,Yes
+3_Michez,Doi,NA
+3_Michez,Dataset_description,"This dataset documents 71 different sites in the province of Hainaut,
+Wallonia, Belgium. They have been collected for different master thesis and there are sites
+on different habitats. The region is post industrial, so terrils (heat slap),
+carrieres (quarries), ruderal sites, parks (urban), and prairies are included.
+Samplings were performed on 2020. For COVID reasons, the sites were visited only from
+May to September, 3 to 5 visits to each site were performed. We measured only wild bees.
+Each sampling on each site consisted on a non-linear transect that lasted 20 minutes."
+3_Michez,Taxa_recorded,Bees
+3_Michez,Sampling_year,2020
+3_Michez,Country,Belgium
+3_Michez,Habitat,See Dataset_description
+3_Michez,Sampling_sites,71
+3_Michez,Sampling_rounds,3 to 5
+3_Michez,Sampling_method,Transects
+3_Michez,Sampling_area_details,Non-linear transects
+3_Michez,Sampling_area_species_m2,NA
+3_Michez,Sampling_area_total_m2,NA
+3_Michez,Sampling_time_details,20 mins per site
+3_Michez,Sampling_time_species_round_min,NA
+3_Michez,Sampling_time_total_min,5680
+3_Michez,Total_plant_species,170
+3_Michez,Total_pollinator_species,131
+3_Michez,Floral_counts,No
+4_Marini,Doi,https://doi.org/10.1111/ddi.13132
+4_Marini,Dataset_description,"We selected 18 sites (9 pairs) in Northern Italy
+across the whole elevational range distribution of Buddleja davidii (100-1200 m a.s.l.),
+our target exotic plant species. For each pair, we chose one site invaded and one
+non-invaded by B. davidii. Sites were open riparian habitats located along valley bottoms.
+Within each pair, the surrounding landscape and plant community composition were similar.
+Sites were visited five times between June and August 2018. At each visit, each flowering
+species was sampled for 5 minutes, so the time spent at each site depended on the number
+of flowering plant species. The Interaction column in the Interaction_data sheet indicates
+the number of specimens observed on each plant species. The Flower_count column in the
+Flower_availability sheet indicates the percentage cover of the species in the total
+site area."
+4_Marini,Taxa_recorded,"Apoidea, hoverflies, conopids, tachinid flies, butterflies"
+4_Marini,Sampling_year,2018
+4_Marini,Country,Italy
+4_Marini,Habitat,Open riparian habitat
+4_Marini,Sampling_sites,18
+4_Marini,Sampling_rounds,5
+4_Marini,Sampling_method,Focal observations
+4_Marini,Sampling_area_details,NA
+4_Marini,Sampling_area_species_m2,NA
+4_Marini,Sampling_area_total_m2,NA
+4_Marini,Sampling_time_details,5 mins / species and round
+4_Marini,Sampling_time_species_round_min,5
+4_Marini,Sampling_time_total_min,228150
+4_Marini,Total_plant_species,150
+4_Marini,Total_pollinator_species,367
+4_Marini,Floral_counts,Yes
+5_Marini,Doi,https://doi.org/10.1007/s00442-022-05151-6
+5_Marini,Dataset_description,"We selected 51 grasslands in Norther Italy, with elevation
+ranging from 150 to 2100 m a.s.l. Each site was visited only once between May and
+August 2019. At each site, each flowering plant species was sampled for 15 minutes,
+so the time spent at each site depended on the number of flowering plant species.
+Air temperature was measured using a Tinytag Plus 2 TGP-4017 data logger.
+The Interaction column in the Interaction_data sheet indicates the number of specimens
+observed on each plant species. The Flower_count column in the Flower_availability sheet
+indicates the percentage cover of the species out of 100%, while the Total_flower_cover
+column indicates the total percentage cover of all flowering plant species at each site."
+5_Marini,Taxa_recorded,"Apoidea, hoverflies, tachinid flies, butterflies"
+5_Marini,Sampling_year,2019
+5_Marini,Country,Italy
+5_Marini,Habitat,Grassland
+5_Marini,Sampling_sites,51
+5_Marini,Sampling_rounds,1
+5_Marini,Sampling_method,Focal observations
+5_Marini,Sampling_area_details,NA
+5_Marini,Sampling_area_species_m2,NA
+5_Marini,Sampling_area_total_m2,NA
+5_Marini,Sampling_time_details,15 mins / species and round
+5_Marini,Sampling_time_species_round_min,15
+5_Marini,Sampling_time_total_min,589050
+5_Marini,Total_plant_species,223
+5_Marini,Total_pollinator_species,393
+5_Marini,Floral_counts,Yes
+6_Marini,Doi,NA
+6_Marini,Dataset_description,"We selected three intensively managed landscapes dominated by
+crops. All landscapes comprised at least one sunflower field. In order to sample
+pollinators at the landscape scale, we placed a grid of 600 m x 600 m on each landscape.
+Each grid was then divided into 36 cells of 100 m x 100 m each, which constituted our
+sampling sites. At each site, each plant species was sampled for 40 minutes, so the
+time spent at each site depended on the number of flowering plant species.
+We sampled plant–pollinator interactions between June and August 2020,
+repeating the survey four times at each site. The Interaction column in the
+Interaction_data sheet indicates the number of specimens observed on each plant species.
+The Flower_count column in the Flower_availability sheet indicates the percentage
+cover of the species out of 100%, while the Total_flower_cover column indicates
+the total percentage cover of all flowering plant species at each site."
+6_Marini,Taxa_recorded,"Bees, hoverflies"
+6_Marini,Sampling_year,2020
+6_Marini,Country,Italy
+6_Marini,Habitat,Agricultural
+6_Marini,Sampling_sites,108
+6_Marini,Sampling_rounds,4
+6_Marini,Sampling_method,Focal observations
+6_Marini,Sampling_area_details,NA
+6_Marini,Sampling_area_species_m2,NA
+6_Marini,Sampling_area_total_m2,NA
+6_Marini,Sampling_time_details,NA
+6_Marini,Sampling_time_species_round_min,NA
+6_Marini,Sampling_time_total_min,NA
+6_Marini,Total_plant_species,83
+6_Marini,Total_pollinator_species,143
+6_Marini,Floral_counts,Yes
+7_Scheper,Doi,https://doi.org/10.1111/1365-2664.13658
+7_Scheper,Dataset_description,"Dataset on bees and hoverflies sampled in 25 grassland
+- field boundary pairs in the area around Chize, France, 2015.
+Flowers and plant-pollinator interactions were surveyed two to six times a year
+(for most sites 4 times), in two 150m2 transects (15 min each)
+per habitat on each occasion. Grasslands varied in land use intensity."
+7_Scheper,Taxa_recorded,Bees and hoverflies
+7_Scheper,Sampling_year,2015
+7_Scheper,Country,France
+7_Scheper,Habitat,Grassland
+7_Scheper,Sampling_sites,25
+7_Scheper,Sampling_rounds,4
+7_Scheper,Sampling_method,Transects
+7_Scheper,Sampling_area_details,2 transects per round (transect size 1 or 2 m × 75 m; we use 1.5 m to calculate the total area)
+7_Scheper,Sampling_area_species_m2,NA
+7_Scheper,Sampling_area_total_m2,5625
+7_Scheper,Sampling_time_details,15 mins per transect and round
+7_Scheper,Sampling_time_species_round_min,NA
+7_Scheper,Sampling_time_total_min,3000
+7_Scheper,Total_plant_species,93
+7_Scheper,Total_pollinator_species,152
+7_Scheper,Floral_counts,Yes
+8_Biella,Doi,https://doi.org/10.1556/168.2017.18.1.1
+8_Biella,Dataset_description,"This dataset documents 2 communities on different slopes
+of a mountain in the Northen Apennine"
+8_Biella,Taxa_recorded,All flower visitors
+8_Biella,Sampling_sites,6
+8_Biella,Sampling_rounds,Weekly sampling
+8_Biella,Year,2013
+8_Biella,Country,Italia
+8_Biella,Sampling_method,Plots
+8_Biella,Sampling_area_details,2.5 * 2.5 m plots
+8_Biella,Sampling_area_species_m2,NA
+8_Biella,Sampling_area_total_m2,37.5
+8_Biella,Sampling_time_details,20 minutes / plot and round
+8_Biella,Sampling_time_species_round_min,NA
+8_Biella,Sampling_time_total_min,NA
+8_Biella,Total_plant_species,15
+8_Biella,Total_pollinator_species,47
+8_Biella,Floral_counts,Yes
+9_Heleno,Doi,https://doi.org/10.1007/s00442-018-4281-5
+9_Heleno,Dataset_description,"This dataset documents flower visits in winter and
+spring in the Botanical Garden of the University of Coimbra.
+Interactions have been recorded weekly by performing plant-centered
+direct observations between 28 October 2016 and 19 May 2017
+(thus including the main flowering season). Observation time was proportional
+to flower abundance and to the duration of its flowering period, with a minimum
+of two 15 minutes of observations per species per week, and a total observation
+time of 255 h. The area includes many exotic and cultivated plants from around the world.
+Each week."
+9_Heleno,Taxa_recorded,All flower visitors
+9_Heleno,Sampling_year,2016-2017
+9_Heleno,Country,Portugal
+9_Heleno,Habitat,Botanical garden
+9_Heleno,Sampling_sites,NA
+9_Heleno,Sampling_rounds,Twice a week
+9_Heleno,Sampling_method,Focal observations
+9_Heleno,Sampling_area_details,NA
+9_Heleno,Sampling_area_species_m2,NA
+9_Heleno,Sampling_area_total_m2,NA
+9_Heleno,Sampling_time_details,15 mins twice per week during the whole flowering season
+9_Heleno,Sampling_time_species_round_min,15
+9_Heleno,Sampling_time_total_min,15300
+9_Heleno,Total_plant_species,95
+9_Heleno,Total_pollinator_species,186
+9_Heleno,Floral_counts,Yes
+10_Vanbergen,Doi,NA
+10_Vanbergen,Dataset_description,"This dataset is part of the VOODOO-project.
+It consists of plant-pollinator networks in 12 different landscapes
+(4 agricultural, 4 rural, 4 urban), sampled over 3 periods in 2021
+(mid april, end may and mid july). Coordinates are the centroids of each landscape.
+Transects were stratified in relation with the area of each type of pollinator habitat
+within a 500 m radius around the centroid. Habitat is given for each individual catch,
+not for the landscape as a whole. Transect length and duration are therefore pooled in
+this file, rather than giving the sampling time in each habitat
+(in total: 120 min per site visit, so 360 min in total, if the networks are pooled
+over the 3 sampling periods). If requested, we can also provide sampling time from
+each subtransect in different habitat types."
+10_Vanbergen,Taxa_recorded,"All flying insects, except really small stuff (< 1 mm)"
+10_Vanbergen,Sampling_year,2021
+10_Vanbergen,Country,France
+10_Vanbergen,Habitat,"4 agricultural, 4 rural, 4 urban"
+10_Vanbergen,Sampling_sites,12
+10_Vanbergen,Sampling_rounds,3
+10_Vanbergen,Sampling_method,Transect
+10_Vanbergen,Sampling_area_details,NA
+10_Vanbergen,Sampling_area_species_m2,NA
+10_Vanbergen,Sampling_area_total_m2,NA
+10_Vanbergen,Sampling_time_details,NA
+10_Vanbergen,Sampling_time_species_round_min,120
+10_Vanbergen,Sampling_time_total_min,4320
+10_Vanbergen,Total_plant_species,176
+10_Vanbergen,Total_pollinator_species,280
+10_Vanbergen,Floral_counts,Yes
+11_Clough,Doi,NA
+11_Clough,Dataset_description,"This dataset documents 18 different sites in southernmost Sweden
+(Scania) along a gradient of landscape scale land-use composition.
+The focal habitat are Fennoscandian lowland species-rich dry to mesic grasslands.
+In each site a pair of 3x3 m study plots were established in temporary (April to August)
+5x9m cattle exclosures (electric fence). One plot was subjected to pollinator reduction
+treatment and is not included here. The control plot is completely open and it is the data
+from those plots that are inlcuded here. Three to four visits to each site were performed,
+and in each visit we measured both plant-pollinator interactions and flower abundance. 
+Each visit contained a period of 15 minutes where flower visitors were caught for
+species-level identification. It is this data that is being contributed here, including the 
+observations of insects that were not caught (unintentionally or because identification in the
+field was possible). All floral visitors are included. Two years of data are available
+(3 visits in 2020 and 4 in 2021). A data paper and several manuscripts are in preparation
+where this data is used. A DOI for the dataset is forthcoming. As co-authors in sheet 3
+are listed the three persones responible for the conception,
+design and part of the data collection, quality control and curation. Other signficant
+contributions are by the Lund Biological Museum staff that identified most of the
+collected material (Rune Bygebjerg, Christoffer Fägerström, Christer Hansson, Karin Johnson,
+Jadranka Rota, Ellen Sandström) and the field assistants that contributed to data recording
+(Adam Bates, Sandra Blasiussion, Karlis Kenklis, Mirela Miric, Alessandro Pinto).
+Uncertainty/ambiguity in species id is marked by use of slash in the case of species groups
+(e.g. for some of the bumblebees) or a vertical bar whenever a subset of individuals
+observed were caught for later identification and more than one species was found
+(commonly for pollen beetles). Elevation data is from GSD-Höjddata grid 50+ from Lantmäteriet.
+Funding statement: The data was recorded under the project DrivenByPollinators, which
+received funding from the European Research Council (ERC) under the European Union’s
+Horizon 2020 research and innovation programme (grant agreement No. 819374)."
+11_Clough,Taxa_recorded,All flower visitors
+11_Clough,Sampling_year,2020 and 2021
+11_Clough,Country,Sweden
+11_Clough,Habitat,Mesic grasslands
+11_Clough,Sampling_sites,18
+11_Clough,Sampling_rounds,3 in 2020 and 4 2021
+11_Clough,Sampling_method,Plot
+11_Clough,Sampling_area_details,Two 3*3 m plot per site
+11_Clough,Sampling_area_species_m2,NA
+11_Clough,Sampling_area_total_m2,324
+11_Clough,Sampling_time_details,15 min per plot in each round
+11_Clough,Sampling_time_species_round_min,15
+11_Clough,Sampling_time_total_min,NA
+11_Clough,Total_plant_species,60
+11_Clough,Total_pollinator_species,284
+11_Clough,Floral_counts,Yes
+12_Ockinger,Doi,https://doi.org/10.1038/s41598-019-51912-4
+12_Ockinger,Dataset_description,"38 semi-natural pastures in south central Sweden. There were
+10 abandoned, 18 restored and 10 continuously grazed semi-natural pastures. The pastures
+were selected along a connectivity gradient to continuously grazed semi-natural
+grasslands in the surrounding landscapes, and restored pastures ranged in time since
+restoration from 2–16 years."
+12_Ockinger,Taxa_recorded,Bees and hoverflies
+12_Ockinger,Sampling_year,2012
+12_Ockinger,Country,Sweden
+12_Ockinger,Habitat,Semi-natural pastures
+12_Ockinger,Sampling_sites,38
+12_Ockinger,Sampling_rounds,5
+12_Ockinger,Sampling_method,Transect
+12_Ockinger,Sampling_area_details,Four 50 * 2 m transect
+12_Ockinger,Sampling_area_species_m2,NA
+12_Ockinger,Sampling_area_total_m2,76000
+12_Ockinger,Sampling_time_details,NA
+12_Ockinger,Sampling_time_species_round_min,NA
+12_Ockinger,Sampling_time_total_min,NA
+12_Ockinger,Total_plant_species,84
+12_Ockinger,Total_pollinator_species,97
+12_Ockinger,Floral_counts,Yes
+13_Karise,Doi,NA
+13_Karise,Dataset_description,"66 different sites, from these 33 in Southern Estonia and 33 in
+Northern-Central Estonia. Bumble bees on field edges (500 m x 2 m walking transect.
+The entire transect on field edges or 400 m on field edges and 100 m inside entomophilous
+crop if this excisted in the area). Monitoring is carried out annually since 2006,
+but forage plant species was named only in years indicated. Also current year,
+the dataset will be created."
+13_Karise,Taxa_recorded,Just bumblebees
+13_Karise,Sampling_year,2014 to 2021
+13_Karise,Country,Estonia.
+13_Karise,Habitat,Field edges on agricultutal land
+13_Karise,Sampling_sites,66
+13_Karise,Sampling_rounds,NA
+13_Karise,Sampling_method,Transect
+13_Karise,Sampling_area_details,NA
+13_Karise,Sampling_area_species_m2,NA
+13_Karise,Sampling_area_total_m2,NA
+13_Karise,Sampling_time_details,NA
+13_Karise,Sampling_time_species_round_min,NA
+13_Karise,Sampling_time_total_min,NA
+13_Karise,Total_plant_species,136
+13_Karise,Total_pollinator_species,37
+13_Karise,Floral_counts,No
+14_Dupont,Doi,https://doi.org/10.1111/j.1365-2656.2008.01501.x
+14_Dupont,Dataset_description,"This dataset includes plant-flower visitor observations throughout
+the flowering season (April-October) at three sites in peninsular Jutland in Denmark.
+Two sites were observed in one year (SO in 2004 and HL in 2005), one site (IB)
+was observed during two years (2004-2005).
+Networks were observed on (nearly) all days of favorable weather
+(no rain and no strong winds). The habitat is dry heathland."
+14_Dupont,Taxa_recorded,All flower visitors
+14_Dupont,Sampling_year,2004 and 2005
+14_Dupont,Country,Denmark
+14_Dupont,Habitat,Heathland
+14_Dupont,Sampling_sites,3
+14_Dupont,Sampling_rounds,Full flowering season
+14_Dupont,Sampling_method,Plots of 1*1m
+14_Dupont,Sampling_area_details,NA
+14_Dupont,Sampling_area_species_m2,NA
+14_Dupont,Sampling_area_total_m2,NA
+14_Dupont,Sampling_time_details,NA
+14_Dupont,Sampling_time_species_round_min,15
+14_Dupont,Sampling_time_total_min,NA
+14_Dupont,Total_plant_species,29
+14_Dupont,Total_pollinator_species,339
+14_Dupont,Floral_counts,No
+15_Magrach,Doi,Unpublished
+15_Magrach,Dataset_description,NA
+15_Magrach,Taxa_recorded,All floral visitors
+15_Magrach,Sampling_year,2020
+15_Magrach,Country,Spain
+15_Magrach,Habitat,Grassland
+15_Magrach,Sampling_sites,5
+15_Magrach,Sampling_rounds,NA
+15_Magrach,Sampling_method,Transect
+15_Magrach,Sampling_area_details,NA
+15_Magrach,Sampling_area_species_m2,NA
+15_Magrach,Sampling_area_total_m2,NA
+15_Magrach,Sampling_time_details,NA
+15_Magrach,Sampling_time_species_round_min,NA
+15_Magrach,Sampling_time_total_min,NA
+15_Magrach,Total_plant_species,45
+15_Magrach,Total_pollinator_species,92
+15_Magrach,Floral_counts,Yes
+16_Manicor,Doi,https://doi.org/10.1111/oik.07259
+16_Manicor,Dataset_description,"These datasets document 6 hoverfly-plant
+networks observed in 6 calcareous grasslands in France and have
+been published in Oikos. These data are part of the ANR ARSENIC project
+(grant no. 14-CE02-0012)."
+16_Manicor,Taxa_recorded,Only hoverfly visitors have been used for these datasets
+16_Manicor,Sampling_year,2016
+16_Manicor,Country,France
+16_Manicor,Habitat,Calcareous grassland
+16_Manicor,Sampling_sites,6
+16_Manicor,Sampling_rounds,NA
+16_Manicor,Sampling_method,Random walk
+16_Manicor,Sampling_area_details,NA
+16_Manicor,Sampling_area_species_m2,NA
+16_Manicor,Sampling_area_total_m2,NA
+16_Manicor,Sampling_time_details,NA
+16_Manicor,Sampling_time_species_round_min,NA
+16_Manicor,Sampling_time_total_min,9840
+16_Manicor,Total_plant_species,117
+16_Manicor,Total_pollinator_species,76
+16_Manicor,Floral_counts,Yes
+17_Manicor,Doi,10.1016/j.actao.2020.103551
+17_Manicor,Dataset_description,"These datasets document 3 bee-plant networks observed in 3
+calcareaous grasslands in France during the month of July 2016.
+The current data only present the observed interactions (visit-based network
+in the mentioned paper published in Acta Oecologica). These data are part of the
+ANR ARSENIC project (grant no. 14-CE02-0012)."
+17_Manicor,Taxa_recorded,Only female bee visitors have been used for these datasets
+17_Manicor,Sampling_year,2016
+17_Manicor,Country,France
+17_Manicor,Habitat,Calcareous grasslands
+17_Manicor,Sampling_sites,3
+17_Manicor,Sampling_rounds,3 days
+17_Manicor,Sampling_method,Random walk
+17_Manicor,Sampling_area_details,1 hectare per site
+17_Manicor,Sampling_area_species_m2,NA
+17_Manicor,Sampling_area_total_m2,30000
+17_Manicor,Sampling_time_details,4 hours divided in 2 in the moring and 2 in the afternoon each day and site
+17_Manicor,Sampling_time_species_round_min,NA
+17_Manicor,Sampling_time_total_min,2160
+17_Manicor,Total_plant_species,47
+17_Manicor,Total_pollinator_species,69
+17_Manicor,Floral_counts,Yes
+18_Bartomeus,Doi,https://doi.org/10.24072/pcjournal.1
+18_Bartomeus,Dataset_description,"Data collection is done in 12 to 16 independent
+sites in a gradient of land use intensity across the Guadalquivir valley.
+All sites are sampled every ~ 15 days (weather permitting) for a total of 6
+to 8 rounds per year. All sites are situated in open pine woodlands with an understory dominated by Lavender, Rosemary and Cistaceas. Data collection covers the whole  season from early spring (February) to Summer (June). We only sample on good weather conditions (no rain, extreme cold or high wind speeds)."
+18_Bartomeus,Taxa_recorded,All floral visitors
+18_Bartomeus,Sampling_year,2015
+18_Bartomeus,Country,Spain
+18_Bartomeus,Habitat,Open pine woodlands
+18_Bartomeus,Sampling_sites,16
+18_Bartomeus,Sampling_rounds,8
+18_Bartomeus,Sampling_method,Transect
+18_Bartomeus,Sampling_area_details,100 m transect
+18_Bartomeus,Sampling_area_species_m2,NA
+18_Bartomeus,Sampling_area_total_m2,1600
+18_Bartomeus,Sampling_time_details,30 mins each transect
+18_Bartomeus,Sampling_time_species_round_min,NA
+18_Bartomeus,Sampling_time_total_min,3840
+18_Bartomeus,Total_plant_species,49
+18_Bartomeus,Total_pollinator_species,161
+18_Bartomeus,Floral_counts,Yes
+19_Jauker,Doi,https://doi.org/10.1002/ecy.2569
+19_Jauker,Dataset_description,"Pollinator-plant interaction records from 32
+calcareous grassland sites near Goettingen, Germany. Records for each
+site are aggregated over 6 sampling events conducted between April and
+September 2004."
+19_Jauker,Taxa_recorded,Wild bees and hoverflies
+19_Jauker,Sampling_year,2004
+19_Jauker,Country,Germany
+19_Jauker,Habitat,Calcareous grassland
+19_Jauker,Sampling_sites,32
+19_Jauker,Sampling_rounds,6
+19_Jauker,Sampling_method,Transect
+19_Jauker,Sampling_area_details,Transect length varied (mean = 15.7 +/- 6.2 sd) and width of 4m
+19_Jauker,Sampling_area_species_m2,NA
+19_Jauker,Sampling_area_total_m2,NA
+19_Jauker,Sampling_time_details,5 mins per transect but transect number varied per site size
+19_Jauker,Sampling_time_species_round_min,NA
+19_Jauker,Sampling_time_total_min,720
+19_Jauker,Total_plant_species,109
+19_Jauker,Total_pollinator_species,137
+19_Jauker,Floral_counts,No
+20_Hoiss,Doi,https://doi.org/10.1111/gcb.12968
+20_Hoiss,Dataset_description,"Plant-pollinator interactions at 15 study sites
+along ~1600 m elevation gradient in Berchtesgadener Alps; complementary
+floral surveying. An experimental procedure simulating drought and snowmelt
+was employed, so pay attention to the treatment to which each observation
+belongs."
+20_Hoiss,Taxa_recorded,All floral visitors
+20_Hoiss,Sampling_year,2010
+20_Hoiss,Country,Germany
+20_Hoiss,Habitat,Grassland
+20_Hoiss,Sampling_sites,15
+20_Hoiss,Sampling_rounds,3 to 8
+20_Hoiss,Sampling_method,Plot
+20_Hoiss,Sampling_area_details,Four different treatments of 4 * 4 m plots per site
+20_Hoiss,Sampling_area_species_m2,NA
+20_Hoiss,Sampling_area_total_m2,960
+20_Hoiss,Sampling_time_details,Two observations of 5 mins per treatment and site
+20_Hoiss,Sampling_time_species_round_min,NA
+20_Hoiss,Sampling_time_total_min,2250
+20_Hoiss,Total_plant_species,120
+20_Hoiss,Total_pollinator_species,377
+20_Hoiss,Floral_counts,Yes
+21_Hopfenmuller,Doi,https://doi.org/10.1371/journal.pone.0104439
+21_Hopfenmuller,Dataset_description,Bee-flower interactions in calcareous grasslands
+21_Hopfenmuller,Taxa_recorded,"Wild bees (honey bees excluded) and flowering plants
+(excluding trees and graminoids); note that plants were quantified in
+terms of flowering units, not area"
+21_Hopfenmuller,Sampling_year,2010
+21_Hopfenmuller,Country,Germany
+21_Hopfenmuller,Habitat,Calcareous grassland
+21_Hopfenmuller,Sampling_sites,23
+21_Hopfenmuller,Sampling_rounds,5
+21_Hopfenmuller,Sampling_method,Variable transect walks
+21_Hopfenmuller,Sampling_area_details,0.1 ha per site (maybe 250 m long * 4 m wide?)
+21_Hopfenmuller,Sampling_area_species_m2,NA
+21_Hopfenmuller,Sampling_area_total_m2,23000
+21_Hopfenmuller,Sampling_time_details,NA
+21_Hopfenmuller,Sampling_time_species_round_min,NA
+21_Hopfenmuller,Sampling_time_total_min,5175
+21_Hopfenmuller,Total_plant_species,92
+21_Hopfenmuller,Total_pollinator_species,119
+21_Hopfenmuller,Floral_counts,Yes
+22_Kallnik,Doi,https://doi.org/10.1111/oik.08902 and https://doi.org/10.1002/ecy.3712
+22_Kallnik,Dataset_description,"~15K bumble bee wildflower interactions recorded along
+a ~1600 m elevation gradient in the Berchtesgadener Alps over 3 consecutive years,
+with corresponding surveys of floral abundance."
+22_Kallnik,Taxa_recorded,Bumble bees
+22_Kallnik,Sampling_year,2010 to 2012
+22_Kallnik,Country,Germany
+22_Kallnik,Habitat,Pastures
+22_Kallnik,Sampling_sites,25
+22_Kallnik,Sampling_rounds,Weekly sampling
+22_Kallnik,Sampling_method,Transect
+22_Kallnik,Sampling_area_details,Ten 60 x 6m transect per site
+22_Kallnik,Sampling_area_species_m2,NA
+22_Kallnik,Sampling_area_total_m2,90000
+22_Kallnik,Sampling_time_details,"5 mins per transect, 50 in total per site"
+22_Kallnik,Sampling_time_species_round_min,NA
+22_Kallnik,Sampling_time_total_min,NA
+22_Kallnik,Total_plant_species,171
+22_Kallnik,Total_pollinator_species,17
+22_Kallnik,Floral_counts,Yes
+23_Holzschuh,Doi,https://doi.org/10.1111/ele.12657
+23_Holzschuh,Dataset_description,Two year dataset of bees and hoverflies on three habitats of Germany
+23_Holzschuh,Taxa_recorded,Bees and hoverflies
+23_Holzschuh,Sampling_year,2011 and 2012
+23_Holzschuh,Country,Germany
+23_Holzschuh,Habitat,Field boundary
+23_Holzschuh,Sampling_sites,16
+23_Holzschuh,Sampling_rounds,2
+23_Holzschuh,Sampling_method,Transect
+23_Holzschuh,Sampling_area_details,Two 150 x 1 m transects per round and site
+23_Holzschuh,Sampling_area_species_m2,NA
+23_Holzschuh,Sampling_area_total_m2,4800
+23_Holzschuh,Sampling_time_details,15 mins per site and per round
+23_Holzschuh,Sampling_time_species_round_min,NA
+23_Holzschuh,Sampling_time_total_min,960
+23_Holzschuh,Total_plant_species,113
+23_Holzschuh,Total_pollinator_species,158
+23_Holzschuh,Floral_counts,Yes
+24_Holzschuh,Doi,https://doi.org/10.1111/ele.12657
+24_Holzschuh,Dataset_description,Two year dataset of bees and hoverflies on three habitats of Germany
+24_Holzschuh,Taxa_recorded,Bees and hoverflies
+24_Holzschuh,Sampling_year,2011 and 2012
+24_Holzschuh,Country,Germany
+24_Holzschuh,Habitat,Mass flowering crop
+24_Holzschuh,Sampling_sites,16
+24_Holzschuh,Sampling_rounds,2
+24_Holzschuh,Sampling_method,Transect
+24_Holzschuh,Sampling_area_details,Two 150 x 1 m transects per round and site
+24_Holzschuh,Sampling_area_species_m2,NA
+24_Holzschuh,Sampling_area_total_m2,4800
+24_Holzschuh,Sampling_time_details,15 mins per site and per round
+24_Holzschuh,Sampling_time_species_round_min,NA
+24_Holzschuh,Sampling_time_total_min,960
+24_Holzschuh,Total_plant_species,113
+24_Holzschuh,Total_pollinator_species,158
+24_Holzschuh,Floral_counts,Yes
+25_Holzschuh,Doi,https://doi.org/10.1111/ele.12657
+25_Holzschuh,Dataset_description,Two year dataset of bees and hoverflies on three habitats of Germany
+25_Holzschuh,Taxa_recorded,Seminatural
+25_Holzschuh,Sampling_year,2011 and 2012
+25_Holzschuh,Country,Germany
+25_Holzschuh,Habitat,Field boundary
+25_Holzschuh,Sampling_sites,16
+25_Holzschuh,Sampling_rounds,2
+25_Holzschuh,Sampling_method,Transect
+25_Holzschuh,Sampling_area_details,Two 150 x 1 m transects per round and site
+25_Holzschuh,Sampling_area_species_m2,NA
+25_Holzschuh,Sampling_area_total_m2,4800
+25_Holzschuh,Sampling_time_details,15 mins per site and per round
+25_Holzschuh,Sampling_time_species_round_min,NA
+25_Holzschuh,Sampling_time_total_min,960
+25_Holzschuh,Total_plant_species,113
+25_Holzschuh,Total_pollinator_species,158
+25_Holzschuh,Floral_counts,Yes
+26_Castro,Doi,https://doi.org/10.1007/s10530-013-0457-4
+26_Castro,Dataset_description,"This dataset documents 1 site in the surroundings of
+Coimbra sampled with Oxalis (days10,16,18,19) and without Oxalis pes-capare (days20-22)
+the later accomplished after invaders mowing. The focal habitat are agricultural areas in
+rural region invaded by Bermuda buttercup. Observations were made in 2011 in a period < 2 weeks,
+and we measured plant-pollinator interactions in predefined areas  (6 patches of 2 square meters each).
+We recorded all floral visitors observed."
+26_Castro,Taxa_recorded,"All flower visitors, but Coleoptera,
+Lepidoptera and Syrphideae have no taxonomic resolution."
+26_Castro,Sampling_year,2011
+26_Castro,Country,Portugal
+26_Castro,Habitat,Agricultural area
+26_Castro,Sampling_sites,Plots within the same community
+26_Castro,Sampling_rounds,Flowering season
+26_Castro,Sampling_method,Focal observation
+26_Castro,Sampling_area_details,6 square plots of 6m2
+26_Castro,Sampling_area_species_m2,NA
+26_Castro,Sampling_area_total_m2,72
+26_Castro,Sampling_time_details,277 censuses of 15 mins
+26_Castro,Sampling_time_species_round_min,15
+26_Castro,Sampling_time_total_min,4155
+26_Castro,Total_plant_species,9
+26_Castro,Total_pollinator_species,16
+26_Castro,Floral_counts,Yes
+27_Castro,Doi,Unpublished
+27_Castro,Dataset_description,"This dataset documents 4 different sites in the surroundings of
+a sweet cherry orchards from Castelo Branco district. Plant-pollinator interactions were
+measured through census, with sampling during one day per habitat (2 hours in the morning and 2
+hours in the afternoon) in March, April and May."
+27_Castro,Taxa_recorded,All flower visitors
+27_Castro,Sampling_year,2021
+27_Castro,Country,Portugal
+27_Castro,Habitat,Pasture
+27_Castro,Sampling_sites,4
+27_Castro,Sampling_rounds,NA
+27_Castro,Sampling_method,Random walks
+27_Castro,Sampling_area_details,NA
+27_Castro,Sampling_area_species_m2,NA
+27_Castro,Sampling_area_total_m2,NA
+27_Castro,Sampling_time_details,2 hours in the morning and 2 in the afternoon per round and site
+27_Castro,Sampling_time_species_round_min,NA
+27_Castro,Sampling_time_total_min,NA
+27_Castro,Total_plant_species,46
+27_Castro,Total_pollinator_species,105
+27_Castro,Floral_counts,No

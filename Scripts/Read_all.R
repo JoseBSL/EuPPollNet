@@ -30,7 +30,7 @@ for (i in 1:length(file_names)) {
   
   int_list <- all_data[[file_names[i]]]$InteractionData
   data[[i]] <- bind_rows(map(int_list, function(x) x %>% #map here is the same as a lapply
-                select(Longitude, Latitude)),  .id = 'Internal_id')
+                dplyr::select(Longitude, Latitude)),  .id = 'Internal_id')
 }
 
 
@@ -40,8 +40,6 @@ for (i in 1:length(file_names)) {
 names(data) <- file_names
 
 
-
-
 data = bind_rows(data,  .id = 'Study_id')
 data_coord <- st_as_sf(data, coords = c(3:4)) %>% 
 st_set_crs(4326) %>% 
@@ -49,8 +47,8 @@ st_transform(3035)
 
 
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
-
-
+#Save data
+write_csv(data_coord, "Data/Processing/data_coord.csv")
 
 # Year
 year_ref <- 2016
@@ -59,6 +57,8 @@ year_ref <- 2016
 cntries <- gisco_get_countries(year = year_ref,
         resolution = 03) %>%
         st_transform(3035)
+#Save data
+write_csv(cntries, "Data/Processing/cntries.csv")
 
 set.seed(1)
 

@@ -13,7 +13,9 @@ Pollinator_species = word(Pollinator_species, 1, 2)) %>%
 rename(Latitude = latitude)  %>% 
 rename(Longitude = longitude)  %>% 
 mutate(Coordinate_precision = "10m") %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Latitude = as.numeric(Latitude)) %>% 
+mutate(Longitude = as.numeric(Longitude)) 
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)

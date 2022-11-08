@@ -73,7 +73,7 @@ set.seed(1)
 colors <- c("#8AD69E", "#74C5CE",  "#FDE9DE", "#45A631", "#95F7F0", "#CB53E1",
             "#FE90BB", "#B187E1", "#F8A982", "#0075DC", 
             "#993F00",  "#5EF1F2", "#005C31", "#74C5CE", "black", "lightblue",  "darkorange3","#8F7C00",
-            "#8F7C00","#8F7C00", "#9DCC00", "#C20088", "gold1","#FFA8BB","#426600","94FFB5","#003380",  
+            "#8F7C00","#8F7C00", "#9DCC00", "#C20088", "gold1","#FFA8BB","#426600","#94FFB5","#003380",  
             "#FF0010","#FF0010", "salmon", "seashell3","greenyellow","mediumaquamarine")
 #To generate more random colors 
 #randomcoloR::distinctColorPalette(k = length(file_names), altCol = F, runTsne = T)
