@@ -30,7 +30,7 @@ for (i in 1:length(file_names)) {
   
   int_list <- all_data[[file_names[i]]]$InteractionData
   data[[i]] <- bind_rows(map(int_list, function(x) x %>% #map here is the same as a lapply
-                dplyr::select(Longitude, Latitude)),  .id = 'Internal_id')
+                dplyr::select(Longitude, Latitude)),  .id = 'Network_id')
 }
 
 
@@ -39,12 +39,18 @@ for (i in 1:length(file_names)) {
 #Rename list and 
 names(data) <- file_names
 
+#Prepare data to save it
+coord_list = data
+coord_long_format = bind_rows(data,  .id = 'Study_id')
 
+save(coord_list, coord_long_format, file = "Data/Processing/Coordinates.RData")
+load("Data/Processing/Coordinates.RData")
+
+#Prepare data to plot it
 data = bind_rows(data,  .id = 'Study_id')
 data_coord <- st_as_sf(data, coords = c(3:4)) %>% 
 st_set_crs(4326) %>% 
 st_transform(3035)
-
 
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
 #Save data

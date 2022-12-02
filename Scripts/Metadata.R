@@ -30,8 +30,10 @@ for (i in 1:length(file_names)) {
 
 #Rename list and 
 names(data) <- file_names
-data = as_tibble(bind_rows(data,  .id = 'Study_id'))
+
+metadata_list = data
+metadata_long_format = as_tibble(bind_rows(data,  .id = 'Study_id'))
 
 #Save metadata file
-write_csv(data, "Data/Processing/Metadata.csv")
+write_csv(metadata_long_format, "Data/Processing/Metadata.csv")
 
