@@ -20,7 +20,7 @@ check_interaction_data <- define_template(data, NA)
 
 
 #Second create flower count template
-FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
+FlowerCount = data.frame(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
                      Flower_count = NA, Units = NA, Comment = NA)
 
 #Save data
