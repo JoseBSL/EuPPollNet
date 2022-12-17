@@ -6,7 +6,7 @@ library(tidyverse)
 #Prepare interaction data ----
 data = read.csv("Data/Raw_data/9_Heleno/Interaction_data.csv")
 
-InteractionData = data %>% 
+data = data %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
