@@ -36,7 +36,7 @@ data = data %>% filter(Name == "Mullen")
 data_time = data %>% select(Sampling_effort_minutes)
 
 #Compare vars
-compare_variables(check_interaction_data, data)
+#compare_variables(check_interaction_data, data)
 
 #Prepare data
 data = data %>% 
@@ -107,7 +107,7 @@ flower_count = flower_count %>%
   mutate(Comment = "Also available FloralArea in mm2")
 
 #Check vars
-compare_variables(check_flower_count_data, flower_count)
+#compare_variables(check_flower_count_data, flower_count)
 #Order data as template
 flower_count = drop_variables(check_flower_count_data, flower_count) 
 
