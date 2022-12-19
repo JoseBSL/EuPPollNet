@@ -79,7 +79,7 @@ colors <- c("#8AD69E", "#74C5CE",  "#FDE9DE",  "#45A631", "#95F7F0", "#CB53E1",
 "#C20088", "gold1","#FFA8BB",
 "#426600","#94FFB5","#003380",  
 "salmon", "palegreen","greenyellow",
-"mediumaquamarine")
+"mediumaquamarine", "tomato", "orange")
 #To generate more random colors 
 #randomcoloR::distinctColorPalette(k = length(file_names), altCol = F, runTsne = T)
 

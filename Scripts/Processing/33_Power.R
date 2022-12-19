@@ -32,7 +32,7 @@ mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
 #Select first the one of Power
 data = data %>% filter(Name == "Power")
 
-#To calculate sampling effor later on
+#To calculate sampling effort later on
 data_time = data %>% select(Sampling_effort_minutes)
 
 #Compare vars
@@ -85,8 +85,35 @@ mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
-                      Flower_count = NA, Units = NA, Comment = NA)
+flower_count <- read_csv("Data/Raw_data/32_to_37_Russo/Flower_count.csv")
+
+#Divide col into cols
+levels(factor(flower_count$Site_id))
+flower_count = flower_count %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
+levels(factor(flower_count$Name))
+
+#Recode authors to just their surname
+flower_count = flower_count %>% 
+mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
+                            "EileenPower" = "Power",
+                            "DaraStanley" = "Stanley",
+                            "SarahMullen" = "Mullen",
+                            "MichelleLarkin" = "Larkin",
+                            "CianWhite" = "White"))
+
+#Select first the one of Power
+flower_count = flower_count %>% 
+filter(Name == "Power") %>% 
+mutate(Site_id = Site) %>% 
+mutate(Comment = "Also available FloralArea in mm2")
+
+#Check vars
+compare_variables(check_flower_count_data, flower_count)
+#Order data as template
+flower_count = drop_variables(check_flower_count_data, flower_count) 
+
+#Split interaction data into dataframes within a list
+FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -95,24 +122,24 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
 Metadata <- tibble(
-Doi = "",
-Dataset_description = "",
+Doi = "https://doi.org/10.1111/j.1365-2664.2010.01949.x",
+Dataset_description = "Two fields from different farms were surveyed in 2009",
 Taxa_recorded = "Bees, hoverflies and butterflies",
-Sampling_year = "",
-Country = "",
-Habitat = "",
-Sampling_sites = "",
-Sampling_rounds = NA,
-Sampling_method = "",
-Sampling_area_details = "",
-Sampling_area_species_m2 = "",
-Sampling_area_total_m2 = NA,
-Sampling_time_details = "",
-Sampling_time_species_round_min = "",
-Sampling_time_total_min = sum(as.numeric(data_time$Sampling_effort_minutes)), 
+Sampling_year = "2009",
+Country = "Ireland",
+Habitat = "Farming grassland",
+Sampling_sites = "10 farms",
+Sampling_rounds = "3",
+Sampling_method = "Transects",
+Sampling_area_details = "Transects 100 x 2m transect",
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = "800 * 10", #800 m2 per farm and 10 farms
+Sampling_time_details = "10–15 min per transect",
+Sampling_time_species_round_min = NA,
+Sampling_time_total_min = 12.5 * 10 * 2 * 3, #Average time per transect * 10 farms * 2 sites per farm * 3 sampling rounds
 Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
-Floral_counts =  "")
+Floral_counts =  "Yes")
 
 #Transpose metadata
 Metadata = as.data.frame(t(Metadata)) %>%  
@@ -121,9 +148,9 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = c(""),
-  Orcid = c(""),
-  E_mail = c(""))
+  Coauthor_name = c("Eileen Power", "Jane Stout"),
+  Orcid = c("0000-0002-5941-4676", "0000-0002-2027-0863"),
+  E_mail = c("eipower@tcd.ie", "STOUTJ@tcd.ie"))
 
 
 #Save data ----
