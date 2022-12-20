@@ -1,6 +1,10 @@
 #DATASET NUMBER 32; O’Rourke
-#ALL datasets from RUSSO (There are 6 in total)
+#ALL datasets were gathered by Laura Russo who organised this
+#(There are 6 in total)
 #One is an unpublished thesis
+#Although Russo is not an explicit author of any of them
+#I have added her as author in this first paper so 
+#I don't forget her authorship
 
 #Read empty templates to compare with
 source("Scripts/Empty_templates.R") 
@@ -36,7 +40,7 @@ data = data %>% filter(Name == "O’Rourke")
 data_time = data %>% select(Sampling_effort_minutes)
 
 #Compare vars
-compare_variables(check_interaction_data, data)
+#compare_variables(check_interaction_data, data)
 
 data = data %>% 
 rename(Plant_species = Plant_Species) %>% 
@@ -120,9 +124,10 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = c("Aoife O’Rourke", "Una Fitzpatrick", "Jane C. Stout"),
-  Orcid = c(NA, NA, "0000-0002-2027-0863"),
-  E_mail = c("orourkat@tcd.ie", "ufitzpatrick@biodiversityireland.ie", "STOUTJ@tcd.ie"))
+  Coauthor_name = c("Aoife O’Rourke", "Una Fitzpatrick", "Jane C. Stout", "Laura Russo"),
+  Orcid = c(NA, NA, "0000-0002-2027-0863", "0000-0002-7343-9837"),
+  E_mail = c("orourkat@tcd.ie", "ufitzpatrick@biodiversityireland.ie", "STOUTJ@tcd.ie",
+             "lrusso@utk.edu"))
 
 
 #Save data ----
