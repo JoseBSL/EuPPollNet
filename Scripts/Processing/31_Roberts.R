@@ -13,7 +13,7 @@ library(readr)
 library(tibble)
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/29_30_31_STEP/Interaction_data_STEP.csv")
+data <- read_csv("Data/Raw_data/29_30_31_STEP/Interaction_data.csv")
 
 #Check col names with template
 compare_variables(check_interaction_data, data)
@@ -34,7 +34,7 @@ levels(factor(data$Site_id))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/29_30_31_STEP/Flower_count_STEP.csv")
+flower_count <- read_csv("Data/Raw_data/29_30_31_STEP/Flower_count.csv")
 
 #Compare vars
 compare_variables(check_flower_count_data, flower_count)
