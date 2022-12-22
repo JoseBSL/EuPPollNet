@@ -156,12 +156,12 @@ Metadata <- tibble(
   Sampling_sites = "12",
   Sampling_rounds = "3",
   Sampling_method = "Transects",
-  Sampling_area_details = "Variable across sites",
+  Sampling_area_details = "1km length * 2m wide",
   Sampling_area_species_m2 = NA,
-  Sampling_area_total_m2 = NA, 
+  Sampling_area_total_m2 = 2000 * 12, #2000m *12 sites 
   Sampling_time_details = "3 mins for each 25m transect subsection", 
-  Sampling_time_species_round_min = NA, 
-  Sampling_time_total_min = NA, #time *sites * transects/site * rounds
+  Sampling_time_species_round_min = "120m per transect", 
+  Sampling_time_total_min = 120 * 12 * 3, #time *sites * rounds
   Total_plant_species = nrow(plant_single_cases),
   Total_pollinator_species = nrow(pollinator_single_cases),
   Floral_counts =  "Yes")
