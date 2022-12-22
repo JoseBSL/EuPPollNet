@@ -86,11 +86,11 @@ colors <- c("#8AD69E", "#74C5CE",  "#FDE9DE",  "#45A631", "#95F7F0", "#CB53E1",
 
 # Plot
 g <- ggplot() +
-geom_sf(data = cntries, fill = "grey80", color = NA) +
+geom_sf(data = cntries, fill = "grey85", color = "grey60",size = 0.1) +
 xlim(c(2200000, 7150000)) +
 ylim(c(1380000, 5500000)) +
 theme(panel.grid.major = element_line(color = gray(0.5), linetype = "dashed", 
-        size = 0.5), panel.background = element_rect(fill = "aliceblue"),
+size = 0.5), panel.background = element_rect(fill = "aliceblue"),
 panel.border = element_rect(colour = "black", fill=NA, size=1)) +
 geom_sf(data = data_coord, aes(color=Study_id), size = 0.8, stroke = 0, shape = 16) +
 theme(legend.position="none") + 
