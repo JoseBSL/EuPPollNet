@@ -14,11 +14,20 @@ library(tidyr)
 data <- read_csv("Data/Raw_data/38_Maurer/Interaction_data.csv")
 
 #There are some sites without coordinates
-#Give dummy coordinates for now from other location
+#I asked Corina and she provided those by mail
 data = data %>% 
-mutate(Latitude = case_when(is.na(Latitude) ~ 47.51435, T ~ Latitude)) %>% 
-mutate(Longitude = case_when(is.na(Longitude) ~ 7.942262, T ~ Longitude))
-  
+mutate(Latitude = case_when(Locality == "Frick" ~ 47.504475, T ~ Latitude)) %>% 
+mutate(Longitude = case_when(Locality == "Frick" ~ 8.019589, T ~ Longitude)) %>% 
+mutate(Latitude = case_when(Locality == "Windisch" ~ 47.477017, T ~ Latitude)) %>% 
+mutate(Longitude = case_when(Locality == "Windisch" ~ 8.215765, T ~ Longitude)) %>%  
+mutate(Latitude = case_when(Locality == "Bullach" ~ 47.514902, T ~ Latitude)) %>% 
+mutate(Longitude = case_when(Locality == "Bullach" ~ 8.540593, T ~ Longitude)) %>% 
+mutate(Latitude = case_when(Locality == "Winterthur" ~ 47.493949, T ~ Latitude)) %>% 
+mutate(Longitude = case_when(Locality == "Winterthur" ~ 8.729096, T ~ Longitude)) 
+#Recode one factor that seems to we wrong
+data = data %>%
+mutate(Locality = recode_factor(Locality, "Bullach" =  "Bulach"))
+
 #Filter interactions equal to 0
 data = data %>% filter(Interaction > 0)
 #Rename sampling
