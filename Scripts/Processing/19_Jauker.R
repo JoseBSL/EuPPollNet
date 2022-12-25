@@ -36,7 +36,6 @@ filter(!is.na(Latitude) & !is.na(Longitude))
 sum(is.na(data$Latitude)) # There is one site without coordinate that won't be added
 str(data)
 
-
 #Reorder variables
 data <- drop_variables(check_interaction_data, data) 
 

@@ -31,7 +31,7 @@ mutate(Temperature = NA) %>%
 mutate(Humidity = NA) 
 
 #Coordinates are in another dataset, load it
-coord = read_csv("Data/Raw_data/12_Ockinger/coordinate_data_ockinger.csv") %>% 
+coord = read_csv("Data/Raw_data/12_Ockinger/Coordinate_data.csv") %>% 
 rename(Latitude = Lat_WGS84) %>% 
 rename(Longitude = Long_WGS84) %>% 
 select(Name, site_ID, Latitude, Longitude)
@@ -51,7 +51,7 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
          Sampling_effort_minutes, Sampling_area_square_meters,
          Site_id, Habitat, Country, Locality, Latitude, Longitude,
          Coordinate_precision, Elevation, Day, Month, Year, Comments,
-         Temperature, Humidity)
+         Temperature, Humidity) 
 
 #Relocate col in its position
 data = data %>%

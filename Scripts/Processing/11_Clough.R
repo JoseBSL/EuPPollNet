@@ -10,7 +10,9 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
        Site_id, Habitat, Country, Locality, Latitude, Longitude,
        Coordinate_precision, Elevation, Day, Month, Year, Comments,
        Temperature, Humidity) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>%  #Including this info in the metadata
+filter(!is.na(Plant_species)) %>% 
+filter(!is.na(Pollinator_species)) 
 
 #Convert coordinates to lat/lon
 library(rgdal)

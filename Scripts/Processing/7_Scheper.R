@@ -36,7 +36,7 @@ mutate(Pollinator_species = replace(Pollinator_species,
        Pollinator_species == "Sphaerophoria", "Sphaerophoria sp.")) %>% 
 mutate(Pollinator_species = replace(Pollinator_species, 
        Pollinator_species == "Halictus/Lasioglossum", "	Halictidae sp.")) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
 
 
 #Split data into different dataframes based on survey name

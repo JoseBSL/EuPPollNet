@@ -11,7 +11,7 @@ data = data %>%
 mutate(Plant_species = str_replace(Plant_species, "_", " ")) %>% 
 mutate(Pollinator_species = str_replace(Pollinator_species, "_", " ")) %>% 
 mutate(Pollinator_species = str_to_sentence(Pollinator_species)) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
 
 
 #Split data into different dataframes based on survey name

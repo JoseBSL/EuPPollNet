@@ -12,7 +12,7 @@ mutate(across(everything(), function(x) str_replace_all(x,"_", " "))) %>%
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
 mutate(Latitude = as.numeric(Latitude)) %>% 
-mutate(Longitude = as.numeric(Longitude))
+mutate(Longitude = as.numeric(Longitude)) 
 
 #Split data into different dataframes based on survey name
 split_intdata <- split(data, data$Survey)

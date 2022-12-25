@@ -46,28 +46,28 @@ data = data %>%
 
 #Add other columns
 data = data %>% 
-  mutate(Day = NA) %>% 
-  mutate(Month = NA) %>% 
-  mutate(Year = as.character(Year)) %>% 
-  mutate(Latitude = case_when(Locality == "Isen_Bjerg_2004" ~ 56.0725, 
+mutate(Day = NA) %>% 
+mutate(Month = NA) %>% 
+mutate(Year = as.character(Year)) %>% 
+mutate(Latitude = case_when(Locality == "Isen_Bjerg_2004" ~ 56.0725, 
                               Locality == "Isen_Bjerg_2005" ~ 56.0725, 
                               Locality == "Skov_Olesen_2004"  ~ 56.104167,
                               Locality == "Horbylunde_2005" ~ 56.141667)) %>% 
-  mutate(Longitude = case_when(Locality == "Isen_Bjerg_2004" ~ 9.275556, 
+mutate(Longitude = case_when(Locality == "Isen_Bjerg_2004" ~ 9.275556, 
                                Locality == "Isen_Bjerg_2005" ~ 9.275556, 
                                Locality == "Skov_Olesen_2004"  ~ 9.107778,
                                Locality == "Horbylunde_2005" ~ 9.39)) %>% 
-  mutate(Country = "Denmark") %>% 
-  mutate(Sampling_method = "Nested plots") %>% 
-  mutate(Sampling_effort_minutes = 15) %>% 
-  mutate(Sampling_area_square_meters = 1) %>% 
-  mutate(Habitat = "Heathland") %>% 
-  mutate(Coordinate_precision =  NA) %>% 
-  mutate(Elevation = NA) %>% 
-  mutate(Comments =  NA) %>% 
-  mutate(Temperature = NA) %>% 
-  mutate(Humidity = NA) %>% 
-  select(Plant_species, Pollinator_species, Interaction, Sampling_method,
+mutate(Country = "Denmark") %>% 
+mutate(Sampling_method = "Nested plots") %>% 
+mutate(Sampling_effort_minutes = 15) %>% 
+mutate(Sampling_area_square_meters = 1) %>% 
+mutate(Habitat = "Heathland") %>% 
+mutate(Coordinate_precision =  NA) %>% 
+mutate(Elevation = NA) %>% 
+mutate(Comments =  NA) %>% 
+mutate(Temperature = NA) %>% 
+mutate(Humidity = NA) %>% 
+select(Plant_species, Pollinator_species, Interaction, Sampling_method,
          Sampling_effort_minutes, Sampling_area_square_meters,
          Site_id, Habitat, Country, Locality, Latitude, Longitude,
          Coordinate_precision, Elevation, Day, Month, Year, Comments,

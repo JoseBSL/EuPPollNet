@@ -25,7 +25,7 @@ select(Plant_species, Pollinator_species, Interaction,
        Coordinate_precision, Elevation, Day, Month, Year, Comments,
        Temperature, Humidiy) %>%
 mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.", "Bombus terrestris")) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
 
 #Split data into different dataframes based on survey name
 InteractionData <- split(InteractionData, InteractionData$Site_id)

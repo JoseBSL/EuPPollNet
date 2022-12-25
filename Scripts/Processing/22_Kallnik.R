@@ -9,7 +9,7 @@ library(lubridate)
 data <- read_csv("Data/Raw_data/22_Kallnik/Interaction_data.csv")
 
 #Compare vars
-compare_variables(check_interaction_data, data)
+#compare_variables(check_interaction_data, data)
 
 #Data
 data = data %>% 

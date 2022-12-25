@@ -8,11 +8,12 @@ data = read.csv("Data/Raw_data/4_5_6_Marini/Interaction_data.csv")
 
 #Delete all underscores and space in one column
 data = data %>% 
-  mutate(across(everything(), function(x) str_replace_all(x,"_", " "))) %>% 
-  mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
-  select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
-  mutate(Latitude = as.numeric(Latitude)) %>% 
-  mutate(Longitude = as.numeric(Longitude))
+mutate(across(everything(), function(x) str_replace_all(x,"_", " "))) %>% 
+mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Latitude = as.numeric(Latitude)) %>% 
+mutate(Longitude = as.numeric(Longitude)) 
+
 
 #Split data into different dataframes based on survey name
 split_intdata <- split(data, data$Survey)
