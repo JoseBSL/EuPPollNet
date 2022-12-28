@@ -56,8 +56,8 @@ st_transform(3035)
 
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
 #Save data
-st_write(data_coord, "Data/Processing/data_coord.shp")
-st_write(data_coord, "~/R_projects/SafeNet/Data/data_coord.shp")
+st_write(data_coord, "Data/Processing/data_coord.shp", delete_layer = TRUE)
+st_write(data_coord, "~/R_projects/SafeNet/Data/data_coord.shp", delete_layer = TRUE)
 
 # Year
 year_ref <- 2016
@@ -67,8 +67,8 @@ cntries <- gisco_get_countries(year = year_ref,
         resolution = 03) %>%
         st_transform(3035)
 #Save data
-st_write(cntries, "Data/Processing/cntries.shp")
-st_write(cntries, "~/R_projects/SafeNet/Data/cntries.shp")
+st_write(cntries, "Data/Processing/cntries.shp", delete_layer = TRUE)
+st_write(cntries, "~/R_projects/SafeNet/Data/cntries.shp", delete_layer = TRUE)
 
 set.seed(1)
 

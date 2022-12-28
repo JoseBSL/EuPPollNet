@@ -62,7 +62,12 @@ data = data %>%
   mutate(Latitude = gsub("\\°.", "° ", Latitude)) %>% 
   mutate(Latitude = gsub("\\'.", "' ", Latitude)) %>% 
   mutate(Longitude = gsub("\\°.", "° ", Longitude)) %>% 
-  mutate(Longitude = gsub("\\'.", "' ", Longitude)) 
+  mutate(Longitude = gsub("\\'.", "' ", Longitude)) %>% 
+  mutate(Longitude = gsub("W", "", Longitude, fixed = T)) %>% 
+  mutate(Latitude = gsub("N", "", Latitude, fixed = T)) %>% 
+  mutate(Latitude = paste0(Latitude, "N")) %>% 
+  mutate(Longitude = paste0(Longitude, "W"))
+
 #Convert to decimal lat/long coordinates
 coord = parzer::parse_lon_lat(lon = data$Longitude, lat = data$Latitude)
 
