@@ -1,0 +1,7 @@
+---
+title: "Introduction"
+format: html
+editor: visual
+---
+
+Which topic are you talking about? What we already know about this topic? Which are the knowledge gaps? How the hell are you going to to fill them up?

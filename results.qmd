@@ -1,0 +1,24 @@
+---
+title: "Results"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r load_things, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+# source the script to read and clean data
+source("scripts/read_data.R") 
+#libraries
+library(lme4)
+```
+
+## Result One
+
+With R code
+
+```{r Fig1, echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+plot(runif(100))
+
+```

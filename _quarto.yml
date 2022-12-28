@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Your badass title here"
+  sidebar:
+    background: primary
+    # logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/PunkUserName/PunkRepoName
+        text: GitHub
+      - icon: twitter
+        href: https://twitter.com/intent/tweet?related=github&text=Punk%20Title&url=https%3A%2F%2FPunkUserName.github.io%2FPunkRepoName&hashtags=PunkEditors
+    style: floating
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: introduction.qmd
+        text: Introduction
+      - href: results.qmd
+        text: Results
+      - href: methods.qmd
+        text: Methods
+      - href: what_next.qmd
+        text: What next? 
+      - href: references.qmd
+        text: References  
+      
+
+format:
+  html:
+    theme: quartz #change it here if you don't like the electric pink https://quarto.org/docs/output-formats/html-themes.html
+    #css: styles.css
+    toc: true
+    

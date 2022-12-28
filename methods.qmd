@@ -1,0 +1,13 @@
+---
+title: "Methods"
+format: html
+editor: visual
+---
+
+## Data
+
+Show me the data.
+
+## Statistical analysis
+
+You'd better make them reproducible.
