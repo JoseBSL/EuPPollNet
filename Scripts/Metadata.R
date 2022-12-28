@@ -36,4 +36,5 @@ metadata_long_format = as_tibble(bind_rows(data,  .id = 'Study_id'))
 
 #Save metadata file
 write_csv(metadata_long_format, "Data/Processing/Metadata.csv")
+write_csv(metadata_long_format, "~/R_projects/SafeNet/Data/Metadata.csv")
 

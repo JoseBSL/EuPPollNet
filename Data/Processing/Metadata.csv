@@ -53,8 +53,8 @@ Hymenoptera (with the exception of Formicidae), Diptera
 2_Petanidou,Sampling_time_details,120 mins per site and round
 2_Petanidou,Sampling_time_species_round_min,NA
 2_Petanidou,Sampling_time_total_min,2160
-2_Petanidou,Total_plant_species,65
-2_Petanidou,Total_pollinator_species,207
+2_Petanidou,Total_plant_species,64
+2_Petanidou,Total_pollinator_species,206
 2_Petanidou,Floral_counts,Yes
 3_Michez,Doi,NA
 3_Michez,Dataset_description,"This dataset documents 71 different sites in the province of Hainaut,
@@ -298,8 +298,8 @@ Horizon 2020 research and innovation programme (grant agreement No. 819374)."
 11_Clough,Sampling_time_details,15 min per plot in each round
 11_Clough,Sampling_time_species_round_min,15
 11_Clough,Sampling_time_total_min,NA
-11_Clough,Total_plant_species,60
-11_Clough,Total_pollinator_species,284
+11_Clough,Total_plant_species,58
+11_Clough,Total_pollinator_species,283
 11_Clough,Floral_counts,Yes
 12_Ockinger,Doi,https://doi.org/10.1038/s41598-019-51912-4
 12_Ockinger,Dataset_description,"38 semi-natural pastures in south central Sweden. There were
@@ -633,3 +633,231 @@ hours in the afternoon) in March, April and May."
 27_Castro,Total_plant_species,46
 27_Castro,Total_pollinator_species,105
 27_Castro,Floral_counts,No
+28_Sutter,Doi,https://doi.org/10.1111/1365-2664.12907
+28_Sutter,Dataset_description,"This dataset contains bee-flower interactions
+  in 17 agricultural landscapes (= site_id) of 1km radius along a
+  landscape composition and configuration gradient in the northern
+  Swiss Lowlands. In this survey, wild bees were sampled in one habitat
+  patch per habitat type within each landscape"
+28_Sutter,Taxa_recorded,Wild bees and syrphids
+28_Sutter,Sampling_year,2013-2014
+28_Sutter,Country,Switzerland
+28_Sutter,Habitat,Gradient of non-crop vegetation and seminatural habitats
+28_Sutter,Sampling_sites,17
+28_Sutter,Sampling_rounds,4
+28_Sutter,Sampling_method,Transects
+28_Sutter,Sampling_area_details,50m length * 1.5m wide
+28_Sutter,Sampling_area_species_m2,NA
+28_Sutter,Sampling_area_total_m2,5100
+28_Sutter,Sampling_time_details,10 mins per transect
+28_Sutter,Sampling_time_species_round_min,NA
+28_Sutter,Sampling_time_total_min,3840
+28_Sutter,Total_plant_species,111
+28_Sutter,Total_pollinator_species,78
+28_Sutter,Floral_counts,Yes
+29_Magrach,Doi,https://doi.org/10.1038/s41559-017-0249-9
+29_Magrach,Dataset_description,"This is the Spanish dataset from the project
+Status and Trends of European Pollinators (STEP)"
+29_Magrach,Taxa_recorded,Bees and syrphids
+29_Magrach,Sampling_year,2011 and 2012
+29_Magrach,Country,Spain
+29_Magrach,Habitat,Scrubland
+29_Magrach,Sampling_sites,17
+29_Magrach,Sampling_rounds,4 per year
+29_Magrach,Sampling_method,Transect
+29_Magrach,Sampling_area_details,Two transects per site of 150 * 1m
+29_Magrach,Sampling_area_species_m2,NA
+29_Magrach,Sampling_area_total_m2,5100
+29_Magrach,Sampling_time_details,15 mins per transect
+29_Magrach,Sampling_time_species_round_min,
+29_Magrach,Sampling_time_total_min,4080
+29_Magrach,Total_plant_species,65
+29_Magrach,Total_pollinator_species,251
+29_Magrach,Floral_counts,Yes
+30_Smith,Doi,https://doi.org/10.1111/ele.12657
+30_Smith,Dataset_description,"This is the Swedish dataset from the project
+Status and Trends of European Pollinators (STEP)"
+30_Smith,Taxa_recorded,Bees and syrphids
+30_Smith,Sampling_year,2011 and 2012
+30_Smith,Country,Sweden
+30_Smith,Habitat,Grassland
+30_Smith,Sampling_sites,16
+30_Smith,Sampling_rounds,4 per year
+30_Smith,Sampling_method,Transect
+30_Smith,Sampling_area_details,Two transects per site of 150 * 1m
+30_Smith,Sampling_area_species_m2,NA
+30_Smith,Sampling_area_total_m2,4800
+30_Smith,Sampling_time_details,15 mins per transect
+30_Smith,Sampling_time_species_round_min,
+30_Smith,Sampling_time_total_min,3840
+30_Smith,Total_plant_species,69
+30_Smith,Total_pollinator_species,105
+30_Smith,Floral_counts,Yes
+31_Roberts,Doi,https://doi.org/10.1111/ele.12657
+31_Roberts,Dataset_description,"This is the Swedish dataset from the project
+Status and Trends of European Pollinators (STEP)"
+31_Roberts,Taxa_recorded,Bees and syrphids
+31_Roberts,Sampling_year,2012 and 2013
+31_Roberts,Country,UK
+31_Roberts,Habitat,Grassland
+31_Roberts,Sampling_sites,15
+31_Roberts,Sampling_rounds,4 per year
+31_Roberts,Sampling_method,Transect
+31_Roberts,Sampling_area_details,Two transects per site of 150 * 1m
+31_Roberts,Sampling_area_species_m2,NA
+31_Roberts,Sampling_area_total_m2,4500
+31_Roberts,Sampling_time_details,15 mins per transect
+31_Roberts,Sampling_time_species_round_min,
+31_Roberts,Sampling_time_total_min,3600
+31_Roberts,Total_plant_species,73
+31_Roberts,Total_pollinator_species,73
+31_Roberts,Floral_counts,Yes
+32_ORourke,Doi,https://doi.org/10.26786/1920-7603(2014)14
+32_ORourke,Dataset_description,Plant-pollinator community from fixed dunes
+32_ORourke,Taxa_recorded,"Bees, hoverflies and butterflies"
+32_ORourke,Sampling_year,2011
+32_ORourke,Country,Ireland
+32_ORourke,Habitat,Dunes
+32_ORourke,Sampling_sites,8
+32_ORourke,Sampling_rounds,NA
+32_ORourke,Sampling_method,Focal observations
+32_ORourke,Sampling_area_details,1m2 per plant species at each 30 min round
+32_ORourke,Sampling_area_species_m2,1
+32_ORourke,Sampling_area_total_m2,NA
+32_ORourke,Sampling_time_details,90 mins over a two day period
+32_ORourke,Sampling_time_species_round_min,30
+32_ORourke,Sampling_time_total_min,465677
+32_ORourke,Total_plant_species,29
+32_ORourke,Total_pollinator_species,44
+32_ORourke,Floral_counts,No
+33_Power,Doi,https://doi.org/10.1111/j.1365-2664.2010.01949.x
+33_Power,Dataset_description,Two fields from different farms were surveyed in 2009
+33_Power,Taxa_recorded,"Bees, hoverflies and butterflies"
+33_Power,Sampling_year,2009
+33_Power,Country,Ireland
+33_Power,Habitat,Farming grassland
+33_Power,Sampling_sites,10 farms
+33_Power,Sampling_rounds,3
+33_Power,Sampling_method,Transects
+33_Power,Sampling_area_details,Transects 100 x 2m transect
+33_Power,Sampling_area_species_m2,NA
+33_Power,Sampling_area_total_m2,800 * 10
+33_Power,Sampling_time_details,10–15 min per transect
+33_Power,Sampling_time_species_round_min,NA
+33_Power,Sampling_time_total_min,750
+33_Power,Total_plant_species,23
+33_Power,Total_pollinator_species,23
+33_Power,Floral_counts,Yes
+34_Stanley,Doi,https://doi.org/10.1111/1365-2664.12060
+34_Stanley,Dataset_description,"25 fields from different crop farms (winter wheat, oilseed rape, grass silage)"
+34_Stanley,Taxa_recorded,"Bees, hoverflies and butterflies"
+34_Stanley,Sampling_year,2009
+34_Stanley,Country,Ireland
+34_Stanley,Habitat,Farming grassland
+34_Stanley,Sampling_sites,25
+34_Stanley,Sampling_rounds,3
+34_Stanley,Sampling_method,Transects
+34_Stanley,Sampling_area_details,4 transects of 100 x 2 m per site
+34_Stanley,Sampling_area_species_m2,NA
+34_Stanley,Sampling_area_total_m2,20000
+34_Stanley,Sampling_time_details,10–15 min per transect
+34_Stanley,Sampling_time_species_round_min,NA
+34_Stanley,Sampling_time_total_min,3750
+34_Stanley,Total_plant_species,57
+34_Stanley,Total_pollinator_species,23
+34_Stanley,Floral_counts,Yes
+35_Mullen,Doi,Unpublished
+35_Mullen,Dataset_description,NA
+35_Mullen,Taxa_recorded,"Bees, hoverflies and butterflies"
+35_Mullen,Sampling_year,2010 and 2011
+35_Mullen,Country,Ireland
+35_Mullen,Habitat,NA
+35_Mullen,Sampling_sites,19
+35_Mullen,Sampling_rounds,NA
+35_Mullen,Sampling_method,Transects
+35_Mullen,Sampling_area_details,NA
+35_Mullen,Sampling_area_species_m2,NA
+35_Mullen,Sampling_area_total_m2,NA
+35_Mullen,Sampling_time_details,NA
+35_Mullen,Sampling_time_species_round_min,NA
+35_Mullen,Sampling_time_total_min,NA
+35_Mullen,Total_plant_species,51
+35_Mullen,Total_pollinator_species,78
+35_Mullen,Floral_counts,Yes
+36_Larkin,Doi,https://doi.org/10.1111/1365-2664.13990
+36_Larkin,Dataset_description,Plant-pollinator communities on farming landscapes from the Burren region (Ireland)
+36_Larkin,Taxa_recorded,"Bees, hoverflies and butterflies"
+36_Larkin,Sampling_year,2017
+36_Larkin,Country,Ireland
+36_Larkin,Habitat,Farming grassland
+36_Larkin,Sampling_sites,26
+36_Larkin,Sampling_rounds,3
+36_Larkin,Sampling_method,Transects
+36_Larkin,Sampling_area_details,Transect of 250 x 2m
+36_Larkin,Sampling_area_species_m2,NA
+36_Larkin,Sampling_area_total_m2,13000
+36_Larkin,Sampling_time_details,50-60 min per transect (170-180 min per site)
+36_Larkin,Sampling_time_species_round_min,NA
+36_Larkin,Sampling_time_total_min,4550
+36_Larkin,Total_plant_species,64
+36_Larkin,Total_pollinator_species,47
+36_Larkin,Floral_counts,Yes
+37_White,Doi,https://doi.org/10.3389/fevo.2022.806615
+37_White,Dataset_description,"Plant-pollinator communties from
+  21 sites on agricultural and urbanised landscapes with different
+  intensification"
+37_White,Taxa_recorded,"Bees, hoverflies and butterflies"
+37_White,Sampling_year,2018
+37_White,Country,Ireland
+37_White,Habitat,Urban and agricultural landscapes
+37_White,Sampling_sites,21
+37_White,Sampling_rounds,4
+37_White,Sampling_method,Transects
+37_White,Sampling_area_details,4 transects of 100 x 2 m per site
+37_White,Sampling_area_species_m2,NA
+37_White,Sampling_area_total_m2,4200
+37_White,Sampling_time_details,
+37_White,Sampling_time_species_round_min,NA
+37_White,Sampling_time_total_min,NA
+37_White,Total_plant_species,173
+37_White,Total_pollinator_species,78
+37_White,Floral_counts,Yes
+38_Maurer,Doi,Unpublished
+38_Maurer,Dataset_description,"This dataset contains plant-pollinator
+  interactions sampled at 12 sites (landscapes)
+  in the Northern Swiss lowlands (8 sites along a
+  landscape simplification gradient, 4 urban sites)
+  of 1 km radius (min. 1.5 km apart). In each
+  landscape, wild bees and syrphids were sampled along
+  transects in flowering habitat types (habitat type
+  categories according to EUNIS habitat types, aggregation 2 level).
+  A 1 km transect (2 m wide) was divided into sections proportional
+  to the amount of these different flowering habitat types
+  in the core (500 m radius) of a landscape (= different
+  focal habitats within each site; stratified random sampling).
+  We placed these tansect sections randomly in different patches
+  of the corresponding habitat types in each landscape
+  (including flowering crops). Three sampling rounds
+  in April, May/June and July were conducted in each landscape,
+  adjusting the location and length of transects in each round
+  according to the proportion and location of flowering habitats.
+  The transect walks were standardized so that 3 min were used for
+  recording flower visiting bees and syrphids and their visited
+  flower for each 25 m sub-section, pausing the clock for catching
+  and processing the samples. "
+38_Maurer,Taxa_recorded,Flower visiting bees and syrphidae
+38_Maurer,Sampling_year,2020
+38_Maurer,Country,Switzerland
+38_Maurer,Habitat,Gradient from urban to agricultural landscapes
+38_Maurer,Sampling_sites,12
+38_Maurer,Sampling_rounds,3
+38_Maurer,Sampling_method,Transects
+38_Maurer,Sampling_area_details,1km length * 2m wide
+38_Maurer,Sampling_area_species_m2,NA
+38_Maurer,Sampling_area_total_m2,24000
+38_Maurer,Sampling_time_details,3 mins for each 25m transect subsection
+38_Maurer,Sampling_time_species_round_min,120m per transect
+38_Maurer,Sampling_time_total_min,4320
+38_Maurer,Total_plant_species,191
+38_Maurer,Total_pollinator_species,150
+38_Maurer,Floral_counts,Yes

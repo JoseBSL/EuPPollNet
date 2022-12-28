@@ -44,6 +44,8 @@ coord_list = data
 coord_long_format = bind_rows(data,  .id = 'Study_id')
 
 save(coord_list, coord_long_format, file = "Data/Processing/Coordinates.RData")
+save(coord_list, coord_long_format, file = "~/R_projects/SafeNet/Data/Coordinates.RData")
+
 load("Data/Processing/Coordinates.RData")
 
 #Prepare data to plot it
@@ -55,6 +57,7 @@ st_transform(3035)
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
 #Save data
 st_write(data_coord, "Data/Processing/data_coord.shp")
+st_write(data_coord, "~/R_projects/SafeNet/Data/data_coord.shp")
 
 # Year
 year_ref <- 2016
@@ -65,6 +68,7 @@ cntries <- gisco_get_countries(year = year_ref,
         st_transform(3035)
 #Save data
 st_write(cntries, "Data/Processing/cntries.shp")
+st_write(cntries, "~/R_projects/SafeNet/Data/cntries.shp")
 
 set.seed(1)
 
