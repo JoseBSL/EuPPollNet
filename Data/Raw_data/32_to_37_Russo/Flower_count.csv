@@ -1,0 +1,2123 @@
+Day,Month,Year,Site_id,Plant_species,Flower_count,Units,Comment (FloralArea = count * size in mm2)
+197,7,2009,DaraStanley_CG42_9,Vicia_sepium,1,total abundance per plant species,15
+204,7,2009,DaraStanley_CG42_9,Cirsium_arvense,1,total abundance per plant species,25
+204,7,2009,DaraStanley_CG42_9,Senecio_jacobaea,2,total abundance per plant species,50
+145,5,2009,DaraStanley_CG42_9,Stachys_sylvatica,3,total abundance per plant species,54
+216,8,2009,DaraStanley_CG42_9,Vicia_sepium,9,total abundance per plant species,135
+216,8,2009,DaraStanley_CG42_9,Glechoma_hederacea,15,total abundance per plant species,375
+145,5,2009,DaraStanley_CG42_9,Ranunculus_repens,16,total abundance per plant species,480
+217,8,2009,DaraStanley_CG42_9,Ranunculus_repens,35,total abundance per plant species,1050
+140,5,2009,DaraStanley_CG42_9,Stachys_palustris,48,total abundance per plant species,720
+167,6,2009,DaraStanley_CG42_9,Trifolium_repens,255,total abundance per plant species,3315
+215,8,2009,DaraStanley_CG42_9,Trifolium_repens,1340,total abundance per plant species,17420
+215,8,2009,DaraStanley_CG42_9,Ranunculus_repens,4281,total abundance per plant species,128430
+215,8,2009,DaraStanley_CG43_9,Vicia_sepium,3,total abundance per plant species,45
+134,5,2009,DaraStanley_CG43_9,Vicia_cracca,5,total abundance per plant species,60
+134,5,2009,DaraStanley_CG43_9,Lotus_corniculatus,8,total abundance per plant species,128
+134,5,2009,DaraStanley_CG43_9,Senecio_jacobaea,9,total abundance per plant species,225
+208,7,2009,DaraStanley_CG43_9,Ranunculus_repens,13,total abundance per plant species,390
+135,5,2009,DaraStanley_CG43_9,Rubus_fruticosus,22,total abundance per plant species,660
+135,5,2009,DaraStanley_CG43_9,Cirsium_vulgare,54,total abundance per plant species,1620
+135,5,2009,DaraStanley_CG43_9,Cirsium_arvense,88,total abundance per plant species,2200
+203,7,2009,DaraStanley_CG43_9,Centaurea_nigra,132,total abundance per plant species,5280
+203,7,2009,DaraStanley_CG43_9,Ranunculus_repens,546,total abundance per plant species,16380
+223,8,2009,DaraStanley_CG43_9,Trifolium_repens,617,total abundance per plant species,8021
+215,8,2009,DaraStanley_CG45_9,Taraxacum_agg,1,total abundance per plant species,50
+215,8,2009,DaraStanley_CG45_9,Cirsium_arvense,4,total abundance per plant species,100
+221,8,2009,DaraStanley_CG45_9,Cirsium_vulgare,10,total abundance per plant species,300
+221,8,2009,DaraStanley_CG45_9,Ranunculus_repens,38,total abundance per plant species,1140
+200,7,2009,DaraStanley_CG45_9,Rubus_fruticosus,404,total abundance per plant species,12120
+138,5,2009,DaraStanley_CG49_9,Vicia_sepium,5,total abundance per plant species,75
+138,5,2009,DaraStanley_CG49_9,Ranunculus_repens,18,total abundance per plant species,540
+165,6,2009,DaraStanley_CG49_9,Heracleum_sphondylium,48,total abundance per plant species,9600
+165,6,2009,DaraStanley_CG49_9,Rubus_fruticosus,200,total abundance per plant species,6000
+165,6,2009,DaraStanley_CG49_9,Crataegus_monogyna,384,total abundance per plant species,4608
+200,7,2009,DaraStanley_CG49_9,Anthriscus_sylvestris,1557,total abundance per plant species,93420
+165,6,2009,DaraStanley_CG50_9,Bellis_perennis,1,total abundance per plant species,25
+200,7,2009,DaraStanley_CG50_9,Ranunculus_repens,4,total abundance per plant species,120
+152,6,2009,DaraStanley_CG50_9,Cirsium_vulgare,4,total abundance per plant species,120
+202,7,2009,DaraStanley_CG50_9,Heracleum_sphondylium,4,total abundance per plant species,800
+152,6,2009,DaraStanley_CG50_9,Vicia_sativa,16,total abundance per plant species,192
+152,6,2009,DaraStanley_CG50_9,Ranunculus_repens,19,total abundance per plant species,570
+178,6,2009,DaraStanley_CG50_9,Vicia_cracca,20,total abundance per plant species,240
+178,6,2009,DaraStanley_CG50_9,Vicia_sepium,30,total abundance per plant species,450
+178,6,2009,DaraStanley_CG50_9,Cardamine_pratensis,32,total abundance per plant species,640
+178,6,2009,DaraStanley_CG50_9,Rubus_fruticosus,503,total abundance per plant species,15090
+178,6,2009,DaraStanley_CG50_9,Ranunculus_repens,919,total abundance per plant species,27570
+178,6,2009,DaraStanley_CT32_9,Rubus_fruticosus,1,total abundance per plant species,30
+178,6,2009,DaraStanley_CT32_9,Heracleum_sphondylium,1,total abundance per plant species,200
+202,7,2009,DaraStanley_CT32_9,Lonicera_periclymenum,2,total abundance per plant species,100
+152,6,2009,DaraStanley_CT32_9,Heracleum_sphondylium,2,total abundance per plant species,400
+152,6,2009,DaraStanley_CT32_9,Cirsium_arvense,3,total abundance per plant species,75
+202,7,2009,DaraStanley_CT32_9,Cirsium_vulgare,7,total abundance per plant species,210
+202,7,2009,DaraStanley_CT32_9,Geranium_robertianum,24,total abundance per plant species,360
+202,7,2009,DaraStanley_CT32_9,Vicia_sepium,34,total abundance per plant species,510
+202,7,2009,DaraStanley_CT32_9,Geranium_robertianum,43,total abundance per plant species,645
+209,7,2009,DaraStanley_CT32_9,Rubus_fruticosus,82,total abundance per plant species,2460
+209,7,2009,DaraStanley_CT32_9,Galium_aparine,2526,total abundance per plant species,5052
+209,7,2009,DaraStanley_CT33_9,Heracleum_sphondylium,1,total abundance per plant species,200
+209,7,2009,DaraStanley_CT33_9,Ranunculus_repens,4,total abundance per plant species,120
+209,7,2009,DaraStanley_CT33_9,Geranium_robertianum,36,total abundance per plant species,540
+209,7,2009,DaraStanley_CT33_9,Rubus_fruticosus,274,total abundance per plant species,8220
+209,7,2009,DaraStanley_CT33_9,Rubus_fruticosus,1395,total abundance per plant species,41850
+209,7,2009,DaraStanley_CT35_9,Calystegia_sepium,5,total abundance per plant species,250
+209,7,2009,DaraStanley_CT35_9,Rubus_fruticosus,13,total abundance per plant species,390
+128,5,2009,DaraStanley_CT35_9,Cirsium_arvense,14,total abundance per plant species,350
+128,5,2009,DaraStanley_CT35_9,Crataegus_monogyna,47,total abundance per plant species,564
+128,5,2009,DaraStanley_CT35_9,Rubus_fruticosus,140,total abundance per plant species,4200
+174,6,2009,DaraStanley_CT35_9,Galium_aparine,720,total abundance per plant species,1440
+174,6,2009,DaraStanley_CT36_9,Rubus_fruticosus,4,total abundance per plant species,120
+174,6,2009,DaraStanley_CT36_9,Stachys_palustris,20,total abundance per plant species,300
+174,6,2009,DaraStanley_CT36_9,Lamium_purpureum,101,total abundance per plant species,1818
+209,7,2009,DaraStanley_CT36_9,Rubus_fruticosus,105,total abundance per plant species,3150
+174,6,2009,DaraStanley_CT36_9,Galium_aparine,200,total abundance per plant species,400
+174,6,2009,DaraStanley_CT37_9,Brassica_napus,1,total abundance per plant species,25
+209,7,2009,DaraStanley_CT37_9,Sonchus_asper,2,total abundance per plant species,50
+209,7,2009,DaraStanley_CT37_9,Aethusa_cynapium,2,total abundance per plant species,60
+209,7,2009,DaraStanley_CT37_9,Heracleum_sphondylium,4,total abundance per plant species,800
+179,6,2009,DaraStanley_CT37_9,Rubus_fruticosus,6,total abundance per plant species,180
+208,7,2009,DaraStanley_CT37_9,Heracleum_sphondylium,18,total abundance per plant species,3600
+208,7,2009,DaraStanley_CT37_9,Sinapsis_arvensis,112,total abundance per plant species,16800
+208,7,2009,DaraStanley_CT37_9,Anthriscus_sylvestris,254,total abundance per plant species,15240
+208,7,2009,DaraStanley_MG11_9,Rubus_fruticosus,1,total abundance per plant species,30
+153,6,2009,DaraStanley_MG11_9,Epilobium_hirsutum,4,total abundance per plant species,100
+179,6,2009,DaraStanley_MG11_9,Vicia_cracca,5,total abundance per plant species,60
+179,6,2009,DaraStanley_MG11_9,Trifolium_repens,10,total abundance per plant species,130
+179,6,2009,DaraStanley_MG11_9,Cirsium_arvense,10,total abundance per plant species,250
+208,7,2009,DaraStanley_MG11_9,Filipendula_ulmaria,17,total abundance per plant species,306
+208,7,2009,DaraStanley_MG11_9,Cirsium_vulgare,18,total abundance per plant species,540
+153,6,2009,DaraStanley_MG11_9,Achillea_ptarmica,26,total abundance per plant species,520
+179,6,2009,DaraStanley_MG11_9,Cirsium_arvense,39,total abundance per plant species,975
+179,6,2009,DaraStanley_MG11_9,Ranunculus_repens,46,total abundance per plant species,1380
+208,7,2009,DaraStanley_MG11_9,Angelica_sylvestris,108,total abundance per plant species,16200
+208,7,2009,DaraStanley_MG11_9,Epilobium_hirsutum,124,total abundance per plant species,3100
+208,7,2009,DaraStanley_MG11_9,Hyacinthoides_non-scripta,219,total abundance per plant species,4380
+208,7,2009,DaraStanley_MG11_9,Senecio_jacobaea,2350,total abundance per plant species,58750
+153,6,2009,DaraStanley_MG11_9,Stachys_palustris,3384,total abundance per plant species,50760
+166,6,2009,DaraStanley_MG11_9,Epilobium_montanum,4718,total abundance per plant species,56616
+131,5,2009,DaraStanley_MG11_9,Lythrum_salicaria,5235,total abundance per plant species,78525
+166,6,2009,DaraStanley_MG11_9,Lotus_corniculatus,6600,total abundance per plant species,105600
+194,7,2009,DaraStanley_MG11_9,Lotus_corniculatus,11748.2,total abundance per plant species,187971.2
+166,6,2009,DaraStanley_MG12_9,Rubus_fruticosus,1,total abundance per plant species,30
+166,6,2009,DaraStanley_MG12_9,Epilobium_hirsutum,16,total abundance per plant species,400
+166,6,2009,DaraStanley_MG12_9,Rubus_fruticosus,60,total abundance per plant species,1800
+194,7,2009,DaraStanley_MG13_9,Hypochaeris_radicata,1,total abundance per plant species,40
+194,7,2009,DaraStanley_MG13_9,Heracleum_sphondylium,8,total abundance per plant species,1600
+194,7,2009,DaraStanley_MG13_9,Senecio_jacobaea,9,total abundance per plant species,225
+194,7,2009,DaraStanley_MG13_9,Epilobium_hirsutum,43,total abundance per plant species,1075
+194,7,2009,DaraStanley_MG13_9,Sonchus_arvensis,88,total abundance per plant species,4400
+194,7,2009,DaraStanley_MG13_9,Persicaria_maculosa,88,total abundance per plant species,308
+194,7,2009,DaraStanley_MG13_9,Sonchus_asper,90,total abundance per plant species,2250
+133,5,2009,DaraStanley_MG13_9,Cirsium_vulgare,95,total abundance per plant species,2850
+171,6,2009,DaraStanley_MG13_9,Lathyrus_pratensis,132.2,total abundance per plant species,2115.2
+192,7,2009,DaraStanley_MG13_9,Epilobium_montanum,1077,total abundance per plant species,12924
+192,7,2009,DaraStanley_MG13_9,Cirsium_arvense,2309,total abundance per plant species,57725
+133,5,2009,DaraStanley_MG14_9,Lythrum_salicaria,1,total abundance per plant species,15
+133,5,2009,DaraStanley_MG14_9,Ulex_europaeus,1,total abundance per plant species,20
+133,5,2009,DaraStanley_MG14_9,Senecio_jacobaea,1,total abundance per plant species,25
+167,6,2009,DaraStanley_MG14_9,Rubus_fruticosus,1,total abundance per plant species,30
+171,6,2009,DaraStanley_MG14_9,Calystegia_sepium,2,total abundance per plant species,100
+171,6,2009,DaraStanley_MG14_9,Heracleum_sphondylium,6,total abundance per plant species,1200
+171,6,2009,DaraStanley_MG14_9,Cirsium_vulgare,12,total abundance per plant species,360
+192,7,2009,DaraStanley_MG14_9,Ranunculus_repens,28,total abundance per plant species,840
+133,5,2009,DaraStanley_MG14_9,Cirsium_arvense,453,total abundance per plant species,11325
+171,6,2009,DaraStanley_MG18_9,Sambucus_nigra,1,total abundance per plant species,6
+192,7,2009,DaraStanley_MG18_9,Cardamine_pratensis,1,total abundance per plant species,20
+192,7,2009,DaraStanley_MG18_9,Geum_urbanum,1,total abundance per plant species,20
+192,7,2009,DaraStanley_MG18_9,Ranunculus_repens,1,total abundance per plant species,30
+173,6,2009,DaraStanley_MG18_9,Ranunculus_repens,1,total abundance per plant species,30
+193,7,2009,DaraStanley_MG18_9,Calystegia_sepium,1,total abundance per plant species,50
+151,5,2009,DaraStanley_MG18_9,Cirsium_vulgare,2,total abundance per plant species,60
+151,5,2009,DaraStanley_MG18_9,Sonchus_asper,3,total abundance per plant species,75
+173,6,2009,DaraStanley_MG18_9,Leucanthemum_vulgare,3,total abundance per plant species,150
+173,6,2009,DaraStanley_MG18_9,Heracleum_sphondylium,3,total abundance per plant species,600
+173,6,2009,DaraStanley_MG18_9,Knautia_arvensis,4,total abundance per plant species,160
+173,6,2009,DaraStanley_MG18_9,Geranium_robertianum,8,total abundance per plant species,120
+173,6,2009,DaraStanley_MG18_9,Ranunculus_repens,8,total abundance per plant species,240
+193,7,2009,DaraStanley_MG18_9,Centaurea_nigra,15,total abundance per plant species,600
+151,5,2009,DaraStanley_MG18_9,Epilobium_hirsutum,18,total abundance per plant species,450
+173,6,2009,DaraStanley_MG18_9,Cirsium_vulgare,20,total abundance per plant species,600
+193,7,2009,DaraStanley_MG18_9,Crataegus_monogyna,23,total abundance per plant species,276
+193,7,2009,DaraStanley_MG18_9,Rubus_fruticosus,25,total abundance per plant species,750
+193,7,2009,DaraStanley_MG18_9,Stachys_sylvatica,34,total abundance per plant species,612
+193,7,2009,DaraStanley_MG18_9,Geranium_robertianum,40,total abundance per plant species,600
+172,6,2009,DaraStanley_MG18_9,Cirsium_arvense,94,total abundance per plant species,2350
+206,7,2009,DaraStanley_MG18_9,Rubus_fruticosus,134,total abundance per plant species,4020
+206,7,2009,DaraStanley_MG18_9,Epilobium_montanum,138,total abundance per plant species,1656
+206,7,2009,DaraStanley_MT1_9,Ranunculus_repens,1,total abundance per plant species,30
+206,7,2009,DaraStanley_MT1_9,Aethusa_cynapium,1,total abundance per plant species,30
+206,7,2009,DaraStanley_MT1_9,Rubus_fruticosus,9,total abundance per plant species,270
+206,7,2009,DaraStanley_MT1_9,Cirsium_vulgare,9,total abundance per plant species,270
+130,5,2009,DaraStanley_MT1_9,Anthriscus_sylvestris,10,total abundance per plant species,600
+130,5,2009,DaraStanley_MT1_9,Epilobium_angustifolium,13,total abundance per plant species,325
+130,5,2009,DaraStanley_MT1_9,Stachys_palustris,20,total abundance per plant species,300
+172,6,2009,DaraStanley_MT1_9,Lathyrus_pratensis,26,total abundance per plant species,390
+172,6,2009,DaraStanley_MT1_9,Rubus_fruticosus,55,total abundance per plant species,1650
+172,6,2009,DaraStanley_MT1_9,Vicia_sepium,61,total abundance per plant species,915
+206,7,2009,DaraStanley_MT1_9,Calystegia_sepium,80,total abundance per plant species,4000
+206,7,2009,DaraStanley_MT1_9,Heracleum_sphondylium,90,total abundance per plant species,18000
+162,6,2009,DaraStanley_MT1_9,Heracleum_sphondylium,110,total abundance per plant species,22000
+195,7,2009,DaraStanley_MT1_9,Lotus_corniculatus,111,total abundance per plant species,1776
+221,8,2009,DaraStanley_MT1_9,Cirsium_arvense,117,total abundance per plant species,2925
+228,8,2009,DaraStanley_MT1_9,Stellaria_graminea,141,total abundance per plant species,2115
+227,8,2009,DaraStanley_MT1_9,Epilobium_montanum,179,total abundance per plant species,2148
+225,8,2009,DaraStanley_MT1_9,Lotus_corniculatus,268.6,total abundance per plant species,4297.6
+236,8,2009,DaraStanley_MT10_9,Taraxacum_agg,1,total abundance per plant species,50
+218,8,2009,DaraStanley_MT10_9,Geranium_robertianum,2,total abundance per plant species,30
+238,8,2009,DaraStanley_MT10_9,Sonchus_asper,2,total abundance per plant species,50
+209,7,2009,DaraStanley_MT10_9,Cirsium_arvense,3,total abundance per plant species,75
+173,6,2009,DaraStanley_MT10_9,Rubus_fruticosus,4,total abundance per plant species,120
+217,8,2009,DaraStanley_MT10_9,Cirsium_vulgare,11,total abundance per plant species,330
+223,8,2009,DaraStanley_MT10_9,Heracleum_sphondylium,40,total abundance per plant species,8000
+153,6,2009,DaraStanley_MT10_9,Epilobium_hirsutum,41,total abundance per plant species,1025
+223,8,2009,DaraStanley_MT10_9,Epilobium_montanum,193,total abundance per plant species,2316
+181,6,2009,DaraStanley_MT10_9,Epilobium_angustifolium,268,total abundance per plant species,6700
+260,9,2009,DaraStanley_MT10_9,Senecio_jacobaea,2226,total abundance per plant species,55650
+168,6,2009,DaraStanley_MT2_9,Senecio_jacobaea,3,total abundance per plant species,75
+191,7,2009,DaraStanley_MT2_9,Rubus_fruticosus,4,total abundance per plant species,120
+176,6,2009,DaraStanley_MT2_9,Cirsium_vulgare,6,total abundance per plant species,180
+243,8,2009,DaraStanley_MT2_9,Ranunculus_repens,8,total abundance per plant species,240
+243,8,2009,DaraStanley_MT2_9,Epilobium_montanum,15,total abundance per plant species,180
+193,7,2009,DaraStanley_MT2_9,Stachys_sylvatica,20,total abundance per plant species,360
+249,9,2009,DaraStanley_MT2_9,Hypericum_perforatum,21,total abundance per plant species,525
+169,6,2009,DaraStanley_MT2_9,Galium_aparine,30,total abundance per plant species,60
+213,8,2009,DaraStanley_MT2_9,Heracleum_sphondylium,74,total abundance per plant species,14800
+191,7,2009,DaraStanley_MT2_9,Ranunculus_repens,176,total abundance per plant species,5280
+149,5,2009,DaraStanley_MT2_9,Rubus_fruticosus,189,total abundance per plant species,5670
+243,8,2009,DaraStanley_MT2_9,Ranunculus_repens,678,total abundance per plant species,20340
+149,5,2009,DaraStanley_MT3_9,Cirsium_vulgare,2,total abundance per plant species,60
+149,5,2009,DaraStanley_MT3_9,Lamium_purpureum,5,total abundance per plant species,90
+244,9,2009,DaraStanley_MT3_9,Cirsium_arvense,5,total abundance per plant species,125
+151,5,2009,DaraStanley_MT3_9,Epilobium_montanum,15,total abundance per plant species,180
+213,8,2009,DaraStanley_MT3_9,Heracleum_sphondylium,16,total abundance per plant species,3200
+246,9,2009,DaraStanley_MT3_9,Ulex_europaeus,46,total abundance per plant species,920
+189,7,2009,DaraStanley_MT4_9,Sambucus_nigra,1,total abundance per plant species,6
+238,8,2009,DaraStanley_MT4_9,Primula_vulgaris,1,total abundance per plant species,30
+245,9,2009,DaraStanley_MT4_9,Ranunculus_repens,1,total abundance per plant species,30
+238,8,2009,DaraStanley_MT4_9,Trifolium_repens,3,total abundance per plant species,39
+209,7,2009,DaraStanley_MT4_9,Cirsium_arvense,9,total abundance per plant species,225
+239,8,2009,DaraStanley_MT4_9,Vicia_cracca,13,total abundance per plant species,156
+127,5,2009,DaraStanley_MT4_9,Ranunculus_repens,45,total abundance per plant species,1350
+172,6,2009,DaraStanley_MT4_9,Rubus_fruticosus,116,total abundance per plant species,3480
+210,7,2009,DaraStanley_MT4_9,Ulex_europaeus,130,total abundance per plant species,2600
+125,5,2009,DaraStanley_MT4_9,Stachys_palustris,150,total abundance per plant species,2250
+193,7,2009,DaraStanley_MT4_9,Calystegia_sepium,366,total abundance per plant species,18300
+211,7,2009,DaraStanley_MT4_9,Vicia_cracca,840.4,total abundance per plant species,10084.8
+125,5,2009,DaraStanley_OS23_9,Stellaria_graminea,1,total abundance per plant species,15
+160,6,2009,DaraStanley_OS23_9,Stachys_sylvatica,1,total abundance per plant species,18
+160,6,2009,DaraStanley_OS23_9,Stachys_palustris,10,total abundance per plant species,150
+194,7,2009,DaraStanley_OS23_9,Lathyrus_pratensis,12,total abundance per plant species,204
+282,10,2009,DaraStanley_OS23_9,Ranunculus_repens,15,total abundance per plant species,450
+175,6,2009,DaraStanley_OS23_9,Veronica_persica,44,total abundance per plant species,528
+241,8,2009,DaraStanley_OS23_9,Vicia_sepium,64,total abundance per plant species,960
+256,9,2009,DaraStanley_OS23_9,Stachys_sylvatica,144,total abundance per plant species,2592
+144,5,2009,DaraStanley_OS23_9,Stellaria_holostea,966,total abundance per plant species,19320
+171,6,2009,DaraStanley_OS23_9,Ulex_europaeus,2516,total abundance per plant species,50320
+171,6,2009,DaraStanley_OS23_9,Brassica_napus,5951,total abundance per plant species,148775
+193,7,2009,DaraStanley_OS23_9,Brassica_napus,6454.4,total abundance per plant species,161360
+226,8,2009,DaraStanley_OS23_9,Sinapsis_arvensis,8441.2,total abundance per plant species,1266180
+240,8,2009,DaraStanley_OS24_9,Sonchus_asper,1,total abundance per plant species,25
+256,9,2009,DaraStanley_OS24_9,Ranunculus_repens,1,total abundance per plant species,30
+210,7,2009,DaraStanley_OS24_9,Cirsium_vulgare,3,total abundance per plant species,90
+210,7,2009,DaraStanley_OS24_9,Rubus_fruticosus,8,total abundance per plant species,240
+227,8,2009,DaraStanley_OS24_9,Cirsium_arvense,14,total abundance per plant species,350
+160,6,2009,DaraStanley_OS24_9,Heracleum_sphondylium,18,total abundance per plant species,3600
+210,7,2009,DaraStanley_OS24_9,Teucrium_scorodonia,35,total abundance per plant species,315
+130,5,2009,DaraStanley_OS24_9,Rubus_fruticosus,96,total abundance per plant species,2880
+209,7,2009,DaraStanley_OS24_9,Lapsana_communis,100,total abundance per plant species,2000
+181,6,2009,DaraStanley_OS24_9,Hyacinthoides_non-scripta,2736.4,total abundance per plant species,54728.9
+225,8,2009,DaraStanley_OS24_9,Brassica_napus,3448.3,total abundance per plant species,86208.2
+225,8,2009,DaraStanley_OS26_9,Geranium_robertianum,1,total abundance per plant species,15
+223,8,2009,DaraStanley_OS26_9,Heracleum_sphondylium,1,total abundance per plant species,200
+217,8,2009,DaraStanley_OS26_9,Lapsana_communis,6,total abundance per plant species,120
+217,8,2009,DaraStanley_OS26_9,Sonchus_asper,14,total abundance per plant species,350
+219,8,2009,DaraStanley_OS26_9,Arctium_minus,33,total abundance per plant species,990
+219,8,2009,DaraStanley_OS26_9,Senecio_jacobaea,35,total abundance per plant species,875
+127,5,2009,DaraStanley_OS26_9,Aethusa_cynapium,41,total abundance per plant species,1230
+214,8,2009,DaraStanley_OS26_9,Cirsium_vulgare,85,total abundance per plant species,2550
+214,8,2009,DaraStanley_OS26_9,Heracleum_sphondylium,92,total abundance per plant species,18400
+218,8,2009,DaraStanley_OS26_9,Stachys_sylvatica,122,total abundance per plant species,2196
+218,8,2009,DaraStanley_OS26_9,Rubus_fruticosus,242,total abundance per plant species,7260
+185,7,2009,DaraStanley_OS26_9,Sysimbrium_officinale,922,total abundance per plant species,2766
+131,5,2009,DaraStanley_OS26_9,Brassica_napus,18804,total abundance per plant species,470100
+214,8,2009,DaraStanley_OS26_9,Brassica_napus,41889.2,total abundance per plant species,1047230
+131,5,2009,DaraStanley_OS27_9,Papaver_rhoeas,15,total abundance per plant species,1500
+131,5,2009,DaraStanley_OS27_9,Rubus_fruticosus,90,total abundance per plant species,2700
+222,8,2009,DaraStanley_OS27_9,Lamium_purpureum,264,total abundance per plant species,4752
+185,7,2009,DaraStanley_OS27_9,Sonchus_asper,695,total abundance per plant species,17375
+146,5,2009,DaraStanley_OS27_9,Brassica_napus,1197,total abundance per plant species,29925
+217,8,2009,DaraStanley_OS27_9,Sinapsis_arvensis,1778,total abundance per plant species,266700
+185,7,2009,DaraStanley_OS27_9,Lapsana_communis,7680,total abundance per plant species,153600
+217,8,2009,DaraStanley_OS27_9,Brassica_napus,89728,total abundance per plant species,2243200
+217,8,2009,DaraStanley_OS29_9,Rubus_fruticosus,1,total abundance per plant species,30
+217,8,2009,DaraStanley_OS29_9,Viola_arvensis,8,total abundance per plant species,120
+167,6,2009,DaraStanley_OS29_9,Sonchus_asper,8,total abundance per plant species,200
+141,5,2009,DaraStanley_OS29_9,Brassica_napus,12,total abundance per plant species,300
+167,6,2009,DaraStanley_OS29_9,Cirsium_vulgare,24,total abundance per plant species,720
+201,7,2009,DaraStanley_OS29_9,Heracleum_sphondylium,41,total abundance per plant species,8200
+159,6,2009,DaraStanley_OS29_9,Sonchus_asper,134,total abundance per plant species,3350
+201,7,2009,DaraStanley_OS29_9,Lapsana_communis,162,total abundance per plant species,3240
+146,5,2009,DaraStanley_OS29_9,Lapsana_communis,2244,total abundance per plant species,44880
+190,7,2009,DaraStanley_OS29_9,Brassica_napus,12358.4,total abundance per plant species,308960
+146,5,2009,EileenPower_10A_9,Lotus_corniculatus,NA,not collected,NA
+190,7,2009,EileenPower_10A_9,Teucrium_scorodonia,1,total abundance per plant species,9
+145,5,2009,EileenPower_10A_9,Lythrum_salicaria,2,total abundance per plant species,30
+168,6,2009,EileenPower_10A_9,Lythrum_salicaria,2,total abundance per plant species,30
+216,8,2009,EileenPower_10A_9,Fuschia_sp,2,total abundance per plant species,4
+170,6,2009,EileenPower_10A_9,Fuschia_sp,2,total abundance per plant species,4
+216,8,2009,EileenPower_10A_9,Digitalis_purpurea,8,total abundance per plant species,400
+146,5,2009,EileenPower_10A_9,Rubus_fruticosus,26,total abundance per plant species,780
+216,8,2009,EileenPower_10A_9,Digitalis_purpurea,30,total abundance per plant species,1500
+216,8,2009,EileenPower_10A_9,Rubus_fruticosus,42,total abundance per plant species,1260
+173,6,2009,EileenPower_10A_9,Fuschia_sp,80,total abundance per plant species,160
+173,6,2009,EileenPower_10A_9,Trifolium_repens,102,total abundance per plant species,1326
+162,6,2009,EileenPower_10A_9,Crataegus_monogyna,130,total abundance per plant species,1560
+180,6,2009,EileenPower_10A_9,Trifolium_repens,165,total abundance per plant species,2145
+208,7,2009,EileenPower_10B_9,Galeopsis_tetrahit,1,total abundance per plant species,20
+162,6,2009,EileenPower_10B_9,Rubus_fruticosus,1,total abundance per plant species,30
+208,7,2009,EileenPower_10B_9,Digitalis_purpurea,23,total abundance per plant species,1150
+208,7,2009,EileenPower_10B_9,Digitalis_purpurea,38,total abundance per plant species,1900
+148,5,2009,EileenPower_10B_9,Crataegus_monogyna,40,total abundance per plant species,480
+175,6,2009,EileenPower_10B_9,Rubus_fruticosus,145,total abundance per plant species,4350
+175,6,2009,EileenPower_10B_9,Ranunculus_repens,159,total abundance per plant species,4770
+149,5,2009,EileenPower_1A_9,Lonicera_periclymenum,1,total abundance per plant species,50
+175,6,2009,EileenPower_1A_9,Vicia_sepium,2,total abundance per plant species,30
+196,7,2009,EileenPower_1A_9,Rosa_canina,2,total abundance per plant species,100
+196,7,2009,EileenPower_1A_9,Trifolium_repens,4,total abundance per plant species,52
+175,6,2009,EileenPower_1A_9,Trifolium_pratense,4,total abundance per plant species,60
+197,7,2009,EileenPower_1A_9,Cirsium_vulgare,8,total abundance per plant species,240
+197,7,2009,EileenPower_1A_9,Vicia_sepium,20,total abundance per plant species,300
+176,6,2009,EileenPower_1A_9,Ranunculus_repens,69,total abundance per plant species,2070
+204,7,2009,EileenPower_1A_9,Trifolium_repens,92,total abundance per plant species,1196
+161,6,2009,EileenPower_1A_9,Rubus_fruticosus,152,total abundance per plant species,4560
+207,7,2009,EileenPower_1A_9,Trifolium_repens,250,total abundance per plant species,3250
+139,5,2009,EileenPower_1A_9,Senecio_jacobaea,632,total abundance per plant species,15800
+155,6,2009,EileenPower_1B_9,Senecio_jacobaea,11,total abundance per plant species,275
+221,8,2009,EileenPower_1B_9,Cirsium_vulgare,18,total abundance per plant species,540
+192,7,2009,EileenPower_1B_9,Trifolium_repens,26,total abundance per plant species,338
+236,8,2009,EileenPower_1B_9,Rubus_fruticosus,57,total abundance per plant species,1710
+198,7,2009,EileenPower_2A_9,Ranunculus_repens,1,total abundance per plant species,30
+153,6,2009,EileenPower_2A_9,Heracleum_sphondylium,1,total abundance per plant species,200
+225,8,2009,EileenPower_2A_9,Trifolium_repens,19,total abundance per plant species,247
+160,6,2009,EileenPower_2A_9,Ranunculus_repens,108,total abundance per plant species,3240
+218,8,2009,EileenPower_2A_9,Rubus_fruticosus,154,total abundance per plant species,4620
+238,8,2009,EileenPower_2A_9,Trifolium_repens,506,total abundance per plant species,6578
+187,7,2009,EileenPower_2B_9,Heracleum_sphondylium,1,total abundance per plant species,200
+217,8,2009,EileenPower_2B_9,Trifolium_repens,2,total abundance per plant species,26
+192,7,2009,EileenPower_2B_9,Rubus_fruticosus,25,total abundance per plant species,750
+186,7,2009,EileenPower_2B_9,Rubus_fruticosus,28,total abundance per plant species,840
+260,9,2009,EileenPower_3A_9,Rosa_canina,1,total abundance per plant species,50
+169,6,2009,EileenPower_3A_9,Ranunculus_repens,4,total abundance per plant species,120
+252,9,2009,EileenPower_3A_9,Trifolium_repens,6,total abundance per plant species,78
+167,6,2009,EileenPower_3A_9,Rubus_fruticosus,8,total abundance per plant species,240
+243,8,2009,EileenPower_3A_9,Rubus_fruticosus,260,total abundance per plant species,7800
+127,5,2009,EileenPower_3B_9,Rubus_fruticosus,1,total abundance per plant species,30
+267,9,2009,EileenPower_3B_9,Anthriscus_sylvestris,1,total abundance per plant species,60
+288,10,2009,EileenPower_3B_9,Heracleum_sphondylium,4,total abundance per plant species,800
+193,7,2009,EileenPower_3B_9,Rubus_fruticosus,17,total abundance per plant species,510
+211,7,2009,EileenPower_3B_9,Heracleum_sphondylium,45,total abundance per plant species,9000
+147,5,2009,EileenPower_3B_9,Veronica_chamaedrys,53,total abundance per plant species,636
+191,7,2009,EileenPower_4A_9,Trifolium_repens,1,total abundance per plant species,13
+208,7,2009,EileenPower_4A_9,Ranunculus_repens,1,total abundance per plant species,30
+255,9,2009,EileenPower_4A_9,Heracleum_sphondylium,5,total abundance per plant species,1000
+217,8,2009,EileenPower_4A_9,Rubus_fruticosus,14,total abundance per plant species,420
+127,5,2009,EileenPower_4A_9,Rubus_fruticosus,616,total abundance per plant species,18480
+218,8,2009,EileenPower_4A_9,Trifolium_repens,855,total abundance per plant species,11115
+218,8,2009,EileenPower_4B_9,Ulex_europaeus,1,total abundance per plant species,20
+184,7,2009,EileenPower_4B_9,Cirsium_vulgare,1,total abundance per plant species,30
+219,8,2009,EileenPower_4B_9,Rosa_canina,2,total abundance per plant species,100
+222,8,2009,EileenPower_4B_9,Rubus_fruticosus,3,total abundance per plant species,90
+222,8,2009,EileenPower_4B_9,Anthriscus_sylvestris,60,total abundance per plant species,3600
+217,8,2009,EileenPower_4B_9,Rubus_fruticosus,108,total abundance per plant species,3240
+174,6,2009,EileenPower_5A_9,Rosa_canina,1,total abundance per plant species,50
+190,7,2009,EileenPower_5A_9,Rubus_fruticosus,2,total abundance per plant species,60
+170,6,2009,EileenPower_5A_9,Ranunculus_repens,5,total abundance per plant species,150
+170,6,2009,EileenPower_5A_9,Trifolium_repens,232,total abundance per plant species,3016
+216,8,2009,EileenPower_5A_9,Trifolium_repens,430,total abundance per plant species,5590
+173,6,2009,EileenPower_5B_9,Lonicera_periclymenum,1,total abundance per plant species,50
+173,6,2009,EileenPower_5B_9,Rosa_canina,2,total abundance per plant species,100
+208,7,2009,EileenPower_5B_9,Cirsium_vulgare,3,total abundance per plant species,90
+180,6,2009,EileenPower_5B_9,Rubus_fruticosus,4,total abundance per plant species,120
+175,6,2009,EileenPower_6A_9,Ranunculus_repens,6,total abundance per plant species,180
+176,6,2009,EileenPower_6A_9,Cirsium_vulgare,7,total abundance per plant species,210
+197,7,2009,EileenPower_6A_9,Ranunculus_repens,8,total abundance per plant species,240
+197,7,2009,EileenPower_6A_9,Rubus_fruticosus,13,total abundance per plant species,390
+176,6,2009,EileenPower_6A_9,Trifolium_pratense,26,total abundance per plant species,390
+167,6,2009,EileenPower_6A_9,Ranunculus_repens,31,total abundance per plant species,930
+167,6,2009,EileenPower_6A_9,Trifolium_repens,74,total abundance per plant species,962
+223,8,2009,EileenPower_6A_9,Rubus_fruticosus,137,total abundance per plant species,4110
+214,8,2009,EileenPower_6B_9,Ranunculus_repens,1,total abundance per plant species,30
+186,7,2009,EileenPower_6B_9,Rubus_fruticosus,1,total abundance per plant species,30
+221,8,2009,EileenPower_6B_9,Rubus_fruticosus,18,total abundance per plant species,540
+221,8,2009,EileenPower_6B_9,Ranunculus_repens,22,total abundance per plant species,660
+228,8,2009,EileenPower_6B_9,Crataegus_monogyna,225,total abundance per plant species,2700
+236,8,2009,EileenPower_7A_9,Trifolium_repens,1,total abundance per plant species,13
+156,6,2009,EileenPower_7A_9,Anthriscus_sylvestris,1,total abundance per plant species,60
+186,7,2009,EileenPower_7A_9,Senecio_jacobaea,2,total abundance per plant species,50
+227,8,2009,EileenPower_7A_9,Heracleum_sphondylium,2,total abundance per plant species,400
+236,8,2009,EileenPower_7A_9,Ranunculus_repens,6,total abundance per plant species,180
+209,7,2009,EileenPower_7A_9,Cirsium_vulgare,18,total abundance per plant species,540
+181,6,2009,EileenPower_7A_9,Rubus_fruticosus,21,total abundance per plant species,630
+243,8,2009,EileenPower_7A_9,Rubus_fruticosus,40,total abundance per plant species,1200
+246,9,2009,EileenPower_7A_9,Bellis_perennis,54,total abundance per plant species,1350
+257,9,2009,EileenPower_7A_9,Trifolium_repens,144,total abundance per plant species,1872
+192,7,2009,EileenPower_7B_9,Vicia_sepium,1,total abundance per plant species,15
+147,5,2009,EileenPower_7B_9,Rubus_fruticosus,1,total abundance per plant species,30
+209,7,2009,EileenPower_7B_9,Taraxacum_agg,1,total abundance per plant species,50
+240,8,2009,EileenPower_7B_9,Lonicera_periclymenum,1,total abundance per plant species,50
+282,10,2009,EileenPower_7B_9,Cirsium_vulgare,4,total abundance per plant species,120
+296,10,2009,EileenPower_7B_9,Rosa_canina,4,total abundance per plant species,200
+158,6,2009,EileenPower_7B_9,Geranium_robertianum,13,total abundance per plant species,195
+209,7,2009,EileenPower_7B_9,Rubus_fruticosus,176,total abundance per plant species,5280
+160,6,2009,EileenPower_8A_9,Crataegus_monogyna,1,total abundance per plant species,12
+283,10,2009,EileenPower_8A_9,Ranunculus_repens,7,total abundance per plant species,210
+220,8,2009,EileenPower_8A_9,Rubus_fruticosus,11,total abundance per plant species,330
+225,8,2009,EileenPower_8A_9,Cirsium_vulgare,17,total abundance per plant species,510
+226,8,2009,EileenPower_8A_9,Trifolium_repens,56,total abundance per plant species,728
+145,5,2009,EileenPower_8A_9,Trifolium_repens,99,total abundance per plant species,1287
+225,8,2009,EileenPower_8A_9,Bellis_perennis,110,total abundance per plant species,2750
+217,8,2009,EileenPower_8A_9,Rubus_fruticosus,328,total abundance per plant species,9840
+219,8,2009,EileenPower_8B_9,Ranunculus_repens,1,total abundance per plant species,30
+218,8,2009,EileenPower_8B_9,Rubus_fruticosus,1,total abundance per plant species,30
+218,8,2009,EileenPower_8B_9,Cirsium_vulgare,1,total abundance per plant species,30
+185,7,2009,EileenPower_8B_9,Rosa_canina,1,total abundance per plant species,50
+217,8,2009,EileenPower_8B_9,Trifolium_repens,32,total abundance per plant species,416
+217,8,2009,EileenPower_9A_9,Rubus_fruticosus,1,total abundance per plant species,30
+185,7,2009,EileenPower_9A_9,Heracleum_sphondylium,2,total abundance per plant species,400
+169,6,2009,EileenPower_9A_9,Digitalis_purpurea,11,total abundance per plant species,550
+198,7,2009,EileenPower_9A_9,Senecio_jacobaea,12,total abundance per plant species,300
+215,8,2009,EileenPower_9A_9,Crataegus_monogyna,32,total abundance per plant species,384
+189,7,2009,EileenPower_9A_9,Trifolium_pratense,55,total abundance per plant species,825
+146,5,2009,EileenPower_9A_9,Trifolium_repens,210,total abundance per plant species,2730
+221,8,2009,EileenPower_9A_9,Rubus_fruticosus,300,total abundance per plant species,9000
+229,8,2009,EileenPower_9B_9,Vicia_sepium,1,total abundance per plant species,15
+168,6,2009,EileenPower_9B_9,Heracleum_sphondylium,1,total abundance per plant species,200
+228,8,2009,EileenPower_9B_9,Rubus_fruticosus,7,total abundance per plant species,210
+227,8,2009,EileenPower_9B_9,Crataegus_monogyna,8,total abundance per plant species,96
+194,7,2009,EileenPower_9B_9,Rubus_fruticosus,11,total abundance per plant species,330
+160,6,2009,EileenPower_9B_9,Cirsium_vulgare,18,total abundance per plant species,540
+194,7,2010,SarahMullen_AllSaints_10,Orchis_morio,NA,not collected,NA
+223,8,2010,SarahMullen_AllSaints_10,Senecio_jacobaea,NA,not collected,NA
+181,6,2010,SarahMullen_AllSaints_10,Succisa_pratensis,NA,not collected,NA
+191,7,2010,SarahMullen_AllSaints_10,Trifolium_pratense,NA,not collected,NA
+243,8,2010,SarahMullen_AllSaints_10,Leontodon_saxatilis,4,total abundance per plant species,100
+238,8,2010,SarahMullen_AllSaints_10,Ranunculus_repens,6,total abundance per plant species,180
+257,9,2010,SarahMullen_AllSaints_10,Cerastium_fontanum,9,total abundance per plant species,63
+175,6,2010,SarahMullen_AllSaints_10,Leontodon_saxatilis,12,total abundance per plant species,300
+194,7,2010,SarahMullen_AllSaints_10,Potentilla_erecta,13,total abundance per plant species,195
+209,7,2010,SarahMullen_AllSaints_10,Potentilla_erecta,15,total abundance per plant species,225
+126,5,2010,SarahMullen_AllSaints_10,Plantago_lanceolata,18,total abundance per plant species,720
+144,5,2010,SarahMullen_AllSaints_10,Trifolium_pratense,44,total abundance per plant species,660
+267,9,2010,SarahMullen_AllSaints_10,Lotus_corniculatus,52,total abundance per plant species,832
+215,8,2010,SarahMullen_AllSaints_10,Centaurea_nigra,110,total abundance per plant species,4400
+217,8,2010,SarahMullen_Ardmullen_10,Leontodon_saxatilis,2,total abundance per plant species,50
+193,7,2010,SarahMullen_Ardmullen_10,Plantago_lanceolata,4,total abundance per plant species,160
+226,8,2010,SarahMullen_Ardmullen_10,Lotus_corniculatus,10,total abundance per plant species,160
+225,8,2010,SarahMullen_Ardmullen_10,Potentilla_erecta,15,total abundance per plant species,225
+179,6,2010,SarahMullen_Ardmullen_10,Potentilla_erecta,22,total abundance per plant species,330
+223,8,2010,SarahMullen_Ardmullen_10,Trifolium_repens,109,total abundance per plant species,1417
+174,6,2010,SarahMullen_Ardmullen_10,Cirsium_palustre,320,total abundance per plant species,6400
+141,5,2010,SarahMullen_Ardmullen_10,Cirsium_palustre,918,total abundance per plant species,18360
+222,8,2010,SarahMullen_Ballinasloe_10,Leontodon_saxatilis,8,total abundance per plant species,200
+217,8,2010,SarahMullen_Ballinasloe_10,Bellis_perennis,58,total abundance per plant species,1450
+217,8,2010,SarahMullen_Ballinasloe_10,Cirsium_palustre,105,total abundance per plant species,2100
+189,7,2010,SarahMullen_Ballinasloe_10,Trifolium_repens,105,total abundance per plant species,1365
+189,7,2010,SarahMullen_Ballinasloe_10,Cirsium_arvense,150,total abundance per plant species,3750
+216,8,2010,SarahMullen_Ballyduff_10,Senecio_jacobaea,NA,not collected,NA
+216,8,2010,SarahMullen_Ballyduff_10,Centaurium_erythraea,NA,not collected,NA
+184,7,2010,SarahMullen_Ballyduff_10,Cirsium_palustre,1,total abundance per plant species,20
+154,6,2010,SarahMullen_Ballyduff_10,Trifolium_repens,6,total abundance per plant species,78
+198,7,2010,SarahMullen_Ballyduff_10,Hypochaeris_radicata,7,total abundance per plant species,175
+198,7,2010,SarahMullen_Ballyduff_10,Cerastium_fontanum,8,total abundance per plant species,56
+208,7,2010,SarahMullen_Ballyduff_10,Bellis_perennis,14,total abundance per plant species,350
+162,6,2010,SarahMullen_Ballyduff_10,Cirsium_arvense,55,total abundance per plant species,1375
+216,8,2010,SarahMullen_Ballyduff_10,Trifolium_pratense,72,total abundance per plant species,1080
+222,8,2010,SarahMullen_Ballyduff_10,Prunella_vulgaris,73,total abundance per plant species,1095
+167,6,2010,SarahMullen_Ballyduff_10,Leontodon_saxatilis,75,total abundance per plant species,1875
+208,7,2010,SarahMullen_Ballyduff_10,Linum_catharticum,87,total abundance per plant species,348
+166,6,2010,SarahMullen_Ballyduff_10,Trifolium_repens,129,total abundance per plant species,1677
+214,8,2010,SarahMullen_Ballyduff_10,Prunella_vulgaris,140,total abundance per plant species,2100
+207,7,2010,SarahMullen_Ballyduff_10,Lotus_corniculatus,206,total abundance per plant species,3296
+153,6,2010,SarahMullen_Ballyduff_10,Trifolium_repens,258,total abundance per plant species,3354
+222,8,2010,SarahMullen_Ballyduff_10,Leontodon_saxatilis,310,total abundance per plant species,7750
+201,7,2010,SarahMullen_Ballyduff_10,Bellis_perennis,592,total abundance per plant species,14800
+194,7,2010,SarahMullen_Breeole_10,Carex_panicea,NA,not collected,NA
+218,8,2010,SarahMullen_Breeole_10,Primula_veris,NA,not collected,NA
+230,8,2010,SarahMullen_Breeole_10,Taraxacum_agg,NA,not collected,NA
+209,7,2010,SarahMullen_Breeole_10,Carlina_vulgaris,NA,not collected,NA
+168,6,2010,SarahMullen_Breeole_10,Cirsium_palustre,4,total abundance per plant species,80
+163,6,2010,SarahMullen_Breeole_10,Ranunculus_repens,4,total abundance per plant species,120
+163,6,2010,SarahMullen_Breeole_10,Pilosella_officinarum,5,total abundance per plant species,150
+203,7,2010,SarahMullen_Breeole_10,Galium_verum,24,total abundance per plant species,72
+176,6,2010,SarahMullen_Breeole_10,Potentilla_erecta,46,total abundance per plant species,690
+169,6,2010,SarahMullen_Breeole_10,Thymus_polytrichus,50,total abundance per plant species,200
+251,9,2010,SarahMullen_Breeole_10,Thymus_polytrichus,93,total abundance per plant species,372
+172,6,2010,SarahMullen_Breeole_10,Lotus_corniculatus,134,total abundance per plant species,2144
+192,7,2010,SarahMullen_Breeole_10,Potentilla_erecta,288,total abundance per plant species,4320
+210,7,2010,SarahMullen_Breeole_10,Potentilla_erecta,390,total abundance per plant species,5850
+270,9,2010,SarahMullen_Carrownalassan_10,Cirsium_vulgare,NA,not collected,NA
+193,7,2010,SarahMullen_Carrownalassan_10,Odontites_vernus,NA,not collected,NA
+227,8,2010,SarahMullen_Carrownalassan_10,Senecio_jacobaea,NA,not collected,NA
+240,8,2010,SarahMullen_Carrownalassan_10,Leucanthemum_vulgare,3,total abundance per plant species,150
+158,6,2010,SarahMullen_Carrownalassan_10,Ranunculus_sp,10,total abundance per plant species,300
+175,6,2010,SarahMullen_Carrownalassan_10,Cirsium_palustre,14,total abundance per plant species,280
+186,7,2010,SarahMullen_Carrownalassan_10,Ranunculus_sp,22,total abundance per plant species,660
+221,8,2010,SarahMullen_Carrownalassan_10,Cirsium_arvense,24,total abundance per plant species,600
+223,8,2010,SarahMullen_Carrownalassan_10,Prunella_vulgaris,24,total abundance per plant species,360
+223,8,2010,SarahMullen_Carrownalassan_10,Cirsium_palustre,32,total abundance per plant species,640
+210,7,2010,SarahMullen_Carrownalassan_10,Trifolium_pratense,52,total abundance per plant species,780
+144,5,2010,SarahMullen_Castlesampson_10,Carlina_vulgaris,1,total abundance per plant species,40
+131,5,2010,SarahMullen_Castlesampson_10,Hypericum_perforatum,2,total abundance per plant species,50
+219,8,2010,SarahMullen_Castlesampson_10,Leontodon_saxatilis,4,total abundance per plant species,100
+190,7,2010,SarahMullen_Castlesampson_10,Pilosella_officinarum,4,total abundance per plant species,120
+173,6,2010,SarahMullen_Castlesampson_10,Leontodon_saxatilis,5,total abundance per plant species,125
+141,5,2010,SarahMullen_Castlesampson_10,Lotus_corniculatus,21,total abundance per plant species,336
+209,7,2010,SarahMullen_Castlesampson_10,Cirsium_palustre,24,total abundance per plant species,480
+166,6,2010,SarahMullen_Castlesampson_10,Polygala_vulgaris,57,total abundance per plant species,456
+223,8,2010,SarahMullen_Castlesampson_10,Potentilla_erecta,84,total abundance per plant species,1260
+186,7,2010,SarahMullen_Castlesampson_10,Potentilla_erecta,168,total abundance per plant species,2520
+221,8,2010,SarahMullen_Castlesampson_10,Lotus_corniculatus,254,total abundance per plant species,4064
+201,7,2010,SarahMullen_Castlesampson_10,Thymus_polytrichus,264,total abundance per plant species,1056
+194,7,2010,SarahMullen_Castlesampson_10,Thymus_polytrichus,336,total abundance per plant species,1344
+238,8,2010,SarahMullen_Castlestrange_10,Cirsium_arvense,3,total abundance per plant species,75
+206,7,2010,SarahMullen_Castlestrange_10,Ranunculus_repens,11,total abundance per plant species,330
+173,6,2010,SarahMullen_Castlestrange_10,Prunella_vulgaris,34,total abundance per plant species,510
+252,9,2010,SarahMullen_Clonmacnoise_10,Plantago_lanceolata,NA,not collected,NA
+151,5,2010,SarahMullen_Clonmacnoise_10,Leucanthemum_vulgare,1,total abundance per plant species,50
+205,7,2010,SarahMullen_Clonmacnoise_10,Leontodon_saxatilis,8,total abundance per plant species,200
+158,6,2010,SarahMullen_Clonmacnoise_10,Prunella_vulgaris,10,total abundance per plant species,150
+175,6,2010,SarahMullen_Clonmacnoise_10,Lotus_corniculatus,21,total abundance per plant species,336
+194,7,2010,SarahMullen_Clonmacnoise_10,Leontodon_saxatilis,24,total abundance per plant species,600
+209,7,2010,SarahMullen_Clonmacnoise_10,Trifolium_pratense,34,total abundance per plant species,510
+239,8,2010,SarahMullen_Clonmacnoise_10,Thymus_polytrichus,48,total abundance per plant species,192
+256,9,2010,SarahMullen_Clonmacnoise_10,Trifolium_repens,50,total abundance per plant species,650
+267,9,2010,SarahMullen_Clonmacnoise_10,Leontodon_saxatilis,60,total abundance per plant species,1500
+124,5,2010,SarahMullen_Clonmacnoise_10,Thymus_polytrichus,69,total abundance per plant species,276
+164,6,2010,SarahMullen_Clonmacnoise_10,Trifolium_pratense,108,total abundance per plant species,1620
+198,7,2010,SarahMullen_Clonmacnoise_10,Galium_verum,122,total abundance per plant species,366
+148,5,2010,SarahMullen_Clonmacnoise_10,Ranunculus_repens,130,total abundance per plant species,3900
+225,8,2010,SarahMullen_Clonmacnoise_10,Trifolium_repens,152,total abundance per plant species,1976
+222,8,2010,SarahMullen_Clonmacnoise_10,Lotus_corniculatus,240,total abundance per plant species,3840
+222,8,2010,SarahMullen_Clonmacnoise_10,Centaurea_nigra,380,total abundance per plant species,15200
+167,6,2010,SarahMullen_Cloonfenbaun_10,Cirsium_palustre,2,total abundance per plant species,40
+145,5,2010,SarahMullen_Cloonfenbaun_10,Trifolium_pratense,5,total abundance per plant species,75
+216,8,2010,SarahMullen_Cloonfenbaun_10,Cirsium_palustre,6,total abundance per plant species,120
+180,6,2010,SarahMullen_Cloonfenbaun_10,Trifolium_repens,8,total abundance per plant species,104
+204,7,2010,SarahMullen_Cloonfenbaun_10,Cerastium_fontanum,10,total abundance per plant species,70
+145,5,2010,SarahMullen_Cloonfenbaun_10,Leontodon_saxatilis,10,total abundance per plant species,250
+184,7,2010,SarahMullen_Cloonfenbaun_10,Trifolium_repens,30,total abundance per plant species,390
+227,8,2010,SarahMullen_Curry_10,Ranunculus_repens,1,total abundance per plant species,30
+225,8,2010,SarahMullen_Curry_10,Cirsium_palustre,12,total abundance per plant species,240
+223,8,2010,SarahMullen_Curry_10,Bellis_perennis,19,total abundance per plant species,475
+260,9,2010,SarahMullen_Curry_10,Trifolium_pratense,36,total abundance per plant species,540
+203,7,2010,SarahMullen_Curry_10,Leontodon_saxatilis,37,total abundance per plant species,925
+195,7,2010,SarahMullen_Curry_10,Prunella_vulgaris,44,total abundance per plant species,660
+238,8,2010,SarahMullen_Curry_10,Thymus_polytrichus,45,total abundance per plant species,180
+153,6,2010,SarahMullen_Curry_10,Leontodon_saxatilis,54,total abundance per plant species,1350
+192,7,2010,SarahMullen_Curry_10,Potentilla_erecta,60,total abundance per plant species,900
+153,6,2010,SarahMullen_Curry_10,Plantago_lanceolata,88,total abundance per plant species,3520
+239,8,2010,SarahMullen_Curry_10,Trifolium_repens,117,total abundance per plant species,1521
+288,10,2010,SarahMullen_Curry_10,Trifolium_repens,117,total abundance per plant species,1521
+258,9,2010,SarahMullen_Curry_10,Potentilla_erecta,204,total abundance per plant species,3060
+270,9,2010,SarahMullen_Curry_10,Potentilla_erecta,270,total abundance per plant species,4050
+125,5,2010,SarahMullen_Fray_10,Carex_panicea,NA,not collected,NA
+110,4,2010,SarahMullen_Fray_10,Taraxacum_agg,NA,not collected,NA
+127,5,2010,SarahMullen_Fray_10,Lathyrus_linifolius,NA,not collected,NA
+241,8,2010,SarahMullen_Fray_10,Carlina_vulgaris,NA,not collected,NA
+128,5,2010,SarahMullen_Fray_10,Cirsium_palustre,NA,not collected,NA
+220,8,2010,SarahMullen_Fray_10,Bellis_perennis,8,total abundance per plant species,200
+133,5,2010,SarahMullen_Fray_10,Potentilla_erecta,470,total abundance per plant species,7050
+178,6,2010,SarahMullen_Fray_10,Thymus_polytrichus,1192,total abundance per plant species,4768
+218,8,2010,SarahMullen_Glenballythomas_10,Taraxacum_agg,NA,not collected,NA
+188,7,2010,SarahMullen_Glenballythomas_10,Taraxacum_agg,3,total abundance per plant species,150
+196,7,2010,SarahMullen_Glenballythomas_10,Cirsium_palustre,12,total abundance per plant species,240
+149,5,2010,SarahMullen_Glenballythomas_10,Plantago_lanceolata,24,total abundance per plant species,960
+181,6,2010,SarahMullen_Glenballythomas_10,Ranunculus_sp,64,total abundance per plant species,1920
+215,8,2010,SarahMullen_Glenballythomas_10,Bellis_perennis,92,total abundance per plant species,2300
+210,7,2010,SarahMullen_Glenballythomas_10,Trifolium_repens,100,total abundance per plant species,1300
+223,8,2010,SarahMullen_Glenballythomas_10,Ranunculus_acris,125,total abundance per plant species,3125
+243,8,2010,SarahMullen_Knockrogherry_10,Cirsium_arvense,NA,not collected,NA
+159,6,2010,SarahMullen_Knockrogherry_10,Cirsium_vulgare,NA,not collected,NA
+175,6,2010,SarahMullen_Knockrogherry_10,Ranunculus_acris,3,total abundance per plant species,75
+241,8,2010,SarahMullen_Knockrogherry_10,Trifolium_repens,44,total abundance per plant species,572
+241,8,2010,SarahMullen_Knockrogherry_10,Cirsium_palustre,92,total abundance per plant species,1840
+240,8,2010,SarahMullen_Pollalaher_10,Achillea_millefolium,NA,not collected,NA
+185,7,2010,SarahMullen_Pollalaher_10,Cirsium_palustre,NA,not collected,NA
+217,8,2010,SarahMullen_Pollalaher_10,Plantago_lanceolata,7,total abundance per plant species,280
+217,8,2010,SarahMullen_Pollalaher_10,Leontodon_saxatilis,12,total abundance per plant species,300
+219,8,2010,SarahMullen_Pollalaher_10,Bellis_perennis,72,total abundance per plant species,1800
+221,8,2010,SarahMullen_Skrine1_10,Trifolium_repens,4,total abundance per plant species,52
+221,8,2010,SarahMullen_Skrine1_10,Bellis_perennis,5,total abundance per plant species,125
+197,7,2010,SarahMullen_Skrine1_10,Ranunculus_repens,8,total abundance per plant species,240
+198,7,2010,SarahMullen_Skrine1_10,Cerastium_fontanum,11,total abundance per plant species,77
+178,6,2010,SarahMullen_Skrine1_10,Lotus_corniculatus,14,total abundance per plant species,224
+180,6,2010,SarahMullen_Skrine1_10,Achillea_millefolium,20,total abundance per plant species,2000
+223,8,2010,SarahMullen_Skrine1_10,Cirsium_palustre,34,total abundance per plant species,680
+225,8,2010,SarahMullen_Skrine1_10,Trifolium_pratense,63,total abundance per plant species,945
+188,7,2010,SarahMullen_Skrine1_10,Plantago_lanceolata,85,total abundance per plant species,3400
+214,8,2010,SarahMullen_Skrine1_10,Potentilla_erecta,99,total abundance per plant species,1485
+214,8,2010,SarahMullen_Skrine1_10,Thymus_polytrichus,114,total abundance per plant species,456
+146,5,2010,SarahMullen_Skrine1_10,Leontodon_saxatilis,144,total abundance per plant species,3600
+146,5,2010,SarahMullen_Skrine1_10,Potentilla_erecta,284,total abundance per plant species,4260
+167,6,2010,SarahMullen_Skrine1_10,Euphrasia_sp,476,total abundance per plant species,4760
+168,6,2010,SarahMullen_Skrine2_10,Leontodon_saxatilis,4,total abundance per plant species,100
+198,7,2010,SarahMullen_Skrine2_10,Ranunculus_repens,11,total abundance per plant species,330
+148,5,2010,SarahMullen_Skrine2_10,Cirsium_palustre,21,total abundance per plant species,420
+197,7,2010,SarahMullen_Skrine2_10,Cirsium_palustre,28,total abundance per plant species,560
+204,7,2010,SarahMullen_Tibarney_10,Cirsium_palustre,11,total abundance per plant species,220
+161,6,2010,SarahMullen_Tibarney_10,Cirsium_palustre,21,total abundance per plant species,420
+222,8,2010,SarahMullen_Tibarney_10,Leontodon_saxatilis,27,total abundance per plant species,675
+217,8,2010,SarahMullen_Tibarney_10,Prunella_vulgaris,30,total abundance per plant species,450
+135,5,2010,SarahMullen_Tibarney_10,Ranunculus_repens,31,total abundance per plant species,930
+223,8,2010,SarahMullen_Tibarney_10,Ranunculus_acris,33,total abundance per plant species,825
+195,7,2010,SarahMullen_Tibarney_10,Trifolium_pratense,110,total abundance per plant species,1650
+195,7,2010,SarahMullen_Tibarney_10,Lotus_corniculatus,118,total abundance per plant species,1888
+227,8,2010,SarahMullen_Tibarney_10,Trifolium_repens,426,total abundance per plant species,5538
+225,8,2010,SarahMullen_Turrock_10,Carex_panicea,NA,not collected,NA
+238,8,2010,SarahMullen_Turrock_10,Pilosella_officinarum,NA,not collected,NA
+191,7,2010,SarahMullen_Turrock_10,Galium_verum,2,total abundance per plant species,6
+213,8,2010,SarahMullen_Turrock_10,Achillea_millefolium,2,total abundance per plant species,200
+228,8,2010,SarahMullen_Turrock_10,Trifolium_pratense,4,total abundance per plant species,60
+160,6,2010,SarahMullen_Turrock_10,Pedicularis_sylvatica,5,total abundance per plant species,125
+192,7,2010,SarahMullen_Turrock_10,Cirsium_palustre,12,total abundance per plant species,240
+193,7,2010,SarahMullen_Turrock_10,Bellis_perennis,22,total abundance per plant species,550
+127,5,2010,SarahMullen_Turrock_10,Ranunculus_repens,26,total abundance per plant species,780
+133,5,2010,SarahMullen_Turrock_10,Cerastium_fontanum,30,total abundance per plant species,210
+168,6,2010,SarahMullen_Turrock_10,Antennaria_dioica,33,total abundance per plant species,396
+210,7,2010,SarahMullen_Turrock_10,Plantago_lanceolata,41,total abundance per plant species,1640
+209,7,2010,SarahMullen_Turrock_10,Leontodon_saxatilis,42,total abundance per plant species,1050
+209,7,2010,SarahMullen_Turrock_10,Trifolium_repens,46,total abundance per plant species,598
+223,8,2010,SarahMullen_Turrock_10,Trifolium_repens,46,total abundance per plant species,598
+148,5,2010,SarahMullen_Turrock_10,Leontodon_saxatilis,78,total abundance per plant species,1950
+214,8,2010,SarahMullen_Turrock_10,Pedicularis_sylvatica,188,total abundance per plant species,4700
+145,5,2010,SarahMullen_Turrock_10,Cirsium_palustre,210,total abundance per plant species,4200
+195,7,2010,SarahMullen_Turrock_10,Trifolium_pratense,255,total abundance per plant species,3825
+201,7,2010,SarahMullen_Turrock_10,Euphrasia_sp,359,total abundance per plant species,3590
+185,7,2011,AoifeO'Rourke_Ark_11,Plantago_lanceolata,NA,not collected,NA
+217,8,2011,AoifeO'Rourke_Ark_11,Leontodon_hispidus,NA,not collected,NA
+260,9,2011,AoifeO'Rourke_Ark_11,Galium_verum,NA,not collected,NA
+130,5,2011,AoifeO'Rourke_Ark_11,Leontodon_saxatilis,NA,not collected,NA
+225,8,2011,AoifeO'Rourke_Ark_11,Lotus_corniculatus,NA,not collected,NA
+176,6,2011,AoifeO'Rourke_Ark_11,Pilosella_officinarum,NA,not collected,NA
+176,6,2011,AoifeO'Rourke_Ark_11,Polygala_vulgaris,NA,not collected,NA
+217,8,2011,AoifeO'Rourke_Ark_11,Lotus_corniculatus,NA,not collected,NA
+217,8,2011,AoifeO'Rourke_Ark_11,Knautia_arvensis,NA,not collected,NA
+147,5,2011,AoifeO'Rourke_Ark_11,Lotus_corniculatus,NA,not collected,NA
+223,8,2011,AoifeO'Rourke_Ark_11,Rubus_fruticosus,NA,not collected,NA
+223,8,2011,AoifeO'Rourke_Ark_11,Hypochaeris_radicata,NA,not collected,NA
+214,8,2011,AoifeO'Rourke_Ark_11,Anthyllis_vulneraria,NA,not collected,NA
+221,8,2011,AoifeO'Rourke_Ark_11,Hypochaeris_radicata,NA,not collected,NA
+227,8,2011,AoifeO'Rourke_Ark_11,Anthyllis_vulneraria,NA,not collected,NA
+209,7,2011,AoifeO'Rourke_Ark_11,Lotus_corniculatus,NA,not collected,NA
+237,8,2011,AoifeO'Rourke_Ark_11,Ononis_repens,NA,not collected,NA
+229,8,2011,AoifeO'Rourke_Bal_11,Hypochaeris_radicata,NA,not collected,NA
+223,8,2011,AoifeO'Rourke_Bal_11,Daucus_carota,NA,not collected,NA
+193,7,2011,AoifeO'Rourke_Bal_11,Leontodon_saxatilis,NA,not collected,NA
+288,10,2011,AoifeO'Rourke_Bal_11,Rubus_fruticosus,NA,not collected,NA
+258,9,2011,AoifeO'Rourke_Bal_11,Thymus_polytrichus,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Bal_11,Lotus_corniculatus,NA,not collected,NA
+241,8,2011,AoifeO'Rourke_Bal_11,Anthyllis_vulneraria,NA,not collected,NA
+283,10,2011,AoifeO'Rourke_Bal_11,Lotus_corniculatus,NA,not collected,NA
+215,8,2011,AoifeO'Rourke_Bal_11,Thymus_polytrichus,NA,not collected,NA
+125,5,2011,AoifeO'Rourke_Bal_11,Hypochaeris_radicata,NA,not collected,NA
+161,6,2011,AoifeO'Rourke_Bal_11,Plantago_lanceolata,NA,not collected,NA
+194,7,2011,AoifeO'Rourke_Bal_11,Rubus_fruticosus,NA,not collected,NA
+178,6,2011,AoifeO'Rourke_Bal_11,Ononis_repens,NA,not collected,NA
+218,8,2011,AoifeO'Rourke_Bal_11,Rhinanthus_minor,NA,not collected,NA
+198,7,2011,AoifeO'Rourke_Bal_11,Lotus_corniculatus,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Bal_11,Ononis_repens,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Bal_11,Trifolium_pratense,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Bal_11,Trifolium_repens,NA,not collected,NA
+222,8,2011,AoifeO'Rourke_Bal_11,Rosa_pimpernellifolia,NA,not collected,NA
+189,7,2011,AoifeO'Rourke_Cah_11,Hypochaeris_radicata,NA,not collected,NA
+155,6,2011,AoifeO'Rourke_Cah_11,Lotus_corniculatus,NA,not collected,NA
+186,7,2011,AoifeO'Rourke_Cah_11,Pilosella_officinarum,NA,not collected,NA
+227,8,2011,AoifeO'Rourke_Cah_11,Anacamptis_pyramidalis,NA,not collected,NA
+217,8,2011,AoifeO'Rourke_Cah_11,Anthyllis_vulneraria,NA,not collected,NA
+217,8,2011,AoifeO'Rourke_Cah_11,Lotus_corniculatus,NA,not collected,NA
+192,7,2011,AoifeO'Rourke_Cah_11,Centaurium_littorale,NA,not collected,NA
+176,6,2011,AoifeO'Rourke_Cah_11,Pilosella_officinarum,NA,not collected,NA
+216,8,2011,AoifeO'Rourke_Cah_11,Crepis_sp,NA,not collected,NA
+193,7,2011,AoifeO'Rourke_Cur_11,Ranunculus_bulbosus,NA,not collected,NA
+243,8,2011,AoifeO'Rourke_Cur_11,Daucus_carota,NA,not collected,NA
+242,8,2011,AoifeO'Rourke_Cur_11,Anthyllis_vulneraria,NA,not collected,NA
+258,9,2011,AoifeO'Rourke_Cur_11,Lotus_corniculatus,NA,not collected,NA
+221,8,2011,AoifeO'Rourke_Cur_11,Anacamptis_pyramidalis,NA,not collected,NA
+199,7,2011,AoifeO'Rourke_Cur_11,Anthyllis_vulneraria,NA,not collected,NA
+225,8,2011,AoifeO'Rourke_Cur_11,Crepis_sp,NA,not collected,NA
+180,6,2011,AoifeO'Rourke_Cur_11,Hypochaeris_radicata,NA,not collected,NA
+216,8,2011,AoifeO'Rourke_Cur_11,Lotus_corniculatus,NA,not collected,NA
+196,7,2011,AoifeO'Rourke_Cur_11,Pilosella_officinarum,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Cur_11,Thymus_polytrichus,NA,not collected,NA
+167,6,2011,AoifeO'Rourke_Cur_11,Plantago_lanceolata,NA,not collected,NA
+223,8,2011,AoifeO'Rourke_Cur_11,Pilosella_officinarum,NA,not collected,NA
+215,8,2011,AoifeO'Rourke_Cur_11,Rhinanthus_minor,NA,not collected,NA
+208,7,2011,AoifeO'Rourke_Cur_11,Hypochaeris_radicata,NA,not collected,NA
+227,8,2011,AoifeO'Rourke_Cur_11,Ononis_repens,NA,not collected,NA
+210,7,2011,AoifeO'Rourke_Cur_11,Thymus_polytrichus,NA,not collected,NA
+238,8,2011,AoifeO'Rourke_Cur_11,Trifolium_pratense,NA,not collected,NA
+209,7,2011,AoifeO'Rourke_Kil_11,Lotus_corniculatus,NA,not collected,NA
+189,7,2011,AoifeO'Rourke_Kil_11,Crepis_sp,NA,not collected,NA
+288,10,2011,AoifeO'Rourke_Kil_11,Anthyllis_vulneraria,NA,not collected,NA
+227,8,2011,AoifeO'Rourke_Kil_11,Lotus_corniculatus,NA,not collected,NA
+185,7,2011,AoifeO'Rourke_Kil_11,Anthyllis_vulneraria,NA,not collected,NA
+209,7,2011,AoifeO'Rourke_Kil_11,Hypochaeris_radicata,NA,not collected,NA
+176,6,2011,AoifeO'Rourke_Kil_11,Leontodon_saxatilis,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Kil_11,Pilosella_officinarum,NA,not collected,NA
+214,8,2011,AoifeO'Rourke_Kil_11,Rubus_fruticosus,NA,not collected,NA
+168,6,2011,AoifeO'Rourke_Kil_11,Hypochaeris_radicata,NA,not collected,NA
+208,7,2011,AoifeO'Rourke_Kil_11,Leontodon_saxatilis,NA,not collected,NA
+145,5,2011,AoifeO'Rourke_Kil_11,Crepis_sp,NA,not collected,NA
+209,7,2011,AoifeO'Rourke_Kil_11,Daucus_carota,NA,not collected,NA
+223,8,2011,AoifeO'Rourke_Kil_11,Leontodon_saxatilis,NA,not collected,NA
+223,8,2011,AoifeO'Rourke_Kil_11,Taraxacum_agg,NA,not collected,NA
+154,6,2011,AoifeO'Rourke_Kil_11,Thymus_polytrichus,NA,not collected,NA
+149,5,2011,AoifeO'Rourke_Mag_11,Lotus_corniculatus,NA,not collected,NA
+245,9,2011,AoifeO'Rourke_Mag_11,Anthyllis_vulneraria,NA,not collected,NA
+218,8,2011,AoifeO'Rourke_Mag_11,Galium_verum,NA,not collected,NA
+210,7,2011,AoifeO'Rourke_Mag_11,Hypochaeris_radicata,NA,not collected,NA
+219,8,2011,AoifeO'Rourke_Mag_11,Lotus_corniculatus,NA,not collected,NA
+222,8,2011,AoifeO'Rourke_Mag_11,Ononis_repens,NA,not collected,NA
+169,6,2011,AoifeO'Rourke_Mag_11,Rubus_fruticosus,NA,not collected,NA
+204,7,2011,AoifeO'Rourke_Mag_11,Lotus_corniculatus,NA,not collected,NA
+222,8,2011,AoifeO'Rourke_Mag_11,Taraxacum_agg,NA,not collected,NA
+215,8,2011,AoifeO'Rourke_Mag_11,Anthyllis_vulneraria,NA,not collected,NA
+220,8,2011,AoifeO'Rourke_Mag_11,Anthyllis_vulneraria,NA,not collected,NA
+260,9,2011,AoifeO'Rourke_Mag_11,Hypochaeris_radicata,NA,not collected,NA
+215,8,2011,AoifeO'Rourke_Mag_11,Leontodon_saxatilis,NA,not collected,NA
+193,7,2011,AoifeO'Rourke_Mag_11,Eryngium_maritimum,NA,not collected,NA
+268,9,2011,AoifeO'Rourke_Mag_11,Thymus_polytrichus,NA,not collected,NA
+282,10,2011,AoifeO'Rourke_Rav_11,Crepis_sp,NA,not collected,NA
+214,8,2011,AoifeO'Rourke_Rav_11,Daucus_carota,NA,not collected,NA
+222,8,2011,AoifeO'Rourke_Rav_11,Euphrasia_sp,NA,not collected,NA
+184,7,2011,AoifeO'Rourke_Rav_11,Galium_verum,NA,not collected,NA
+225,8,2011,AoifeO'Rourke_Rav_11,Hypochaeris_radicata,NA,not collected,NA
+130,5,2011,AoifeO'Rourke_Rav_11,Leontodon_saxatilis,NA,not collected,NA
+148,5,2011,AoifeO'Rourke_Rav_11,Lotus_corniculatus,NA,not collected,NA
+219,8,2011,AoifeO'Rourke_Rav_11,Pilosella_officinarum,NA,not collected,NA
+217,8,2011,AoifeO'Rourke_Rav_11,Senecio_jacobaea,NA,not collected,NA
+175,6,2011,AoifeO'Rourke_Rav_11,Lotus_corniculatus,NA,not collected,NA
+182,7,2011,AoifeO'Rourke_Rav_11,Pilosella_officinarum,NA,not collected,NA
+195,7,2011,AoifeO'Rourke_Rav_11,Vicia_sativa,NA,not collected,NA
+228,8,2011,AoifeO'Rourke_Rav_11,Anacamptis_pyramidalis,NA,not collected,NA
+186,7,2011,AoifeO'Rourke_Rav_11,Anthyllis_vulneraria,NA,not collected,NA
+210,7,2011,AoifeO'Rourke_Rav_11,Hypochaeris_radicata,NA,not collected,NA
+210,7,2011,AoifeO'Rourke_Rav_11,Lotus_corniculatus,NA,not collected,NA
+209,7,2011,AoifeO'Rourke_Rav_11,Anthyllis_vulneraria,NA,not collected,NA
+237,8,2011,AoifeO'Rourke_Rav_11,Leontodon_saxatilis,NA,not collected,NA
+229,8,2011,AoifeO'Rourke_Rav_11,Pilosella_officinarum,NA,not collected,NA
+153,6,2011,AoifeO'Rourke_Rav_11,Ononis_repens,NA,not collected,NA
+158,6,2011,AoifeO'Rourke_Rav_11,Thymus_polytrichus,NA,not collected,NA
+160,6,2011,AoifeO'Rourke_Rav_11,Viola_lutea,NA,not collected,NA
+214,8,2011,AoifeO'Rourke_Sal_11,Hypochaeris_radicata,NA,not collected,NA
+185,7,2011,AoifeO'Rourke_Sal_11,Lotus_corniculatus,NA,not collected,NA
+218,8,2011,AoifeO'Rourke_Sal_11,Knautia_arvensis,NA,not collected,NA
+219,8,2011,AoifeO'Rourke_Sal_11,Galium_verum,NA,not collected,NA
+160,6,2011,AoifeO'Rourke_Sal_11,Leontodon_saxatilis,NA,not collected,NA
+190,7,2011,AoifeO'Rourke_Sal_11,Lotus_corniculatus,NA,not collected,NA
+221,8,2011,AoifeO'Rourke_Sal_11,Ranunculus_acris,NA,not collected,NA
+161,6,2011,AoifeO'Rourke_Sal_11,Hypochaeris_radicata,NA,not collected,NA
+225,8,2011,AoifeO'Rourke_Sal_11,Knautia_arvensis,NA,not collected,NA
+168,6,2011,AoifeO'Rourke_Sal_11,Leontodon_saxatilis,NA,not collected,NA
+198,7,2011,AoifeO'Rourke_Sal_11,Lotus_corniculatus,NA,not collected,NA
+169,6,2011,AoifeO'Rourke_Sal_11,Ononis_repens,NA,not collected,NA
+169,6,2011,AoifeO'Rourke_Sal_11,Thymus_polytrichus,NA,not collected,NA
+170,6,2011,AoifeO'Rourke_Sal_11,Trifolium_repens,NA,not collected,NA
+172,6,2011,SarahMullen_AllSaints_11,Vicia_cracca,NA,not collected,NA
+223,8,2011,SarahMullen_AllSaints_11,Leontodon_saxatilis,1,total abundance per plant species,25
+181,6,2011,SarahMullen_AllSaints_11,Daucus_carota,5,total abundance per plant species,625
+176,6,2011,SarahMullen_AllSaints_11,Trifolium_repens,8,total abundance per plant species,104
+148,5,2011,SarahMullen_AllSaints_11,Ranunculus_repens,8,total abundance per plant species,240
+198,7,2011,SarahMullen_AllSaints_11,Rhinanthus_minor,15,total abundance per plant species,225
+156,6,2011,SarahMullen_AllSaints_11,Leucanthemum_vulgare,17,total abundance per plant species,850
+239,8,2011,SarahMullen_AllSaints_11,Leontodon_saxatilis,18,total abundance per plant species,450
+226,8,2011,SarahMullen_AllSaints_11,Potentilla_erecta,21,total abundance per plant species,315
+168,6,2011,SarahMullen_AllSaints_11,Prunella_vulgaris,32,total abundance per plant species,480
+223,8,2011,SarahMullen_AllSaints_11,Lotus_corniculatus,42,total abundance per plant species,672
+189,7,2011,SarahMullen_AllSaints_11,Knautia_arvensis,48,total abundance per plant species,1920
+196,7,2011,SarahMullen_AllSaints_11,Thymus_polytrichus,50,total abundance per plant species,200
+195,7,2011,SarahMullen_AllSaints_11,Leontodon_saxatilis,52,total abundance per plant species,1300
+238,8,2011,SarahMullen_AllSaints_11,Trifolium_pratense,55,total abundance per plant species,825
+209,7,2011,SarahMullen_AllSaints_11,Trifolium_pratense,58,total abundance per plant species,870
+214,8,2011,SarahMullen_AllSaints_11,Galium_verum,59,total abundance per plant species,177
+214,8,2011,SarahMullen_AllSaints_11,Ranunculus_repens,90,total abundance per plant species,2700
+217,8,2011,SarahMullen_AllSaints_11,Pimpinella_saxifraga,97,total abundance per plant species,737.2
+218,8,2011,SarahMullen_AllSaints_11,Lotus_corniculatus,229,total abundance per plant species,3664
+219,8,2011,SarahMullen_AllSaints_11,Linum_catharticum,262,total abundance per plant species,1048
+221,8,2011,SarahMullen_AllSaints_11,Centaurea_nigra,846,total abundance per plant species,33840
+221,8,2011,SarahMullen_Ardmullen_11,Ranunculus_repens,NA,not collected,NA
+226,8,2011,SarahMullen_Ardmullen_11,Vicia_cracca,NA,not collected,NA
+198,7,2011,SarahMullen_Ardmullen_11,Trifolium_pratense,3,total abundance per plant species,45
+169,6,2011,SarahMullen_Ardmullen_11,Trifolium_pratense,9,total abundance per plant species,135
+223,8,2011,SarahMullen_Ardmullen_11,Pimpinella_saxifraga,11,total abundance per plant species,83.6
+188,7,2011,SarahMullen_Ardmullen_11,Hypericum_sp,11,total abundance per plant species,275
+144,5,2011,SarahMullen_Ardmullen_11,Potentilla_erecta,26,total abundance per plant species,390
+173,6,2011,SarahMullen_Ardmullen_11,Potentilla_erecta,28,total abundance per plant species,420
+217,8,2011,SarahMullen_Ardmullen_11,Cirsium_palustre,42,total abundance per plant species,840
+188,7,2011,SarahMullen_Ardmullen_11,Cirsium_palustre,220,total abundance per plant species,4400
+198,7,2011,SarahMullen_Ardmullen_11,Trifolium_repens,259,total abundance per plant species,3367
+208,7,2011,SarahMullen_Ardmullen_11,Trifolium_repens,561,total abundance per plant species,7293
+196,7,2011,SarahMullen_Ballinasloe_11,Cirsium_palustre,1,total abundance per plant species,20
+145,5,2011,SarahMullen_Ballinasloe_11,Cirsium_arvense,1,total abundance per plant species,25
+195,7,2011,SarahMullen_Ballinasloe_11,Cirsium_vulgare,2,total abundance per plant species,60
+192,7,2011,SarahMullen_Ballinasloe_11,Taraxacum_agg,2,total abundance per plant species,100
+154,6,2011,SarahMullen_Ballinasloe_11,Trifolium_repens,87,total abundance per plant species,1131
+213,8,2011,SarahMullen_Ballinasloe_11,Leontodon_saxatilis,243,total abundance per plant species,6075
+238,8,2011,SarahMullen_Ballyduff_11,Plantago_lanceolata,NA,not collected,NA
+194,7,2011,SarahMullen_Ballyduff_11,Potentilla_erecta,3,total abundance per plant species,45
+231,8,2011,SarahMullen_Ballyduff_11,Trifolium_pratense,16,total abundance per plant species,240
+270,9,2011,SarahMullen_Ballyduff_11,Medicago_lupulina,39,total abundance per plant species,312
+193,7,2011,SarahMullen_Ballyduff_11,Cirsium_vulgare,45,total abundance per plant species,1350
+188,7,2011,SarahMullen_Ballyduff_11,Leontodon_saxatilis,45,total abundance per plant species,1125
+201,7,2011,SarahMullen_Ballyduff_11,Ranunculus_repens,48,total abundance per plant species,1440
+184,7,2011,SarahMullen_Ballyduff_11,Prunella_vulgaris,54,total abundance per plant species,810
+139,5,2011,SarahMullen_Ballyduff_11,Lotus_corniculatus,61,total abundance per plant species,976
+225,8,2011,SarahMullen_Ballyduff_11,Plantago_lanceolata,69,total abundance per plant species,2760
+225,8,2011,SarahMullen_Ballyduff_11,Prunella_vulgaris,148,total abundance per plant species,2220
+193,7,2011,SarahMullen_Ballyduff_11,Trifolium_repens,232,total abundance per plant species,3016
+244,9,2011,SarahMullen_Ballyduff_11,Leontodon_saxatilis,477,total abundance per plant species,11925
+193,7,2011,SarahMullen_Ballyduff_11,Euphrasia_sp,2052,total abundance per plant species,20520
+153,6,2011,SarahMullen_Breeole_11,Knautia_arvensis,NA,not collected,NA
+192,7,2011,SarahMullen_Breeole_11,Leontodon_saxatilis,1,total abundance per plant species,25
+240,8,2011,SarahMullen_Breeole_11,Gymnadenia_conopsea,1,total abundance per plant species,150
+160,6,2011,SarahMullen_Breeole_11,Centaurea_nigra,6,total abundance per plant species,240
+158,6,2011,SarahMullen_Breeole_11,Hypericum_sp,8,total abundance per plant species,200
+218,8,2011,SarahMullen_Breeole_11,Hypericum_sp,9,total abundance per plant species,225
+190,7,2011,SarahMullen_Breeole_11,Cirsium_palustre,19,total abundance per plant species,380
+209,7,2011,SarahMullen_Breeole_11,Leontodon_saxatilis,19,total abundance per plant species,475
+225,8,2011,SarahMullen_Breeole_11,Trifolium_pratense,25,total abundance per plant species,375
+225,8,2011,SarahMullen_Breeole_11,Plantago_lanceolata,31,total abundance per plant species,1240
+185,7,2011,SarahMullen_Breeole_11,Plantago_lanceolata,31,total abundance per plant species,1240
+216,8,2011,SarahMullen_Breeole_11,Polygala_vulgaris,45,total abundance per plant species,360
+154,6,2011,SarahMullen_Breeole_11,Leontodon_saxatilis,105,total abundance per plant species,2625
+222,8,2011,SarahMullen_Breeole_11,Potentilla_erecta,208,total abundance per plant species,3120
+195,7,2011,SarahMullen_Breeole_11,Carlina_vulgaris,257,total abundance per plant species,10280
+228,8,2011,SarahMullen_Breeole_11,Lotus_corniculatus,292,total abundance per plant species,4672
+154,6,2011,SarahMullen_Breeole_11,Potentilla_erecta,1518,total abundance per plant species,22770
+210,7,2011,SarahMullen_Breeole_11,Potentilla_erecta,3105,total abundance per plant species,46575
+183,7,2011,SarahMullen_Carrownalassan_11,Linum_catharticum,NA,not collected,NA
+245,9,2011,SarahMullen_Carrownalassan_11,Ranunculus_repens,2,total abundance per plant species,60
+270,9,2011,SarahMullen_Carrownalassan_11,Achillea_millefolium,4,total abundance per plant species,400
+185,7,2011,SarahMullen_Carrownalassan_11,Ranunculus_repens,5,total abundance per plant species,150
+190,7,2011,SarahMullen_Carrownalassan_11,Trifolium_repens,8,total abundance per plant species,104
+161,6,2011,SarahMullen_Carrownalassan_11,Leucanthemum_vulgare,9,total abundance per plant species,450
+225,8,2011,SarahMullen_Carrownalassan_11,Achillea_millefolium,11,total abundance per plant species,1100
+226,8,2011,SarahMullen_Carrownalassan_11,Cirsium_palustre,12,total abundance per plant species,240
+226,8,2011,SarahMullen_Carrownalassan_11,Prunella_vulgaris,28,total abundance per plant species,420
+168,6,2011,SarahMullen_Carrownalassan_11,Cirsium_palustre,29,total abundance per plant species,580
+170,6,2011,SarahMullen_Carrownalassan_11,Plantago_lanceolata,44,total abundance per plant species,1760
+171,6,2011,SarahMullen_Carrownalassan_11,Cirsium_arvense,48,total abundance per plant species,1200
+147,5,2011,SarahMullen_Carrownalassan_11,Lotus_corniculatus,50,total abundance per plant species,800
+178,6,2011,SarahMullen_Carrownalassan_11,Trifolium_repens,54,total abundance per plant species,702
+178,6,2011,SarahMullen_Carrownalassan_11,Leontodon_saxatilis,54,total abundance per plant species,1350
+178,6,2011,SarahMullen_Carrownalassan_11,Leontodon_saxatilis,57,total abundance per plant species,1425
+225,8,2011,SarahMullen_Carrownalassan_11,Cirsium_arvense,58,total abundance per plant species,1450
+208,7,2011,SarahMullen_Carrownalassan_11,Trifolium_pratense,93,total abundance per plant species,1395
+217,8,2011,SarahMullen_Carrownalassan_11,Prunella_vulgaris,122,total abundance per plant species,1830
+221,8,2011,SarahMullen_Carrownalassan_11,Lotus_corniculatus,132,total abundance per plant species,2112
+207,7,2011,SarahMullen_Carrownalassan_11,Ranunculus_repens,163,total abundance per plant species,4890
+186,7,2011,SarahMullen_Carrownalassan_11,Trifolium_repens,258,total abundance per plant species,3354
+221,8,2011,SarahMullen_Carrownalassan_11,Trifolium_pratense,327,total abundance per plant species,4905
+237,8,2011,SarahMullen_Castlesampson_11,Cirsium_vulgare,NA,not collected,NA
+217,8,2011,SarahMullen_Castlesampson_11,Cotoneaster_franchetii,NA,not collected,NA
+192,7,2011,SarahMullen_Castlesampson_11,Carlina_vulgaris,6,total abundance per plant species,240
+176,6,2011,SarahMullen_Castlesampson_11,Linum_catharticum,7,total abundance per plant species,28
+176,6,2011,SarahMullen_Castlesampson_11,Trifolium_pratense,13,total abundance per plant species,195
+215,8,2011,SarahMullen_Castlesampson_11,Centaurea_nigra,13,total abundance per plant species,520
+190,7,2011,SarahMullen_Castlesampson_11,Lotus_corniculatus,19,total abundance per plant species,304
+194,7,2011,SarahMullen_Castlesampson_11,Hypericum_sp,30,total abundance per plant species,750
+199,7,2011,SarahMullen_Castlesampson_11,Prunella_vulgaris,35,total abundance per plant species,525
+223,8,2011,SarahMullen_Castlesampson_11,Potentilla_erecta,55,total abundance per plant species,825
+168,6,2011,SarahMullen_Castlesampson_11,Leontodon_saxatilis,69,total abundance per plant species,1725
+140,5,2011,SarahMullen_Castlesampson_11,Prunella_vulgaris,84,total abundance per plant species,1260
+215,8,2011,SarahMullen_Castlesampson_11,Potentilla_erecta,91,total abundance per plant species,1365
+214,8,2011,SarahMullen_Castlesampson_11,Cirsium_palustre,104,total abundance per plant species,2080
+209,7,2011,SarahMullen_Castlesampson_11,Pimpinella_saxifraga,156,total abundance per plant species,1185.6
+260,9,2011,SarahMullen_Castlesampson_11,Thymus_polytrichus,450,total abundance per plant species,1800
+146,5,2011,SarahMullen_Castlesampson_11,Potentilla_erecta,885,total abundance per plant species,13275
+197,7,2011,SarahMullen_Castlestrange_11,Ranunculus_acris,NA,not collected,NA
+220,8,2011,SarahMullen_Castlestrange_11,Taraxacum_agg,1,total abundance per plant species,50
+193,7,2011,SarahMullen_Castlestrange_11,Cirsium_vulgare,5,total abundance per plant species,150
+214,8,2011,SarahMullen_Castlestrange_11,Trifolium_repens,7,total abundance per plant species,91
+218,8,2011,SarahMullen_Castlestrange_11,Potentilla_erecta,8,total abundance per plant species,120
+188,7,2011,SarahMullen_Castlestrange_11,Cirsium_arvense,12,total abundance per plant species,300
+215,8,2011,SarahMullen_Castlestrange_11,Achillea_millefolium,12,total abundance per plant species,1200
+215,8,2011,SarahMullen_Castlestrange_11,Lotus_corniculatus,15,total abundance per plant species,240
+208,7,2011,SarahMullen_Castlestrange_11,Leontodon_saxatilis,15,total abundance per plant species,375
+223,8,2011,SarahMullen_Castlestrange_11,Bellis_perennis,20,total abundance per plant species,500
+186,7,2011,SarahMullen_Castlestrange_11,Cirsium_arvense,24,total abundance per plant species,600
+238,8,2011,SarahMullen_Castlestrange_11,Plantago_lanceolata,27,total abundance per plant species,1080
+187,7,2011,SarahMullen_Castlestrange_11,Plantago_lanceolata,27,total abundance per plant species,1080
+172,6,2011,SarahMullen_Castlestrange_11,Prunella_vulgaris,35,total abundance per plant species,525
+238,8,2011,SarahMullen_Castlestrange_11,Ranunculus_repens,48,total abundance per plant species,1440
+194,7,2011,SarahMullen_Castlestrange_11,Cirsium_palustre,57,total abundance per plant species,1140
+168,6,2011,SarahMullen_Castlestrange_11,Trifolium_repens,74,total abundance per plant species,962
+217,8,2011,SarahMullen_Castlestrange_11,Bellis_perennis,124,total abundance per plant species,3100
+174,6,2011,SarahMullen_Castlestrange_11,Cirsium_palustre,171,total abundance per plant species,3420
+225,8,2011,SarahMullen_Castlestrange_11,Leontodon_saxatilis,378,total abundance per plant species,9450
+163,6,2011,SarahMullen_Clonmacnoise_11,Senecio_jacobaea,NA,not collected,NA
+244,9,2011,SarahMullen_Clonmacnoise_11,Leucanthemum_vulgare,1,total abundance per plant species,50
+175,6,2011,SarahMullen_Clonmacnoise_11,Polygala_vulgaris,2,total abundance per plant species,16
+214,8,2011,SarahMullen_Clonmacnoise_11,Achillea_millefolium,2,total abundance per plant species,200
+225,8,2011,SarahMullen_Clonmacnoise_11,Plantago_lanceolata,9,total abundance per plant species,360
+209,7,2011,SarahMullen_Clonmacnoise_11,Prunella_vulgaris,10,total abundance per plant species,150
+223,8,2011,SarahMullen_Clonmacnoise_11,Prunella_vulgaris,20,total abundance per plant species,300
+168,6,2011,SarahMullen_Clonmacnoise_11,Centaurea_nigra,28,total abundance per plant species,1120
+170,6,2011,SarahMullen_Clonmacnoise_11,Trifolium_repens,29,total abundance per plant species,377
+197,7,2011,SarahMullen_Clonmacnoise_11,Potentilla_erecta,31,total abundance per plant species,465
+167,6,2011,SarahMullen_Clonmacnoise_11,Leontodon_saxatilis,34,total abundance per plant species,850
+217,8,2011,SarahMullen_Clonmacnoise_11,Anthyllis_vulneraria,38,total abundance per plant species,3040
+243,8,2011,SarahMullen_Clonmacnoise_11,Trifolium_repens,40,total abundance per plant species,520
+243,8,2011,SarahMullen_Clonmacnoise_11,Thymus_polytrichus,43,total abundance per plant species,172
+183,7,2011,SarahMullen_Clonmacnoise_11,Potentilla_erecta,78,total abundance per plant species,1170
+239,8,2011,SarahMullen_Clonmacnoise_11,Lotus_corniculatus,84,total abundance per plant species,1344
+159,6,2011,SarahMullen_Clonmacnoise_11,Galium_verum,104,total abundance per plant species,312
+227,8,2011,SarahMullen_Clonmacnoise_11,Potentilla_erecta,105,total abundance per plant species,1575
+221,8,2011,SarahMullen_Clonmacnoise_11,Leontodon_saxatilis,108,total abundance per plant species,2700
+210,7,2011,SarahMullen_Clonmacnoise_11,Lotus_corniculatus,134,total abundance per plant species,2144
+238,8,2011,SarahMullen_Clonmacnoise_11,Pimpinella_saxifraga,159,total abundance per plant species,1208.4
+223,8,2011,SarahMullen_Clonmacnoise_11,Lotus_corniculatus,206,total abundance per plant species,3296
+183,7,2011,SarahMullen_Clonmacnoise_11,Ranunculus_repens,350,total abundance per plant species,10500
+251,9,2011,SarahMullen_Clonmacnoise_11,Thymus_polytrichus,464,total abundance per plant species,1856
+175,6,2011,SarahMullen_Clonmacnoise_11,Trifolium_pratense,504,total abundance per plant species,7560
+210,7,2011,SarahMullen_Cloonfenbaun_11,Ranunculus_repens,2,total abundance per plant species,60
+240,8,2011,SarahMullen_Cloonfenbaun_11,Leontodon_saxatilis,10,total abundance per plant species,250
+201,7,2011,SarahMullen_Cloonfenbaun_11,Achillea_millefolium,12,total abundance per plant species,1200
+146,5,2011,SarahMullen_Cloonfenbaun_11,Cirsium_palustre,13,total abundance per plant species,260
+222,8,2011,SarahMullen_Cloonfenbaun_11,Trifolium_pratense,15,total abundance per plant species,225
+221,8,2011,SarahMullen_Cloonfenbaun_11,Trifolium_pratense,15,total abundance per plant species,225
+227,8,2011,SarahMullen_Cloonfenbaun_11,Ranunculus_repens,16,total abundance per plant species,480
+194,7,2011,SarahMullen_Cloonfenbaun_11,Cirsium_palustre,21,total abundance per plant species,420
+217,8,2011,SarahMullen_Cloonfenbaun_11,Trifolium_repens,36,total abundance per plant species,468
+260,9,2011,SarahMullen_Curry_11,Vicia_cracca,NA,not collected,NA
+206,7,2011,SarahMullen_Curry_11,Achillea_millefolium,1,total abundance per plant species,100
+244,9,2011,SarahMullen_Curry_11,Thymus_polytrichus,3,total abundance per plant species,12
+193,7,2011,SarahMullen_Curry_11,Achillea_millefolium,10,total abundance per plant species,1000
+166,6,2011,SarahMullen_Curry_11,Bellis_perennis,13,total abundance per plant species,325
+201,7,2011,SarahMullen_Curry_11,Pilosella_officinarum,18,total abundance per plant species,324
+181,6,2011,SarahMullen_Curry_11,Leontodon_saxatilis,27,total abundance per plant species,675
+218,8,2011,SarahMullen_Curry_11,Cirsium_palustre,40,total abundance per plant species,800
+225,8,2011,SarahMullen_Curry_11,Ranunculus_repens,110,total abundance per plant species,3300
+148,5,2011,SarahMullen_Curry_11,Potentilla_erecta,125,total abundance per plant species,1875
+160,6,2011,SarahMullen_Curry_11,Trifolium_pratense,126,total abundance per plant species,1890
+209,7,2011,SarahMullen_Curry_11,Trifolium_repens,144,total abundance per plant species,1872
+189,7,2011,SarahMullen_Curry_11,Pedicularis_sylvatica,166,total abundance per plant species,4150
+184,7,2011,SarahMullen_Curry_11,Plantago_lanceolata,207,total abundance per plant species,8280
+193,7,2011,SarahMullen_Curry_11,Lotus_corniculatus,213,total abundance per plant species,3408
+191,7,2011,SarahMullen_Curry_11,Euphrasia_sp,312,total abundance per plant species,3120
+175,6,2011,SarahMullen_Curry_11,Potentilla_erecta,380,total abundance per plant species,5700
+240,8,2011,SarahMullen_Curry_11,Potentilla_erecta,585,total abundance per plant species,8775
+255,9,2011,SarahMullen_Fray_11,Leontodon_saxatilis,NA,not collected,NA
+123,5,2011,SarahMullen_Fray_11,Pilosella_officinarum,1,total abundance per plant species,30
+125,5,2011,SarahMullen_Fray_11,Plantago_lanceolata,1,total abundance per plant species,40
+125,5,2011,SarahMullen_Fray_11,Bellis_perennis,3,total abundance per plant species,75
+217,8,2011,SarahMullen_Fray_11,Cirsium_palustre,4,total abundance per plant species,80
+188,7,2011,SarahMullen_Fray_11,Lotus_corniculatus,36,total abundance per plant species,576
+220,8,2011,SarahMullen_Fray_11,Trifolium_repens,57,total abundance per plant species,741
+220,8,2011,SarahMullen_Fray_11,Lotus_corniculatus,66,total abundance per plant species,1056
+220,8,2011,SarahMullen_Fray_11,Potentilla_erecta,81,total abundance per plant species,1215
+160,6,2011,SarahMullen_Fray_11,Calluna_vulgaris,89,total abundance per plant species,445
+221,8,2011,SarahMullen_Fray_11,Potentilla_erecta,162,total abundance per plant species,2430
+133,5,2011,SarahMullen_Fray_11,Potentilla_erecta,191,total abundance per plant species,2865
+164,6,2011,SarahMullen_Fray_11,Thymus_polytrichus,428,total abundance per plant species,1712
+168,6,2011,SarahMullen_Fray_11,Thymus_polytrichus,856,total abundance per plant species,3424
+178,6,2011,SarahMullen_Fray_11,Thymus_polytrichus,2056,total abundance per plant species,8224
+188,7,2011,SarahMullen_Glenballythomas_11,Cirsium_arvense,NA,not collected,NA
+163,6,2011,SarahMullen_Glenballythomas_11,Rumex,4,total abundance per plant species,24
+166,6,2011,SarahMullen_Glenballythomas_11,Bellis_perennis,4,total abundance per plant species,100
+192,7,2011,SarahMullen_Glenballythomas_11,Leontodon_saxatilis,10,total abundance per plant species,250
+185,7,2011,SarahMullen_Glenballythomas_11,Cirsium_palustre,22,total abundance per plant species,440
+225,8,2011,SarahMullen_Glenballythomas_11,Cirsium_palustre,33,total abundance per plant species,660
+205,7,2011,SarahMullen_Glenballythomas_11,Ranunculus_acris,36,total abundance per plant species,900
+227,8,2011,SarahMullen_Glenballythomas_11,Cerastium_fontanum,54,total abundance per plant species,378
+283,10,2011,SarahMullen_Glenballythomas_11,Ranunculus_repens,121,total abundance per plant species,3630
+218,8,2011,SarahMullen_Glenballythomas_11,Ranunculus_repens,121,total abundance per plant species,3630
+197,7,2011,SarahMullen_Glenballythomas_11,Trifolium_repens,128,total abundance per plant species,1664
+148,5,2011,SarahMullen_Glenballythomas_11,Plantago_lanceolata,291,total abundance per plant species,11640
+148,5,2011,SarahMullen_Knockrogherry_11,Cirsium_palustre,1,total abundance per plant species,20
+196,7,2011,SarahMullen_Knockrogherry_11,Cirsium_palustre,1,total abundance per plant species,20
+183,7,2011,SarahMullen_Knockrogherry_11,Trifolium_pratense,21,total abundance per plant species,315
+195,7,2011,SarahMullen_Knockrogherry_11,Ranunculus_repens,24,total abundance per plant species,720
+229,8,2011,SarahMullen_Knockrogherry_11,Leontodon_saxatilis,28,total abundance per plant species,700
+197,7,2011,SarahMullen_Knockrogherry_11,Trifolium_repens,139,total abundance per plant species,1807
+222,8,2011,SarahMullen_Knockrogherry_11,Trifolium_repens,195,total abundance per plant species,2535
+140,5,2011,SarahMullen_Knockrogherry_11,Bellis_perennis,346,total abundance per plant species,8650
+221,8,2011,SarahMullen_Pollalaher_11,Cirsium_vulgare,10,total abundance per plant species,300
+228,8,2011,SarahMullen_Pollalaher_11,Bellis_perennis,15,total abundance per plant species,375
+230,8,2011,SarahMullen_Pollalaher_11,Cerastium_fontanum,32,total abundance per plant species,224
+151,5,2011,SarahMullen_Pollalaher_11,Cirsium_palustre,50,total abundance per plant species,1000
+127,5,2011,SarahMullen_Pollalaher_11,Ranunculus_repens,57,total abundance per plant species,1710
+217,8,2011,SarahMullen_Pollalaher_11,Leontodon_saxatilis,64,total abundance per plant species,1600
+188,7,2011,SarahMullen_Pollalaher_11,Cirsium_palustre,81,total abundance per plant species,1620
+222,8,2011,SarahMullen_Pollalaher_11,Bellis_perennis,388,total abundance per plant species,9700
+189,7,2011,SarahMullen_Skrine1_11,Ranunculus_acris,NA,not collected,NA
+221,8,2011,SarahMullen_Skrine1_11,Hypericum_sp,1,total abundance per plant species,25
+150,5,2011,SarahMullen_Skrine1_11,Hypericum_sp,2,total abundance per plant species,50
+195,7,2011,SarahMullen_Skrine1_11,Leontodon_saxatilis,3,total abundance per plant species,75
+194,7,2011,SarahMullen_Skrine1_11,Succisa_pratensis,3,total abundance per plant species,75
+217,8,2011,SarahMullen_Skrine1_11,Prunella_vulgaris,15,total abundance per plant species,225
+219,8,2011,SarahMullen_Skrine1_11,Cirsium_palustre,18,total abundance per plant species,360
+222,8,2011,SarahMullen_Skrine1_11,Achillea_millefolium,20,total abundance per plant species,2000
+194,7,2011,SarahMullen_Skrine1_11,Ranunculus_repens,31,total abundance per plant species,930
+210,7,2011,SarahMullen_Skrine1_11,Plantago_lanceolata,33,total abundance per plant species,1320
+223,8,2011,SarahMullen_Skrine1_11,Cirsium_palustre,36,total abundance per plant species,720
+168,6,2011,SarahMullen_Skrine1_11,Lotus_corniculatus,52,total abundance per plant species,832
+227,8,2011,SarahMullen_Skrine1_11,Trifolium_pratense,132,total abundance per plant species,1980
+217,8,2011,SarahMullen_Skrine1_11,Euphrasia_sp,147,total abundance per plant species,1470
+218,8,2011,SarahMullen_Skrine1_11,Prunella_vulgaris,156,total abundance per plant species,2340
+225,8,2011,SarahMullen_Skrine1_11,Leontodon_saxatilis,180,total abundance per plant species,4500
+214,8,2011,SarahMullen_Skrine1_11,Potentilla_erecta,200,total abundance per plant species,3000
+208,7,2011,SarahMullen_Skrine1_11,Trifolium_repens,218,total abundance per plant species,2834
+228,8,2011,SarahMullen_Skrine1_11,Ranunculus_repens,370,total abundance per plant species,11100
+160,6,2011,SarahMullen_Skrine1_11,Potentilla_erecta,390,total abundance per plant species,5850
+230,8,2011,SarahMullen_Skrine1_11,Thymus_polytrichus,430,total abundance per plant species,1720
+209,7,2011,SarahMullen_Skrine1_11,Euphrasia_sp,2660,total abundance per plant species,26600
+215,8,2011,SarahMullen_Skrine2_11,Cirsium_palustre,1,total abundance per plant species,20
+246,9,2011,SarahMullen_Skrine2_11,Bellis_perennis,11,total abundance per plant species,275
+192,7,2011,SarahMullen_Skrine2_11,Trifolium_pratense,14,total abundance per plant species,210
+160,6,2011,SarahMullen_Skrine2_11,Prunella_vulgaris,21,total abundance per plant species,315
+180,6,2011,SarahMullen_Skrine2_11,Plantago_lanceolata,23,total abundance per plant species,920
+173,6,2011,SarahMullen_Skrine2_11,Ranunculus_repens,45,total abundance per plant species,1350
+246,9,2011,SarahMullen_Skrine2_11,Potentilla_erecta,56,total abundance per plant species,840
+158,6,2011,SarahMullen_Skrine2_11,Bellis_perennis,60,total abundance per plant species,1500
+193,7,2011,SarahMullen_Skrine2_11,Cirsium_palustre,88,total abundance per plant species,1760
+193,7,2011,SarahMullen_Skrine2_11,Trifolium_repens,133,total abundance per plant species,1729
+148,5,2011,SarahMullen_Skrine2_11,Trifolium_repens,1028,total abundance per plant species,13364
+161,6,2011,SarahMullen_Tibarney_11,Senecio_jacobaea,NA,not collected,NA
+166,6,2011,SarahMullen_Tibarney_11,Ranunculus_acris,2,total abundance per plant species,50
+180,6,2011,SarahMullen_Tibarney_11,Cirsium_arvense,3,total abundance per plant species,75
+214,8,2011,SarahMullen_Tibarney_11,Cirsium_palustre,4,total abundance per plant species,80
+214,8,2011,SarahMullen_Tibarney_11,Dactylorhiza_fuchsii,5,total abundance per plant species,75
+188,7,2011,SarahMullen_Tibarney_11,Lotus_corniculatus,35,total abundance per plant species,560
+222,8,2011,SarahMullen_Tibarney_11,Lotus_corniculatus,38,total abundance per plant species,608
+223,8,2011,SarahMullen_Tibarney_11,Ranunculus_repens,44,total abundance per plant species,1320
+229,8,2011,SarahMullen_Tibarney_11,Trifolium_pratense,52,total abundance per plant species,780
+186,7,2011,SarahMullen_Tibarney_11,Trifolium_pratense,74,total abundance per plant species,1110
+206,7,2011,SarahMullen_Tibarney_11,Cirsium_palustre,80,total abundance per plant species,1600
+169,6,2011,SarahMullen_Tibarney_11,Trifolium_repens,81,total abundance per plant species,1053
+191,7,2011,SarahMullen_Tibarney_11,Ranunculus_repens,114,total abundance per plant species,3420
+267,9,2011,SarahMullen_Tibarney_11,Prunella_vulgaris,134,total abundance per plant species,2010
+220,8,2011,SarahMullen_Tibarney_11,Leontodon_saxatilis,206,total abundance per plant species,5150
+174,6,2011,SarahMullen_Tibarney_11,Leontodon_saxatilis,350,total abundance per plant species,8750
+217,8,2011,SarahMullen_Turrock_11,Pedicularis_sylvatica,2,total abundance per plant species,50
+180,6,2011,SarahMullen_Turrock_11,Ranunculus_repens,3,total abundance per plant species,90
+161,6,2011,SarahMullen_Turrock_11,Plantago_lanceolata,6,total abundance per plant species,240
+195,7,2011,SarahMullen_Turrock_11,Achillea_millefolium,10,total abundance per plant species,1000
+223,8,2011,SarahMullen_Turrock_11,Leontodon_saxatilis,15,total abundance per plant species,375
+246,9,2011,SarahMullen_Turrock_11,Ranunculus_repens,20,total abundance per plant species,600
+125,5,2011,SarahMullen_Turrock_11,Plantago_lanceolata,39,total abundance per plant species,1560
+186,7,2011,SarahMullen_Turrock_11,Leontodon_saxatilis,54,total abundance per plant species,1350
+126,5,2011,SarahMullen_Turrock_11,Potentilla_erecta,69,total abundance per plant species,1035
+126,5,2011,SarahMullen_Turrock_11,Pimpinella_saxifraga,74,total abundance per plant species,562.4
+219,8,2011,SarahMullen_Turrock_11,Trifolium_pratense,87,total abundance per plant species,1305
+221,8,2011,SarahMullen_Turrock_11,Pedicularis_sylvatica,147,total abundance per plant species,3675
+163,6,2011,SarahMullen_Turrock_11,Cirsium_palustre,175,total abundance per plant species,3500
+193,7,2011,SarahMullen_Turrock_11,Ranunculus_repens,441,total abundance per plant species,13230
+164,6,2011,SarahMullen_Turrock_11,Pimpinella_saxifraga,444,total abundance per plant species,3374.4
+167,6,2017,MichelleLarkin_BallinphuntaCoClare_17,Cirsium_vulgare,NA,not collected,NA
+169,6,2017,MichelleLarkin_BallinphuntaCoClare_17,Trifolium_repens,20,total abundance per plant species,260
+143,5,2017,MichelleLarkin_BallinphuntaCoClare_17,Prunella_vulgaris,26,total abundance per plant species,390
+144,5,2017,MichelleLarkin_BallinphuntaCoClare_17,Ranunculus_bulbosus,27,total abundance per plant species,810
+178,6,2017,MichelleLarkin_BallinphuntaCoClare_17,Ranunculus_acris,47,total abundance per plant species,1175
+218,8,2017,MichelleLarkin_BallinphuntaCoClare_17,Trifolium_pratense,58,total abundance per plant species,870
+180,6,2017,MichelleLarkin_BarracksLyanCoClare_17,Cirsium_vulgare,NA,not collected,NA
+222,8,2017,MichelleLarkin_BarracksLyanCoClare_17,Centaurea_nigra,1,total abundance per plant species,40
+167,6,2017,MichelleLarkin_BarracksLyanCoClare_17,Odontites_vernus,3,total abundance per plant species,27
+176,6,2017,MichelleLarkin_BarracksLyanCoClare_17,Leontodon_saxatilis,4,total abundance per plant species,100
+167,6,2017,MichelleLarkin_BarracksLyanCoClare_17,Ranunculus_bulbosus,4,total abundance per plant species,120
+195,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Trifolium_pratense,6,total abundance per plant species,90
+194,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Cirsium_arvense,8,total abundance per plant species,200
+147,5,2017,MichelleLarkin_BarracksLyanCoClare_17,Achillea_millefolium,9,total abundance per plant species,900
+188,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Veronica_chamaedrys,25,total abundance per plant species,300
+160,6,2017,MichelleLarkin_BarracksLyanCoClare_17,Euphrasia_sp,30,total abundance per plant species,300
+193,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Trifolium_pratense,56,total abundance per plant species,840
+210,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Lotus_corniculatus,60,total abundance per plant species,960
+184,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Trifolium_repens,81,total abundance per plant species,1053
+221,8,2017,MichelleLarkin_BarracksLyanCoClare_17,Trifolium_repens,118,total abundance per plant species,1534
+193,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Trifolium_pratense,130,total abundance per plant species,1950
+219,8,2017,MichelleLarkin_BarracksLyanCoClare_17,Ranunculus_acris,130,total abundance per plant species,3250
+130,5,2017,MichelleLarkin_BarracksLyanCoClare_17,Prunella_vulgaris,131,total abundance per plant species,1965
+175,6,2017,MichelleLarkin_BarracksLyanCoClare_17,Ranunculus_repens,152,total abundance per plant species,4560
+187,7,2017,MichelleLarkin_BarracksLyanCoClare_17,Leontodon_saxatilis,714,total abundance per plant species,17850
+180,6,2017,MichelleLarkin_CaherbullogCoClare_17,Ranunculus_acris,25,total abundance per plant species,625
+227,8,2017,MichelleLarkin_CaherbullogCoClare_17,Trifolium_repens,27,total abundance per plant species,351
+180,6,2017,MichelleLarkin_CaherbullogCoClare_17,Bellis_perennis,44,total abundance per plant species,1100
+175,6,2017,MichelleLarkin_CaherbullogCoClare_17,Trifolium_pratense,68,total abundance per plant species,1020
+197,7,2017,MichelleLarkin_CaherbullogCoClare_17,Trifolium_repens,150,total abundance per plant species,1950
+131,5,2017,MichelleLarkin_CappaghAghacurreenCoClare_17,Bellis_perennis,71,total abundance per plant species,1775
+167,6,2017,MichelleLarkin_CarrownamaddraCoClare_17,Trifolium_pratense,4,total abundance per plant species,60
+208,7,2017,MichelleLarkin_CarrownamaddraCoClare_17,Scorzoneroides_autumnalis,27,total abundance per plant species,810
+229,8,2017,MichelleLarkin_CarrownamaddraCoClare_17,Trifolium_repens,47,total abundance per plant species,611
+198,7,2017,MichelleLarkin_CarrownamaddraCoClare_17,Trifolium_repens,47,total abundance per plant species,611
+153,6,2017,MichelleLarkin_CloonselhernyCoClare_17,Centaurea_scabiosa,NA,not collected,NA
+192,7,2017,MichelleLarkin_CloonselhernyCoClare_17,Geranium_sanguineum,4,total abundance per plant species,120
+193,7,2017,MichelleLarkin_CloonselhernyCoClare_17,Leontodon_hispidus,22,total abundance per plant species,660
+192,7,2017,MichelleLarkin_CloonselhernyCoClare_17,Knautia_arvensis,28,total abundance per plant species,1120
+127,5,2017,MichelleLarkin_CloonselhernyCoClare_17,Parnassia_palustris,50,total abundance per plant species,1000
+220,8,2017,MichelleLarkin_CloonselhernyCoClare_17,Potentilla_erecta,61,total abundance per plant species,915
+160,6,2017,MichelleLarkin_CloonselhernyCoClare_17,Centaurea_nigra,69,total abundance per plant species,2760
+222,8,2017,MichelleLarkin_CloonselhernyCoClare_17,Leontodon_hispidus,642,total abundance per plant species,19260
+163,6,2017,MichelleLarkin_CloonselhernyCoClare_17,Leontodon_hispidus,1115,total abundance per plant species,33450
+194,7,2017,MichelleLarkin_CreehaunCarronCoClare_17,Salvia_verbenaca,NA,not collected,NA
+226,8,2017,MichelleLarkin_CreehaunCarronCoClare_17,Knautia_arvensis,NA,not collected,NA
+140,5,2017,MichelleLarkin_CreehaunCarronCoClare_17,Leontodon_hispidus,5,total abundance per plant species,150
+131,5,2017,MichelleLarkin_CreehaunCarronCoClare_17,Lotus_corniculatus,23,total abundance per plant species,368
+167,6,2017,MichelleLarkin_CreehaunCarronCoClare_17,Ranunculus_bulbosus,37,total abundance per plant species,1110
+209,7,2017,MichelleLarkin_CreehaunCarronCoClare_17,Leontodon_saxatilis,56,total abundance per plant species,1400
+208,7,2017,MichelleLarkin_CreehaunCarronCoClare_17,Ranunculus_acris,131,total abundance per plant species,3275
+142,5,2017,MichelleLarkin_CreehaunCarronCoClare_17,Trifolium_repens,520,total abundance per plant species,6760
+183,7,2017,MichelleLarkin_CreehaunCarronCoClare_17,Trifolium_repens,546,total abundance per plant species,7098
+183,7,2017,MichelleLarkin_CreehaunCarronCoClare_17,Trifolium_pratense,556,total abundance per plant species,8340
+195,7,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Scorzoneroides_autumnalis,NA,not collected,NA
+217,8,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Geranium_robertianum,NA,not collected,NA
+217,8,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Trifolium_pratense,NA,not collected,NA
+174,6,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Anthoxanthum_odoratum,NA,not collected,NA
+217,8,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Crataegus_monogyna,NA,not collected,NA
+162,6,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Ranunculus_repens,1,total abundance per plant species,30
+221,8,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Calluna_vulgaris,3,total abundance per plant species,15
+227,8,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Knautia_arvensis,11,total abundance per plant species,440
+156,6,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Ranunculus_bulbosus,13,total abundance per plant species,390
+189,7,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Trifolium_repens,39,total abundance per plant species,507
+169,6,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Ranunculus_acris,85,total abundance per plant species,2125
+171,6,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Plantago_lanceolata,128,total abundance per plant species,5120
+160,6,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Prunella_vulgaris,212,total abundance per plant species,3180
+226,8,2017,MichelleLarkin_DeelinBegCarronCountyClare_17,Scorzoneroides_autumnalis,258,total abundance per plant species,7740
+188,7,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Leontodon_hispidus,NA,not collected,NA
+166,6,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Leucanthemum_vulgare,5,total abundance per plant species,250
+195,7,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Prunella_vulgaris,14,total abundance per plant species,210
+161,6,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Trifolium_pratense,28,total abundance per plant species,420
+211,7,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Trifolium_repens,35,total abundance per plant species,455
+260,9,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Leontodon_saxatilis,39,total abundance per plant species,975
+215,8,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Lotus_corniculatus,56,total abundance per plant species,896
+238,8,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Potentilla_anserina,65,total abundance per plant species,1300
+240,8,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Scorzoneroides_autumnalis,219,total abundance per plant species,6570
+215,8,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Ranunculus_bulbosus,282,total abundance per plant species,8460
+185,7,2017,MichelleLarkin_DerreenatloghtanCoClare_17,Lotus_corniculatus,448,total abundance per plant species,7168
+185,7,2017,MichelleLarkin_DoorusDemesneCoGalway_17,Lotus_corniculatus,24,total abundance per plant species,384
+185,7,2017,MichelleLarkin_DoorusDemesneCoGalway_17,Prunella_vulgaris,50,total abundance per plant species,750
+219,8,2017,MichelleLarkin_DoorusDemesneCoGalway_17,Trifolium_repens,152,total abundance per plant species,1976
+134,5,2017,MichelleLarkin_FermoylestFormoyleEastFanoreCoClare_17,Solidago_virgaurea,NA,not collected,NA
+226,8,2017,MichelleLarkin_FermoylestFormoyleEastFanoreCoClare_17,Plantago_lanceolata,12,total abundance per plant species,480
+149,5,2017,MichelleLarkin_FermoylestFormoyleEastFanoreCoClare_17,Parnassia_palustris,13,total abundance per plant species,260
+149,5,2017,MichelleLarkin_FermoylestFormoyleEastFanoreCoClare_17,Leontodon_saxatilis,20,total abundance per plant species,500
+145,5,2017,MichelleLarkin_FermoylestFormoyleEastFanoreCoClare_17,Knautia_arvensis,84,total abundance per plant species,3360
+215,8,2017,MichelleLarkin_FermoylestFormoyleEastFanoreCoClare_17,Centaurea_nigra,255,total abundance per plant species,10200
+221,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Filipendula_ulmaria,NA,not collected,NA
+192,7,2017,MichelleLarkin_FormoyleEastCountyClare_17,Ajuga_reptans,6,total abundance per plant species,42
+180,6,2017,MichelleLarkin_FormoyleEastCountyClare_17,Cirsium_arvense,6,total abundance per plant species,150
+216,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Ranunculus_bulbosus,6,total abundance per plant species,180
+228,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Lotus_corniculatus,15,total abundance per plant species,240
+258,9,2017,MichelleLarkin_FormoyleEastCountyClare_17,Knautia_arvensis,18,total abundance per plant species,720
+241,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Polygala_vulgaris,19,total abundance per plant species,152
+167,6,2017,MichelleLarkin_FormoyleEastCountyClare_17,Ranunculus_acris,36,total abundance per plant species,900
+213,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Trifolium_pratense,45,total abundance per plant species,675
+223,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Prunella_vulgaris,68,total abundance per plant species,1020
+162,6,2017,MichelleLarkin_FormoyleEastCountyClare_17,Dactylorhiza_fuchsii,74,total abundance per plant species,1110
+208,7,2017,MichelleLarkin_FormoyleEastCountyClare_17,Prunella_vulgaris,114,total abundance per plant species,1710
+229,8,2017,MichelleLarkin_FormoyleEastCountyClare_17,Pedicularis_sylvatica,180,total abundance per plant species,4500
+227,8,2017,MichelleLarkin_FunshinBegCoGalway_17,Conopodium_majus,14,total abundance per plant species,700
+161,6,2017,MichelleLarkin_FunshinBegCoGalway_17,Leontodon_saxatilis,25,total abundance per plant species,625
+227,8,2017,MichelleLarkin_FunshinBegCoGalway_17,Ranunculus_repens,36,total abundance per plant species,1080
+230,8,2017,MichelleLarkin_FunshinBegCoGalway_17,Euphrasia_sp,63,total abundance per plant species,630
+205,7,2017,MichelleLarkin_FunshinBegCoGalway_17,Knautia_arvensis,78,total abundance per plant species,3120
+194,7,2017,MichelleLarkin_FunshinBegCoGalway_17,Centaurea_nigra,138,total abundance per plant species,5520
+179,6,2017,MichelleLarkin_FunshinBegCoGalway_17,Rhinanthus_minor,536,total abundance per plant species,8040
+175,6,2017,MichelleLarkin_FunshinBegCoGalway_17,Centaurea_nigra,1216,total abundance per plant species,48640
+204,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Hypochaeris_radicata,NA,not collected,NA
+221,8,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Leucanthemum_vulgare,1,total abundance per plant species,50
+223,8,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Rhinanthus_minor,4,total abundance per plant species,60
+181,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Prunella_vulgaris,10,total abundance per plant species,150
+226,8,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Odontites_vernus,11,total abundance per plant species,99
+175,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Lotus_corniculatus,11,total abundance per plant species,176
+192,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Cirsium_arvense,19,total abundance per plant species,475
+260,9,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Leontodon_hispidus,39,total abundance per plant species,1170
+163,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Trifolium_pratense,43,total abundance per plant species,645
+193,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Leontodon_hispidus,45,total abundance per plant species,1350
+209,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Plantago_lanceolata,49,total abundance per plant species,1960
+199,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Trifolium_pratense,52,total abundance per plant species,780
+198,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Trifolium_pratense,57,total abundance per plant species,855
+153,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Scorzoneroides_autumnalis,123,total abundance per plant species,3690
+201,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Euphrasia_sp,126,total abundance per plant species,1260
+160,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Trifolium_repens,126,total abundance per plant species,1638
+210,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Leontodon_saxatilis,127,total abundance per plant species,3175
+165,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Prunella_vulgaris,142,total abundance per plant species,2130
+169,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Bellis_perennis,238,total abundance per plant species,5950
+189,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Ranunculus_acris,255,total abundance per plant species,6375
+161,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Euphrasia_sp,424,total abundance per plant species,4240
+155,6,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Trifolium_repens,464,total abundance per plant species,6032
+201,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Ranunculus_acris,625,total abundance per plant species,15625
+213,8,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Centaurea_nigra,680,total abundance per plant species,27200
+218,8,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Ranunculus_repens,775,total abundance per plant species,23250
+195,7,2017,MichelleLarkin_GlencolumbkilleSouthCarronCountyClare_17,Leontodon_saxatilis,863,total abundance per plant species,21575
+188,7,2017,MichelleLarkin_GleninsheenCoClare_17,Vicia_sepium,NA,not collected,NA
+223,8,2017,MichelleLarkin_GleninsheenCoClare_17,Vicia_sepium,NA,not collected,NA
+146,5,2017,MichelleLarkin_GleninsheenCoClare_17,Hypericum_androsaemum,NA,not collected,NA
+217,8,2017,MichelleLarkin_GleninsheenCoClare_17,Heracleum_sphondylium,2,total abundance per plant species,400
+139,5,2017,MichelleLarkin_GleninsheenCoClare_17,Ranunculus_acris,5,total abundance per plant species,125
+161,6,2017,MichelleLarkin_GleninsheenCoClare_17,Heracleum_sphondylium,8,total abundance per plant species,1600
+191,7,2017,MichelleLarkin_GleninsheenCoClare_17,Centaurea_nigra,18,total abundance per plant species,720
+195,7,2017,MichelleLarkin_GleninsheenCoClare_17,Ranunculus_repens,33,total abundance per plant species,990
+193,7,2017,MichelleLarkin_GleninsheenCoClare_17,Centaurea_nigra,36,total abundance per plant species,1440
+215,8,2017,MichelleLarkin_GleninsheenCoClare_17,Trifolium_pratense,37,total abundance per plant species,555
+186,7,2017,MichelleLarkin_GleninsheenCoClare_17,Odontites_vernus,40,total abundance per plant species,360
+126,5,2017,MichelleLarkin_GleninsheenCoClare_17,Ranunculus_repens,64,total abundance per plant species,1920
+188,7,2017,MichelleLarkin_GleninsheenCoClare_17,Cirsium_arvense,72,total abundance per plant species,1800
+220,8,2017,MichelleLarkin_GleninsheenCoClare_17,Trifolium_pratense,74,total abundance per plant species,1110
+193,7,2017,MichelleLarkin_GleninsheenCoClare_17,Plantago_lanceolata,91,total abundance per plant species,3640
+133,5,2017,MichelleLarkin_GleninsheenCoClare_17,Veronica_chamaedrys,104,total abundance per plant species,1248
+194,7,2017,MichelleLarkin_GleninsheenCoClare_17,Ranunculus_repens,128,total abundance per plant species,3840
+226,8,2017,MichelleLarkin_KeelhillaCoClare_17,Leontodon_hispidus,NA,not collected,NA
+226,8,2017,MichelleLarkin_KeelhillaCoClare_17,Heracleum_sphondylium,NA,not collected,NA
+168,6,2017,MichelleLarkin_KeelhillaCoClare_17,Hypericum_androsaemum,NA,not collected,NA
+178,6,2017,MichelleLarkin_KeelhillaCoClare_17,Conopodium_majus,2,total abundance per plant species,100
+178,6,2017,MichelleLarkin_KeelhillaCoClare_17,Vicia_sepium,4,total abundance per plant species,60
+148,5,2017,MichelleLarkin_KeelhillaCoClare_17,Cirsium_vulgare,4,total abundance per plant species,120
+149,5,2017,MichelleLarkin_KeelhillaCoClare_17,Crataegus_monogyna,6,total abundance per plant species,72
+130,5,2017,MichelleLarkin_KeelhillaCoClare_17,Ranunculus_repens,7,total abundance per plant species,210
+229,8,2017,MichelleLarkin_KeelhillaCoClare_17,Anthyllis_vulneraria,11,total abundance per plant species,880
+168,6,2017,MichelleLarkin_KeelhillaCoClare_17,Trifolium_repens,21,total abundance per plant species,273
+197,7,2017,MichelleLarkin_KeelhillaCoClare_17,Potentilla_anserina,21,total abundance per plant species,420
+222,8,2017,MichelleLarkin_KeelhillaCoClare_17,Trifolium_pratense,26,total abundance per plant species,390
+244,9,2017,MichelleLarkin_KeelhillaCoClare_17,Potentilla_anserina,26,total abundance per plant species,520
+175,6,2017,MichelleLarkin_KeelhillaCoClare_17,Trifolium_pratense,82,total abundance per plant species,1230
+146,5,2017,MichelleLarkin_KeelhillaCoClare_17,Centaurea_nigra,132,total abundance per plant species,5280
+229,8,2017,MichelleLarkin_KeelhillaCoClare_17,Knautia_arvensis,152,total abundance per plant species,6080
+246,9,2017,MichelleLarkin_KeelhillaCoClare_17,Euphrasia_sp,183,total abundance per plant species,1830
+168,6,2017,MichelleLarkin_KeelhillaCoClare_17,Ranunculus_acris,245,total abundance per plant species,6125
+218,8,2017,MichelleLarkin_KilcorkanCountyClare_17,Leontodon_hispidus,NA,not collected,NA
+256,9,2017,MichelleLarkin_KilcorkanCountyClare_17,Ranunculus_bulbosus,2,total abundance per plant species,60
+124,5,2017,MichelleLarkin_KilcorkanCountyClare_17,Vicia_sepium,3,total abundance per plant species,45
+226,8,2017,MichelleLarkin_KilcorkanCountyClare_17,Trifolium_pratense,19,total abundance per plant species,285
+192,7,2017,MichelleLarkin_KilcorkanCountyClare_17,Galium_verum,29,total abundance per plant species,87
+238,8,2017,MichelleLarkin_KilcorkanCountyClare_17,Trifolium_pratense,53,total abundance per plant species,795
+198,7,2017,MichelleLarkin_KilcorkanCountyClare_17,Ranunculus_acris,55,total abundance per plant species,1375
+188,7,2017,MichelleLarkin_KilcorkanCountyClare_17,Knautia_arvensis,244,total abundance per plant species,9760
+229,8,2017,MichelleLarkin_KilcorkanCountyClare_17,Leontodon_saxatilis,252,total abundance per plant species,6300
+154,6,2017,MichelleLarkin_KilcorkanCountyClare_17,Centaurea_nigra,329,total abundance per plant species,13160
+223,8,2017,MichelleLarkin_NewtownCoClare_17,Knautia_arvensis,3,total abundance per plant species,120
+260,9,2017,MichelleLarkin_NewtownCoClare_17,Centaurea_nigra,5,total abundance per plant species,200
+159,6,2017,MichelleLarkin_NewtownCoClare_17,Potentilla_erecta,17,total abundance per plant species,255
+172,6,2017,MichelleLarkin_NewtownCoClare_17,Leontodon_saxatilis,24,total abundance per plant species,600
+197,7,2017,MichelleLarkin_NewtownCoClare_17,Lotus_corniculatus,31,total abundance per plant species,496
+240,8,2017,MichelleLarkin_NewtownCoClare_17,Centaurea_nigra,50,total abundance per plant species,2000
+186,7,2017,MichelleLarkin_NewtownCoClare_17,Trifolium_pratense,54,total abundance per plant species,810
+186,7,2017,MichelleLarkin_PoulnalourCoClare_17,Prunella_vulgaris,1,total abundance per plant species,15
+217,8,2017,MichelleLarkin_PoulnalourCoClare_17,Trifolium_pratense,5,total abundance per plant species,75
+188,7,2017,MichelleLarkin_PoulnalourCoClare_17,Leontodon_saxatilis,6,total abundance per plant species,150
+188,7,2017,MichelleLarkin_PoulnalourCoClare_17,Trifolium_repens,34,total abundance per plant species,442
+161,6,2017,MichelleLarkin_PoulnalourCoClare_17,Trifolium_pratense,60,total abundance per plant species,900
+168,6,2017,MichelleLarkin_PoulnalourCoClare_17,Bellis_perennis,79,total abundance per plant species,1975
+169,6,2017,MichelleLarkin_PoulnalourCoClare_17,Trifolium_pratense,104,total abundance per plant species,1560
+206,7,2017,MichelleLarkin_PoulnalourCoClare_17,Ranunculus_repens,108,total abundance per plant species,3240
+198,7,2017,MichelleLarkin_PoulnalourCoClare_17,Ranunculus_repens,315,total abundance per plant species,9450
+204,7,2017,MichelleLarkin_RannaghWestCarronCountyClare_17,Holcus_lanatus,NA,not collected,NA
+215,8,2017,MichelleLarkin_RannaghWestCarronCountyClare_17,Ranunculus_repens,28,total abundance per plant species,840
+213,8,2017,MichelleLarkin_RannaghWestCarronCountyClare_17,Ranunculus_repens,124,total abundance per plant species,3720
+199,7,2017,MichelleLarkin_RannaghWestCarronCountyClare_17,Ranunculus_repens,248,total abundance per plant species,7440
+181,6,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Trifolium_pratense,1,total abundance per plant species,15
+187,7,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Ranunculus_acris,34,total abundance per plant species,850
+188,7,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Bellis_perennis,104,total abundance per plant species,2600
+186,7,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Trifolium_repens,132,total abundance per plant species,1716
+194,7,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Trifolium_repens,198,total abundance per plant species,2574
+156,6,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Ranunculus_repens,464,total abundance per plant species,13920
+213,8,2017,MichelleLarkin_TeeskaghCarronCoClare_17,Ranunculus_repens,640,total abundance per plant species,19200
+153,6,2017,MichelleLarkin_TonarussaCoClare_17,Ranunculus_repens,NA,not collected,NA
+181,6,2017,MichelleLarkin_TonarussaCoClare_17,Poa_annua,NA,not collected,NA
+215,8,2017,MichelleLarkin_TonarussaCoClare_17,Taraxacum_agg,6,total abundance per plant species,300
+222,8,2017,MichelleLarkin_TonarussaCoClare_17,Trifolium_repens,277,total abundance per plant species,3601
+257,9,2018,CianWhite_An_18,Vicia_sativa,15,total abundance per plant species,450
+209,7,2018,CianWhite_An_18,Plantago_lanceolata,20,total abundance per plant species,800
+195,7,2018,CianWhite_An_18,Leontodon_hispidus,21,total abundance per plant species,630
+215,8,2018,CianWhite_An_18,Scabiosa_columbaria,21,total abundance per plant species,630
+255,9,2018,CianWhite_An_18,Alliaria_petiolata,80,total abundance per plant species,800
+217,8,2018,CianWhite_An_18,Knautia_arvensis,106,total abundance per plant species,4240
+218,8,2018,CianWhite_An_18,Trifolium_repens,120,total abundance per plant species,1560
+218,8,2018,CianWhite_An_18,Hebe_agg,150,total abundance per plant species,4500
+198,7,2018,CianWhite_An_18,Vicia_sepium,200,total abundance per plant species,6800
+150,5,2018,CianWhite_An_18,Rubus_fruticosus,210,total abundance per plant species,6300
+220,8,2018,CianWhite_An_18,Senecio_jacobaea,217,total abundance per plant species,4340
+209,7,2018,CianWhite_An_18,Hebe_agg,320,total abundance per plant species,9600
+160,6,2018,CianWhite_An_18,Cerastium_tomentosum,400,total abundance per plant species,8000
+236,8,2018,CianWhite_An_18,Smyrnium_olusatrum,600,total abundance per plant species,120000
+215,8,2018,CianWhite_An_18,Crataegus_monogyna,736,total abundance per plant species,14720
+125,5,2018,CianWhite_An_18,Leontodon_hispidus,800,total abundance per plant species,24000
+189,7,2018,CianWhite_An_18,Centaurea_nigra,835,total abundance per plant species,33400
+133,5,2018,CianWhite_An_18,Trifolium_pratense,900,total abundance per plant species,13500
+198,7,2018,CianWhite_An_18,Rubus_fruticosus,1147,total abundance per plant species,34410
+149,5,2018,CianWhite_An_18,Centaurea_nigra,1913,total abundance per plant species,76520
+149,5,2018,CianWhite_An_18,Vicia_sepium,2220,total abundance per plant species,75480
+180,6,2018,CianWhite_An_18,Ranunculus_acris,4100,total abundance per plant species,102500
+160,6,2018,CianWhite_An_18,Trifolium_pratense,4600,total abundance per plant species,69000
+229,8,2018,CianWhite_An_18,Rubus_fruticosus,5470,total abundance per plant species,164100
+163,6,2018,CianWhite_An_18,Rhinanthus_minor,10000,total abundance per plant species,150000
+175,6,2018,CianWhite_Bl_18,Rosa_canina,5,total abundance per plant species,250
+214,8,2018,CianWhite_Bl_18,Filipendula_ulmaria,7,total abundance per plant species,1050
+184,7,2018,CianWhite_Bl_18,Cirsium_vulgare,12,total abundance per plant species,360
+203,7,2018,CianWhite_Bl_18,Hypericum_androsaemum,15,total abundance per plant species,600
+219,8,2018,CianWhite_Bl_18,Anthriscus_sylvestris,30,total abundance per plant species,2100
+190,7,2018,CianWhite_Bl_18,Trifolium_pratense,40,total abundance per plant species,600
+186,7,2018,CianWhite_Bl_18,Taraxacum_agg,45,total abundance per plant species,2250
+195,7,2018,CianWhite_Bl_18,Dianthus_caryophyllus,50,total abundance per plant species,2500
+193,7,2018,CianWhite_Bl_18,Senecio_jacobaea,78,total abundance per plant species,1560
+245,9,2018,CianWhite_Bl_18,Ranunculus_acris,121,total abundance per plant species,3025
+222,8,2018,CianWhite_Bl_18,Geranium_robertianum,130,total abundance per plant species,1950
+176,6,2018,CianWhite_Bl_18,Geranium_versicolor,140,total abundance per plant species,4200
+191,7,2018,CianWhite_Bl_18,Anthriscus_sylvestris,150,total abundance per plant species,10500
+204,7,2018,CianWhite_Bl_18,Chenopodium_album,190,total abundance per plant species,9500
+198,7,2018,CianWhite_Bl_18,Spiraea_japonica,240,total abundance per plant species,16800
+227,8,2018,CianWhite_Bl_18,Geranium_robertianum,250,total abundance per plant species,3750
+190,7,2018,CianWhite_Bl_18,Vicia_sepium,260,total abundance per plant species,8840
+210,7,2018,CianWhite_Bl_18,Heracleum_sphondylium,300,total abundance per plant species,60000
+210,7,2018,CianWhite_Bl_18,Geranium_robertianum,350,total abundance per plant species,5250
+223,8,2018,CianWhite_Bl_18,Cirsium_palustre,360,total abundance per plant species,5400
+180,6,2018,CianWhite_Bl_18,Rosa_rubignosa,420,total abundance per plant species,21000
+220,8,2018,CianWhite_Bl_18,Cirsium_palustre,420,total abundance per plant species,6300
+218,8,2018,CianWhite_Bl_18,Ranunculus_repens,671,total abundance per plant species,20130
+231,8,2018,CianWhite_Bl_18,Rubus_fruticosus,758,total abundance per plant species,22740
+210,7,2018,CianWhite_Bl_18,Heracleum_sphondylium,1140,total abundance per plant species,228000
+179,6,2018,CianWhite_Bl_18,Rubus_fruticosus,1289,total abundance per plant species,38670
+155,6,2018,CianWhite_Bl_18,Vicia_sepium,1344,total abundance per plant species,45696
+217,8,2018,CianWhite_Bl_18,Spiraea_xarguta,1800,total abundance per plant species,18000
+220,8,2018,CianWhite_Bl_18,Ranunculus_repens,3060,total abundance per plant species,91800
+220,8,2018,CianWhite_Bl_18,Trifolium_repens,6681.6,total abundance per plant species,86860.8
+160,6,2018,CianWhite_Bl_18,Cirsium_arvense,8889,total abundance per plant species,222225
+222,8,2018,CianWhite_Bn_18,Lotus_corniculatus,3,total abundance per plant species,48
+194,7,2018,CianWhite_Bn_18,Ranunculus_repens,5,total abundance per plant species,150
+167,6,2018,CianWhite_Bn_18,Centaurea_nigra,10,total abundance per plant species,400
+193,7,2018,CianWhite_Bn_18,Rosa_cult,10,total abundance per plant species,1000
+151,5,2018,CianWhite_Bn_18,Lonicera_periclymenum,11,total abundance per plant species,550
+170,6,2018,CianWhite_Bn_18,Escallonia_macrantha,20,total abundance per plant species,400
+170,6,2018,CianWhite_Bn_18,Epilobium_hirsutum,50,total abundance per plant species,1250
+146,5,2018,CianWhite_Bn_18,Persicaria_maculosa,56,total abundance per plant species,3360
+221,8,2018,CianWhite_Bn_18,Chamerion_anguistifolium,60,total abundance per plant species,1800
+208,7,2018,CianWhite_Bn_18,Escallonia_macrantha,60,total abundance per plant species,1200
+201,7,2018,CianWhite_Bn_18,Lathyrus_pratensis,70,total abundance per plant species,1260
+217,8,2018,CianWhite_Bn_18,Lapsana_communis,72,total abundance per plant species,1080
+193,7,2018,CianWhite_Bn_18,Senecio_jacobaea,75,total abundance per plant species,1500
+180,6,2018,CianWhite_Bn_18,Aubrieta_deltoidea,120,total abundance per plant species,2400
+219,8,2018,CianWhite_Bn_18,Cirsium_vulgare,130,total abundance per plant species,3900
+221,8,2018,CianWhite_Bn_18,Leontodon_hispidus,146,total abundance per plant species,4380
+196,7,2018,CianWhite_Bn_18,Cirsium_arvense,300,total abundance per plant species,7500
+141,5,2018,CianWhite_Bn_18,Bellis_perennis,300,total abundance per plant species,7500
+158,6,2018,CianWhite_Bn_18,Iris_pseudacorus,360,total abundance per plant species,36000
+219,8,2018,CianWhite_Bn_18,Cirsium_palustre,360,total abundance per plant species,5400
+183,7,2018,CianWhite_Bn_18,Heracleum_sphondylium,2601,total abundance per plant species,520200
+125,5,2018,CianWhite_Bn_18,Rubus_fruticosus,3852,total abundance per plant species,115560
+217,8,2018,CianWhite_Bn_18,Ranunculus_acris,6500,total abundance per plant species,162500
+218,8,2018,CianWhite_Bn_18,Vicia_sepium,8030,total abundance per plant species,273020
+127,5,2018,CianWhite_Bn_18,Rubus_fruticosus,8646,total abundance per plant species,259380
+128,5,2018,CianWhite_Bn_18,Crataegus_monogyna,17590,total abundance per plant species,351800
+189,7,2018,CianWhite_Bn_18,Vicia_sepium,55100,total abundance per plant species,1873400
+160,6,2018,CianWhite_Ce_18,Cirsium_vulgare,5,total abundance per plant species,150
+160,6,2018,CianWhite_Ce_18,Epilobium_hirsutum,7,total abundance per plant species,175
+225,8,2018,CianWhite_Ce_18,Chamerion_anguistifolium,15,total abundance per plant species,450
+225,8,2018,CianWhite_Ce_18,Ranunculus_repens,15,total abundance per plant species,450
+198,7,2018,CianWhite_Ce_18,Leucanthemum_xsuperbum,15,total abundance per plant species,1500
+169,6,2018,CianWhite_Ce_18,Circaea_lutetiana,17,total abundance per plant species,68
+171,6,2018,CianWhite_Ce_18,Epilobium_montanum,20,total abundance per plant species,240
+172,6,2018,CianWhite_Ce_18,Cardamine_hirsutum,30,total abundance per plant species,90
+178,6,2018,CianWhite_Ce_18,Hyacinthoides_non-scripta,40,total abundance per plant species,800
+178,6,2018,CianWhite_Ce_18,Epilobium_parviflorum,43,total abundance per plant species,387
+149,5,2018,CianWhite_Ce_18,Spiraea_japonica,50,total abundance per plant species,3500
+149,5,2018,CianWhite_Ce_18,Fuchsia_magellanica,71,total abundance per plant species,3550
+225,8,2018,CianWhite_Ce_18,Bellis_perennis,100,total abundance per plant species,2500
+197,7,2018,CianWhite_Ce_18,Circaea_lutetiana,105,total abundance per plant species,420
+195,7,2018,CianWhite_Ce_18,Geranium_robertianum,120,total abundance per plant species,1800
+223,8,2018,CianWhite_Ce_18,Fuchsia_magellanica,120,total abundance per plant species,6000
+150,5,2018,CianWhite_Ce_18,Ficaria_verna,230,total abundance per plant species,6900
+167,6,2018,CianWhite_Ce_18,Geranium_robertianum,250,total abundance per plant species,3750
+151,5,2018,CianWhite_Ce_18,Ranunculus_repens,300,total abundance per plant species,9000
+225,8,2018,CianWhite_Ce_18,Rubus_fruticosus,330,total abundance per plant species,9900
+188,7,2018,CianWhite_Ce_18,Taraxacum_agg,420,total abundance per plant species,21000
+161,6,2018,CianWhite_Ce_18,Geranium_robertianum,470,total abundance per plant species,7050
+221,8,2018,CianWhite_Ce_18,Anthriscus_sylvestris,600,total abundance per plant species,42000
+185,7,2018,CianWhite_Ce_18,Heracleum_sphondylium,600,total abundance per plant species,120000
+198,7,2018,CianWhite_Ce_18,Salvia_microphylla,600,total abundance per plant species,15000
+169,6,2018,CianWhite_Ce_18,Rubus_fruticosus,670,total abundance per plant species,20100
+215,8,2018,CianWhite_Ce_18,Cardamine_pratensis,900,total abundance per plant species,18000
+227,8,2018,CianWhite_Ce_18,Salvia_microphylla,1060,total abundance per plant species,26500
+223,8,2018,CianWhite_Ce_18,Salvia_microphylla,1300,total abundance per plant species,32500
+174,6,2018,CianWhite_Ce_18,Cirsium_arvense,1350,total abundance per plant species,33750
+190,7,2018,CianWhite_Ce_18,Rubus_fruticosus,1810,total abundance per plant species,54300
+217,8,2018,CianWhite_Ce_18,Trifolium_repens,4475,total abundance per plant species,58175
+195,7,2018,CianWhite_Ce_18,Spiraea_japonica,4500,total abundance per plant species,315000
+195,7,2018,CianWhite_Cn_18,Allium_schoenoprasum,2,total abundance per plant species,80
+182,7,2018,CianWhite_Cn_18,Cirsium_arvense,6,total abundance per plant species,150
+209,7,2018,CianWhite_Cn_18,Epilobium_parviflorum,15,total abundance per plant species,135
+149,5,2018,CianWhite_Cn_18,Achillea_millefolium,30,total abundance per plant species,210
+216,8,2018,CianWhite_Cn_18,Lotus_corniculatus,30,total abundance per plant species,480
+189,7,2018,CianWhite_Cn_18,Hypericum_perforatum,30,total abundance per plant species,900
+186,7,2018,CianWhite_Cn_18,Potentilla_reptans,39,total abundance per plant species,975
+186,7,2018,CianWhite_Cn_18,Veronica_chamaedrys,40,total abundance per plant species,400
+221,8,2018,CianWhite_Cn_18,Oxalis_debilis,42,total abundance per plant species,1260
+193,7,2018,CianWhite_Cn_18,Ranunculus_repens,45,total abundance per plant species,1350
+179,6,2018,CianWhite_Cn_18,Rhododendron_davidii,45,total abundance per plant species,3150
+222,8,2018,CianWhite_Cn_18,Lotus_corniculatus,48,total abundance per plant species,768
+218,8,2018,CianWhite_Cn_18,Crepis_biennis,49,total abundance per plant species,1715
+222,8,2018,CianWhite_Cn_18,Trifolium_repens,57,total abundance per plant species,741
+194,7,2018,CianWhite_Cn_18,Chamerion_anguistifolium,60,total abundance per plant species,1800
+192,7,2018,CianWhite_Cn_18,Lavandula_angustifolia,80,total abundance per plant species,4000
+226,8,2018,CianWhite_Cn_18,Geranium_robertianum,90,total abundance per plant species,1350
+185,7,2018,CianWhite_Cn_18,Escallonia_macrantha,90,total abundance per plant species,1800
+226,8,2018,CianWhite_Cn_18,Leontodon_hispidus,90,total abundance per plant species,2700
+209,7,2018,CianWhite_Cn_18,Geranium_robertianum,100,total abundance per plant species,1500
+180,6,2018,CianWhite_Cn_18,Anthyllis_vulneraria,100,total abundance per plant species,8000
+208,7,2018,CianWhite_Cn_18,Agapanthus_sp,126,total abundance per plant species,7560
+163,6,2018,CianWhite_Cn_18,Lavandula_angustifolia,150,total abundance per plant species,7500
+191,7,2018,CianWhite_Cn_18,Ribes_sanguineum,200,total abundance per plant species,2000
+186,7,2018,CianWhite_Cn_18,Cardamine_pratensis,200,total abundance per plant species,4000
+217,8,2018,CianWhite_Cn_18,Daucus_carota,230,total abundance per plant species,16100
+188,7,2018,CianWhite_Cn_18,Odontites_vernus,240,total abundance per plant species,2160
+219,8,2018,CianWhite_Cn_18,Senecio_jacobaea,255,total abundance per plant species,5100
+219,8,2018,CianWhite_Cn_18,Ligustrum_vulgare,285,total abundance per plant species,14250
+221,8,2018,CianWhite_Cn_18,Symphoricarpos_albus,295,total abundance per plant species,1180
+221,8,2018,CianWhite_Cn_18,Vicia_sepium,300,total abundance per plant species,10200
+161,6,2018,CianWhite_Cn_18,Daucus_carota,380,total abundance per plant species,26600
+161,6,2018,CianWhite_Cn_18,Ranunculus_repens,520,total abundance per plant species,15600
+133,5,2018,CianWhite_Cn_18,Vicia_sepium,550,total abundance per plant species,18700
+164,6,2018,CianWhite_Cn_18,Trifolium_repens,550,total abundance per plant species,7150
+194,7,2018,CianWhite_Cn_18,Rubus_fruticosus,580,total abundance per plant species,17400
+194,7,2018,CianWhite_Cn_18,Pyracantha_sp,700,total abundance per plant species,14000
+226,8,2018,CianWhite_Cn_18,Hebe_agg,700,total abundance per plant species,21000
+169,6,2018,CianWhite_Cn_18,Ranunculus_repens,1000,total abundance per plant species,30000
+167,6,2018,CianWhite_Cn_18,Symphoricarpos_albus,1170,total abundance per plant species,4680
+230,8,2018,CianWhite_Cn_18,Senecio_jacobaea,1369,total abundance per plant species,27380
+164,6,2018,CianWhite_Cn_18,Ranunculus_acris,1530,total abundance per plant species,38250
+170,6,2018,CianWhite_Cn_18,Rhinanthus_minor,1800,total abundance per plant species,27000
+188,7,2018,CianWhite_Cn_18,Leucanthemum_vulgare,1800,total abundance per plant species,108000
+201,7,2018,CianWhite_Cn_18,Lotus_corniculatus,1900,total abundance per plant species,30400
+216,8,2018,CianWhite_Cn_18,Leontodon_hispidus,3250,total abundance per plant species,97500
+176,6,2018,CianWhite_Cn_18,Centaurea_nigra,4180,total abundance per plant species,167200
+156,6,2018,CianWhite_Cn_18,Centaurea_nigra,4200,total abundance per plant species,168000
+213,8,2018,CianWhite_Cn_18,Laburnum_xwatereri,4800,total abundance per plant species,1200000
+256,9,2018,CianWhite_Cn_18,Ajuga_reptans,5640,total abundance per plant species,39480
+267,9,2018,CianWhite_Cn_18,Ranunculus_acris,11075,total abundance per plant species,276875
+223,8,2018,CianWhite_CW_18,Sonchus_arvensis,7,total abundance per plant species,350
+223,8,2018,CianWhite_CW_18,Trifolium_repens,17,total abundance per plant species,221
+193,7,2018,CianWhite_CW_18,Filipendula_ulmaria,40,total abundance per plant species,6000
+223,8,2018,CianWhite_CW_18,Cirsium_vulgare,78,total abundance per plant species,2340
+169,6,2018,CianWhite_CW_18,Primula_veris,80,total abundance per plant species,1200
+169,6,2018,CianWhite_CW_18,Epilobium_parviflorum,80,total abundance per plant species,720
+147,5,2018,CianWhite_CW_18,Sonchus_asper,82,total abundance per plant species,2050
+220,8,2018,CianWhite_CW_18,Geranium_robertianum,100,total abundance per plant species,1500
+193,7,2018,CianWhite_CW_18,Rubus_fruticosus,130,total abundance per plant species,3900
+209,7,2018,CianWhite_CW_18,Barbarea_vulgaris,140,total abundance per plant species,2800
+149,5,2018,CianWhite_CW_18,Linum_usitatissimum,200,total abundance per plant species,5000
+213,8,2018,CianWhite_CW_18,Stellaria_graminea,200,total abundance per plant species,3600
+194,7,2018,CianWhite_CW_18,Ligustrum_vulgare,200,total abundance per plant species,10000
+142,5,2018,CianWhite_CW_18,Ranunculus_repens,250,total abundance per plant species,7500
+131,5,2018,CianWhite_CW_18,Vicia_sepium,250,total abundance per plant species,8500
+160,6,2018,CianWhite_CW_18,Stellaria_graminea,290,total abundance per plant species,5220
+161,6,2018,CianWhite_CW_18,Viola_odorata,300,total abundance per plant species,3600
+191,7,2018,CianWhite_CW_18,Viburnum_tinus,300,total abundance per plant species,30000
+163,6,2018,CianWhite_CW_18,Epilobium_parviflorum,300,total abundance per plant species,2700
+186,7,2018,CianWhite_CW_18,Solanum_tuberosum,350,total abundance per plant species,14000
+190,7,2018,CianWhite_CW_18,Senecio_jacobaea,600,total abundance per plant species,12000
+193,7,2018,CianWhite_CW_18,Anthriscus_sylvestris,728,total abundance per plant species,50960
+164,6,2018,CianWhite_CW_18,Rosa_canina,750,total abundance per plant species,37500
+199,7,2018,CianWhite_CW_18,Rubus_fruticosus,1287,total abundance per plant species,38610
+170,6,2018,CianWhite_CW_18,Heracleum_sphondylium,1998,total abundance per plant species,399600
+171,6,2018,CianWhite_CW_18,Rubus_fruticosus,2166,total abundance per plant species,64980
+191,7,2018,CianWhite_CW_18,Leontodon_hispidus,3200,total abundance per plant species,96000
+193,7,2018,CianWhite_CW_18,Taraxacum_agg,4465,total abundance per plant species,223250
+214,8,2018,CianWhite_CW_18,Rhinanthus_minor,7209,total abundance per plant species,108135
+223,8,2018,CianWhite_CW_18,Trifolium_pratense,11232,total abundance per plant species,168480
+228,8,2018,CianWhite_CW_18,Trifolium_repens,12557,total abundance per plant species,163241
+201,7,2018,CianWhite_CW_18,Ranunculus_acris,15300,total abundance per plant species,382500
+243,8,2018,CianWhite_CW_18,Ranunculus_repens,16050,total abundance per plant species,481500
+195,7,2018,CianWhite_CW_18,Persicaria_maculosa,150000,total abundance per plant species,9000000
+270,9,2018,CianWhite_DB_18,Calystegia_sepium,2,total abundance per plant species,100
+210,7,2018,CianWhite_DB_18,Taraxacum_agg,3,total abundance per plant species,150
+161,6,2018,CianWhite_DB_18,Sonchus_arvensis,15,total abundance per plant species,750
+180,6,2018,CianWhite_DB_18,Epilobium_hirsutum,16,total abundance per plant species,400
+185,7,2018,CianWhite_DB_18,Cirsium_vulgare,16,total abundance per plant species,480
+166,6,2018,CianWhite_DB_18,Diplotaxis_tenuifolia,20,total abundance per plant species,300
+221,8,2018,CianWhite_DB_18,Ligustrum_vulgare,21,total abundance per plant species,1050
+194,7,2018,CianWhite_DB_18,Buddleja_davidii,45,total abundance per plant species,9000
+168,6,2018,CianWhite_DB_18,Salvia_officinalis,49,total abundance per plant species,1960
+188,7,2018,CianWhite_DB_18,Sedum_agg,50,total abundance per plant species,2500
+188,7,2018,CianWhite_DB_18,Senecio_jacobaea,55,total abundance per plant species,1100
+217,8,2018,CianWhite_DB_18,Nepeta_agg,60,total abundance per plant species,900
+215,8,2018,CianWhite_DB_18,Pentaglottis_sempervirens,60,total abundance per plant species,600
+187,7,2018,CianWhite_DB_18,Penstemon_agg,67,total abundance per plant species,2680
+210,7,2018,CianWhite_DB_18,Trachelospermum_jasminoides,70,total abundance per plant species,1400
+204,7,2018,CianWhite_DB_18,Bunias_orientalis,120,total abundance per plant species,1200
+219,8,2018,CianWhite_DB_18,Antirrhinum_agg,134,total abundance per plant species,5360
+190,7,2018,CianWhite_DB_18,Oxalis_debilis,140,total abundance per plant species,4200
+193,7,2018,CianWhite_DB_18,Bellis_perennis,150,total abundance per plant species,3750
+164,6,2018,CianWhite_DB_18,Fuchsia_magellanica,160,total abundance per plant species,8000
+168,6,2018,CianWhite_DB_18,Salvia_microphylla,200,total abundance per plant species,5000
+130,5,2018,CianWhite_DB_18,Centranthus_ruber,230,total abundance per plant species,41400
+169,6,2018,CianWhite_DB_18,Salvia_microphylla,250,total abundance per plant species,6250
+175,6,2018,CianWhite_DB_18,Rosa_cult,320,total abundance per plant species,32000
+180,6,2018,CianWhite_DB_18,Tanacetum_vulgare,330,total abundance per plant species,3960
+222,8,2018,CianWhite_DB_18,Nepeta_agg,500,total abundance per plant species,7500
+186,7,2018,CianWhite_DB_18,Fuchsia_magellanica,500,total abundance per plant species,25000
+197,7,2018,CianWhite_DB_18,Ceanothus_agg,700,total abundance per plant species,28000
+215,8,2018,CianWhite_DB_18,Senecio_jacobaea,840,total abundance per plant species,16800
+192,7,2018,CianWhite_DB_18,Aegopodium_padagraria,960,total abundance per plant species,57600
+154,6,2018,CianWhite_DB_18,Trifolium_repens,1130,total abundance per plant species,14690
+198,7,2018,CianWhite_DB_18,Fuchsia_magellanica,1200,total abundance per plant species,60000
+214,8,2018,CianWhite_DB_18,Campanula_portenschlagia,1200,total abundance per plant species,30000
+217,8,2018,CianWhite_DB_18,Senecio_jacobaea,1550,total abundance per plant species,31000
+192,7,2018,CianWhite_DB_18,Escallonia_macrantha,2400,total abundance per plant species,48000
+255,9,2018,CianWhite_DB_18,Hebe_agg,3400,total abundance per plant species,102000
+186,7,2018,CianWhite_DB_18,Lavandula_angustifolia,3870,total abundance per plant species,193500
+186,7,2018,CianWhite_DB_18,Hebe_agg,5000,total abundance per plant species,150000
+218,8,2018,CianWhite_DB_18,Lavandula_angustifolia,7550,total abundance per plant species,377500
+127,5,2018,CianWhite_DB_18,Lavandula_angustifolia,12740,total abundance per plant species,637000
+220,8,2018,CianWhite_DB_18,Ceanothus_agg,15000,total abundance per plant species,600000
+221,8,2018,CianWhite_DB_18,Ligustrum_vulgare,35000,total abundance per plant species,1750000
+221,8,2018,CianWhite_ED_18,Petunia_xatkinsiana,7,total abundance per plant species,560
+193,7,2018,CianWhite_ED_18,Vicia_sepium,20,total abundance per plant species,680
+133,5,2018,CianWhite_ED_18,Dianthus_caryophyllus,44,total abundance per plant species,2200
+167,6,2018,CianWhite_ED_18,Malva_sylvestris,45,total abundance per plant species,2025
+167,6,2018,CianWhite_ED_18,Ranunculus_acris,50,total abundance per plant species,1250
+197,7,2018,CianWhite_ED_18,Calibrachoa_parviflora,61,total abundance per plant species,1830
+168,6,2018,CianWhite_ED_18,Malva_sylvestris,100,total abundance per plant species,4500
+168,6,2018,CianWhite_ED_18,Geranium_pyrenaicum,130,total abundance per plant species,2340
+199,7,2018,CianWhite_ED_18,Cardamine_pratensis,210,total abundance per plant species,4200
+149,5,2018,CianWhite_ED_18,Sinapsis_arvensis,260,total abundance per plant species,5200
+149,5,2018,CianWhite_ED_18,Aconitum_napellus,260,total abundance per plant species,10400
+198,7,2018,CianWhite_ED_18,Rubus_fruticosus,400,total abundance per plant species,12000
+161,6,2018,CianWhite_ED_18,Erysimum_sp,400,total abundance per plant species,10000
+163,6,2018,CianWhite_ED_18,Persicaria_maculosa,740,total abundance per plant species,44400
+172,6,2018,CianWhite_ED_18,Rubus_fruticosus,820,total abundance per plant species,24600
+243,8,2018,CianWhite_ED_18,Persicaria_maculosa,940,total abundance per plant species,56400
+201,7,2018,CianWhite_ED_18,Cotoneaster_hybridus_pendulus,1000,total abundance per plant species,15000
+192,7,2018,CianWhite_ED_18,Scorzoneroides_autumnalis,1360,total abundance per plant species,40800
+223,8,2018,CianWhite_ED_18,Rubus_fruticosus,2100,total abundance per plant species,63000
+267,9,2018,CianWhite_ED_18,Rhinanthus_minor,2500,total abundance per plant species,37500
+208,7,2018,CianWhite_ED_18,Ranunculus_acris,3125,total abundance per plant species,78125
+161,6,2018,CianWhite_ED_18,Trifolium_repens,21530,total abundance per plant species,279890
+221,8,2018,CianWhite_Fs_18,Cirsium_vulgare,15,total abundance per plant species,450
+190,7,2018,CianWhite_Fs_18,Geranium_pyrenaicum,17,total abundance per plant species,306
+225,8,2018,CianWhite_Fs_18,Chrysanthemum_segtum,17,total abundance per plant species,1105
+226,8,2018,CianWhite_Fs_18,Spiraea_japonica,18,total abundance per plant species,1260
+167,6,2018,CianWhite_Fs_18,Geranium_pratense,38,total abundance per plant species,1520
+169,6,2018,CianWhite_Fs_18,Trifolium_pratense,38,total abundance per plant species,570
+214,8,2018,CianWhite_Fs_18,Cirsium_vulgare,38,total abundance per plant species,1140
+185,7,2018,CianWhite_Fs_18,Vicia_sepium,40,total abundance per plant species,1360
+161,6,2018,CianWhite_Fs_18,Vicia_sepium,50,total abundance per plant species,1700
+190,7,2018,CianWhite_Fs_18,Lotus_corniculatus,59,total abundance per plant species,944
+176,6,2018,CianWhite_Fs_18,Lapsana_communis,60,total abundance per plant species,900
+154,6,2018,CianWhite_Fs_18,Odontites_vernus,70,total abundance per plant species,630
+153,6,2018,CianWhite_Fs_18,Geranium_pratense,70,total abundance per plant species,2800
+172,6,2018,CianWhite_Fs_18,Rubus_fruticosus,120,total abundance per plant species,3600
+186,7,2018,CianWhite_Fs_18,Cirsium_arvense,131,total abundance per plant species,3275
+218,8,2018,CianWhite_Fs_18,Ranunculus_repens,136,total abundance per plant species,4080
+221,8,2018,CianWhite_Fs_18,Stellaria_graminea,160,total abundance per plant species,2880
+238,8,2018,CianWhite_Fs_18,Centaurea_nigra,210,total abundance per plant species,8400
+227,8,2018,CianWhite_Fs_18,Odontites_vernus,240,total abundance per plant species,2160
+172,6,2018,CianWhite_Fs_18,Lapsana_communis,240,total abundance per plant species,3600
+187,7,2018,CianWhite_Fs_18,Senecio_greyii,240,total abundance per plant species,7200
+208,7,2018,CianWhite_Fs_18,Epilobium_hirsutum,250,total abundance per plant species,6250
+171,6,2018,CianWhite_Fs_18,Trifolium_pratense,282,total abundance per plant species,4230
+209,7,2018,CianWhite_Fs_18,Symphoricarpos_albus,405,total abundance per plant species,1620
+228,8,2018,CianWhite_Fs_18,Lotus_corniculatus,420,total abundance per plant species,6720
+153,6,2018,CianWhite_Fs_18,Conopodium_majus,420,total abundance per plant species,21000
+186,7,2018,CianWhite_Fs_18,Lotus_corniculatus,458,total abundance per plant species,7328
+186,7,2018,CianWhite_Fs_18,Hypericum_androsaemum,500,total abundance per plant species,20000
+218,8,2018,CianWhite_Fs_18,Trifolium_pratense,550,total abundance per plant species,8250
+220,8,2018,CianWhite_Fs_18,Trifolium_repens,552,total abundance per plant species,7176
+190,7,2018,CianWhite_Fs_18,Penstemon_agg,700,total abundance per plant species,28000
+190,7,2018,CianWhite_Fs_18,Potentilla_reptans,1073,total abundance per plant species,26825
+221,8,2018,CianWhite_Fs_18,Hebe_agg,1250,total abundance per plant species,37500
+243,8,2018,CianWhite_Fs_18,Rubus_fruticosus,1260,total abundance per plant species,37800
+145,5,2018,CianWhite_Fs_18,Cirsium_arvense,2000,total abundance per plant species,50000
+140,5,2018,CianWhite_Fs_18,Senecio_jacobaea,2395,total abundance per plant species,47900
+187,7,2018,CianWhite_Fs_18,Rubus_fruticosus,2400,total abundance per plant species,72000
+217,8,2018,CianWhite_Fs_18,Heracleum_sphondylium,2550,total abundance per plant species,510000
+190,7,2018,CianWhite_Fs_18,Ranunculus_acris,3000,total abundance per plant species,75000
+221,8,2018,CianWhite_Fs_18,Trifolium_repens,3160,total abundance per plant species,41080
+193,7,2018,CianWhite_Fs_18,Epilobium_hirsutum,6000,total abundance per plant species,150000
+193,7,2018,CianWhite_Fs_18,Cirsium_arvense,7590,total abundance per plant species,189750
+218,8,2018,CianWhite_Fs_18,Centaurea_nigra,9000,total abundance per plant species,360000
+218,8,2018,CianWhite_Fs_18,Senecio_jacobaea,9669,total abundance per plant species,193380
+160,6,2018,CianWhite_GB_18,Plantago_lanceolata,10,total abundance per plant species,400
+167,6,2018,CianWhite_GB_18,Rubus_fruticosus,17,total abundance per plant species,510
+225,8,2018,CianWhite_GB_18,Vicia_sepium,30,total abundance per plant species,1020
+174,6,2018,CianWhite_GB_18,Dianthus_caryophyllus,30,total abundance per plant species,1500
+192,7,2018,CianWhite_GB_18,Senecio_jacobaea,35,total abundance per plant species,700
+186,7,2018,CianWhite_GB_18,Begonia_semperflorens,70,total abundance per plant species,2100
+126,5,2018,CianWhite_GB_18,Heracleum_sphondylium,120,total abundance per plant species,24000
+219,8,2018,CianWhite_GB_18,Rubus_fruticosus,210,total abundance per plant species,6300
+160,6,2018,CianWhite_GB_18,Ranunculus_repens,220,total abundance per plant species,6600
+221,8,2018,CianWhite_GB_18,Trifolium_repens,268,total abundance per plant species,3484
+221,8,2018,CianWhite_GB_18,Trifolium_pratense,275,total abundance per plant species,4125
+161,6,2018,CianWhite_GB_18,Ranunculus_repens,275,total abundance per plant species,8250
+193,7,2018,CianWhite_GB_18,Malus_pumila,500,total abundance per plant species,20000
+194,7,2018,CianWhite_GB_18,Cirsium_arvense,880,total abundance per plant species,22000
+169,6,2018,CianWhite_GB_18,Lathyrus_pratensis,1500,total abundance per plant species,27000
+170,6,2018,CianWhite_GB_18,Cotoneaster_hybridus_pendulus,2100,total abundance per plant species,31500
+170,6,2018,CianWhite_GB_18,Buddleja_globosa,2400,total abundance per plant species,67200
+143,5,2018,CianWhite_GB_18,Anthriscus_sylvestris,2500,total abundance per plant species,175000
+178,6,2018,CianWhite_GB_18,Ranunculus_acris,3090,total abundance per plant species,77250
+180,6,2018,CianWhite_GB_18,Hebe_agg,10000,total abundance per plant species,300000
+142,5,2018,CianWhite_GT_18,Dianthus_caryophyllus,3,total abundance per plant species,150
+166,6,2018,CianWhite_GT_18,Calystegia_sepium,6,total abundance per plant species,300
+194,7,2018,CianWhite_GT_18,Scabiosa_columbaria,7,total abundance per plant species,210
+154,6,2018,CianWhite_GT_18,Scrophularia_auriculata,20,total abundance per plant species,200
+225,8,2018,CianWhite_GT_18,Veronica_persica,30,total abundance per plant species,150
+175,6,2018,CianWhite_GT_18,Calystegia_sepium,37,total abundance per plant species,1850
+209,7,2018,CianWhite_GT_18,Leucanthemum_xsuperbum,37,total abundance per plant species,3700
+186,7,2018,CianWhite_GT_18,Bellis_perennis,40,total abundance per plant species,1000
+218,8,2018,CianWhite_GT_18,Helichrysum_italicum,60,total abundance per plant species,1800
+161,6,2018,CianWhite_GT_18,Ligustrum_vulgare,100,total abundance per plant species,5000
+193,7,2018,CianWhite_GT_18,Cistus_agg,110,total abundance per plant species,6050
+164,6,2018,CianWhite_GT_18,Spiraea_japonica,130,total abundance per plant species,9100
+167,6,2018,CianWhite_GT_18,Hypericum_androsaemum,140,total abundance per plant species,5600
+149,5,2018,CianWhite_GT_18,Escallonia_macrantha,190,total abundance per plant species,3800
+191,7,2018,CianWhite_GT_18,Fuchsia_magellanica,190,total abundance per plant species,9500
+154,6,2018,CianWhite_GT_18,Hydrangea_cult,210,total abundance per plant species,0
+191,7,2018,CianWhite_GT_18,Escallonia_macrantha,300,total abundance per plant species,6000
+199,7,2018,CianWhite_GT_18,Malva_arborea,420,total abundance per plant species,16800
+192,7,2018,CianWhite_GT_18,Ceanothus_agg,450,total abundance per plant species,18000
+140,5,2018,CianWhite_GT_18,Rosmarinus_officinalis,600,total abundance per plant species,12000
+260,9,2018,CianWhite_GT_18,Smyrnium_olusatrum,672,total abundance per plant species,134400
+217,8,2018,CianWhite_GT_18,Ligustrum_vulgare,850,total abundance per plant species,42500
+186,7,2018,CianWhite_GT_18,Senecio_jacobaea,1430,total abundance per plant species,28600
+217,8,2018,CianWhite_GT_18,Lavandula_angustifolia,1500,total abundance per plant species,75000
+172,6,2018,CianWhite_GT_18,Lavandula_angustifolia,2020,total abundance per plant species,101000
+145,5,2018,CianWhite_GT_18,Hebe_agg,3290,total abundance per plant species,98700
+167,6,2018,CianWhite_GT_18,Rubus_fruticosus,4090,total abundance per plant species,122700
+169,6,2018,CianWhite_GT_18,Rubus_fruticosus,5610,total abundance per plant species,168300
+240,8,2018,CianWhite_GT_18,Hebe_agg,6900,total abundance per plant species,207000
+155,6,2018,CianWhite_GT_18,Cotoneaster_frigidus,12500,total abundance per plant species,625000
+125,5,2018,CianWhite_JK_18,Berberis_darwinii,6,total abundance per plant species,48
+189,7,2018,CianWhite_JK_18,Allium_triquetrum,8,total abundance per plant species,144
+194,7,2018,CianWhite_JK_18,Calystegia_sepium,8,total abundance per plant species,400
+226,8,2018,CianWhite_JK_18,Cirsium_vulgare,10,total abundance per plant species,300
+173,6,2018,CianWhite_JK_18,Centranthus_ruber,17,total abundance per plant species,3060
+162,6,2018,CianWhite_JK_18,Rubus_fruticosus,20,total abundance per plant species,600
+188,7,2018,CianWhite_JK_18,Centaurea_nigra,20,total abundance per plant species,800
+226,8,2018,CianWhite_JK_18,Lotus_corniculatus,24,total abundance per plant species,384
+169,6,2018,CianWhite_JK_18,Cotoneaster_frigidus,30,total abundance per plant species,1500
+161,6,2018,CianWhite_JK_18,Ranunculus_repens,30,total abundance per plant species,900
+214,8,2018,CianWhite_JK_18,Dimorphotheca_ecklonis,45,total abundance per plant species,3600
+185,7,2018,CianWhite_JK_18,Buddleja_davidii,54,total abundance per plant species,10800
+220,8,2018,CianWhite_JK_18,Plantago_lanceolata,60,total abundance per plant species,2400
+190,7,2018,CianWhite_JK_18,Cirsium_arvense,60,total abundance per plant species,1500
+190,7,2018,CianWhite_JK_18,Plantago_lanceolata,60,total abundance per plant species,2400
+221,8,2018,CianWhite_JK_18,Brassica_rapa,80,total abundance per plant species,2080
+163,6,2018,CianWhite_JK_18,Potentilla_reptans,90,total abundance per plant species,2250
+167,6,2018,CianWhite_JK_18,Achillea_millefolium,120,total abundance per plant species,840
+167,6,2018,CianWhite_JK_18,Penstemon_agg,120,total abundance per plant species,4800
+197,7,2018,CianWhite_JK_18,Lavandula_angustifolia,120,total abundance per plant species,6000
+149,5,2018,CianWhite_JK_18,Lathyrus_pratensis,150,total abundance per plant species,2700
+222,8,2018,CianWhite_JK_18,Potentilla_reptans,150,total abundance per plant species,3750
+236,8,2018,CianWhite_JK_18,Malva_sylvestris,230,total abundance per plant species,10350
+244,9,2018,CianWhite_JK_18,Potentilla_reptans,236,total abundance per plant species,5900
+176,6,2018,CianWhite_JK_18,Senecio_jacobaea,270,total abundance per plant species,5400
+151,5,2018,CianWhite_JK_18,Reseda_luteola,300,total abundance per plant species,45000
+198,7,2018,CianWhite_JK_18,Lonicera_periclymenum,300,total abundance per plant species,15000
+217,8,2018,CianWhite_JK_18,Ligustrum_vulgare,400,total abundance per plant species,20000
+188,7,2018,CianWhite_JK_18,Senecio_jacobaea,450,total abundance per plant species,9000
+163,6,2018,CianWhite_JK_18,Achillea_millefolium,450,total abundance per plant species,3150
+225,8,2018,CianWhite_JK_18,Taraxacum_agg,680,total abundance per plant species,34000
+225,8,2018,CianWhite_JK_18,Prunus_spinosa,700,total abundance per plant species,10500
+168,6,2018,CianWhite_JK_18,Vicia_sepium,780,total abundance per plant species,26520
+198,7,2018,CianWhite_JK_18,Escallonia_macrantha,780,total abundance per plant species,15600
+169,6,2018,CianWhite_JK_18,Trifolium_repens,890,total abundance per plant species,11570
+169,6,2018,CianWhite_JK_18,Centranthus_ruber,1000,total abundance per plant species,180000
+169,6,2018,CianWhite_JK_18,Lavandula_angustifolia,1280,total abundance per plant species,64000
+170,6,2018,CianWhite_JK_18,Hebe_agg,1500,total abundance per plant species,45000
+170,6,2018,CianWhite_JK_18,Cotoneaster_frigidus,1500,total abundance per plant species,75000
+172,6,2018,CianWhite_JK_18,Rubus_fruticosus,1640,total abundance per plant species,49200
+244,9,2018,CianWhite_JK_18,Buxus_sempervirens,6000,total abundance per plant species,24000
+131,5,2018,CianWhite_JK_18,Tilia_xeuropaea,6500,total abundance per plant species,195000
+153,6,2018,CianWhite_JK_18,Rosmarinus_officinalis,7500,total abundance per plant species,150000
+181,6,2018,CianWhite_JK_18,Rubus_fruticosus,11580,total abundance per plant species,347400
+209,7,2018,CianWhite_Kr_18,Iris_pseudacorus,4,total abundance per plant species,400
+193,7,2018,CianWhite_Kr_18,Linaria_purpurea,4,total abundance per plant species,240
+245,9,2018,CianWhite_Kr_18,Hypericum_androsaemum,7,total abundance per plant species,280
+189,7,2018,CianWhite_Kr_18,Rubus_fruticosus,11,total abundance per plant species,330
+209,7,2018,CianWhite_Kr_18,Scorzoneroides_autumnalis,17,total abundance per plant species,510
+225,8,2018,CianWhite_Kr_18,Sedum_agg,17,total abundance per plant species,850
+181,6,2018,CianWhite_Kr_18,Brassica_rapa,30,total abundance per plant species,780
+201,7,2018,CianWhite_Kr_18,Astrantia_major,40,total abundance per plant species,1200
+243,8,2018,CianWhite_Kr_18,Oxalis_debilis,40,total abundance per plant species,1200
+194,7,2018,CianWhite_Kr_18,Taraxacum_agg,45,total abundance per plant species,2250
+189,7,2018,CianWhite_Kr_18,Brassica_rapa,66,total abundance per plant species,1716
+218,8,2018,CianWhite_Kr_18,Ranunculus_repens,70,total abundance per plant species,2100
+190,7,2018,CianWhite_Kr_18,Hebe_agg,70,total abundance per plant species,2100
+190,7,2018,CianWhite_Kr_18,Rhus_sp,110,total abundance per plant species,33000
+164,6,2018,CianWhite_Kr_18,Hebe_agg,110,total abundance per plant species,3300
+197,7,2018,CianWhite_Kr_18,Linaria_purpurea,120,total abundance per plant species,7200
+171,6,2018,CianWhite_Kr_18,Bellis_perennis,120,total abundance per plant species,3000
+195,7,2018,CianWhite_Kr_18,Lotus_corniculatus,150,total abundance per plant species,2400
+149,5,2018,CianWhite_Kr_18,Epilobium_hirsutum,150,total abundance per plant species,3750
+207,7,2018,CianWhite_Kr_18,Salvia_microphylla,150,total abundance per plant species,3750
+218,8,2018,CianWhite_Kr_18,Symphoricarpos_albus,170,total abundance per plant species,680
+160,6,2018,CianWhite_Kr_18,Crocosmia_xcrocosmiiflora,170,total abundance per plant species,8500
+217,8,2018,CianWhite_Kr_18,Heracleum_sphondylium,180,total abundance per plant species,36000
+209,7,2018,CianWhite_Kr_18,Sedum_agg,180,total abundance per plant species,9000
+208,7,2018,CianWhite_Kr_18,Leontodon_saxatilis,200,total abundance per plant species,5000
+226,8,2018,CianWhite_Kr_18,Cirsium_arvense,200,total abundance per plant species,5000
+227,8,2018,CianWhite_Kr_18,Trifolium_repens,210,total abundance per plant species,2730
+214,8,2018,CianWhite_Kr_18,Cirsium_arvense,220,total abundance per plant species,5500
+164,6,2018,CianWhite_Kr_18,Geranium_pratense,240,total abundance per plant species,9600
+164,6,2018,CianWhite_Kr_18,Digitalis_purpurea,280,total abundance per plant species,14000
+189,7,2018,CianWhite_Kr_18,Lavandula_angustifolia,300,total abundance per plant species,15000
+163,6,2018,CianWhite_Kr_18,Erigeron_glaucus,300,total abundance per plant species,9000
+169,6,2018,CianWhite_Kr_18,Hebe_agg,300,total abundance per plant species,9000
+168,6,2018,CianWhite_Kr_18,Centaurea_cyanus,320,total abundance per plant species,9600
+171,6,2018,CianWhite_Kr_18,Rubus_fruticosus,350,total abundance per plant species,10500
+188,7,2018,CianWhite_Kr_18,Erigeron_glaucus,350,total abundance per plant species,10500
+222,8,2018,CianWhite_Kr_18,Heracleum_sphondylium,370,total abundance per plant species,74000
+189,7,2018,CianWhite_Kr_18,Cotoneaster_frigidus,400,total abundance per plant species,20000
+134,5,2018,CianWhite_Kr_18,Salvia_microphylla,400,total abundance per plant species,10000
+219,8,2018,CianWhite_Kr_18,Lotus_corniculatus,400,total abundance per plant species,6400
+230,8,2018,CianWhite_Kr_18,Erigeron_glaucus,500,total abundance per plant species,15000
+153,6,2018,CianWhite_Kr_18,Weigela_kosteriana_variegata,500,total abundance per plant species,20000
+189,7,2018,CianWhite_Kr_18,Ranunculus_repens,540,total abundance per plant species,16200
+196,7,2018,CianWhite_Kr_18,Hypochaeris_radicata,600,total abundance per plant species,24000
+185,7,2018,CianWhite_Kr_18,Potentilla_reptans,820,total abundance per plant species,20500
+125,5,2018,CianWhite_Kr_18,Taraxacum_agg,880,total abundance per plant species,44000
+125,5,2018,CianWhite_Kr_18,Ligustrum_vulgare,950,total abundance per plant species,47500
+186,7,2018,CianWhite_Kr_18,Lavandula_angustifolia,1250,total abundance per plant species,62500
+217,8,2018,CianWhite_Kr_18,Cotoneaster_hybridus_pendulus,1400,total abundance per plant species,21000
+221,8,2018,CianWhite_Kr_18,Trifolium_repens,1424,total abundance per plant species,18512
+163,6,2018,CianWhite_Kr_18,Salvia_microphylla,1500,total abundance per plant species,37500
+194,7,2018,CianWhite_Kr_18,Symphoricarpos_albus,1600,total abundance per plant species,6400
+168,6,2018,CianWhite_Kr_18,Symphoricarpos_albus,1800,total abundance per plant species,7200
+169,6,2018,CianWhite_Kr_18,Spiraea_japonica,2450,total abundance per plant species,171500
+199,7,2018,CianWhite_Kr_18,Heracleum_sphondylium,3070,total abundance per plant species,614000
+170,6,2018,CianWhite_Kr_18,Pyracantha_sp,7000,total abundance per plant species,140000
+170,6,2018,CianWhite_Lp_18,Vicia_sepium,NA,not collected,NA
+143,5,2018,CianWhite_Lp_18,Geranium_cult,30,total abundance per plant species,1050
+178,6,2018,CianWhite_Lp_18,Geranium_cult,60,total abundance per plant species,2100
+148,5,2018,CianWhite_Lp_18,Senecio_jacobaea,79,total abundance per plant species,1580
+171,6,2018,CianWhite_Lp_18,Trifolium_pratense,80,total abundance per plant species,1200
+204,7,2018,CianWhite_Lp_18,Geranium_pratense,100,total abundance per plant species,4000
+189,7,2018,CianWhite_Lp_18,Buxus_sempervirens,150,total abundance per plant species,600
+223,8,2018,CianWhite_Lp_18,Trifolium_pratense,180,total abundance per plant species,2700
+150,5,2018,CianWhite_Lp_18,Vicia_sepium,240,total abundance per plant species,8160
+145,5,2018,CianWhite_Lp_18,Ranunculus_acris,310,total abundance per plant species,7750
+182,7,2018,CianWhite_Lp_18,Lavandula_angustifolia,400,total abundance per plant species,20000
+215,8,2018,CianWhite_Lp_18,Sedum_agg,570,total abundance per plant species,28500
+190,7,2018,CianWhite_Lp_18,Cirsium_arvense,600,total abundance per plant species,15000
+190,7,2018,CianWhite_Lp_18,Cirsium_arvense,600,total abundance per plant species,15000
+163,6,2018,CianWhite_Lp_18,Ceanothus_agg,680,total abundance per plant species,27200
+168,6,2018,CianWhite_Lp_18,Ranunculus_repens,700,total abundance per plant species,21000
+227,8,2018,CianWhite_Lp_18,Rubus_fruticosus,1100,total abundance per plant species,33000
+196,7,2018,CianWhite_Lp_18,Trifolium_repens,1500,total abundance per plant species,19500
+244,9,2018,CianWhite_Lp_18,Pyracantha_sp,2400,total abundance per plant species,48000
+109,4,2018,CianWhite_Lp_18,Crataegus_monogyna,2500,total abundance per plant species,50000
+219,8,2018,CianWhite_Lp_18,Trifolium_pratense,3400,total abundance per plant species,51000
+226,8,2018,CianWhite_Lp_18,Rubus_fruticosus,3500,total abundance per plant species,105000
+186,7,2018,CianWhite_Lp_18,Trifolium_repens,3500,total abundance per plant species,45500
+160,6,2018,CianWhite_Lp_18,Trifolium_pratense,10200,total abundance per plant species,153000
+240,8,2018,CianWhite_Lp_18,Ranunculus_acris,22500,total abundance per plant species,562500
+166,6,2018,CianWhite_Me_18,Cistus_agg,2,total abundance per plant species,110
+236,8,2018,CianWhite_Me_18,Geranium_pratense,15,total abundance per plant species,600
+185,7,2018,CianWhite_Me_18,Ranunculus_acris,15,total abundance per plant species,375
+186,7,2018,CianWhite_Me_18,Pelargonium_cult,17,total abundance per plant species,680
+219,8,2018,CianWhite_Me_18,Cirsium_vulgare,19,total abundance per plant species,570
+163,6,2018,CianWhite_Me_18,Trifolium_repens,20,total abundance per plant species,260
+209,7,2018,CianWhite_Me_18,Potentilla_reptans,21,total abundance per plant species,525
+185,7,2018,CianWhite_Me_18,Bellis_perennis,35,total abundance per plant species,875
+161,6,2018,CianWhite_Me_18,Trifolium_repens,40,total abundance per plant species,520
+199,7,2018,CianWhite_Me_18,Symphytum_xuplandicum,40,total abundance per plant species,1200
+214,8,2018,CianWhite_Me_18,Verbena_bonariensis,100,total abundance per plant species,2500
+168,6,2018,CianWhite_Me_18,Fuschia_sp,100,total abundance per plant species,5000
+124,5,2018,CianWhite_Me_18,Salvia_officinalis,100,total abundance per plant species,4000
+218,8,2018,CianWhite_Me_18,Hypericum_androsaemum,130,total abundance per plant species,5200
+149,5,2018,CianWhite_Me_18,Spiraea_japonica,160,total abundance per plant species,11200
+238,8,2018,CianWhite_Me_18,Digitalis_purpurea,160,total abundance per plant species,8000
+217,8,2018,CianWhite_Me_18,Salvia_officinalis,180,total abundance per plant species,7200
+186,7,2018,CianWhite_Me_18,Crocosmia_xcrocosmiiflora,180,total abundance per plant species,9000
+220,8,2018,CianWhite_Me_18,Lathyrus_odoratus,240,total abundance per plant species,8400
+190,7,2018,CianWhite_Me_18,Symphoricarpos_albus,240,total abundance per plant species,960
+144,5,2018,CianWhite_Me_18,Erica_sp,250,total abundance per plant species,2500
+165,6,2018,CianWhite_Me_18,Salvia_microphylla,250,total abundance per plant species,6250
+166,6,2018,CianWhite_Me_18,Fuchsia_magellanica,250,total abundance per plant species,12500
+228,8,2018,CianWhite_Me_18,Symphoricarpos_albus,250,total abundance per plant species,1000
+185,7,2018,CianWhite_Me_18,Hebe_agg,250,total abundance per plant species,7500
+186,7,2018,CianWhite_Me_18,Penstemon_agg,260,total abundance per plant species,10400
+186,7,2018,CianWhite_Me_18,Ranunculus_repens,280,total abundance per plant species,8400
+189,7,2018,CianWhite_Me_18,Ligustrum_vulgare,300,total abundance per plant species,15000
+161,6,2018,CianWhite_Me_18,Salvia_microphylla,320,total abundance per plant species,8000
+222,8,2018,CianWhite_Me_18,Lavandula_angustifolia,400,total abundance per plant species,20000
+163,6,2018,CianWhite_Me_18,Lavandula_angustifolia,540,total abundance per plant species,27000
+163,6,2018,CianWhite_Me_18,Fuchsia_magellanica,600,total abundance per plant species,30000
+194,7,2018,CianWhite_Me_18,Fuchsia_magellanica,647,total abundance per plant species,32350
+225,8,2018,CianWhite_Me_18,Salvia_microphylla,800,total abundance per plant species,20000
+149,5,2018,CianWhite_Me_18,Cornus_alba,800,total abundance per plant species,32000
+149,5,2018,CianWhite_Me_18,Senecio_jacobaea,28550,total abundance per plant species,571000
+217,8,2018,CianWhite_ND_18,Hebe_agg,15,total abundance per plant species,450
+214,8,2018,CianWhite_ND_18,Tanacetum_parthenium,15,total abundance per plant species,300
+124,5,2018,CianWhite_ND_18,Filipendula_ulmaria,20,total abundance per plant species,3000
+214,8,2018,CianWhite_ND_18,Cirsium_vulgare,25,total abundance per plant species,750
+125,5,2018,CianWhite_ND_18,Cytisus_scoparius,50,total abundance per plant species,1000
+217,8,2018,CianWhite_ND_18,Senecio_greyii,70,total abundance per plant species,2100
+217,8,2018,CianWhite_ND_18,Vicia_sepium,80,total abundance per plant species,2720
+193,7,2018,CianWhite_ND_18,Geranium_pyrenaicum,83,total abundance per plant species,1494
+134,5,2018,CianWhite_ND_18,Epilobium_parviflorum,87,total abundance per plant species,783
+193,7,2018,CianWhite_ND_18,Plantago_lanceolata,100,total abundance per plant species,4000
+189,7,2018,CianWhite_ND_18,Crataegus_monogyna,100,total abundance per plant species,2000
+160,6,2018,CianWhite_ND_18,Digitalis_purpurea,105,total abundance per plant species,5250
+198,7,2018,CianWhite_ND_18,Salvia_microphylla,120,total abundance per plant species,3000
+192,7,2018,CianWhite_ND_18,Senecio_jacobaea,140,total abundance per plant species,2800
+193,7,2018,CianWhite_ND_18,Buddleja_globosa,150,total abundance per plant species,4200
+186,7,2018,CianWhite_ND_18,Plantago_lanceolata,160,total abundance per plant species,6400
+167,6,2018,CianWhite_ND_18,Hebe_agg,164,total abundance per plant species,4920
+154,6,2018,CianWhite_ND_18,Trifolium_repens,190,total abundance per plant species,2470
+168,6,2018,CianWhite_ND_18,Rubus_fruticosus,200,total abundance per plant species,6000
+193,7,2018,CianWhite_ND_18,Heracleum_sphondylium,225,total abundance per plant species,45000
+218,8,2018,CianWhite_ND_18,Lavandula_angustifolia,260,total abundance per plant species,13000
+194,7,2018,CianWhite_ND_18,Chamerion_anguistifolium,320,total abundance per plant species,9600
+226,8,2018,CianWhite_ND_18,Veronica_chamaedrys,375,total abundance per plant species,3750
+178,6,2018,CianWhite_ND_18,Hypericum_androsaemum,380,total abundance per plant species,15200
+216,8,2018,CianWhite_ND_18,Cardamine_pratensis,400,total abundance per plant species,8000
+241,8,2018,CianWhite_ND_18,Weigela_kosteriana_variegata,600,total abundance per plant species,24000
+167,6,2018,CianWhite_ND_18,Laburnum_xwatereri,600,total abundance per plant species,150000
+193,7,2018,CianWhite_ND_18,Rubus_fruticosus,634,total abundance per plant species,19020
+195,7,2018,CianWhite_ND_18,Weigela_kosteriana_variegata,700,total abundance per plant species,28000
+193,7,2018,CianWhite_ND_18,Ranunculus_repens,750,total abundance per plant species,22500
+195,7,2018,CianWhite_ND_18,Lotus_corniculatus,800,total abundance per plant species,12800
+165,6,2018,CianWhite_ND_18,Vicia_sepium,903,total abundance per plant species,30702
+198,7,2018,CianWhite_ND_18,Lavandula_angustifolia,1000,total abundance per plant species,50000
+222,8,2018,CianWhite_ND_18,Stellaria_graminea,1200,total abundance per plant species,21600
+229,8,2018,CianWhite_ND_18,Filipendula_ulmaria,1620,total abundance per plant species,243000
+125,5,2018,CianWhite_ND_18,Cirsium_arvense,2210,total abundance per plant species,55250
+186,7,2018,CianWhite_ND_18,Epilobium_hirsutum,2400,total abundance per plant species,60000
+127,5,2018,CianWhite_ND_18,Trifolium_repens,4200,total abundance per plant species,54600
+188,7,2018,CianWhite_ND_18,Buddleja_globosa,4200,total abundance per plant species,117600
+128,5,2018,CianWhite_ND_18,Ranunculus_acris,4280,total abundance per plant species,107000
+163,6,2018,CianWhite_ND_18,Rubus_fruticosus,4345,total abundance per plant species,130350
+168,6,2018,CianWhite_ND_18,Cirsium_arvense,5000,total abundance per plant species,125000
+168,6,2018,CianWhite_ND_18,Chamerion_anguistifolium,7200,total abundance per plant species,216000
+172,6,2018,CianWhite_ND_18,Ranunculus_repens,11475,total abundance per plant species,344250
+216,8,2018,CianWhite_ND_18,Ranunculus_acris,11650,total abundance per plant species,291250
+221,8,2018,CianWhite_ND_18,Ranunculus_repens,22570,total abundance per plant species,677100
+174,6,2018,CianWhite_NG_18,Cirsium_vulgare,3,total abundance per plant species,90
+185,7,2018,CianWhite_NG_18,Trifolium_repens,7,total abundance per plant species,91
+173,6,2018,CianWhite_NG_18,Sonchus_arvensis,7,total abundance per plant species,350
+143,5,2018,CianWhite_NG_18,Lapsana_communis,15,total abundance per plant species,225
+178,6,2018,CianWhite_NG_18,Crepis_capillaris,20,total abundance per plant species,260
+217,8,2018,CianWhite_NG_18,Stellaria_media,40,total abundance per plant species,400
+181,6,2018,CianWhite_NG_18,Vicia_sepium,40,total abundance per plant species,1360
+190,7,2018,CianWhite_NG_18,Petunia_xatkinsiana,47,total abundance per plant species,3760
+221,8,2018,CianWhite_NG_18,Bellis_perennis,50,total abundance per plant species,1250
+163,6,2018,CianWhite_NG_18,Plantago_lanceolata,50,total abundance per plant species,2000
+145,5,2018,CianWhite_NG_18,Ranunculus_repens,60,total abundance per plant species,1800
+193,7,2018,CianWhite_NG_18,Cirsium_arvense,90,total abundance per plant species,2250
+160,6,2018,CianWhite_NG_18,Cirsium_palustre,100,total abundance per plant species,1500
+160,6,2018,CianWhite_NG_18,Crepis_capillaris,100,total abundance per plant species,1300
+167,6,2018,CianWhite_NG_18,Geranium_robertianum,120,total abundance per plant species,1800
+188,7,2018,CianWhite_NG_18,Cerastium_fontanum,175,total abundance per plant species,1225
+193,7,2018,CianWhite_NG_18,Salix,200,total abundance per plant species,8000
+173,6,2018,CianWhite_NG_18,Geranium_robertianum,220,total abundance per plant species,3300
+217,8,2018,CianWhite_NG_18,Centaurea_nigra,250,total abundance per plant species,10000
+220,8,2018,CianWhite_NG_18,Begonia_semperflorens,300,total abundance per plant species,9000
+193,7,2018,CianWhite_NG_18,Capsella_bursa-pastoris,400,total abundance per plant species,1000
+189,7,2018,CianWhite_NG_18,Ranunculus_repens,500,total abundance per plant species,15000
+154,6,2018,CianWhite_NG_18,Cirsium_palustre,510,total abundance per plant species,7650
+142,5,2018,CianWhite_NG_18,Ranunculus_repens,525,total abundance per plant species,15750
+123,5,2018,CianWhite_NG_18,Capsella_bursa-pastoris,570,total abundance per plant species,1425
+125,5,2018,CianWhite_NG_18,Trifolium_pratense,625,total abundance per plant species,9375
+186,7,2018,CianWhite_NG_18,Senecio_jacobaea,680,total abundance per plant species,13600
+218,8,2018,CianWhite_NG_18,Ranunculus_repens,810,total abundance per plant species,24300
+189,7,2018,CianWhite_NG_18,Heracleum_sphondylium,900,total abundance per plant species,180000
+220,8,2018,CianWhite_NG_18,Stellaria_graminea,900,total abundance per plant species,16200
+190,7,2018,CianWhite_NG_18,Trifolium_repens,1125,total abundance per plant species,14625
+198,7,2018,CianWhite_NG_18,Rubus_fruticosus,1680,total abundance per plant species,50400
+170,6,2018,CianWhite_NG_18,Rubus_fruticosus,2260,total abundance per plant species,67800
+170,6,2018,CianWhite_NG_18,Allium_triquetrum,2400,total abundance per plant species,43200
+147,5,2018,CianWhite_NG_18,Trifolium_repens,2900,total abundance per plant species,37700
+149,5,2018,CianWhite_NG_18,Senecio_jacobaea,5000,total abundance per plant species,100000
+149,5,2018,CianWhite_NG_18,Rubus_fruticosus,11550,total abundance per plant species,346500
+190,7,2018,CianWhite_NG_18,Leontodon_hispidus,12225,total abundance per plant species,366750
+176,6,2018,CianWhite_NG_18,Taraxacum_agg,12525,total abundance per plant species,626250
+221,8,2018,CianWhite_NS_18,Taraxacum_agg,5,total abundance per plant species,250
+169,6,2018,CianWhite_NS_18,Verbena_bonariensis,7,total abundance per plant species,175
+172,6,2018,CianWhite_NS_18,Centranthus_ruber,15,total abundance per plant species,2700
+198,7,2018,CianWhite_NS_18,Lamium_purpureum,40,total abundance per plant species,600
+225,8,2018,CianWhite_NS_18,Centranthus_ruber,60,total abundance per plant species,10800
+167,6,2018,CianWhite_NS_18,Heuchera_cult,120,total abundance per plant species,1200
+197,7,2018,CianWhite_NS_18,Filipendula_ulmaria,130,total abundance per plant species,19500
+225,8,2018,CianWhite_NS_18,Fallopia_baldschuanica,150,total abundance per plant species,1050
+170,6,2018,CianWhite_NS_18,Buddleja_davidii,180,total abundance per plant species,36000
+185,7,2018,CianWhite_NS_18,Fuchsia_magellanica,190,total abundance per plant species,9500
+123,5,2018,CianWhite_NS_18,Achillea_millefolium,200,total abundance per plant species,1400
+145,5,2018,CianWhite_NS_18,Scorzoneroides_autumnalis,240,total abundance per plant species,7200
+216,8,2018,CianWhite_NS_18,Ranunculus_repens,250,total abundance per plant species,7500
+185,7,2018,CianWhite_NS_18,Cotoneaster_hybridus_pendulus,400,total abundance per plant species,6000
+133,5,2018,CianWhite_NS_18,Symphytum_xuplandicum,408,total abundance per plant species,12240
+149,5,2018,CianWhite_NS_18,Campanula_rotundifolia,540,total abundance per plant species,16200
+184,7,2018,CianWhite_NS_18,Tagetes_patula,620,total abundance per plant species,31000
+188,7,2018,CianWhite_NS_18,Begonia_semperflorens,1200,total abundance per plant species,36000
+160,6,2018,CianWhite_NS_18,Fallopia_baldschuanica,1600,total abundance per plant species,11200
+160,6,2018,CianWhite_NS_18,Cirsium_vulgare,1800,total abundance per plant species,54000
+160,6,2018,CianWhite_NS_18,Cotoneaster_frigidus,3000,total abundance per plant species,150000
+133,5,2018,CianWhite_Pn_18,Trifolium_pratense,14,total abundance per plant species,210
+133,5,2018,CianWhite_Pn_18,Hebe_agg,25,total abundance per plant species,750
+169,6,2018,CianWhite_Pn_18,Brassica_rapa,30,total abundance per plant species,780
+260,9,2018,CianWhite_Pn_18,Trifolium_pratense,42,total abundance per plant species,630
+210,7,2018,CianWhite_Pn_18,Cirsium_arvense,81,total abundance per plant species,2025
+125,5,2018,CianWhite_Pn_18,Centaurea_cyanus,90,total abundance per plant species,2700
+147,5,2018,CianWhite_Pn_18,Lotus_corniculatus,150,total abundance per plant species,2400
+197,7,2018,CianWhite_Pn_18,Trifolium_pratense,150,total abundance per plant species,2250
+211,7,2018,CianWhite_Pn_18,Ranunculus_repens,225,total abundance per plant species,6750
+225,8,2018,CianWhite_Pn_18,Hebe_agg,235,total abundance per plant species,7050
+170,6,2018,CianWhite_Pn_18,Heracleum_sphondylium,442,total abundance per plant species,88400
+185,7,2018,CianWhite_Pn_18,Trifolium_repens,1249,total abundance per plant species,16237
+144,5,2018,CianWhite_Pn_18,Berberis_sp,1500,total abundance per plant species,12000
+169,6,2018,CianWhite_Pn_18,Tilia_xeuropaea,1800,total abundance per plant species,54000
+133,5,2018,CianWhite_Pn_18,Cotoneaster_frigidus,2000,total abundance per plant species,100000
+226,8,2018,CianWhite_Pn_18,Vicia_sepium,2150,total abundance per plant species,73100
+197,7,2018,CianWhite_Pn_18,Cirsium_arvense,2220,total abundance per plant species,55500
+211,7,2018,CianWhite_Pn_18,Malus_prunifolia,4000,total abundance per plant species,100000
+161,6,2018,CianWhite_Pn_18,Buxus_sempervirens,6000,total abundance per plant species,24000
+169,6,2018,CianWhite_Pn_18,Senecio_jacobaea,11400,total abundance per plant species,228000
+169,6,2018,CianWhite_Pn_18,Senecio_jacobaea,68400,total abundance per plant species,1368000
+169,6,2018,CianWhite_Te_18,Buddleja_davidii,6,total abundance per plant species,1200
+178,6,2018,CianWhite_Te_18,Rosa_cult,10,total abundance per plant species,1000
+185,7,2018,CianWhite_Te_18,Trifolium_repens,13,total abundance per plant species,169
+186,7,2018,CianWhite_Te_18,Taraxacum_agg,15,total abundance per plant species,750
+171,6,2018,CianWhite_Te_18,Agapanthus_sp,17,total abundance per plant species,1020
+199,7,2018,CianWhite_Te_18,Senecio_greyii,19,total abundance per plant species,570
+168,6,2018,CianWhite_Te_18,Potentilla_reptans,20,total abundance per plant species,500
+185,7,2018,CianWhite_Te_18,Sedum_agg,20,total abundance per plant species,1000
+221,8,2018,CianWhite_Te_18,Trifolium_pratense,29,total abundance per plant species,435
+193,7,2018,CianWhite_Te_18,Astrantia_major,30,total abundance per plant species,900
+190,7,2018,CianWhite_Te_18,Odontites_vernus,31,total abundance per plant species,279
+185,7,2018,CianWhite_Te_18,Cirsium_arvense,35,total abundance per plant species,875
+216,8,2018,CianWhite_Te_18,Spiraea_xbillardii,40,total abundance per plant species,3200
+124,5,2018,CianWhite_Te_18,Hydrangea_cult,42,total abundance per plant species,0
+217,8,2018,CianWhite_Te_18,Linaria_purpurea,58,total abundance per plant species,3480
+153,6,2018,CianWhite_Te_18,Linaria_purpurea,60,total abundance per plant species,3600
+168,6,2018,CianWhite_Te_18,Mentha__piperita,60,total abundance per plant species,720
+185,7,2018,CianWhite_Te_18,Achillea_millefolium,78,total abundance per plant species,546
+125,5,2018,CianWhite_Te_18,Alcea_rosea,78,total abundance per plant species,4680
+217,8,2018,CianWhite_Te_18,Hydrangea_cult,100,total abundance per plant species,0
+147,5,2018,CianWhite_Te_18,Cardamine_pratensis,100,total abundance per plant species,2000
+178,6,2018,CianWhite_Te_18,Fuchsia_magellanica,100,total abundance per plant species,5000
+169,6,2018,CianWhite_Te_18,Leucanthemum_xsuperbum,112,total abundance per plant species,11200
+193,7,2018,CianWhite_Te_18,Stachys_byzantina,125,total abundance per plant species,1500
+214,8,2018,CianWhite_Te_18,Spiraea_japonica,150,total abundance per plant species,10500
+148,5,2018,CianWhite_Te_18,Malva_arborea,150,total abundance per plant species,6000
+170,6,2018,CianWhite_Te_18,Penstemon_agg,170,total abundance per plant species,6800
+222,8,2018,CianWhite_Te_18,Hebe_agg,180,total abundance per plant species,5400
+186,7,2018,CianWhite_Te_18,Tilia_xeuropaea,200,total abundance per plant species,6000
+168,6,2018,CianWhite_Te_18,Oxalis_debilis,200,total abundance per plant species,6000
+130,5,2018,CianWhite_Te_18,Cistus_agg,210,total abundance per plant species,11550
+193,7,2018,CianWhite_Te_18,Geranium_pratense,260,total abundance per plant species,10400
+160,6,2018,CianWhite_Te_18,Buddleja_davidii,372,total abundance per plant species,74400
+225,8,2018,CianWhite_Te_18,Lavandula_angustifolia,440,total abundance per plant species,22000
+168,6,2018,CianWhite_Te_18,Malva_sylvestris,450,total abundance per plant species,20250
+171,6,2018,CianWhite_Te_18,Spiraea_japonica,460,total abundance per plant species,32200
+192,7,2018,CianWhite_Te_18,Vicia_sepium,500,total abundance per plant species,17000
+198,7,2018,CianWhite_Te_18,Trifolium_repens,520,total abundance per plant species,6760
+188,7,2018,CianWhite_Te_18,Senecio_jacobaea,600,total abundance per plant species,12000
+210,7,2018,CianWhite_Te_18,Stachys_byzantina,800,total abundance per plant species,9600
+220,8,2018,CianWhite_Te_18,Spiraea_japonica,900,total abundance per plant species,63000
+168,6,2018,CianWhite_Te_18,Hypericum_androsaemum,910,total abundance per plant species,36400
+185,7,2018,CianWhite_Te_18,Hebe_agg,970,total abundance per plant species,29100
+168,6,2018,CianWhite_Te_18,Anthriscus_sylvestris,1500,total abundance per plant species,105000
+164,6,2018,CianWhite_Te_18,Lonicera_nitida,1800,total abundance per plant species,27000
+215,8,2018,CianWhite_Te_18,Campanula_portenschlagia,2650,total abundance per plant species,66250
+220,8,2018,CianWhite_Te_18,Fuchsia_magellanica,2730,total abundance per plant species,136500
+203,7,2018,CianWhite_Te_18,Rubus_fruticosus,2970,total abundance per plant species,89100
+184,7,2018,CianWhite_Te_18,Rubus_fruticosus,3670,total abundance per plant species,110100
+221,8,2018,CianWhite_Te_18,Hebe_agg,3900,total abundance per plant species,117000
+194,7,2018,CianWhite_Te_18,Lavandula_angustifolia,4260,total abundance per plant species,213000
+168,6,2018,CianWhite_Te_18,Cotoneaster_hybridus_pendulus,5000,total abundance per plant species,75000
+169,6,2018,CianWhite_Te_18,Rubus_fruticosus,7500,total abundance per plant species,225000
+244,9,2018,CianWhite_Te_18,Tilia_xeuropaea,8000,total abundance per plant species,240000
+167,6,2018,CianWhite_Te_18,Cotoneaster_franchetii,9900,total abundance per plant species,69300
+188,7,2018,CianWhite_WD_18,Lamium_purpureum,8,total abundance per plant species,120
+221,8,2018,CianWhite_WD_18,Geranium_robertianum,14,total abundance per plant species,210
+167,6,2018,CianWhite_WD_18,Lapsana_communis,31,total abundance per plant species,465
+197,7,2018,CianWhite_WD_18,Senecio_jacobaea,32,total abundance per plant species,640
+194,7,2018,CianWhite_WD_18,Fuchsia_magellanica,38,total abundance per plant species,1900
+219,8,2018,CianWhite_WD_18,Tanacetum_parthenium,69,total abundance per plant species,1380
+217,8,2018,CianWhite_WD_18,Cirsium_palustre,75,total abundance per plant species,1125
+219,8,2018,CianWhite_WD_18,Ranunculus_repens,90,total abundance per plant species,2700
+172,6,2018,CianWhite_WD_18,Vicia_sepium,100,total abundance per plant species,3400
+211,7,2018,CianWhite_WD_18,Ranunculus_acris,150,total abundance per plant species,3750
+217,8,2018,CianWhite_WD_18,Cirsium_arvense,240,total abundance per plant species,6000
+127,5,2018,CianWhite_WD_18,Anthriscus_sylvestris,500,total abundance per plant species,35000
+198,7,2018,CianWhite_WD_18,Trifolium_repens,780,total abundance per plant species,10140
+222,8,2018,CianWhite_WD_18,Rubus_fruticosus,1278,total abundance per plant species,38340
+220,8,2018,CianWhite_WD_18,Ulex_europaeus,10000,total abundance per plant species,200000
+188,7,2018,CianWhite_WD_18,Taraxacum_agg,20431,total abundance per plant species,1021550
+163,6,2018,CianWhite_WD_18,Cardamine_pratensis,21869,total abundance per plant species,437380
+163,6,2018,CianWhite_WD_18,Trifolium_repens,60000,total abundance per plant species,780000
+193,7,2018,MichelleLarkin_CloonselhernyCoClare_18,Centaurea_scabiosa,NA,not collected,NA
+128,5,2018,MichelleLarkin_CloonselhernyCoClare_18,Campanula_rotundifolia,NA,not collected,NA
+189,7,2018,MichelleLarkin_CloonselhernyCoClare_18,Rhinanthus_minor,2,total abundance per plant species,30
+163,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Solidago_virgaurea,3,total abundance per plant species,54
+164,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Erica_cinerea,6,total abundance per plant species,36
+134,5,2018,MichelleLarkin_CloonselhernyCoClare_18,Succisa_pratensis,8,total abundance per plant species,200
+168,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Anthyllis_vulneraria,8,total abundance per plant species,640
+168,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Succisa_pratensis,16,total abundance per plant species,400
+178,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Leontodon_hispidus,17,total abundance per plant species,510
+185,7,2018,MichelleLarkin_CloonselhernyCoClare_18,Teucrium_scorodonia,18,total abundance per plant species,900
+143,5,2018,MichelleLarkin_CloonselhernyCoClare_18,Centaurea_nigra,26,total abundance per plant species,1040
+194,7,2018,MichelleLarkin_CloonselhernyCoClare_18,Leontodon_hispidus,34,total abundance per plant species,1020
+144,5,2018,MichelleLarkin_CloonselhernyCoClare_18,Centaurea_nigra,52,total abundance per plant species,2080
+221,8,2018,MichelleLarkin_CloonselhernyCoClare_18,Succisa_pratensis,77,total abundance per plant species,1925
+163,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Centaurea_nigra,128,total abundance per plant species,5120
+190,7,2018,MichelleLarkin_CloonselhernyCoClare_18,Lotus_corniculatus,187,total abundance per plant species,2992
+168,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Centaurea_nigra,256,total abundance per plant species,10240
+172,6,2018,MichelleLarkin_CloonselhernyCoClare_18,Leontodon_hispidus,309,total abundance per plant species,9270
+149,5,2018,MichelleLarkin_CreehaunCarronCoClare_18,Lathyrus_linifolius,NA,not collected,NA
+186,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Vicia_sepium,2,total abundance per plant species,30
+188,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Prunella_vulgaris,2,total abundance per plant species,30
+128,5,2018,MichelleLarkin_CreehaunCarronCoClare_18,Trifolium_pratense,2,total abundance per plant species,30
+160,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Trifolium_pratense,2,total abundance per plant species,30
+160,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Rubus_fruticosus,4,total abundance per plant species,120
+221,8,2018,MichelleLarkin_CreehaunCarronCoClare_18,Centaurea_nigra,4,total abundance per plant species,160
+164,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Centaurea_nigra,4,total abundance per plant species,160
+198,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Trifolium_repens,5,total abundance per plant species,65
+160,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Trifolium_repens,5,total abundance per plant species,65
+215,8,2018,MichelleLarkin_CreehaunCarronCoClare_18,Taraxacum_agg,6,total abundance per plant species,300
+170,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Taraxacum_agg,6,total abundance per plant species,300
+134,5,2018,MichelleLarkin_CreehaunCarronCoClare_18,Trifolium_pratense,7,total abundance per plant species,105
+167,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Ranunculus_repens,14,total abundance per plant species,420
+193,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Succisa_pratensis,19,total abundance per plant species,475
+229,8,2018,MichelleLarkin_CreehaunCarronCoClare_18,Centaurea_nigra,28,total abundance per plant species,1120
+218,8,2018,MichelleLarkin_CreehaunCarronCoClare_18,Leontodon_saxatilis,31,total abundance per plant species,775
+164,6,2018,MichelleLarkin_CreehaunCarronCoClare_18,Scorzoneroides_autumnalis,35,total abundance per plant species,1050
+197,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Geranium_sanguineum,37,total abundance per plant species,1110
+134,5,2018,MichelleLarkin_CreehaunCarronCoClare_18,Centaurea_nigra,56,total abundance per plant species,2240
+198,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Teucrium_scorodonia,60,total abundance per plant species,3000
+190,7,2018,MichelleLarkin_CreehaunCarronCoClare_18,Succisa_pratensis,150,total abundance per plant species,3750
+188,7,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Taraxacum_agg,NA,not collected,NA
+147,5,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Trifolium_pratense,NA,not collected,NA
+218,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Vicia_sepium,NA,not collected,NA
+180,6,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Trifolium_repens,19,total abundance per plant species,247
+217,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Lotus_corniculatus,30,total abundance per plant species,480
+210,7,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Succisa_pratensis,39,total abundance per plant species,975
+223,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Succisa_pratensis,78,total abundance per plant species,1950
+214,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Geranium_sanguineum,81,total abundance per plant species,2430
+214,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Centaurea_nigra,107,total abundance per plant species,4280
+126,5,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Centaurea_nigra,214,total abundance per plant species,8560
+160,6,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Lotus_corniculatus,268,total abundance per plant species,4288
+164,6,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Succisa_pratensis,273,total abundance per plant species,6825
+225,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Succisa_pratensis,455,total abundance per plant species,11375
+226,8,2018,MichelleLarkin_FaheeNorthCarronCoClare_18,Centaurea_nigra,749,total abundance per plant species,29960
+163,6,2018,MichelleLarkin_FanoreMoreCoClare_18,Centaurea_nigra,NA,not collected,NA
+125,5,2018,MichelleLarkin_FanoreMoreCoClare_18,Rubus_fruticosus,NA,not collected,NA
+171,6,2018,MichelleLarkin_FanoreMoreCoClare_18,Scorzoneroides_autumnalis,NA,not collected,NA
+149,5,2018,MichelleLarkin_FanoreMoreCoClare_18,Prunella_vulgaris,1,total abundance per plant species,15
+130,5,2018,MichelleLarkin_FanoreMoreCoClare_18,Succisa_pratensis,10,total abundance per plant species,250
+218,8,2018,MichelleLarkin_FanoreMoreCoClare_18,Succisa_pratensis,10,total abundance per plant species,250
+167,6,2018,MichelleLarkin_FanoreMoreCoClare_18,Succisa_pratensis,20,total abundance per plant species,500
+161,6,2018,MichelleLarkin_FanoreMoreCoClare_18,Succisa_pratensis,30,total abundance per plant species,750
+178,6,2018,MichelleLarkin_FanoreMoreCoClare_18,Lotus_corniculatus,69,total abundance per plant species,1104
+228,8,2018,MichelleLarkin_FanoreMoreCoClare_18,Lotus_corniculatus,69,total abundance per plant species,1104
+218,8,2018,MichelleLarkin_FanoreMoreCoClare_18,Thymus_polytrichus,1335,total abundance per plant species,5340
+126,5,2018,MichelleLarkin_FunshinBegCoGalway_18,Rubus_fruticosus,NA,not collected,NA
+172,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_scabiosa,NA,not collected,NA
+218,8,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_nigra,1,total abundance per plant species,40
+186,7,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_nigra,1,total abundance per plant species,40
+167,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Teucrium_scorodonia,1,total abundance per plant species,50
+164,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Teucrium_scorodonia,1,total abundance per plant species,50
+163,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Knautia_arvensis,2,total abundance per plant species,80
+164,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Leontodon_hispidus,4,total abundance per plant species,120
+153,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Taraxacum_agg,6,total abundance per plant species,300
+171,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Succisa_pratensis,10,total abundance per plant species,250
+167,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Trifolium_pratense,10,total abundance per plant species,150
+170,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Ranunculus_bulbosus,15,total abundance per plant species,450
+220,8,2018,MichelleLarkin_FunshinBegCoGalway_18,Knautia_arvensis,18,total abundance per plant species,720
+193,7,2018,MichelleLarkin_FunshinBegCoGalway_18,Succisa_pratensis,27,total abundance per plant species,675
+223,8,2018,MichelleLarkin_FunshinBegCoGalway_18,Lathyrus_pratensis,49,total abundance per plant species,735
+160,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Scorzoneroides_autumnalis,50,total abundance per plant species,1500
+194,7,2018,MichelleLarkin_FunshinBegCoGalway_18,Succisa_pratensis,52,total abundance per plant species,1300
+126,5,2018,MichelleLarkin_FunshinBegCoGalway_18,Rhinanthus_minor,94,total abundance per plant species,1410
+189,7,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_nigra,114,total abundance per plant species,4560
+160,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Succisa_pratensis,156,total abundance per plant species,3900
+178,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Leontodon_hispidus,176,total abundance per plant species,5280
+215,8,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_nigra,228,total abundance per plant species,9120
+226,8,2018,MichelleLarkin_FunshinBegCoGalway_18,Rhinanthus_minor,282,total abundance per plant species,4230
+178,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_nigra,573,total abundance per plant species,22920
+134,5,2018,MichelleLarkin_FunshinBegCoGalway_18,Lotus_corniculatus,774,total abundance per plant species,12384
+178,6,2018,MichelleLarkin_FunshinBegCoGalway_18,Centaurea_nigra,1337,total abundance per plant species,53480
+161,6,2018,MichelleLarkin_GleninsheenCoClare_18,Ajuga_reptans,NA,not collected,NA
+189,7,2018,MichelleLarkin_GleninsheenCoClare_18,Rubus_fruticosus,NA,not collected,NA
+220,8,2018,MichelleLarkin_GleninsheenCoClare_18,Vicia_cracca,NA,not collected,NA
+169,6,2018,MichelleLarkin_GleninsheenCoClare_18,Rubus_fruticosus,NA,not collected,NA
+169,6,2018,MichelleLarkin_GleninsheenCoClare_18,Odontites_vernus,NA,not collected,NA
+218,8,2018,MichelleLarkin_GleninsheenCoClare_18,Lotus_corniculatus,NA,not collected,NA
+169,6,2018,MichelleLarkin_GleninsheenCoClare_18,Rhinanthus_minor,NA,not collected,NA
+148,5,2018,MichelleLarkin_GleninsheenCoClare_18,Scorzoneroides_autumnalis,2,total abundance per plant species,60
+190,7,2018,MichelleLarkin_GleninsheenCoClare_18,Lathyrus_linifolius,3,total abundance per plant species,45
+125,5,2018,MichelleLarkin_GleninsheenCoClare_18,Prunella_vulgaris,3,total abundance per plant species,45
+170,6,2018,MichelleLarkin_GleninsheenCoClare_18,Centaurea_nigra,5,total abundance per plant species,200
+170,6,2018,MichelleLarkin_GleninsheenCoClare_18,Trifolium_pratense,7,total abundance per plant species,105
+161,6,2018,MichelleLarkin_GleninsheenCoClare_18,Trifolium_pratense,8,total abundance per plant species,120
+223,8,2018,MichelleLarkin_GleninsheenCoClare_18,Lotus_corniculatus,19,total abundance per plant species,304
+143,5,2018,MichelleLarkin_GleninsheenCoClare_18,Succisa_pratensis,30,total abundance per plant species,750
+217,8,2018,MichelleLarkin_GleninsheenCoClare_18,Potentilla_erecta,31,total abundance per plant species,465
+128,5,2018,MichelleLarkin_GleninsheenCoClare_18,Euphrasia_sp,70,total abundance per plant species,700
+225,8,2018,MichelleLarkin_GleninsheenCoClare_18,Centaurea_nigra,116,total abundance per plant species,4640
+168,6,2018,MichelleLarkin_GleninsheenCoClare_18,Succisa_pratensis,124,total abundance per plant species,3100
+223,8,2018,MichelleLarkin_GleninsheenCoClare_18,Succisa_pratensis,124,total abundance per plant species,3100
+199,7,2018,MichelleLarkin_GleninsheenCoClare_18,Centaurea_nigra,348,total abundance per plant species,13920
+193,7,2018,MichelleLarkin_GleninsheenCoClare_18,Centaurea_nigra,791,total abundance per plant species,31640
+143,5,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Rubus_fruticosus,NA,not collected,NA
+175,6,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Rosa_spinosissima,NA,not collected,NA
+214,8,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Hypericum_sp,NA,not collected,NA
+133,5,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Leontodon_saxatilis,2,total abundance per plant species,50
+134,5,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Carlina_vulgaris,2,total abundance per plant species,80
+130,5,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Thymus_polytrichus,3,total abundance per plant species,12
+168,6,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Thymus_polytrichus,3,total abundance per plant species,12
+148,5,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Thymus_polytrichus,3,total abundance per plant species,12
+223,8,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Centaurea_nigra,5,total abundance per plant species,200
+185,7,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Centaurea_nigra,5,total abundance per plant species,200
+178,6,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Centaurea_nigra,5,total abundance per plant species,200
+163,6,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Prunella_vulgaris,10,total abundance per plant species,150
+225,8,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Succisa_pratensis,14,total abundance per plant species,350
+170,6,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Succisa_pratensis,14,total abundance per plant species,350
+193,7,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Teucrium_scorodonia,24,total abundance per plant species,1200
+133,5,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Lotus_corniculatus,99,total abundance per plant species,1584
+168,6,2018,MichelleLarkin_GortleckaPoulnalourCarronCoClare_18,Lotus_corniculatus,318,total abundance per plant species,5088
+188,7,2018,MichelleLarkin_KeelhillaCoClare_18,Prunus_spinosa,NA,not collected,NA
+184,7,2018,MichelleLarkin_KeelhillaCoClare_18,Rubus_fruticosus,NA,not collected,NA
+178,6,2018,MichelleLarkin_KeelhillaCoClare_18,Rubus_fruticosus,NA,not collected,NA
+161,6,2018,MichelleLarkin_KeelhillaCoClare_18,Geum_rivale,1,total abundance per plant species,15
+175,6,2018,MichelleLarkin_KeelhillaCoClare_18,Hypericum_perforatum,2,total abundance per plant species,50
+199,7,2018,MichelleLarkin_KeelhillaCoClare_18,Vicia_sepium,4,total abundance per plant species,60
+185,7,2018,MichelleLarkin_KeelhillaCoClare_18,Trifolium_pratense,4,total abundance per plant species,60
+188,7,2018,MichelleLarkin_KeelhillaCoClare_18,Trifolium_pratense,4,total abundance per plant species,60
+188,7,2018,MichelleLarkin_KeelhillaCoClare_18,Scorzoneroides_autumnalis,4,total abundance per plant species,120
+178,6,2018,MichelleLarkin_KeelhillaCoClare_18,Trifolium_pratense,6,total abundance per plant species,90
+127,5,2018,MichelleLarkin_KeelhillaCoClare_18,Succisa_pratensis,6,total abundance per plant species,150
+161,6,2018,MichelleLarkin_KeelhillaCoClare_18,Succisa_pratensis,6,total abundance per plant species,150
+164,6,2018,MichelleLarkin_KeelhillaCoClare_18,Lotus_corniculatus,7,total abundance per plant species,112
+189,7,2018,MichelleLarkin_KeelhillaCoClare_18,Trifolium_repens,8,total abundance per plant species,104
+160,6,2018,MichelleLarkin_KeelhillaCoClare_18,Odontites_vernus,11,total abundance per plant species,99
+170,6,2018,MichelleLarkin_KeelhillaCoClare_18,Trifolium_pratense,11,total abundance per plant species,165
+188,7,2018,MichelleLarkin_KeelhillaCoClare_18,Ranunculus_repens,12,total abundance per plant species,360
+149,5,2018,MichelleLarkin_KeelhillaCoClare_18,Centaurea_nigra,18,total abundance per plant species,720
+185,7,2018,MichelleLarkin_KeelhillaCoClare_18,Centaurea_nigra,18,total abundance per plant species,720
+194,7,2018,MichelleLarkin_KeelhillaCoClare_18,Potentilla_anserina,19,total abundance per plant species,380
+149,5,2018,MichelleLarkin_KeelhillaCoClare_18,Trifolium_pratense,26,total abundance per plant species,390
+176,6,2018,MichelleLarkin_KeelhillaCoClare_18,Centaurea_nigra,27,total abundance per plant species,1080
+172,6,2018,MichelleLarkin_KeelhillaCoClare_18,Ranunculus_repens,168,total abundance per plant species,5040
+141,5,2018,MichelleLarkin_KeelhillaCoClare_18,Ficaria_verna,330,total abundance per plant species,9900
+178,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Rhinanthus_minor,NA,not collected,NA
+126,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Vicia_sepium,NA,not collected,NA
+170,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Geum_rivale,1,total abundance per plant species,15
+194,7,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Teucrium_scorodonia,1,total abundance per plant species,50
+168,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Teucrium_scorodonia,1,total abundance per plant species,50
+170,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Vicia_sepium,2,total abundance per plant species,30
+170,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Taraxacum_agg,3,total abundance per plant species,150
+148,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Lathyrus_pratensis,4,total abundance per plant species,60
+170,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Odontites_vernus,5,total abundance per plant species,45
+127,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Centaurea_nigra,6,total abundance per plant species,240
+171,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Trifolium_pratense,7,total abundance per plant species,105
+127,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Hypericum_perforatum,7,total abundance per plant species,175
+160,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Centaurea_nigra,12,total abundance per plant species,480
+169,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Trifolium_repens,15,total abundance per plant species,195
+190,7,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Succisa_pratensis,26,total abundance per plant species,650
+168,6,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Lotus_corniculatus,36,total abundance per plant species,576
+131,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Vicia_sepium,42,total abundance per plant species,630
+148,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Succisa_pratensis,52,total abundance per plant species,1300
+222,8,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Succisa_pratensis,66,total abundance per plant species,1650
+214,8,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Lotus_corniculatus,126,total abundance per plant species,2016
+149,5,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Succisa_pratensis,132,total abundance per plant species,3300
+219,8,2018,MichelleLarkin_SheshodonnellEastCarronCoClare_18,Centaurea_nigra,158,total abundance per plant species,6320
