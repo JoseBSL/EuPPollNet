@@ -36,7 +36,8 @@ mutate(Habitat = recode_factor(Habitat, "HA" = "Herbaceous areal 1",
                               "HL2" = "Herbaceous linear 2",
                               "WA" = "Woody areal",
                               "WL" = "Woody linear",
-                              "WL2" = "Woody linear 2"))
+                              "WL2" = "Woody linear 2")) %>% 
+mutate(Country = "Switzerland")
 
 #Add missing variables
 data = add_missing_variables(check_interaction_data, data)

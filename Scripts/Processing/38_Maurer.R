@@ -54,7 +54,9 @@ mutate(Habitat = recode_factor(Habitat,
       "bean" = "Bean crop",
       "potato" = "Potato",
       "sun.flow" = "Sunflower crop",
-      "sug.beet" = "Sugar bet crop"))
+      "sug.beet" = "Sugar bet crop")) %>% 
+mutate(Country = "Switzerland")
+
 #All levels seem ok now
 levels(factor(data$Habitat))
 #Add the general habitat to a comment

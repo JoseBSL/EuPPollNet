@@ -30,11 +30,8 @@ for (i in 1:length(file_names)) {
   
   int_list <- all_data[[file_names[i]]]$InteractionData
   data[[i]] <- bind_rows(map(int_list, function(x) x %>% #map here is the same as a lapply
-                dplyr::select(Longitude, Latitude)),  .id = 'Network_id')
+                dplyr::select(Longitude, Latitude, Country)),  .id = 'Network_id')
 }
-
-
-
 
 #Rename list and 
 names(data) <- file_names
@@ -43,9 +40,19 @@ names(data) <- file_names
 coord_list = data
 coord_long_format = bind_rows(data,  .id = 'Study_id')
 
-save(coord_list, coord_long_format, file = "Data/Processing/Coordinates.RData")
-save(coord_list, coord_long_format, file = "~/R_projects/SafeNet/Data/Coordinates.RData")
+#Check country levels
+levels(factor(coord_long_format$Country))
 
+#Create another col with study id and network id together so we can count all individuals networks
+coord_long_format = coord_long_format %>% 
+mutate(Study_network_id = paste0(Study_id, Network_id))
+
+#Save data
+save(coord_list, coord_long_format, file = "Data/Processing/Coordinates.RData")
+save(coord_list, coord_long_format, file = "~/R_projects/SafeNetApp/Data/Coordinates.RData")
+save(coord_list, coord_long_format, file = "~/R_projects/SafeNetWeb/Data/Coordinates.RData")
+
+#Load data
 load("Data/Processing/Coordinates.RData")
 
 #Prepare data to plot it
@@ -57,7 +64,8 @@ st_transform(3035)
 data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
 #Save data
 st_write(data_coord, "Data/Processing/data_coord.shp", delete_layer = TRUE)
-st_write(data_coord, "~/R_projects/SafeNet/Data/data_coord.shp", delete_layer = TRUE)
+st_write(data_coord, "~/R_projects/SafeNetApp/Data/data_coord.shp", delete_layer = TRUE)
+st_write(data_coord, "~/R_projects/SafeNetWeb/Data/data_coord.shp", delete_layer = TRUE)
 
 # Year
 year_ref <- 2016
@@ -68,7 +76,8 @@ cntries <- gisco_get_countries(year = year_ref,
         st_transform(3035)
 #Save data
 st_write(cntries, "Data/Processing/cntries.shp", delete_layer = TRUE)
-st_write(cntries, "~/R_projects/SafeNet/Data/cntries.shp", delete_layer = TRUE)
+st_write(cntries, "~/R_projects/SafeNetApp/Data/cntries.shp", delete_layer = TRUE)
+st_write(cntries, "~/R_projects/SafeNetWeb/Data/cntries.shp", delete_layer = TRUE)
 
 set.seed(1)
 

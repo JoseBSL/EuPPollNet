@@ -22,7 +22,8 @@ compare_variables(check_interaction_data, data)
 levels(factor(data$Country))
 
 #Select 1st level that we don´t have: SPAIN
-data = data %>% filter(Country == "UK")
+data = data %>% filter(Country == "UK") %>% 
+mutate(Country = "England")
 
 #Select main cols
 data = data %>% 
@@ -58,7 +59,7 @@ Metadata <- tibble(
 Status and Trends of European Pollinators (STEP)",
   Taxa_recorded = "Bees and syrphids",
   Sampling_year = "2012 and 2013",
-  Country = "UK",
+  Country = "England",
   Habitat = "Grassland",
   Sampling_sites = "15",
   Sampling_rounds = "4 per year",
