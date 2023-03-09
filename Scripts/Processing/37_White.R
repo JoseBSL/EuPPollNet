@@ -157,7 +157,7 @@ Metadata = as.data.frame(t(Metadata)) %>%
 Authorship <- data.frame(
   Coauthor_name = c("Cian White", "Jane Stout"),
   Orcid = c(NA, "0000-0002-2027-0863"),
-  E_mail = c("CIWHITE@tcd.ie", "STOUTJ@tcd.ie"))
+  E_mail = c("ciwhite@tcd.ie", "stoutj@tcd.ie"))
 
 #Save data ----
 #Create metadata list

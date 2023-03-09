@@ -34,6 +34,6 @@ data = as_tibble(bind_rows(data,  .id = 'Study_id'))
 
 #Save metadata file
 write_csv(data, "Data/Processing/Authorship.csv")
-write_csv(metadata_long_format, "~/R_projects/SafeNet/Data/Authorship.csv")
-write_csv(metadata_long_format, "~/R_Projects/SafeNetWeb/Data/Authorship.csv")
+write_csv(data, "~/R_projects/SafeNet/Data/Authorship.csv")
+write_csv(data, "~/R_Projects/SafeNetWeb/Data/Authorship.csv")
 
