@@ -1,0 +1,16 @@
+---
+title: "Mapping plant-pollinator interactions across Europe"
+format: pdf
+editor: visual
+---
+
+# Ideas/objectives:
+
+- Write article point by point
+
+- Ecography could be our potential journal (think about it, high fees)
+
+- Finish paper by Christmas
+
+- Create workflow graph
+
