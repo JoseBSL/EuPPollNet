@@ -103,67 +103,76 @@ head(tesaurus)
       fixed[i] <- NA
     }
   }
-  to_recover <- data.frame(mismatches, fixed, stringsAsFactors = FALSE)
-  to_recover
-#}
-head(to_recover)
-to_recover[which(!is.na(to_recover$fixed)),]
+to_recover1 <- data.frame(mismatches, fixed, stringsAsFactors = FALSE)
+to_recover1
+
+head(to_recover1)
+to_recover1[which(!is.na(to_recover1$fixed)),]
 
 # Clean by strings
-to_recover <- to_recover[!grepl("\\d", to_recover$mismatches),]
-to_recover <- to_recover[!grepl("\\_", to_recover$mismatches),]
+to_recover1 <- to_recover1[!grepl("\\d", to_recover1$mismatches),]
+to_recover1 <- to_recover1[!grepl("\\_", to_recover1$mismatches),]
 
 unwanted <- c("sp. ","sp.","sp", "spp.","spec. ","spec","sp_","spp"," dp"," ss",
-              "Unidentified",  "/", "P. ", "aff. ", "unknown",  "NA", "indet", "IMG") 
+              "Unidentified", "P. ", "aff. ", "unknown",  "NA", "indet", "IMG") 
 # Vector of the patterns we want to delete: multiple variations of sp, / for the Bombus complex
 
-to_recoverunwanted <- to_recover %>% 
-  filter(str_detect(mismatches, str_c("(?i)\\b(", str_c(unwanted, collapse = "|"), ")\\b"))) 
-# Extract list of names with those patterns
+to_recoverpol <- to_recover1 %>% 
+  filter(!str_detect(mismatches, str_c("(?i)\\b(", str_c(unwanted, collapse = "|"), ")\\b"))) 
+# Extract list of names with that don't fit those patterns
 
-to_recoversp <- to_recover[!to_recover$mismatches %in% to_recoverunwanted$mismatches,] #leave only the wanted entries (no sp, spp, unidentified etc.)
+to_recoverpol$wanted <- str_replace(to_recoverpol$mismatches, "\\([^\\)]+\\)", "") # delete parenthesis of the string              
+to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\s+\\s", " ") # delete parenthesis of the string              
+to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "-type")
+to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "-alike")
 
-to_recoversp$wanted <- str_replace(to_recoversp$mismatches, "\\([^\\)]+\\)", "") # delete parenthesis of the string              
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\s+\\s", " ") # delete parenthesis of the string              
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "-type", "")
 
 dot <- "\\." #code to recognise the . as a real . in a string pattern 
 writeLines(dot) #code to recognise the . as a real . in a string pattern 
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\s+cf\\.", "") #to delete the cf. of the string
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\s+cf", "") #to delete the cf. of the string
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\.", " ") #delete parenthesis of the string              
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\s+gr", "") #to delete the cf. of the string
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\.agg\\.", "") #to delete the cf. of the string
+to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\s+cf\\.", "") #to delete the cf. of the string
+to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\s+cf", "") #to delete the cf. of the string
+to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\.", " ") #delete parenthesis of the string              
+to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\s+gr", "") #to delete the cf. of the string
+to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\.agg\\.", "") #to delete the cf. of the string
 
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "[?]", "") #to delete the ? of the string
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "[?]", "") #to delete the ? of the string
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "[?]", "") #to delete the ? of the string
+to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "[?]") #to delete the ? of the string
+to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "[?]") #to delete the ? of the string
+to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "[?]") #to delete the ? of the string
+
 # This is not pretty, each time you run it deletes one ?, so trhee lines for ???
 # There should be a better way to write it
 
-to_recoversp$wanted <- word(to_recoversp$wanted, 1, 2, sep = " ") #leave just the two first words of all entries
+to_recoverpol$wanted <- word(to_recoverpol$wanted, 1, 2, sep = " ") #leave just the two first words of all entries
 
-to_recoversp$goodr_id <- ifelse(is.na(to_recoversp$fixed), to_recoversp$wanted,
-                                 to_recoversp$fixed)
+to_recoverpol$goodr_id <- ifelse(is.na(to_recoverpol$fixed), to_recoverpol$wanted,
+                                 to_recoverpol$fixed)
 # Manual checks of fixed species
-to_recoversp$manual <- ifelse(is.na(to_recoversp$wanted), to_recoversp$goodr_id, to_recoversp$goodr_id)
-to_recoversp$manual[to_recoversp$wanted == "Andrena ovulata"] <- "Andrena ovatula"
-to_recoversp$manual[to_recoversp$fixed == "Osmia nuda"] <- "Osmia rufa"
+to_recoverpol$manual <- ifelse(is.na(to_recoverpol$wanted), to_recoverpol$goodr_id, to_recoverpol$goodr_id)
+to_recoverpol$manual[to_recoverpol$wanted == "Andrena ovulata"] <- "Andrena ovatula"
+to_recoverpol$manual[to_recoverpol$fixed == "Osmia nuda"] <- "Osmia rufa"
+
+# Add column for unsure ids: yes/no
+# Entries that fall in unsure are: the ones with ?, aggr and variants, complex (or /) and cf.
+unsure <- c("type", "agg","[/]" ," cf", " cf.") #no me gusta nada tener que poner spinosa pero no sé por qué falla
+to_recoverpol$unsureID <-  NA
+to_recoverpol <- to_recoverpol %>% mutate(unsureID = ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(unsure, collapse = "|"), ")\\b")),
+                                                          "Yes", "No"))
+to_mergepol <- to_recoverpol[[-2:4]]
 
 #need to go one by one, some ? removed,   
 #Osmia rufa                  Osmia nuda is wrong - DONE
 #But in general good job!
 
-clean_data <- merge(master, to_recoversp, by.x = "Pollinator_species", by.y = "mismatches", all.x = TRUE)
-clean_data$used_Gen_sp <- ifelse(is.na(clean_data$manual), clean_data$Pollinator_species,
-                                clean_data$fixed)
+clean_data1 <- merge(master, to_mergepol, by.x = "Pollinator_species", by.y = "mismatches", all.x = TRUE)
+clean_data1$used_Gen_sp_Pollinator <- ifelse(is.na(clean_data1$manual), clean_data1$Pollinator_species,
+                                clean_data1$fixed)
 
 #clean_data$fixed <- NULL #keep track
 #Remove non recognizes sp.
-head(clean_data)
-unmatching <- clean_data$used_Gen_sp[which(!clean_data$used_Gen_sp %in% species_tesaurus$Gen_sp)]
+head(clean_data1)
+unmatching <- clean_data1$used_Gen_sp[which(!clean_data1$used_Gen_sp %in% species_tesaurus$Gen_sp)]
 #this throws out a lot of good species e.g. with subspecies in it.
-clean_data2 <- clean_data[-which(clean_data$used_Gen_sp %in% unmatching),]
+clean_data2 <- clean_data[-which(clean_data1$used_Gen_sp %in% unmatching),]
 clean_data2 <- clean_data2[,-20:-22] # just to remove extra fixed columns that were redundant
 clean_data2
 head(clean_data2)
@@ -209,61 +218,80 @@ to_recover[which(!is.na(to_recover$fixed)),]
 
 # Clean by strings
 to_recover <- to_recover[!grepl("\\d", to_recover$mismatches),] #remove all entries with numbers in
-to_recoversp <- to_recover[which(!is.na(to_recover$mismatches)) & !to_recover$mismatches == "?" & 
-                           !to_recover$mismatches == "NA NA",]
+
+to_recoverplant <- to_recover2[which(!is.na(to_recover2$mismatches)) & !to_recover2$mismatches == "?" & 
+                           !to_recover2$mismatches == "NA NA",]
 
 dot <- "\\." #code to recognise the . as a real . in a string pattern 
 writeLines(dot) #code to recognise the . as a real . in a string pattern 
-to_recoversp$wanted <- str_replace(to_recoversp$mismatches, "\\.", " ") #delete parenthesis of the string              
-to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\_", " ") #delete parenthesis of the string              
-to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\.agg\\.") #to delete the cf. of the string
-to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\.aggr\\.") #to delete the cf. of the string
-to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\.aggr") #to delete the cf. of the string
-to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\(") # delete parenthesis of the string              
-to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\)") # delete parenthesis of the string              
-to_recoversp$wanted <- str_remove(to_recoversp$wanted, " [?]") #to delete the ? of the string
+to_recoverplant$wanted <- str_replace(to_recoverplant$mismatches, "\\.", " ") #delete parenthesis of the string              
+to_recoverplant$wanted <- str_replace(to_recoverplant$wanted, "\\_", " ") #delete parenthesis of the string              
+to_recoverplant$wanted <- str_remove(to_recoverplant$wanted, "\\.agg\\.") #to delete the cf. of the string
+to_recoverplant$wanted <- str_remove(to_recoverplant$wanted, "\\.aggr\\.") #to delete the cf. of the string
+to_recoverplant$wanted <- str_remove(to_recoverplant$wanted, "\\.aggr") #to delete the cf. of the string
+to_recoverplant$wanted <- str_remove(to_recoverplant$wanted, "\\(") # delete parenthesis of the string              
+to_recoverplant$wanted <- str_remove(to_recoverplant$wanted, "\\)") # delete parenthesis of the string              
+to_recoverplant$wanted <- str_remove(to_recoverplant$wanted, " [?]") #to delete the ? of the string
 
 unwanted <- "sp.| sp| Unknown| spp| NA| spec|_sp|_cult| rara| cult" 
 # Vector of the patterns we want to delete
 
-to_recoversp <- to_recoversp %>% 
+to_recoverplant <- to_recoverplant %>% 
   filter(!str_detect(wanted,str_c("(?i)\\b(", str_c(unwanted), ")\\b"))) 
 # Extract list of names with those patterns
 
-to_recoversp$wanted <- word(to_recoversp$wanted, 1, 2, sep = " ") #leave just the two first words of all entries
+to_recoverplant$wanted <- word(to_recoverplant$wanted, 1, 2, sep = " ") #leave just the two first words of all entries
 
 unwanted <- "sp.| sp| Unknown| spp| NA| spec|_sp|_cult| rara| cult| agg" 
 # Vector of the patterns we want to delete
 
-to_recoversp <- to_recoversp %>% 
+to_recoverplant <- to_recoverplant %>% 
   filter(!str_detect(wanted,str_c("(?i)\\b(", str_c(unwanted), ")\\b"))) 
 
 
-to_recoversp$goodr_id <- ifelse(is.na(to_recoversp$fixed), to_recoversp$wanted,
-                                to_recoversp$fixed)
+to_recoverplant$goodr_id <- ifelse(is.na(to_recoverplant$fixed), to_recoverplant$wanted,
+                                to_recoverplant$fixed)
 # Manual checks of fixed species
-to_recoversp$manual <- to_recoversp$goodr_id
+to_recoverplant$manual_plant <- to_recoverplant$goodr_id
 
 patterns <- " x| X "
-to_recoversp <- to_recoversp %>% 
+to_recoverplant <- to_recoverplant %>% 
   mutate(manual = ifelse(str_detect(goodr_id, str_c("(?i)\\b(", str_c(patterns), ")\\b")), mismatches, goodr_id))
-to_recoversp$manual[to_recoversp$manual == "Rosmarinus officinalis"] <- 'Salvia rosmarinus'
+to_recoverplant$manual[to_recoverplant$manual == "Rosmarinus officinalis"] <- 'Salvia rosmarinus'
+
+# Add column for unsure ids: yes/no
+# Entries that fall in unsure are: the ones with ?, aggr and variants, complex (or /) and cf.
+char_class("?")
+unsure <- "aggr.|agg.| spinosa?|[/]" #no me gusta nada tener que poner spinosa pero no sé por qué falla
+to_recoverplant$unsureID <-  NA
+to_recoverplant <- to_recoverplant %>% mutate(unsureID = ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(unsure), ")\\b")),
+                                                 "Yes", "No"))
+# Columns to merge
+to_mergeplant <- to_recoverplant[[2:4]]
 
 #Roughly clean, a lot of names missing from the tesaurus or synonyms?
 
-clean_data <- merge(master, to_recoversp, by.x = "Plant_species", by.y = "mismatches", all.x = TRUE)
-clean_data$used_Gen_sp_plants <- ifelse(is.na(clean_data$manual), clean_data$Pollinator_species,
-                                 clean_data$fixed)
+clean_data3 <- merge(master, to_mergeplant, by.x = "Plant_species", by.y = "mismatches", all.x = TRUE)
+clean_data3$used_Gen_sp_plants <- ifelse(is.na(clean_data3$manual), clean_data3$Pollinator_species,
+                                 clean_data3$fixed)
 
 #clean_data$fixed <- NULL #keep track
 #Remove non recognizes sp.
-head(clean_data)
-unmatching <- clean_data$used_Gen_sp_plants[which(!clean_data$used_Gen_sp_plants %in% species_tesaurus$Gen_sp)]
+head(clean_data3)
+unmatching <- clean_data3$used_Gen_sp_plants[which(!clean_data3$used_Gen_sp_plants %in% species_tesaurus$Gen_sp)]
 #this throws out a lot of good species e.g. with subspecies in it.
-clean_data2 <- clean_data[-which(clean_data$used_Gen_sp_plants %in% unmatching),]
-clean_data2
-head(clean_data2)
-length(unique(clean_data2$used_Gen_sp_plants)) #1155 plants
+clean_data4 <- clean_data[-which(clean_data$used_Gen_sp_plants %in% unmatching),]
+clean_data4
+head(clean_data4)
+length(unique(clean_data4$used_Gen_sp_plants)) #1155 plants
+
+#____________________________________________________________________
+#Clean data for plants and pollinators
+clean_data <- merge(clean_data1, clean_data3, by.x = "Pollinator_species", by.y = "", all.x = TRUE)%>% 
+              merge(to_recoverpol, by.y = mismatches)
+clean_data$used_Gen_sp_plants <- ifelse(is.na(clean_data$manual), clean_data$Pollinator_species,
+                                        clean_data$fixed)
+
 
 
 #____________________________________________________________________
