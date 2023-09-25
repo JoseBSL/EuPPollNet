@@ -33,7 +33,7 @@ for(i in 2:length(temp$InteractionData)){
 colnames(out)
 #loop through all files
 #Read all file names to loop.
-files <- list.files(path = "scripts/temp_data/Clean_data")
+files <- list.files(path = "Data/Clean_data")
 master <- data.frame(Plant_species = NA   ,Pollinator_species = NA   ,Interaction = NA   ,      
                      Sampling_method = NA ,Site_id = NA              ,Habitat = NA       ,     
                      Country = NA         ,Locality = NA             ,Latitude = NA      ,      
@@ -42,7 +42,7 @@ master <- data.frame(Plant_species = NA   ,Pollinator_species = NA   ,Interactio
                      Comments = NA        ,Temperature = NA          ,Humidity = NA      ,
                      Study = NA)
 for(k in 1:length(files)){
-  temp <- readRDS(paste0("scripts/temp_data/Clean_data/", files[k]))
+  temp <- readRDS(paste0("Data/Clean_data/", files[k]))
   #merge all sites
   out<- temp$InteractionData[[1]]
   if(length(temp$InteractionData) > 1){
@@ -65,20 +65,18 @@ head(master)
 #write.csv(master, file = "scripts/cleandata/data.csv")
 #nice.
 
+#-Pollinator taxomony cleaning ----
 #check pollinator names...
 pols <- unique(master$Pollinator_species)
 length(pols) #2858!!
 # Need a deeeeep cleaning.
-plants <- unique(master$Plant_species)
-length(plants) #1739!!
 
 #To do this we will use cleanR
 devtools::install_github("RadicalCommEcol/CleanR", build_vignettes = TRUE)
 library(cleanR)
 
 #Go old school as devtools is not installing
-#tesaurus <- read.csv(file = "scripts/temp_data/Master_bees_syrphids.csv")
-tesaurus <- readRDS(file = "scripts/cleandata/taxonomy.rds")
+tesaurus <- readRDS(file = "Data/Species_thesaurus/taxonomy.rds")
 head(tesaurus)
 #check_sp <- function(template, Gen_sp, k = 2){ #if Gen_sp, we can add an if.
   #Gen_sp <- paste(trimws(Genus),
@@ -153,7 +151,7 @@ to_recoversp$manual[to_recoversp$wanted == "Andrena ovulata"] <- "Andrena ovatul
 to_recoversp$manual[to_recoversp$fixed == "Osmia nuda"] <- "Osmia rufa"
 
 #need to go one by one, some ? removed,   
-#Osmia rufa                  Osmia nuda is wrong
+#Osmia rufa                  Osmia nuda is wrong - DONE
 #But in general good job!
 
 clean_data <- merge(master, to_recoversp, by.x = "Pollinator_species", by.y = "mismatches", all.x = TRUE)
@@ -170,6 +168,105 @@ clean_data2 <- clean_data2[,-20:-22] # just to remove extra fixed columns that w
 clean_data2
 head(clean_data2)
 length(unique(clean_data2$used_Gen_sp)) #864 pollinators!
+
+
+#____________________________________________________________________
+#- Plant taxonomy cleaning -----
+plants <- unique(master$Plant_species)
+length(plants) #1739!!
+plants
+
+#Go old school as devtools is not installing
+tesaurus <- readRDS(file = "Data/Species_thesaurus/taxonomy.rds")
+head(tesaurus)
+Gen_sp <- plants
+species_tesaurus <- tesaurus #edited to pass a dataframe with Genus, Species
+species_tesaurus$Gen_sp <- paste(trimws(species_tesaurus$Genus),
+                                 trimws(species_tesaurus$Species))
+matching <- Gen_sp[which(Gen_sp %in% species_tesaurus$Gen_sp)]
+unmatching <- Gen_sp[which(!Gen_sp %in% species_tesaurus$Gen_sp)]
+mismatches <- unique(unmatching) #speed up the process
+#print(paste("the following species do not match:", mismatches))
+fixed <- c()
+#agrep is too lax, and I can't make it to work, adist is better
+#agrep(c("Coleoxys"), genus, value = TRUE, max = list(all = 2))
+#agrep(c("Lasius"), genus, value = TRUE, max = list(ins = 3, del = 3, sub = 2))
+k = 2
+for(i in 1:length(mismatches)){
+  temp2 <- species_tesaurus$Gen_sp[as.logical(adist(mismatches[i],
+                                                    species_tesaurus$Gen_sp) <= k)]
+  if(length(temp2) == 1){
+    fixed[i] <- temp2
+  } else {
+    fixed[i] <- NA
+  }
+}
+to_recover <- data.frame(mismatches, fixed, stringsAsFactors = FALSE)
+to_recover
+#}
+head(to_recover)
+to_recover[which(!is.na(to_recover$fixed)),]
+
+# Clean by strings
+to_recover <- to_recover[!grepl("\\d", to_recover$mismatches),] #remove all entries with numbers in
+to_recoversp <- to_recover[which(!is.na(to_recover$mismatches)) & !to_recover$mismatches == "?" & 
+                           !to_recover$mismatches == "NA NA",]
+
+dot <- "\\." #code to recognise the . as a real . in a string pattern 
+writeLines(dot) #code to recognise the . as a real . in a string pattern 
+to_recoversp$wanted <- str_replace(to_recoversp$mismatches, "\\.", " ") #delete parenthesis of the string              
+to_recoversp$wanted <- str_replace(to_recoversp$wanted, "\\_", " ") #delete parenthesis of the string              
+to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\.agg\\.") #to delete the cf. of the string
+to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\.aggr\\.") #to delete the cf. of the string
+to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\.aggr") #to delete the cf. of the string
+to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\(") # delete parenthesis of the string              
+to_recoversp$wanted <- str_remove(to_recoversp$wanted, "\\)") # delete parenthesis of the string              
+to_recoversp$wanted <- str_remove(to_recoversp$wanted, " [?]") #to delete the ? of the string
+
+unwanted <- "sp.| sp| Unknown| spp| NA| spec|_sp|_cult| rara| cult" 
+# Vector of the patterns we want to delete
+
+to_recoversp <- to_recoversp %>% 
+  filter(!str_detect(wanted,str_c("(?i)\\b(", str_c(unwanted), ")\\b"))) 
+# Extract list of names with those patterns
+
+to_recoversp$wanted <- word(to_recoversp$wanted, 1, 2, sep = " ") #leave just the two first words of all entries
+
+unwanted <- "sp.| sp| Unknown| spp| NA| spec|_sp|_cult| rara| cult| agg" 
+# Vector of the patterns we want to delete
+
+to_recoversp <- to_recoversp %>% 
+  filter(!str_detect(wanted,str_c("(?i)\\b(", str_c(unwanted), ")\\b"))) 
+
+
+to_recoversp$goodr_id <- ifelse(is.na(to_recoversp$fixed), to_recoversp$wanted,
+                                to_recoversp$fixed)
+# Manual checks of fixed species
+to_recoversp$manual <- to_recoversp$goodr_id
+
+patterns <- " x| X "
+to_recoversp <- to_recoversp %>% 
+  mutate(manual = ifelse(str_detect(goodr_id, str_c("(?i)\\b(", str_c(patterns), ")\\b")), mismatches, goodr_id))
+to_recoversp$manual[to_recoversp$manual == "Rosmarinus officinalis"] <- 'Salvia rosmarinus'
+
+#Roughly clean, a lot of names missing from the tesaurus or synonyms?
+
+clean_data <- merge(master, to_recoversp, by.x = "Plant_species", by.y = "mismatches", all.x = TRUE)
+clean_data$used_Gen_sp_plants <- ifelse(is.na(clean_data$manual), clean_data$Pollinator_species,
+                                 clean_data$fixed)
+
+#clean_data$fixed <- NULL #keep track
+#Remove non recognizes sp.
+head(clean_data)
+unmatching <- clean_data$used_Gen_sp_plants[which(!clean_data$used_Gen_sp_plants %in% species_tesaurus$Gen_sp)]
+#this throws out a lot of good species e.g. with subspecies in it.
+clean_data2 <- clean_data[-which(clean_data$used_Gen_sp_plants %in% unmatching),]
+clean_data2
+head(clean_data2)
+length(unique(clean_data2$used_Gen_sp_plants)) #1155 plants
+
+
+#____________________________________________________________________
 
 #Can we plot it nicely?
 
