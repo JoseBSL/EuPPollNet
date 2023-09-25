@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 .DS_Store
-.Umons_2023.csv
-.wcvp_distribution.csv
-.wcvp_names.csv
+Data/Raw_data/Umons_2023.csv
+Data/Species_thesaurus/wcvp_distribution.csv
+Data/Species_thesaurus/wcvp_names.csv
