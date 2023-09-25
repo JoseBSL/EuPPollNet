@@ -1,0 +1,107 @@
+---
+title: "Study locations"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r, echo=FALSE, message=FALSE, cache=FALSE,  warning=FALSE}
+library(gtools) #Library that allows to sort files by numerical order
+library(tidyverse)
+library(sf)
+#Read all files with their paths
+files <- dir("../../Data/Clean_data", pattern="*.rds", full.names=T)
+files <- mixedsort(files)
+
+#Generate list of lists
+all_data = files %>%
+map(readRDS) 
+
+#Read all file names
+file_names <- dir("../../Data/Clean_data", pattern="*.rds", full.names=F)
+file_names <- mixedsort(file_names)
+
+#Delete extension
+file_names = str_replace(file_names, ".rds", "")
+#Rename all elements of the list
+names(all_data) <- file_names
+
+
+
+#Select coordinates from the list of lists----
+data <- list()
+
+for (i in 1:length(file_names)) {
+  
+  int_list <- all_data[[file_names[i]]]$InteractionData
+  data[[i]] <- bind_rows(map(int_list, function(x) x %>% #map here is the same as a lapply
+                select(Longitude, Latitude)),  .id = 'Internal_id')
+}
+
+#Rename list and 
+names(data) <- file_names
+data = bind_rows(data,  .id = 'Study_id')
+
+#Add manual jitter to these three points
+data = data %>% 
+mutate(Latitude = case_when(Study_id == "16_Manicor" ~ Latitude+0.25, TRUE ~ Latitude)) %>% mutate(Latitude = case_when(Study_id == "17_Manicor" ~ Latitude+0.25, TRUE ~ Latitude)) %>%
+mutate(Latitude = case_when(Study_id == "18_Manicor" ~ Latitude+0.25, TRUE ~ Latitude))
+
+data_coord <- st_as_sf(data, coords = c(3:4)) %>% 
+st_set_crs(4326) %>% 
+st_transform(3035)
+
+
+data_coord$Study_id <- factor(data_coord$Study_id, levels = file_names)
+
+
+# install.packages("sf")
+library(sf)
+# install.packages("giscoR")
+library(giscoR)
+
+# Year
+year_ref <- 2016
+
+# Get all countries and transform to the same CRS
+cntries <- gisco_get_countries(year = year_ref,
+        resolution = 03) %>%
+        st_transform(3035)
+
+set.seed(1)
+
+colors <- c(
+"#8AD69E", "#74C5CE",  "#FDE9DE",
+"#45A631", "#95F7F0", "#CB53E1",
+"#FE90BB", "#B187E1", "#F8A982", 
+"#0075DC", "#993F00",  "#5EF1F2", 
+"#005C31", "#74C5CE", "black", 
+"lightblue",  "darkorange3","#8F7C00",
+"#8F7C00","#8F7C00", "#9DCC00", 
+"#C20088", "gold1","#FFA8BB",
+"#426600","#94FFB5","#003380",  
+"salmon", "palegreen","greenyellow",
+"mediumaquamarine", "tomato", "orange", 
+"blue", "black", "green",
+"purple", "red")
+#To generate more random colors 
+#randomcoloR::distinctColorPalette(k = length(file_names), altCol = F, runTsne = T)
+
+# Plot
+g <- ggplot() +
+geom_sf(data = cntries, fill = "grey85", color = "grey60",size = 0.1) +
+xlim(c(2200000, 7150000)) +
+ylim(c(1380000, 5500000)) +
+theme(panel.grid.major = element_line(color = gray(0.5), linetype = "dashed", 
+size = 0.5), panel.background = element_rect(fill = "aliceblue"),
+panel.border = element_rect(colour = "black", fill=NA, size=1)) +
+geom_sf(data = data_coord, aes(color=Study_id), size = 0.8, stroke = 0, shape = 16) +
+theme(legend.position="none") + 
+scale_colour_manual(name = "Study \n locations", values = colors) 
+
+
+library(plotly)
+ggplotly(g)
+
+```
+
