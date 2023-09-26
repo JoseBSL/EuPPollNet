@@ -72,7 +72,7 @@ length(pols) #2858!!
 # Need a deeeeep cleaning.
 
 #To do this we will use cleanR
-devtools::install_github("RadicalCommEcol/CleanR", build_vignettes = TRUE)
+#devtools::install_github("RadicalCommEcol/CleanR", build_vignettes = TRUE)
 library(cleanR)
 
 #Go old school as devtools is not installing
@@ -110,11 +110,15 @@ head(to_recover1)
 to_recover1[which(!is.na(to_recover1$fixed)),]
 
 # Clean by strings
+library(dplyr)
+library(stringr)
+library(data.table)
+
 to_recover1 <- to_recover1[!grepl("\\d", to_recover1$mismatches),]
-to_recover1 <- to_recover1[!grepl("\\_", to_recover1$mismatches),]
+to_recover1$mismatches <- str_replace(to_recover1$mismatches, "\\_", " ") # delete parenthesis of the string              
 
 unwanted <- c("sp. ","sp.","sp", "spp.","spec. ","spec","sp_","spp"," dp"," ss",
-              "Unidentified", "P. ", "aff. ", "unknown",  "NA", "indet", "IMG") 
+              "Unidentified","Unidentified ", "P. "," aff. ", "unknown",  "NA", "indet", "IMG") 
 # Vector of the patterns we want to delete: multiple variations of sp, / for the Bombus complex
 
 to_recoverpol <- to_recover1 %>% 
@@ -125,7 +129,6 @@ to_recoverpol$wanted <- str_replace(to_recoverpol$mismatches, "\\([^\\)]+\\)", "
 to_recoverpol$wanted <- str_replace(to_recoverpol$wanted, "\\s+\\s", " ") # delete parenthesis of the string              
 to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "-type")
 to_recoverpol$wanted <- str_remove(to_recoverpol$wanted, "-alike")
-
 
 dot <- "\\." #code to recognise the . as a real . in a string pattern 
 writeLines(dot) #code to recognise the . as a real . in a string pattern 
@@ -150,14 +153,80 @@ to_recoverpol$goodr_id <- ifelse(is.na(to_recoverpol$fixed), to_recoverpol$wante
 to_recoverpol$manual <- ifelse(is.na(to_recoverpol$wanted), to_recoverpol$goodr_id, to_recoverpol$goodr_id)
 to_recoverpol$manual[to_recoverpol$wanted == "Andrena ovulata"] <- "Andrena ovatula"
 to_recoverpol$manual[to_recoverpol$fixed == "Osmia nuda"] <- "Osmia rufa"
+to_recoverpol$manual[to_recoverpol$manual == "Andrena erythrocnemis"] <- "Andrena griseobalteata"
+to_recoverpol$manual[to_recoverpol$manual == "Andrena hispania"] <- "Andrena morio"
+to_recoverpol$manual[to_recoverpol$manual == "Andrena carantonica"] <- "Andrena scotica"
+to_recoverpol$manual[to_recoverpol$manual == "Anthidium nanum"] <- "Pseudoanthidium nanum"
+to_recoverpol$manual[to_recoverpol$manual == "Anthidium septemdentatum"] <- "Rhodanthidium septemdentatum"
+to_recoverpol$manual[to_recoverpol$manual == "Anthidium strigatum"] <- "Anthidiellum strigatum"
+to_recoverpol$manual[to_recoverpol$manual == "Anthidium sticticum"] <- "Rhodanthidium sticticum"
+to_recoverpol$manual[to_recoverpol$manual == "Coelioxys afra"] <- "Coelioxys afer"
+to_recoverpol$manual[to_recoverpol$manual == "Episyrphus auricollis"] <- "Meliscaeva auricollis"
+to_recoverpol$manual[to_recoverpol$manual == "Episyrphus cinctellus"] <- "Meliscaeva cinctellus"
+to_recoverpol$manual[to_recoverpol$manual == "Eristalis hortorum"] <- "Eristalis tenax"
+to_recoverpol$manual[to_recoverpol$manual == "Eriozona erratica"] <- "Megasyrphus erraticus"
+to_recoverpol$manual[to_recoverpol$manual == "Eristalis interruptus"] <- "Eristalis nemorum"
+to_recoverpol$manual[to_recoverpol$manual == "Eristalis lineata"] <- "Cheilosia morio"
+to_recoverpol$manual[to_recoverpol$manual == "Eristalis pseudorupium"] <- "Eristalis obscura"
+to_recoverpol$manual[to_recoverpol$manual == "Eucera alternans"] <- "Eucera rufa"
+to_recoverpol$manual[to_recoverpol$manual == "Eucera bolivari"] <- "Eucera confinis"
+to_recoverpol$manual[to_recoverpol$manual == "Eucera chrysopyga"] <- "Eucera pollinosa"
+to_recoverpol$manual[to_recoverpol$manual == "Eucera hispanica"] <- "Eucera hispana"
+to_recoverpol$manual[to_recoverpol$manual == "Eucera hispaliensis"] <- "Eucera longicornis"
+to_recoverpol$manual[to_recoverpol$manual == "Eupeodes aberrantis"] <-"Lapposyrphus lapponicus"
+to_recoverpol$manual[to_recoverpol$manual == "Eupeodes lapponicus"] <-"Lapposyrphus lapponicus"
+to_recoverpol$manual[to_recoverpol$manual == "Eupeodes strigatus"] <-"Eumerus strigatus"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus confusus"] <-"Seladonia confusa"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus cephalicus"] <-"Seladonia cephalica"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus eurygnathus"] <-"Halictus compressus"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus gemmeus"] <-"Seladonia gemmea"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus phryganicus"] <-"Seladonia phryganica"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus pollinosus"] <-"Seladonia pollinosa"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus smaragdulus"] <-"Seladonia smaragdula"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus subauratus"] <-"Seladonia subaurata"
+to_recoverpol$manual[to_recoverpol$manual == "Halictus tumulorum"] <-"Seladonia tumulorum"
+to_recoverpol$manual[to_recoverpol$manual == "Hoplitis crenulata"] <-"Hoplitis annulata"
+to_recoverpol$manual[to_recoverpol$manual == "Hoplitis scutellaris"] <-"Osmia scrutellaris"
+to_recoverpol$manual[to_recoverpol$manual == "Lasioglossum tridivisus"] <-"Halictus tridivisus"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia acuticornis"] <-"Hoplitis acuticornis"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia adunca"] <-"Hoplitis adunca"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia anthocopoides"] <-"Hoplitis anthocopoides"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia campanularum"] <-"Hoplitis campanularis"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia claviventris"] <-"Hoplitis claviventris"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia fulviventris"] <-"Osmia niveata"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia leucomelana"] <-"Hoplitis leucomelana"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia rapunculi"] <-"Chelostoma rapunculi"
+to_recoverpol$manual[to_recoverpol$manual == "Osmia rufa"] <-"Osmia bicornis"
+to_recoverpol$manual[to_recoverpol$manual == "Platycheirus cyaneus"] <-"Platycheirus albimanus"
+to_recoverpol$manual[to_recoverpol$manual == "Platycheirus rosarum"] <-"Pyrophaena rosarum"
+to_recoverpol$manual[to_recoverpol$manual == "Polyommatus coridon"] <-"Lysandra coridon"
+to_recoverpol$manual[to_recoverpol$manual == "Polyommatus semiargus"] <-"Cyaniris semiargus"
+
+
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, "Chalicodoma", "Megachile")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, "croceus", "crocea")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, "altercator", "hirtipes")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, "sinufascia", "penicillata")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, "patella", "patellatus")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, "imminutus", "immunitum")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, pattern = "Psithyrus |psithyrus |Psythrus ", "Bombus")
+to_recoverpol$manual <- str_replace(to_recoverpol$manual, pattern = "Tetraloniella", "Tetralonia")
+
 
 # Add column for unsure ids: yes/no
 # Entries that fall in unsure are: the ones with ?, aggr and variants, complex (or /) and cf.
-unsure <- c("type", "agg","[/]" ," cf", " cf.") #no me gusta nada tener que poner spinosa pero no sé por qué falla
+unsure <- c("type", "agg",".+_agg", "[/]") #no me gusta nada tener que poner spinosa pero no sé por qué falla
+cf <- c(" cf", " cf.")
 to_recoverpol$unsureID <-  NA
-to_recoverpol <- to_recoverpol %>% mutate(unsureID = ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(unsure, collapse = "|"), ")\\b")),
-                                                          "Yes", "No"))
-to_mergepol <- to_recoverpol[[-2:4]]
+to_recoverpol <- to_recoverpol %>% mutate(unsureID = 
+                                            ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(unsure, collapse = "|"), ")\\b")),                                                       "Yes", 
+                                            ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(cf, collapse = "|"), ")\\b")), "cf","No")))
+
+to_mergepol <- to_recoverpol[,-c(2:4)]
+
+check_syn <- merge(to_mergepol, tesaurus[, c("GenusAndSpecies", "Order")], by.x = "manual", by.y = "GenusAndSpecies", all.x = T, all.y= F)
+
+check_snNA <- check_syn[is.na(check_syn$Order),]
 
 #need to go one by one, some ? removed,   
 #Osmia rufa                  Osmia nuda is wrong - DONE
@@ -165,14 +234,14 @@ to_mergepol <- to_recoverpol[[-2:4]]
 
 clean_data1 <- merge(master, to_mergepol, by.x = "Pollinator_species", by.y = "mismatches", all.x = TRUE)
 clean_data1$used_Gen_sp_Pollinator <- ifelse(is.na(clean_data1$manual), clean_data1$Pollinator_species,
-                                clean_data1$fixed)
+                                clean_data1$manual)
 
 #clean_data$fixed <- NULL #keep track
 #Remove non recognizes sp.
 head(clean_data1)
 unmatching <- clean_data1$used_Gen_sp[which(!clean_data1$used_Gen_sp %in% species_tesaurus$Gen_sp)]
 #this throws out a lot of good species e.g. with subspecies in it.
-clean_data2 <- clean_data[-which(clean_data1$used_Gen_sp %in% unmatching),]
+clean_data2 <- clean_data1[-which(clean_data1$used_Gen_sp %in% unmatching),]
 clean_data2 <- clean_data2[,-20:-22] # just to remove extra fixed columns that were redundant
 clean_data2
 head(clean_data2)
@@ -262,12 +331,12 @@ to_recoverplant$manual[to_recoverplant$manual == "Rosmarinus officinalis"] <- 'S
 # Add column for unsure ids: yes/no
 # Entries that fall in unsure are: the ones with ?, aggr and variants, complex (or /) and cf.
 char_class("?")
-unsure <- "aggr.|agg.| spinosa?|[/]" #no me gusta nada tener que poner spinosa pero no sé por qué falla
+unsure <- "aggr.|agg.| .+?|[/]" #no me gusta nada tener que poner spinosa pero no sé por qué falla
 to_recoverplant$unsureID <-  NA
 to_recoverplant <- to_recoverplant %>% mutate(unsureID = ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(unsure), ")\\b")),
                                                  "Yes", "No"))
 # Columns to merge
-to_mergeplant <- to_recoverplant[[2:4]]
+to_mergeplant <- to_recoverplant[,-c(2:4)]
 
 #Roughly clean, a lot of names missing from the tesaurus or synonyms?
 
