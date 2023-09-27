@@ -109,6 +109,9 @@ to_recover1
 head(to_recover1)
 to_recover1[which(!is.na(to_recover1$fixed)),]
 
+# Takes a while to run, create rds to clean faster
+saveRDS(to_recover1, file="Data/Processing/Pollinator_names.rds")
+
 # Clean by strings
 library(dplyr)
 library(stringr)
@@ -173,9 +176,6 @@ to_recoverpol$unsureID <-  NA
 to_recoverpol <- to_recoverpol %>% mutate(unsureID = 
                                             ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(unsure, collapse = "|"), ")\\b")),                                                       "Yes", 
                                             ifelse(str_detect(mismatches, str_c("(?i)\\b(", str_c(cf, collapse = "|"), ")\\b")), "cf","No")))
-
-saveRDS(to_recoverpol, file="Data/Processing/Pollinator_names.rds")
-
 
 to_mergepol <- to_recoverpol[,-c(2:4)]
 
