@@ -8,16 +8,23 @@ library(stringr)
 library(readr)
 library(tibble)
 library(tidyr)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/39_UMONS/Network_data.csv")
 
-#There are some sites without coordinates: I haven't tried to work that out
-
 #Filter interactions equal to 0
 data = data %>% filter(Interaction > 0)
 
-#Compare vars
+#Filter out any row that contains alphatic letter in latitude
+#This can be recovered but exclude it for now
+data = data %>%
+  filter(!grepl("^[A-Za-z]", Latitude)) %>% 
+    filter(!grepl("^[A-Za-z]", Longitude))
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)
@@ -59,5 +66,6 @@ UMONS <- list(InteractionData,  Metadata, Authorship)
 #Rename list elements
 names(UMONS) <- c("InteractionData","Metadata", "Authorship")
 #Save data
-saveRDS(UMONS, file="Data/Clean_data/39_Umons.rds")
+#I comment it for now as thee data needs more work
+#saveRDS(UMONS, file="Data/Clean_data/39_Umons.rds")
 

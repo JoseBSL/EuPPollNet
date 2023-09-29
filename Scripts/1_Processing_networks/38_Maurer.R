@@ -9,6 +9,8 @@ library(stringr)
 library(readr)
 library(tibble)
 library(tidyr)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/38_Maurer/Interaction_data.csv")
@@ -77,6 +79,9 @@ data = drop_variables(check_interaction_data, data)
 #Finally drop sampling effort and square area (it would be added on the metadata)
 data = data %>%
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)

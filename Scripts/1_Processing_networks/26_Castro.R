@@ -6,6 +6,8 @@ source("Scripts/Empty_templates.R") #Read empty templates to compare with
 #Load libraries
 library(tidyverse)
 library(stringr)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/26_27_Castro/Interaction_data1.csv")
@@ -15,6 +17,9 @@ compare_variables(check_interaction_data, data)
 
 #Reorder variables (just in case)
 data = drop_variables(check_interaction_data, data) 
+
+#Unify structure of data
+data = change_str(data)
 
 #Select main cols
 InteractionData1 = data %>% 

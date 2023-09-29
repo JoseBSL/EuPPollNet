@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
@@ -13,6 +15,8 @@ data = data %>%
          Latitude = parzer::parse_lat(Latitude)) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#Unify structure of data
+data = change_str(data)
 
 unique(factor(data$Latitude))
 unique(factor(data$Longitude))

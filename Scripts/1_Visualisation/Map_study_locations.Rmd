@@ -64,9 +64,10 @@ library(giscoR)
 year_ref <- 2016
 
 # Get all countries and transform to the same CRS
-cntries <- gisco_get_countries(year = year_ref,
-        resolution = 03) %>%
-        st_transform(3035)
+cntries <- gisco_get_countries(region = "Europe", year = "2016") %>% 
+          st_transform(3035)
+
+cntries = sf::st_cast(cntries, "MULTIPOLYGON")
 
 set.seed(1)
 
@@ -83,7 +84,7 @@ colors <- c(
 "salmon", "palegreen","greenyellow",
 "mediumaquamarine", "tomato", "orange", 
 "blue", "black", "green",
-"purple", "red")
+"purple", "red", "gray")
 #To generate more random colors 
 #randomcoloR::distinctColorPalette(k = length(file_names), altCol = F, runTsne = T)
 

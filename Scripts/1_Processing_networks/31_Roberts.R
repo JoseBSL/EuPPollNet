@@ -11,6 +11,8 @@ library(dplyr)
 library(stringr)
 library(readr)
 library(tibble)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/29_30_31_STEP/Interaction_data.csv")
@@ -30,6 +32,9 @@ data = data %>%
   select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 #Check number of sites
 levels(factor(data$Site_id))
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list (separate now by site)
 InteractionData <- split(data, data$Site_id)

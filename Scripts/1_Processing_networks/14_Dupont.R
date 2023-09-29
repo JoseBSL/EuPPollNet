@@ -3,6 +3,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
@@ -74,6 +76,8 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
          Temperature, Humidity) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#Unify structure of data
+data = change_str(data)
 
 #Split by site, just for createing the listed name in this case
 InteractionData <- split(data, data$Locality)

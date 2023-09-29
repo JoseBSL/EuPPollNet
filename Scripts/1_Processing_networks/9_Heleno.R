@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/Raw_data/9_Heleno/Interaction_data.csv")
@@ -9,6 +11,9 @@ data = read.csv("Data/Raw_data/9_Heleno/Interaction_data.csv")
 data = data %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
+
+#Unify structure of data
+data = change_str(data)
 
 #Split by site, just for createing the listed name in this case
 InteractionData <- split(data, data$Site_id)

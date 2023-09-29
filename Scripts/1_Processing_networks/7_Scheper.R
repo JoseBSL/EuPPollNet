@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/Raw_data/7_Scheper/Interaction_data.csv")
@@ -38,6 +40,8 @@ mutate(Pollinator_species = replace(Pollinator_species,
        Pollinator_species == "Halictus/Lasioglossum", "	Halictidae sp.")) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
 
+#Unify structure of data
+data = change_str(data)
 
 #Split data into different dataframes based on survey name
 InteractionData <- split(data, data$Site_id)

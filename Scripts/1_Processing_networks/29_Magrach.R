@@ -11,9 +11,11 @@ library(dplyr)
 library(stringr)
 library(readr)
 library(tibble)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/29_30_31_STEP/Interaction_data_STEP.csv")
+data <- read_csv("Data/Raw_data/29_30_31_STEP/Interaction_data.csv")
 
 #Check col names with template
 compare_variables(check_interaction_data, data)
@@ -30,11 +32,14 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Check number of sites
 levels(factor(data$Site_id))
 
+#Unify structure of data
+data = change_str(data)
+
 #Split interaction data into dataframes within a list (separate now by site)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/29_30_31_STEP/Flower_count_STEP.csv")
+flower_count <- read_csv("Data/Raw_data/29_30_31_STEP/Flower_count.csv")
 
 #Compare vars
 compare_variables(check_flower_count_data, flower_count)

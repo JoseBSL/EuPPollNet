@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 #Read comma delimited
@@ -13,22 +15,26 @@ data %>% slice_head(n = 5)
 #Things to do
 #Rename Terrestribombus sp. to Bombus terrestris, 90% of them are terrestris are not locuorum
 #Other option is to rename species with Bombus cf. terrestris
-InteractionData = data %>% 
+data = data %>% 
 mutate(Coordinate_precision = NA) %>%
 mutate(Elevation = NA) %>% 
 mutate(Comments = NA) %>% 
 mutate(Temperature = NA) %>% 
-mutate(Humidiy = NA) %>% 
+mutate(Humidity = NA) %>% 
 select(Plant_species, Pollinator_species, Interaction, 
        Sampling_method, Sampling_effort_minutes, Sampling_area_square_meters,
        Site_id, Habitat, Country, Locality, Latitude, Longitude,
        Coordinate_precision, Elevation, Day, Month, Year, Comments,
-       Temperature, Humidiy) %>%
+       Temperature, Humidity) %>%
 mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.", "Bombus terrestris")) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Interaction = as.integer(Interaction))
+
+#Unify structure of data
+data = change_str(data)
 
 #Split data into different dataframes based on survey name
-InteractionData <- split(InteractionData, InteractionData$Site_id)
+InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,

@@ -6,6 +6,8 @@ source("Scripts/Empty_templates.R") #Read empty templates to compare with
 #Load libraries
 library(tidyverse)
 library(stringr)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/26_27_Castro/Interaction_data2.csv")
@@ -16,6 +18,9 @@ compare_variables(check_interaction_data, data)
 #Select main cols
 data = data %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list (separate now by site)
 InteractionData2 <- split(data, data$Habitat)

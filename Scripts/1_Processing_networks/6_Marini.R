@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/Raw_data/4_5_6_Marini/Interaction_data.csv")
@@ -10,13 +12,16 @@ data = read.csv("Data/Raw_data/4_5_6_Marini/Interaction_data.csv")
 data = data %>% 
 mutate(across(everything(), function(x) str_replace_all(x,"_", " "))) %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Comments = Survey) %>%   
+select(!c(Survey, Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
 mutate(Latitude = as.numeric(Latitude)) %>% 
 mutate(Longitude = as.numeric(Longitude)) 
 
+#Unify structure of data
+data = change_str(data)
 
 #Split data into different dataframes based on survey name
-split_intdata <- split(data, data$Survey)
+split_intdata <- split(data, data$Comments)
 #Convert to tibbles
 data3 <- as_tibble(split_intdata[[3]])
 #Now create a list of the different networks (unique Site_id) for each survey

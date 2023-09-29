@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data = read_csv("Data/Raw_data/11_Clough/Interaction_data.csv") %>% 
@@ -13,6 +15,9 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>%  #Including this info in the metadata
 filter(!is.na(Plant_species)) %>% 
 filter(!is.na(Pollinator_species)) 
+
+#Unify structure of data
+data = change_str(data)
 
 #Convert coordinates to lat/lon
 library(rgdal)

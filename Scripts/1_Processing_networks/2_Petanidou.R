@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/2_Petanidou/Interaction_data.csv")
@@ -17,7 +19,11 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>%
 mutate(Latitude = as.numeric(Latitude)) %>% 
 mutate(Longitude = as.numeric(Longitude)) %>% 
 filter(!is.na(Plant_species)) %>% 
-filter(!is.na(Pollinator_species))
+filter(!is.na(Pollinator_species)) %>% 
+mutate(Day = as.double(Day)) 
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)

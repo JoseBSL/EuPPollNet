@@ -15,6 +15,8 @@ library(stringr)
 library(readr)
 library(tibble)
 library(tidyr)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/32_to_37_Russo/Interaction_data.csv")
@@ -83,6 +85,9 @@ data = data %>%
 mutate(Day = as.Date(Day, origin = "2011-01-01")) %>% 
 mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 #it seems ok
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)

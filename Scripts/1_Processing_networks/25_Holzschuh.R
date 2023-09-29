@@ -8,12 +8,14 @@ source("Scripts/Empty_templates.R") #Read empty templates to compare with
 #Load libraries
 library(tidyverse)
 library(lubridate)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/23_24_25_Holzschuh/Interaction_data.csv")
 
 #Compare vars
-compare_variables(check_interaction_data, data)
+#compare_variables(check_interaction_data, data)
 
 #Add interaction col
 data = data %>% 
@@ -33,6 +35,9 @@ data = drop_variables(check_interaction_data, data)
 data = data %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#Unify structure of data
+data = change_str(data)
+
 #Now I split data into different dataframes based on habitat
 split_intdata <- split(data, data$Habitat)
 #Convert to tibbles
@@ -45,7 +50,7 @@ InteractionData3 <- split(data3, data3$Site_id)
 flower_count <- read_csv("Data/Raw_data/23_24_25_Holzschuh/Flower_count.csv")
 
 #Compare vars
-compare_variables(check_flower_count_data, flower_count)
+#compare_variables(check_flower_count_data, flower_count)
 
 #Split date col
 flower_count = flower_count %>% 

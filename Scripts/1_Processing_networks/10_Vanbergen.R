@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/Raw_data/10_Vanbergen/Interaction_data.csv")
@@ -10,6 +12,9 @@ data = data %>%
 mutate(Temperature = NA) %>% 
 mutate(Humidity = NA) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+
+#Unify structure of data
+data = change_str(data)
 
 #Split by Site_id
 InteractionData <- split(data, data$Site_id)

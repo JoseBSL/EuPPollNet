@@ -3,6 +3,9 @@
 #Load libraries
 library(rmangal)
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
+
 
 #Prepare interaction data ----
 #Install Mangal
@@ -70,6 +73,8 @@ data <- bind_cols(polls,plants, Freq) %>%
   mutate(Temperature = NA) %>%
   mutate(Humidity = NA) 
 
+data = change_str(data)
+  
 InteractionData[[i]] <- data
 
 names(InteractionData)[i] <- str_replace(levels(factor(data$Site_id)), "bartomeus_2005_", "")

@@ -2,6 +2,8 @@
 
 #Load libraries
 library(tidyverse)
+#Load function to unify structure of data
+source("Scripts/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/18_Bartomeus/Interaction_data.csv")
@@ -62,6 +64,9 @@ data = data %>%
 mutate(Latitude = Latitude1) %>% 
 mutate(Longitude = Longitude1) %>% 
 select(!c(Latitude1, Longitude1))
+
+#Unify structure of data
+data = change_str(data)
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)
