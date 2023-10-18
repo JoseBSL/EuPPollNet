@@ -3,6 +3,9 @@
 ########################################################################
 
 #1)Use fuzzy matching to recover species names from Thesaurus master list
+#Note: This step could be avoided as the GBIF taxonomy
+#provides also very similar and accurate results
+#As we started with it, we keep it (at least for now)
 #2)Conduct manual fixes from the non-recovered records
 
 #Load libraries
@@ -491,6 +494,9 @@ mutate(Fixed = coalesce(Fixed, Fixed1)) %>%
 select(!c(Fixed1)) 
 
 #Conduct last fixes
+#Note, each case has been searched manually and assessed
+#In some circunstances these decissions are a personal guess
+#Based on what is the most likely the possible mistake
 to_recover = to_recover %>% 
 mutate(Fixed = case_when(
   str_detect(Mismatch, "Coleottero") ~ "Coleoptera",
@@ -525,10 +531,19 @@ mutate(Fixed = case_when(
   str_detect(Mismatch, "Paroxyna bidentis") ~ "Dioxyna bidentis",
   str_detect(Mismatch, "Melitta haemor") ~ "Melitta haemorrhoidalis",
   str_detect(Mismatch, "Chrysosomoxys macrocercus") ~ "Unknown",
+  str_detect(Mismatch, "Leptura melanura") ~ "Stenurella melanura",
+  str_detect(Mismatch, "Eupeodes strigatus") ~ "Eumerus strigatus",
+  str_detect(Mismatch, "Apidea") ~ "Apidae",
+  str_detect(Mismatch, "Polietes ladarius") ~ "Polietes lardaria",
+  str_detect(Mismatch, "Lucila") ~ "Lucilia",
+  str_detect(Mismatch, "Halicutus") ~ "Halictus",
+  str_detect(Mismatch, "Zigena") ~ "Zygaena",
+  str_detect(Mismatch, "Vermilionidae") ~ "Vermileonidae",
+  str_detect(Mismatch, "Tenthridae") ~ "Tenthredinidae",
+  str_detect(Fixed, "Hoplitis scutellaris") ~ "Osmia scutellaris",
 
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
-
 
 #Very few subfamilies (write them at family level)
 #GBIF Does not find them at subfamily level
@@ -647,11 +662,11 @@ select(!c(usageKey, confidence, kingdomKey,
           phylumKey, classKey, orderKey, familyKey,
          genusKey,  speciesKey, acceptedUsageKey,
          verbatim_index, verbatim_kingdom)) %>% 
-rename(Old_name = verbatim_name,
+rename(Fixed_name = verbatim_name,
        Scientific_name  = scientificName,
        Canonical_name  = canonicalName,
        Accepted_name = species) %>% 
-select(Old_name, rank, status, matchType, 
+select(Fixed_name, rank, status, matchType, 
        Scientific_name, Canonical_name,
        Accepted_name, kingdom, phylum, order, family,
        genus) %>% 
@@ -660,86 +675,12 @@ select(Old_name, rank, status, matchType,
 #Check species that haven't been found
 matched_gbif1 %>% 
 filter(is.na(Accepted_name)) %>%
-pull(Old_name)
-#Add Unsure id col and Uncertainty type
-#Vaccinium vitis-idaea is a plant species (mistake)
-matched_gbif1 = matched_gbif1 %>% 
-mutate(Unsure_id = case_when(
-  Old_name == "Vaccinium vitis-idaea" ~ "Yes",
-  T ~ NA_character_)) %>% 
-mutate(Uncertainty_type = case_when(
-  Old_name == "Vaccinium vitis-idaea" ~ "Mistake",
-  T ~ NA_character_)) %>% 
-mutate(Accepted_name = case_when(
-  Old_name == "Coenonympha gardetta" ~ "Coenonympha gardetta",
-  T ~ Accepted_name
-)) %>% 
-mutate(Accepted_name = case_when(
-  Old_name == "Vaccinium vitis-idaea" ~ "Unknown",
-  T ~ Accepted_name
-))
-#Fix other 5 matchtypes with higher rank
-#Look manually for the accepted name
-#1)"Seladonia semitecta"
-#We are going to consider Seladonia as a subgenus
-matched_gbif1 = matched_gbif1 %>% 
-mutate(Accepted_name = case_when(
-    Old_name == "Seladonia semitecta" ~ "Halictus semitectus",
-    T ~ Accepted_name)) %>% 
-mutate(Status = case_when(
-    Old_name == "Seladonia semitecta" ~ "SYNONYM",
-    T ~ Status)) %>% 
-mutate(Scientific_name = case_when(
-    Old_name == "Seladonia semitecta" ~ "Seladonia semitecta (Morawitz, 1874)",
-    T ~ Scientific_name)) %>% 
-mutate(Canonical_name = case_when(
-    Old_name == "Seladonia semitecta" ~ "Seladonia semitecta",
-    T ~ Canonical_name)) %>% 
-mutate(Genus = case_when(
-    Old_name == "Seladonia semitecta" ~ "Halictus",
-    T ~ Genus)) 
-#Fix other Seladonia cases
-matched_gbif1 = matched_gbif1 %>% 
-mutate(Genus = case_when(
-    Old_name == "Seladonia submediterranea" ~ "Halictus",
-    T ~ Genus)) %>% 
-mutate(Accepted_name = case_when(
-    Old_name == "Seladonia submediterranea" ~ "Halictus submediterranea",
-    T ~ Accepted_name)) 
-#Limenitis camilla
-matched_gbif1 = matched_gbif1 %>% 
-mutate(Status = case_when(
-  Old_name == "Limenitis camilla" ~ "SYNONYM",
-  T ~ Status)) %>% 
-mutate(Scientific_name = case_when(
-  Old_name == "Limenitis camilla" ~ "Limenitis camilla (Denis & Schiffermüller, 1775)",
-  T ~ Scientific_name)) %>% 
-mutate(Canonical_name = case_when(
-  Old_name == "Limenitis camilla" ~ "Limenitis camilla",
-  T ~ Canonical_name)) %>% 
-mutate(Accepted_name = case_when(
-  Old_name == "Limenitis camilla" ~ "Limenitis reducta",
-  T ~ Accepted_name)) %>% 
-mutate(Genus = case_when(
-  Old_name == "Limenitis camilla" ~ "Limenitis",
-  T ~ Genus))
-#Polyommatus dorylas, update to Plebicula dorylas
-matched_gbif1 = matched_gbif1 %>% 
-mutate(Status = case_when(
-  Old_name == "Polyommatus dorylas" ~ "SYNONYM",
-  T ~ Status)) %>% 
-mutate(Scientific_name = case_when(
-  Old_name == "Polyommatus dorylas" ~ "Polyommatus dorylas (Denis & Schiffermüller, 1775)",
-  T ~ Scientific_name)) %>% 
-mutate(Canonical_name = case_when(
-  Old_name == "Polyommatus dorylas" ~ "Polyommatus dorylas",
-  T ~ Canonical_name)) %>% 
-mutate(Accepted_name = case_when(
-  Old_name == "Polyommatus dorylas" ~ "Plebicula dorylas",
-  T ~ Accepted_name)) %>% 
-mutate(Genus = case_when(
-  Old_name == "Polyommatus dorylas" ~ "Plebicula",
-  T ~ Genus))
+pull(Fixed_name)
+
+#Here we rename the species
+#Many lines of code so we keep it in a nother script
+source("Scripts/2_Processing_metaweb/2_2_Rename_matched_pollinators.R")
+
 #With this 
 #we can conclude for now the edits on the matched spp
 name1 = unmatched %>% 
@@ -765,27 +706,65 @@ select(Fixed_name, rank, status, matchType,
        genus) %>% 
   rename_all(~str_to_title(.))
 
-#Filter not exact matches
+
+
 clean = c("EXACT", "FUZZY")
+#Select matched records and pass Canonical_name to accepted
+#When necessary
+unmatched_gbif1_found = unmatched_gbif1 %>% 
+filter(Matchtype %in% clean) %>% 
+mutate(Accepted_name = 
+if_else(is.na(Accepted_name), Canonical_name, Accepted_name))
+
+#Now select not found records and fix manually
 unmatched_gbif1_not_found = unmatched_gbif1 %>% 
 filter(!Matchtype %in% clean)
 
-#Add additional info
-#Polietes ladarius
-unmatched_gbif1_not_found = 
-unmatched_gbif1_not_found %>% 
-mutate(Scientific_name = case_when(
-Fixed_name == "Polietes ladarius" ~ "Polietes lardarius (Fabricius, 1781)",
-T ~ Scientific_name)) %>% 
-mutate(Canonical_name = case_when(
-Fixed_name == "Polietes ladarius" ~ "Polietes lardarius",
-T ~ Canonical_name)) %>% 
-mutate(Accepted_name = case_when(
-Fixed_name == "Polietes ladarius" ~ "Polietes lardarius",
-T ~ Accepted_name))   
+#Here we rename the species
+#Many lines of code so we keep it in a nother script
+source("Scripts/2_Processing_metaweb/2_2_Rename_unmatched_pollinators.R")
+
+#Check now for missing species
+checks = unmatched_gbif1_found %>%  filter(is.na(Accepted_name))
+checks = unmatched_gbif1_not_found %>%  filter(is.na(Accepted_name))
+
+#Bind datasets
+gbif_data = 
+bind_rows(unmatched_gbif1_found, 
+          unmatched_gbif1_not_found,
+          matched_gbif1)
+
+#Bind matched and unmatched ones
+  
+processed = bind_rows(matched, unmatched) %>% 
+rename(Fixed_name = Name)
+
+#Rename cols before merging!!
+poll_data = left_join(processed, gbif_data)
+
+#Add this info 
+#This wasn't added because it was accepted with
+#the thesaurus (as it is a correct plant species)
+poll_data = poll_data %>% 
+mutate(Unsure_id = case_when(
+  Fixed_name == "Vaccinium vitis-idaea" ~ "Yes",
+  T ~ NA_character_)) %>% 
+mutate(Uncertainty_type = case_when(
+  Fixed_name == "Vaccinium vitis-idaea" ~ "Mistake",
+  T ~ NA_character_))
 
 
-#Some checkings
-#Total different records
-n_distinct(matched_gbif1$Accepted_name) + 
-n_distinct(unmatched_gbif1$Accepted_name)
+#Some final safety checkings
+poll_data %>% 
+filter(is.na(Accepted_name))
+poll_data %>% 
+filter(is.na(Fixed_name))
+
+#Check number 
+poll_data %>% 
+mutate(n_word = 
+str_count(Accepted_name, '\\w+')) %>% 
+filter(n_word>1) %>% 
+filter(is.na(Unsure_id)) %>% 
+distinct(Accepted_name) 
+#1570 saccepted different species
