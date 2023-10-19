@@ -766,3 +766,6 @@ filter(is.na(Unsure_id)) %>%
 distinct(Accepted_name) 
 #1570 saccepted different species
 
+# Provisional ----
+#provisional <- left_join(master, processed, join_by("Pollinator_species" == "Old_name"))
+#write.csv(provisional, file = "Data/Processing/Provisional_19-10.csv")
