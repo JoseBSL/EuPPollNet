@@ -706,8 +706,6 @@ select(Fixed_name, rank, status, matchType,
        genus) %>% 
   rename_all(~str_to_title(.))
 
-
-
 clean = c("EXACT", "FUZZY")
 #Select matched records and pass Canonical_name to accepted
 #When necessary
@@ -735,7 +733,6 @@ bind_rows(unmatched_gbif1_found,
           matched_gbif1)
 
 #Bind matched and unmatched ones
-  
 processed = bind_rows(matched, unmatched) %>% 
 rename(Fixed_name = Name)
 
@@ -768,3 +765,4 @@ filter(n_word>1) %>%
 filter(is.na(Unsure_id)) %>% 
 distinct(Accepted_name) 
 #1570 saccepted different species
+
