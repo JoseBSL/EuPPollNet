@@ -541,6 +541,9 @@ mutate(Fixed = case_when(
   str_detect(Mismatch, "Vermilionidae") ~ "Vermileonidae",
   str_detect(Mismatch, "Tenthridae") ~ "Tenthredinidae",
   str_detect(Fixed, "Hoplitis scutellaris") ~ "Osmia scutellaris",
+  str_detect(Mismatch, "Lycaena corydon") ~ "Lysandra hispana",
+  Mismatch == "Anthidium scapulare" ~ "Pseudoanthidium scapulare",
+  Mismatch == "Eoseristalis lineata" ~ "Cheilosia morio",
 
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
@@ -555,20 +558,19 @@ mutate(Name = case_when(
   Old_name == "Microgasterinae" ~ "Braconidae",
   T ~ Name))
 
-#Divide dataset in fixed and no fixed names
-to_recover1 =  to_recover %>% filter(!is.na(Name))
-to_recover2 = to_recover %>% filter(is.na(Name)) %>% 
+#Add uncertainty cols (default=No)
+to_recover1 = to_recover %>% 
 mutate(Unsure_id = "No") %>% 
-mutate(Uncertainty_type = NA)
-  
+mutate(Uncertainty_type = NA)  
+
 #For the fixed ones, add additional info
 #For instance, unsure id. Then add another col where we explain
 #the original status
-unsure_id = c("type","aggr.","agg.","[/]", 
+unsure_id = c(" type","aggr.","agg.","[/]", 
               "aff(?![:alpha:])", " cf", " Cf", "[?]",
               "_agg", "_group", "-group",
               "_c.f", "malachurum-alike",
-              "-.*-", " agg$")
+              "-.*-", " agg$", " complex")
 
 to_recover1 = to_recover1 %>% 
 mutate(Unsure_id = case_when(
@@ -588,9 +590,7 @@ mutate(Unsure_id = case_when(
  Old_name == "Lasioglossum sp_immunitum-alike" ~ "Yes",
  Old_name == "Halictus gr simplex" ~ "Yes",
  Old_name == "Lasioglossum immunitum-type" ~ "Yes",
- Old_name == "Bombus terrestris complex" ~ "Yes",
  Old_name == "Chrysosomoxys macrocercus" ~ "Yes",
-
  T ~Unsure_id
 
 ))
@@ -601,7 +601,7 @@ mutate(Unsure_id = case_when(
 species_complex = c("aggr.","agg.","[/]", 
                     "_agg", "_group", "-group",  
                      "-.*-", " agg$", " type",
-                    "-type", " complex", "-type",
+                    "-type", " complex",
                     " gr ")
 
 affinis = c("aff(?![:alpha:])", "malachurum-alike")
@@ -627,13 +627,22 @@ mutate(Uncertainty_type = case_when(
 ))
 
 #Merge both datasets now
-unmatched = bind_rows(to_recover1, to_recover2) %>% 
+unmatched = to_recover1 %>% 
 mutate(Name = case_when(is.na(Name) ~ Old_name,
 T ~ Name))
 
+
 matched = tibble(Old_name = matching, Name = matching) %>% 
 mutate(Unsure_id = "No") %>% 
-mutate(Uncertainty_type = NA)
+mutate(Uncertainty_type = NA) 
+
+#Rename manually some synonyms (Following GBIF taxonomy)
+matched = 
+matched %>% 
+mutate(Name = case_when(
+  Name == "Lycaena hippothoe" ~ "Palaeochrysophanus hippothoe",
+  T ~ Name))
+
 #Let's keep matched and unmatched separated for now
 #Current issues: We are not keeping subgenus and subspecies.
 
@@ -679,7 +688,7 @@ pull(Fixed_name)
 
 #Here we rename the species
 #Many lines of code so we keep it in a nother script
-source("Scripts/2_Processing_metaweb/2_2_Rename_matched_pollinators.R")
+source("Scripts/2_Processing_metaweb/2_Pollinator_processing/2_1_Rename_matched_pollinators.R")
 
 #With this 
 #we can conclude for now the edits on the matched spp
@@ -720,7 +729,7 @@ filter(!Matchtype %in% clean)
 
 #Here we rename the species
 #Many lines of code so we keep it in a nother script
-source("Scripts/2_Processing_metaweb/2_2_Rename_unmatched_pollinators.R")
+source("Scripts/2_Processing_metaweb/2_Pollinator_processing/2_2_Rename_unmatched_pollinators.R")
 
 #Check now for missing species
 checks = unmatched_gbif1_found %>%  filter(is.na(Accepted_name))
@@ -737,7 +746,7 @@ processed = bind_rows(matched, unmatched) %>%
 rename(Fixed_name = Name)
 
 #Rename cols before merging!!
-poll_data = left_join(processed, gbif_data)
+poll_data = left_join(gbif_data, processed)
 
 #Add this info 
 #This wasn't added because it was accepted with
@@ -745,14 +754,14 @@ poll_data = left_join(processed, gbif_data)
 poll_data = poll_data %>% 
 mutate(Unsure_id = case_when(
   Fixed_name == "Vaccinium vitis-idaea" ~ "Yes",
-  T ~ NA_character_)) %>% 
+  T ~ Unsure_id)) %>% 
 mutate(Uncertainty_type = case_when(
   Fixed_name == "Vaccinium vitis-idaea" ~ "Mistake",
-  T ~ NA_character_))
+  T ~ Uncertainty_type))
 
 
 #Some final safety checkings
-poll_data %>% 
+s= poll_data %>% 
 filter(is.na(Accepted_name))
 poll_data %>% 
 filter(is.na(Fixed_name))
@@ -764,8 +773,27 @@ str_count(Accepted_name, '\\w+')) %>%
 filter(n_word>1) %>% 
 filter(is.na(Unsure_id)) %>% 
 distinct(Accepted_name) 
-#1570 saccepted different species
+#1580 accepted different species
 
-# Provisional ----
+
+#Rename master to old name before merging back
+master = master%>%  
+rename(Old_name = Pollinator_species)
+#Merge
+all = left_join(master, poll_data)
+
+#check levels
+levels(factor(all$Study_id))
+
+#Quick subset to explore the new pollinators added
+#Do this fo every new dataset that we add
+#Last one being checked is written within the filter argument
+subset_check = all %>% 
+filter(Study_id == "44_Knight") %>% 
+select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
+distinct()
+
+
+#Merge with unprocessed dataset ----
 #provisional <- left_join(master, processed, join_by("Pollinator_species" == "Old_name"))
 #write.csv(provisional, file = "Data/Processing/Provisional_19-10.csv")
