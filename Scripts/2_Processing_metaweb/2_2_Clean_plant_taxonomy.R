@@ -92,5 +92,7 @@ unmatched_fuzzy1 = unmatched1 %>% filter(Matchtype == "FUZZY") %>%
 #######
 #Check records with higher rank
 #######
+unmatched_higher_rank = unmatched %>% filter(Matchtype == "HIGHERRANK")
 
+#Lot of records...
 
