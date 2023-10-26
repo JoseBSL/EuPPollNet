@@ -92,6 +92,10 @@ data = data %>%
 #Unify structure of data
 data = change_str(data)
 
+#Delete underscore from plant species
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "_", " "))
+
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)
 

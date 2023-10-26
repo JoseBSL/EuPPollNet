@@ -175,6 +175,10 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 #Unify structure of data
 data = change_str(data)
 
+#Delete dot from plant species
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)
 

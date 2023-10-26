@@ -84,6 +84,10 @@ mutate(Day = as.Date(Day, origin = "2009-01-01")) %>%
 mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 #it seems ok
 
+#Delete underscore from plant species
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "_", " "))
+
 #Unify structure of data
 data = change_str(data)
 
