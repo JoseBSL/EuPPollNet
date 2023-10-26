@@ -6,3 +6,5 @@
 Data/Raw_data/Umons_2023.csv
 Data/Species_thesaurus/wcvp_distribution.csv
 Data/Species_thesaurus/wcvp_names.csv
+Data/Species_thesaurus/distribution.csv
+Data/Species_thesaurus/distribution.rds
