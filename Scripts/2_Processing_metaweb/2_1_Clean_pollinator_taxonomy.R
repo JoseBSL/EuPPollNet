@@ -18,7 +18,9 @@ library(reshape2) #to use melt function later on
 #Read raw metaweb
 master = readRDS("Data/Processing/Building_metaweb.rds")
 #Read master list of unique cases of pollinator species
-species_tesaurus <- readRDS(file = "Data/Species_thesaurus/taxonomy.rds")
+species_tesaurus <- readRDS(file = "Data/Species_taxonomy/Thesaurus/taxonomy.rds")
+#Function to give str to data (used at the end of the code)
+source("Scripts/Change_str.R")
 
 #Explore poll data
 #Check total number of distinct poll species names
@@ -666,20 +668,7 @@ pull()
 matched_gbif = name_backbone_checklist(name= name, kingdom='animals')
 
 #Organise structure of data
-matched_gbif1 = matched_gbif %>% 
-select(!c(usageKey, confidence, kingdomKey,
-          phylumKey, classKey, orderKey, familyKey,
-         genusKey,  speciesKey, acceptedUsageKey,
-         verbatim_index, verbatim_kingdom)) %>% 
-rename(Fixed_name = verbatim_name,
-       Scientific_name  = scientificName,
-       Canonical_name  = canonicalName,
-       Accepted_name = species) %>% 
-select(Fixed_name, rank, status, matchType, 
-       Scientific_name, Canonical_name,
-       Accepted_name, kingdom, phylum, order, family,
-       genus) %>% 
-  rename_all(~str_to_title(.))
+matched_gbif1 = change_str1(matched_gbif)
 
 #Check species that haven't been found
 matched_gbif1 %>% 
@@ -700,20 +689,7 @@ pull()
 #Download taxonomic info from GBIF
 unmatched_gbif = name_backbone_checklist(name= name1, kingdom='animals')
 #Rename and filter out exact matches
-unmatched_gbif1 = unmatched_gbif %>% 
-select(!c(usageKey, confidence, kingdomKey,
-        phylumKey, classKey, orderKey, familyKey,
-         genusKey,  speciesKey, acceptedUsageKey,
-         verbatim_index, verbatim_kingdom)) %>% 
-rename(Fixed_name = verbatim_name,
-       Scientific_name  = scientificName,
-       Canonical_name  = canonicalName,
-       Accepted_name = species) %>% 
-select(Fixed_name, rank, status, matchType, 
-       Scientific_name, Canonical_name,
-       Accepted_name, kingdom, phylum, order, family,
-       genus) %>% 
-  rename_all(~str_to_title(.))
+unmatched_gbif1 = change_str1(unmatched_gbif)
 
 clean = c("EXACT", "FUZZY")
 #Select matched records and pass Canonical_name to accepted
@@ -775,16 +751,24 @@ filter(is.na(Unsure_id)) %>%
 distinct(Accepted_name) 
 #1580 accepted different species
 
+#############
+#Save pollinator taxonomy
+#############
+#check colnames
+colnames(poll_data)
+saveRDS(poll_data, "Data/Species_taxonomy/Pollinator_taxonomy.rds")
 
+#############
+#Bind data to conduct final safety checks
+#############
 #Rename master to old name before merging back
 master = master%>%  
 rename(Old_name = Pollinator_species)
 #Merge
 all = left_join(master, poll_data)
-
+colnames(all)
 #check levels
 levels(factor(all$Study_id))
-
 #Quick subset to explore the new pollinators added
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
@@ -793,7 +777,3 @@ filter(Study_id == "44_Knight") %>%
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 
-
-#Merge with unprocessed dataset ----
-#provisional <- left_join(master, processed, join_by("Pollinator_species" == "Old_name"))
-#write.csv(provisional, file = "Data/Processing/Provisional_19-10.csv")
