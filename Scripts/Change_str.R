@@ -1,5 +1,6 @@
-#Create function to unify colnames
+#Create functions to fix str of data
 
+#Fix str of data of individual networks
 change_str <- function(data) { 
 data = data %>% 
 mutate(Plant_species = as.character(Plant_species)) %>% 
@@ -23,4 +24,20 @@ mutate(Humidity = as.double(Humidity))
 
 }
 
-
+#Fix str of data from GBIF
+change_str1 <- function(data) { 
+data = data %>% 
+select(!c(usageKey, confidence, kingdomKey,
+          phylumKey, classKey, orderKey, familyKey,
+         genusKey,  speciesKey, acceptedUsageKey,
+         verbatim_index, verbatim_kingdom)) %>% 
+rename(Fixed_name = verbatim_name,
+       Scientific_name  = scientificName,
+       Canonical_name  = canonicalName,
+       Accepted_name = species) %>% 
+select(Fixed_name, rank, status, matchType, 
+       Scientific_name, Canonical_name,
+       Accepted_name, kingdom, phylum, order, family,
+       genus) %>% 
+  rename_all(~str_to_title(.))
+}
