@@ -1,0 +1,90 @@
+colID,Countries,Bees_syrphids,Buterflies,Plants,Country_code,Island,3_Country_code
+10,Albania,Albania,Albania,Albania,AL,NA,ALB
+11,Andorra,Andorra,Andorra,NA,AD,NA,NA
+12,Austria,Austria,Austria,Austria,AT,NA,AUT
+13,Belarus,Belarus,Belarus,Belarus,BY,NA,BLR
+14,Belgium,Belgium,Belgium,Belgium,BE,NA,BGM
+15,Bosnia_and_Herzegovina,Bosnia.and.Herzegovina,Bosnia and Herzegovina,Yugoslavia,BA,NA,YUG
+16,Bulgaria,Bulgaria,Bulgaria,Bulgaria,BG,NA,BUL
+17,Croatia,Croatia,Croatia,Yugoslavia,HR,NA,YUG
+18,Cyprus,Cyprus,Cyprus,NA,CY,NA,NA
+19,Czech_Republic,Czech.Republic,Czech Republic,Czechoslovakia,CZ,NA,CZE
+20,Denmark,Denmark,Denmark,Denmark,DK,Mainland,DEN
+21,Estonia,Estonia,Estonia,Baltic States,EE,NA,BLT
+22,Faroe_Islands,Faroe.Islands,NA,Føroyar,DK,Island,FOR
+23,Finland,Finland,Finland,Finland,FI,Both,FIN
+24,Finland_Aland_Islands,Finland...Åland.Islands,NA,NA,FI,Island,NA
+25,Finland_Mainland,Finland...Mainland,NA,NA,FI,Mainland,NA
+26,France,France,France,France,FR,Both,FRA
+27,France_Corsica,France...Corsica,NA,Corse,FR,Island,COR
+28,France_Mainland,France...Mainland,NA,NA,FR,Mainland,NA
+29,Germany,Germany,Germany,Germany,DE,NA,GER
+30,Gibraltar,Gibraltar,NA,NA,GI,NA,NA
+31,Greece,Greece,Greece,Greece,GR,Both,GRC
+32,Greece_East_Aegean_Islands,Greece...East.Aegean.Islands,NA,NA,GR,Island,NA
+33,Greece_Kriti,Greece...Kriti,NA,Kriti,GR,Island,KRI
+34,Greece_Mainland,Greece...Mainland,NA,NA,GR,Mainland,NA
+35,Hungary,Hungary,Hungary,Hungary,HU,NA,HUN
+36,Iceland,Iceland,Iceland,Iceland,IS,NA,ICE
+37,Ireland,Ireland,Ireland,Ireland,IE,NA,IRE
+38,Isle_of_Man,Isle.of.Man,NA,NA,IM,NA,NA
+39,Italy,Italy,Italy,Italy,IT,Both,ITA
+40,Italy_Mainland,Italy...Mainland,NA,NA,IT,Mainland,NA
+41,Italy_Sardegna,Italy...Sardegna,NA,Sardegna,IT,Island,SAR
+42,Italy_Sicily,Italy...Sicily,NA,Sicilia,IT,Island,SIC
+43,Latvia,Latvia,Latvia,Baltic States,LV,NA,BLT
+44,Liechtenstein,Liechtenstein,Liechtenstein,NA,LI,NA,NA
+45,Lithuania,Lithuania,Lithuania,Baltic States,LT,NA,BLT
+46,Luxembourg,Luxembourg,Luxembourg,NA,LU,NA,NA
+47,Malta,Malta,Malta,NA,MT,NA,NA
+48,Moldova,Moldova,Moldova,NA,MD,NA,NA
+49,Montenegro,Montenegro,Montenegro,Yugoslavia,ME,NA,YUG
+50,Netherlands,Netherlands,Netherlands,Netherlands,NL,NA,NET
+51,North_Macedonia,North.Macedonia,North Macedonia,Yugoslavia,MK,NA,YUG
+52,Norway,Norway,Norway,Norway,NO,NA,NOR
+52,Norway,Norway,NA,Svalbard,NO,Island,SVA
+53,Poland,Poland,Poland,Poland,PL,NA,POL
+54,Portugal,Portugal,Portugal,Portugal,PT,Both,POR
+55,Portugal_Azores,Portugal...Azores,Azores,NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Corvo",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Faial",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Flores",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Graciosa",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Pico",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Santa Maria",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Sao Jorge",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Sao Miguel",NA,PT,Island,NA
+55,Portugal_Azores,Portugal...Azores,"Azores, Terceira",NA,PT,Island,NA
+56,Portugal_Madeira,Portugal...Madeira,Madeira,NA,PT,Island,NA
+56,Portugal_Madeira,Portugal...Madeira,"Madeira, Madeira",NA,PT,Island,NA
+56,Portugal_Madeira,Portugal...Madeira,"Madeira, Porto Santo",NA,PT,Island,NA
+57,Portugal_Mainland,Portugal...Mainland,NA,NA,PT,Mainland,NA
+58,Romania,Romania,Romania,Romania,RO,NA,ROM
+59,Russian_Federation_European_Russia,Russian.Federation...European.Russia,Russia,NA,RU,NA,NA
+59,Russian_Federation_European_Russia,Russian.Federation...European.Russia,NA,Central European Rus,RU,NA,RUC
+59,Russian_Federation_European_Russia,Russian.Federation...European.Russia,NA,East European Russia,RU,NA,RUE
+59,Russian_Federation_European_Russia,Russian.Federation...European.Russia,NA,North European Russi,RU,NA,RUN
+59,Russian_Federation_European_Russia,Russian.Federation...European.Russia,NA,South European Russi,RU,NA,RUS
+60,Serbia,Serbia,Serbia,Yugoslavia,RS,NA,YUG
+61,Slovakia,Slovakia,Slovakia,Czechoslovakia,SK,NA,CZE
+62,Slovenia,Slovenia,Slovenia,Yugoslavia,SI,NA,YUG
+63,Spain,Spain,Spain,Spain,ES,Both,SPA
+64,Spain_Balearic_Islands,Spain...Balearic.Islands,NA,Baleares,ES,Island,BAL
+65,Spain_Canary_Islands,Spain...Canary.Islands,Canary Islands,NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, El Hierro",NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, Fuerteventura",NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, Gran Canaria",NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, La Gomera",NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, La Palma",NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, Lanzorate",NA,ES,Island,NA
+65,Spain_Canary_Islands,Spain...Canary.Islands,"Canary Islands, Tenerife",NA,ES,Island,NA
+66,Spain_Mainland,Spain...Mainland,NA,NA,ES,Mainland,NA
+67,Sweden,Sweden,Sweden,Sweden,SE,NA,SWE
+68,Switzerland,Switzerland,Switzerland,Switzerland,CH,NA,SWI
+69,Turkey_European_part,Turkey...European.part,NA,Turkey-in-Europe,TR,NA,TUE
+70,Ukraine,Ukraine,Ukraine,Ukraine,UA,Both,UKR
+71,Ukraine_Krym,Ukraine...Krym,NA,Krym,UA,Island,KRY
+72,Ukraine_Main_part,Ukraine...Main.part,NA,NA,UA,Mainland,NA
+73,United_Kingdom,United.Kingdom,United Kingdom,NA,GB,Both,NA
+74,United_Kingdom_Great_Britain,United.Kingdom...Great.Britain,NA,Great Britain,GB,Island,GRB
+75,United_Kingdom_Northern_Ireland,United.Kingdom...Northern.Ireland,NA,NA,GB,Island,NA
