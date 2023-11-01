@@ -114,5 +114,7 @@ labs(color="Taxonomic\nrank") +
 theme(legend.title.align = 0.5)+
 geom_text(hjust=-0.5, vjust=-0.1)
 
+d
+
 
 
