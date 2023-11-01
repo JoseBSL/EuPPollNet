@@ -546,9 +546,19 @@ mutate(Fixed = case_when(
   str_detect(Mismatch, "Lycaena corydon") ~ "Lysandra hispana",
   Mismatch == "Anthidium scapulare" ~ "Pseudoanthidium scapulare",
   Mismatch == "Eoseristalis lineata" ~ "Cheilosia morio",
+  Fixed == "Sarginae/Sargus" ~ "Sargus",
+  Fixed == "Sarcophagini" ~ "Sarcophagidae", #add at family level
+  Fixed == "Lycaena hippothoe" ~ "Lycaena dispar", #synonym
+  Fixed == "Melanomya Nana" ~ "Melanomya nana", #upper case
+  Fixed == "Polistinae" ~ "Vespidae", #higher rank
+  Fixed == "Zophomya Temula" ~ "Zophomyia temula", #typo
+  Fixed == "Odontomyia Angulata" ~ "Odontomyia angulata", #upper case
+  Fixed == "Protodexiini" ~ "Sarcophagidae", #higher rank
+
 
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
+
 
 #Very few subfamilies (write them at family level)
 #GBIF Does not find them at subfamily level
@@ -593,6 +603,9 @@ mutate(Unsure_id = case_when(
  Old_name == "Halictus gr simplex" ~ "Yes",
  Old_name == "Lasioglossum immunitum-type" ~ "Yes",
  Old_name == "Chrysosomoxys macrocercus" ~ "Yes",
+ Old_name == "Sarginae/Sargus sp.1" ~ "Yes",
+
+
  T ~Unsure_id
 
 ))
@@ -625,6 +638,8 @@ mutate(Uncertainty_type = case_when(
   paste(unsure, collapse = "|")) ~ "unsure",
   str_detect(Old_name, "alike") & Unsure_id == "Yes"  ~ "alike",
   str_detect(Name, pattern = "Unknown") ~ "unknown",
+  str_detect(Name, pattern = "Sarginae/Sargus") ~ "unsure",
+
   T ~ NA_character_
 ))
 
@@ -677,7 +692,7 @@ pull(Fixed_name)
 
 #Here we rename the species
 #Many lines of code so we keep it in a nother script
-source("Scripts/2_Processing_metaweb/2_Pollinator_processing/2_1_Rename_matched_pollinators.R")
+source("Scripts/2_Build_metaweb/2_Pollinator_processing/2_1_Rename_matched_pollinators.R")
 
 #With this 
 #we can conclude for now the edits on the matched spp
@@ -705,7 +720,7 @@ filter(!Matchtype %in% clean)
 
 #Here we rename the species
 #Many lines of code so we keep it in a nother script
-source("Scripts/2_Processing_metaweb/2_Pollinator_processing/2_2_Rename_unmatched_pollinators.R")
+source("Scripts/2_Build_metaweb/2_Pollinator_processing/2_2_Rename_unmatched_pollinators.R")
 
 #Check now for missing species
 checks = unmatched_gbif1_found %>%  filter(is.na(Accepted_name))
@@ -773,7 +788,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "44_Knight") %>% 
+filter(Study_id == "46_Knight") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

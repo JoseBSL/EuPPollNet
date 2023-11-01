@@ -241,6 +241,6 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "44_Knight") %>% 
+filter(Study_id == "46_Knight") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()

@@ -1307,7 +1307,7 @@ mutate(Rank = case_when(
    Fixed_name == "Gymnodia" ~ "GENUS",
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
-   Fixed_name == "Gymnodia" ~ "HIGHERRANK",
+   Fixed_name == "Gymnodia" ~ "EXACT",
    T ~ Matchtype))
 
 #Thecophora
@@ -1338,7 +1338,7 @@ mutate(Rank = case_when(
    Fixed_name == "Thecophora" ~ "GENUS",
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
-   Fixed_name == "Thecophora" ~ "HIGHERRANK",
+   Fixed_name == "Thecophora" ~ "EXACT",
    T ~ Matchtype))
 
 #Rhinophora
@@ -1369,7 +1369,7 @@ mutate(Rank = case_when(
    Fixed_name == "Rhinophora" ~ "GENUS",
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
-   Fixed_name == "Rhinophora" ~ "HIGHERRANK",
+   Fixed_name == "Rhinophora" ~ "EXACT",
    T ~ Matchtype))
 
 #Thecophora
@@ -1400,7 +1400,7 @@ mutate(Rank = case_when(
    Fixed_name == "Thecophora" ~ "GENUS",
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
-   Fixed_name == "Thecophora" ~ "HIGHERRANK",
+   Fixed_name == "Thecophora" ~ "EXACT",
    T ~ Matchtype))
 
 #Potamia
@@ -1431,7 +1431,7 @@ mutate(Rank = case_when(
    Fixed_name == "Potamia" ~ "GENUS",
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
-   Fixed_name == "Potamia" ~ "HIGHERRANK",
+   Fixed_name == "Potamia" ~ "EXACT",
    T ~ Matchtype))
 
 #Ctenopelmatinae
@@ -1462,5 +1462,68 @@ mutate(Rank = case_when(
    Fixed_name == "Ctenopelmatinae" ~ "SUBFAMILY",
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
-   Fixed_name == "Ctenopelmatinae" ~ "HIGHERRANK",
+   Fixed_name == "Ctenopelmatinae" ~ "EXACT",
    T ~ Matchtype))
+
+#Sargus
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Sargus" ~ "Sargus",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Sargus" ~ "Sargus (Fabricius, 1798)",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Sargus" ~ "Sargus",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Sargus" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Sargus" ~ "Diptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Sargus" ~ "Stratiomyidae",
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Sargus" ~ "Sargus",
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Sargus" ~ "GENUS",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Sargus" ~ "EXACT",
+   T ~ Matchtype))
+
+#Bellardia
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Bellardia" ~ "Bellardia",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Bellardia" ~ "Sargus (Robineau-Desvoidy, 1863)",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Bellardia" ~ "Bellardia",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Bellardia" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Bellardia" ~ "Diptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Bellardia" ~ "Calliphoridae",
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Bellardia" ~ "Bellardia",
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Bellardia" ~ "GENUS",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Bellardia" ~ "EXACT",
+   T ~ Matchtype))
+
