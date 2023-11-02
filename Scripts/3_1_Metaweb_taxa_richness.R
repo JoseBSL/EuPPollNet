@@ -1,4 +1,4 @@
-#Metaweb checks of number of taxonomic ranks
+#Metaweb checks of richness per taxonomic rank
 #For both plant and pollinator species
 
 #Workflow:
