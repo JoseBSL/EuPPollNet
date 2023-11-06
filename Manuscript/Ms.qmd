@@ -4,13 +4,23 @@ format: pdf
 editor: visual
 ---
 
-# Ideas/objectives:
+# Abstract
 
-- Write article point by point
+Pollinators play a key role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators is being impacted by global change (e.g., habitat loss or climate change). One of the major drawbacks to understand the conservation status and the underlying ecological processes of plant-pollinator communities is the lack of robust generalisable data across space and time. To prevent this limitation and set a baseline for future studies, we provide the first European metaweb of plant-pollinator interactions. This continent level metaweb consist of xxxx plant and xxx pollinator species with a total of xxxx interactions covering a total of XXX countries. 
 
-- Ecography could be our potential journal (think about it, high fees)
+Other things to do?
 
-- Finish paper by Christmas / Deadline october 2024 
 
-- Create workflow graph
+
+
+
+
+
+
+
+
+
+
+
+
 
