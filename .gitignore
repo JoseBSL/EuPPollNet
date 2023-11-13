@@ -4,7 +4,9 @@
 .Ruserdata
 .DS_Store
 Data/Raw_data/Umons_2023.csv
-Data/Species_thesaurus/wcvp_distribution.csv
-Data/Species_thesaurus/wcvp_names.csv
-Data/Species_thesaurus/distribution.csv
-Data/Species_thesaurus/distribution.rds
+Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv
+Data/Species_taxonomy/Thesaurus/wcvp_names.csv
+Data/Species_taxonomy/Thesaurus/distribution.csv
+Data/Species_taxonomy/Thesaurus/distribution.rds
+Data/Species_taxonomy/Thesaurus/classification.csv
+Data/Species_taxonomy/Thesaurus/GBIF_Europe.csv
