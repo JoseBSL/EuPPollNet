@@ -3,7 +3,7 @@
 #Load libraries
 library(tidyverse)
 #Load function to unify structure of data
-source("Scripts/Change_str.R")
+source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/Raw_data/7_Scheper/Interaction_data.csv")
