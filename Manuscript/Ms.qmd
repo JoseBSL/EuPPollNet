@@ -4,19 +4,20 @@ format: pdf
 editor: visual
 ---
 
+
 # Abstract
 
-Pollinators play a key role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators is being impacted by global change (e.g., habitat loss or climate change). One of the major drawbacks to understand the conservation status and the underlying ecological processes of plant-pollinator communities is the lack of robust generalisable data across space and time. To prevent this limitation and set a baseline for future studies, we provide the first European metaweb of plant-pollinator interactions. This continent level metaweb consist of xxxx plant and xxx pollinator species with a total of xxxx interactions covering a total of XXX countries. 
-
-Other things to do?
+Pollinators play a key role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators is being compromised by the different pressures of global change (e.g., habitat loss or climate change). One of the major drawbacks to understand the conservation status and the underlying ecological processes of plant-pollinator communities is the lack of robust generalisable data across space and time. Although recent efforts have progressed towards this goal, Europe, one of the continents with higher number of plant-pollinator studies, still lacks an open access and homogenised dataset plant-pollinator interactions that serves as a baseline for future ecological research. Here, we provide and explore the first European metaweb of plant-pollinator interactions. This is a continent-level metaweb that comprised of xxx plants xxx pollinators and xxxx interactions which covers xxxx different countries. We show that plant and pollinator species are xxxxx and have xxxxxxx. For instance, we cover xxx% of European bee species and xxx% of flowering plants that rely on pollinators.
 
 
 
+# Introduction
 
+# Methods
 
+# Results
 
-
-
+# Discussion
 
 
 
