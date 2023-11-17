@@ -6,7 +6,7 @@
 #Note: when merging flowe_counts with interactions
 #use the comment col.
 
-source("Scripts/Empty_templates.R") 
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 
 #Load libraries
 library(dplyr)
@@ -18,7 +18,7 @@ library(parzer) #For transforming DMS coordinates
 library(lubridate) #to sum time
 
 #Load function to unify structure of data
-source("Scripts/Change_str.R")
+source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 flower_visits <- read_csv("Data/Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_visits.csv", locale = locale(encoding = "latin1"))

@@ -4,7 +4,7 @@
 #One is an unpublished thesis
 
 #Read empty templates to compare with
-source("Scripts/Empty_templates.R") 
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 
 #Load libraries
 library(dplyr)
@@ -13,7 +13,7 @@ library(readr)
 library(tibble)
 library(tidyr)
 #Load function to unify structure of data
-source("Scripts/Change_str.R")
+source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/32_to_37_Russo/Interaction_data.csv")

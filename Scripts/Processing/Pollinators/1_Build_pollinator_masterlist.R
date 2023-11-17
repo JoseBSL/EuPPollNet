@@ -5,7 +5,7 @@ library(reshape2)
 
 #Bees and syrphids----
 #Load data
-polBS <- read.csv(file = "Data/Species_thesaurus/Master_bees_syrphids.csv")
+polBS <- read.csv(file = "Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
 head(polBS)
 #extract taxonomy
 taxonomy <- polBS[,1:9]
