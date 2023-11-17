@@ -205,6 +205,8 @@ mutate(Fixed_name = case_when(
   Fixed_name == "Inula britannica" ~ "Pentanema britannicum", #synonym
   Fixed_name == "Peucedanum longifolium" ~ "Peucedanum officinale", #synonym
   Fixed_name == "Centaurea pseudophrygia" ~ "Centaurea phrygia", #synonym
+  Fixed_name == "Leontodon L." ~ "Leontodon", #fix
+  Fixed_name == "Lentodon sp." ~ "Leontodon", #fix
 
   T ~ Fixed_name)) %>% 
 mutate(Fixed_name =  gsub("[0-9]+", "", Fixed_name)) %>% 
@@ -378,6 +380,8 @@ Accepted_name == "Dombeya cayeuxii" ~
 "Dombeya × cayeuxii", #Internal Accepted name
 Accepted_name == "Galactites tomentosa" ~ 
   "Galactites tomentosus", #Accepted name
+Accepted_name == "Sedum candollei" ~ 
+  "Sedum candolleanum", #Accepted name
 T ~ Accepted_name))
 
 #Final edit, as some genera have changed
@@ -387,7 +391,14 @@ Plant_data1 = Plant_data1 %>%
 mutate(Genus = 
     if_else(Genus == word(Plant_data1$Accepted_name, 1), 
             Genus, word(Plant_data1$Accepted_name, 1)))
-         
+
+#Similar case
+#Genus level records are not added as accepted
+Plant_data1 = Plant_data1 %>% 
+mutate(Accepted_name = 
+if_else(is.na(Accepted_name) & Matchtype== "EXACT" & Rank =="GENUS", 
+            Canonical_name, Accepted_name))
+
 #--------------------------------------#
 #8) Save pollinator taxonomy-------
 #--------------------------------------#
@@ -406,6 +417,7 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "47_Benadi") %>% 
+filter(Study_id == "48_Lara-Romero") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
+

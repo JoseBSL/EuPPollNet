@@ -568,6 +568,11 @@ mutate(Fixed = case_when(
   Fixed == "Bombus lucorum-Komplex cryptarum" ~ "Bombus lucorum", #typo
   Mismatch == "Agynnis aglaia" ~ "Speyeria aglaja", #synonym
   Mismatch == "Delia lophota (syn. D. nuda)" ~ "Delia lophota", #synonym
+  Mismatch == "Ophyon (Fabricius," ~ "Ophyon", #fix
+  Mismatch == "Cerceris Arenaria" ~ "Cerceris arenaria", #fix
+  Fixed == "Argyniss" ~ "Argynnis", #fix
+  Mismatch == "Heliopathes perrouidi" ~ "Heliopathes lusitanicus", #fix
+
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
 
@@ -658,8 +663,8 @@ mutate(Uncertainty_type = case_when(
 #Merge both datasets now
 unmatched = to_recover1 %>% 
 mutate(Name = case_when(is.na(Name) ~ Old_name,
-T ~ Name))
-
+T ~ Name)) %>% 
+mutate(Name =  gsub("[0-9]+", "", Name)) 
 
 matched = tibble(Old_name = matching, Name = matching) %>% 
 mutate(Unsure_id = "No") %>% 
@@ -763,12 +768,74 @@ filter(is.na(Unsure_id)) %>%
 distinct(Accepted_name) 
 #1580 accepted different species
 
+
+#Here we conduct some last edits
+#There are some species that are accepted in GBIF BUT
+#Do not match the species from the masterlist
+#When nothing else is written on synonym is directly checked on GBIF
+poll_data1 = poll_data %>% 
+mutate(Accepted_name = case_when(
+ Accepted_name == "Halictus gemmeus"  ~ "Seladonia gemmea", #synonym
+ Accepted_name == "Megachile concinna"  ~ "Megachile argentata", #synonym https://doi.org/10.3897/zookeys.1053.67288
+ Accepted_name == "Halictus subauratus"  ~ "Seladonia subaurata", #synonym 
+ Accepted_name == "Halictus cephalicus"  ~ "Seladonia cephalica", #synonym 
+ Accepted_name == "Hylaeus moricei"  ~ "Hylaeus nigrifacies", #synonym 
+ Accepted_name == "Halictus phryganicus"  ~ "Seladonia phryganica", #synonym 
+ Accepted_name == "Anthophora rubricrus"  ~ "Anthophora orientalis", #synonym 
+ Accepted_name == "Megachile pilidens"  ~ "Megachile argentata", #synonym 
+ Accepted_name == "Andrena carantonica"  ~ "Andrena scotica", #synonym 
+ Accepted_name == "Halictus confusus"  ~ "Seladonia confusa", #synonym 
+ Accepted_name == "Halictus tumulorum"  ~ "Seladonia tumulorum", #synonym 
+ Accepted_name == "Lasioglossum discum"  ~ "Lasioglossum discus", #synonym 
+ Accepted_name == "Tetraloniella salicariae"  ~ "Tetralonia salicariae", #synonym 
+ Accepted_name == "Tetraloniella dentata"  ~ "Tetralonia dentata", #synonym 
+ Accepted_name == "Coelioxys afra"  ~ "Coelioxys afer", #synonym 
+ Accepted_name == "Halictus smaragdulus"  ~ "Seladonia smaragdula", #synonym 
+ Accepted_name == "Andrena similis"  ~ "Andrena croceiventris", #synonym 
+ Accepted_name == "Tetraloniella fulvescens"  ~ "Tetralonia fulvescens", #synonym 
+ Accepted_name == "Eucera alternans"  ~ "Tetralonia ruficornis", #synonym 
+ Accepted_name == "Eucera hispaliensis"  ~ "Eucera longicornis", #synonym https://observation.org/species/165658/
+ Accepted_name == "Andrena hispania"  ~ "Andrena morio", #synonym 
+ Accepted_name == "Eucera chrysopyga"  ~ "Eucera pollinaris", #synonym 
+ Accepted_name == "Osmia fulviventris"  ~ "Osmia niveata", #synonym https://www.mindat.org/taxon-5039372.html
+ Accepted_name == "Lasioglossum imminutus"  ~ "Lasioglossum immunitum", #Seems a typo!
+ Accepted_name == "Eucera decolorata"  ~ "Eucera confinis", #synonym
+ Accepted_name == "Pseudapis bispinosa"  ~ "Nomiapis bispinosa", #synonym
+ Accepted_name == "Halictus pollinosus"  ~ "Seladonia pollinosa", #synonym
+ Accepted_name == "Halictus kessleri"  ~ "Seladonia kessleri", #synonym
+ Accepted_name == "Osmia tunensis"  ~ "Osmia aurulenta", #synonym https://bwars.com/bee/megachilidae/osmia-aurulenta
+ Accepted_name == "Hylaeus praenotatus"  ~ "Hylaeus gibbus", #synonym 
+ Accepted_name == "Pseudapis equestris"  ~ "Nomiapis equestris", #synonym 
+ Accepted_name == "Cubitalia parvicornis"  ~ "Eucera parvicornis", #synonym 
+ Accepted_name == "Pseudapis diversipes"  ~ "Nomiapis diversipes", #synonym 
+ Accepted_name == "Rophites canus"  ~ "Rhophitoides canus", #synonym 
+ Accepted_name == "Halictus submediterranea"  ~ "Seladonia submediterranea", #synonym 
+ Accepted_name == "Halictus leucaheneus"  ~ "Seladonia leucahenea", #synonym 
+ Accepted_name == "Halictus semitectus"  ~ "Seladonia semitecta", #synonym 
+
+  T ~ Accepted_name))
+
+#Final edit, as some genera have changed
+#we select the first word of the changed ones
+#and add it back to the genera
+poll_data1 = poll_data1 %>% 
+mutate(Genus = 
+    if_else(Genus == word(poll_data1$Accepted_name, 1), 
+            Genus, word(poll_data1$Accepted_name, 1)))
+
+#Similar case
+#Genus level records are not added as accepted
+poll_data1 = poll_data1 %>% 
+mutate(Accepted_name = 
+if_else(is.na(Accepted_name) & Matchtype== "EXACT" & Rank =="GENUS", 
+            Canonical_name, Accepted_name))
+
 #----------------------------#
 #4)Save pollinator taxonomy----
 #----------------------------#
 #check colnames
-colnames(poll_data)
-saveRDS(poll_data, "Data/Species_taxonomy/Pollinator_taxonomy.rds")
+colnames(poll_data1)
+saveRDS(poll_data1, "Data/Species_taxonomy/Pollinator_taxonomy.rds")
 
 #----------------------------#
 #5)Safety check by study ID!-----
@@ -788,7 +855,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "47_Benadi") %>% 
+filter(Study_id == "48_Lara-Romero") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 
