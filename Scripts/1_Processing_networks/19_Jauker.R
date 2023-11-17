@@ -4,7 +4,7 @@ source("Scripts/Empty_templates.R") #Read empty templates to compare with
 #Load libraries
 library(tidyverse)
 #Load function to unify structure of data
-source("Scripts/Change_str.R")
+source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/19_Jauker/Interaction_data.csv")
