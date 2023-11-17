@@ -861,3 +861,292 @@ Status and Trends of European Pollinators (STEP)"
 38_Maurer,Total_plant_species,191
 38_Maurer,Total_pollinator_species,150
 38_Maurer,Floral_counts,Yes
+39_Schweiger,Doi,Unpublished
+39_Schweiger,Dataset_description,"This dataset was generated within the VOODOO project
+  and documents 16 different landscapes in agricultural and urban areas of Central Germany.
+  We followed a landscape-level approach, where a site is defined by a 1km radius.
+  Within each site we placed transects on a stratified random basis in each of present habitat types.
+  The total length of the transect was 1km per site, but split according to the relative proportions of the different habitat types.
+  If multiple patches of a particular habitat type were present,
+  transects can occur in different patches per habitat typ.
+  Three sampling rounds were undertaken to cover the full activity period of pollinators.
+  During each sampling round, flower densities were assessed per species with multiple plots of 1 sqm.
+  The number of plots depended on the length of the respective transect.
+  Flower densities were calculated as average across all pllots per transect.
+  Except for Asteraceae, single flowers were counted.
+  In case you need flower units, we can provide this.
+  The nested sampling structure is reflected in the Site code:
+  Site_habitat type_transect ID. 
+  With this you can aggregate per landscape or per habitat type per landscape.
+  Note: the location of the transect was adjusted to the management and flower availability.
+  Thus, the IDs for habitat and transect are in some cases not constant across the three sampling rounds.
+  As a second identifyer, particularly for linking network and flower data, you need the sampling round.
+  This is coded in the comments column (rounds 1,2,3) as I did not want to mess up the structure of the template."
+39_Schweiger,Taxa_recorded,Bees and syrphids
+39_Schweiger,Sampling_year,2021
+39_Schweiger,Country,Germany
+39_Schweiger,Habitat,Agricultural and urban areas
+39_Schweiger,Sampling_sites,16 but each with multiple sites (118 in total)
+39_Schweiger,Sampling_rounds,3
+39_Schweiger,Sampling_method,Transects
+39_Schweiger,Sampling_area_details,1km length*width?
+39_Schweiger,Sampling_area_species_m2,NA
+39_Schweiger,Sampling_area_total_m2,NA
+39_Schweiger,Sampling_time_details,NA
+39_Schweiger,Sampling_time_species_round_min,NA
+39_Schweiger,Sampling_time_total_min,NA
+39_Schweiger,Total_plant_species,252
+39_Schweiger,Total_pollinator_species,239
+39_Schweiger,Floral_counts,Yes
+40_Knight,Doi,https://doi.org/10.1093/aobpla/ply068
+40_Knight,Dataset_description,"This dataset was carried out in a mountain meadow in
+  Ghețari village, Romania.  Our focal meadow is traditionally
+  managed. It is mowed once per year and manure is applied during late
+  autumn or winter. During autumn, the meadow is occasionally grazed
+  (no more than one cow/ha). The meadow was 3.8 ha and bordered on
+  two sides by forest and on two sides by a hedgerow that separated our
+  focal meadow from another meadow. We sampled the meadow from
+  10 to 14 July 2017 using a sampling effort of 60 person hours.
+  We focused on 33 of the 86 flowering plants that were in bloom at the time.
+  These were relatively more abundant species. We wandered
+  the meadow and collected insects that landed on flowers and
+  came in contact with floral reproductive structures
+  (i.e., were potential pollinators)."
+40_Knight,Taxa_recorded,"Hymenoptera, Diptera and Lepidoptera"
+40_Knight,Sampling_year,2017
+40_Knight,Country,Romania
+40_Knight,Habitat,Mountain meadow
+40_Knight,Sampling_sites,1 of 3.8 ha
+40_Knight,Sampling_rounds,5 consecutive days
+40_Knight,Sampling_method,Random census
+40_Knight,Sampling_area_details,3.8 ha
+40_Knight,Sampling_area_species_m2,NA
+40_Knight,Sampling_area_total_m2,380000
+40_Knight,Sampling_time_details,720min/day
+40_Knight,Sampling_time_species_round_min,NA
+40_Knight,Sampling_time_total_min,3600min
+40_Knight,Total_plant_species,33
+40_Knight,Total_pollinator_species,133
+40_Knight,Floral_counts,Yes
+41_Knight,Doi,https://doi.org/10.1002/ece3.8325
+41_Knight,Dataset_description,"This dataset documents 6 different
+  sites with two different types of extensive management
+  that are known to promote plant diversity: mown wooded
+  meadows and grazed alvar pastures. Wooded meadows are
+  mown once a year and alvars typically have 0.2– 0.5
+  livestock units (LSU)/hectar. At each of site, we
+  sampled plants and interactions in 10 replicate 30m
+  by 2m transects (600m2 for the site). Each transect
+  was sampled for 15 minutes for a total of 150 minutes
+  of sampling per site. Each site was sampled one time."
+41_Knight,Taxa_recorded,"Hymenoptera, Diptera and Lepidoptera"
+41_Knight,Sampling_year,2018
+41_Knight,Country,Estonia
+41_Knight,Habitat,Mown wooded meadows and grazed alvar pastures
+41_Knight,Sampling_sites,1 of 3.8 ha
+41_Knight,Sampling_rounds,5 consecutive days
+41_Knight,Sampling_method,Transect
+41_Knight,Sampling_area_details,1 transect 30m by 2m
+41_Knight,Sampling_area_species_m2,NA
+41_Knight,Sampling_area_total_m2,600m2
+41_Knight,Sampling_time_details,"15min/transect,150 min site"
+41_Knight,Sampling_time_species_round_min,NA
+41_Knight,Sampling_time_total_min,1200min
+41_Knight,Total_plant_species,39
+41_Knight,Total_pollinator_species,101
+41_Knight,Floral_counts,Yes
+42_Knight,Doi,NA
+42_Knight,Dataset_description,"We sampled 8 sites,
+  4 were old, semi-natural, dry to mesophilic meadows.
+  10 transects were placed in each site. Each transect
+  was 30m by 2m.  Interactions were sampled for 15
+  minutes per transect (not counting processing time)
+  for a total of 150 minutes per site."
+42_Knight,Taxa_recorded,"Hymenoptera, Diptera and Lepidoptera"
+42_Knight,Sampling_year,2019
+42_Knight,Country,Czech Republic
+42_Knight,Habitat,"Semi-natural, dry to mesophilic meadows"
+42_Knight,Sampling_sites,8
+42_Knight,Sampling_rounds,1
+42_Knight,Sampling_method,Transect
+42_Knight,Sampling_area_details,1 transect 30m by 2m
+42_Knight,Sampling_area_species_m2,NA
+42_Knight,Sampling_area_total_m2,600m2
+42_Knight,Sampling_time_details,"15min/transect,150 min site"
+42_Knight,Sampling_time_species_round_min,NA
+42_Knight,Sampling_time_total_min,1200 min
+42_Knight,Total_plant_species,54
+42_Knight,Total_pollinator_species,95
+42_Knight,Floral_counts,Yes
+43_Knight,Doi,https://doi.org/10.1038/s41559-022-01928-3
+43_Knight,Dataset_description,"We sample plants,
+pollinators and their interactions,
+in 30 by 2 meter transects across 12 sites,
+four in each of three locations at different
+latitudes spanning 750 km in Finland in June and July
+of 2019. In each of the three locations (Kittilä,
+Pudasjärvi and Lammi), we selected four sites that
+represented common habitats, were non-densely forested and
+contained flowering herbaceous plant species. In Northern
+Finland, agriculture is sparse, and open habitats with
+herbaceous plants are usually found in transitional woodland/shrub.
+In Southern Finland, there is proportionally more arable
+land."
+43_Knight,Taxa_recorded,"Diptera, Hymenoptera, Lepidoptera"
+43_Knight,Sampling_year,2019
+43_Knight,Country,Finland
+43_Knight,Habitat,Grassland
+43_Knight,Sampling_sites,12
+43_Knight,Sampling_rounds,
+43_Knight,Sampling_method,Transects
+43_Knight,Sampling_area_details,30 by 2 meter transects across 12 sites
+43_Knight,Sampling_area_species_m2,NA
+43_Knight,Sampling_area_total_m2,NA
+43_Knight,Sampling_time_details,
+43_Knight,Sampling_time_species_round_min,NA
+43_Knight,Sampling_time_total_min,NA
+43_Knight,Total_plant_species,50
+43_Knight,Total_pollinator_species,203
+43_Knight,Floral_counts,No
+44_Knight,Doi,NA
+44_Knight,Dataset_description,"We sample plants, pollinators and
+their interactions in 30 by 2 meter transects across 18
+sites in translyvania. We choose sites that were all
+semi-natural grasslands that varied in soil type, moisture
+(wet, mesophilic and dry meadows were considered) and
+elevation"
+44_Knight,Taxa_recorded,"Diptera, Hymenoptera, Lepidoptera"
+44_Knight,Sampling_year,2018
+44_Knight,Country,Romania
+44_Knight,Habitat,Grassland
+44_Knight,Sampling_sites,18
+44_Knight,Sampling_rounds,
+44_Knight,Sampling_method,Transect
+44_Knight,Sampling_area_details,30 by 2 meter transects
+44_Knight,Sampling_area_species_m2,NA
+44_Knight,Sampling_area_total_m2,NA
+44_Knight,Sampling_time_details,
+44_Knight,Sampling_time_species_round_min,NA
+44_Knight,Sampling_time_total_min,NA
+44_Knight,Total_plant_species,129
+44_Knight,Total_pollinator_species,330
+44_Knight,Floral_counts,Yes
+45_Knight,Doi,https://doi.org/10.1371/journal.pone.0263576
+45_Knight,Dataset_description,"The study was conducted in the Opawskie
+Mountains, at the border between Poland and the Czech
+Republic. We selected five grassland sites found at the two
+extreme ends of a disturbance and nutrient input gradient.
+Two were unimproved (i.e. no additional sowing of plant
+species for fodder), permanent, intensively grazed cow
+pastures (high disturbance, high nutrient input) and three
+were extensive hay meadows, mown only once or twice a year
+and not fertilized (low disturbance, low nutrient input).
+All sites were imbedded in a similar landscape matrix and
+occurred on similar mesic, acidic soils and within the same
+altitudinal zone. Within each of the five sites, we
+established 10 transects (with the exception of one pasture
+for which we could only place 6 transects), each measuring
+30x2m. Transects were placed with a minimum distance of 30m
+between them, and towards the nearest field margins.
+We used the standardized transect walks to also quantify
+pollinator species and plant-pollinator interactions.
+One collector walked each transect for an active sampling
+period of 15 min. All Hymenoptera, Diptera and Lepidoptera
+that contacted the reproductive structures of the flowers
+were treated as potential pollinators and collected using
+sweeping nets"
+45_Knight,Taxa_recorded,"Hymenoptera, Diptera and Lepidoptera"
+45_Knight,Sampling_year,2018
+45_Knight,Country,Poland and Czech Republic
+45_Knight,Habitat,Grassland
+45_Knight,Sampling_sites,18
+45_Knight,Sampling_rounds,5
+45_Knight,Sampling_method,Transects
+45_Knight,Sampling_area_details,30 by 2 meter transects (10 to 6 per site)
+45_Knight,Sampling_area_species_m2,NA
+45_Knight,Sampling_area_total_m2,NA
+45_Knight,Sampling_time_details,NA
+45_Knight,Sampling_time_species_round_min,15 min per transect
+45_Knight,Sampling_time_total_min,NA
+45_Knight,Total_plant_species,33
+45_Knight,Total_pollinator_species,110
+45_Knight,Floral_counts,Yes
+46_Knight,Doi,unpublished
+46_Knight,Dataset_description,"The study was conducted in the Nature
+Reserve Góra Gipsowa. We established 10 transects, each
+measuring 30x2m. Transects were placed with a minimum
+distance of 30m between them. We used the standardized
+transect walks to also quantify pollinator species and
+plant-pollinator interactions. One collector walked each
+transect for an active sampling period of 15 min. All
+Hymenoptera, Diptera and Lepidoptera that contacted the
+reproductive structures of the flowers were treated as
+potential pollinators and collected using sweeping nets"
+46_Knight,Taxa_recorded,"Hymenoptera, Diptera and Lepidoptera"
+46_Knight,Sampling_year,2018
+46_Knight,Country,Poland and Czech Republic
+46_Knight,Habitat,Grassland
+46_Knight,Sampling_sites,1
+46_Knight,Sampling_rounds,1
+46_Knight,Sampling_method,Transects
+46_Knight,Sampling_area_details,30 by 2 meter transects (10)
+46_Knight,Sampling_area_species_m2,NA
+46_Knight,Sampling_area_total_m2,NA
+46_Knight,Sampling_time_details,NA
+46_Knight,Sampling_time_species_round_min,15 min per transect
+46_Knight,Sampling_time_total_min,NA
+46_Knight,Total_plant_species,20
+46_Knight,Total_pollinator_species,43
+46_Knight,Floral_counts,Yes
+47_Benadi,Doi,https://doi.org/10.1111/1365-2656.12158
+47_Benadi,Dataset_description,"Plant-pollinator community from
+  National Park Berchtesgaden in the German part of the Alps. Data collection
+  took place during 2010."
+47_Benadi,Taxa_recorded,"Bees, hoverflies and butterflies"
+47_Benadi,Sampling_year,2010
+47_Benadi,Country,Germany
+47_Benadi,Habitat,Grassland
+47_Benadi,Sampling_sites,10
+47_Benadi,Sampling_rounds,NA
+47_Benadi,Sampling_method,Transect
+47_Benadi,Sampling_area_details,5 quadrats of 2m2 per 5 transects per site
+47_Benadi,Sampling_area_species_m2,600
+47_Benadi,Sampling_area_total_m2,3600
+47_Benadi,Sampling_time_details,5 to 7 hours per sampling day
+47_Benadi,Sampling_time_species_round_min,NA
+47_Benadi,Sampling_time_total_min,16560
+47_Benadi,Total_plant_species,121
+47_Benadi,Total_pollinator_species,409
+47_Benadi,Floral_counts,Yes
+48_Lara-Romero,Doi,https://doi.org/10.5061/dryad.p869n
+48_Lara-Romero,Dataset_description,"We constructed quantitative
+plant–flower visitor interaction network assemblages at
+replicated plots in two habitat types in dry cryophilic
+grasslands of Sierra de Guadarrama (Spain): (i) encroached
+pastures  and (ii) pastures dominated by forb species where
+shrub species are absent.We collected data throughout the
+flowering period (13 June to 28 July 2011) for a total of 10
+census days for each sampling site at Nevero and 11 census
+days for each sampling site at Peñalara. To collect
+visitation data, we established two 60 x 100m sampling
+plots at each locality (Pastures and Encroached Pastures)
+where we established 10 linear transects across the width
+of the plots (60m long and 5m wide). The two sampling sites
+at each locality were simultaneously surveyed by two work
+teams."
+48_Lara-Romero,Taxa_recorded,All floral visitors
+48_Lara-Romero,Sampling_year,2011
+48_Lara-Romero,Country,Spain
+48_Lara-Romero,Habitat,Dry cryophilic grasslands
+48_Lara-Romero,Sampling_sites,2 (Nevero and Peñalara)
+48_Lara-Romero,Sampling_rounds,3 to 5
+48_Lara-Romero,Sampling_method,Transects
+48_Lara-Romero,Sampling_area_details,60mlong * 5mwide * 10 replicates
+48_Lara-Romero,Sampling_area_species_m2,NA
+48_Lara-Romero,Sampling_area_total_m2,6000
+48_Lara-Romero,Sampling_time_details,NA
+48_Lara-Romero,Sampling_time_species_round_min,NA
+48_Lara-Romero,Sampling_time_total_min,NA
+48_Lara-Romero,Total_plant_species,20
+48_Lara-Romero,Total_pollinator_species,140
+48_Lara-Romero,Floral_counts,No

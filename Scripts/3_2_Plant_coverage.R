@@ -33,6 +33,8 @@ library(stringr)
 #DOI: 10.34885/jdh2-dr22
 
 #Load plant distribution data
+
+
 plants <- read.table("Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv", sep="|", 
                      header=TRUE, quote = "", fill=TRUE, encoding = "UTF-8") 
 
@@ -292,30 +294,22 @@ pull()
 #----------------------------#
 #3) Read GBIF species ----
 #----------------------------#
-#NOTE!!!
-#Run first 4_add_taxonomy_to_master
-#We check here for the final names, 
-#once they are included in master
-#we do it on this way as we are able to explore
-#the study where it was collected
-#NOTE!!!
+#Red plant taxonomy and check % of coverage
+data = readRDS("Data/Species_taxonomy/Plant_taxonomy.rds")
+colnames(data)
 
-#Red master and load spp and see if they match
-#Exclude Heleno? Study from Bot garden (included for now)
-data = readRDS("Data/Interactions_accepted_names.rds")
 plant_spp = data %>% 
-#filter(!Study_id == "9_Heleno") %>% 
-select(Plant_rank, Plant_status, 
-Plant_matchtype, Plant_accepted_name) %>% 
-filter(Plant_rank == "SPECIES")%>% 
-select(Plant_accepted_name)    
+select(Rank, Status, 
+Matchtype, Accepted_name) %>% 
+filter(Rank == "SPECIES")%>% 
+select(Accepted_name)    
 
 #Gnenerate unique cases from master list
 plant_spp_list = plant_spp %>% 
 distinct() 
 #Check for mismatches
 mismatches1 = plant_spp_list %>% 
-filter(!Plant_accepted_name %in% plant_name_col) %>% 
+filter(!Accepted_name %in% plant_name_col) %>% 
 pull()
 
 #If the value is 0, we can check the completeness now :)
@@ -324,7 +318,6 @@ mismatches1
 #----------------------------#
 #5) check completeness----
 #----------------------------#
-
 #1st raw check
 #Check species
 all_spp = taxPl_final %>%
