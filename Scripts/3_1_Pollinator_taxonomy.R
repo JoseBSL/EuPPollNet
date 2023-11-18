@@ -773,6 +773,10 @@ distinct(Accepted_name)
 #There are some species that are accepted in GBIF BUT
 #Do not match the species from the masterlist
 #When nothing else is written on synonym is directly checked on GBIF
+
+#-------------#
+#1st BEES
+#-------------#
 poll_data1 = poll_data %>% 
 mutate(Accepted_name = case_when(
  Accepted_name == "Halictus gemmeus"  ~ "Seladonia gemmea", #synonym
@@ -814,6 +818,57 @@ mutate(Accepted_name = case_when(
  Accepted_name == "Halictus semitectus"  ~ "Seladonia semitecta", #synonym 
 
   T ~ Accepted_name))
+
+#-------------#
+#1st SYRPHIDS
+#-------------#
+poll_data1 = poll_data1 %>% 
+mutate(Accepted_name = case_when(
+   Accepted_name == "Eristalis interrupta" ~ "Eristalis nemorum", #Synonym
+   Accepted_name == "Cheilosia pagana" ~ "Cheilosia paganus",  #Synonym
+   Accepted_name == "Cheilosia ruralis" ~ "Cheilosia mutabilis",  #Synonym
+   Accepted_name == "Parasyrphus vittiger" ~ "Parasyrphus relictus",  #Synonym https://observation.org/species/7989/
+   Accepted_name == "Megasyrphus erratica" ~ "Megasyrphus erraticus",  #Synonym 
+   Accepted_name == "Philhelius pedissequum" ~ "Philhelius pedissequus",  #Synonym 
+   Accepted_name == "Criorhina berberina" ~ "Matsumyia berberina",  #Synonym 
+   Accepted_name == "Parasyrphus lineolus" ~ "Parasyrphus lineola",  #Synonym 
+   Accepted_name == "Sphaerophoria rueppellii" ~ "Sphaerophoria rueppelli",  #Synonym 
+   Accepted_name == "Melanostoma mellina" ~ "Melanostoma mellinum",  #Synonym 
+   Accepted_name == "Philhelius citrofasciata" ~ "Philhelius citrofasciatus",  #Synonym 
+   Accepted_name == "Cheilosia flavicornis" ~ "Cheilosia albipila",  #Synonym https://www.wikiwand.com/en/Cheilosia_albipila
+   Accepted_name == "Eupeodes bucculatus" ~ "Eupeodes goeldlini",  #Synonym Eupeodes goeldlini (Diptera: Syrphidae) new to the Belgian fauna
+   Accepted_name == "Eurimyia lineatus" ~ "Eurimyia lineata",  #Synonym
+   Accepted_name == "Palpada interrupta" ~ "Eristalis nemorum",  #Synonym https://en.wikipedia.org/wiki/Eristalis_nemorum
+   Accepted_name == "Chrysotoxum bicincta" ~ "Chrysotoxum bicinctum",  #Synonym 
+   Accepted_name == "Platycheirus ciliger" ~ "Platycheirus tarsalis",  #Synonym 
+   Accepted_name == "Orthonevra splendens" ~ "Riponnensia splendens",  #Synonym 
+   Accepted_name == "Chrysogaster hirtella" ~ "Melanogaster hirtella",  #Synonym 
+   Accepted_name == "Sphaerophoria philantha" ~ "Sphaerophoria philanthus",  #Synonym 
+   Accepted_name == "Cheilosia ruficollis" ~ "Cheilosia vernalis",  #Synonym https://observation.org/species/7836/
+   Accepted_name == "Paragus politus" ~ "Paragus tibialis",  #Synonym
+   Accepted_name == "Eupeodes abberrantis" ~ "Lapposyrphus lapponicus",  #Synonym 
+   Accepted_name == "Eupeodes abberrantis" ~ "Lapposyrphus lapponicus",  #Synonym 
+   Accepted_name == "Dasysyrphus intrudens" ~ "Dasysyrphus friuliensis",  #Synonym 
+   Accepted_name == "Meligramma guttata" ~ "Meligramma guttatum",  #Synonym 
+   Accepted_name == "Lejops lunulatus" ~ "Anasimyia lunulata",  #Synonym 
+   Accepted_name == "Eristalis abusivus" ~ "Eristalis abusiva",  #Synonym 
+   Accepted_name == "Cheilosia chrysocoma" ~ "Cheilosia chrysocomus",  #Synonym 
+   Accepted_name == "Pipiza bimaculata" ~ "Pipiza notata",  #Synonym https://species.nbnatlas.org/species/NBNSYS0000007081
+   Accepted_name == "Pipiza fenestrata" ~ "Pipiza fasciata",  #Synonym https://doi.org/10.1111/zsc.12005
+   Accepted_name == "Chamaesyrphus scaevoides" ~ "Pelecocera scaevoides",  #Synonym
+   Accepted_name == "Chamaesyrphus scaevoides" ~ "Pelecocera scaevoides",  #Synonym
+   Accepted_name == "Merodon setosus" ~ "Platynochaetus setosus",  #Synonym
+   Accepted_name == "Paragus antoinettae" ~ "Paragus bradescui",  #Synonym
+   Accepted_name == "Cheilosia means" ~ "Cheilosia hercyniae",  #Synonym
+   Accepted_name == "Brachypalpoides lenta" ~ "Brachypalpoides lentus",  #Synonym
+   Accepted_name == "Chrysogaster lucida" ~ "Melanogaster nuda",  #Synonym
+   Accepted_name == "Melangyna sexguttata" ~ "Melangyna compositarum",  #Synonym
+   Accepted_name == "Chamaesyrphus pruinosomaculata" ~ "Pelecocera pruinosomaculata",  #Synonym
+   Accepted_name == "Epistrophella euchromus" ~ "Epistrophella euchroma",  #Synonym
+   Accepted_name == "Chrysosyrphus nasuta" ~ "Chrysosyrphus nasutus",  #Synonym
+
+    T ~ Accepted_name))
+
 
 #Final edit, as some genera have changed
 #we select the first word of the changed ones
