@@ -24,6 +24,7 @@
 library(dplyr)
 library(rgbif)
 library(stringr)
+library(data.table) #To read long dataset (much faster with fread)
 
 #----------------------------#
 #1) Read from worldflora and fiter----
@@ -33,10 +34,7 @@ library(stringr)
 #DOI: 10.34885/jdh2-dr22
 
 #Load plant distribution data
-
-
-plants <- read.table("Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv", sep="|", 
-                     header=TRUE, quote = "", fill=TRUE, encoding = "UTF-8") 
+plants <- fread("Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv")                                 
 
 #check cols
 colnames(plants)
@@ -61,9 +59,8 @@ select(!c(continent_code_l1, region_code_l2, area_code_l3,
           introduced, extinct, location_doubtful))
 
 #Load plant sepecies name data
-taxPl <- read.table("Data/Species_taxonomy/Thesaurus/wcvp_names.csv", sep="|", 
-                    header=TRUE, quote = "", fill=TRUE, 
-                    encoding = "UTF-8") 
+taxPl <- fread("Data/Species_taxonomy/Thesaurus/wcvp_names.csv")                                 
+
 
 #check cols
 colnames(taxPl)
@@ -308,34 +305,33 @@ select(Accepted_name)
 plant_spp_list = plant_spp %>% 
 distinct() 
 #Check for mismatches
-mismatches1 = plant_spp_list %>% 
-filter(!Accepted_name %in% plant_name_col) %>% 
-pull()
+mismatches = plant_spp_list %>% 
+filter(!Accepted_name %in% plant_name_col) 
 
 #If the value is 0, we can check the completeness now :)
+mismatches1 = mismatches %>% pull()
 mismatches1
+
+#Check if 0 unmatched records
+plant_checks = ifelse(nrow(mismatches) == 0, 
+       "All plants match masterlist", 
+       "There are mistmatches of plants")
+
+plant_checks
 
 #----------------------------#
 #5) check completeness----
 #----------------------------#
-#1st raw check
-#Check species
-all_spp = taxPl_final %>%
-select(Plant_name) %>% 
-n_distinct()
-all_spp
-
-plant_spp_list = plant_spp %>% 
-n_distinct() 
-plant_spp_list
-
-total_coverage = plant_spp_list/all_spp *100
-total_coverage
-
 #Check species without wind poll
 #But first exclude the recorded ones
 #As there are few that are considered wind poll
 #with interactions
+
+#Create lis of plant species
+plant_spp_list = plant_spp %>% 
+n_distinct() 
+plant_spp_list
+
 #Generate list
 plant_spp = plant_spp %>% 
 distinct() %>% pull()
@@ -359,3 +355,7 @@ n_distinct()
 total_coverage_non_wind = 
   plant_spp_list/all_spp_filtered *100
 total_coverage_non_wind
+
+#Remember to trust this if:
+plant_checks
+

@@ -1527,3 +1527,69 @@ mutate(Matchtype = case_when(
    Fixed_name == "Bellardia" ~ "EXACT",
    T ~ Matchtype))
 
+#Macroglossum
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Macroglossum" ~ "Macroglossum",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Macroglossum" ~ "Macroglossum (Scopoli, 1777)",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Macroglossum" ~ "Macroglossum",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Macroglossum" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Macroglossum" ~ "Lepidoptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Macroglossum" ~ "Sphingidae",
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Macroglossum" ~ "Macroglossum",
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Macroglossum" ~ "GENUS",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Macroglossum" ~ "EXACT",
+   T ~ Matchtype))
+
+#Anaspis
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Anaspis" ~ "Anaspis",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Anaspis" ~ "Anaspis (Geoffroy, 1762)",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Anaspis" ~ "Anaspis",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Anaspis" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Anaspis" ~ "Coleoptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Anaspis" ~ "Scraptiidae",
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Anaspis" ~ "Anaspis",
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Anaspis" ~ "GENUS",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Anaspis" ~ "EXACT",
+   T ~ Matchtype))
+
+
+
+
+

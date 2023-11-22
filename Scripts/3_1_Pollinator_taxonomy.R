@@ -572,6 +572,12 @@ mutate(Fixed = case_when(
   Mismatch == "Cerceris Arenaria" ~ "Cerceris arenaria", #fix
   Fixed == "Argyniss" ~ "Argynnis", #fix
   Mismatch == "Heliopathes perrouidi" ~ "Heliopathes lusitanicus", #fix
+  Mismatch == "Ancistocerus ebusianus" ~ "Ancistrocerus ebusianus", #fix
+  Mismatch == "Sarcophaga stercoraria" ~ "Scathophaga stercoraria", #fix
+  Mismatch == "Ishnura elegans" ~ "Ischnura elegans", #fix
+  Mismatch == "Deraeocoris pratensis" ~ "Lygus pratensis", #fix
+  Mismatch == "Axinotarsus varitarsis" ~ "Attalus varitarsis", #fix
+  Mismatch == "Heterocapillus nigripes" ~ "Heterocapillus tigripes", #fix
 
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
@@ -816,6 +822,8 @@ mutate(Accepted_name = case_when(
  Accepted_name == "Halictus submediterranea"  ~ "Seladonia submediterranea", #synonym 
  Accepted_name == "Halictus leucaheneus"  ~ "Seladonia leucahenea", #synonym 
  Accepted_name == "Halictus semitectus"  ~ "Seladonia semitecta", #synonym 
+ Accepted_name == "Halictus balearicus"  ~ "Seladonia microcardia", #synonym but not sure
+ Accepted_name == "Halictus microcardia"  ~ "Seladonia microcardia", #synonym 
 
   T ~ Accepted_name))
 
@@ -866,6 +874,7 @@ mutate(Accepted_name = case_when(
    Accepted_name == "Chamaesyrphus pruinosomaculata" ~ "Pelecocera pruinosomaculata",  #Synonym
    Accepted_name == "Epistrophella euchromus" ~ "Epistrophella euchroma",  #Synonym
    Accepted_name == "Chrysosyrphus nasuta" ~ "Chrysosyrphus nasutus",  #Synonym
+   Accepted_name == "Chrysogaster aerosa" ~ "Melanogaster aerosa",  #Synonym
 
     T ~ Accepted_name))
 
@@ -910,7 +919,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "48_Lara-Romero") %>% 
+filter(Study_id == "50_Hervias-Parejo") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

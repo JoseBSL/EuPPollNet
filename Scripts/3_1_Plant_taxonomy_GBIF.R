@@ -22,6 +22,7 @@
 
 #Load libraries
 library(dplyr)
+library(rgbif)
 
 #--------------------------------------#
 #1) Load plant spp-----
@@ -207,6 +208,13 @@ mutate(Fixed_name = case_when(
   Fixed_name == "Centaurea pseudophrygia" ~ "Centaurea phrygia", #synonym
   Fixed_name == "Leontodon L." ~ "Leontodon", #fix
   Fixed_name == "Lentodon sp." ~ "Leontodon", #fix
+  Fixed_name == "Whitania frutescens" ~ "Withania frutescens", #fix
+  Fixed_name == "Compuesta amarilla de hoja peluda" ~ "Asteraceae", #fix
+  Fixed_name == "Compuesta amarilla de hoja no peluda" ~ "Asteraceae", #fix
+  Fixed_name == "Trifolium amarillo" ~ "Trifolium", #fix
+  Fixed_name == "Trifolium blanco" ~ "Trifolium", #fix
+  Fixed_name == "Lupinus micranthus" ~ "Lupinus gussoneanus", #fix
+
 
   T ~ Fixed_name)) %>% 
 mutate(Fixed_name =  gsub("[0-9]+", "", Fixed_name)) %>% 
@@ -382,7 +390,10 @@ Accepted_name == "Galactites tomentosa" ~
   "Galactites tomentosus", #Accepted name
 Accepted_name == "Sedum candollei" ~ 
   "Sedum candolleanum", #Accepted name
+Accepted_name == "Fagonia cretica" ~ 
+  "Zygophyllum creticum", #Accepted name
 T ~ Accepted_name))
+
 
 #Final edit, as some genera have changed
 #we select the first word of the changed ones
@@ -417,7 +428,7 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "48_Lara-Romero") %>% 
+filter(Study_id == "50_Hervias-Parejo") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

@@ -1,4 +1,10 @@
 
+#Load libraries
+library(ggplot2)
+library(giscoR)
+library(sf)
+library(dplyr)
+
 #Load data
 data = readRDS("Data/Interactions_accepted_names.rds")
 
