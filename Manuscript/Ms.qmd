@@ -4,24 +4,44 @@ format: pdf
 editor: visual
 ---
 
-
 # Abstract
 
-Pollinators play a key role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators is being compromised by the different pressures of global change (e.g., habitat loss or climate change). One of the major drawbacks to understand the conservation status and the underlying ecological processes of plant-pollinator communities is the lack of robust generalisable data across space and time. Although recent efforts have progressed towards this goal, Europe, one of the continents with higher number of plant-pollinator studies, still lacks an open access and homogenised dataset plant-pollinator interactions that serves as a baseline for future ecological research. Here, we provide and explore the first European metaweb of plant-pollinator interactions. This is a continent-level metaweb that comprised of xxx plants xxx pollinators and xxxx interactions which covers xxxx different countries. We show that plant and pollinator species are xxxxx and have xxxxxxx. For instance, we cover xxx% of European bee species and xxx% of flowering plants that rely on pollinators.
+Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time that allows to evaluate the consequences of environmental change on their conservation status and
 
+conservation status of the different species and their responses to the different environmental changes. Although recent efforts have progressed towards this goal, Europe, one of the continents with higher number of plant-pollinator studies, still lacks
 
+an open access and homogenised dataset of plant-pollinator interactions that serves as a baseline for future ecological research. Here, we provide
+
+and explore the first European metaweb of plant-pollinator interactions. This is a continent-level metaweb that comprised of xxx plants xxx pollinators and xxxx interactions which covers xxxx different countries. We show that plant and pollinator species are xxxxx and have xxxxxxx. For instance, we cover xxx% of European bee species and xxx% of flowering plants that rely on pollinators.
 
 # Introduction
+
+1st paragraph
+
+General introduction of how global change impacts plant-pollinator interactions
+
+Maybe expand on some drivers? Climate change, habitat fragmentation, agricultural intensification, urbanization, pollution, pesticides and species' invasions
+
+Highlight the relevance of large scale datasets
+
+2nd paragraph
+
+3rd paragraph
+
+4paragraph
+
+Introduce research questions
+
+LIST THEM HERE (Main ideas so far)
+
+Questions that we would like to answer:
+
+1\) What are the most common plant a pollinator species? Are those shared across networks? Most common interactions across Europe? Interaction fidelity
+
+2\) Is generalization the rule? Or specialization? How this impacts indirect interactions? Go in the direction of pollinator importance?
 
 # Methods
 
 # Results
 
 # Discussion
-
-
-
-
-
-
-

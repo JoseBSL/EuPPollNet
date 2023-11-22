@@ -75,7 +75,7 @@ filter(Accepted_name %in% potential_bees1)
 unmatched_bees = observed_bees %>% 
 filter(!Accepted_name %in% potential_bees1)
 #Check if 0 unmatched records
-bee_checks = ifelse(nrow(unmatched_syrphids) == 0, 
+bee_checks = ifelse(nrow(unmatched_bees) == 0, 
        "All bees match masterlist", 
        "There are mistmatches of bees")
 bee_checks
@@ -115,6 +115,7 @@ filter(!Accepted_name %in% potential_syrphids1)
 syrphid_checks = ifelse(nrow(unmatched_syrphids) == 0, 
        "All syrphids match masterlist", 
        "There are mistmatches of syrphids")
+syrphid_checks
 #If 0, calculate percentage of coverage for bees
 syrphid_coverage = length(unique_obs_syrphids) / length(potential_syrphids1) * 100
 syrphid_coverage
@@ -160,6 +161,7 @@ lepidoptera_coverage
 bee_checks
 syrphid_checks
 lepidoptera_checks
+
 #Save
 saveRDS(bee_coverage, "Data/Manuscript_info/bee_coverage.RData")
 saveRDS(syrphid_coverage, "Data/Manuscript_info/syrphid_coverage.RData")
