@@ -8,7 +8,7 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv")
+data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
 
 #Drop some rows with na's in plants and polls
 data = data %>% 
@@ -28,6 +28,13 @@ data =  data %>%
 mutate(Latitude = coord$Latitude) %>% 
 mutate(Longitude = coord$Longitude) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
+
+#Convert missing interaction info as 1 for now
+data = data %>% 
+mutate(Interaction = case_when(is.na(Interaction) ~ 1,
+                              TRUE ~ Interaction))
+
 
 #Unify structure of data
 data = change_str(data)

@@ -12,6 +12,11 @@ data <- read_csv("Data/Raw_data/3_Michez/interaction_data.csv")
 colnames(data)
 data %>% slice_head(n = 5)
 
+#For now keep it as 1 interaction these special cases
+data = data %>% 
+mutate(Interaction = case_when(Interaction == "#" ~ "1",
+                              TRUE ~ Interaction))
+
 #Things to do
 #Rename Terrestribombus sp. to Bombus terrestris, 90% of them are terrestris are not locuorum
 #Other option is to rename species with Bombus cf. terrestris
@@ -29,6 +34,8 @@ select(Plant_species, Pollinator_species, Interaction,
 mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.", "Bombus terrestris")) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
 mutate(Interaction = as.integer(Interaction))
+
+
 
 #Unify structure of data
 data = change_str(data)

@@ -2,8 +2,11 @@
 #Read and incorporate plant and pollinator names in master
 #-------------------------------------------------------#
 
+library(dplyr)
+library(tidyr)
+
 #----------------------
-#Read taxonomic tada
+#Read taxonomic data
 #----------------------
 plant_taxo = readRDS("Data/Species_taxonomy/Plant_taxonomy.rds")
 poll_taxo = readRDS("Data/Species_taxonomy/Pollinator_taxonomy.rds")
@@ -33,9 +36,20 @@ colnames(poll_taxo1)
 plant_taxo1
 data = left_join(master1, plant_taxo1)
 data1 = left_join(data, poll_taxo1)
+
+saveRDS(data1, "Data/Interactions.rds")
+
+#Important! Make all rows one single interaction
+#1st uncount interactions
+data2 = data1 %>% 
+uncount(Interaction) %>% 
+mutate(Interaction = 1)
+
 #----------------------
 #Save data
 #----------------------
 #Keep all cols for now
-saveRDS(data1, "Data/Interactions_accepted_names.rds")
+saveRDS(data2, "Data/Interactions_uncounted.rds")
+
+
 

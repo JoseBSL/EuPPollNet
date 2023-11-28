@@ -6,11 +6,11 @@ editor: visual
 
 # Abstract
 
-Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time that allows to evaluate the consequences of environmental change on their conservation status and
+Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time.
 
-conservation status of the different species and their responses to the different environmental changes. Although recent efforts have progressed towards this goal, Europe, one of the continents with higher number of plant-pollinator studies, still lacks
+Here, we have tried to generate a comprehensive dataset of plant-pollination interactions to build the first European metaweb of plant and pollinators and explore their general patterns.
 
-an open access and homogenised dataset of plant-pollinator interactions that serves as a baseline for future ecological research. Here, we provide
+we have done a strong collaborative effort in unifying plant-pollinator studies at continent level to elucidate general patterns of plant-pollinator interactions and set a baseline for future ecological research. Thus, we explore the first time an European metaweb of plant-pollinator interactions
 
 and explore the first European metaweb of plant-pollinator interactions. This is a continent-level metaweb that comprised of xxx plants xxx pollinators and xxxx interactions which covers xxxx different countries. We show that plant and pollinator species are xxxxx and have xxxxxxx. For instance, we cover xxx% of European bee species and xxx% of flowering plants that rely on pollinators.
 
