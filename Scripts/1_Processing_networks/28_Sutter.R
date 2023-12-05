@@ -172,6 +172,21 @@ mutate(Sampling_method = "Transect")
 data = drop_variables(check_interaction_data, data) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
+#Fix year typo
+levels(factor(data$Year))
+
+#Fix mistakes in dates
+data = data %>% 
+mutate(Year = case_when(
+Year == 213 ~ 2013, 
+T ~ Year))
+
+#Fix mistakes in dates
+data = data %>% 
+mutate(Year = case_when(
+is.na(Year) ~ 2013, 
+T ~ Year))
+
 #Unify structure of data
 data = change_str(data)
 

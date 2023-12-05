@@ -33,7 +33,9 @@ rename(Elevation = Altitude_m) %>%
 select(!Observer)
 
 #Prepare dates
-flower_visits = flower_visits %>% mutate(Year = lubridate::year(Date), 
+flower_visits = flower_visits %>% 
+ mutate(Date = as.Date(Date, format="%d/%m/%y")) %>% 
+  mutate(Year = lubridate::year(Date), 
         Month = lubridate::month(Date), 
         Day = lubridate::day(Date)) %>% 
 select(!c(Date, Time)) %>% 

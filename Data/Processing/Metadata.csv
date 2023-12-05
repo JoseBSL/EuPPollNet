@@ -1150,3 +1150,71 @@ teams."
 48_Lara-Romero,Total_plant_species,20
 48_Lara-Romero,Total_pollinator_species,140
 48_Lara-Romero,Floral_counts,No
+49_Hervias-Parejo,Doi,https://doi.org/10.1101/2023.07.02.547400
+49_Hervias-Parejo,Dataset_description,"This dataset documents 1 islet 
+(Na Redona, 39° 10’ 5 “ N, 2° 58’ 35” 443 E) of
+approximately 11 ha and 56 m high in the Cabrera
+Archipelago National Park (Balearic Islands, Western
+Mediterranean Sea). Its primary habitat is Mediterranean
+shrubland with a relatively rich plant species diversity
+(ca. 108). A team of five people visited the islet for
+five consecutive days at the peak of flowering (April/May).
+We measured both plant-pollinator interactions and flower
+abundance of each censused individual plant. We cover the
+full phenology of most plants and pollinators and measure
+all floral visitors. Two years of data are available."
+49_Hervias-Parejo,Taxa_recorded,All floral visitors
+49_Hervias-Parejo,Sampling_year,2018 and 2019
+49_Hervias-Parejo,Country,Spain
+49_Hervias-Parejo,Habitat,Scrubland
+49_Hervias-Parejo,Sampling_sites,1
+49_Hervias-Parejo,Sampling_rounds,
+49_Hervias-Parejo,Sampling_method,Transects
+49_Hervias-Parejo,Sampling_area_details,6 transects 100 m long 10 m wide
+49_Hervias-Parejo,Sampling_area_species_m2,NA
+49_Hervias-Parejo,Sampling_area_total_m2,6000
+49_Hervias-Parejo,Sampling_time_details,NA
+49_Hervias-Parejo,Sampling_time_species_round_min,NA
+49_Hervias-Parejo,Sampling_time_total_min,NA
+49_Hervias-Parejo,Total_plant_species,13
+49_Hervias-Parejo,Total_pollinator_species,29
+49_Hervias-Parejo,Floral_counts,Yes
+50_Hervias-Parejo,Doi,https://doi.org/10.1111/oik.09818
+50_Hervias-Parejo,Dataset_description,"This dataset documents 3 different
+sites on Menorca island (Balearic archipelago, western
+Mediterranean Sea): (NE) one in the north-east
+(Es Grau-Favàritx 39°58′22.90″N, 4°14′59.20″E); (N)
+one in the north (Torre Fornells-Cala Tirant 40°03′04.40″N,
+4°07′01.01″E); and (S) one in the south (Son Bou-Llucalari
+39°53′37.05″N, 4°04′56.80″E) of the island. Within each
+site, we sampled the three most common habitats (spaced
+about 3 km apart) of Menorca: 1) a dune system,
+nitrohalophytic vegetation of sandy beaches with mostly
+herbaceous species such as Cakile maritima, Glaucium
+flavum, Lobularia maritima and Lotus cytisoides, 2) a
+coastal scrubland that occupies the foreshore, with
+vegetation adapted to extreme conditions of wind and
+salinity, generally endemic species of very restricted
+distribution such as Limonium minutum, Santolina chamaecyparissus,
+Anthyllis histrix, Thymelaea velutina and T. hirsuta and 3)
+an agro-forestry system, consisting of agricultural crops
+of herbaceous plants combined with patches of shrubs and
+trees and other herbaceous species that take advantage of
+the spaces left by cultivated plants, such as Galactites
+tomentosa, Rubus ulmifolius, Glebionis coronaria and Daucus carota. Across the flowering season, 5 visits to each site were performed, and in each visit, we measured both plant-pollinator interactions and flower abundance of each censused individual plant. We cover the full phenology of most plants and pollinators and measure all floral visitors. One year of data is available."
+50_Hervias-Parejo,Taxa_recorded,All floral visitors
+50_Hervias-Parejo,Sampling_year,2021
+50_Hervias-Parejo,Country,Spain
+50_Hervias-Parejo,Habitat,Dune system and coastal scrubland
+50_Hervias-Parejo,Sampling_sites,
+50_Hervias-Parejo,Sampling_rounds,
+50_Hervias-Parejo,Sampling_method,
+50_Hervias-Parejo,Sampling_area_details,6 transects 100 m long 10 m wide
+50_Hervias-Parejo,Sampling_area_species_m2,NA
+50_Hervias-Parejo,Sampling_area_total_m2,
+50_Hervias-Parejo,Sampling_time_details,NA
+50_Hervias-Parejo,Sampling_time_species_round_min,NA
+50_Hervias-Parejo,Sampling_time_total_min,NA
+50_Hervias-Parejo,Total_plant_species,101
+50_Hervias-Parejo,Total_pollinator_species,258
+50_Hervias-Parejo,Floral_counts,Yes

@@ -8,7 +8,8 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
+#data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
+data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv")
 
 #Drop some rows with na's in plants and polls
 data = data %>% 
