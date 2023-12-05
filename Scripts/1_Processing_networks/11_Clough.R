@@ -28,6 +28,11 @@ cord.WGS84 <- spTransform(coordinates, CRS('+proj=longlat +datum=WGS84 +no_defs'
 data = data %>% 
 mutate(Latitude = cord.WGS84$Latitude) %>% 
 mutate(Longitude = cord.WGS84$Longitude)
+
+#Filter some random records with site_ID AS NA
+data = data %>% 
+filter(!is.na(Year))
+
 #Split by Site_id
 InteractionData <- split(data, data$Site_id)
 
