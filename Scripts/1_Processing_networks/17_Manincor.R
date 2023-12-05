@@ -1,4 +1,4 @@
-#DATASET NUMBER 17; Manincor
+#DATASET NUMBER 17; de Manincor
 
 #Load libraries
 library(tidyverse)
@@ -86,10 +86,10 @@ Authorship <- data.frame(
 
 #Save data ----
 #Create list with all dataframes of interest
-Manicor <- list(InteractionData, FlowerCount, Metadata, Authorship)
+Manincor <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
-names(Manicor) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
+names(Manincor) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Manicor, file="Data/Clean_data/17_Manicor.rds")
+saveRDS(Manincor, file="Data/Clean_data/17_Manincor.rds")
 
