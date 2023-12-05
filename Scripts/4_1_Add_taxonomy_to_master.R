@@ -39,6 +39,10 @@ data1 = left_join(data, poll_taxo1)
 
 saveRDS(data1, "Data/Interactions.rds")
 
+
+levels(factor(data$Interaction))
+
+
 #Important! Make all rows one single interaction
 #1st uncount interactions
 data2 = data1 %>% 

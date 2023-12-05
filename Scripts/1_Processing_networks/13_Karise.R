@@ -8,27 +8,34 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-#data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
-data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv")
-
-#Drop some rows with na's in plants and polls
-data = data %>% 
-drop_na(Plant_species) %>% 
-drop_na(Pollinator_species)
+data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
+#Small hack to add coodinates
+data1 = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv")
 
 #lat and long cols are swapped, fix
 #Create new dataframe with coordinates 
-coord = data %>% 
+coord = data1 %>% 
 mutate(Latitude1 = Longitude) %>% 
 mutate(Longitude1 = Latitude) %>% 
 select(Latitude1, Longitude1) %>% 
 rename(Latitude = Latitude1) %>% 
 rename(Longitude = Longitude1)
+
+#Add fixed coordinates to dataset
+data = data %>% 
+mutate(Latitude = coord$Latitude) %>% 
+mutate(Longitude = coord$Longitude)
+
 #Mutate cols now with correct coordinates
 data =  data %>% 
 mutate(Latitude = coord$Latitude) %>% 
 mutate(Longitude = coord$Longitude) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
+#Drop some rows with na's in plants and polls
+data = data %>% 
+drop_na(Plant_species) %>% 
+drop_na(Pollinator_species)
 
 
 #Convert missing interaction info as 1 for now
