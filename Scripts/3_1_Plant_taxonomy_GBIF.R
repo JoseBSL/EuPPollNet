@@ -10,7 +10,6 @@
 #5) Retrieve data for unmatched records again
 #6) Fix manually what is still not found and add uncertainty
 #7) Some last edits according to worldflora 
-#7) see script 3_Plant_taxonomy_Worldflora.R
 #8) Save plant taxonomy
 #9) Safety checks by study ID
 

@@ -6,7 +6,7 @@ library(sf)
 library(dplyr)
 
 #Load data
-data = readRDS("Data/Interactions_accepted_names.rds")
+data = readRDS("Data/Interactions_uncounted.rds")
 
 #Prepare coordinates
 for_plotting = data %>% 

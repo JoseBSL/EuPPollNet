@@ -4,9 +4,15 @@ format: pdf
 editor: visual
 ---
 
+```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(giscoR)
+library(sf)
+```
 # Abstract
 
-Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time.
+Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time. Here, we present a dataset of plant-pollinator interactions at European level that consists in XXX studies compiled during the years xxx and xxxx.
 
 Here, we have tried to generate a comprehensive dataset of plant-pollination interactions to build the first European metaweb of plant and pollinators and explore their general patterns.
 
@@ -42,6 +48,159 @@ Questions that we would like to answer:
 
 # Methods
 
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+#Print number of countries
+data = readRDS("../Data/Interactions_uncounted.rds")
+#Country number
+country_number = data %>% 
+select(Country) %>% 
+n_distinct()
+#Study number
+study_number = data %>% 
+select(Study_id) %>% 
+n_distinct()
+#Minimum year
+min_year = data %>% 
+select(Year) %>% 
+slice(which.min(Year)) %>% 
+pull()
+#Maximum year
+max_year = data %>% 
+select(Year) %>% 
+slice(which.max(Year)) %>% 
+pull()
+#Number of interactions
+interaction_number = nrow(data)
+#Check number of accepted pollinators
+pollinator_spp_number = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+select(Pollinator_accepted_name) %>% 
+n_distinct()
+#Check number of plant species
+plant_spp_number = data %>% 
+select(Plant_rank, Plant_status, 
+Plant_matchtype, Plant_accepted_name) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+select(Plant_accepted_name) %>% 
+n_distinct()
+
+
+```
+
+## Dataset description
+
+This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset covers `r country_number` countries and consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year`, and accounts for a total of `r prettyNum(interaction_number, big.mark=",")` interactions from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species.
+
+## Species coverage
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="100%"}
+#Prepare coordinates
+for_plotting = data %>% 
+select(Study_id, Latitude, Longitude) %>% 
+distinct()
+#Get countries and transfrom coordinates
+countries <- gisco_get_countries(
+resolution = 20) %>%
+st_transform(3035) %>% 
+sf::st_as_sf(crs = 4326)
+
+#Number of plant and poll species per network
+#-----------------------#
+#Pollinators------
+#-----------------------#
+#Check unique number of pollinator species
+PollNumber_by_ID = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Study_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+select(Pollinator_accepted_name, Study_id) %>% 
+group_by(Study_id) %>% 
+summarise(Pollinator_counts = n_distinct(Pollinator_accepted_name))
+#Merge now with spp counts by network dataset
+poll_data = left_join(PollNumber_by_ID, for_plotting, by = "Study_id")
+#Create duplicate cord columns to operate on them
+poll_data$coords <- data.frame(
+Longitude = poll_data$Longitude, Latitude = poll_data$Latitude)
+#Set coordinates
+poll_data$coords_sf = st_as_sf(poll_data$coords, 
+  coords = c("Longitude", "Latitude"), crs = 4326)
+#Plot map of Europe
+#Very noisy with many coordinates per point,
+#Let's select a unique coordinate by study
+poll_data1 =  poll_data %>% 
+distinct(Study_id, .keep_all = TRUE)
+#-----------------------#
+#Plants-----
+#-----------------------#
+#Check unique number of plant species
+PlantNumber_by_ID = data %>% 
+select(Plant_rank, Plant_accepted_name, Study_id) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+select(Plant_accepted_name, Study_id) %>% 
+group_by(Study_id) %>% 
+summarise(Plant_counts = n_distinct(Plant_accepted_name))
+#Merge now with spp counts by network dataset
+plant_data = left_join(PlantNumber_by_ID, for_plotting, by = "Study_id")
+#Create duplicate cord columns to operate on them
+plant_data$coords <- data.frame(
+Longitude = plant_data$Longitude, Latitude = plant_data$Latitude)
+#Set coordinates
+plant_data$coords_sf = st_as_sf(plant_data$coords, 
+  coords = c("Longitude", "Latitude"), crs = 4326)
+#Plot map of Europe
+#Very noisy with many coordinates per point,
+#Let's select a unique coordinate by study
+plant_data1 =  plant_data %>% 
+distinct(Study_id, .keep_all = TRUE)
+#Add vars
+plant_data1$Group = "Plant"
+poll_data1$Group = "Pollinator"
+#Rename cols
+plant_data2 = plant_data1 %>% 
+rename(Counts = Plant_counts)
+poll_data2 = poll_data1 %>% 
+rename(Counts = Pollinator_counts)
+#Bind rows
+all_data = bind_rows(plant_data2, poll_data2)
+
+#Try to plot both together (same plot)
+ggplot(countries) +
+geom_sf(fill="gray80",color = "black", 
+        alpha = 1,linewidth=0.1) + 
+geom_point(data = all_data, alpha=1,shape=21,
+           aes(x= Longitude, y=Latitude,
+           size=Counts, group=Group, colour = Group))+  
+coord_sf(crs = st_crs(3035), default_crs = st_crs(4326),
+         xlim = c(-14, 39), ylim = c(37, 70))+
+theme(panel.grid.major = element_blank(), 
+      legend.position = ("right"),
+         legend.background = element_blank(),
+         legend.box.background = element_blank(),
+         legend.key = element_blank(), 
+         legend.title = element_text(face = "bold",  size = 8),
+      axis.text = element_text(size=6, face="bold"),
+         axis.title = element_text(face="bold", size = 10),
+         plot.title = element_text(face="bold", size = 10),
+         legend.text = element_text(face = "bold",
+         size = 6), legend.direction="vertical",
+         legend.spacing.y = unit(-0, "cm"),
+      legend.title.align=0.5) +
+theme(panel.background = element_rect(fill = "white"),
+        panel.border = element_rect(colour = "black",
+        fill=NA, size=1))+
+  scale_color_manual(name = "Taxonomic\ngroup", values = c("#009E73", "#D55E00")) +
+  scale_size(name = "Species\ncounts") +
+  ylab("Latitude") +
+xlab("Longitude") +
+guides(color = guide_legend(override.aes = list(size=3)))+
+scale_x_continuous(breaks = seq(0, 20, by = 10)) +
+scale_y_continuous(breaks = seq(40, 60, by = 10)) 
+
+
+
+
+```
 # Results
 
 # Discussion
