@@ -387,49 +387,49 @@ Networks were observed on (nearly) all days of favorable weather
 15_Magrach,Total_plant_species,45
 15_Magrach,Total_pollinator_species,92
 15_Magrach,Floral_counts,Yes
-16_Manicor,Doi,https://doi.org/10.1111/oik.07259
-16_Manicor,Dataset_description,"These datasets document 6 hoverfly-plant
+16_Manincor,Doi,https://doi.org/10.1111/oik.07259
+16_Manincor,Dataset_description,"These datasets document 6 hoverfly-plant
 networks observed in 6 calcareous grasslands in France and have
 been published in Oikos. These data are part of the ANR ARSENIC project
 (grant no. 14-CE02-0012)."
-16_Manicor,Taxa_recorded,Only hoverfly visitors have been used for these datasets
-16_Manicor,Sampling_year,2016
-16_Manicor,Country,France
-16_Manicor,Habitat,Calcareous grassland
-16_Manicor,Sampling_sites,6
-16_Manicor,Sampling_rounds,NA
-16_Manicor,Sampling_method,Random walk
-16_Manicor,Sampling_area_details,NA
-16_Manicor,Sampling_area_species_m2,NA
-16_Manicor,Sampling_area_total_m2,NA
-16_Manicor,Sampling_time_details,NA
-16_Manicor,Sampling_time_species_round_min,NA
-16_Manicor,Sampling_time_total_min,9840
-16_Manicor,Total_plant_species,117
-16_Manicor,Total_pollinator_species,76
-16_Manicor,Floral_counts,Yes
-17_Manicor,Doi,10.1016/j.actao.2020.103551
-17_Manicor,Dataset_description,"These datasets document 3 bee-plant networks observed in 3
+16_Manincor,Taxa_recorded,Only hoverfly visitors have been used for these datasets
+16_Manincor,Sampling_year,2016
+16_Manincor,Country,France
+16_Manincor,Habitat,Calcareous grassland
+16_Manincor,Sampling_sites,6
+16_Manincor,Sampling_rounds,NA
+16_Manincor,Sampling_method,Random walk
+16_Manincor,Sampling_area_details,NA
+16_Manincor,Sampling_area_species_m2,NA
+16_Manincor,Sampling_area_total_m2,NA
+16_Manincor,Sampling_time_details,NA
+16_Manincor,Sampling_time_species_round_min,NA
+16_Manincor,Sampling_time_total_min,9840
+16_Manincor,Total_plant_species,117
+16_Manincor,Total_pollinator_species,76
+16_Manincor,Floral_counts,Yes
+17_Manincor,Doi,10.1016/j.actao.2020.103551
+17_Manincor,Dataset_description,"These datasets document 3 bee-plant networks observed in 3
 calcareaous grasslands in France during the month of July 2016.
 The current data only present the observed interactions (visit-based network
 in the mentioned paper published in Acta Oecologica). These data are part of the
 ANR ARSENIC project (grant no. 14-CE02-0012)."
-17_Manicor,Taxa_recorded,Only female bee visitors have been used for these datasets
-17_Manicor,Sampling_year,2016
-17_Manicor,Country,France
-17_Manicor,Habitat,Calcareous grasslands
-17_Manicor,Sampling_sites,3
-17_Manicor,Sampling_rounds,3 days
-17_Manicor,Sampling_method,Random walk
-17_Manicor,Sampling_area_details,1 hectare per site
-17_Manicor,Sampling_area_species_m2,NA
-17_Manicor,Sampling_area_total_m2,30000
-17_Manicor,Sampling_time_details,4 hours divided in 2 in the moring and 2 in the afternoon each day and site
-17_Manicor,Sampling_time_species_round_min,NA
-17_Manicor,Sampling_time_total_min,2160
-17_Manicor,Total_plant_species,47
-17_Manicor,Total_pollinator_species,69
-17_Manicor,Floral_counts,Yes
+17_Manincor,Taxa_recorded,Only female bee visitors have been used for these datasets
+17_Manincor,Sampling_year,2016
+17_Manincor,Country,France
+17_Manincor,Habitat,Calcareous grasslands
+17_Manincor,Sampling_sites,3
+17_Manincor,Sampling_rounds,3 days
+17_Manincor,Sampling_method,Random walk
+17_Manincor,Sampling_area_details,1 hectare per site
+17_Manincor,Sampling_area_species_m2,NA
+17_Manincor,Sampling_area_total_m2,30000
+17_Manincor,Sampling_time_details,4 hours divided in 2 in the moring and 2 in the afternoon each day and site
+17_Manincor,Sampling_time_species_round_min,NA
+17_Manincor,Sampling_time_total_min,2160
+17_Manincor,Total_plant_species,47
+17_Manincor,Total_pollinator_species,69
+17_Manincor,Floral_counts,Yes
 18_Bartomeus,Doi,https://doi.org/10.24072/pcjournal.1
 18_Bartomeus,Dataset_description,"Data collection is done in 12 to 16 independent
 sites in a gradient of land use intensity across the Guadalquivir valley.
