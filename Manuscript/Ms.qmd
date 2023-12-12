@@ -10,43 +10,7 @@ library(ggplot2)
 library(giscoR)
 library(sf)
 ```
-# Abstract
 
-Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time. Here, we present a dataset of plant-pollinator interactions at European level that consists in XXX studies compiled during the years xxx and xxxx.
-
-Here, we have tried to generate a comprehensive dataset of plant-pollination interactions to build the first European metaweb of plant and pollinators and explore their general patterns.
-
-we have done a strong collaborative effort in unifying plant-pollinator studies at continent level to elucidate general patterns of plant-pollinator interactions and set a baseline for future ecological research. Thus, we explore the first time an European metaweb of plant-pollinator interactions
-
-and explore the first European metaweb of plant-pollinator interactions. This is a continent-level metaweb that comprised of xxx plants xxx pollinators and xxxx interactions which covers xxxx different countries. We show that plant and pollinator species are xxxxx and have xxxxxxx. For instance, we cover xxx% of European bee species and xxx% of flowering plants that rely on pollinators.
-
-# Introduction
-
-1st paragraph
-
-General introduction of how global change impacts plant-pollinator interactions
-
-Maybe expand on some drivers? Climate change, habitat fragmentation, agricultural intensification, urbanization, pollution, pesticides and species' invasions
-
-Highlight the relevance of large scale datasets
-
-2nd paragraph
-
-3rd paragraph
-
-4paragraph
-
-Introduce research questions
-
-LIST THEM HERE (Main ideas so far)
-
-Questions that we would like to answer:
-
-1\) What are the most common plant a pollinator species? Are those shared across networks? Most common interactions across Europe? Interaction fidelity
-
-2\) Is generalization the rule? Or specialization? How this impacts indirect interactions? Go in the direction of pollinator importance?
-
-# Methods
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
 #Print number of countries
@@ -87,6 +51,45 @@ n_distinct()
 
 
 ```
+
+
+# Abstract
+
+Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time. Here, we present a dataset of plant-pollinator interactions at European level that consists of `r study_number` studies compiled during the years xxx and xxxx.
+
+Here, we have tried to generate a comprehensive dataset of plant-pollination interactions to build the first European metaweb of plant and pollinators and explore their general patterns.
+
+we have done a strong collaborative effort in unifying plant-pollinator studies at continent level to elucidate general patterns of plant-pollinator interactions and set a baseline for future ecological research. Thus, we explore the first time an European metaweb of plant-pollinator interactions
+
+and explore the first European metaweb of plant-pollinator interactions. This is a continent-level metaweb that comprised of xxx plants xxx pollinators and xxxx interactions which covers xxxx different countries. We show that plant and pollinator species are xxxxx and have xxxxxxx. For instance, we cover xxx% of European bee species and xxx% of flowering plants that rely on pollinators.
+
+# Introduction
+
+1st paragraph
+
+General introduction of how global change impacts plant-pollinator interactions
+
+Maybe expand on some drivers? Climate change, habitat fragmentation, agricultural intensification, urbanization, pollution, pesticides and species' invasions
+
+Highlight the relevance of large scale datasets
+
+2nd paragraph
+
+3rd paragraph
+
+4paragraph
+
+Introduce research questions
+
+LIST THEM HERE (Main ideas so far)
+
+Questions that we would like to answer:
+
+1\) What are the most common plant a pollinator species? Are those shared across networks? Most common interactions across Europe? Interaction fidelity
+
+2\) Is generalization the rule? Or specialization? How this impacts indirect interactions? Go in the direction of pollinator importance?
+
+# Methods
 
 ## Dataset description
 
