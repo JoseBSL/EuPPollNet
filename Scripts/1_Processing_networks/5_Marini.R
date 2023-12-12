@@ -17,6 +17,10 @@ select(!c(Survey, Sampling_effort_minutes, Sampling_area_square_meters)) %>%
 mutate(Latitude = as.numeric(Latitude)) %>% 
 mutate(Longitude = as.numeric(Longitude)) 
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Focal_observation")
+
 #Unify structure of data
 data = change_str(data)
 

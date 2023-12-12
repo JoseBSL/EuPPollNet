@@ -86,6 +86,10 @@ mutate(Day = as.Date(Day, origin = "2011-01-01")) %>%
 mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 #it seems ok
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Focal_observation")
+
 #Unify structure of data
 data = change_str(data)
 

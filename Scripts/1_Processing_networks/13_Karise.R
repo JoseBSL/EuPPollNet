@@ -44,6 +44,9 @@ mutate(Interaction = case_when(is.na(Interaction) ~ 1,
                               TRUE ~ Interaction))
 
 
+#Fix variable name in sampling method
+data = data %>% 
+mutate(Sampling_method = "Transect")
 
 #Unify structure of data
 data = change_str(data)

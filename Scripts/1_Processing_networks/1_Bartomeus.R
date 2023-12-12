@@ -59,7 +59,7 @@ plants <- inner_join(i_to,n_to) %>% rename(Plant_species = taxonomy.name)
 #Create dataframe with the cols of interest ordered
 data <- bind_cols(polls,plants, Freq) %>% 
   select(Plant_species, Pollinator_species, Interaction) %>%
-  mutate(Sampling_method = "Focal_observations") %>%
+  mutate(Sampling_method = "Focal_observation") %>%
   mutate(Site_id = network$name) %>%
   mutate(Habitat = "Coastal shrubland") %>%
   mutate(Country = "Spain") %>%

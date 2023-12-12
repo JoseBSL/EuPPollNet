@@ -24,6 +24,10 @@ compare_variables(check_interaction_data, data)
 data = data %>%
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Transect")
+
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)
 

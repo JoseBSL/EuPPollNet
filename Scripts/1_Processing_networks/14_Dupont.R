@@ -60,7 +60,7 @@ mutate(Longitude = case_when(Locality == "Isen_Bjerg_2004" ~ 9.275556,
                                Locality == "Skov_Olesen_2004"  ~ 9.107778,
                                Locality == "Horbylunde_2005" ~ 9.39)) %>% 
 mutate(Country = "Denmark") %>% 
-mutate(Sampling_method = "Nested plots") %>% 
+mutate(Sampling_method = "Plot") %>% 
 mutate(Sampling_effort_minutes = 15) %>% 
 mutate(Sampling_area_square_meters = 1) %>% 
 mutate(Habitat = "Heathland") %>% 
@@ -106,7 +106,7 @@ Country = "Denmark",
 Habitat = "Heathland",
 Sampling_sites = nlevels(factor(data$Site_id)),
 Sampling_rounds = "Full flowering season",
-Sampling_method = "Plots of 1*1m",
+Sampling_method = "Plot",
 Sampling_area_details = NA,
 Sampling_area_species_m2 = NA,
 Sampling_area_total_m2 = NA,

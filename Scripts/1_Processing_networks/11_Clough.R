@@ -33,9 +33,12 @@ mutate(Longitude = cord.WGS84$Longitude)
 data = data %>% 
 filter(!is.na(Year))
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Plot")
+
 #Split by Site_id
 InteractionData <- split(data, data$Site_id)
-
 
 #Prepare flower count data ----
 flower_count = read_csv("Data/Raw_data/11_Clough/Flower_count.csv")

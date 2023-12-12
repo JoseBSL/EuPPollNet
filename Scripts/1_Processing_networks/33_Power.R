@@ -88,6 +88,10 @@ mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 data = data %>% 
 mutate(Plant_species = str_replace(Plant_species, "_", " "))
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Transect")
+
 #Unify structure of data
 data = change_str(data)
 

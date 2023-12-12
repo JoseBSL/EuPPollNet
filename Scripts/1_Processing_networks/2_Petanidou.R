@@ -22,6 +22,10 @@ filter(!is.na(Plant_species)) %>%
 filter(!is.na(Pollinator_species)) %>% 
 mutate(Day = as.double(Day)) 
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Random_census")
+
 #Unify structure of data
 data = change_str(data)
 

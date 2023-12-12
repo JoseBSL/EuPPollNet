@@ -19,6 +19,10 @@ compare_variables(check_interaction_data, data)
 data = data %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Random_census")
+
 #Unify structure of data
 data = change_str(data)
 

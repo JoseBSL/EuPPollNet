@@ -65,6 +65,10 @@ mutate(Latitude = Latitude1) %>%
 mutate(Longitude = Longitude1) %>% 
 select(!c(Latitude1, Longitude1))
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Transect")
+
 #Unify structure of data
 data = change_str(data)
 

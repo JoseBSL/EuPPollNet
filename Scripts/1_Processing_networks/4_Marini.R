@@ -17,6 +17,10 @@ mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>%
 mutate(Comments = Survey) %>%   
 select(!c(Survey, Sampling_effort_minutes, Sampling_area_square_meters)) 
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Focal_observation")
+
 #Unify structure of data
 data = change_str(data)
 

@@ -25,6 +25,10 @@ data <- read_csv("Data/Raw_data/40_Knight/Interaction_data.csv")
 data = data %>%
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Random_census")
+
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)
 #In this case there is a single lcoation 

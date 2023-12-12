@@ -18,6 +18,10 @@ compare_variables(check_interaction_data, data)
 #Reorder variables (just in case)
 data = drop_variables(check_interaction_data, data) 
 
+#Unify level
+data = data %>% 
+mutate(Sampling_method = "Focal_observation")
+
 #Unify structure of data
 data = change_str(data)
 
