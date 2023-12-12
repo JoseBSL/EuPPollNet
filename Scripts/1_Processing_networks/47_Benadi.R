@@ -127,7 +127,7 @@ Metadata <- tibble(
   Sampling_year = "2010",
   Country = "Germany",
   Habitat = "Grassland",
-  Sampling_sites = "10",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = NA_character_,
   Sampling_method = "Transect",
   Sampling_area_details = "5 quadrats of 2m2 per 5 transects per site",

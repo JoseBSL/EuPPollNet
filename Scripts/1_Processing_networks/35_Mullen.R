@@ -131,24 +131,24 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
 Metadata <- tibble(
-  Doi = "Unpublished",
-  Dataset_description = NA,
-  Taxa_recorded = "Bees, hoverflies and butterflies",
-  Sampling_year = "2010 and 2011",
-  Country = "Ireland",
-  Habitat = NA,
-  Sampling_sites = 19,
-  Sampling_rounds = NA,
-  Sampling_method = "Transects",
-  Sampling_area_details = NA,
-  Sampling_area_species_m2 = NA,
-  Sampling_area_total_m2 = NA, 
-  Sampling_time_details = NA, 
-  Sampling_time_species_round_min = NA, 
-  Sampling_time_total_min = NA, 
-  Total_plant_species = nrow(plant_single_cases),
-  Total_pollinator_species = nrow(pollinator_single_cases),
-  Floral_counts =  "Yes")
+Doi = "Unpublished",
+Dataset_description = NA,
+Taxa_recorded = "Bees, hoverflies and butterflies",
+Sampling_year = "2010 and 2011",
+Country = "Ireland",
+Habitat = NA,
+Sampling_sites = nlevels(factor(data$Site_id)),
+Sampling_rounds = NA,
+Sampling_method = "Transects",
+Sampling_area_details = NA,
+Sampling_area_species_m2 = NA,
+Sampling_area_total_m2 = NA, 
+Sampling_time_details = NA, 
+Sampling_time_species_round_min = NA, 
+Sampling_time_total_min = NA, 
+Total_plant_species = nrow(plant_single_cases),
+Total_pollinator_species = nrow(pollinator_single_cases),
+Floral_counts =  "Yes")
 
 #Transpose metadata
 Metadata = as.data.frame(t(Metadata)) %>%  

@@ -144,7 +144,7 @@ Metadata <- tibble(
   Sampling_year = "2018",
   Country = "Ireland",
   Habitat = "Urban and agricultural landscapes",
-  Sampling_sites = "21",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "4",
   Sampling_method = "Transects",
   Sampling_area_details = "4 transects of 100 x 2 m per site",

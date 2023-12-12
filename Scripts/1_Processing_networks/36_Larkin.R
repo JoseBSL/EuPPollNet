@@ -143,7 +143,7 @@ Metadata <- tibble(
   Sampling_year = "2017",
   Country = "Ireland",
   Habitat = "Farming grassland",
-  Sampling_sites = "26",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "3",
   Sampling_method = "Transects",
   Sampling_area_details = "Transect of 250 x 2m",

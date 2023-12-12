@@ -82,7 +82,7 @@ Metadata <- tibble(
   Sampling_year = "2021",
   Country = "Germany",
   Habitat = "Agricultural and urban areas",
-  Sampling_sites = "16 but each with multiple sites (118 in total)",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "3",
   Sampling_method = "Transects",
   Sampling_area_details = "1km length*width?",

@@ -164,7 +164,7 @@ Metadata <- tibble(
   Sampling_year = "2020",
   Country = "Switzerland",
   Habitat = "Gradient from urban to agricultural landscapes",
-  Sampling_sites = "12",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "3",
   Sampling_method = "Transects",
   Sampling_area_details = "1km length * 2m wide",

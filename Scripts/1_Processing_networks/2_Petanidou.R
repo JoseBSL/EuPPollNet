@@ -70,7 +70,7 @@ Hymenoptera (with the exception of Formicidae), Diptera
 Sampling_year = 2015,
 Country = "Greece",
 Habitat = "Scrubland",
-Sampling_sites = 6,
+Sampling_sites = nlevels(factor(data$Site_id)),
 Sampling_rounds = 3,
 Sampling_method = "Random walks",
 Sampling_area_details = NA,

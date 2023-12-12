@@ -56,7 +56,7 @@ Metadata <- tibble(
   Sampling_year = "2019",
   Country = "Czech Republic",
   Habitat = "Semi-natural, dry to mesophilic meadows",
-  Sampling_sites = "8",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "1",
   Sampling_method = "Transect",
   Sampling_area_details = "1 transect 30m by 2m",

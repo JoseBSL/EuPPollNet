@@ -60,7 +60,7 @@ Metadata <- tibble(
   Sampling_year = "2018",
   Country = "Estonia",
   Habitat = "Mown wooded meadows and grazed alvar pastures",
-  Sampling_sites = "1 of 3.8 ha",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "5 consecutive days",
   Sampling_method = "Transect",
   Sampling_area_details = "1 transect 30m by 2m",

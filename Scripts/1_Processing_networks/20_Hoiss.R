@@ -1,5 +1,5 @@
 #DATASET NUMBER 20; Bernhard Hoiss 
-source("Scripts/Empty_templates.R") #Read empty templates to compare with
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 
 #Load libraries
 library(tidyverse)
@@ -85,7 +85,7 @@ Taxa_recorded = "All floral visitors",
 Sampling_year = 2010,
 Country = "Germany",
 Habitat = "Grassland",
-Sampling_sites = 15,
+Sampling_sites = nlevels(factor(data$Site_id)),
 Sampling_rounds = "3 to 8",
 Sampling_method = "Plot",
 Sampling_area_details = "Four different treatments of 4 * 4 m plots per site",

@@ -32,13 +32,14 @@ FlowerCount <- split(flower_count, flower_count$Site_id)
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
+
 #Generate metadata
 Metadata <- tibble(
 Doi = "https://doi.org/10.1556/168.2017.18.1.1",
 Dataset_description = "This dataset documents 2 communities on different slopes
 of a mountain in the Northen Apennine",
 Taxa_recorded = "All flower visitors",
-Sampling_sites = 6,
+Sampling_sites = levels(factor(data$Site_id)),
 Sampling_rounds = "Weekly sampling",
 Sampling_year = 2013,
 Country = "Italia",

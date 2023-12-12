@@ -65,7 +65,7 @@ Metadata <- tibble(
   Sampling_year = "2017",
   Country = "Romania",
   Habitat = "Mountain meadow",
-  Sampling_sites = "1 of 3.8 ha",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "5 consecutive days",
   Sampling_method = "Random census",
   Sampling_area_details = "3.8 ha",

@@ -44,6 +44,7 @@ mutate(Interaction = case_when(is.na(Interaction) ~ 1,
                               TRUE ~ Interaction))
 
 
+
 #Unify structure of data
 data = change_str(data)
 
@@ -73,7 +74,7 @@ Taxa_recorded = "Just bumblebees",
 Sampling_year = "2014 to 2021",
 Country = "Estonia.",
 Habitat = "Field edges on agricultutal land",
-Sampling_sites = 66,
+Sampling_sites = nlevels(factor(data$Site_id)),
 Sampling_rounds = NA,
 Sampling_method = "Transect",
 Sampling_area_details = NA,

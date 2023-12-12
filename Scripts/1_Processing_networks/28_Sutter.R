@@ -274,7 +274,7 @@ Metadata <- tibble(
   Sampling_year = "2013-2014",
   Country = "Switzerland",
   Habitat = "Gradient of non-crop vegetation and seminatural habitats",
-  Sampling_sites = "17",
+  Sampling_sites = nlevels(factor(data$Site_id)),
   Sampling_rounds = "4",
   Sampling_method = "Transects",
   Sampling_area_details = "50m length * 1.5m wide",

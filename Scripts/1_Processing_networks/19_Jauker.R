@@ -1,13 +1,14 @@
 #DATASET NUMBER 19; Birgit Jauker
-source("Scripts/Empty_templates.R") #Read empty templates to compare with
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 
 #Load libraries
 library(tidyverse)
-#Load function to unify structure of data
-source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 data <- read_csv("Data/Raw_data/19_Jauker/Interaction_data.csv")
+
+#Load function to unify structure of data
+source("Scripts/Processing/Functions/Change_str.R")
 
 #Compare vars
 compare_variables(check_interaction_data, data)
@@ -73,7 +74,7 @@ Taxa_recorded = "Wild bees and hoverflies",
 Sampling_year = 2004,
 Country = "Germany",
 Habitat = "Calcareous grassland",
-Sampling_sites = 32,
+Sampling_sites = nlevels(factor(data$Site_id)),
 Sampling_rounds = 6,
 Sampling_method = "Transect",
 Sampling_area_details = "Transect length varied (mean = 15.7 +/- 6.2 sd) and width of 4m",
