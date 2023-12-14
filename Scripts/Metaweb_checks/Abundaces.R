@@ -12,7 +12,7 @@ library(dplyr)
 library(ggplot2)
 
 #1)Read data----
-data = readRDS("Data/Interactions_accepted_names.rds")
+data = readRDS("Data/Interactions_uncounted.rds")
 #Check colnames
 colnames(data)
 
@@ -163,11 +163,14 @@ df = seq(1, spp_number)
 quantile_50 = quantile(df, 0.5)
 #Plot
 ggplot(plant_spread, 
-aes(reorder(Plant_accepted_name,-Percent_total), Percent_total)) +
-geom_bar(stat="identity") +
+aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
+geom_bar(stat = "identity", 
+           color = "black",
+           lwd = 0.025, fill = "#009E73") +
 ylab("Shared plants (%)") +
 theme(axis.text.x = element_blank(),
 axis.ticks=element_blank()) +
 xlab(NULL) +
 geom_vline(xintercept = quantile_50, linetype="dashed", 
-                color = "black", size=0.75)
+                color = "black", size=0.25)
+

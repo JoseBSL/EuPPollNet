@@ -1,5 +1,4 @@
 ---
-title: "Mapping plant-pollinator interactions across Europe"
 latex-tinytex: false
 format:
   pdf:
@@ -15,98 +14,14 @@ library(dplyr) #For handling fata
 library(ggplot2) #For plotting
 library(giscoR) #For plotting
 library(sf) #For handling coordinates and plotting
-library(patchwork)#For plotting
+library(patchwork)#For plotting (binding plots)
+library(ggstar) #For plotting (cool shapes)
+library(scales) #For plotting (decimals on axes)
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
-#Print number of countries
-data = readRDS("../Data/Interactions_uncounted.rds")
-#Country number
-country_number = data %>% 
-select(Country) %>% 
-n_distinct()
-#Study number
-study_number = data %>% 
-select(Study_id) %>% 
-n_distinct()
-#Minimum year
-min_year = data %>% 
-select(Year) %>% 
-slice(which.min(Year)) %>% 
-pull()
-#Maximum year
-max_year = data %>% 
-select(Year) %>% 
-slice(which.max(Year)) %>% 
-pull()
-#Number of interactions
-interaction_number = nrow(data)
-#Check number of accepted pollinators
-pollinator_spp_number = data %>% 
-select(Pollinator_rank, Pollinator_accepted_name)%>%
-filter(Pollinator_rank == "SPECIES") %>% 
-select(Pollinator_accepted_name) %>% 
-n_distinct()
-#Check number of plant species
-plant_spp_number = data %>% 
-select(Plant_rank, Plant_status, 
-Plant_matchtype, Plant_accepted_name) %>% 
-filter(Plant_rank == "SPECIES") %>% 
-select(Plant_accepted_name) %>% 
-n_distinct()
 
-
-```
-
-
-# Abstract
-
-Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present a dataset of plant-pollinator interactions at European level that consists of `r study_number` studies distributed across `r country_number` countries that comprise over a million of interactions between plants and pollinators. The dataset includes a total of `r pollinator_spp_number` pollinator and `r plant_spp_number` plant species that accounts approximately for 30% of each of the main pollinator groups (i.e., bees, syrphids and butterflies) and 5% of flowering plants that inhabit the European continent.
-
-# Introduction
-
-1st paragraph
-
-General introduction of how global change impacts plant-pollinator interactions
-
-Maybe expand on some drivers? Climate change, habitat fragmentation, agricultural intensification, urbanization, pollution, pesticides and species' invasions
-
-Highlight the relevance of large scale datasets
-
-2nd paragraph
-
-3rd paragraph
-
-4paragraph
-
-Introduce research questions
-
-LIST THEM HERE (Main ideas so far)
-
-Questions that we would like to answer:
-
-1\) What are the most common plant a pollinator species? Are those shared across networks? Most common interactions across Europe? Interaction fidelity
-
-2\) Is generalization the rule? Or specialization? How this impacts indirect interactions? Go in the direction of pollinator importance?
-
-# Methods
-
-## Dataset description
-
-This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset covers `r country_number` countries and consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year`, and accounts for a total of `r prettyNum(interaction_number, big.mark=",")` interactions from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species.
-
-Shared species across studies (describe trend), added now in graph 1?
-
-Update graph 1 (Add shared species of plants and pollinators?)
-
-## Species coverage
-
-To calculate the completeness of the dataset 
-
-
-
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="120%", fig.cap= "Figure 1"}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
 
 #Load data
 data = readRDS("../Data/Interactions_uncounted.rds")
@@ -185,34 +100,43 @@ all_data = bind_rows(plant_data2, poll_data2)
 map = ggplot(countries) +
 geom_sf(fill="floralwhite",color = "black", 
         alpha = 1,linewidth=0.1) + 
-geom_point(data = all_data, alpha=1,shape=21,
-           aes(x= Longitude, y=Latitude,
-           size=Counts, group=Group, colour = Group))+  
+geom_star(data = all_data, alpha=1,aes(x= Longitude, y=Latitude,
+           size=Counts, starshape = Group, color= Group))+  
 coord_sf(crs = st_crs(3035), default_crs = st_crs(4326),
          xlim = c(-14, 39), ylim = c(37, 70))+
 theme(panel.grid.major = element_blank(), 
       legend.position = ("top"),
-         legend.background = element_blank(),
-         legend.box.background = element_blank(),
-         legend.key = element_blank(), 
-         legend.title = element_text(face = "bold",  size = 8),
-      axis.text = element_text(size=6, face="bold"),
-         axis.title = element_text(face="bold", size = 10),
-         plot.title = element_text(face="bold", size = 10),
+      legend.box = "vertical",
+      legend.background = element_blank(),
+      legend.box.background = element_blank(),
+      legend.key = element_blank(), 
+      legend.title = element_text(face =                "bold",  size = 6),
+      legend.box.spacing = unit(0, "pt"),
+      axis.text = element_text(size=6,                  face="bold"),
+      axis.title = element_text(face="bold", size = 8),
          legend.text = element_text(face = "bold",
          size = 6), legend.direction="horizontal",
-         legend.spacing.y = unit(-0, "cm"),
+         legend.spacing.y = unit(-0.4, "cm"),
       legend.title.align=0.5) +
 theme(panel.background = element_rect(fill = "aliceblue"),
         panel.border = element_rect(colour = "black",
-        fill=NA, size=1))+
-  scale_color_manual(name = "Taxonomic\ngroup", values = c("#009E73", "#D55E00")) +
-  scale_size(name = "Species\ncounts") +
+        fill=NA, size=1)) + 
+ scale_size_continuous(range = c(0, 4))+
+scale_color_manual(values=c("#009E73", "#D55E00"),
+         guide="none") +
+scale_starshape_manual(name = "Taxonomic\ngroup",             values = c(15, 7),
+             guide=guide_legend(
+             override.aes=list(
+                 size=2,
+                 color=c("Plant"="#009E73", "Pollinator"= "#D55E00")))) +
   ylab("Latitude") +
 xlab("Longitude") +
-guides(color = guide_legend(override.aes = list(size=3)))+
 scale_x_continuous(breaks = seq(0, 20, by = 10)) +
-scale_y_continuous(breaks = seq(40, 60, by = 10)) 
+scale_y_continuous(breaks = seq(40, 60, by = 10)) +
+guides(color = "none", size=guide_legend(nrow=1,override.aes = list(starshape =c(15,7, 15)))) + 
+ggtitle("(a)") +
+theme(plot.title = element_text(vjust = -18, hjust=0.12, size=10))
+
 
 #----------------#
 #Pollinators
@@ -244,13 +168,24 @@ geom_bar(stat = "identity",
            color = "#D55E00",
            lwd = 0.015, fill = "#D55E00") +
 ylab("Shared pollinators (%)") +
+theme_minimal()+
 theme(axis.text.x = element_blank(),
-axis.ticks=element_blank()) +
+  axis.ticks.x=element_blank(),
+  axis.ticks.y = element_line(size = 0.2),
+  plot.title = element_text(size = 8, face = "bold"), 
+  axis.text.y = element_text(size=6),
+  panel.grid.major.x = element_blank(),
+  panel.grid.minor.y = element_blank(),
+  panel.grid.major.y = element_line(size=0.2, linetype =           2)) +
 xlab(NULL) +
 ylab(NULL) + 
 ggtitle("Pollinators")+
 geom_vline(xintercept = quantile_50, linetype="dashed", 
-color = "black", size=0.25)
+color = "black", size=0.25) + 
+annotate(geom="text", x=1280, y=0.83, label="50th percentile", color="black", size = 1.5) +
+scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
+annotate(geom="text", x=-500, y=1.71, label="(b)",color="black", size = 3.5) +
+coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, max(poll_spread$Percent_total)), clip="off")
 
 #----------------#
 #Plants
@@ -279,29 +214,29 @@ geom_bar(stat = "identity",
            color = "#009E73",
            lwd = 0.015, fill = "#009E73") +
 ylab("Shared plants (%)") +
+theme_minimal()+
 theme(axis.text.x = element_blank(),
-axis.ticks=element_blank(),
-axis.title.x = element_text(face = "bold")) +
+         axis.ticks.x=element_blank(),
+         axis.ticks.y = element_line(size = 0.2),
+         axis.title.x = element_text(face = "bold", size = 8),            plot.title = element_text(size = 8, face = "bold"),
+         axis.text.y = element_text(size=6),
+         panel.grid.major.x = element_blank(),
+         panel.grid.minor.y = element_blank(),
+         panel.grid.major.y = element_line(size=0.2, linetype =           2)) +
 xlab("Species") +
 ylab(NULL) + 
 ggtitle("Plants") + 
 geom_vline(xintercept = quantile_50, linetype="dashed", 
-color = "black", size=0.25)
+          color = "black", size=0.25) + 
+annotate(geom="text", x=830, y=0.7, label="50th percentile",color="black", size = 1.5) +
+scale_y_continuous(breaks = seq(0, 0.6, by= 0.2), expand = c(0, 0), labels = label_number(accuracy = 0.01)) +
+coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),ylim=c(0, max(plant_spread$Percent_total)), clip="off")
 
 #Prepare panel with plots
-plot2 =  wrap_elements(p1 / p2) +  labs(tag = "Shared across studies (%)") + 
-theme(
-    plot.tag = element_text(size = rel(1), angle = 90, face = "bold"),
-    plot.tag.position = "left"
-  )
+plot2 =  wrap_elements(p1 / p2) +  labs(tag ="Percentage of studies              \n sharing a species              ") + 
+theme(plot.tag = element_text(size = 7, angle = 90, face = "bold", vjust = -3.5), plot.tag.position = "left")
 #Plot everything
-map + plot2 
+map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.65, 1)) 
 
 ```
 
-
-
-
-# Results
-
-# Discussion
