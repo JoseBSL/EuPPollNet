@@ -96,6 +96,7 @@ rename(Counts = Pollinator_counts)
 #Bind rows
 all_data = bind_rows(plant_data2, poll_data2)
 
+
 #Try to plot both together (same plot)
 map = ggplot(countries) +
 geom_sf(fill="floralwhite",color = "black", 
@@ -110,32 +111,33 @@ theme(panel.grid.major = element_blank(),
       legend.background = element_blank(),
       legend.box.background = element_blank(),
       legend.key = element_blank(), 
-      legend.title = element_text(face =                "bold",  size = 6),
-      legend.box.spacing = unit(0, "pt"),
+      legend.title = element_text(face ="bold",  size = 6),
+      legend.box.spacing = unit(0.2, "cm"),
+      legend.margin=margin(0,0,0,0),
+        legend.box.margin=margin(-10,-10,-10,-10),
       axis.text = element_text(size=6,                  face="bold"),
       axis.title = element_text(face="bold", size = 8),
-         legend.text = element_text(face = "bold",
-         size = 6), legend.direction="horizontal",
-         legend.spacing.y = unit(-0.4, "cm"),
+         legend.text = element_text(size = 6),                           legend.direction="horizontal",
+         legend.spacing.y = unit(-0.3, "cm"),
       legend.title.align=0.5) +
 theme(panel.background = element_rect(fill = "aliceblue"),
         panel.border = element_rect(colour = "black",
         fill=NA, size=1)) + 
- scale_size_continuous(range = c(0, 4))+
+ scale_size_continuous(name= "Species counts",range = c(0, 3.75))+
 scale_color_manual(values=c("#009E73", "#D55E00"),
          guide="none") +
-scale_starshape_manual(name = "Taxonomic\ngroup",             values = c(15, 7),
-             guide=guide_legend(
+scale_starshape_manual(name = "Taxonomic group",             values = c(15, 7),
+             guide=guide_legend(reverse=TRUE,
              override.aes=list(
                  size=2,
-                 color=c("Plant"="#009E73", "Pollinator"= "#D55E00")))) +
+                 color=c("Pollinator"= "#D55E00","Plant"="#009E73")))) +
   ylab("Latitude") +
 xlab("Longitude") +
 scale_x_continuous(breaks = seq(0, 20, by = 10)) +
 scale_y_continuous(breaks = seq(40, 60, by = 10)) +
-guides(color = "none", size=guide_legend(nrow=1,override.aes = list(starshape =c(15,7, 15)))) + 
+guides(color = "none", size=guide_legend(nrow=1,override.aes = list(starshape =c(15,15, 15), size=c(0.8,1.8,2.8)))) + 
 ggtitle("(a)") +
-theme(plot.title = element_text(vjust = -18, hjust=0.12, size=10))
+theme(plot.title = element_text(vjust = -12, hjust=0.1, size=10))
 
 
 #----------------#
@@ -161,6 +163,11 @@ select(Pollinator_accepted_name) %>%
 n_distinct()
 df = seq(1, spp_number)
 quantile_50 = quantile(df, 0.5)
+
+#Obtain most common pollinator for plotting
+most_common_poll = poll_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
+select(Pollinator_accepted_name) %>% pull() 
+
 #Plot
 p1 = ggplot(poll_spread, 
 aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
@@ -182,9 +189,10 @@ ylab(NULL) +
 ggtitle("Pollinators")+
 geom_vline(xintercept = quantile_50, linetype="dashed", 
 color = "black", size=0.25) + 
-annotate(geom="text", x=1280, y=0.83, label="50th percentile", color="black", size = 1.5) +
+annotate(geom="text", x=1285, y=0.83, label="50th percentile",          color="black", size = 1.5) +
+annotate(geom="text", x=20, y=0.88, label=most_common_poll[1],         color="black",  fontface = 'italic', size = 1.5)+
 scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
-annotate(geom="text", x=-500, y=1.71, label="(b)",color="black", size = 3.5) +
+annotate(geom="text", x=-500, y=1.15, label="(b)",color="black", size = 3.5) +
 coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, max(poll_spread$Percent_total)), clip="off")
 
 #----------------#
@@ -207,6 +215,11 @@ select(Plant_accepted_name) %>%
 n_distinct()
 df = seq(1, spp_number)
 quantile_50 = quantile(df, 0.5)
+
+#Obtain most common plant for plotting
+most_common_plant = plant_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
+select(Plant_accepted_name) %>% pull() 
+
 #Plot
 p2 = ggplot(plant_spread, 
 aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
@@ -228,15 +241,21 @@ ylab(NULL) +
 ggtitle("Plants") + 
 geom_vline(xintercept = quantile_50, linetype="dashed", 
           color = "black", size=0.25) + 
-annotate(geom="text", x=830, y=0.7, label="50th percentile",color="black", size = 1.5) +
+annotate(geom="text", x=835, y=0.7, label="50th percentile",color="black", size = 1.5) + 
+annotate(geom="text", x=20, y=0.75, label=most_common_plant[1]
+      ,color="black",  fontface = 'italic', size = 1.5)+
+annotate(geom="text", x=20, y=-0.08, label="Common spp."
+      ,color="black",  size = 1.5) +
+annotate(geom="text", x=1200, y=-0.08, label="\'Rare\' spp."
+      ,color="black",  size = 1.5) + 
 scale_y_continuous(breaks = seq(0, 0.6, by= 0.2), expand = c(0, 0), labels = label_number(accuracy = 0.01)) +
 coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),ylim=c(0, max(plant_spread$Percent_total)), clip="off")
 
 #Prepare panel with plots
-plot2 =  wrap_elements(p1 / p2) +  labs(tag ="Percentage of studies              \n sharing a species              ") + 
+plot2 =  wrap_elements(p1 / p2) +  labs(tag ="Occurrence across studies (%)") + 
 theme(plot.tag = element_text(size = 7, angle = 90, face = "bold", vjust = -3.5), plot.tag.position = "left")
 #Plot everything
-map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.65, 1)) 
+map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.45, 1)) 
 
 ```
 

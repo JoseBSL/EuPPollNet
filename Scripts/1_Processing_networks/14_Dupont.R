@@ -40,17 +40,13 @@ data = data %>%
          Month = lubridate::month(Date), 
          Day = lubridate::day(Date)) 
 
-
 #Group interactions by plot
 data = data %>% 
-  group_by(Plant_species, Pollinator_species, Year, Site_id, Locality) %>% 
+  group_by(Plant_species, Pollinator_species, Year,Month, Day, Site_id, Locality) %>% 
   summarise(Interaction = n()) %>%  ungroup()
 
 #Add other columns
 data = data %>% 
-mutate(Day = NA) %>% 
-mutate(Month = NA) %>% 
-mutate(Year = as.character(Year)) %>% 
 mutate(Latitude = case_when(Locality == "Isen_Bjerg_2004" ~ 56.0725, 
                               Locality == "Isen_Bjerg_2005" ~ 56.0725, 
                               Locality == "Skov_Olesen_2004"  ~ 56.104167,

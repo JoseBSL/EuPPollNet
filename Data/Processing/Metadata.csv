@@ -359,7 +359,7 @@ Networks were observed on (nearly) all days of favorable weather
 14_Dupont,Habitat,Heathland
 14_Dupont,Sampling_sites,727
 14_Dupont,Sampling_rounds,Full flowering season
-14_Dupont,Sampling_method,Plots of 1*1m
+14_Dupont,Sampling_method,Plot
 14_Dupont,Sampling_area_details,NA
 14_Dupont,Sampling_area_species_m2,NA
 14_Dupont,Sampling_area_total_m2,NA
@@ -1169,7 +1169,7 @@ all floral visitors. Two years of data are available."
 49_Hervias-Parejo,Habitat,Scrubland
 49_Hervias-Parejo,Sampling_sites,2
 49_Hervias-Parejo,Sampling_rounds,
-49_Hervias-Parejo,Sampling_method,Transects
+49_Hervias-Parejo,Sampling_method,Focal_observation
 49_Hervias-Parejo,Sampling_area_details,6 transects 100 m long 10 m wide
 49_Hervias-Parejo,Sampling_area_species_m2,NA
 49_Hervias-Parejo,Sampling_area_total_m2,6000
