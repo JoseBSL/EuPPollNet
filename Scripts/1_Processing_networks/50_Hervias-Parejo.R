@@ -77,7 +77,12 @@ an agro-forestry system, consisting of agricultural crops
 of herbaceous plants combined with patches of shrubs and
 trees and other herbaceous species that take advantage of
 the spaces left by cultivated plants, such as Galactites
-tomentosa, Rubus ulmifolius, Glebionis coronaria and Daucus carota. Across the flowering season, 5 visits to each site were performed, and in each visit, we measured both plant-pollinator interactions and flower abundance of each censused individual plant. We cover the full phenology of most plants and pollinators and measure all floral visitors. One year of data is available.",
+tomentosa, Rubus ulmifolius, Glebionis coronaria and 
+Daucus carota. Across the flowering season, 5 visits to each
+site were performed, and in each visit, we measured both plant-pollinator
+interactions and flower abundance of each censused individual plant.
+We cover the full phenology of most plants and pollinators
+and measure all floral visitors. One year of data is available.",
 Taxa_recorded = "All floral visitors",
 Sampling_year = "2021",
 Country = "Spain",

@@ -88,7 +88,7 @@ pollinator_single_cases3 = data3 %>%distinct(Pollinator_species)
 Metadata3 <- tibble(
 Doi = "https://doi.org/10.1111/ele.12657",
 Dataset_description = "Two year dataset of bees and hoverflies on three habitats of Germany",
-Taxa_recorded = "Seminatural",
+Taxa_recorded = "Bees and hoverflies",
 Sampling_year = "2011 and 2012",
 Country = "Germany",
 Habitat = "Field boundary",

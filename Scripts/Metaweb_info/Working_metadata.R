@@ -1,19 +1,12 @@
 
 
+#Load library
+library(googlesheets4)
+library(lubridate)
+library(dplyr)
 #Generate list of studies with individual networks 
 data = readRDS("Data/Interactions_uncounted.rds")
 
-#Select cols of interest
-metadata = data %>% 
-select(Study_id, Network_id, Sampling_method) %>% 
-distinct()
-
-#Load library
-library(googlesheets4)
-#Load it to google sheets
-#(ss <- gs4_create("Sampling_details", sheets = metadata))
-
-library(lubridate)
 #Select cols of interest
 dates = data %>% 
 select(Study_id, Network_id,Sampling_method, Day, Month, Year) %>% 
