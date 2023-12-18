@@ -104,3 +104,9 @@ mutate(Matchtype = case_when(
 mutate(Rank = case_when(
   Fixed_name == "Polyommatus dorylas" ~ "SPECIES",
   T ~ Rank))
+
+
+
+
+
+

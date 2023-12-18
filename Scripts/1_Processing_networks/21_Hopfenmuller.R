@@ -79,10 +79,11 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 #Create ordered metadata
 Metadata <- tibble(
 Doi = "https://doi.org/10.1371/journal.pone.0104439",
-Dataset_description = "Bee-flower interactions in calcareous grasslands",
-Taxa_recorded = "Wild bees (honey bees excluded) and flowering plants
+Dataset_description = "Bee-flower interactions in calcareous grasslands. 
+Authors recorded interactions of Wild bees (honey bees excluded) and flowering plants
 (excluding trees and graminoids); note that plants were quantified in
 terms of flowering units, not area",
+Taxa_recorded = "Hymenoptera",
 Sampling_year = 2010,
 Country = "Germany",
 Habitat = "Calcareous grassland",

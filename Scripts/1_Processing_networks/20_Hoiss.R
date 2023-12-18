@@ -42,7 +42,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 
 #Unify level
 data = data %>% 
-mutate(Sampling_method = "Transect")
+mutate(Sampling_method = "Plot")
 
 #Unify structure of data
 data = change_str(data)

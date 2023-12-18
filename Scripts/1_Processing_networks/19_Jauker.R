@@ -53,6 +53,8 @@ mutate(Sampling_method = "Transect")
 #Unify structure of data
 data = change_str(data)
 
+levels(factor(data$Site_id))
+
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)
 

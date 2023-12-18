@@ -578,6 +578,7 @@ mutate(Fixed = case_when(
   Mismatch == "Deraeocoris pratensis" ~ "Lygus pratensis", #fix
   Mismatch == "Axinotarsus varitarsis" ~ "Attalus varitarsis", #fix
   Mismatch == "Heterocapillus nigripes" ~ "Heterocapillus tigripes", #fix
+  Fixed == "Arachnopila" ~ "Arachnospila", #fix
 
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
@@ -726,6 +727,14 @@ unmatched_gbif = name_backbone_checklist(name= name1, kingdom='animals')
 #Rename and filter out exact matches
 unmatched_gbif1 = change_str1(unmatched_gbif)
 clean = c("EXACT", "FUZZY")
+
+#Exclude some species that are not correctly identified
+unmatched_gbif1 = unmatched_gbif1 %>% 
+mutate(Matchtype = case_when(Fixed_name == "Zygoptera" ~ NA_character_,
+                             Fixed_name == "Podarcis lilfordi" ~ NA_character_,
+                             Fixed_name == "Cheloninae" ~ NA_character_,
+                           TRUE ~  Matchtype))
+
 #Select matched records and pass Canonical_name to accepted
 #When necessary
 unmatched_gbif1_found = unmatched_gbif1 %>% 
@@ -919,7 +928,13 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "50_Hervias-Parejo") %>% 
+filter(Study_id == "49_Hervias-Parejo") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 
+subset_check = all %>% 
+filter(Study_id == "40_Knight") %>% 
+distinct()
+
+s = subset_check %>% 
+filter(is.na(Order))

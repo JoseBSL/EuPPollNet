@@ -1589,7 +1589,57 @@ mutate(Matchtype = case_when(
    Fixed_name == "Anaspis" ~ "EXACT",
    T ~ Matchtype))
 
+#Zygoptera
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Zygoptera" ~ "Zygoptera",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Zygoptera" ~ "Zygoptera (Selys, 1854)",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Zygoptera" ~ "Zygoptera",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Zygoptera" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Zygoptera" ~ "Odonata",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Zygoptera" ~ NA_character_,
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Zygoptera" ~ NA_character_,
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Zygoptera" ~ NA_character_,
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Zygoptera" ~ "EXACT",
+   T ~ Matchtype)) %>% 
+mutate(Kingdom = case_when(
+   Fixed_name == "Zygoptera" ~ "Animalia",
+   T ~ Kingdom))
 
+#Zygoptera
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Order = case_when(
+   Fixed_name == "Podarcis lilfordi" ~ "Squamata",
+   T ~ Order)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Podarcis lilfordi" ~ "EXACT",
+   T ~ Matchtype)) 
 
-
+#Zygoptera
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Order = case_when(
+   Fixed_name == "Cheloninae" ~ "Hymenoptera",
+   T ~ Order)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Cheloninae" ~ "EXACT",
+   T ~ Matchtype)) 
 

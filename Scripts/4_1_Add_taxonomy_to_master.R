@@ -35,13 +35,16 @@ colnames(poll_taxo1)
 #Merge all for now
 plant_taxo1
 data = left_join(master1, plant_taxo1)
-data1 = left_join(data, poll_taxo1)
+data1 = left_join(data, poll_taxo1, relationship = "many-to-many")
 
+#Exclude records of plants or pollinators that
+#are considered as unknown
+data1 = data1 %>% 
+filter(!Pollinator_accepted_name == "Unknown") %>% 
+filter(!Plant_accepted_name == "Unknown")
+
+#Save data
 saveRDS(data1, "Data/Interactions.rds")
-
-
-levels(factor(data$Interaction))
-
 
 #Important! Make all rows one single interaction
 #1st uncount interactions

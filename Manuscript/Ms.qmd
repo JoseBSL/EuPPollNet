@@ -96,7 +96,14 @@ Questions that we would like to answer:
 
 ## Dataset description
 
-This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset covers `r country_number` countries and consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year`, and accounts for a total of `r prettyNum(interaction_number, big.mark=",")` interactions from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species.
+This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset covers `r country_number` countries and consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year`, and accounts for a total of `r prettyNum(interaction_number, big.mark=",")` interactions from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. All studies recorded the number of visits of a given pollinator to a particular plant (i.e., interaction frequency). 
+
+
+Talk about methods and taxa recorded
+
+(This needs some work to be summarised properly)
+
+
 
 Shared species across studies (describe trend), added now in graph 1?
 
