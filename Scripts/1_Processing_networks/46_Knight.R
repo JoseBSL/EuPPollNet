@@ -24,9 +24,10 @@ data <- read_csv("Data/Raw_data/46_Knight/Interaction_data.csv", locale = locale
 data = data %>%
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
-#Unify level
+#Unify level and rename Site_id
 data = data %>% 
-mutate(Sampling_method = "Transect")
+mutate(Sampling_method = "Transect") %>% 
+mutate(Site_id = "Gora_Gipsowa")
 
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)

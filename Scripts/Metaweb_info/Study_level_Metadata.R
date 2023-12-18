@@ -1,5 +1,5 @@
 #------------------------------------------------#
-#Prepare metadata from Safenet
+#Prepare metadata at STUDY LEVEL from Safenet
 #------------------------------------------------#
 
 #Workflow:
@@ -8,6 +8,9 @@
 #Info about starting date, finishind date,
 #sampling period and days sampled
 #3)Prepare taxonomic information
+#Info from main orders (% and number of them)
+#Info from other order (number of them)
+#Total interactions
 
 #--------------------------------------#
 #1)Load libraries and data-----
@@ -25,11 +28,11 @@ data = readRDS("Data/Interactions_uncounted.rds")
 #--------------------------------------#
 #Select cols of interest
 dates = data %>% 
-select(Study_id, Network_id,Sampling_method, Day, Month, Year) %>% 
+select(Study_id, Sampling_method, Day, Month, Year) %>% 
 mutate(Date = dmy(paste(Day, Month, Year, sep = "-")))
 #Obtain date information
 dates1 = dates %>% 
-group_by(Study_id, Network_id, Sampling_method) %>% 
+group_by(Study_id, Sampling_method) %>% 
 summarise(Min_date = min(Date), 
           Max_date= max(Date), 
           Sampling_days = n_distinct(Date)) %>% 
@@ -48,9 +51,9 @@ TRUE ~ NA))
 
 #Select cols of interest and prepare data for processing
 taxo_info = data %>% 
-select(Study_id, Network_id, 
+select(Study_id, 
        Pollinator_accepted_name, Pollinator_order) %>% 
-group_by(Study_id,Network_id, Pollinator_order) %>% 
+group_by(Study_id, Pollinator_order) %>% 
 count(Pollinator_order) 
 
 #Select any order that is not (Cole, Lepi,Hymeno, Dip)
@@ -91,7 +94,7 @@ mutate(Number_of_main_orders_recorded = (4 - #4th
          sum(is.na(Hymenoptera) + is.na(Diptera) + #4th
              is.na(Lepidoptera) + is.na(Coleoptera)))) %>% #4th
 mutate(Total_interactions = sum(across(all_orders),  na.rm = TRUE)) %>% #5th
-select(Study_number, Study_id, Network_id, Hymenoptera, Diptera,#6th
+select(Study_number, Study_id, Hymenoptera, Diptera,#6th
        Lepidoptera, Coleoptera, Number_of_main_orders_recorded, #6th
        Other_orders, Total_interactions) %>%  #6th
 mutate(across(main_orders, ~ formatC(.x / Total_interactions,digits = 2, format = "f"))) %>% #7th
