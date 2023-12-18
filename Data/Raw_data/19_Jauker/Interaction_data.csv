@@ -1,4 +1,4 @@
-Site_id,Habitat_area,Country,Longitude,Latitude,Pollinator_genus,Pollinator_species,Plant_genus,Plant_species
+Site_id,Habitat_area,Country,Latitude,Longitude,Pollinator_genus,Pollinator_species,Plant_genus,Plant_species
 01,51395,Germany,9.7631503,51.5402819,Bombus,Bombus lapidarius,Campanula,Campanula rotundifolia
 01,51395,Germany,9.7631503,51.5402819,Heringia,Heringia spec,Campanula,Campanula rotundifolia
 01,51395,Germany,9.7631503,51.5402819,Halictus,Halictus simplex,Carlina,Carlina vulgaris
@@ -5369,90 +5369,90 @@ Site_id,Habitat_area,Country,Longitude,Latitude,Pollinator_genus,Pollinator_spec
 29,459,Germany,9.7763683,51.4486656,Sphaerophoria,Sphaerophoria spec,Thymus,Thymus pulegioides
 29,459,Germany,9.7763683,51.4486656,Sphaerophoria,Sphaerophoria spec,Thymus,Thymus pulegioides
 29,459,Germany,9.7763683,51.4486656,Sphaerophoria,Sphaerophoria spec,Thymus,Thymus pulegioides
-30,437,Germany,,,Heriades,Heriades truncorum,Achillea,Achillea millefolium
-30,437,Germany,,,Chelostoma,Chelostoma rapunculi,Campanula,Campanula rotundifolia
-30,437,Germany,,,Psithyrus,Psithyrus rupestris,Centaurea,Centaurea scabiosa
-30,437,Germany,,,Bombus,Bombus pascuorum,Clinopodium,Clinopodium vulgare
-30,437,Germany,,,Bombus,Bombus pascuorum,Clinopodium,Clinopodium vulgare
-30,437,Germany,,,Bombus,Bombus pascuorum,Clinopodium,Clinopodium vulgare
-30,437,Germany,,,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
-30,437,Germany,,,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
-30,437,Germany,,,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
-30,437,Germany,,,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
-30,437,Germany,,,Nomada,Nomada flava,Cornus,Cornus sanguinea
-30,437,Germany,,,Osmia,Osmia bicolor,Hippocrepis,Hippocrepis comosa
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus soroeensis,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus terrestris agg,Knautia,Knautia arvensis
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
-30,437,Germany,,,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
-30,437,Germany,,,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
-30,437,Germany,,,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
-30,437,Germany,,,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
-30,437,Germany,,,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
-30,437,Germany,,,Bombus,Bombus terrestris agg,Origanum,Origanum vulgare
-30,437,Germany,,,Bombus,Bombus terrestris agg,Origanum,Origanum vulgare
-30,437,Germany,,,Psithyrus,Psithyrus bohemicus,Origanum,Origanum vulgare
-30,437,Germany,,,Psithyrus,Psithyrus rupestris,Origanum,Origanum vulgare
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
-30,437,Germany,,,Lasioglossum,Lasioglossum fulvicorne,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Lasioglossum,Lasioglossum leucopus,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Episyrphus,Episyrphus balteatus,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Sphaerophoria,Sphaerophoria spec,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Sphaerophoria,Sphaerophoria spec,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Syrphus,Syrphus vitripennis,Pimpinella,Pimpinella saxifraga
-30,437,Germany,,,Andrena,Andrena subopaca,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
-30,437,Germany,,,Megachile,Megachile willughbiella,Veronica,Veronica teucrium
-30,437,Germany,,,Osmia,Osmia bicolor,Veronica,Veronica teucrium
-30,437,Germany,,,Scaeva,Scaeva selenitica,Veronica,Veronica teucrium
-30,437,Germany,,,Sphaerophoria,Sphaerophoria spec,Veronica,Veronica teucrium
-30,437,Germany,,,Sphaerophoria,Sphaerophoria spec,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Heriades,Heriades truncorum,Achillea,Achillea millefolium
+30,437,Germany,9.837832,51.425963,Chelostoma,Chelostoma rapunculi,Campanula,Campanula rotundifolia
+30,437,Germany,9.837832,51.425963,Psithyrus,Psithyrus rupestris,Centaurea,Centaurea scabiosa
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Clinopodium,Clinopodium vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Clinopodium,Clinopodium vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Clinopodium,Clinopodium vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Cornus,Cornus sanguinea
+30,437,Germany,9.837832,51.425963,Nomada,Nomada flava,Cornus,Cornus sanguinea
+30,437,Germany,9.837832,51.425963,Osmia,Osmia bicolor,Hippocrepis,Hippocrepis comosa
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Hypericum,Hypericum perforatum
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus pascuorum,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus soroeensis,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Knautia,Knautia arvensis
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Psithyrus,Psithyrus bohemicus,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Psithyrus,Psithyrus rupestris,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Origanum,Origanum vulgare
+30,437,Germany,9.837832,51.425963,Lasioglossum,Lasioglossum fulvicorne,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Lasioglossum,Lasioglossum leucopus,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Episyrphus,Episyrphus balteatus,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Sphaerophoria,Sphaerophoria spec,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Sphaerophoria,Sphaerophoria spec,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Syrphus,Syrphus vitripennis,Pimpinella,Pimpinella saxifraga
+30,437,Germany,9.837832,51.425963,Andrena,Andrena subopaca,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus lapidarius,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Bombus,Bombus terrestris agg,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Megachile,Megachile willughbiella,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Osmia,Osmia bicolor,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Scaeva,Scaeva selenitica,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Sphaerophoria,Sphaerophoria spec,Veronica,Veronica teucrium
+30,437,Germany,9.837832,51.425963,Sphaerophoria,Sphaerophoria spec,Veronica,Veronica teucrium
 31,329,Germany,9.7772088,51.5878506,Episyrphus,Episyrphus balteatus,Agrimonia,Agrimonia eupatoria
 31,329,Germany,9.7772088,51.5878506,Episyrphus,Episyrphus balteatus,Agrimonia,Agrimonia eupatoria
 31,329,Germany,9.7772088,51.5878506,Bombus,Bombus pascuorum,Centaurea,Centaurea scabiosa

@@ -10,6 +10,27 @@ source("Scripts/Processing/Functions/Change_str.R")
 data = read_csv("Data/Raw_data/15_Magrach/Interaction_data.csv", col_names = T) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#Seems to be a mistake with coordinates of site 2
+#Check number of levels of each
+#Latitude site 2 (most repeated value)
+site_2_lat = data %>% 
+filter(Site_id == 2) %>%
+count(Latitude) %>% 
+filter(n == max(n)) %>% 
+pull(Latitude)
+#Longitude site 2 (most repeated value)
+site_2_lon = data %>% 
+filter(Site_id == 2) %>%
+count(Longitude) %>% 
+filter(n == max(n)) %>% 
+pull(Longitude)
+#Replace values
+data = data %>% 
+mutate(Latitude = case_when(Site_id == 2 ~ site_2_lat,
+                            TRUE ~ Latitude)) %>% 
+mutate(Longitude = case_when(Site_id == 2 ~ site_2_lon,
+                            TRUE ~ Longitude))
+
 #Unify structure of data
 data = change_str(data)
 

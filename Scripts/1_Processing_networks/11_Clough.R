@@ -14,7 +14,8 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
        Temperature, Humidity) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>%  #Including this info in the metadata
 filter(!is.na(Plant_species)) %>% 
-filter(!is.na(Pollinator_species)) 
+filter(!is.na(Pollinator_species)) %>% 
+filter(!Pollinator_species == "Unidentified Acari")
 
 #Unify structure of data
 data = change_str(data)

@@ -928,13 +928,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "49_Hervias-Parejo") %>% 
+filter(Study_id == "50_Hervias-Parejo") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 
-subset_check = all %>% 
-filter(Study_id == "40_Knight") %>% 
-distinct()
-
-s = subset_check %>% 
-filter(is.na(Order))

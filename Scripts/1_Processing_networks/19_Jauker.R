@@ -20,8 +20,8 @@ group_by(Site_id, Plant_species, Pollinator_species, Longitude, Latitude) %>%  #
 summarise(Interaction = n()) %>%  #Generate sum of interactions col by site
 ungroup() %>% 
 mutate(Sampling_method = "Transects") %>% 
-mutate(Sampling_effort_minutes = "REVIEW") %>% 
-mutate(Sampling_area_square_meters = "REVIEW") %>% 
+mutate(Sampling_effort_minutes = NA) %>% 
+mutate(Sampling_area_square_meters = NA) %>% 
 mutate(Country = "Germany") %>% 
 mutate(Habitat = "Calcareous grasslands") %>% 
 mutate(Locality = "Goettingen") %>% 
@@ -102,9 +102,9 @@ Metadata = as.data.frame(t(Metadata)) %>%
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = "Birgit Jauker",
-  Orcid = "0000-0001-5027-9351",
-  E_mail = "birgit.jauker@allzool.bio.uni-giessen.de")
+  Coauthor_name = c("Birgit Jauker", "Frank Jauker"),
+  Orcid = c("0000-0001-5027-9351", "0000-0003-4137-9072"),
+  E_mail = c("birgit.jauker@allzool.bio.uni-giessen.de", "jaukerf@gmail.com"))
 
 #Save data ----
 #Create metadata list
