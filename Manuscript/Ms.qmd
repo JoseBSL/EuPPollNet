@@ -38,6 +38,7 @@ group_by(Country) %>%
 summarise(study_number = n_distinct(Study_id)) %>% 
 summarise(mean(study_number)) %>% 
 pull()
+#$\bar{x}_\frac{studies}{country}$ = `r studies_by_country`
 #Sampling method
 Sampling_method = data %>% 
 group_by(Study_id) %>% 
@@ -113,9 +114,9 @@ Questions that we would like to answer:
 
 ## Dataset description
 
-This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (mean studies by country = `r studies_by_country`). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. These different studies differ in sampling effort and methodology, although most studies cover only a single year or flowering season (PERCENTAGE) with an average of XXX sampling days (range XXX to XXXX) over a time span of XXXX days, and documented interactions by using `r  most_common_method[[1]]` (`r  most_common_method[[3]]`%). 
+This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (PERCENTAGE) with an average of XXX sampling days (range XXX to XXXX) over a time span of XXXX days, and documented interactions mostly by using `r  most_common_method[[1]]` (`r  most_common_method[[3]]`%). 
 
-Explain % of taxonomic ranks at order level that constitute the included pollinators. 
+Explain % of taxonomic ranks at order level that constitute the included pollinators. Something with the different pollinators is going to be graph 2.
 
 
 Shared species across studies (describe trend), added now in graph 1?

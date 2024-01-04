@@ -213,8 +213,10 @@ mutate(Fixed_name = case_when(
   Fixed_name == "Trifolium amarillo" ~ "Trifolium", #fix
   Fixed_name == "Trifolium blanco" ~ "Trifolium", #fix
   Fixed_name == "Lupinus micranthus" ~ "Lupinus gussoneanus", #fix
-
-
+  Fixed_name == "Cytisus hirsutus" ~ "Chamaecytisus hirsutus", #fix
+  Old_name == "Cichorieae sp." ~ "Asteraceae", #fix
+  Fixed_name == "no data" ~ "Unknown", #fix
+ str_detect(Fixed_name, "Compositae") ~ "Asteraceae", #fix
   T ~ Fixed_name)) %>% 
 mutate(Fixed_name =  gsub("[0-9]+", "", Fixed_name)) %>% 
 mutate(Fixed_name =  str_replace(Fixed_name, 
@@ -391,6 +393,16 @@ Accepted_name == "Sedum candollei" ~
   "Sedum candolleanum", #Accepted name
 Accepted_name == "Fagonia cretica" ~ 
   "Zygophyllum creticum", #Accepted name
+Accepted_name == "Cervaria rivini" ~ 
+  "Peucedanum cervaria", #Accepted name
+Accepted_name == "Rindera columnae" ~ 
+  "Cynoglossum columnae", #Accepted name
+Accepted_name == "Lysimachia loeflingii" ~ 
+  "Lysimachia arvensis", #Accepted name
+Accepted_name == "Phelipanche ramosa" ~ 
+  "Orobanche ramosa", #Accepted name
+Accepted_name == "Thrincia tuberosa" ~ 
+  "Leontodon tuberosus", #Accepted name
 T ~ Accepted_name))
 
 
@@ -408,6 +420,12 @@ Plant_data1 = Plant_data1 %>%
 mutate(Accepted_name = 
 if_else(is.na(Accepted_name) & Matchtype== "EXACT" & Rank =="GENUS", 
             Canonical_name, Accepted_name))
+
+
+#Keep subspecies rank as species
+Plant_data1 = Plant_data1 %>% 
+mutate(Rank = case_when(Rank == "SUBSPECIES" ~ "SPECIES",
+                        T ~ Rank))
 
 #--------------------------------------#
 #8) Save pollinator taxonomy-------
@@ -427,7 +445,7 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "50_Hervias-Parejo") %>% 
+filter(Study_id == "51_Petanidou") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

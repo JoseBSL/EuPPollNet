@@ -297,7 +297,7 @@ rename(Fixed1 = Fixed)
 #cf, aff, dp, unknown, nymph
 str_pattern6.1 = to_recover %>% 
 filter(str_detect(Mismatch, 
-paste(c("cf.", " aff. ", "dp", "unknown", "nymph", "agg"), collapse = "|")) &
+paste(c("cf.", " aff. ", "dp", "unknown", "nymph", "agg", "gr."), collapse = "|")) &
 is.na(Fixed1)) %>% 
 mutate(Fixed1 = str_replace(Mismatch, " cf.", "")) %>% 
 mutate(Fixed1 = gsub(" aff.", "", Fixed1, fixed=T)) %>% 
@@ -308,6 +308,7 @@ mutate(Fixed1 = gsub(".agg.", "", Fixed1, fixed=T)) %>%
 mutate(Fixed1 = gsub("_agg", "", Fixed1, fixed=T)) %>% 
 mutate(Fixed1 = gsub(" agg.", "", Fixed1, fixed=T)) %>% 
 mutate(Fixed1 = gsub(" agg", "", Fixed1, fixed=T)) %>% 
+mutate(Fixed1 = gsub("gr. ", "", Fixed1, fixed=T)) %>% 
 mutate(Fixed1 = gsub(".", " ", Fixed1, fixed=T)) %>% 
 mutate(Fixed1 = gsub("_", " ", Fixed1, fixed=T)) %>% 
 mutate(Fixed1 = case_when(str_detect(Mismatch, " cf ") ~ gsub(" cf ", " ", Mismatch),
@@ -579,6 +580,10 @@ mutate(Fixed = case_when(
   Mismatch == "Axinotarsus varitarsis" ~ "Attalus varitarsis", #fix
   Mismatch == "Heterocapillus nigripes" ~ "Heterocapillus tigripes", #fix
   Fixed == "Arachnopila" ~ "Arachnospila", #fix
+  Mismatch == "Megachile strymonia" ~ "Hoplitis strymonia", #fix
+  Mismatch == "Megachile strymonia" ~ "Hoplitis strymonia", #fix
+  Mismatch == "Halictus tetrazonius-group" ~ "Halictus tetrazonius", #fix
+  Mismatch == "Unknown (Melolonthidae) spec. 4" ~ "Melolonthidae", #fix
 
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
@@ -682,6 +687,8 @@ matched =
 matched %>% 
 mutate(Name = case_when(
   Name == "Lycaena hippothoe" ~ "Palaeochrysophanus hippothoe",
+  Name == "Lasioglossum haesitans" ~ "Halictus haesitans",
+
   T ~ Name))
 
 #Let's keep matched and unmatched separated for now
@@ -728,6 +735,9 @@ unmatched_gbif = name_backbone_checklist(name= name1, kingdom='animals')
 unmatched_gbif1 = change_str1(unmatched_gbif)
 clean = c("EXACT", "FUZZY")
 
+#Rename unmatched but found
+source("Scripts/Processing/Pollinators/2_2_Rename_unmatched_found_pollinators.R")
+
 #Exclude some species that are not correctly identified
 unmatched_gbif1 = unmatched_gbif1 %>% 
 mutate(Matchtype = case_when(Fixed_name == "Zygoptera" ~ NA_character_,
@@ -746,7 +756,7 @@ unmatched_gbif1_not_found = unmatched_gbif1 %>%
 filter(!Matchtype %in% clean)
 #Here we rename the species
 #Many lines of code so we keep it in a nother script
-source("Scripts/Processing/Pollinators/2_2_Rename_unmatched_pollinators.R")
+source("Scripts/Processing/Pollinators/2_3_Rename_unmatched_pollinators.R")
 
 #Bind datasets
 gbif_data = 
@@ -833,6 +843,7 @@ mutate(Accepted_name = case_when(
  Accepted_name == "Halictus semitectus"  ~ "Seladonia semitecta", #synonym 
  Accepted_name == "Halictus balearicus"  ~ "Seladonia microcardia", #synonym but not sure
  Accepted_name == "Halictus microcardia"  ~ "Seladonia microcardia", #synonym 
+ Accepted_name == "Cubitalia breviceps"  ~ "Eucera breviceps", #synonym 
 
   T ~ Accepted_name))
 
@@ -884,6 +895,12 @@ mutate(Accepted_name = case_when(
    Accepted_name == "Epistrophella euchromus" ~ "Epistrophella euchroma",  #Synonym
    Accepted_name == "Chrysosyrphus nasuta" ~ "Chrysosyrphus nasutus",  #Synonym
    Accepted_name == "Chrysogaster aerosa" ~ "Melanogaster aerosa",  #Synonym
+   Accepted_name == "Halictus pulvereus" ~ "Seladonia pulverea",  #Synonym
+   Accepted_name == "Halictus tectus" ~ "Seladonia vestita",  #Synonym
+   Accepted_name == "Eucera nigrita" ~ "Eucera albofasciata",  #Synonym
+   Accepted_name == "Tetraloniella graja" ~ "Tetralonia graja",  #Synonym
+   Accepted_name == "Halictus haesitans" ~ "Lasioglossum haesitans",  #Synonym
+   Accepted_name == "Tetraloniella alticincta" ~ "Tetralonia alticincta",  #Synonym
 
     T ~ Accepted_name))
 
@@ -903,6 +920,16 @@ mutate(Accepted_name =
 if_else(is.na(Accepted_name) & Matchtype== "EXACT" & Rank =="GENUS", 
             Canonical_name, Accepted_name))
 
+
+#Keep subspecies rank as species
+poll_data1 = poll_data1 %>% 
+mutate(Matchtype = case_when(Rank == "SUBSPECIES" ~ "EXACT",
+                        T ~ Matchtype)) %>% 
+mutate(Matchtype = case_when(Rank == "SPECIES" ~ "EXACT",
+                        T ~ Matchtype)) %>% 
+mutate(Rank = case_when(Rank == "SUBSPECIES" ~ "SPECIES",
+                        T ~ Rank))
+
 #----------------------------#
 #4)Save pollinator taxonomy----
 #----------------------------#
@@ -920,7 +947,7 @@ saveRDS(poll_data1, "Data/Species_taxonomy/Pollinator_taxonomy.rds")
 master = master%>%  
 rename(Old_name = Pollinator_species)
 #Merge
-all = left_join(master, poll_data)
+all = left_join(master, poll_data1)
 colnames(all)
 #check levels
 levels(factor(all$Study_id))
@@ -928,7 +955,9 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "50_Hervias-Parejo") %>% 
+filter(Study_id == "51_Petanidou") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
+
+
 

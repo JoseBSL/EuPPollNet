@@ -106,7 +106,18 @@ mutate(Rank = case_when(
   T ~ Rank))
 
 
-
+#Eucera terminata
+matched_gbif1 = 
+matched_gbif1 %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Eucera terminata" ~ "EXACT",
+   T ~ Matchtype)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Eucera terminata" ~ "SPECIES",
+   T ~ Rank))  %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Eucera terminata" ~ "Eucera terminata",
+   T ~ Accepted_name)) 
 
 
 

@@ -158,9 +158,7 @@ lepidoptera_coverage
 #Save coverage values---- 
 #----------------------------#
 #Final checks before saving!
-bee_checks
-syrphid_checks
-lepidoptera_checks
+c(bee_checks, syrphid_checks, lepidoptera_checks)
 
 #Save
 saveRDS(bee_coverage, "Data/Manuscript_info/bee_coverage.RData")

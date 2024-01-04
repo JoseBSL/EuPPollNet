@@ -1643,3 +1643,61 @@ mutate(Matchtype = case_when(
    Fixed_name == "Cheloninae" ~ "EXACT",
    T ~ Matchtype)) 
 
+#Eumerus clavatus uncipes
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Eumerus clavatus uncipes" ~ "SPECIES",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Eumerus clavatus uncipes" ~ "EXACT",
+   T ~ Matchtype)) 
+
+#Cheilosia albitarsis ranunculi
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Cheilosia albitarsis ranunculi" ~ "EXACT",
+   T ~ Matchtype)) 
+
+#Platycheirus albimanus muelleri
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Platycheirus albimanus muelleri" ~ "EXACT",
+   T ~ Matchtype)) 
+
+#Meria
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Meria" ~ "Meria",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Meria" ~ "Meria (Illiger, 1807)",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Meria" ~ "Meria",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Meria" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Meria" ~ "Hymenoptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Meria" ~ "Tiphiidae",
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Meria" ~ "Meria",
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Meria" ~ "GENUS",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Meria" ~ "EXACT",
+   T ~ Matchtype)) %>% 
+mutate(Kingdom = case_when(
+   Fixed_name == "Meria" ~ "Animalia",
+   T ~ Kingdom))
+

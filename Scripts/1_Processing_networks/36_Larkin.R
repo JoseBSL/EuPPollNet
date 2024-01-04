@@ -93,6 +93,11 @@ data = data %>%
 data = data %>% 
 mutate(Sampling_method = "Transect")
 
+#Important! Year 2018 was collected for other purpose and
+#does not belong to this study
+data = data %>% 
+filter(!Year == 2018)
+
 #Unify structure of data
 data = change_str(data)
 

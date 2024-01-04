@@ -147,7 +147,11 @@ spp_code = c("2682000",#Brassica arvensis
              "202449",   #Tetrapanax papyrifer
              "2866020",  #Iochroma fuchsioides
              "456152",   #Albuca bracteata
-             "2694880" #Camellia sinensis
+             "2694880", #Camellia sinensis,
+             "3211150", #Taraxacum levigatum
+             "3075260", #Picris angustifolia
+             "3290297", #Candollea mollis 
+             "3074512" #Hypochaeris cretensis
              ) 
 #Save those plants from unfiltered master file
 taxPl_excluded1 = taxPl %>%
@@ -311,6 +315,9 @@ filter(!Accepted_name %in% plant_name_col)
 #If the value is 0, we can check the completeness now :)
 mismatches1 = mismatches %>% pull()
 mismatches1
+
+#We could build something that looks for the unmatched 
+#And add the corrected ones (at the moment is done manually)
 
 #Check if 0 unmatched records
 plant_checks = ifelse(nrow(mismatches) == 0, 
