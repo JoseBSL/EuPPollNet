@@ -18,6 +18,11 @@ library(sf) #For handling coordinates and plotting
 library(patchwork)#For plotting
 library(ggstar) #For plotting (cool shapes)
 library(scales) #For plotting (decimals on axes)
+library(lubridate) #To operate with dates
+library(tidyr) #Reshape data (wide format)
+library(stringr) #Fix/modify strings
+
+
 ```
 
 
@@ -75,8 +80,46 @@ Plant_matchtype, Plant_accepted_name) %>%
 filter(Plant_rank == "SPECIES") %>% 
 select(Plant_accepted_name) %>% 
 n_distinct()
+#Extract percentage of studies conducted during a single year
+dates = data %>% 
+select(Study_id, Network_id,Sampling_method, Day, Month, Year) %>% 
+mutate(Date = dmy(paste(Day, Month, Year, sep = "-"))) %>% 
+group_by(Study_id) %>% 
+summarise(Count = n_distinct(Year))
+#Filter studies with only one year
+one_year = dates %>% 
+filter(Count == 1) %>% 
+pull() %>% 
+length() / nrow(dates) * 100
+#Obtain date information
+dates = data %>% 
+select(Study_id, Network_id,Sampling_method, Day, Month, Year) %>% 
+mutate(Date = dmy(paste(Day, Month, Year, sep = "-")))
 
-
+dates1 = dates %>% 
+group_by(Study_id, Network_id, Sampling_method) %>% 
+summarise(Min_date = min(Date), 
+          Max_date= max(Date), 
+          Sampling_days = n_distinct(Date)) %>% 
+mutate(Sampling_period = as.numeric(Max_date - Min_date)) %>% 
+mutate(Study_number = as.integer(str_extract(Study_id, "[^_]+")), 
+       .before=Study_id) %>% 
+arrange(Study_number) %>% 
+mutate(Sampling_period = case_when(!is.na(Sampling_period) ~ Sampling_period + 1,
+TRUE ~ NA)) %>% 
+mutate(Sampling_days = case_when(!is.na(Sampling_period) ~ Sampling_days,
+TRUE ~ NA))
+#Extract min and max number of sampling days
+min_sampling_day = dates1 %>% pull(Sampling_days) %>% min(na.rm = TRUE)
+max_sampling_day = dates1 %>% pull(Sampling_days) %>% max(na.rm = TRUE)
+#Extract average of sampling days across networks and studies
+average_sampling_days = dates1 %>% 
+ungroup() %>% 
+group_by(Study_id) %>% 
+summarise(mean_sampling_days = mean(Sampling_days, na.rm = TRUE)) %>% 
+ungroup() %>% 
+summarise(mean(mean_sampling_days, na.rm = TRUE)) %>% 
+pull()
 ```
 
 
@@ -114,19 +157,14 @@ Questions that we would like to answer:
 
 ## Dataset description
 
-This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (PERCENTAGE) with an average of XXX sampling days (range XXX to XXXX) over a time span of XXXX days, and documented interactions mostly by using `r  most_common_method[[1]]` (`r  most_common_method[[3]]`%). 
-
-Explain % of taxonomic ranks at order level that constitute the included pollinators. Something with the different pollinators is going to be graph 2.
+This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). 
 
 
-Shared species across studies (describe trend), added now in graph 1?
-
-
-## Species coverage
+## Taxonomic coverage
 
 To calculate the completeness of the dataset 
 
-
+Check presentation from Herrera for cool graphs summarising patterns
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
 
