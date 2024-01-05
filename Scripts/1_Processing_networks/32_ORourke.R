@@ -19,7 +19,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/32_to_37_Russo/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/32_to_37_Russo/Interaction_data.csv")
 
 #Divide col into cols
 levels(factor(data$Site_id))
@@ -100,9 +100,26 @@ mutate(Plant_species = str_replace(Plant_species, "_", " "))
 #Split interaction data into dataframes within a list
 InteractionData <- split(data, data$Site_id)
 
-#Prepare flower count data ---- The data wasn't collected
-FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
-                      Flower_count = NA, Units = NA, Comment = NA)
+#Prepare flower count data ----
+#We need to create a list of lists too
+#Check levels of Site_id
+site_id_levels = levels(factor(data$Site_id))
+
+FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
+                     Flower_count = NA, Units = NA, Comment = NA)
+
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
+#Split by Site_id
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -149,7 +166,7 @@ ORourke <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(ORourke) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(ORourke, file="Data/Clean_data/32_ORourke.rds")
+saveRDS(ORourke, file="Data/2_Processed_data/32_ORourke.rds")
 
 
 

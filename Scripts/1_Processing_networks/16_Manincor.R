@@ -11,7 +11,7 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/16_Manincor/Interaction_data.csv", col_names = T)
+data = read_csv("Data/1_Raw_data/16_Manincor/Interaction_data.csv", col_names = T)
 
 #Convert coordinates in degree mins and seconds to lat long in decimal degrees
 data = data %>%
@@ -31,21 +31,32 @@ unique(factor(data$Longitude))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/16_Manincor/Flower_count.csv", col_names = T)
+FlowerCount = read_csv("Data/1_Raw_data/16_Manincor/Flower_count.csv", col_names = T)
 
 #Convert comment col into a single col
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Comment = paste0(Comment...8, ";",  Comment...9)) %>% 
 select(!c(Comment...8, Comment...9))
 
 #Check levels, one is different rename
-setdiff(levels(factor(flower_count$Site_id)), levels(factor(data$Site_id)))
+setdiff(levels(factor(FlowerCount$Site_id)), levels(factor(data$Site_id)))
 
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Site_id = recode_factor(Site_id,  "Noeux-lès-Auxi" = "Riez_2016"))
 
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
 #Split data into different dataframes based on survey name
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
@@ -113,5 +124,5 @@ Manincor <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Manincor) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Manincor, file="Data/Clean_data/16_Manincor.rds")
+saveRDS(Manincor, file="Data/2_Processed_data/16_Manincor.rds")
 

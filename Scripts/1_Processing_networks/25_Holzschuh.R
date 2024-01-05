@@ -12,7 +12,7 @@ library(lubridate)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/23_24_25_Holzschuh/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/23_24_25_Holzschuh/Interaction_data.csv")
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -47,33 +47,44 @@ data3 <- as_tibble(split_intdata[[3]])
 InteractionData3 <- split(data3, data3$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/23_24_25_Holzschuh/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/23_24_25_Holzschuh/Flower_count.csv")
 
 #Compare vars
 #compare_variables(check_flower_count_data, flower_count)
 
 #Split date col
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Date = as.Date(Date, format="%m-%d-%y")) %>% 
 mutate(Year = year(ymd(Date))) %>% 
 mutate(Month = month(ymd(Date))) %>% 
 mutate(Day = day(ymd(Date))) 
 
 #Rename cols
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 rename(Flower_count = Flower_cover_percent) %>% 
 mutate(Units = "Flower cover/150m2") %>% 
 mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
 "MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
 mutate(Comment = Habitat) #Add habitat in comment col to split datasets
 
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
 #Add variables
-flower_count = add_missing_variables(check_flower_count_data, flower_count) 
+FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
 #Order data as template
-flower_count = drop_variables(check_flower_count_data, flower_count) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 
 #Split flower count data into dataframes by habitat
-split_flower_count_data <- split(flower_count, flower_count$Comment) 
+split_flower_count_data <- split(FlowerCount, FlowerCount$Comment) 
 #Convert to tibbles
 flower_count3 <- as_tibble(split_flower_count_data[[3]])
 #Split interaction data into dataframes within a list
@@ -122,6 +133,6 @@ Holzschuh3 <- list(InteractionData3, FlowerCount3, Metadata3, Authorship3)
 names(Holzschuh3) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Holzschuh3, file="Data/Clean_data/25_Holzschuh.rds")
+saveRDS(Holzschuh3, file="Data/2_Processed_data/25_Holzschuh.rds")
 
 

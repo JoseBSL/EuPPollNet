@@ -11,7 +11,7 @@ library(tidyr)
 plant_taxo = readRDS("Data/Species_taxonomy/Plant_taxonomy.rds")
 poll_taxo = readRDS("Data/Species_taxonomy/Pollinator_taxonomy.rds")
 #Read master file
-master = readRDS("Data/Processing/Building_metaweb.rds")
+master = readRDS("Data/Working_files/Building_metaweb.rds")
 #Check if the cols are the same
 colnames(plant_taxo) == colnames(poll_taxo)
 #check cols
@@ -44,7 +44,7 @@ filter(!Pollinator_accepted_name == "Unknown") %>%
 filter(!Plant_accepted_name == "Unknown")
 
 #Save data
-saveRDS(data1, "Data/Interactions.rds")
+saveRDS(data1, "Data/3_Final_data/Interactions.rds")
 
 #Important! Make all rows one single interaction
 #1st uncount interactions
@@ -56,7 +56,7 @@ mutate(Interaction = 1)
 #Save data
 #----------------------
 #Keep all cols for now
-saveRDS(data2, "Data/Interactions_uncounted.rds")
+saveRDS(data2, "Data/3_Final_data/Interactions_uncounted.rds")
 
 
 

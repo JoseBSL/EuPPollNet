@@ -14,7 +14,7 @@ data = data.frame(Plant_species = NA, Pollinator_species = NA, Interaction =  NA
 
 #write.csv(data, "Data/Processing/Interaction_data_empty_template.csv", row.names = FALSE)
 #read data.csv for comparisons
-data <- read.csv("Data/Processing/Interaction_data_empty_template.csv", stringsAsFactors=TRUE)
+data <- read.csv("Data/Working_files/Interaction_data_empty_template.csv", stringsAsFactors=TRUE)
 #Set the dataframe to compare with
 check_interaction_data <- define_template(data, NA)
 
@@ -25,7 +25,7 @@ FlowerCount = data.frame(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_sp
 
 #Save data
 #write.csv(FlowerCount, "Data/Processing/Flower_count_empty_template.csv", row.names = FALSE)
-FlowerCount = read.csv("Data/Processing/Flower_count_empty_template.csv", stringsAsFactors=TRUE)
+FlowerCount = read.csv("Data/Working_files/Flower_count_empty_template.csv", stringsAsFactors=TRUE)
 
 check_flower_count_data <- define_template(FlowerCount, NA)
 

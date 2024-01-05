@@ -13,7 +13,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/38_Maurer/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/38_Maurer/Interaction_data.csv")
 
 #There are some sites without coordinates
 #I asked Corina and she provided those by mail
@@ -91,9 +91,9 @@ mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-flower_count <- read_csv("Data/Raw_data/38_Maurer/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/38_Maurer/Flower_count.csv")
 #Rename habitats
-flower_count = flower_count %>% rename(Habitat = Focal_habitat) %>% 
+FlowerCount = FlowerCount %>% rename(Habitat = Focal_habitat) %>% 
 mutate(Habitat = recode_factor(Habitat,
      "OSR" = "Oilseed rape crop",
      "forest.edge" = "Forest edge",
@@ -116,7 +116,7 @@ mutate(Habitat = recode_factor(Habitat,
      "sun.flow" = "Sunflower crop",
      "sug.beet" = "Sugar bet crop"))
 #Add the general habitat to a comment
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 rename(Comment = Landscape_type) %>% 
 mutate(Comment = recode_factor(Comment,
       "Intensive.agriculture" = "Intensive agriculture landscape",
@@ -126,9 +126,21 @@ mutate(Comment = recode_factor(Comment,
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Order data as template
-flower_count = drop_variables(check_flower_count_data, flower_count) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -194,6 +206,6 @@ Maurer <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Maurer) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Maurer, file="Data/Clean_data/38_Maurer.rds")
+saveRDS(Maurer, file="Data/2_Processed_data/38_Maurer.rds")
 
 

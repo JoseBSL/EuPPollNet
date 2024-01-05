@@ -13,7 +13,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/50_Hervias-Parejo/Interaction_data.csv", locale = locale(encoding = "latin1"))
+data <- read_csv("Data/1_Raw_data/50_Hervias-Parejo/Interaction_data.csv", locale = locale(encoding = "latin1"))
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -36,17 +36,26 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-flower_count <- read_csv("Data/Raw_data/50_Hervias-Parejo/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/50_Hervias-Parejo/Flower_count.csv")
 #Rename plant spp col
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 rename("Plant_species" = "Plant species")
 
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #No misisng vars
-
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls
@@ -129,7 +138,7 @@ Hervias_Parejo <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Hervias_Parejo) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Hervias_Parejo, file="Data/Clean_data/50_Hervias-Parejo.rds")
+saveRDS(Hervias_Parejo, file="Data/2_Processed_data/50_Hervias-Parejo.rds")
 
 
 

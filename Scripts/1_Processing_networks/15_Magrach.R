@@ -7,7 +7,7 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/15_Magrach/Interaction_data.csv", col_names = T) %>% 
+data = read_csv("Data/1_Raw_data/15_Magrach/Interaction_data.csv", col_names = T) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
 #Seems to be a mistake with coordinates of site 2
@@ -38,10 +38,22 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/15_Magrach/Flower_count.csv", col_names = T)
+FlowerCount = read_csv("Data/1_Raw_data/15_Magrach/Flower_count.csv", col_names = T)
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment)) %>% 
+select(!country)
 
 #Split data into different dataframes based on survey name
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
@@ -89,6 +101,6 @@ names(Magrach) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 15
-saveRDS(Magrach, file="Data/Clean_data/15_Magrach.rds") 
+saveRDS(Magrach, file="Data/2_Processed_data/15_Magrach.rds") 
 
 

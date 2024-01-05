@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/2_Petanidou/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/2_Petanidou/Interaction_data.csv")
 
 #Quick clean of the interaction data
 data <- data %>% 
@@ -33,7 +33,7 @@ data = change_str(data)
 InteractionData <- split(data,data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/2_Petanidou/Flower_count.csv")
+flower_count <- read_csv("Data/1_Raw_data/2_Petanidou/Flower_count.csv")
 
 #Add leading 0's to days and month under 10
 flower_count$Month <- ifelse(as.numeric(flower_count$Month) < 10, paste0("0", flower_count$Month), flower_count$Month)
@@ -42,7 +42,8 @@ flower_count$Day <- ifelse(as.numeric(flower_count$Day) < 10, paste0("0", flower
 #Select cols of interest in order
 FlowerCount <- flower_count %>%
 select(Day, Month, Year, Site_id, Plant_species, Flower_count) %>%
-mutate(Units = gsub("#", "Number", flower_count$Units))
+mutate(Units = gsub("#", "Number", flower_count$Units)) %>% 
+mutate(Comment = NA_character_)
  
 #Split interaction data into dataframes within a list
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
@@ -106,5 +107,5 @@ Petanidou <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Petanidou) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Petanidou, file="Data/Clean_data/2_Petanidou.rds")
+saveRDS(Petanidou, file="Data/2_Processed_data/2_Petanidou.rds")
 

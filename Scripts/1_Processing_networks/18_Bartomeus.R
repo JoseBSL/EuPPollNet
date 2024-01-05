@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/18_Bartomeus/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/18_Bartomeus/Interaction_data.csv")
 
 #Quick clean of the interaction data
 #We select just a single year (2015), the other data is still being used.
@@ -76,10 +76,10 @@ data = change_str(data)
 InteractionData <- split(data,data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/18_Bartomeus/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/18_Bartomeus/Flower_count.csv")
 
 #Order cols
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Units = "Flower_units") %>% 
 mutate(Comment = "10 counts along the transect") %>% 
 select(Day, Month, Year, Site_ID, Plant_gen_sp, Flower_abundance, Units, Comment) %>% 
@@ -88,8 +88,20 @@ rename(Site_id = Site_ID, Plant_species = Plant_gen_sp,
 mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
 filter(!Site_id == "Elhongo" & !Site_id =="Lagunadelojillo") #These ids do not match
 
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -140,4 +152,4 @@ Bartomeus <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Bartomeus) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Bartomeus, file="Data/Clean_data/18_Bartomeus.rds")
+saveRDS(Bartomeus, file="Data/2_Processed_data/18_Bartomeus.rds")

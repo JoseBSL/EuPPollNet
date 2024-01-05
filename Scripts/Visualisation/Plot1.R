@@ -7,7 +7,7 @@ library(dplyr)
 library(patchwork)
 
 #Load data
-data = readRDS("Data/Interactions_uncounted.rds")
+data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
 
 #Prepare coordinates
 for_plotting = data %>% 

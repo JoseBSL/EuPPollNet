@@ -2,7 +2,7 @@ library('gtools') #Library that allows to sort files by numerical order
 library(tidyverse)
 
 #Read all files with their paths
-files <- dir("Data/Clean_data", pattern="*.rds", full.names=T)
+files <- dir("Data/Processed_data", pattern="*.rds", full.names=T)
 files <- mixedsort(files)
 
 #Generate list of lists
@@ -10,7 +10,7 @@ all_data = files %>%
 map(readRDS) 
 
 #Read all file names
-file_names <- dir("Data/Clean_data", pattern="*.rds", full.names=F)
+file_names <- dir("Data/Processed_data", pattern="*.rds", full.names=F)
 file_names <- mixedsort(file_names)
 
 #Delete extension
@@ -35,7 +35,7 @@ metadata_list = data
 metadata_long_format = as_tibble(bind_rows(data,  .id = 'Study_id'))
 
 #Save metadata file
-write_csv(metadata_long_format, "Data/Processing/Metadata.csv")
-write_csv(metadata_long_format, "~/R_Projects/SafeNet/Data/Metadata.csv")
-write_csv(metadata_long_format, "~/R_Projects/SafeNetWeb/Data/Metadata.csv")
+#write_csv(metadata_long_format, "Data/Processing/Metadata.csv")
+#write_csv(metadata_long_format, "~/R_Projects/SafeNet/Data/Metadata.csv")
+#write_csv(metadata_long_format, "~/R_Projects/SafeNetWeb/Data/Metadata.csv")
 

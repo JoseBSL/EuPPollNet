@@ -20,7 +20,7 @@ library(gtools)
 library(reshape2) #to use melt function later on
 
 #Read raw metaweb
-master = readRDS("Data/Processing/Building_metaweb.rds")
+master = readRDS("Data/Working_files/Building_metaweb.rds")
 #Read master list of unique cases of pollinator species
 species_tesaurus <- readRDS(file = "Data/Species_taxonomy/Thesaurus/taxonomy.rds")
 #Function to give str to data (used at the end of the code)

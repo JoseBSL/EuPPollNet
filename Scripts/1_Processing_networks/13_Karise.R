@@ -8,9 +8,9 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
+data = read_csv("Data/1_Raw_data/13_Karise/Interaction_data.csv", locale = locale(decimal_mark = ","))
 #Small hack to add coodinates
-data1 = read_csv("Data/Raw_data/13_Karise/Interaction_data.csv")
+data1 = read_csv("Data/1_Raw_data/13_Karise/Interaction_data.csv")
 
 #lat and long cols are swapped, fix
 #Create new dataframe with coordinates 
@@ -55,9 +55,25 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
+#We need to create a list of lists too
+#Check levels of Site_id
+site_id_levels = levels(factor(data$Site_id))
+
+FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
                      Flower_count = NA, Units = NA, Comment = NA)
 
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
+#Split by Site_id
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
@@ -110,5 +126,5 @@ names(Karise) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 13
-saveRDS(Karise, file="Data/Clean_data/13_Karise.rds") 
+saveRDS(Karise, file="Data/2_Processed_data/13_Karise.rds") 
 

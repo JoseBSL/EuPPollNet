@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/4_5_6_Marini/Interaction_data.csv")
+data = read.csv("Data/1_Raw_data/4_5_6_Marini/Interaction_data.csv")
 
 #Delete all underscores and space in one column
 data = data %>% 
@@ -32,12 +32,23 @@ data3 <- as_tibble(split_intdata[[3]])
 InteractionData3 <- split(data3, data3$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/4_5_6_Marini/Flower_count.csv")
+flower_count = read.csv("Data/1_Raw_data/4_5_6_Marini/Flower_count.csv")
 
 #Delete all underscores
 FlowerCount = flower_count %>% 
   mutate(across(everything(), function(x) str_replace_all(x, "_", " "))) %>% 
   select(!c(Total_flower_cover, Collected_insects))
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 
 #Split data into different dataframes based on survey name
 split_flwdata <- split(FlowerCount, FlowerCount$Survey)
@@ -113,5 +124,5 @@ Marini3 <- list(InteractionData3, FlowerCount3, Metadata3, Authorship3)
 #Rename list elements
 names(Marini3) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Marini3, file="Data/Clean_data/6_Marini.rds")
+saveRDS(Marini3, file="Data/2_Processed_data/6_Marini.rds")
 

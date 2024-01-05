@@ -8,7 +8,7 @@ library(lubridate)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/21_Hopfenmuller/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/21_Hopfenmuller/Interaction_data.csv")
 
 #Compare vars
 compare_variables(check_interaction_data, data)
@@ -51,7 +51,7 @@ InteractionData <- split(data,data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/21_Hopfenmuller/Flower_count.csv")
+flower_count <- read_csv("Data/1_Raw_data/21_Hopfenmuller/Flower_count.csv")
 
 #Compare vars
 compare_variables(check_flower_count_data, flower_count)
@@ -117,4 +117,4 @@ Hopfenmuller <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Hopfenmuller) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Hopfenmuller, file="Data/Clean_data/21_Hopfenmuller.rds")
+saveRDS(Hopfenmuller, file="Data/2_Processed_data/21_Hopfenmuller.rds")

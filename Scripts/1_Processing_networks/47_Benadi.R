@@ -21,13 +21,13 @@ library(lubridate) #to sum time
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-flower_visits <- read_csv("Data/Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_visits.csv", locale = locale(encoding = "latin1"))
-weather <- read_csv("Data/Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Weather.csv", locale = locale(encoding = "latin1")) %>% 
+flower_visits <- read_csv("Data/1_Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_visits.csv", locale = locale(encoding = "latin1"))
+weather <- read_csv("Data/1_Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Weather.csv", locale = locale(encoding = "latin1")) %>% 
 rename(Network_no = Network) %>% 
 rename(Temperature = Temp_C) %>% 
 rename(Humidity = Humidity_Percent) %>% 
 select(!c(Time, Network_no, Plot, Observer))
-networks <- read_csv("Data/Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Networks.csv", locale = locale(encoding = "latin1")) %>% 
+networks <- read_csv("Data/1_Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Networks.csv", locale = locale(encoding = "latin1")) %>% 
 rename(Network_no = Network) %>% 
 rename(Elevation = Altitude_m) %>% 
 select(!Observer)
@@ -93,9 +93,9 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-flower_count <- read_csv("Data/Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_areas.csv", locale = locale(encoding = "latin1"))
+FlowerCount <- read_csv("Data/1_Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_areas.csv", locale = locale(encoding = "latin1"))
 
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 rename(Site_id = Plot) %>% 
 rename(Comment = Network) %>% #This col will be useful for merging
 rename(Flower_count = Area_per_m2) %>% 
@@ -106,11 +106,22 @@ mutate(Units = "Area per m2")
 #Misisng vars
 #add them
 #Order data as template and drop variables
-flower_count = add_missing_variables(check_flower_count_data, flower_count) 
+FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
 #Order cols
-flower_count = drop_variables(check_flower_count_data, flower_count) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -158,5 +169,5 @@ Benadi <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Benadi) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Benadi, file="Data/Clean_data/47_Benadi.rds")
+saveRDS(Benadi, file="Data/2_Processed_data/47_Benadi.rds")
 

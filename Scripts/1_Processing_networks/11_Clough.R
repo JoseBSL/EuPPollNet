@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data = read_csv("Data/Raw_data/11_Clough/Interaction_data.csv") %>% 
+data = read_csv("Data/1_Raw_data/11_Clough/Interaction_data.csv") %>% 
 select(Plant_species, Pollinator_species, Interaction, Sampling_method,
        Sampling_effort_minutes, Sampling_area_square_meters,
        Site_id, Habitat, Country, Locality, Latitude, Longitude,
@@ -42,9 +42,21 @@ mutate(Sampling_method = "Plot")
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read_csv("Data/Raw_data/11_Clough/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/11_Clough/Flower_count.csv")
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
 #Split data into different dataframes based on survey name
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 
 #Prepare metadata data ----
@@ -120,4 +132,4 @@ names(Clough) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 11
-saveRDS(Clough, file="Data/Clean_data/11_Clough.rds") 
+saveRDS(Clough, file="Data/2_Processed_data/11_Clough.rds") 

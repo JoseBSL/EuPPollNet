@@ -10,7 +10,7 @@ library(stringr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/26_27_Castro/Interaction_data1.csv")
+data <- read_csv("Data/1_Raw_data/26_27_Castro/Interaction_data1.csv")
 
 #Check col names with template
 compare_variables(check_interaction_data, data)
@@ -22,26 +22,48 @@ data = drop_variables(check_interaction_data, data)
 data = data %>% 
 mutate(Sampling_method = "Focal_observation")
 
+#Select main cols
+data = data %>% 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+
+#Column of Site_id does not match flower_count at the moment
+#Do it in a two step process
+data = data %>% 
+mutate(Site_id = str_replace(Site_id, "_CENSO[0-9]+", "")) %>% 
+mutate(Site_id = str_replace(Site_id, "_DAY[0-9]+", ""))
+
 #Unify structure of data
 data = change_str(data)
 
-#Select main cols
-InteractionData1 = data %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+#Convert into list
+InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count1 <- read_csv("Data/Raw_data/26_27_Castro/Flower_count1.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/26_27_Castro/Flower_count1.csv")
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 
 #Compare vars
-compare_variables(check_flower_count_data, flower_count1)
+compare_variables(check_flower_count_data, FlowerCount)
 
 #Order data (just in case)
-FlowerCount1 = drop_variables(check_flower_count_data, flower_count1) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+#Split flower count data
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
-plant_single_cases1 = InteractionData1 %>% distinct(Plant_species)
-pollinator_single_cases1 = InteractionData1 %>%distinct(Pollinator_species)
+plant_single_cases1 = data %>% distinct(Plant_species)
+pollinator_single_cases1 = data %>%distinct(Pollinator_species)
 
 #Create ordered metadata
 Metadata1 <- tibble(
@@ -86,10 +108,10 @@ E_mail = c("scastro@bot.uc.pt", "vferrv@unileon.es", "jfmc.biologia@gmail.com",
 
 #Save data ----
 #Create metadata list
-Castro1 <- list(list(InteractionData1), FlowerCount1, Metadata1, Authorship1)
+Castro1 <- list(InteractionData, FlowerCount, Metadata1, Authorship1)
 names(Castro1) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Castro1, file="Data/Clean_data/26_Castro.rds")
+saveRDS(Castro1, file="Data/2_Processed_data/26_Castro.rds")
 
 

@@ -21,7 +21,7 @@ library(lubridate) #To operate with dates
 library(dplyr) #Handling data
 library(tidyr) #Reshape data (wide format)
 #Load data 
-data = readRDS("Data/Interactions_uncounted.rds")
+data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
 
 #--------------------------------------#
 #2)Prepare date information-----

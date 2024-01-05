@@ -7,7 +7,7 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Read comma delimited
-data <- read_csv("Data/Raw_data/3_Michez/interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/3_Michez/interaction_data.csv")
 #Check colnames and first 5 rows
 colnames(data)
 data %>% slice_head(n = 5)
@@ -44,8 +44,26 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
-                      Flower_count = NA, Units = NA, Comment = NA)
+#We need to create a list of lists too
+#Check levels of Site_id
+site_id_levels = levels(factor(data$Site_id))
+
+FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comment = NA_character_)
+
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
+#Split by Site_id
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+
 
 #Prepare metadata data ----
 
@@ -99,5 +117,5 @@ Michez <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Michez) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Michez, file="Data/Clean_data/3_Michez.rds")
+saveRDS(Michez, file="Data/2_Processed_data/3_Michez.rds")
 

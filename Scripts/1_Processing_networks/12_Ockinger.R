@@ -7,7 +7,7 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 #Load interaction data
-data = read_csv2("Data/Raw_data/12_Ockinger/Interaction_data.csv")
+data = read_csv2("Data/1_Raw_data/12_Ockinger/Interaction_data.csv")
 
 #Prepare interaction data with the same number of columns
 data = data %>% 
@@ -32,7 +32,7 @@ mutate(Temperature = NA) %>%
 mutate(Humidity = NA) 
 
 #Coordinates are in another dataset, load it
-coord = read_csv("Data/Raw_data/12_Ockinger/Coordinate_data.csv") %>% 
+coord = read_csv("Data/1_Raw_data/12_Ockinger/Coordinate_data.csv") %>% 
 rename(Latitude = Lat_WGS84) %>% 
 rename(Longitude = Long_WGS84) %>% 
 select(Name, site_ID, Latitude, Longitude)
@@ -42,7 +42,7 @@ data = left_join(data, coord, by = c("PlatsID" = "site_ID")) %>%
 rename(Site_id = Site_name) 
 
 #Habitat type can be added from this other dataset
-habitat = read_csv2("Data/Raw_data/12_Ockinger/Habitat_data.csv") %>% 
+habitat = read_csv2("Data/1_Raw_data/12_Ockinger/Habitat_data.csv") %>% 
 select(Category, PlatsID)
 
 #Bind datasets  
@@ -72,7 +72,7 @@ InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
 #I have aggregated the int data by site and I'm going to do the same here
-flower_count = read_csv("Data/Raw_data/12_Ockinger/Flower_count.csv")
+flower_count = read_csv("Data/1_Raw_data/12_Ockinger/Flower_count.csv")
 
 flower_count = flower_count %>% 
 rename(Plant_species = plantsp_abund) %>% 
@@ -141,5 +141,5 @@ names(ockinger) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 12
-saveRDS(ockinger, file="Data/Clean_data/12_Ockinger.rds") 
+saveRDS(ockinger, file="Data/2_Processed_data/12_Ockinger.rds") 
 

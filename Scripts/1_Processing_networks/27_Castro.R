@@ -10,7 +10,7 @@ library(stringr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/26_27_Castro/Interaction_data2.csv")
+data <- read_csv("Data/1_Raw_data/26_27_Castro/Interaction_data2.csv")
 
 #Check col names with template
 compare_variables(check_interaction_data, data)
@@ -30,9 +30,25 @@ data = change_str(data)
 InteractionData2 <- split(data, data$Habitat)
 
 #Prepare flower count data ----
-FlowerCount2 = tibble(Day = NA, Month = NA, Year = NA, Site_id = NA, Plant_species = NA,
-                      Flower_count = NA, Units = NA, Comment = NA)
+#We need to create a list of lists too
+#Check levels of Site_id
+site_id_levels = levels(factor(data$Habitat))
 
+FlowerCount2 = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
+                     Flower_count = NA, Units = NA, Comment = NA)
+
+FlowerCount2 = FlowerCount2 %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
+#Split by Site_id
+FlowerCount2 <- split(FlowerCount2, FlowerCount2$Site_id)
 
 #Select unique cases of plants and poll
 plant_single_cases2 = data %>% distinct(Plant_species)
@@ -75,10 +91,10 @@ E_mail = c("catarinasiopa@gmail.com", "saralopes2295@gmail.com ", "scastro@bot.u
 
 #Save data ----
 #Create metadata list
-Castro2 <- list(InteractionData2, list(FlowerCount2), Metadata2, Authorship2)
+Castro2 <- list(InteractionData2, FlowerCount2, Metadata2, Authorship2)
 names(Castro2) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Castro2, file="Data/Clean_data/27_Castro.rds")
+saveRDS(Castro2, file="Data/2_Processed_data/27_Castro.rds")
 
 

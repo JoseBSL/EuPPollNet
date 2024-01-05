@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/7_Scheper/Interaction_data.csv")
+data = read.csv("Data/1_Raw_data/7_Scheper/Interaction_data.csv")
 
 #Standardaze poll species
 data = data %>% 
@@ -51,10 +51,20 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/7_Scheper/Flower_count.csv")
+FlowerCount = read.csv("Data/1_Raw_data/7_Scheper/Flower_count.csv")
 
-FlowerCount <- split(flower_count, flower_count$Site_id)
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
@@ -107,5 +117,5 @@ names(Scheper) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 7
-saveRDS(Scheper, file="Data/Clean_data/7_Scheper.rds") 
+saveRDS(Scheper, file="Data/2_Processed_data/7_Scheper.rds") 
 

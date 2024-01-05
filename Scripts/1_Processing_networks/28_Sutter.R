@@ -15,7 +15,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/28_Sutter/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/28_Sutter/Interaction_data.csv")
 
 #Filter interactions greater than 0
 #And filter out insects caught flying
@@ -46,7 +46,7 @@ data = add_missing_variables(check_interaction_data, data)
 
 #Plant species are just codes at the moment
 #Load flower count data which has the correct species names 
-plant_names <- read_csv("Data/Raw_data/28_Sutter/Flower_count.csv") %>% 
+plant_names <- read_csv("Data/1_Raw_data/28_Sutter/Flower_count.csv") %>% 
 select(Plant_species, Species_abbreviation) %>% 
 rename(Plant_names_new = Plant_species, Plant_species = Species_abbreviation)
 
@@ -198,26 +198,26 @@ mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/28_Sutter/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/28_Sutter/Flower_count.csv")
 #Recode some factors
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
 Plant_species == "Taraxacum.campylodes" ~ "tar.off", 
 T ~ Species_abbreviation))
 #Recode Silene
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
 Plant_species == "Silene.flos.cuculi" ~ "sil.flo", 
 T ~ Species_abbreviation)) %>% 
 mutate(Plant_species = case_when(
 Plant_species == "Silene.flos.cuculi" ~ "Silene.flos-cuculi", 
 T ~ Plant_species))
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
 Plant_species == "Silene.latifolia" ~ "sil.lat", 
 T ~ Species_abbreviation)) 
 #Recode rosa spp
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
 Plant_species == "Rosa.spp" ~ "ros.can", 
 T ~ Species_abbreviation)) %>% 
@@ -225,18 +225,18 @@ mutate(Plant_species = case_when(
 Plant_species == "Rosa.spp" ~ "Rosa.canina", 
 T ~ Plant_species))
 #Recode spp
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
 Plant_species == "Reseda.lutea" ~ "res.lut", 
 T ~ Species_abbreviation))
 #Capsella.bursa.pastoris
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
 Plant_species == "Capsella.bursa.pastoris" ~ "cap.bur", 
 T ~ Species_abbreviation))
 
 #Rename variables accordingly
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 rename(Habitat = Focal_habitat) %>% 
 mutate(Habitat =  as.factor(Habitat))  %>% 
 mutate(Habitat = recode_factor(Habitat, "HA" = "Herbaceous areal 1",
@@ -252,10 +252,21 @@ rename(Comment = Inflorescence_unit_used)
 #Compare vars
 #compare_variables(check_flower_count_data, flower_count)
 
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+
 #Order data (just in case)
-FlowerCount = drop_variables(check_flower_count_data, flower_count) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -304,7 +315,7 @@ Sutter <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Sutter) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Sutter, file="Data/Clean_data/28_Sutter.rds")
+saveRDS(Sutter, file="Data/2_Processed_data/28_Sutter.rds")
 
 
 

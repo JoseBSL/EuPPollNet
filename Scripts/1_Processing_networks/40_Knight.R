@@ -15,7 +15,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/40_Knight/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/40_Knight/Interaction_data.csv")
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -34,14 +34,23 @@ InteractionData <- split(data, data$Site_id)
 #In this case there is a single lcoation 
 
 #Prepare flower count data ---- 
-flower_count <- read_csv("Data/Raw_data/40_Knight/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/40_Knight/Flower_count.csv")
 
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #No misisng vars
-
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 #Just one location again
 
 #Prepare metadata data ----
@@ -108,7 +117,7 @@ Knight <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Knight) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Knight, file="Data/Clean_data/40_Knight.rds")
+saveRDS(Knight, file="Data/2_Processed_data/40_Knight.rds")
 
 
 

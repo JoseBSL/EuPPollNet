@@ -15,7 +15,7 @@ library(tibble)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/29_30_31_STEP/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/29_30_31_STEP/Interaction_data.csv")
 
 #Check col names with template
 compare_variables(check_interaction_data, data)
@@ -39,17 +39,28 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/29_30_31_STEP/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/29_30_31_STEP/Flower_count.csv")
 
 #Compare vars
-compare_variables(check_flower_count_data, flower_count)
+compare_variables(check_flower_count_data, FlowerCount)
 #Select just Spain
-flower_count = flower_count %>% filter(country == "Spain")
+FlowerCount = FlowerCount %>% filter(country == "Spain")
 #Order data as template and drop variables
-flower_count = drop_variables(check_flower_count_data, flower_count) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls
@@ -99,7 +110,7 @@ Magrach <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Magrach) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 
 #Save data
-saveRDS(Magrach, file="Data/Clean_data/29_Magrach.rds")
+saveRDS(Magrach, file="Data/2_Processed_data/29_Magrach.rds")
 
 
 

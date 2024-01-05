@@ -16,7 +16,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/Raw_data/32_to_37_Russo/Interaction_data.csv")
+data <- read_csv("Data/1_Raw_data/32_to_37_Russo/Interaction_data.csv")
 
 #Divide col into cols
 levels(factor(data$Site_id))
@@ -99,15 +99,15 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-flower_count <- read_csv("Data/Raw_data/32_to_37_Russo/Flower_count.csv")
+FlowerCount <- read_csv("Data/1_Raw_data/32_to_37_Russo/Flower_count.csv")
 
 #Divide col into cols
-levels(factor(flower_count$Site_id))
-flower_count = flower_count %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
-levels(factor(flower_count$Name))
+levels(factor(FlowerCount$Site_id))
+FlowerCount = FlowerCount %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
+levels(factor(FlowerCount$Name))
 
 #Recode authors to just their surname
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
                             "EileenPower" = "Power",
                             "DaraStanley" = "Stanley",
@@ -116,7 +116,7 @@ mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
                             "CianWhite" = "White"))
 
 #Select first the one of Power
-flower_count = flower_count %>% 
+FlowerCount = FlowerCount %>% 
 filter(Name == "Power") %>% 
 mutate(Site_id = Site) %>% 
 mutate(Comment = "Also available FloralArea in mm2")
@@ -124,10 +124,21 @@ mutate(Comment = "Also available FloralArea in mm2")
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Order data as template
-flower_count = drop_variables(check_flower_count_data, flower_count) 
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -173,5 +184,5 @@ Power <- list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Power) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Power, file="Data/Clean_data/33_Power.rds")
+saveRDS(Power, file="Data/2_Processed_data/33_Power.rds")
 

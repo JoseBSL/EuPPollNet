@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/8_Biella/Interaction_data.csv")
+data = read.csv("Data/1_Raw_data/8_Biella/Interaction_data.csv")
 
 #Standardize data
 data = data %>% 
@@ -22,9 +22,20 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-flower_count = read.csv("Data/Raw_data/8_Biella/Flower_count.csv")
+FlowerCount = read.csv("Data/1_Raw_data/8_Biella/Flower_count.csv")
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 #Split data into different dataframes based on survey name
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
@@ -75,5 +86,5 @@ names(Biella) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 8
-saveRDS(Biella, file="Data/Clean_data/8_Biella.rds") 
+saveRDS(Biella, file="Data/2_Processed_data/8_Biella.rds") 
 

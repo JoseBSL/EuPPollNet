@@ -27,7 +27,7 @@ library(rgbif)
 #1) Load plant spp-----
 #--------------------------------------#
 #Read raw metaweb
-master = readRDS("Data/Processing/Building_metaweb.rds")
+master = readRDS("Data/Working_files/Building_metaweb.rds")
 #Load function to fix str of data
 source("Scripts/Processing/Functions/Change_str.R")
 

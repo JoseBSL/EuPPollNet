@@ -6,7 +6,7 @@ library(tidyverse)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data = read.csv("Data/Raw_data/9_Heleno/Interaction_data.csv")
+data = read.csv("Data/1_Raw_data/9_Heleno/Interaction_data.csv")
 
 data = data %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
@@ -23,7 +23,7 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount = read.csv("Data/Raw_data/9_Heleno/Flower_count.csv")
+FlowerCount = read.csv("Data/1_Raw_data/9_Heleno/Flower_count.csv")
 #Common excel mistake on id, fix
 FlowerCount$Site_id <- "Coimbra_2017"
 #Split by site, just for createing the listed name in this case
@@ -85,4 +85,4 @@ names(Heleno) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 9
-saveRDS(Heleno, file="Data/Clean_data/9_Heleno.rds") 
+saveRDS(Heleno, file="Data/2_Processed_data/9_Heleno.rds") 

@@ -82,7 +82,7 @@ names(InteractionData)[i] <- str_replace(levels(factor(data$Site_id)), "bartomeu
 }
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/Raw_data/1_Bartomeus/Flower_count.csv")
+flower_count <- read_csv("Data/1_Raw_data/1_Bartomeus/Flower_count.csv")
 #Prepare data
 date_flower_count <- flower_count %>% 
   separate(Date, sep="/", into = c("Day", "Month", "Year")) %>%
@@ -97,7 +97,18 @@ FlowerCount <- date_flower_count %>%
   rename(Flower_count = Flower_numer_in_transect) %>%
   select(Day, Month, Year, Site_id, Plant_species, Flower_count) %>%
   mutate(Units = "Flower_units") %>%
-  mutate(Comment = NA)
+  mutate(Comment = NA_character_)
+
+#Set common structure
+FlowerCount = FlowerCount %>% 
+mutate(Day = as.character(Day)) %>% 
+mutate(Month = as.character(Month)) %>% 
+mutate(Year = as.numeric(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
 
 #Split flower count by Site_id
 FlowerCount = split(FlowerCount, FlowerCount$Site_id)
@@ -168,5 +179,5 @@ Authorship <- tibble(
 Bartomeus <- list(InteractionData, FlowerCount, Metadata, Authorship)
 names(Bartomeus) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
-saveRDS(Bartomeus, file="Data/Clean_data/1_Bartomeus.rds")
+saveRDS(Bartomeus, file="Data/2_Processed_data/1_Bartomeus.rds")
 
