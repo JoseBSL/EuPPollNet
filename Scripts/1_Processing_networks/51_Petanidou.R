@@ -54,6 +54,31 @@ data = bind_rows(data_2spp_1, data_2spp_2, data_1spp)
 data = data %>% 
 mutate(Plant_species = word(Plant_species, 1,2))
 
+#There is one network (site_id) that has 2 coordinates
+#Unify for simplicity as they are practically identical
+#latitude
+latitude = data %>% 
+select(Site_id, Latitude)  %>% 
+filter(Site_id == "Poisses") %>% 
+pull(Latitude)
+#longitude
+longitude = data %>% 
+select(Site_id, Longitude)  %>% 
+filter(Site_id == "Poisses") %>% 
+pull(Longitude)
+#Add coordinates
+#1st latitude
+data = data %>% 
+mutate(Latitude = 
+  case_when(Site_id == "Poisses" ~ latitude[1],
+  TRUE ~ Latitude))
+#2nd longitude
+data = data %>% 
+mutate(Longitude = 
+  case_when(Site_id == "Poisses" ~ longitude[1],
+  TRUE ~ Longitude))
+
+
 #Unify structure of data
 data = change_str(data)
 

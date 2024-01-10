@@ -71,7 +71,7 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 #Create metadata ordered
 Metadata <- tibble(
   Doi = "https://doi.org/10.1111/ele.12657",
-  Dataset_description = "This is the Swedish dataset from the project
+  Dataset_description = "This is the English dataset from the project
 Status and Trends of European Pollinators (STEP)",
   Taxa_recorded = "Bees and syrphids",
   Sampling_year = "2012 and 2013",

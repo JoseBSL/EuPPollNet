@@ -96,6 +96,18 @@ mutate(Plant_species = str_replace(Plant_species, "_", " "))
 data = data %>% 
 mutate(Sampling_method = "Transect")
 
+#There are cases with 2 coordinates for unqie Site_id
+#Select only a single value
+coords = data %>% 
+group_by(Site_id) %>%   
+summarise(FirstLatitude = first(Latitude),
+          FirstLongitude = first(Longitude))
+#Conduct left join and add those columns
+data = left_join(data, coords) %>% 
+mutate(Latitude = FirstLatitude) %>% 
+mutate(Longitude = FirstLongitude) %>% 
+select(!c(FirstLatitude, FirstLongitude))
+
 #Unify structure of data
 data = change_str(data)
 

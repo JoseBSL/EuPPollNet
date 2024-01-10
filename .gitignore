@@ -11,4 +11,5 @@ Data/Species_taxonomy/Thesaurus/distribution.rds
 Data/Species_taxonomy/Thesaurus/classification.csv
 Data/Species_taxonomy/Thesaurus/GBIF_Europe.csv
 Data/Interactions_uncounted_uncompressed.rds
+Data/Working_files/Raster_Europe/
 

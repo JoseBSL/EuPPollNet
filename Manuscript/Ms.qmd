@@ -135,7 +135,7 @@ General introduction of how global change impacts plant-pollinator interactions
 
 Maybe expand on some drivers? Climate change, habitat fragmentation, agricultural intensification, urbanization, pollution, pesticides and species' invasions
 
-Highlight the relevance of large scale datasets
+Highlight the relevance of large scale datasets to understand biological phenomena
 
 2nd paragraph
 
@@ -159,12 +159,21 @@ Questions that we would like to answer:
 
 This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). 
 
+Explore habitat types! (I think I need to fix some)
+
+## Taxonomy
+
+All plant and pollinator species names were checked and standardised according to the most recent 
+
 
 ## Taxonomic coverage
 
 To calculate the completeness of the dataset 
 
 Check presentation from Herrera for cool graphs summarising patterns
+
+Phylo for plants and pollinators!
+
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
 

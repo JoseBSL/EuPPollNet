@@ -35,6 +35,18 @@ data = drop_variables(check_interaction_data, data)
 data = data %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#There are cases with 2 coordinates for unqie Site_id
+#Select only a single value
+coords = data %>% 
+group_by(Site_id) %>%   
+summarise(FirstLatitude = first(Latitude),
+          FirstLongitude = first(Longitude))
+#Conduct left join and add those columns
+data = left_join(data, coords) %>% 
+mutate(Latitude = FirstLatitude) %>% 
+mutate(Longitude = FirstLongitude) %>% 
+select(!c(FirstLatitude, FirstLongitude))
+
 #Unify structure of data
 data = change_str(data)
 

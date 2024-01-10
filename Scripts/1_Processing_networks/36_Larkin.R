@@ -98,6 +98,30 @@ mutate(Sampling_method = "Transect")
 data = data %>% 
 filter(!Year == 2018)
 
+#There is one network (site_id) that has 2 coordinates
+#Unify for simplicity as they are practically identical
+#latitude
+latitude = data %>% 
+select(Site_id, Latitude)  %>% 
+filter(Site_id == "GlencolumbkilleSouthCarronCountyClare") %>% 
+pull(Latitude)
+#longitude
+longitude = data %>% 
+select(Site_id, Longitude)  %>% 
+filter(Site_id == "GlencolumbkilleSouthCarronCountyClare") %>% 
+pull(Longitude)
+#Add coordinates
+#1st latitude
+data = data %>% 
+mutate(Latitude = 
+  case_when(Site_id == "GlencolumbkilleSouthCarronCountyClare" ~ latitude[1],
+  TRUE ~ Latitude))
+#2nd longitude
+data = data %>% 
+mutate(Longitude = 
+  case_when(Site_id == "GlencolumbkilleSouthCarronCountyClare" ~ longitude[1],
+  TRUE ~ Longitude))
+
 #Unify structure of data
 data = change_str(data)
 

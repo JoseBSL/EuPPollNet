@@ -50,6 +50,14 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 data = data %>% 
 mutate(Sampling_method = "Transect")
 
+#Latitude and longitude are swapped
+data = data %>% 
+mutate(Temp_longitude = Latitude) %>% 
+mutate(Temp_latitude = Longitude) %>% 
+mutate(Latitude = Temp_latitude) %>% 
+mutate(Longitude = Temp_longitude) %>% 
+select(-c(Temp_longitude, Temp_latitude))
+
 #Unify structure of data
 data = change_str(data)
 

@@ -32,6 +32,30 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Check number of sites
 levels(factor(data$Site_id))
 
+#There is one network (site_id) that has 2 coordinates
+#Unify for simplicity as they are practically identical
+#latitude
+latitude_cartaya = data %>% 
+select(Site_id, Latitude)  %>% 
+filter(Site_id == "Cartaya") %>% 
+pull(Latitude)
+#longitude
+longitude_cartaya = data %>% 
+select(Site_id, Longitude)  %>% 
+filter(Site_id == "Cartaya") %>% 
+pull(Longitude)
+#Add coordinates
+#1st latitude
+data = data %>% 
+mutate(Latitude = 
+  case_when(Site_id == "Cartaya" ~ latitude_cartaya[1],
+  TRUE ~ Latitude))
+#2nd longitude
+data = data %>% 
+mutate(Longitude = 
+  case_when(Site_id == "Cartaya" ~ longitude_cartaya[1],
+  TRUE ~ Longitude))
+
 #Unify structure of data
 data = change_str(data)
 
