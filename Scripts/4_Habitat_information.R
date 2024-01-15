@@ -1,4 +1,5 @@
-#Extract habitat type by coordinates
+#Extract habitat type by coordinates and create a "homogeneous"
+#sampling habitat classification across studies
 
 #Load data 
 data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
@@ -52,6 +53,11 @@ all = cbind(coords, land_cover)
 colnames(all)
 head(all)
 
+#Restore dataset (to raw conditions to run this)
+data = data %>% 
+select(!c(Corine_land_cover, SafeNet_habitat)) %>% 
+rename("Habitat" = "Authors_habitat")
+
 #Merge back to dataset with everything
 data1 = left_join(data, all, by=c("Longitude", "Latitude")) %>% 
 rename("Corine_land_cover" = "LABEL3")
@@ -66,12 +72,51 @@ mutate(Land_cover = Corine_land_cover)
 #We are going to standardise according to authors matching
 #Edits are conducted on Land_cover column
 
+#Create definitions here based on Corine 
+#and my personal view to make things easier:
 
-#Cropland: 
-#cultivars, margins or pastures embedded in an agricultural matrix
-#Pastures
-#Grassy patches with low height plants that tend to be grazed or
-#mowed in a diverse type of environments
+#1)Pastures: Any type of low growing plant 
+#community that is highly influenced by human disturbance.
+#For instance, agriculture, mowing, moderate to 
+#high grazing or urban environment. Note that this category also includes old pastures
+#with regrowth of woody vegetation.
+
+#2)Agricultural margings: Sides of crops that can include 
+#any type of vegetation from low growing plants to trees.
+
+#3)Agricultural land: Includes any type of crop and any 
+#type of vegetation growing within them. 
+
+#4)Semi-natural grassland: Low growing plant community with
+#relatively low disturbances but under low pressure such as seasonal
+#mowing or extensive grazing.
+
+#5)Ruderal vegetation: Plants growing on highly disturbed sites such as
+#road sides or mineral extraction sites.
+
+#6)Sclerophyllous vegetation: Any type of system with a dominant shrub community
+#adapted to drought. Typical of the Mediterranean region. Note, that we 
+#have include in this category also woodlands (open coniferous forest) where
+#the shrub community was the main focus of the study.
+
+#7) Green urban areas: Parks, private gardens or small pastures within an 
+#urban setting. For simplicity, we have also included botanical gardens.
+
+#8) Forest/woodland understory: Any plant community sampled under a wooded group of plants 
+#The forest could be embedded in an agricultural setting or in a fully
+#natural scenario. We have included here agro-forestry areas, open forest to dense forest but try to
+#exclude forest that contains typical sclerophyllous vegetation. 
+
+#9) Riparian vegetation: Plant communities growing on river margins. 
+
+#10): Low growing plant communities with little or none human disturbance. Often located
+#in high elevation areas within Europe.
+
+#11) Beaches, dunes, sands: Plant communities growing on sandy soil.
+
+#12) Moors and heathland: Low growing woody vegetation 
+#characteristic from low fertile soils near the coast or in alpine areas.
+
 
 
 #1_Bartomeus looks good!
@@ -114,7 +159,7 @@ mutate(Land_cover =
     Study_id == "5_Marini" & Network_id == "UNIPD02 AF" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AG" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AI" ~ "Pastures (vegetation matrix)",
-    Study_id == "5_Marini" & Network_id == "UNIPD02 AJ" ~ "Pastures (agricultural/vegetation matrix)",
+    Study_id == "5_Marini" & Network_id == "UNIPD02 AJ" ~ "Road side",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AK" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AL" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AM" ~ "Pastures (vegetation matrix)",
@@ -128,17 +173,17 @@ mutate(Land_cover =
     Study_id == "5_Marini" & Network_id == "UNIPD02 AU" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AV" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 AW" ~ "Pastures (agricultural matrix)",
-    Study_id == "5_Marini" & Network_id == "UNIPD02 AX" ~ "Pastures (urban/vegetation matrix)",
-    Study_id == "5_Marini" & Network_id == "UNIPD02 AZ" ~ "Pastures (agricultural matrix)",
+    Study_id == "5_Marini" & Network_id == "UNIPD02 AX" ~ "Riparian",
+    Study_id == "5_Marini" & Network_id == "UNIPD02 AZ" ~ "Road side",
     Study_id == "5_Marini" & Network_id == "UNIPD02 B" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 C" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 D" ~ "Pastures (vegetation matrix)",
-    Study_id == "5_Marini" & Network_id == "UNIPD02 E" ~ "Pastures (agricultural/urban/vegetation matrix)",
+    Study_id == "5_Marini" & Network_id == "UNIPD02 E" ~ "Riparian",
     Study_id == "5_Marini" & Network_id == "UNIPD02 F" ~ "Pastures (agricultural/urban matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 G" ~ "Pastures (agricultural/vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 H" ~ "Pastures (agricultural/urban/vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 I" ~ "Pastures (vegetation matrix)",
-    Study_id == "5_Marini" & Network_id == "UNIPD02 J" ~ "Pastures (agricultural/vegetation matrix)",
+    Study_id == "5_Marini" & Network_id == "UNIPD02 J" ~ "Riparian",
     Study_id == "5_Marini" & Network_id == "UNIPD02 K" ~ "Pastures (agricultural/vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 L" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 M" ~ "Pastures (agricultural/vegetation matrix)",
@@ -154,7 +199,7 @@ mutate(Land_cover =
     Study_id == "5_Marini" & Network_id == "UNIPD02 W" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 X" ~ "Pastures (vegetation matrix)",
     Study_id == "5_Marini" & Network_id == "UNIPD02 Y" ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "5_Marini" & Network_id == "UNIPD02 Z" ~ "Pastures (agricultural/vegetation matrix)",
+    Study_id == "5_Marini" & Network_id == "UNIPD02 Z" ~ "Riparian",
 
         TRUE ~ Land_cover))
 
@@ -211,14 +256,14 @@ habitat = habitat %>%
 habitat = habitat %>% 
 mutate(Land_cover = 
   case_when(
-   Study_id == "11_Clough" & Network_id == "ASK_2020" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "ASK_2021" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "DAL_2020" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "DAL_2021" ~ "Pastures (agricultural/vegetation matrix)",
+   Study_id == "11_Clough" & Network_id == "ASK_2020" ~ "Semi-natural grassland",
+   Study_id == "11_Clough" & Network_id == "ASK_2021" ~ "Semi-natural grassland",
+   Study_id == "11_Clough" & Network_id == "DAL_2020" ~ "Semi-natural grassland",
+   Study_id == "11_Clough" & Network_id == "DAL_2021" ~ "Semi-natural grassland",
    Study_id == "11_Clough" & Network_id == "GLA_2020" ~ "Pastures (agricultural/vegetation matrix)",
    Study_id == "11_Clough" & Network_id == "GLA_2021" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "GYL_2020" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "GYL_2021" ~ "Pastures (agricultural/vegetation matrix)",
+   Study_id == "11_Clough" & Network_id == "GYL_2020" ~ "Semi-natural grassland",
+   Study_id == "11_Clough" & Network_id == "GYL_2021" ~ "Semi-natural grassland",
    Study_id == "11_Clough" & Network_id == "HAM_2020" ~ "Pastures (agricultural matrix)",
    Study_id == "11_Clough" & Network_id == "HAM_2021" ~ "Pastures (agricultural matrix)",
    Study_id == "11_Clough" & Network_id == "HAR_2020" ~ "Pastures (agricultural matrix)",
@@ -229,8 +274,8 @@ mutate(Land_cover =
    Study_id == "11_Clough" & Network_id == "KAG_2021" ~ "Pastures (agricultural matrix)",
    Study_id == "11_Clough" & Network_id == "KAR_2020" ~ "Pastures (agricultural/vegetation matrix)",
    Study_id == "11_Clough" & Network_id == "KAR_2021" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "KOM_2020" ~ "Pastures (agricultural/vegetation matrix)",
-   Study_id == "11_Clough" & Network_id == "KOM_2021" ~ "Pastures (agricultural/vegetation matrix)",
+   Study_id == "11_Clough" & Network_id == "KOM_2020" ~ "Semi-natural grassland",
+   Study_id == "11_Clough" & Network_id == "KOM_2021" ~ "Semi-natural grassland",
    Study_id == "11_Clough" & Network_id == "LOB_2020" ~ "Pastures (agricultural matrix)",
    Study_id == "11_Clough" & Network_id == "LOB_2021" ~ "Pastures (agricultural matrix)",
    Study_id == "11_Clough" & Network_id == "LYB_2020" ~ "Pastures (agricultural matrix)",
@@ -259,13 +304,13 @@ distinct(Network_id) %>% pull()
 habitat = habitat %>% 
 mutate(Land_cover = 
   case_when(
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[1] ~ "Pastures (agricultural/vegetation matrix)",
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[2] ~ "Pastures (agricultural/vegetation matrix)",
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[3] ~ "Pastures (agricultural/vegetation matrix)",
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[4] ~ "Pastures (agricultural/vegetation matrix)",
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[5] ~ "Pastures (vegetation matrix)",
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[6] ~ "Pastures (agricultural/vegetation matrix)",
-  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[7] ~ "Pastures (agricultural/vegetation matrix)",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[1] ~ "Semi-natural grassland",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[2] ~ "Semi-natural grassland",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[3] ~ "Semi-natural grassland",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[4] ~ "Semi-natural grassland",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[5] ~ "Semi-natural grassland",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[6] ~ "Semi-natural grassland",
+  Study_id == "12_Ockinger" & Network_id == ockinger_habitats[7] ~ "Semi-natural grassland",
   Study_id == "12_Ockinger" & Network_id == ockinger_habitats[8] ~ "Pastures (agricultural/vegetation matrix)",
   Study_id == "12_Ockinger" & Network_id == ockinger_habitats[9] ~ "Pastures (agricultural/vegetation matrix)",
   Study_id == "12_Ockinger" & Network_id == ockinger_habitats[10] ~ "Pastures (agricultural/vegetation matrix)",
@@ -299,6 +344,10 @@ mutate(Land_cover =
   Study_id == "12_Ockinger" & Network_id == ockinger_habitats[37] ~ "Pastures (agricultural/vegetation matrix)",
   Study_id == "12_Ockinger" & Network_id == ockinger_habitats[38] ~ "Pastures (agricultural/vegetation matrix)",
             TRUE ~ Land_cover))
+
+#Ahlezons_hage
+
+
 #13_Karise (Agricultural land, author information)
 habitat = habitat %>% 
 mutate(Land_cover = 
@@ -323,19 +372,19 @@ distinct(Network_id) %>% pull()
 habitat = habitat %>% 
 mutate(Land_cover = 
   case_when(
-    Study_id == "16_Manincor" & Network_id == manincor_habitats[1] ~ "Natural grasslands",
-    Study_id == "16_Manincor" & Network_id == manincor_habitats[2] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "16_Manincor" & Network_id == manincor_habitats[3] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "16_Manincor" & Network_id == manincor_habitats[4] ~ "Natural grasslands",
-    Study_id == "16_Manincor" & Network_id == manincor_habitats[5] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "16_Manincor" & Network_id == manincor_habitats[6] ~ "Pastures (agricultural/vegetation matrix)",
+    Study_id == "16_Manincor" & Network_id == manincor_habitats[1] ~ "Semi-natural grassland",
+    Study_id == "16_Manincor" & Network_id == manincor_habitats[2] ~ "Semi-natural grassland",
+    Study_id == "16_Manincor" & Network_id == manincor_habitats[3] ~ "Semi-natural grassland",
+    Study_id == "16_Manincor" & Network_id == manincor_habitats[4] ~ "Semi-natural grassland",
+    Study_id == "16_Manincor" & Network_id == manincor_habitats[5] ~ "Semi-natural grassland",
+    Study_id == "16_Manincor" & Network_id == manincor_habitats[6] ~ "Semi-natural grassland",
 
     TRUE ~ Land_cover))
 
 #17_Fisogni (Grasslands)
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "17_Fisogni" ~ "Pastures (vegetation matrix)",
+  case_when(Study_id == "17_Fisogni" ~ "Transitional woodland-shrub",
     TRUE ~ Land_cover))
 
 
@@ -434,7 +483,13 @@ mutate(Land_cover =
 habitat = habitat %>% 
 mutate(Land_cover = 
   case_when(Study_id == "31_Roberts" ~ "Pastures (agricultural/vegetation matrix)",
+    TRUE ~ Land_cover)) %>% 
+mutate(Land_cover = 
+  case_when(
+    Study_id == "31_Roberts" & Network_id == "Chamberlain" ~ "Agricultural margins",
+    Study_id == "31_Roberts" & Network_id == "Hunt" ~ "Semi-natural grassland",
     TRUE ~ Land_cover))
+
 
 #32_ORourke
 
@@ -777,7 +832,7 @@ mutate(Land_cover =
   case_when(
     Study_id == "50_Hervias-Parejo" & Habitat == hervias_parejo_habitats[1] ~ "Beaches, dunes, sands",
     Study_id == "50_Hervias-Parejo" & Habitat == hervias_parejo_habitats[2] ~ "Sclerophyllous vegetation",
-    Study_id == "50_Hervias-Parejo" & Habitat == hervias_parejo_habitats[3] ~ "Agro-forestry areas",
+    Study_id == "50_Hervias-Parejo" & Habitat == hervias_parejo_habitats[3] ~ "Sclerophyllous vegetation",
     TRUE ~ Land_cover))  
 
 #51_Petanidou
@@ -791,14 +846,47 @@ TRUE ~ Land_cover))
 #Rename coniferous forest to forest
 habitat = habitat %>% 
 mutate(Land_cover = recode_factor(Land_cover,  
-              "Coniferous forest" = "Forest",
-              "Open forest understory" = "Sclerophyllous vegetation" ))
+              "Coniferous forest" = "Forest/woodland",
+              "Open forest understory" = "Sclerophyllous vegetation",
+              "Pastures (vegetation matrix)" = "Semi-natural grassland",
+              "Pastures (agricultural/vegetation matrix)" = "Pastures",
+              "Pastures (agricultural matrix)" = "Pastures",
+              "Pastures (urban/vegetation matrix)" = "Pastures",
+               "Pastures (agricultural/urban/vegetation matrix)" = "Pastures",
+              "Pastures (agricultural/urban matrix)" = "Pastures",
+              "Road side" = "Ruderal vegetation",
+              "Mineral extraction sites" = "Ruderal vegetation",
+               "Cropland" = "Agricultural land",
+               "Botanical garden" = "Green urban areas",
+              "Agro-forestry areas" = "Forest/woodland",
+              "Forest" = "Forest/woodland",
+              "Transitional woodland-shrub" = "Forest/woodland"))
 
 #Check levels
 levels(factor(habitat$Land_cover))
+
+
+studies = c("12_Ockinger", "19_Jauker",
+            )
+pasture = habitat %>% 
+filter(SafeNet_habitat == "Pastures") %>% 
+study
 
 library(forcats)
 ggplot(habitat, aes(fct_infreq(Land_cover))) +
 geom_bar(fill = "gray20") +
 theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust=1)) +
-ylab("Number of sites")
+ylab("Number of networks") +
+xlab(NULL)
+
+
+#Now rename cols and organise the dataset before saving it
+habitat = habitat %>% 
+rename("Authors_habitat" = "Habitat",
+        "SafeNet_habitat" = "Land_cover") %>% 
+select(Study_id, Network_id, Authors_habitat, 
+       Corine_land_cover, SafeNet_habitat, Latitude,
+       Longitude)
+
+#Save data
+saveRDS(habitat, "Data/Working_files/Habitat.rds")

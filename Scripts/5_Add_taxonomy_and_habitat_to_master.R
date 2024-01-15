@@ -1,17 +1,25 @@
 #-------------------------------------------------------#
 #Read and incorporate plant and pollinator names in master
+#Also incorporate 
 #-------------------------------------------------------#
 
 library(dplyr)
 library(tidyr)
 
 #----------------------
-#Read taxonomic data
+#Read taxonomic and habitat data
 #----------------------
 plant_taxo = readRDS("Data/Species_taxonomy/Plant_taxonomy.rds")
 poll_taxo = readRDS("Data/Species_taxonomy/Pollinator_taxonomy.rds")
+habitat = readRDS("Data/Working_files/habitat.rds")
+
 #Read master file
 master = readRDS("Data/Working_files/Building_metaweb.rds")
+
+#----------------------
+#Add taxonomic data
+#----------------------
+
 #Check if the cols are the same
 colnames(plant_taxo) == colnames(poll_taxo)
 #check cols
@@ -43,6 +51,28 @@ data1 = data1 %>%
 filter(!Pollinator_accepted_name == "Unknown") %>% 
 filter(!Plant_accepted_name == "Unknown")
 
+#----------------------
+#Add habitat data
+#----------------------
+#Rename col before merging
+data1 = data1 %>% 
+rename("Authors_habitat" = "Habitat")
+
+#Left_join
+data1 = left_join(data1, habitat,by = join_by(Study_id, Network_id, Latitude,
+Longitude, Authors_habitat))
+
+#Reorganise structure of data before saving
+colnames(data1)
+
+data1 = data1 %>% 
+relocate(Corine_land_cover, .after = Authors_habitat) %>% 
+relocate(SafeNet_habitat, .after = Corine_land_cover)
+
+#----------------------
+#Save data
+#----------------------
+
 #Save data
 saveRDS(data1, "Data/3_Final_data/Interactions.rds")
 
@@ -52,9 +82,6 @@ data2 = data1 %>%
 uncount(Interaction) %>% 
 mutate(Interaction = 1)
 
-#----------------------
-#Save data
-#----------------------
 #Keep all cols for now
 saveRDS(data2, "Data/3_Final_data/Interactions_uncounted.rds")
 
