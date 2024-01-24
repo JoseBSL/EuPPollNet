@@ -8,7 +8,11 @@ format:
         \usepackage{lscape}
         \newcommand{\blandscape}{\begin{landscape}}
         \newcommand{\elandscape}{\end{landscape}}
+        \usepackage{caption}
+        \captionsetup[figure]{labelformat=empty}
 ---
+
+
 
 ```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
 library(dplyr) #For handling fata 
@@ -21,14 +25,14 @@ library(scales) #For plotting (decimals on axes)
 library(lubridate) #To operate with dates
 library(tidyr) #Reshape data (wide format)
 library(stringr) #Fix/modify strings
-
+library(forcats)
 
 ```
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
 #Print number of countries
-data = readRDS("../Data/Interactions_uncounted.rds")
+data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
 #Country number
 country_number = data %>% 
 select(Country) %>% 
@@ -177,8 +181,7 @@ Phylo for plants and pollinators!
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
 
-#Load data
-data = readRDS("../Data/Interactions_uncounted.rds")
+#Load data (done it in previous chunk)
 
 #Prepare coordinates
 for_plotting = data %>% 
@@ -254,7 +257,7 @@ all_data = bind_rows(plant_data2, poll_data2)
 #Try to plot both together (same plot)
 map = ggplot(countries) +
 geom_sf(fill="floralwhite",color = "black", 
-        alpha = 1,linewidth=0.1) + 
+        alpha = 1,linewidth=0.01) + 
 geom_star(data = all_data, alpha=1,aes(x= Longitude, y=Latitude,
            size=Counts, starshape = Group, color= Group))+  
 coord_sf(crs = st_crs(3035), default_crs = st_crs(4326),
@@ -344,7 +347,7 @@ ggtitle("Pollinators")+
 geom_vline(xintercept = quantile_50, linetype="dashed", 
 color = "black", size=0.25) + 
 annotate(geom="text", x=1285, y=0.83, label="50th percentile",          color="black", size = 1.5) +
-annotate(geom="text", x=20, y=0.88, label=most_common_poll[1],         color="black",  fontface = 'italic', size = 1.5)+
+annotate(geom="text", x=20, y=0.89, label=most_common_poll[1],         color="black",  fontface = 'italic', size = 1.5)+
 scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
 annotate(geom="text", x=-500, y=1.15, label="(b)",color="black", size = 3.5) +
 coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, max(poll_spread$Percent_total)), clip="off")
@@ -396,7 +399,7 @@ ggtitle("Plants") +
 geom_vline(xintercept = quantile_50, linetype="dashed", 
           color = "black", size=0.25) + 
 annotate(geom="text", x=835, y=0.7, label="50th percentile",color="black", size = 1.5) + 
-annotate(geom="text", x=20, y=0.75, label=most_common_plant[1]
+annotate(geom="text", x=20, y=0.73, label=most_common_plant[1]
       ,color="black",  fontface = 'italic', size = 1.5)+
 annotate(geom="text", x=20, y=-0.08, label="Common spp."
       ,color="black",  size = 1.5) +
@@ -414,6 +417,140 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.45, 1))
 ```
 
 
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="100%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=4, fig.height=4}
+#Load data (done it in earlier chunks)
+#Select cols of interest
+data1 = data %>% 
+select(Study_id, Network_id, Authors_habitat,
+  Corine_land_cover, SafeNet_habitat, Bioregion,
+  Latitude, Longitude, Day, Month, Year, Plant_rank,
+  Plant_status, Plant_matchtype, Plant_accepted_name,Plant_order,
+  Pollinator_rank, Pollinator_status, Pollinator_matchtype,
+  Pollinator_accepted_name, Pollinator_order, Interaction)
+
+#Prepare orders for filtering
+main_orders = c("Hymenoptera", "Lepidoptera", "Coleoptera", "Diptera")
+
+#Check number of studies by habitat
+habitat = data %>% 
+select(Study_id, SafeNet_habitat) %>% 
+distinct() %>%  
+group_by(SafeNet_habitat) %>% 
+summarise(Habitat_count = n()) 
+#Check number of studies by bioregion
+bioregion = data %>% 
+select(Study_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) 
+#Check pols by habitat
+pollinator_percent = data1 %>%
+group_by(SafeNet_habitat, Pollinator_order) %>%
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+summarise(count = n()) %>%
+group_by(SafeNet_habitat) %>%
+mutate(Proportion = count/sum(count)) %>%
+select(-count) 
+#Check pols by bioregion
+pollinator_percent_bio = data1 %>%
+group_by(Bioregion, Pollinator_order) %>%
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+summarise(count = n()) %>%
+group_by(Bioregion) %>%
+mutate(Proportion = count/sum(count)) %>%
+select(-count) 
+#Preparing datasets for horizontal plot
+a1 = habitat %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat = SafeNet_habitat) %>% 
+rename(Count = Habitat_count)
+
+b1 = bioregion %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat = Bioregion) %>% 
+rename(Count = Bioregion_count)
+
+#Bind datasets
+c1 = bind_rows(a1,b1)
+
+#Create datasets and rename cols
+a2 = pollinator_percent_bio %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat = Bioregion) 
+
+b2 = pollinator_percent %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat = SafeNet_habitat)
+#Bind rows
+c2 = bind_rows(a2, b2) 
+
+#Prepare to set ordered labels
+l2 = c2 %>% 
+filter(Pollinator_order == "Hymenoptera") %>% 
+arrange((Proportion)) %>% 
+pull(Habitat)
+#Set order of labels
+c2$Habitat = factor(c2$Habitat, levels = l2)
+
+#Set the right order of labels
+c2$Pollinator_order = factor(c2$Pollinator_order, levels = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera"))
+
+
+p1 = ggplot(c2, 
+aes(fill=Pollinator_order, y=Proportion, x=Habitat)) + 
+geom_bar(position = position_stack(reverse = TRUE), stat="identity")+
+theme_bw() +
+theme(legend.position = "bottom",
+      plot.margin=unit(c(0,0,0,0), "mm"),
+      legend.text = element_text(size=6),
+      legend.key.size = unit(2, "mm"),
+      legend.spacing.y = unit(0.1, "cm"),
+       legend.box.spacing = unit(0, "pt"),
+      axis.title = element_text(face = "bold", size = 8),
+      axis.text = element_text(size=6)) +
+xlab(NULL) +
+theme(strip.text.x = element_text(size = 12, face = "bold"),
+    strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid")) +
+scale_fill_manual(values = c("#ffd67a","skyblue", "lightpink2", "tomato3"),
+                  name = NULL) +
+coord_flip(expand = FALSE) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
+guides(fill=guide_legend(nrow=2,byrow=TRUE))
+
+
+#Unify labels
+c1$Habitat = factor(c1$Habitat, levels = l2)
+#Create barplot on the side
+p2 =ggplot(c1, aes(Habitat, Count)) +
+geom_col(fill = "black",width = 0.9) +
+theme_light() +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+      axis.ticks.y = element_blank(), 
+  axis.text.y = element_blank(), 
+      strip.text.x = element_text(size=12),
+      strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid"),
+  axis.title = element_text(face = "bold", size = 8),
+axis.text = element_text(size=6)) +
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(),
+panel.border = element_blank(),
+axis.line = element_line(color = 'black')) +
+xlab(NULL) +
+ylab("Number of studies")+
+ylim(0, 30) + 
+theme(legend.position = "none")+
+coord_flip(expand = F) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y")
+
+#Plot panel
+p1 + p2 +plot_layout(widths = c(4,2))
+
+
+```
 # Results
 
 # Discussion

@@ -11,7 +11,8 @@ library(tidyr)
 #----------------------
 plant_taxo = readRDS("Data/Species_taxonomy/Plant_taxonomy.rds")
 poll_taxo = readRDS("Data/Species_taxonomy/Pollinator_taxonomy.rds")
-habitat = readRDS("Data/Working_files/habitat.rds")
+habitat = readRDS("Data/Working_files/Habitat.rds")
+bioregion = readRDS("Data/Working_files/Bioregion.rds")
 
 #Read master file
 master = readRDS("Data/Working_files/Building_metaweb.rds")
@@ -64,10 +65,18 @@ Longitude, Authors_habitat))
 
 #Reorganise structure of data before saving
 colnames(data1)
-
 data1 = data1 %>% 
 relocate(Corine_land_cover, .after = Authors_habitat) %>% 
 relocate(SafeNet_habitat, .after = Corine_land_cover)
+#----------------------
+#Add bioregion data
+#----------------------
+data1 = left_join(data1, bioregion, by = join_by(Study_id, Latitude,
+Longitude))
+#Relocate column
+data1 = data1 %>% 
+relocate(Bioregions, .after = SafeNet_habitat) %>% 
+rename(Bioregion = Bioregions)
 
 #----------------------
 #Save data
