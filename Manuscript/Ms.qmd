@@ -511,6 +511,7 @@ theme(legend.position = "bottom",
       axis.title = element_text(face = "bold", size = 8),
       axis.text = element_text(size=6)) +
 xlab(NULL) +
+scale_y_continuous(breaks = c(0.25, 0.5,0.75), labels = c("0.25", "0.5","0.75"))+
 theme(strip.text.x = element_text(size = 12, face = "bold"),
     strip.background = element_rect(
 color=NA, fill=NA, size=0.5, linetype="solid")) +
@@ -518,8 +519,7 @@ scale_fill_manual(values = c("#ffd67a","skyblue", "lightpink2", "tomato3"),
                   name = NULL) +
 coord_flip(expand = FALSE) +
 ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
-guides(fill=guide_legend(nrow=2,byrow=TRUE))
-
+guides(fill=guide_legend(nrow=2,byrow=TRUE)) 
 
 #Unify labels
 c1$Habitat = factor(c1$Habitat, levels = l2)
@@ -539,9 +539,9 @@ theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 panel.background = element_blank(),
 panel.border = element_blank(),
 axis.line = element_line(color = 'black')) +
+scale_y_continuous(breaks = c(0, 10,20), labels = c("0", "10","20"), limits = c(0,30))+
 xlab(NULL) +
 ylab("Number of studies")+
-ylim(0, 30) + 
 theme(legend.position = "none")+
 coord_flip(expand = F) +
 ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y")
