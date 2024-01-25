@@ -30,14 +30,14 @@ data = data %>%
 select(!c(usageKey, confidence, kingdomKey,
           phylumKey, classKey, orderKey, familyKey,
          genusKey,  speciesKey, acceptedUsageKey,
-         verbatim_index, verbatim_kingdom)) %>% 
+         verbatim_index)) %>% 
 rename(Fixed_name = verbatim_name,
        Scientific_name  = scientificName,
        Canonical_name  = canonicalName,
        Accepted_name = species) %>% 
 select(Fixed_name, rank, status, matchType, 
        Scientific_name, Canonical_name,
-       Accepted_name, kingdom, phylum, order, family,
+       Accepted_name, phylum, order, family,
        genus) %>% 
   rename_all(~str_to_title(.))
 }

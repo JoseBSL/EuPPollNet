@@ -584,7 +584,7 @@ mutate(Fixed = case_when(
   Mismatch == "Megachile strymonia" ~ "Hoplitis strymonia", #fix
   Mismatch == "Halictus tetrazonius-group" ~ "Halictus tetrazonius", #fix
   Mismatch == "Unknown (Melolonthidae) spec. 4" ~ "Melolonthidae", #fix
-
+  Fixed == "Chloromya" ~ "Chloromyia", #typo
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
 
@@ -713,7 +713,7 @@ select(Name) %>%
 distinct() %>%
 pull()
 #Download taxonomic info from GBIF
-matched_gbif = name_backbone_checklist(name= name, kingdom='animals')
+matched_gbif = name_backbone_checklist(name = name)
 #Organise structure of data
 matched_gbif1 = change_str1(matched_gbif)
 #Check species that haven't been found
@@ -730,7 +730,7 @@ select(Name) %>%
 distinct() %>%
 pull()
 #Download taxonomic info from GBIF
-unmatched_gbif = name_backbone_checklist(name= name1, kingdom='animals')
+unmatched_gbif = name_backbone_checklist(name= name1)
 #Rename and filter out exact matches
 unmatched_gbif1 = change_str1(unmatched_gbif)
 clean = c("EXACT", "FUZZY")

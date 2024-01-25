@@ -10,9 +10,8 @@ format:
         \newcommand{\elandscape}{\end{landscape}}
         \usepackage{caption}
         \captionsetup[figure]{labelformat=empty}
+bibliography: references.bib
 ---
-
-
 
 ```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
 library(dplyr) #For handling fata 
@@ -28,7 +27,6 @@ library(stringr) #Fix/modify strings
 library(forcats)
 
 ```
-
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
 #Print number of countries
@@ -126,7 +124,6 @@ summarise(mean(mean_sampling_days, na.rm = TRUE)) %>%
 pull()
 ```
 
-
 # Abstract
 
 Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present a dataset of plant-pollinator interactions at European level that consists of `r study_number` studies distributed across `r country_number` countries that comprise over a million of interactions between plants and pollinators. The dataset includes a total of `r pollinator_spp_number` pollinator and `r plant_spp_number` plant species that accounts approximately for 30% of each of the main pollinator groups (i.e., bees, syrphids and butterflies) and 5% of flowering plants that inhabit the European continent.
@@ -161,25 +158,25 @@ Questions that we would like to answer:
 
 ## Dataset description
 
-This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). 
+This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%).
 
-Explore habitat types! (I think I need to fix some)
+## Taxonomy and taxonomic coverage
 
-## Taxonomy
+All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For plants: (i) we initially verify exact matches with the GBIF species checklist; (ii) select unmatched cases and fix orthographic errors; (iii) retrieve again taxonomic information for those unmatched cases, evaluate accuracy of fuzzing matching and programmatically fix records that are still not found; (iv) finally, we used the World Flora Taxonomic Backbone (WFO, July, 07, 2022) as final filter of the taxonomic information -given that we use it to evaluate the approximate plant taxonomic coverage at European level- and corrected synonyms accordingly.
 
-All plant and pollinator species names were checked and standardised according to the most recent 
+For pollinators:
 
+Explain unresolved species names and that we keep old names on the dataset for transparency.
 
 ## Taxonomic coverage
 
-To calculate the completeness of the dataset 
+To calculate the completeness of the dataset
 
 Check presentation from Herrera for cool graphs summarising patterns
 
 Phylo for plants and pollinators!
 
-
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the SafeNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Percentage of shared occurrences of pollinators and plants across studies. Species on the left are highly shared across studies, while species on the right are found only in a few or a single study. As a reference, we have indicated the 50th percentile with a black dashed vertical line."}
 
 #Load data (done it in previous chunk)
 
@@ -416,7 +413,6 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.45, 1))
 
 ```
 
-
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="100%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=4, fig.height=4}
 #Load data (done it in earlier chunks)
 #Select cols of interest
@@ -551,6 +547,7 @@ p1 + p2 +plot_layout(widths = c(4,2))
 
 
 ```
+
 # Results
 
 # Discussion

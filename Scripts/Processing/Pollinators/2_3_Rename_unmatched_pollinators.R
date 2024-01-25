@@ -92,10 +92,7 @@ mutate(Matchtype = case_when(
    T ~ Matchtype)) %>% 
 mutate(Status = case_when(
    Fixed_name == "Symphyta" ~ "ACCEPTED",
-   T ~ Status)) %>% 
-mutate(Kingdom = case_when(
-   Fixed_name == "Symphyta" ~ "Animalia",
-   T ~ Kingdom))
+   T ~ Status)) 
 #Melitta
 unmatched_gbif1_not_found = 
 unmatched_gbif1_not_found %>% 
@@ -1618,10 +1615,7 @@ mutate(Rank = case_when(
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
    Fixed_name == "Zygoptera" ~ "EXACT",
-   T ~ Matchtype)) %>% 
-mutate(Kingdom = case_when(
-   Fixed_name == "Zygoptera" ~ "Animalia",
-   T ~ Kingdom))
+   T ~ Matchtype))
 
 #Zygoptera
 unmatched_gbif1_not_found = 
@@ -1696,8 +1690,5 @@ mutate(Rank = case_when(
    T ~ Rank)) %>% 
 mutate(Matchtype = case_when(
    Fixed_name == "Meria" ~ "EXACT",
-   T ~ Matchtype)) %>% 
-mutate(Kingdom = case_when(
-   Fixed_name == "Meria" ~ "Animalia",
-   T ~ Kingdom))
+   T ~ Matchtype))
 
