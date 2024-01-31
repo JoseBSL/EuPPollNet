@@ -401,19 +401,22 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.45, 1))
 ```
 
 
-## Taxonomy and taxonomic coverage
+## Taxonomic harmonization
 
-All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For plants: (i) we initially verify exact matches with the GBIF species checklist; (ii) select unmatched cases and fix orthographic errors; (iii) retrieve again taxonomic information for those unmatched cases, evaluate accuracy of fuzzing matching and programmatically fix records that are still not found; (iv) finally, we used the World Flora Taxonomic Backbone (WFO, July, 07, 2022) as final filter of the taxonomic information -given that we use it to evaluate the approximate plant taxonomic coverage at European level- and corrected synonyms accordingly.
+All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For transparency, we have included in the database the old species name, the new assigned name, and, if the species name is uncertain (e.g., species complex or species alike).
 
-For pollinators:
+For plants: (i) we initially verify exact matches with the GBIF species checklist; (ii) select unmatched cases and fix orthographic errors; (iii) retrieve again taxonomic information for those unmatched cases, evaluate accuracy of fuzzing matching and programmatically fix records that are still not found; (iv) finally, we used the World Flora Taxonomic Backbone [@govaerts2021\; WFO, July 7, 2022] as the ultimate filter for taxonomic information as we used it to calculate the plant taxonomic coverage of our database.
 
-Explain unresolved species names and that we keep old names on the dataset for transparency.
+For pollinators: (i) we first created a checklist of species names for the most representative pollinator groups at European level by combining the recently published checklists of bees [@ghisbain2023], syrphids [@kovcic2023] and butterflies [@wiemers2018]; (ii) then, we compared pollinator species names against the checklist and recovered some unmatched cases with restrictive fuzzy matching by using **stringdist** package [@van2014]; (iii) we programmatically fixed unmatched records when necessary and retrieved the taxonomic information for all species from GBIF; (iv) we fixed the non-found cases in the GBIF checklist and made sure that all species names from bees, syrphids and butterflies were named according to their respective species checklists.
+
+## Taxonomic coverage 
+
+To assess the completeness of plant and pollinator species in the SafeNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level.
 
 ## Habitat type and bioclimatic region
 
-To calculate the completeness of the dataset
+The different sites per study were classified with an habitat by the authors. As these habitats are not standardize across studies, we homogenized the habitat classification with the help of land cover information and visual checks on current satellite imagery. The land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Then, we checked the coordinate sites on Google Earth to double check that the categories that we are assigning after evaluating the author's habitat classification and the land cover classification are meaningful. However, this is a non fully objective process and we advise authors to revise this classification if they intend to rely on this field for their analyses. Moreover, we assigned each study site to a biogeographical region, which are areas with similar environmental conditions that harbor similar groups of species. We believe this could be a useful field for organizing the different studies given the different environmental conditions and pool of species. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and match with the different study site coordinates.
 
-Check presentation from Herrera for cool graphs summarising patterns
 
 Phylo for plants and pollinators!
 
