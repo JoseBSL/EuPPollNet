@@ -225,7 +225,7 @@ p2
 p1 +p2
 
 
-c2$Pollinator_order = factor(c$Pollinator_order, levels = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera"))
+c2$Pollinator_order = factor(c2$Pollinator_order, levels = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera"))
 
 
 p1 = ggplot(c2, 
@@ -299,3 +299,4 @@ aes(fill=Pollinator_order, y=Proportion, x=SafeNet_habitat)) +
 geom_bar(position="stack", stat="identity")+
 theme(axis.text.x = element_text(angle = 55, vjust = 1, hjust=1, size = 7)) +
 xlab(NULL)
+

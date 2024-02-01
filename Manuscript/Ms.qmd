@@ -415,12 +415,16 @@ To assess the completeness of plant and pollinator species in the SafeNet databa
 
 ## Habitat type and bioclimatic region
 
-The different sites per study were classified with an habitat by the authors. As these habitats are not standardize across studies, we homogenized the habitat classification with the help of land cover information and visual checks on current satellite imagery. The land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Then, we checked the coordinate sites on Google Earth to double check that the categories that we are assigning after evaluating the author's habitat classification and the land cover classification are meaningful. However, this is a non fully objective process and we advise authors to revise this classification if they intend to rely on this field for their analyses. Moreover, we assigned each study site to a biogeographical region, which are areas with similar environmental conditions that harbor similar groups of species. We believe this could be a useful field for organizing the different studies given the different environmental conditions and pool of species. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and match with the different study site coordinates.
+The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the SafeNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
 
 
-Phylo for plants and pollinators!
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=3.8, fig.height=3.8}
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=6, fig.height=8}
+
+
+#Read interaction data 
+data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
 #Load data (done it in earlier chunks)
 #Select cols of interest
 data1 = data %>% 
@@ -522,7 +526,9 @@ scale_fill_manual(values = c("#ffd67a","skyblue", "lightpink2", "tomato3"),
                   name = NULL) +
 coord_flip(expand = FALSE) +
 ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
-guides(fill=guide_legend(nrow=2,byrow=TRUE)) 
+guides(fill=guide_legend(nrow=2,byrow=TRUE)) +
+ggtitle("(a)") +
+theme(plot.title = element_text(size = 14 ,hjust = -0.25, vjust = -2.5))
 
 #Unify labels
 c1$Habitat = factor(c1$Habitat, levels = l2)
@@ -549,11 +555,46 @@ theme(legend.position = "none")+
 coord_flip(expand = F) +
 ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y")
 
+data2 = data %>%  select(Study_id, Year) %>% 
+distinct() %>% 
+group_by(Year) %>% 
+summarise(Counts = n())
+
+
+
+
+p3 = ggplot(data2, aes(Year, Counts)) +
+geom_col(fill = "gray10", width = 0.9) +
+theme_light() +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+  axis.title.y = element_text(face = "bold", size = 8, vjust = -1),
+  axis.title.x = element_text(face = "bold", size = 8),
+  axis.text.y = element_text(size = 6),
+  axis.text.x = element_text(size = 6,  angle = 90), 
+  strip.text.x = element_text(size=12),
+  strip.background = element_rect(
+  color="black", fill=NA, size=0.5, linetype="solid")) + 
+ylab("Number of studies") +
+coord_cartesian(expand = F, clip = "off") + 
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+  panel.background = element_blank(),
+  panel.border = element_rect(colour = "black", fill=NA, size=1)) +
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(),
+panel.border = element_blank(),
+axis.line = element_line(color = 'black')) +
+scale_y_continuous(breaks = c(0, 4,8,12), labels = c("0", "4","8", "12"), limits = c(0,12)) +
+scale_x_continuous(breaks = seq(min(data2$Year), max(data2$Year), by = 2), limits = c(min(data2$Year),max(data2$Year)))+
+ggtitle("(b)") +
+theme(plot.title = element_text(size = 14,hjust = -0.3, vjust = 2))
+
+a = plot_spacer() +  p3 + plot_spacer() + plot_layout(ncol=1, heights= c(9,10,1))
 #Plot panel
-p1 + p2 +plot_layout(widths = c(4,2))
+p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3) 
 
 
 ```
+
 
 
 \newpage 
@@ -573,3 +614,35 @@ p1 + p2 +plot_layout(widths = c(4,2))
 
 # References
 
+::: {#refs}
+:::
+
+# Supplementary material
+
+
+Create definitions here based on Corine 
+
+1)Pastures: Any type of low growing plant community that is highly influenced by human disturbance. For instance, agriculture, mowing, moderate to high grazing or urban environment. Note that this category also includes old pastures with regrowth of woody vegetation.
+
+2)Agricultural margings: Sides of crops that can include any type of vegetation from low growing plants to trees.
+
+3)Agricultural land: Includes any type of crop and any type of vegetation growing within them. 
+
+4)Semi-natural grassland: Low growing plant community with relatively low disturbances but under low pressure such as seasonal mowing or extensive grazing.
+
+5)Ruderal vegetation: Plants growing on highly disturbed sites such as road sides or mineral extraction sites.
+
+6)Sclerophyllous vegetation: Any type of system with a dominant shrub community adapted to drought. Typical of the Mediterranean region. Note, that we have include in this category also woodlands (open coniferous forest) where the shrub community was the main focus of the study.
+
+7) Green urban areas: Parks, private gardens or small pastures within an  urban setting. For simplicity, we have also included botanical gardens.
+
+8) Forest/woodland understory: Any plant community sampled under a wooded group of plants 
+The forest could be embedded in an agricultural setting or in a fully natural scenario. We have included here agro-forestry areas, open forest to dense forest but try to exclude forest that contains typical sclerophyllous vegetation. 
+
+9) Riparian vegetation: Plant communities growing on river margins. 
+
+10): Low growing plant communities with little or none human disturbance. Often located in high elevation areas within Europe.
+
+11) Beaches, dunes, sands: Plant communities growing on sandy soil.
+
+12) Moors and heathland: Low growing woody vegetation characteristic from low fertile soils near the coast or in alpine areas.
