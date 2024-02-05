@@ -34,19 +34,7 @@ phylo_output <- get_tree(sp_list = spp_list,
 #----------------------------#
 #1.3)Select spp abundances and interactions-----
 #----------------------------#
-#Create tibble with abundances
-plant_spp_abundance = data %>% 
-select(Plant_status, Plant_rank,Pollinator_accepted_name, Plant_accepted_name) %>% 
-filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
-filter(Plant_status == "ACCEPTED" & Plant_rank == "SPECIES") %>% 
-filter(!Plant_accepted_name =="Helianthus annuus") %>% 
-select(Plant_accepted_name) %>% 
-count(Plant_accepted_name) %>% 
-arrange(-n) %>% 
-rename(tip.label = Plant_accepted_name) %>% 
-mutate(tip.label = str_replace(tip.label, " ", "_"))
-
-#Top 20 plants with higher interactions
+#Interactions
 plant_spp_interactions = data %>% 
 filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
 filter(!Plant_accepted_name =="Helianthus annuus") %>% 
@@ -60,26 +48,12 @@ ungroup()
 #----------------------------#
 #1.4)Merge-----
 #----------------------------#
-#Merge abundance data and phylogenetic information
-spp_level_abundances <- data.frame(label=phylo_output$tip.label, var1=log(plant_spp_abundance$n))
-tree_abundances <- full_join(phylo_output, spp_level_abundances, by='label')
 #Merge interaction data and phylogenetic information
 spp_level_interactions <- data.frame(label=phylo_output$tip.label, var2=log(plant_spp_interactions$n))
 tree_interactions <- full_join(phylo_output, spp_level_interactions, by='label')
 #----------------------------#
 #1.5)Plot-----
 #----------------------------#
-#Visualize tree ABUNDANCE-CIRCULAR
-ggtree(tree_abundances, layout='circular',
-       ladderize = T, size=0.1) %<+% plant_spp_abundance  +
-#geom_text(aes(label=node), hjust=-.3)+ +
-geom_tippoint(aes(color=var1), size=1) +
-scale_color_gradientn(colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
-#Visualize tree ABUNDANCE-VERTICAL
-ggtree(tree_abundances) + 
-geom_tippoint(aes(colour=var1)) + 
-scale_color_gradientn(colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
-
 #Visualize tree INTERACTIONS-CIRCULAR
 ggtree(tree_interactions, layout='circular',
        ladderize = T, size=0.1) %<+% plant_spp_abundance  +
@@ -108,24 +82,15 @@ filter(!family %in% gymnos)
 #----------------------------#
 phylo_family <- get_tree(sp_list = spp_list_family,  
                          taxon = "plant")
+
 #----------------------------#
-#2.3)Select spp abundances-----
+#2.3)Select spp interactions-----
 #----------------------------#
 to_fix = tibble(species = phylo_family$tip.label) %>% 
+mutate(species = str_replace(species, "_", " ")) %>% 
 mutate(species = str_replace(species, "_", " "))
 to_fix1 = left_join(to_fix, spp_list_family)
 phylo_family$tip.label = to_fix1$family
-#Abundances
-plant_fam_abundance = data %>% 
-select(Plant_status, Plant_rank,Pollinator_accepted_name, Plant_accepted_name, Plant_family) %>% 
-filter(Plant_status == "ACCEPTED" & Plant_rank == "SPECIES") %>% 
-filter(!Plant_accepted_name =="Helianthus annuus") %>% 
-filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
-select(Plant_family) %>% 
-count(Plant_family) %>% 
-arrange(-n) %>% 
-rename(tip.label = Plant_family) %>% 
-filter(!tip.label %in% gymnos)
 
 #Interactions
 plant_fam_interactions = data %>% 
@@ -135,78 +100,50 @@ filter(Pollinator_accepted_name!= "Apis mellifera") %>%
 select(Plant_rank, Plant_status,Plant_family,Plant_accepted_name, Interaction) %>% 
 select(Plant_family, Interaction) %>% 
 group_by(Plant_family) %>% 
-summarise(n = as.integer(sum(Interaction))) %>% 
-ungroup() %>% 
-rename(tip.label = Plant_family) %>% 
-filter(!tip.label %in% gymnos)
+summarise(Family_interactions = as.integer(sum(Interaction))) %>% 
+ungroup() 
+
+#Get number of species per family
+plant_fam_species = data %>% 
+filter(Plant_status == "ACCEPTED" & Plant_rank == "SPECIES") %>% 
+filter(!Plant_accepted_name =="Helianthus annuus") %>% 
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+select(Plant_rank, Plant_status,Plant_family,Plant_accepted_name, Interaction) %>% 
+select(Plant_family, Plant_accepted_name) %>% 
+group_by(Plant_family) %>% 
+summarise(Family_species = log(n_distinct(Plant_accepted_name))) %>% 
+ungroup() 
 
 #----------------------------#
 #1.4)Merge-----
 #----------------------------#
-#Merge abundance data and phylogenetic information
-family_level_abundances <- data.frame(label=phylo_family$tip.label, var1=log(plant_fam_abundance$n))
-tree_family_abundances <- full_join(phylo_family, family_level_abundances, by='label')
 #Merge interaction data and phylogenetic information
-family_level_interactions <- data.frame(label=phylo_family$tip.label, var2=log(plant_fam_interactions$n))
-tree_family_interactions <- full_join(phylo_family, family_level_interactions, by='label')
+family_level = tibble(Plant_family=phylo_family$tip.label)
+
+family_level = left_join(family_level, plant_fam_interactions)  %>% 
+left_join(plant_fam_species) %>% 
+rename(label = Plant_family)
+                      
+tree_family_interactions <- full_join(phylo_family, family_level, by='label')
+
 #----------------------------#
 #1.5)Plot-----
 #----------------------------#
-#Visualize tree ABUNDANCES-CIRCULAR
-ggtree(tree_family_abundances, layout='circular') + 
-geom_tippoint(aes(colour=var1), size= 0.8) + 
-geom_tiplab(linetype='dashed', linesize=.05, 
-      size=1.75, color= "black", offset = 1, fontface=3)+
-scale_color_gradientn(name = "",colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
-#Visualize tree ABUNDANCES-VERTICAL
-ggtree(tree_family_abundances) + 
-geom_tippoint(aes(colour=var1), size= 0.8) + 
-geom_tiplab(linetype='dashed', linesize=.05, 
-      size=1.75, color= "black", offset = 1, fontface=3)+
-scale_color_gradientn(name = "",colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
 #Visualize tree INTERACTIONS-CIRCULAR
 ggtree(tree_family_interactions, layout='circular') + 
-geom_tippoint(aes(colour=var2), size= 0.8) + 
+geom_tippoint(aes(colour=Family_species), size= 0.8) + 
 geom_tiplab(linetype='dashed', linesize=.05, 
       size=1.75, color= "black", offset = 1, fontface=3)+
 scale_color_gradientn(name = "",colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
 #Visualize tree INTERACTIONS-VERTICAL
 ggtree(tree_family_interactions) + 
-geom_tippoint(aes(colour=var2), size= 0.8) + 
+geom_tippoint(aes(colour=Family_species), size= 0.8) + 
 geom_tiplab(linetype='dashed', linesize=.05, 
       size=1.75, color= "black", offset = 1, fontface=3)+
 scale_color_gradientn(name = "",colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
 
 
-#Quick check before the meeting
-#SPECIES LEVEL
-d = left_join(spp_level_abundances,spp_level_interactions)
-cor.test(d$var1,d$var2)
-library(ggpubr)
-ggscatter(d, x = "var1", y = "var2", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson") +
-xlab("Species abundances") + 
-ylab("Species interactions")
-
-#FAMILY LEVEL
-d = left_join(family_level_abundances,family_level_interactions)
-cor.test(d$var1,d$var2)
-library(ggpubr)
-ggscatter(d, x = "var1", y = "var2", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson") +
-xlab("Fam. abundance") + 
-ylab("Fam interactions")
 
 
-#TO CHECK
-#Convert phylogenetic tree into matrix
-A <- vcv.phylo(phylo_family)
-#Standardize to max value 1
-A_standardized <- A/max(A)
-#Add phylo column to dataset
-dat_analysis$phylo
-dat_analysis$phylo <- dat_analysis$Species_all
-str(dat_analysis)
+
 
