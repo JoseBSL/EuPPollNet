@@ -200,4 +200,13 @@ xlab("Fam. abundance") +
 ylab("Fam interactions")
 
 
+#TO CHECK
+#Convert phylogenetic tree into matrix
+A <- vcv.phylo(phylo_family)
+#Standardize to max value 1
+A_standardized <- A/max(A)
+#Add phylo column to dataset
+dat_analysis$phylo
+dat_analysis$phylo <- dat_analysis$Species_all
+str(dat_analysis)
 
