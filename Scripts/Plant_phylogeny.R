@@ -64,7 +64,7 @@ ungroup()
 spp_level_abundances <- data.frame(label=phylo_output$tip.label, var1=log(plant_spp_abundance$n))
 tree_abundances <- full_join(phylo_output, spp_level_abundances, by='label')
 #Merge interaction data and phylogenetic information
-spp_level_interactions <- data.frame(label=phylo_output$tip.label, var1=log(plant_spp_interactions$n))
+spp_level_interactions <- data.frame(label=phylo_output$tip.label, var2=log(plant_spp_interactions$n))
 tree_interactions <- full_join(phylo_output, spp_level_interactions, by='label')
 #----------------------------#
 #1.5)Plot-----
@@ -84,11 +84,11 @@ scale_color_gradientn(colours=c("red", 'orange', 'green', 'cyan', 'blue'))
 ggtree(tree_interactions, layout='circular',
        ladderize = T, size=0.1) %<+% plant_spp_abundance  +
 #geom_text(aes(label=node), hjust=-.3)+ +
-geom_tippoint(aes(color=var1), size=1) +
+geom_tippoint(aes(color=var2), size=1) +
 scale_color_gradientn(colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
 #Visualize tree INTERACTIONS-VERTICAL
 ggtree(tree_interactions) + 
-geom_tippoint(aes(colour=var1)) + 
+geom_tippoint(aes(colour=var2)) + 
 scale_color_gradientn(colours=c("red", 'orange', 'green', 'cyan', 'blue')) 
 
 #REPEAT PROCESS AT FAMILY LEVEL
@@ -179,10 +179,25 @@ scale_color_gradientn(name = "",colours=c("red", 'orange', 'green', 'cyan', 'blu
 
 
 #Quick check before the meeting
-d = left_join(family_level_abundances,family_level_interactions)
-
+#SPECIES LEVEL
+d = left_join(spp_level_abundances,spp_level_interactions)
 cor.test(d$var1,d$var2)
 library(ggpubr)
 ggscatter(d, x = "var1", y = "var2", 
           add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson")
+          cor.coef = TRUE, cor.method = "pearson") +
+xlab("Species abundances") + 
+ylab("Species interactions")
+
+#FAMILY LEVEL
+d = left_join(family_level_abundances,family_level_interactions)
+cor.test(d$var1,d$var2)
+library(ggpubr)
+ggscatter(d, x = "var1", y = "var2", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson") +
+xlab("Fam. abundance") + 
+ylab("Fam interactions")
+
+
+
