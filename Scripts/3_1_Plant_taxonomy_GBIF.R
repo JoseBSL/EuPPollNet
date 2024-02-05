@@ -149,7 +149,7 @@ mutate(Fixed_name = case_when(
   Fixed_name == "Rosa pimpernellifolia" ~ "Rosa spinosissima", #synonym
   Fixed_name == "Sysimbrium officinale" ~ "Sisymbrium officinale", #typo
   Fixed_name == "Escallonia macrantha" ~ "Escallonia rubra", #synonym
-  Fixed_name == "Petunia xatkinsiana" ~ "Petunia ×atkinsiana", #typo
+  Fixed_name == "Petunia xatkinsiana" ~ "Petunia hybrida", #synonym
   Fixed_name == "Malus pumila" ~ "Malus domestica", #synonym
   Fixed_name == "Weigela kosteriana_variegata" ~ "Weigela", #unknown, fix to higherank...
   Fixed_name == "Polygonum lapathifolium" ~ "Persicaria lapathifolia", #synonym
@@ -414,6 +414,13 @@ mutate(Genus =
     if_else(Genus == word(Plant_data1$Accepted_name, 1), 
             Genus, word(Plant_data1$Accepted_name, 1)))
 
+#Some genera missing, recover form species names when rank genus
+Plant_data1 = Plant_data1 %>% 
+mutate(Genus = 
+if_else(is.na(Genus) & Rank =="GENUS", 
+            word(Plant_data1$Accepted_name, 1), Genus))
+
+
 #Similar case
 #Genus level records are not added as accepted
 Plant_data1 = Plant_data1 %>% 
@@ -421,12 +428,20 @@ mutate(Accepted_name =
 if_else(is.na(Accepted_name) & Matchtype== "EXACT" & Rank =="GENUS", 
             Canonical_name, Accepted_name))
 
-
 #Keep subspecies rank as species
 Plant_data1 = Plant_data1 %>% 
 mutate(Rank = case_when(Rank == "SUBSPECIES" ~ "SPECIES",
                         T ~ Rank))
 
+#Add for Thesium genus, Santalaceae as accepted family
+Plant_data1 = Plant_data1 %>% 
+mutate(Family = case_when(Genus == "Thesium" ~ "Santalaceae",
+                        T ~ Family))
+
+#Add for Heliotropium genus, Boraginacea as accepted family
+Plant_data1 = Plant_data1 %>% 
+mutate(Family = case_when(Genus == "Heliotropium" ~ "Boraginaceae",
+                        T ~ Family))
 #--------------------------------------#
 #8) Save pollinator taxonomy-------
 #--------------------------------------#
