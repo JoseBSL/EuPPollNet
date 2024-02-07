@@ -151,7 +151,9 @@ p1 = p + new_scale_fill() +
                     pwidth=0.38, 
                     orientation="y", 
                     stat="identity", 
-                    color = "black") 
+                    color = "black") +
+theme(legend.margin=margin(0,0,0,0),
+        legend.box.margin=margin(-10,-10,-10,-10))
 
 #----------------------------#
 #PREPARE GRAPH WITH FAMILY COVERAGE-----
@@ -484,9 +486,12 @@ rename(Family_names = family,
    Spp_per_family = Family_species) %>% 
 mutate(Group = "SafeNet")
 
-
 c = bind_rows(a,b)
 
+#Save data to plot it in markdown file
+saveRDS(c, "Data/Working_files/Figures/data_figure3b.rds")
+saveRDS(tree_family_interactions, "Data/Working_files/Figures/data_figure3a1.rds")
+saveRDS(plant_fam_interactions, "Data/Working_files/Figures/data_figure3a2.rds")
 
 library(ggplot2)
 p2 = ggplot() + 
@@ -494,15 +499,43 @@ geom_col(data = c,
   aes(x = reorder(Family_names, Spp_per_family), 
   y = log(Spp_per_family), fill = Group), position=position_dodge(0.1),width=1) +
 xlab(NULL) +
-ylab("log(Species per family)") +
+ylab("log(Species)") +
 theme_bw() +
 theme(axis.text.y = element_text(size = 8, face = "bold"),
       panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
 coord_flip(expand = F) +
-scale_fill_manual(values = c("black", "goldenrod2"))
+scale_fill_manual(values = c("black", "cyan4")) +
+  theme(plot.margin = margin(-10, 0, -10, -10, "pt")) +
+ggtitle("b)")
+
+
+
+
+# The circular layout tree.
+p <- ggtree(tree_family_interactions, layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
+geom_tippoint(aes(size= Family_species), colour='cyan4') +
+geom_tiplab(linetype='dashed', linesize=.05, 
+      size=1.75, color= "black", offset = -36, fontface=2) +
+labs("log(Species)")+
+scale_size(name = "log(Species)") +
+ggtitle("a)") +
+ theme(plot.title = element_text(vjust = -30, hjust = 0.1))
+library(ggnewscale)
+library(ggtreeExtra)
+
+p1 = p + new_scale_fill() +
+         geom_fruit(data=plant_fam_interactions, geom=geom_bar,
+                    mapping=aes(y=Plant_family1, x=Family_interactions1),
+                    pwidth=0.38, 
+                    orientation="y", 
+                    stat="identity", 
+                    color = "black") +
+theme(legend.margin=margin(0,0,0,0),
+        legend.box.margin=margin(-50,-50,-50,-50))+
+  theme(plot.margin = margin(-10, -20, -10, -10, "pt")) 
 
 
 
 library(cowplot)
-p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 2, 1))
-plot_grid(p1,p2_1, rel_widths = c(20, 5), rel_heights  = c(8, 1), align = "none")
+p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(0.5, 2, 0.5),rel_widths  = c(0.1, 2, 0.1))
+plot_grid(p1,p2_1, rel_widths = c(20, 6), rel_heights  = c(8, 1), align = "none")

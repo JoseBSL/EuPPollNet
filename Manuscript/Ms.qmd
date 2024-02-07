@@ -162,6 +162,10 @@ Questions that we would like to answer:
 
 This European metaweb consist of datasets of plant-pollinator interactions compiled initially by a wide number of researchers and institutions within the European continent. This dataset consist of `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**). The dataset contains a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%).
 
+## Data structure?
+
+TABLE? Describe cols?
+
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the SafeNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Percentage of shared occurrences of pollinators and plants across studies. Species on the left are highly shared across studies, while species on the right are found only in a few or a single study. As a reference, we have indicated the 50th percentile with a black dashed vertical line."}
 
@@ -602,6 +606,82 @@ p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3)
 # Results
 
 
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. a) Phylogenetic tree of plant families in the Safenet database, showing the number of species per family in logarithmic scale (blue circles) and the total number of interactions recorded per family (gray bars). b) Comparison of the top 50 families with the highest number of species in the SafeNet database against the total number of species recorded for those families at the European level. Species counts are displayed in logarithmic scale for better visualization.", fig.width=8, fig.height=8}
+
+library(ggplot2)
+library(ggtree)
+library(ggnewscale)
+library(ggtreeExtra)
+library(cowplot)
+
+
+#Save data to plot it in markdown file
+c = readRDS("../Data/Working_files/Figures/data_figure3b.rds")
+tree_family_interactions = readRDS("../Data/Working_files/Figures/data_figure3a1.rds")
+plant_fam_interactions = readRDS("../Data/Working_files/Figures/data_figure3a2.rds")
+
+# The circular layout tree
+p = ggtree(tree_family_interactions, 
+    layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
+geom_tippoint(aes(size= Family_species), colour='cyan4') +
+geom_tiplab(linetype='dashed', linesize=.05, 
+    size=1.75, color= "black", offset = -45, fontface="bold") +
+labs("log(Species)")+
+scale_size(name = "log(Species #)") +
+ggtitle("a)") +
+theme(plot.title = element_text(vjust = -31, hjust = 0.12, size = 14),
+      legend.position = "bottom")
+
+#Create barplot around circular tree
+p1 = p + 
+new_scale_fill() +
+geom_fruit(data=plant_fam_interactions, geom=geom_bar,
+   mapping=aes(y=Plant_family1, x=Family_interactions1),
+   pwidth=0.38, 
+   orientation="y", 
+   stat="identity", 
+   color = "black") +
+theme(legend.margin=margin(0,0,0,0),
+   legend.box.margin=margin(-50,-50,-50,-50),
+   plot.margin = margin(-15, -15, -10, -10, "pt")) +
+scale_size(name = "log(species number)", range=c(0,4))
+
+p2 = ggplot() + 
+geom_col(data = c, 
+  aes(x = reorder(Family_names, Spp_per_family), 
+  y = log(Spp_per_family), fill = Group), position=position_dodge(0.1),width=1) +
+xlab(NULL) +
+ylab("log(species number)") +
+theme_bw() +
+theme(axis.text.y = element_text(size = 5, face = "bold", color = "black"),
+      panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+coord_flip(expand = F) +
+scale_fill_manual(name="", values = c("black", "cyan4")) +
+  theme(plot.margin = margin(-10, 0, -10, -10, "pt")) +
+ggtitle("b)")+
+theme(legend.margin=margin(0,0,0,0),
+   legend.box.margin=margin(-10,-10,-10,-10)) +
+  theme(legend.key.size = unit(0.3, 'cm'),
+        legend.position = "bottom",
+        plot.title = element_text(size=14))
+
+p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 1.5, 0.5),rel_widths  = c(0.1, 2, 0.1))
+plot_grid(p1,p2_1, rel_widths = c(16, 7), rel_heights  = c(9, 1), align = "none")
+
+
+
+```
+
+
+
+FIGURE 4 POLLINATOR COVERAGE
+
+
+FIGURE 5? CLIFFHANGER OF NETWORK METRICS
+
+
 ## Taxonomy and taxonomic coverage
 
 
@@ -609,6 +689,8 @@ p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3)
 
 
 # Discussion
+
+Geographic and taxonomic biases!
 
 \newpage
 
@@ -619,30 +701,32 @@ p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3)
 
 # Supplementary material
 
+Supplementary text 1
 
-Create definitions here based on Corine 
+Habitat definitions:
 
-1)Pastures: Any type of low growing plant community that is highly influenced by human disturbance. For instance, agriculture, mowing, moderate to high grazing or urban environment. Note that this category also includes old pastures with regrowth of woody vegetation.
+1) **Ruderal vegetation**: Plants growing on highly disturbed sites such as road sides or mineral extraction sites. 
 
-2)Agricultural margings: Sides of crops that can include any type of vegetation from low growing plants to trees.
+2) **Agricultural margings**: Sides of crops that can include any type of vegetation from low growing plants to trees.
 
-3)Agricultural land: Includes any type of crop and any type of vegetation growing within them. 
+3) **Green urban areas**: Parks, private gardens or small pastures within an  urban setting. Botanical gardens are included in this category.
 
-4)Semi-natural grassland: Low growing plant community with relatively low disturbances but under low pressure such as seasonal mowing or extensive grazing.
+4) **Agricultural land**: Includes any type of crop and any type of vegetation growing within them. 
 
-5)Ruderal vegetation: Plants growing on highly disturbed sites such as road sides or mineral extraction sites.
+5) **Forest/woodland understory**: Any plant community sampled under a wooded group of plants. The forest could be embedded in an agricultural setting or in a fully natural scenario. We have included here agro-forestry areas and open to dense forest. Note that we have excluded from this category forest that contains sclerophyllous vegetation. 
 
-6)Sclerophyllous vegetation: Any type of system with a dominant shrub community adapted to drought. Typical of the Mediterranean region. Note, that we have include in this category also woodlands (open coniferous forest) where the shrub community was the main focus of the study.
+6) **Semi-natural grassland**: Low growing plant community with relatively low disturbances but under low pressure such as seasonal mowing or extensive grazing.
 
-7) Green urban areas: Parks, private gardens or small pastures within an  urban setting. For simplicity, we have also included botanical gardens.
+7) **Pastures**: Any type of low growing plant community that is highly influenced by human disturbance. For instance, agriculture, mowing, moderate to high grazing or urban environments. Note that this category also includes old pastures with regrowth of woody vegetation.
 
-8) Forest/woodland understory: Any plant community sampled under a wooded group of plants 
-The forest could be embedded in an agricultural setting or in a fully natural scenario. We have included here agro-forestry areas, open forest to dense forest but try to exclude forest that contains typical sclerophyllous vegetation. 
+8) **Sclerophyllous vegetation**: Any type of system with a dominant shrub community adapted to drought. Typical of the Mediterranean region. Note, that we have include in this category also woodlands (open coniferous forest) where the shrub community was the main focus of the study.
 
-9) Riparian vegetation: Plant communities growing on river margins. 
+9) **Beaches, dunes, sands**: Plant communities growing on sandy soil.
 
-10): Low growing plant communities with little or none human disturbance. Often located in high elevation areas within Europe.
+10) **Riparian vegetation**: Plant communities growing on river margins. 
 
-11) Beaches, dunes, sands: Plant communities growing on sandy soil.
+10) **Natural grassslands**: Low growing plant communities with little or none human disturbance. Often located in high elevation areas within Europe.
 
-12) Moors and heathland: Low growing woody vegetation characteristic from low fertile soils near the coast or in alpine areas.
+12) **Moors and heathland**: Low growing woody vegetation characteristic from low fertile soils near the coast or in alpine areas.
+
+
