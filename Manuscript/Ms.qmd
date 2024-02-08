@@ -130,29 +130,24 @@ Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity 
 
 # Introduction
 
-1st paragraph
+The interaction between plants and pollinators is one of the most well-documented mutualisms on Earth. Plant-pollinator interactions involve a great diversity of species, largely attributed to their coevolutive history [@ollerton2017], and are critically important for terrestrial biodiversity [REF?] and human economy [REF?]. The synergistic effect of climate change with other global change pressures are threatening worldwide biodiversity [@sala2000; @bellard2014], including plant and pollinator species as well as their interactions [@gonzalez2013; @settele2016]. Documenting plant and pollinator diversity is the first step to conserve their biodiversity [REF]. Europe is one of the continents with more information about their plant and pollinator species as indicated by the recently available checklists of plants [REF] and pollinators [REF]. However, despite the increasing number of studies documenting their interactions at European level, we lack robust datasets of their ecological interactions at European level, which has crucial implications to understand the different biological phenomena involved around these twp trophic levels.
 
-General introduction of how global change impacts plant-pollinator interactions
-
-Maybe expand on some drivers? Climate change, habitat fragmentation, agricultural intensification, urbanization, pollution, pesticides and species' invasions
-
-Highlight the relevance of large scale datasets to understand biological phenomena
 
 2nd paragraph
 
+Plant-pollinator databases? 
+
+Mangal/Web of life/the new one that has a bit of everything... 
+
 3rd paragraph
+
+Threatened species? Red lists?
+
+Discuss actual TRENDS!
 
 4paragraph
 
-Introduce research questions
 
-LIST THEM HERE (Main ideas so far)
-
-Questions that we would like to answer:
-
-1\) What are the most common plant a pollinator species? Are those shared across networks? Most common interactions across Europe? Interaction fidelity
-
-2\) Is generalization the rule? Or specialization? How this impacts indirect interactions? Go in the direction of pollinator importance?
 
 \newpage
 
@@ -605,6 +600,8 @@ p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3)
 
 # Results
 
+
+Something always of interest: provide % of interactions of _Apis mellifera_?
 
 
 
