@@ -509,8 +509,6 @@ scale_fill_manual(values = c("black", "cyan4")) +
 ggtitle("b)")
 
 
-
-
 # The circular layout tree.
 p <- ggtree(tree_family_interactions, layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
 geom_tippoint(aes(size= Family_species), colour='cyan4') +

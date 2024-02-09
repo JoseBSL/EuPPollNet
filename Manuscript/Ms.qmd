@@ -130,14 +130,21 @@ Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity 
 
 # Introduction
 
-The interaction between plants and pollinators is one of the most well-documented mutualisms on Earth. Plant-pollinator interactions involve a great diversity of species, largely attributed to their coevolutive history [@ollerton2017], and are critically important for terrestrial biodiversity [REF?] and human economy [REF?]. The synergistic effect of climate change with other global change pressures are threatening worldwide biodiversity [@sala2000; @bellard2014], including plant and pollinator species as well as their interactions [@gonzalez2013; @settele2016]. Documenting plant and pollinator diversity is the first step to conserve their biodiversity [REF]. Europe is one of the continents with more information about their plant and pollinator species as indicated by the recently available checklists of plants [REF] and pollinators [REF]. However, despite the increasing number of studies documenting their interactions at European level, we lack robust datasets of their ecological interactions at European level, which has crucial implications to understand the different biological phenomena involved around these twp trophic levels.
+The interaction between plants and pollinators is one of the most well-documented mutualisms on Earth. Plant-pollinator interactions involve a great diversity of species, largely attributed to their coevolutive history [@ollerton2017], and are critically important for terrestrial biodiversity and the human economy. The synergistic effects of climate change with other global change pressures are threatening worldwide biodiversity [@sala2000; @bellard2014], including plant and pollinator species as well as their interactions [@gonzalez2013; @settele2016]. Under this scenario, the increasing availability of biodiversity data plays a major role in our ecological understanding of species and guiding conservation planning. However, our knowledge of plant and pollinator species and their network of interactions still exhibits major temporal, spatial and taxonomic biases [@archer2014; @troia2016;  @poisot2021] that limit our ability to effectively protect their biodiversity. 
+
+Integrating ecological data is allowing researchers to understand biological patterns [REF]. Europe is one of the continents with larger information of plant and pollinator biodiversity data available that is proven by the different checklists of species of plants [ref], bees [ref], syrphids [REF] or butterflies [REF]. However, 
+
+SOMETHING ABOUT THE DIFFICULTY OF CAPTURING ECOLOGICAL INTERACTIONS
+Jordano Funct Ecol?
+
+connectance/ecological networks
+
+what we know-->Plant-pollinator databases? -->Mangal/Web of life/the new one that has a bit of everything... 
+
+Maybe add another sentence about data integration
+https://doi.org/10.1073/pnas.2018093118
 
 
-2nd paragraph
-
-Plant-pollinator databases? 
-
-Mangal/Web of life/the new one that has a bit of everything... 
 
 3rd paragraph
 
@@ -417,7 +424,7 @@ To assess the completeness of plant and pollinator species in the SafeNet databa
 The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the SafeNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
 
 
-
+NOT FULLY HAPPY with it
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=6, fig.height=8}
 
