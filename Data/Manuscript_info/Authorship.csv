@@ -33,24 +33,22 @@ Study_id,Coauthor_name,Orcid,E_mail
 15_Magrach,Ainhoa Magrach,0000-0003-2155-7556,ainhoa.magrach@bc3research.org
 15_Magrach,Maddi Artamendi,,maddiart19@gmail.com
 15_Magrach,Paula Dominguez Lapido,,pauladl@enebada.eu
-16_Manicor,Natasha de Manincor,0000-0001-9696-125X,natasha.demanincor@gmail.com
-16_Manicor,Nina Hautekèete,0000-0002-6071-5601,nina.hautekeete@univ-lille.fr
-16_Manicor,Yves Piquot,0000-0001-9977-8936,yves.piquot@univ-lille.fr
-16_Manicor,Bertrand Schatz,0000-0003-0135-8154,bertrand.schatz@cefe.cnrs.fr
-16_Manicor,Cédric Vanappelghem,,cedric.vanappelghem@espaces-naturels.fr
-16_Manicor,François Massol,0000-0002-4098-955X,francois.massol@univ-lille.fr
-17_Manicor,Natasha de Manincor,0000-0001-9696-125X,natasha.demanincor@gmail.com
-17_Manicor,Nina Hautekèete,0000-0002-6071-5601,nina.hautekeete@univ-lille.fr
-17_Manicor,Clément Mazoyer,,clement.mazoyer@univ-lille.fr
-17_Manicor,Paul Moreau,,p35.moreau@gmail.com
-17_Manicor,Yves Piquot,0000-0001-9977-8936,yves.piquot@univ-lille.fr
-17_Manicor,Bertrand Schatz,0000-0003-0135-8154,bertrand.schatz@cefe.cnrs.fr
-17_Manicor,Eric Schmitt,,eric.schmitt@univ-lille.fr
-17_Manicor,Marie Zélazny,,marie.zelazny@hotmail.fr
-17_Manicor,François Massol,0000-0002-4098-955X,francois.massol@univ-lille.fr
+16_Manincor,Natasha de Manincor,0000-0001-9696-125X,natasha.demanincor@gmail.com
+16_Manincor,Nina Hautekèete,0000-0002-6071-5601,nina.hautekeete@univ-lille.fr
+16_Manincor,Yves Piquot,0000-0001-9977-8936,yves.piquot@univ-lille.fr
+16_Manincor,Bertrand Schatz,0000-0003-0135-8154,bertrand.schatz@cefe.cnrs.fr
+16_Manincor,Cédric Vanappelghem,,cedric.vanappelghem@espaces-naturels.fr
+16_Manincor,François Massol,0000-0002-4098-955X,francois.massol@univ-lille.fr
+16_Manincor,Clément Mazoyer,,clement.mazoyer@univ-lille.fr
+16_Manincor,Paul Moreau,,p35.moreau@gmail.com
+16_Manincor,Eric Schmitt,,eric.schmitt@univ-lille.fr
+16_Manincor,Marie Zélazny,,marie.zelazny@hotmail.fr
+17_Fisogni,Alessandro Fisogni,0000-0001-6179-2767,a.fisogni@gmail.com
+17_Fisogni,Marta Galloni,0000-0001-5304-7820,marta.galloni@unibo.it
 18_Bartomeus,Francisco P. Molina,0000-0003-2425-5246,fpaula.molina@gmail.com
 18_Bartomeus,Ignasi Bartomeus,0000-0001-7893-4389,nacho.bartomeus@gmail.com
 19_Jauker,Birgit Jauker,0000-0001-5027-9351,birgit.jauker@allzool.bio.uni-giessen.de
+19_Jauker,Frank Jauker,0000-0003-4137-9072,jaukerf@gmail.com
 20_Hoiss,Bernhard Hoiss,NA,bernhard.hoiss@anl.bayern.de
 21_Hopfenmuller,Sebastian Hopfenmüller,NA,sebastian.hopfenmueller@uni-wuerzburg.de
 22_Kallnik,Katharina Kallnik,NA,katharina.kallnik@uni-wuerzburg.de
@@ -96,3 +94,61 @@ Study_id,Coauthor_name,Orcid,E_mail
 37_White,Jane Stout,0000-0002-2027-0863,stoutj@tcd.ie
 38_Maurer,Corina Maurer,0000-0001-8103-4111,corina.m181@gmail.com
 38_Maurer,Matthias Albrecht,0000-0001-5518-3455,matthias.albrecht@agroscope.admin.ch
+39_Schweiger,Oliver Schweiger,0000-0001-8779-2335,oliver.schweiger@ufz.de
+39_Schweiger,Jonna Heuschele,0009-0005-3242-9412,jonna.heuschele@ufz.de
+39_Schweiger,Yicong Liu,,yicong.liu@ufz.de
+39_Schweiger,Christophe Dominik,0000-0001-6310-1632,christophe.dominik@ufz.de
+40_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+40_Knight,Joanne M. Bennett,0000-0002-7883-3577,joanne.bennett@anu.edu.au
+40_Knight,Irina Goia,0000-0001-8270-2214,irina.goia@ubbcluj.ro; igoia@yahoo.com
+40_Knight,Amibeth Thompson,0000-0002-9224-412X,amibeth.thompson@gmail.com
+40_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+40_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
+40_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
+41_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+41_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
+41_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
+41_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+41_Knight,Lena Neuenkamp,0000-0001-6108-5720,lena-neuenkamp@web.de
+42_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+42_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+42_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
+42_Knight,Robert Tropek,0000-0001-7499-6259,robert.tropek@gmail.com
+42_Knight,Jana Jersáková,0000-0003-0169-801X,jersa@centrum.cz
+43_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+43_Knight,Leana Zoller,0000-0002-7161-6529,Leana.Zoller@colorado.edu
+43_Knight,Øystein Opedal,0000-0002-7841-6933,oystein.opedal@biol.lu.se
+43_Knight,Stefan Klotz,0000-0003-4355-6415,stefan.klotz@ufz.de
+43_Knight,Annette Trefflich,,antreff@web.de
+44_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+44_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
+44_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
+45_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+45_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
+45_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
+45_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
+45_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+45_Knight,Arkadiusz Nowak,0000-0001-8638-0208,anowak@uni.opole.pl
+45_Knight,Sebastian Świerszcz,0000-0003-2035-0035,seb.swierszcz@gmail.com
+45_Knight,Elisabeth Kühn,0000-0001-8894-2462,elisabeth.kuehn@ufz.de
+46_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
+46_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
+46_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
+46_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
+46_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+46_Knight,Arkadiusz Nowak,0000-0001-8638-0208,anowak@uni.opole.pl
+46_Knight,Sebastian Świerszcz,0000-0003-2035-0035,seb.swierszcz@gmail.com
+46_Knight,Elisabeth Kühn,0000-0001-8894-2462,elisabeth.kuehn@ufz.de
+47_Benadi,,,
+48_Lara-Romero,Carlos Lara-Romero,0000-0003-0962-0567,carlos.lara@urjc.es
+48_Lara-Romero,José M. Iriondo,0000-0003-2710-3889,carlos.lara@urjc.es
+48_Lara-Romero,Javier Morente-López,0000-0001-9141-8581,carlos.lara@urjc.es
+49_Hervias-Parejo,Sandra Hervias-Parejo,0000-0002-5377-3619,shervias@imedea.uib-csic.es
+49_Hervias-Parejo,Anna Traveset,0000-0002-1816-1334,atraveset@imedea.uib-csic.es
+50_Hervias-Parejo,Sandra Hervias-Parejo,0000-0002-5377-3619,shervias@imedea.uib-csic.es
+50_Hervias-Parejo,Anna Traveset,0000-0002-1816-1334,atraveset@imedea.uib-csic.es
+50_Hervias-Parejo,Pau Colom,0000-0003-0309-8886,pau.colom.montojo@gmail.com
+50_Hervias-Parejo,Rafel Beltran Mas,0000-0002-6285-4357,rafel.beltran.mas@hotmail.com
+50_Hervias-Parejo,Pau Enric Serra,0000-0001-6674-3710,pau.enric.serra@gmail.com
+51_Petanidou,Theodora Petanidou,0000-0003-1883-0945,tpet@aegean.gr
+51_Petanidou,Georgios Nakas,0000-0003-3023-5831,nakas.g@geo.aegean.gr
