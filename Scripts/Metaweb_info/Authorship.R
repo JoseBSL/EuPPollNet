@@ -98,7 +98,31 @@ distinct(Coauthor_name)
 ordered_authors %>% 
 summarise(col = paste(Coauthor_name, collapse=", ")) %>% 
 pull()
-
 #Save 
 write_csv(ordered_authors, "Data/Manuscript_info/Authorship_ordered.csv")
+
+
+#Add affiliations
+affiliations = ordered_authors %>% 
+mutate(Affiliation1 = case_when(Coauthor_name == "Jose B. Lanuza" | 
+                               Coauthor_name == "Tiffany M. Knight" | 
+                               Coauthor_name == "Valentin Ştefan" | 
+                               Coauthor_name == "Will Glenny" |
+                               Coauthor_name == "Leana Zoller" |
+                               Coauthor_name == "Demetra Rakosy" ~ 
+"German Centre for Integrative Biodiversity Research (iDiv) Halle-JenaLeipzig, Puschstr. 4, 04103 Leipzig, Germany",
+TRUE ~ NA_character_))
+
+affiliations = affiliations %>% 
+mutate(Affiliation1 = case_when(Coauthor_name == "Matthias Albrecht"   ~ 
+"Agroecology and Environment, Agroscope, Reckenholzstrasse 191, ZurichCH-8046, Switzerland",
+TRUE ~ Affiliation1))
+
+affiliations = affiliations %>% 
+mutate(Affiliation1 = case_when(Coauthor_name == "Ignasi Bartomeus" |
+                                Coauthor_name == "Francisco P. Molina" |
+                                Coauthor_name == "Nerea Montes-Perez" ~ 
+"Estación Biológica de Doñana (EBD-CSIC), Seville, Spain",
+TRUE ~ Affiliation1))
+
 
