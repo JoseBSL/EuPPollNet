@@ -159,7 +159,7 @@ Metadata = as.data.frame(t(Metadata)) %>%
 #Prepare authorship data ----
 #Not included as G.Benadi did not accept the invitation
 Authorship <- data.frame(
-  Coauthor_name = c(""),
+  Coauthor_name = c("Gita Benadi"),
   Orcid = c(""),
   E_mail = c(""))
 

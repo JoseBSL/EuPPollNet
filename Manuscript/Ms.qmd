@@ -1,5 +1,5 @@
 ---
-title: "SafeNet: A European metaweb of plant-pollinator interactions"
+title: "SafeNet: A European database of plant-pollinator interactions"
 format:
   pdf:
     include-in-header: 
@@ -135,8 +135,21 @@ n_bioregion = data %>%
 select(Bioregion) %>% 
 distinct()  %>% 
 nrow(.)
+#Read author list 
+authors = readr::read_csv("../Data/Manuscript_info/Authorship_ordered.csv")
+#Print authors
+authors = authors %>% 
+summarise(col = paste(Coauthor_name, collapse=", ")) %>% 
+pull()
 ```
 
+
+`r authors`
+
+**Corresponding author**= barragansljose@gmail.com
+*All authors excluding first, second and last are ordered alphabetically
+
+\newpage
 
 # Abstract
 
