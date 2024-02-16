@@ -18,7 +18,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 8_Biella,Paolo Biella,0000-0003-2297-006X,paolo.biella@unimib.it
 9_Heleno,Ruben Heleno,0000-0003-2297-006X,rheleno@uc.pt
 9_Heleno,Francisco López-Núñez,0000-0003-0773-9134,lnfran85@gmail.com
-9_Heleno,Catherine O’Connor,NA,NA
+9_Heleno,Catherine J. O’Connor,NA,NA
 10_Vanbergen,Adam J. Vanbergen,0000-0001-8320-5535,adam.vanbergen@inrae.fr
 10_Vanbergen,Willem Proesmans,0000-0003-0358-6732,willem.proesmans@gmail.com
 11_Clough,Veronica Hederström,0000-0002-9231-3156,veronica.hederstrom@cec.lu.se
@@ -37,9 +37,9 @@ Study_id,Coauthor_name,Orcid,E_mail
 16_Manincor,Nina Hautekèete,0000-0002-6071-5601,nina.hautekeete@univ-lille.fr
 16_Manincor,Yves Piquot,0000-0001-9977-8936,yves.piquot@univ-lille.fr
 16_Manincor,Bertrand Schatz,0000-0003-0135-8154,bertrand.schatz@cefe.cnrs.fr
-16_Manincor,Cédric Vanappelghem,,cedric.vanappelghem@espaces-naturels.fr
+16_Manincor,Cédric Vanappelghem,0000-0002-4629-541X,cedric.vanappelghem@espaces-naturels.fr
 16_Manincor,François Massol,0000-0002-4098-955X,francois.massol@univ-lille.fr
-16_Manincor,Clément Mazoyer,,clement.mazoyer@univ-lille.fr
+16_Manincor,Clément Mazoyer,0000-0002-5052-326X,clement.mazoyer@univ-lille.fr
 16_Manincor,Paul Moreau,,p35.moreau@gmail.com
 16_Manincor,Eric Schmitt,,eric.schmitt@univ-lille.fr
 16_Manincor,Marie Zélazny,,marie.zelazny@hotmail.fr
@@ -50,7 +50,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 19_Jauker,Birgit Jauker,0000-0001-5027-9351,birgit.jauker@allzool.bio.uni-giessen.de
 19_Jauker,Frank Jauker,0000-0003-4137-9072,jaukerf@gmail.com
 20_Hoiss,Bernhard Hoiss,NA,bernhard.hoiss@anl.bayern.de
-21_Hopfenmuller,Sebastian Hopfenmüller,NA,sebastian.hopfenmueller@uni-wuerzburg.de
+21_Hopfenmuller,Sebastian Hopfenmüller,0009-0004-5138-6342,sebastian.hopfenmueller@uni-wuerzburg.de
 22_Kallnik,Katharina Kallnik,NA,katharina.kallnik@uni-wuerzburg.de
 23_Holzschuh,Andrea Holzschuh,0000-0002-5235-4746,andrea.holzschuh@uni-wuerzburg.de
 24_Holzschuh,Andrea Holzschuh,0000-0002-5235-4746,andrea.holzschuh@uni-wuerzburg.de
@@ -71,7 +71,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 29_Magrach,Ignasi Bartomeus,0000-0001-7893-4389,nacho.bartomeus@gmail.com
 29_Magrach,Montserrat Vilà,000-0003-3171-8261,montse.vila@ebd.csic.es
 29_Magrach,Juan Pedro González-Varo,0000-0003-1439-6475,juanpe@ebd.csic.es
-30_Smith,Henrik G. Smith,,henrik.smith@biol.lu.se
+30_Smith,Henrik G. Smith,0000-0002-2289-889X,henrik.smith@biol.lu.se
 30_Smith,Maj Rundlöf,0000-0003-3014-1544,maj.rundlof@biol.lu.se
 30_Smith,Ante Vujić,0000-0002-8819-8079,vujic_ante@yahoo.com
 30_Smith,Ricardo Bommarco,0000-0001-8888-0476,Riccardo.Bommarco@slu.se
@@ -84,14 +84,14 @@ Study_id,Coauthor_name,Orcid,E_mail
 32_ORourke,Jane C. Stout,0000-0002-2027-0863,stoutj@tcd.ie
 32_ORourke,Laura Russo,0000-0002-7343-9837,lrusso@utk.edu
 33_Power,Eileen Power,0000-0002-5941-4676,eipower@tcd.ie
-33_Power,Jane Stout,0000-0002-2027-0863,stoutj@tcd.ie
+33_Power,Jane C. Stout,0000-0002-2027-0863,stoutj@tcd.ie
 34_Stanley,Dara Stanley,0000-0001-8948-8409,dara.stanley@ucd.ie
-34_Stanley,Jane Stout,0000-0002-2027-0863,stoutj@tcd.ie
-35_Mullen,Sara Mullen,NA,seramullen@gmail.com
+34_Stanley,Jane C. Stout,0000-0002-2027-0863,stoutj@tcd.ie
+35_Mullen,Sarah Mullen,NA,seramullen@gmail.com
 36_Larkin,Michelle Larkin,0000-0002-4540-1655,mlarkin@biodiversityireland.ie
 36_Larkin,Dara Stanley,0000-0001-8948-8409,dara.stanley@ucd.ie
-37_White,Cian White,NA,ciwhite@tcd.ie
-37_White,Jane Stout,0000-0002-2027-0863,stoutj@tcd.ie
+37_White,Cian White,0000-0002-7126-1916,ciwhite@tcd.ie
+37_White,Jane C. Stout,0000-0002-2027-0863,stoutj@tcd.ie
 38_Maurer,Corina Maurer,0000-0001-8103-4111,corina.m181@gmail.com
 38_Maurer,Matthias Albrecht,0000-0001-5518-3455,matthias.albrecht@agroscope.admin.ch
 39_Schweiger,Oliver Schweiger,0000-0001-8779-2335,oliver.schweiger@ufz.de
@@ -102,7 +102,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 40_Knight,Joanne M. Bennett,0000-0002-7883-3577,joanne.bennett@anu.edu.au
 40_Knight,Irina Goia,0000-0001-8270-2214,irina.goia@ubbcluj.ro; igoia@yahoo.com
 40_Knight,Amibeth Thompson,0000-0002-9224-412X,amibeth.thompson@gmail.com
-40_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+40_Knight,Reinart Feldmann,0009-0009-6004-0702,reinart.feldmann@ufz.de
 40_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
 40_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
 41_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
@@ -117,7 +117,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 42_Knight,Jana Jersáková,0000-0003-0169-801X,jersa@centrum.cz
 43_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
 43_Knight,Leana Zoller,0000-0002-7161-6529,Leana.Zoller@colorado.edu
-43_Knight,Øystein Opedal,0000-0002-7841-6933,oystein.opedal@biol.lu.se
+43_Knight,Øystein H. Opedal,0000-0002-7841-6933,oystein.opedal@biol.lu.se
 43_Knight,Stefan Klotz,0000-0003-4355-6415,stefan.klotz@ufz.de
 43_Knight,Annette Trefflich,,antreff@web.de
 44_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de

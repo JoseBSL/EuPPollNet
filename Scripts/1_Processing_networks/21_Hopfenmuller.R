@@ -108,7 +108,7 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 #Prepare authorship data ----
 Authorship <- tibble(
 Coauthor_name = "Sebastian Hopfenmüller",
-Orcid = NA,
+Orcid = "0009-0004-5138-6342",
 E_mail = "sebastian.hopfenmueller@uni-wuerzburg.de")
 
 #Save data ----

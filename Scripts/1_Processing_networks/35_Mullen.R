@@ -172,7 +172,7 @@ Metadata = as.data.frame(t(Metadata)) %>%
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = c("Sara Mullen"),
+  Coauthor_name = c("Sarah Mullen"),
   Orcid = NA,
   E_mail = c("seramullen@gmail.com"))
 

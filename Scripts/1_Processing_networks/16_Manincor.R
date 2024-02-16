@@ -109,7 +109,7 @@ Coauthor_name = c("Natasha de Manincor", "Nina Hautekèete",
 
 Orcid = c("0000-0001-9696-125X", "0000-0002-6071-5601", 
           "0000-0001-9977-8936", "0000-0003-0135-8154",
-          "", "0000-0002-4098-955X", "", "",
+          "0000-0002-4629-541X", "0000-0002-4098-955X", "0000-0002-5052-326X", "",
           "", ""),
 E_mail = c("natasha.demanincor@gmail.com", "nina.hautekeete@univ-lille.fr", 
              "yves.piquot@univ-lille.fr", "bertrand.schatz@cefe.cnrs.fr",

@@ -98,7 +98,7 @@ Metadata = as.data.frame(t(Metadata)) %>%
 Authorship <- tibble(
   Coauthor_name = c("Henrik G. Smith", "Maj Rundlöf",
                     "Ante Vujić", "Ricardo Bommarco"),
-  Orcid = c("", "0000-0003-3014-1544", "0000-0002-8819-8079",
+  Orcid = c("0000-0002-2289-889X", "0000-0003-3014-1544", "0000-0002-8819-8079",
             "0000-0001-8888-0476"),
   E_mail = c("henrik.smith@biol.lu.se", "maj.rundlof@biol.lu.se",
              "vujic_ante@yahoo.com", "Riccardo.Bommarco@slu.se"))

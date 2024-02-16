@@ -139,17 +139,33 @@ nrow(.)
 authors = readr::read_csv("../Data/Manuscript_info/Authorship_ordered.csv")
 #Print authors
 authors = authors %>% 
-summarise(col = paste(Coauthor_name, collapse=", ")) %>% 
+summarise(col = paste(Coauthor_name_aff, collapse="| ")) %>% 
 pull()
+#Read affiliation list 
+aff_list = readr::read_csv("../Data/Manuscript_info/Affiliation_list.csv")
+aff_list = aff_list %>% 
+summarise(col = paste0(Aff_number_Aff, "\\",sep="")) %>% 
+pull()
+
+
 ```
+
+
+\vspace*{-12mm}
 
 
 `r authors`
 
-**Corresponding author**= barragansljose@gmail.com
-*All authors excluding first, second and last are ordered alphabetically
+**Corresponding author**= barragansljose@gmail.com\
+*All authors excluding the first three and last are ordered alphabetically*
 
-\newpage
+\begingroup
+\small
+
+`r aff_list`
+
+\small
+\endgroup
 
 # Abstract
 
