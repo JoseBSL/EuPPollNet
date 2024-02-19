@@ -363,6 +363,8 @@ total_coverage_non_wind =
   plant_spp_list/all_spp_filtered *100
 total_coverage_non_wind
 
+saveRDS(total_coverage_non_wind, "Data/Manuscript_info/plant_coverage.RData")
+
 #Remember to trust this if:
 plant_checks
 

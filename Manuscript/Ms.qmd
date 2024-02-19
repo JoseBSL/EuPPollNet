@@ -9,6 +9,7 @@ format:
         \newcommand{\elandscape}{\end{landscape}}
         \usepackage{caption}
         \captionsetup[figure]{labelformat=empty}
+
 bibliography: references.bib
 latex-tinytex: false
 link-citations: TRUE
@@ -147,11 +148,24 @@ aff_list = aff_list %>%
 summarise(col = paste0(Aff_number_Aff, "\\",sep="")) %>% 
 pull()
 
+#Interactions at species level
+species_level = data %>% 
+filter(Plant_rank == "SPECIES") %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Plant_status == "ACCEPTED") %>% 
+filter(Pollinator_status == "ACCEPTED") %>% 
+nrow(.)
+species_level_int = species_level / nrow(data) * 100
+#Read here plant and pollinator coverage
+bee_coverage = readRDS("../Data/Manuscript_info/bee_coverage.RData")
+lepidoptera_coverage = readRDS("../Data/Manuscript_info/lepidoptera_coverage.RData")
+syrphid_coverage = readRDS("../Data/Manuscript_info/syrphid_coverage.RData")
+plant_coverage = readRDS("../Data/Manuscript_info/plant_coverage.RData")
 
 ```
 
 
-\vspace*{-12mm}
+\vspace*{-14mm}
 
 
 `r authors`
@@ -167,33 +181,29 @@ pull()
 \small
 \endgroup
 
+\pagebreak
+
 # Abstract
+\vspace*{-5mm}
 
-## Motivation
+**Motivation:** Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the SafeNet database, a fully reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time. This database offers an open workflow that allows researchers to track decisions and edit them according to their preferences, while also providing other ecological variables of interest. We hope this database can help researchers to: 1) identify taxonomic, ecological and geographical gaps of knowledge on plant-pollinator interactions; and 2) explore the impacts of global change to guide future conservation planning for both plant and pollinator species and their interactions.
 
-Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the SafeNet database, a continent-level database of geo-referenced plant-pollinator interactions with the aim to help researchers to explore the impacts of global change and guide future conservation planning.
+**Main Types of Variables Included:** SafeNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat type, bio-climatic region and further taxonomic rank information for both plant and pollinator species are also provided. 
 
-## Main Types of Variables Included
+**Spatial location and grain:** The database contains `r n_sites` different sampling locations from natural and anthropogenic habitats that fall in `r n_bioregion` different bio-climatic regions. All records are geo-referenced and presented in the World Geodetic System 1984 (WGS84).
 
-SafeNet contains over a million of interactions between plants and pollinators from `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat, type of bio-climatic region and further taxonomic information for both plant and pollinator species are also provided. 
+**Time period and grain:** Species interaction data was recorded between `r min_year` and `r max_year`. All records are time-referenced and most of the studies documented interactions in a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%).
 
-## Spatial location and grain
+**Major taxa and level of measurement:** The database contains interaction data at the species level for `r format(round(species_level_int, 2), nsmall = 2)`% of the records, including a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database covers `r format(round(plant_coverage, 2), nsmall = 2)`% of the European species of flowering plants. The main focus of this database are insect pollinators and accounts for `r format(round(bee_coverage, 2), nsmall = 2)`% of bees, `r format(round(lepidoptera_coverage, 2), nsmall = 2)`% of butterflies and `r format(round(syrphid_coverage, 2), nsmall = 2)`% of syrphids species at the European level.
 
-The database contains `r n_sites` different sampling locations from natural and anthropogenic habitats that fall in `r n_bioregion` different bioclimatic regions. All records are geo-referenced and presented in the World Geodetic System 1984 (WGS84).
+**Software format:** The database was built with R software and is stored as ".rds" and ".csv" formats. The construction of the database is fully reproducible and can be accessed at the following PERMANENT LINKS.
 
-## Time period and grain
-
-## Major taxa and level of measurement
-
-The database includes...
-
-## Software format
-
-The database was built with R software and is stored as ".rds" and ".csv" formats. The construction of the database is fully reproducible and can be accessed at the following PERMANENT LINK.
-
-
-Here, we present a dataset of plant-pollinator interactions at European level that consists of `r study_number` studies distributed across `r country_number` countries that comprise over a million of interactions between plants and pollinators. The dataset includes a total of `r pollinator_spp_number` pollinator and `r plant_spp_number` plant species that accounts approximately for 30% of each of the main pollinator groups (i.e., bees, syrphids and butterflies) and 5% of flowering plants that inhabit the European continent.
-
+**KEYWORDS**\
+\begingroup
+\small
+plant-pollinator interactions, flowering plants, Angiosperms, pollinators, Hymenoptera, Diptera, Lepidoptera, Coleoptera, Europe
+\endgroup
+\pagebreak
 
 # Introduction
 
