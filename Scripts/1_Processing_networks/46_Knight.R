@@ -35,6 +35,10 @@ InteractionData <- split(data, data$Site_id)
 #Prepare flower count data ---- 
 FlowerCount <- read_csv("Data/1_Raw_data/46_Knight/Flower_count.csv")
 
+#There is one single level of site ID
+#Unify with data 
+FlowerCount = FlowerCount %>% 
+mutate(Site_id = "Gora_Gipsowa")
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #No misisng vars
@@ -51,6 +55,8 @@ mutate(Comment = as.character(Comment))
 #Split interaction data into dataframes within a list
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
+#Same levels
+unique(FlowerCount$Site_id) == unique(data$Site_id)
 #Prepare metadata data ----
 #Store unique cases of plants and polls
 plant_single_cases = data %>% distinct(Plant_species)

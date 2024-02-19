@@ -299,7 +299,7 @@ Horizon 2020 research and innovation programme (grant agreement No. 819374)."
 11_Clough,Sampling_time_species_round_min,15
 11_Clough,Sampling_time_total_min,NA
 11_Clough,Total_plant_species,58
-11_Clough,Total_pollinator_species,283
+11_Clough,Total_pollinator_species,282
 11_Clough,Floral_counts,Yes
 12_Ockinger,Doi,https://doi.org/10.1038/s41598-019-51912-4
 12_Ockinger,Dataset_description,"38 semi-natural pastures in south central Sweden. There were
@@ -387,49 +387,62 @@ Networks were observed on (nearly) all days of favorable weather
 15_Magrach,Total_plant_species,45
 15_Magrach,Total_pollinator_species,92
 15_Magrach,Floral_counts,Yes
-16_Manincor,Doi,https://doi.org/10.1111/oik.07259
-16_Manincor,Dataset_description,"These datasets document 6 hoverfly-plant
-networks observed in 6 calcareous grasslands in France and have
-been published in Oikos. These data are part of the ANR ARSENIC project
-(grant no. 14-CE02-0012)."
-16_Manincor,Taxa_recorded,Only hoverfly visitors have been used for these datasets
+16_Manincor,Doi,https://doi.org/10.1111/oik.07259; 10.1016/j.actao.2020.103551
+16_Manincor,Dataset_description,"This dataset documents plant pollinator
+interactions in 6 calcareous grasslands in three different
+regions in France, over a period of 7 months in 2016. Most
+of the bee data are unpublished, while most part of hoverflies
+data have been published in paper #1 (see below for details). 
+small portion of bee-visits have been published in paper
+#2 (see details below). The flower availability is reported
+for the two papers, but it is not exhaustive (unpublished
+flower availability data have not been reported here, but
+if needed you can contact N. de Manincor). These data are
+part of the ANR ARSENIC project (grant no. 14-CE02-0012)"
+16_Manincor,Taxa_recorded,Bees and hoverflies
 16_Manincor,Sampling_year,2016
 16_Manincor,Country,France
-16_Manincor,Habitat,Calcareous grassland
+16_Manincor,Habitat,Grassland
 16_Manincor,Sampling_sites,6
 16_Manincor,Sampling_rounds,NA
-16_Manincor,Sampling_method,Random walk
+16_Manincor,Sampling_method,Transect_and_random_walk
 16_Manincor,Sampling_area_details,NA
 16_Manincor,Sampling_area_species_m2,NA
 16_Manincor,Sampling_area_total_m2,NA
 16_Manincor,Sampling_time_details,NA
 16_Manincor,Sampling_time_species_round_min,NA
-16_Manincor,Sampling_time_total_min,9840
-16_Manincor,Total_plant_species,117
-16_Manincor,Total_pollinator_species,76
+16_Manincor,Sampling_time_total_min,NA
+16_Manincor,Total_plant_species,180
+16_Manincor,Total_pollinator_species,313
 16_Manincor,Floral_counts,Yes
-17_Manincor,Doi,10.1016/j.actao.2020.103551
-17_Manincor,Dataset_description,"These datasets document 3 bee-plant networks observed in 3
-calcareaous grasslands in France during the month of July 2016.
-The current data only present the observed interactions (visit-based network
-in the mentioned paper published in Acta Oecologica). These data are part of the
-ANR ARSENIC project (grant no. 14-CE02-0012)."
-17_Manincor,Taxa_recorded,Only female bee visitors have been used for these datasets
-17_Manincor,Sampling_year,2016
-17_Manincor,Country,France
-17_Manincor,Habitat,Calcareous grasslands
-17_Manincor,Sampling_sites,3
-17_Manincor,Sampling_rounds,3 days
-17_Manincor,Sampling_method,Random walk
-17_Manincor,Sampling_area_details,1 hectare per site
-17_Manincor,Sampling_area_species_m2,NA
-17_Manincor,Sampling_area_total_m2,30000
-17_Manincor,Sampling_time_details,4 hours divided in 2 in the moring and 2 in the afternoon each day and site
-17_Manincor,Sampling_time_species_round_min,NA
-17_Manincor,Sampling_time_total_min,2160
-17_Manincor,Total_plant_species,47
-17_Manincor,Total_pollinator_species,69
-17_Manincor,Floral_counts,Yes
+17_Fisogni,Doi,https://zenodo.org/records/3484592
+17_Fisogni,Dataset_description,"This dataset documents one site near
+Bologna within a Natura 2000 protected site. The site presents
+a mosaic vegetation growing on clay soil, composed of xeric
+woods and shrubs surrounded by grasslands. Each year the
+site was visited once a month from March or April to September,
+and in each visit we measured both plant-pollinator
+interactions along a fixed transect and estimated flower
+abundance. The transect included both the grassland and the
+wood fringe areas. We covered the full phenology of most plants
+and pollinators and measured all floral visitors. Four years
+of data are available."
+17_Fisogni,Taxa_recorded,"Hymenoptera, Coleoptera and Diptera (Bombyliidae and Syrphidae)"
+17_Fisogni,Sampling_year,2011 to 2014
+17_Fisogni,Country,Italy
+17_Fisogni,Habitat,Grassland
+17_Fisogni,Sampling_sites,1
+17_Fisogni,Sampling_rounds,NA
+17_Fisogni,Sampling_method,Transect
+17_Fisogni,Sampling_area_details,NA
+17_Fisogni,Sampling_area_species_m2,NA
+17_Fisogni,Sampling_area_total_m2,NA
+17_Fisogni,Sampling_time_details,NA
+17_Fisogni,Sampling_time_species_round_min,NA
+17_Fisogni,Sampling_time_total_min,NA
+17_Fisogni,Total_plant_species,55
+17_Fisogni,Total_pollinator_species,90
+17_Fisogni,Floral_counts,No
 18_Bartomeus,Doi,https://doi.org/10.24072/pcjournal.1
 18_Bartomeus,Dataset_description,"Data collection is done in 12 to 16 independent
 sites in a gradient of land use intensity across the Guadalquivir valley.
@@ -460,7 +473,7 @@ September 2004."
 19_Jauker,Sampling_year,2004
 19_Jauker,Country,Germany
 19_Jauker,Habitat,Calcareous grassland
-19_Jauker,Sampling_sites,31
+19_Jauker,Sampling_sites,32
 19_Jauker,Sampling_rounds,6
 19_Jauker,Sampling_method,Transect
 19_Jauker,Sampling_area_details,Transect length varied (mean = 15.7 +/- 6.2 sd) and width of 4m
@@ -469,8 +482,8 @@ September 2004."
 19_Jauker,Sampling_time_details,5 mins per transect but transect number varied per site size
 19_Jauker,Sampling_time_species_round_min,NA
 19_Jauker,Sampling_time_total_min,720
-19_Jauker,Total_plant_species,109
-19_Jauker,Total_pollinator_species,137
+19_Jauker,Total_plant_species,110
+19_Jauker,Total_pollinator_species,138
 19_Jauker,Floral_counts,No
 20_Hoiss,Doi,https://doi.org/10.1111/gcb.12968
 20_Hoiss,Dataset_description,"Plant-pollinator interactions at 15 study sites
@@ -495,10 +508,11 @@ belongs."
 20_Hoiss,Total_pollinator_species,377
 20_Hoiss,Floral_counts,Yes
 21_Hopfenmuller,Doi,https://doi.org/10.1371/journal.pone.0104439
-21_Hopfenmuller,Dataset_description,Bee-flower interactions in calcareous grasslands
-21_Hopfenmuller,Taxa_recorded,"Wild bees (honey bees excluded) and flowering plants
+21_Hopfenmuller,Dataset_description,"Bee-flower interactions in calcareous grasslands. 
+Authors recorded interactions of Wild bees (honey bees excluded) and flowering plants
 (excluding trees and graminoids); note that plants were quantified in
 terms of flowering units, not area"
+21_Hopfenmuller,Taxa_recorded,Hymenoptera
 21_Hopfenmuller,Sampling_year,2010
 21_Hopfenmuller,Country,Germany
 21_Hopfenmuller,Habitat,Calcareous grassland
@@ -572,7 +586,7 @@ with corresponding surveys of floral abundance."
 24_Holzschuh,Floral_counts,Yes
 25_Holzschuh,Doi,https://doi.org/10.1111/ele.12657
 25_Holzschuh,Dataset_description,Two year dataset of bees and hoverflies on three habitats of Germany
-25_Holzschuh,Taxa_recorded,Seminatural
+25_Holzschuh,Taxa_recorded,Bees and hoverflies
 25_Holzschuh,Sampling_year,2011 and 2012
 25_Holzschuh,Country,Germany
 25_Holzschuh,Habitat,Field boundary
@@ -600,7 +614,7 @@ Lepidoptera and Syrphideae have no taxonomic resolution."
 26_Castro,Sampling_year,2011
 26_Castro,Country,Portugal
 26_Castro,Habitat,Agricultural area
-26_Castro,Sampling_sites,316
+26_Castro,Sampling_sites,12
 26_Castro,Sampling_rounds,Flowering season
 26_Castro,Sampling_method,Focal observation
 26_Castro,Sampling_area_details,6 square plots of 6m2
@@ -771,7 +785,7 @@ Status and Trends of European Pollinators (STEP)"
 35_Mullen,Taxa_recorded,"Bees, hoverflies and butterflies"
 35_Mullen,Sampling_year,2010 and 2011
 35_Mullen,Country,Ireland
-35_Mullen,Habitat,NA
+35_Mullen,Habitat,Pastures
 35_Mullen,Sampling_sites,19
 35_Mullen,Sampling_rounds,NA
 35_Mullen,Sampling_method,Transects
@@ -790,7 +804,7 @@ Status and Trends of European Pollinators (STEP)"
 36_Larkin,Sampling_year,2017
 36_Larkin,Country,Ireland
 36_Larkin,Habitat,Farming grassland
-36_Larkin,Sampling_sites,26
+36_Larkin,Sampling_sites,22
 36_Larkin,Sampling_rounds,3
 36_Larkin,Sampling_method,Transects
 36_Larkin,Sampling_area_details,Transect of 250 x 2m
@@ -799,8 +813,8 @@ Status and Trends of European Pollinators (STEP)"
 36_Larkin,Sampling_time_details,50-60 min per transect (170-180 min per site)
 36_Larkin,Sampling_time_species_round_min,NA
 36_Larkin,Sampling_time_total_min,4550
-36_Larkin,Total_plant_species,64
-36_Larkin,Total_pollinator_species,47
+36_Larkin,Total_plant_species,48
+36_Larkin,Total_pollinator_species,45
 36_Larkin,Floral_counts,Yes
 37_White,Doi,https://doi.org/10.3389/fevo.2022.806615
 37_White,Dataset_description,"Plant-pollinator communties from
@@ -1201,14 +1215,19 @@ an agro-forestry system, consisting of agricultural crops
 of herbaceous plants combined with patches of shrubs and
 trees and other herbaceous species that take advantage of
 the spaces left by cultivated plants, such as Galactites
-tomentosa, Rubus ulmifolius, Glebionis coronaria and Daucus carota. Across the flowering season, 5 visits to each site were performed, and in each visit, we measured both plant-pollinator interactions and flower abundance of each censused individual plant. We cover the full phenology of most plants and pollinators and measure all floral visitors. One year of data is available."
+tomentosa, Rubus ulmifolius, Glebionis coronaria and 
+Daucus carota. Across the flowering season, 5 visits to each
+site were performed, and in each visit, we measured both plant-pollinator
+interactions and flower abundance of each censused individual plant.
+We cover the full phenology of most plants and pollinators
+and measure all floral visitors. One year of data is available."
 50_Hervias-Parejo,Taxa_recorded,All floral visitors
 50_Hervias-Parejo,Sampling_year,2021
 50_Hervias-Parejo,Country,Spain
 50_Hervias-Parejo,Habitat,Dune system and coastal scrubland
 50_Hervias-Parejo,Sampling_sites,9
 50_Hervias-Parejo,Sampling_rounds,
-50_Hervias-Parejo,Sampling_method,
+50_Hervias-Parejo,Sampling_method,Focal_observation
 50_Hervias-Parejo,Sampling_area_details,6 transects 100 m long 10 m wide
 50_Hervias-Parejo,Sampling_area_species_m2,NA
 50_Hervias-Parejo,Sampling_area_total_m2,
@@ -1218,3 +1237,24 @@ tomentosa, Rubus ulmifolius, Glebionis coronaria and Daucus carota. Across the f
 50_Hervias-Parejo,Total_plant_species,101
 50_Hervias-Parejo,Total_pollinator_species,258
 50_Hervias-Parejo,Floral_counts,Yes
+51_Petanidou,Doi,NA
+51_Petanidou,Dataset_description,"This dataset documents 9 different sites
+within 7 islands in the the Aegean"
+51_Petanidou,Taxa_recorded,"All flower visitors belonging to the orders:
+Hymenoptera (except Formicidae), Diptera (we mainly focused
+on Syrphidae and Bombyliidae), Coleoptera and Lepidoptera"
+51_Petanidou,Sampling_year,2012 to 2015
+51_Petanidou,Country,Greece
+51_Petanidou,Habitat,Scrubland
+51_Petanidou,Sampling_sites,9
+51_Petanidou,Sampling_rounds,
+51_Petanidou,Sampling_method,
+51_Petanidou,Sampling_area_details,
+51_Petanidou,Sampling_area_species_m2,NA
+51_Petanidou,Sampling_area_total_m2,NA
+51_Petanidou,Sampling_time_details,
+51_Petanidou,Sampling_time_species_round_min,NA
+51_Petanidou,Sampling_time_total_min,NA
+51_Petanidou,Total_plant_species,140
+51_Petanidou,Total_pollinator_species,306
+51_Petanidou,Floral_counts,Yes
