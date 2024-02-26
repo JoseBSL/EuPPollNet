@@ -226,7 +226,7 @@ Here, we present the SafeNet database, an acronym derived from the European proj
 
 ## Data acquisition
 
-This database is the result of one of the working packages of the European project Safeguard. The SafeNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent. Data acquisition followed a non-systematic approach. First, data was directly asked to members of the Safeguard project and then, the request was extended to data owners outside of the project. These other studies were identified by direct communication with other colleagues and by directly searching studies on Google Scholar of under-represented regions or countries within the database. To keep high quality standards that will allow robust future ecological research, we only included: 1) studies that contained time- and geo-referenced records of plant-pollinator interactions; 2) studies with phyto-centric plant-pollinator networks with quantitative visitation data. The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**).
+This database is the result of one of the working packages of the European project Safeguard. The SafeNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent. Data acquisition followed a non-systematic approach. First, data was directly asked to members of the Safeguard project and then, the request was extended to data owners outside of the project. These other studies were identified by direct communication with other colleagues and by directly searching studies on Google Scholar of under-represented regions of countries within the database. To keep high quality standards that will allow robust future ecological research, we only included: 1) studies that contained time- and geo-referenced records of plant-pollinator interactions; 2) studies with phyto-centric plant-pollinator networks with quantitative visitation data. The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a**).
 
 ## Dataset description
 
@@ -475,7 +475,7 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.45, 1))
 
 ## Taxonomic harmonization
 
-All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For transparency, we have included in the database the old species name, the new assigned name, and, if the species name is uncertain (e.g., species complex or species alike).
+All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For transparency, we have included in the database the old species name, the new assigned name, and, if name of the species is uncertain (e.g., species complex or species alike).
 
 For plants: (i) we initially verify exact matches with the GBIF species checklist; (ii) select unmatched cases and fix orthographic errors; (iii) retrieve again taxonomic information for those unmatched cases, evaluate accuracy of fuzzing matching and programmatically fix records that are still not found; (iv) finally, we used the World Flora Taxonomic Backbone [@govaerts2021\; WFO, July 7, 2022] as the ultimate filter for taxonomic information as we used it to calculate the plant taxonomic coverage of our database.
 
@@ -490,9 +490,96 @@ To assess the completeness of plant and pollinator species in the SafeNet databa
 The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the SafeNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
 
 
-NOT FULLY HAPPY with it
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=6, fig.height=8}
+
+\newpage 
+
+# Results
+
+PART A
+
+Provide number of species per taxonomic group and number of interactions
+Something always of interest: provide % of interactions of _Apis mellifera_?
+
+FIGURE 3 POLLINATOR COVERAGE
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. a) Phylogenetic tree of plant families in the Safenet database, showing the number of species per family in logarithmic scale (blue circles) and the total number of interactions recorded per family (gray bars). b) Comparison of the top 50 families with the highest number of species in the SafeNet database against the total number of species recorded for those families at the European level. Species counts are displayed in logarithmic scale for better visualization.", fig.width=8, fig.height=8}
+
+library(ggplot2)
+library(ggtree)
+library(ggnewscale)
+library(ggtreeExtra)
+library(cowplot)
+
+
+#Save data to plot it in markdown file
+c = readRDS("../Data/Working_files/Figures/data_figure3b.rds")
+tree_family_interactions = readRDS("../Data/Working_files/Figures/data_figure3a1.rds")
+plant_fam_interactions = readRDS("../Data/Working_files/Figures/data_figure3a2.rds")
+
+# The circular layout tree
+p = ggtree(tree_family_interactions, 
+    layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
+geom_tippoint(aes(size= Family_species), colour='cyan4') +
+geom_tiplab(linetype='dashed', linesize=.05, 
+    size=1.75, color= "black", offset = -45, fontface="bold") +
+labs("log(Species)")+
+scale_size(name = "log(Species #)") +
+ggtitle("a)") +
+theme(plot.title = element_text(vjust = -31, hjust = 0.12, size = 14),
+      legend.position = "bottom")
+
+#Create barplot around circular tree
+p1 = p + 
+new_scale_fill() +
+geom_fruit(data=plant_fam_interactions, geom=geom_bar,
+   mapping=aes(y=Plant_family1, x=Family_interactions1),
+   pwidth=0.38, 
+   orientation="y", 
+   stat="identity", 
+   color = "black") +
+theme(legend.margin=margin(0,0,0,0),
+   legend.box.margin=margin(-50,-50,-50,-50),
+   plot.margin = margin(-15, -15, -10, -10, "pt")) +
+scale_size(name = "log(species number)", range=c(0,4))
+
+p2 = ggplot() + 
+geom_col(data = c, 
+  aes(x = reorder(Family_names, Spp_per_family), 
+  y = log(Spp_per_family), fill = Group), position=position_dodge(0.1),width=1) +
+xlab(NULL) +
+ylab("log(species number)") +
+theme_bw() +
+theme(axis.text.y = element_text(size = 5, face = "bold", color = "black"),
+      panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+coord_flip(expand = F) +
+scale_fill_manual(name="", values = c("black", "cyan4")) +
+  theme(plot.margin = margin(-10, 0, -10, -10, "pt")) +
+ggtitle("b)")+
+theme(legend.margin=margin(0,0,0,0),
+   legend.box.margin=margin(-10,-10,-10,-10)) +
+  theme(legend.key.size = unit(0.3, 'cm'),
+        legend.position = "bottom",
+        plot.title = element_text(size=14))
+
+p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 1.5, 0.5),rel_widths  = c(0.1, 2, 0.1))
+plot_grid(p1,p2_1, rel_widths = c(16, 7), rel_heights  = c(9, 1), align = "none")
+
+
+
+```
+
+
+
+
+PART B
+
+Explain habitat and bioregion
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=6, fig.height=8}
 
 
 #Read interaction data 
@@ -668,87 +755,6 @@ p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3)
 ```
 
 
-
-\newpage 
-
-# Results
-
-
-Something always of interest: provide % of interactions of _Apis mellifera_?
-
-
-
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. a) Phylogenetic tree of plant families in the Safenet database, showing the number of species per family in logarithmic scale (blue circles) and the total number of interactions recorded per family (gray bars). b) Comparison of the top 50 families with the highest number of species in the SafeNet database against the total number of species recorded for those families at the European level. Species counts are displayed in logarithmic scale for better visualization.", fig.width=8, fig.height=8}
-
-library(ggplot2)
-library(ggtree)
-library(ggnewscale)
-library(ggtreeExtra)
-library(cowplot)
-
-
-#Save data to plot it in markdown file
-c = readRDS("../Data/Working_files/Figures/data_figure3b.rds")
-tree_family_interactions = readRDS("../Data/Working_files/Figures/data_figure3a1.rds")
-plant_fam_interactions = readRDS("../Data/Working_files/Figures/data_figure3a2.rds")
-
-# The circular layout tree
-p = ggtree(tree_family_interactions, 
-    layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
-geom_tippoint(aes(size= Family_species), colour='cyan4') +
-geom_tiplab(linetype='dashed', linesize=.05, 
-    size=1.75, color= "black", offset = -45, fontface="bold") +
-labs("log(Species)")+
-scale_size(name = "log(Species #)") +
-ggtitle("a)") +
-theme(plot.title = element_text(vjust = -31, hjust = 0.12, size = 14),
-      legend.position = "bottom")
-
-#Create barplot around circular tree
-p1 = p + 
-new_scale_fill() +
-geom_fruit(data=plant_fam_interactions, geom=geom_bar,
-   mapping=aes(y=Plant_family1, x=Family_interactions1),
-   pwidth=0.38, 
-   orientation="y", 
-   stat="identity", 
-   color = "black") +
-theme(legend.margin=margin(0,0,0,0),
-   legend.box.margin=margin(-50,-50,-50,-50),
-   plot.margin = margin(-15, -15, -10, -10, "pt")) +
-scale_size(name = "log(species number)", range=c(0,4))
-
-p2 = ggplot() + 
-geom_col(data = c, 
-  aes(x = reorder(Family_names, Spp_per_family), 
-  y = log(Spp_per_family), fill = Group), position=position_dodge(0.1),width=1) +
-xlab(NULL) +
-ylab("log(species number)") +
-theme_bw() +
-theme(axis.text.y = element_text(size = 5, face = "bold", color = "black"),
-      panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-coord_flip(expand = F) +
-scale_fill_manual(name="", values = c("black", "cyan4")) +
-  theme(plot.margin = margin(-10, 0, -10, -10, "pt")) +
-ggtitle("b)")+
-theme(legend.margin=margin(0,0,0,0),
-   legend.box.margin=margin(-10,-10,-10,-10)) +
-  theme(legend.key.size = unit(0.3, 'cm'),
-        legend.position = "bottom",
-        plot.title = element_text(size=14))
-
-p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 1.5, 0.5),rel_widths  = c(0.1, 2, 0.1))
-plot_grid(p1,p2_1, rel_widths = c(16, 7), rel_heights  = c(9, 1), align = "none")
-
-
-
-```
-
-
-
-FIGURE 4 POLLINATOR COVERAGE
-
-
 FIGURE 5? CLIFFHANGER OF NETWORK METRICS
 
 
@@ -770,6 +776,13 @@ Contextualise European diversity of plant and pollinator species with global bio
 
 ::: {#refs}
 :::
+
+
+# Acknowledgments
+
+We thank all the taxonomist and ecologist that has made this database possible by contributing with their fieldwork data. This research was funded by the H2020 European project Safeguard (101003476).
+
+# Author contributions
 
 # Supplementary material
 
