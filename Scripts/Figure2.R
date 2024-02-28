@@ -1,6 +1,13 @@
 #Code to explore graphically pollinator coverage of the different species
 
 
+
+library(data.tree)
+library(ape)
+library(phytools)
+library(dplyr)
+library(readr)
+library(stringr)
 #Load libraris
 library(dplyr)
 library(ggplot2)
@@ -100,24 +107,24 @@ theme(axis.text.x = element_text(angle = 45))
 species = bees %>%  
 mutate(Pollinator_accepted_name = str_replace_all(Pollinator_accepted_name, " ", "_")) %>% 
 distinct() %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Seladonia", "Halictus"))  %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Nomiapis", "Nomia")) %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Ceylalictus", "Halictus")) %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Flavipanurgus", "Panurgus")) %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Flavipanurgus", "Panurgus")) %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Rhophitoides", "Dufourea")) %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Seladonia", "Halictus"))  %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Nomiapis", "Nomia")) %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Ceylalictus", "Halictus")) %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Flavipanurgus", "Panurgus")) %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Flavipanurgus", "Panurgus")) %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Rhophitoides", "Dufourea")) %>% 
 group_by(Pollinator_genus) %>%
 slice_sample(n = 1) %>%
 dplyr::pull(Pollinator_accepted_name)
@@ -263,32 +270,21 @@ plot(bee.tree100, cex = 0.6)
 ##Check for missing species
 setdiff(species,bee.tree100$tip.label)
 
-#
+#To check nodes where to add the sister group that is missing
+ggtree(bee.tree100, size=0.1,) + 
+geom_text2(aes(subset=!isTip, label=node), hjust=-.3, size=1.75) + 
+geom_tiplab(size=1.75)
+
 bee.tree100$tip.label = word(str_replace(bee.tree100$tip.label, "_", " "),1)  
+
+new_genus_tree <- rtree(1)  # Assuming you have just one new genus
+new_genus_tree$tip.label = "A"
+
+bee.tree100 <- bind.tree(bee.tree100, new_genus_tree, where = 66)
+
+
+
   
-  
-#Add polytommies
-#function to add new tips
-add.cherry <- function(tree, tip, new.tips) {
-  ## Find the edge leading to the tip
-  tip_id <- match(tip, tree$tip.label)
-  ## Create the new cherry
-  tree_to_add <- ape::stree(length(c(tip, new.tips)))
-  ## Naming the tips
-  tree_to_add$tip.label <- c(tip, new.tips)
-  ## Add 0 branch length
-  tree_to_add$edge.length <- rep(5, Nedge(tree_to_add))
-  ## Binding both trees
-  return(bind.tree(tree, tree_to_add, where = tip_id))
-}
-tips_to_drop= c("Ceylalictus")
-bee.tree100 = drop.tip(bee.tree100, tips_to_drop)
-new_sister_species <- tips_to_drop
-bee.tree100 = add.cherry(bee.tree100, tip = "Halictus", new.tips = new_sister_genus)
-
-
-
-
 #Seldaonia:Halictus, Nomiapis:Nomis, Flavipanurgus:Panurgus,
 #Ceylalictus:Halictus, Rhophitoides: Dufourea
 #Those genera are included into these other as they are not in the tree
