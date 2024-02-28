@@ -1,29 +1,30 @@
 #Code to explore graphically pollinator coverage of the different species
 
-
-
+#Load libraris
 library(data.tree)
 library(ape)
 library(phytools)
-library(dplyr)
 library(readr)
 library(stringr)
-#Load libraris
 library(dplyr)
 library(ggplot2)
-library(readr)
-library(stringr)
-library(ape)
-library(phytools)
-#Read data----
+library(ggtree)
+#------------------------------------------------------------------#
+#Load data----
+#------------------------------------------------------------------#
+#Safenet interactions
 data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
+#Bee-syrphid Masterlist
+master_list = read_csv("Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
+#Bee phylo
+bee.trees=read.tree(file="Data/Working_files/phylogeny_genus_level.txt")
 
-
-#Bee fam
+#------------------------------------------------------------------#
+#Explore the number of interactions and species per bee family-----
+#------------------------------------------------------------------#
+#Bee families
 bee_fam = c("Apidae", "Megachilidae", "Halictidae", 
             "Andrenidae", "Colletidae","Melittidae")
-
-
 #Bee family interactions
 bee_family_interactions = data %>% 
 select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
@@ -38,7 +39,6 @@ ggplot(bee_family_interactions, aes(reorder(Pollinator_family, -Interactions), I
 geom_col() +
 xlab(NULL) +
 theme(axis.text.x = element_text(angle = 45))
-
 #Bee family species
 bee_family_species = data %>% 
 select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
@@ -53,23 +53,22 @@ ggplot(bee_family_species, aes(reorder(Pollinator_family, -Spp_number), Spp_numb
 geom_col() +
 xlab(NULL) +
 theme(axis.text.x = element_text(angle = 45))
-
-
-
+#------------------------------------------------------------------#
+#Prepare tibble with bee species data
+#------------------------------------------------------------------#
+#Create tibble with bee information
 bees = data %>% 
 select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family, Pollinator_genus)%>%
 filter(Pollinator_rank == "SPECIES") %>% 
 filter(Pollinator_order == "Hymenoptera") %>% 
 filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
-filter(Pollinator_family %in% bee_fam) 
-
-unique(factor(bees$Pollinator_genus))
-
-
-#Bee species coverage (European level)
-#Load master list
-master_list = read_csv("Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
-
+filter(Pollinator_family %in% bee_fam) %>% 
+mutate(Pollinator_accepted_name = 
+   str_replace(Pollinator_accepted_name, 
+   "Nomiapis", "Pseudapis")) 
+#------------------------------------------------------------------#
+#Check bee coverage at European level------
+#------------------------------------------------------------------#
 #Create bee list
 bee_list = master_list %>% 
 select("Order", "Family", "Subfamily", "Tribe", 
@@ -85,24 +84,20 @@ ggplot(bee_list, aes(reorder(Pollinator_family, -Spp_number), Spp_number)) +
 geom_col() +
 xlab(NULL) +
 theme(axis.text.x = element_text(angle = 45))
-
 #Prepare data for plotting it together
 bee_family_species = bee_family_species %>% 
 mutate(Group = "A")
 bee_list = bee_list %>% 
 mutate(Group = "B")
 bee_plotting = rbind(bee_family_species, bee_list)
-
 #Bee family coverage
 ggplot(bee_plotting, aes(reorder(Pollinator_family, -Spp_number), Spp_number, fill = Group)) +
 geom_col(position = "dodge") +
 xlab(NULL) +
 theme(axis.text.x = element_text(angle = 45))
-
-#Get phylo for pollinators
-#Load phylogenetic tree GENUS LEVEL
-#Generate Species vector 
-
+#------------------------------------------------------------------#
+#Prepare data for bee phylogeny------
+#------------------------------------------------------------------#
 #Load extracted data
 species = bees %>%  
 mutate(Pollinator_accepted_name = str_replace_all(Pollinator_accepted_name, " ", "_")) %>% 
@@ -110,9 +105,9 @@ distinct() %>%
 #mutate(Pollinator_accepted_name = 
 #         str_replace(Pollinator_accepted_name, 
 #         "Seladonia", "Halictus"))  %>% 
-#mutate(Pollinator_accepted_name = 
-#         str_replace(Pollinator_accepted_name, 
-#         "Nomiapis", "Nomia")) %>% 
+mutate(Pollinator_accepted_name = 
+         str_replace(Pollinator_accepted_name, 
+         "Nomiapis", "Pseudapis")) %>% 
 #mutate(Pollinator_accepted_name = 
 #         str_replace(Pollinator_accepted_name, 
 #         "Ceylalictus", "Halictus")) %>% 
@@ -128,8 +123,11 @@ distinct() %>%
 group_by(Pollinator_genus) %>%
 slice_sample(n = 1) %>%
 dplyr::pull(Pollinator_accepted_name)
-#Read phylo
-bee.trees=read.tree(file="Data/Working_files/phylogeny_genus_level.txt")
+
+
+#------------------------------------------------------------------#
+#Select and prepare phylo tree
+#------------------------------------------------------------------#
 #Pick tree 1
 bee.mcmc=bee.trees[[1]]
 #Make a wasp the outgroup
@@ -138,123 +136,24 @@ range(bee.mcmc$edge.length)
 bee.mcmc=as.phylo(bee.mcmc)
 bee.mcmc=chronos(bee.mcmc)
 
+#Select species that I don't have to d
+spp_list = bees %>% 
+select(Pollinator_genus) %>% 
+mutate(Pollinator_genus = 
+   str_replace(Pollinator_genus, 
+   "Nomiapis", "Pseudapis")) %>% 
+distinct() %>%  
+pull()
 
-bee.mcmc$tip.label
-species
-
-#Add genus that I don't have 
-bee.tree100=drop.tip(bee.mcmc, tip = c("Xenochilicola", "Geodiscelis", "Xeromelissa", "Chilimelissa",    
-                                       "Amphylaeus", "Meroglossa", "Palaeorhiza",     
-                                       "Hyleoides", "Scrapter", "Euhesma", "Euryglossina",    
-                                       "Callohesma", "Euryglossa", "Xanthesma", "Stenotritus",     
-                                       "Ctenocolletes", "Alocandrena", "Megandrena",      
-                                       "Euherbstia", "Orphana", "Protoxaea", "Nolanomelissa",   
-                                       "Neffapis", "Meliturgula", "Plesiopanurgus", "Macrotera",       
-                                       "Perdita", "Clavipanurgus",        
-                                       "Protandrena", "Pseudopanurgus",  
-                                       "Arhysosage", "Callonychium", "Cerceris",        
-                                       "Eucerceris", "Clypeadon", "Philanthus", "Pulverro",        
-                                       "Clitemnestra", "Stizoides", "Bembix", "Xerostictia",     
-                                       "Microbembex", "Bicyrtes", "Ampulex", "Sceliphron",      
-                                       "Chlorion", "Chalybion", "Isodontia", "Sphex",           
-                                       "Podalonia", "Prionyx", "Ammophila", "Eremnophila",     
-                                       "Oxybelus", "Anacrabro", "Plenoculus", "Tachytes",        
-                                       "Samba", "Capicola", "Hesperapis",      
-                                       "Eremaphanta", "Redivivoides",    
-                                       "Rediviva", "Promelitta", "Meganomia",       
-                                       "Deltoptila", "Pachymelus",        
-                                       "Sphecodopsis", "Oreopasites",     
-                                       "Odyneropsis", "Triepeolus", "Rhinepeolus",     
-                                       "Doeringiella", "Thalestria", "Triopasites",     
-                                       "Brachynomada", "Paranomada", "Holcopasites", "Ammobatoides",    
-                                       "Hexepeolus", "Neolarra", "Biastes",         
-                                       "Neopasites", "Townsendiella", "Caenoprosopina", "Caenoprosopis",   
-                                       "Tetralonioidella", "Zacosmia", "Xeromelecta",         
-                                       "Hopliphora", "Mesoplia", "Mesocheira",      
-                                       "Ctenioschelus", "Epiclopus", "Mesonychium", "Ericrocis",       
-                                       "Rhathymus", "Nanorhathymus", "Osiris", "Isepeolus",       
-                                       "Melectoides", "Leiopodus", "Coelioxoides",    
-                                       "Parepeolus", "Ancyla", "Florilegus", "Svastrina",       
-                                       "Peponapis", "Xenoglossa", "Tetraloniella",   
-                                       "Svastra", "Martinapis",      
-                                       "Svastrides", "Thygater", "Melissoptila", "Meliphilopsis",   
-                                       "Diadasia", "Alepidosceles", "Diadasina",       
-                                       "Melitoma", "Tapinotaspoides", "Caenonomada", "Tapinotaspidini", 
-                                       "Arhysoceble", "Paratetrapedia", "Anthophorula", "Exomalopsis",     
-                                       "Ancyloscelis", "Epicharis", "Exaerete", "Euglossa",        
-                                       "Aglae", "Eulaema", "Eufriesea",            
-                                       "Tetragonilla", "Tetragonula", "Platytrigona",    
-                                       "Heterotrigona", "Sundatrigona", "Geniotrigona", "Lepidotrigona",   
-                                       "Lophotrigona", "Tetrigona", "Homotrigona", "Odontotrigona",   
-                                       "Leurotrigona", "Hypotrigona", "Austroplebeia", "Lisotrigona",     
-                                       "Liotrigona", "Plebeiella", "Axestotrigona", "Meliponula",      
-                                       "Apotrigona", "Meliplebeia", "Plebeina", "Dactylurina",     
-                                       "Melipona", "Parapartamona", "Meliwillea", "Partamona",       
-                                       "Nogueirapis", "Aparatrigona", "Paratrigona", "Nannotrigona",    
-                                       "Tetragonisca", "Frieseomelitta", "Duckeola", "Trichotrigona",   
-                                       "Lestrimelitta", "Plebeia", "Friesella", "Mourella",        
-                                       "Schwarziana", "Oxytrigona", "Scaptotrigona", "Ptilotrigona",    
-                                       "Tetragona", "Trigona", "Cephalotrigona", "Geotrigona",      
-                                       "Scaura", "Schwarzula", "Dolichotrigona", "Trigonisca",      
-                                       "Celetrigona", "Centris", "Manuelia", "Ctenoplectrina",  
-                                       "Ctenoplectra", "Macrogalea", "Allodapula",      
-                                       "Exoneuridia", "Exoneurella", "Brevineura", "Exoneura",        
-                                       "Inquilina",  "Halterapis", "Compsomelissa", "Braunsapis",      
-                                       "Allodape", "Fideliopsis", "Fidelia",         
-                                       "Pararhophites", "Aspidosmia", "Aglaoapis", "Paradioxys",      
-                                       "Noteriades", "Radoszkowskiana", 
-                                       "Pseudoheriades", "Afroheriades",       
-                                       "Stenoheriades", "Othinosmia",      
-                                       "Haetosmia", "Wainia", "Hoplosmia",           
-                                       "Ashmeadiella", "Atoposmia", "Stenosmia",       
-                                        "Ochreriades",    
-                                       "Serapista", "Bathanthidium",   
-                                       "Dianthidium", "Paranthidium",  
-                                       "Pachyanthidium", "Benanthis",     
-                                       "Hypanthidium","Anthodioctes", "Hypanthidioides", 
-                                       "Notanthidium", "Epanthidium",       
-                                       "Microthurge", "Trichothurgus", "Neofidelia", "Dieunomia",       
-                                       "Pseudapis", "Lipotriches", "Curvinomia", "Hoplonomia",      
-                                       "Macronomia", "Cellariella",     
-                                       "Corynura", "Neocorynura", "Megommation", "Megalopta",       
-                                       "Xenochlora", "Megaloptidia",    
-                                       "Dinagapostemon", "Rhinetula",       
-                                       "Caenohalictus", "Habralictus", "Ruizantheda", "Pseudagapostemon",
-                                       "Eupetersia", "Mexalictus", "Patellapis",      
-                                       "Thrincohalictus", "Homalictus",   
-                                       "Parathrincostoma", "Thrinchostoma", "Penapis", "Goeletapis",      
-                                       "Xeralictus", "Protodufourea",       
-                                       "Sphecodosoma", "Conanthalictus", "Mydrosoma",       
-                                       "Ptiloglossidia", "Willinkapis", "Caupolicana", "Ptiloglossa",     
-                                       "Zikanapis", "Cadeguala", "Diphaglossa", "Cadegualina", 
-                                       "Edwyniana", "Belopria", "Nomiocolletes", "Eulonchopria",    
-                                       "Hoplocolletes",  "Niltonia", "Spinolapis", "Kylopasiphae",    
-                                       "Hexantheda", "Brachyglossula", "Tetraglossula", "Perditomorpha",   
-                                       "Halictanthrena", "Phenacolletes", "Euryglossidia", "Excolletes",      
-                                       "Leioproctus", "Lamprocolletes", "Neopasiphae", "Andrenopsis",     
-                                       "Colletellus", "Protomorpha", "Goniocolletes", "Odontocolletes",  
-                                       "Glossurocolletes", "Reedapis", "Cephalocolletes", "Chilicolletes",   
-                                       "Paracolletes", "Trichocolletes", "Callomelitta", "Xanthocotelles",  
-                                       "Hemicotelles", "Mourecotelles", 
-                                       "Ectemnius", "trigona", "Tetrapedia", "Neoceratina", "Nasutapis", "Apidae",        
-                                       "Toromelissa", "Lonchopria", "Baeocolletes", "Astata", "Stigmus",       
-                                       "Stangeella", "Crabro", "Pison", "Sphecius", "Zanysson", "Heterogyna", "Acamptopoeum", "Psaenythia",    
-                                       "Austropanurgus", "Anthrenoides", "Ancylandrena", "Melittoides",
-                                       "Chilicola", "Duckeanthidium",
-                                       "Tachysphex","Apis",
-                                       "Agapostemon","Augochlora",
-                                       "Calliopsis", "Melissodes",
-                                       "Ptilothrix", "Seladonia" 
-))
-
-
-plot(bee.tree100)
-nodelabels()
-tiplabels()
+#Select species that I don't have 
+d = tibble(spp = bee.mcmc$tip.label)
+v = d %>%  
+filter(!spp %in% spp_list) %>% 
+pull()
+bee.tree100=drop.tip(bee.mcmc, tip = v)
 
 #add dummy species labels
 bee.tree100$tip.label<-paste(bee.tree100$tip.label,"_dum",sep="")
-
 #Add species tips
 for(i in 1:length(species)){
     bee.tree100<-add.species.to.genus(bee.tree100,species[i],
@@ -267,43 +166,119 @@ bee.tree100<-drop.tip(bee.tree100,bee.tree100$tip.label[ii])
 #Our tree
 plot(bee.tree100, cex = 0.6)
 
+
+#------------------------------------------------------------------#
+#Explore missing species and edit phylo tree
+#------------------------------------------------------------------#
 ##Check for missing species
 setdiff(species,bee.tree100$tip.label)
-
 #To check nodes where to add the sister group that is missing
 ggtree(bee.tree100, size=0.1,) + 
 geom_text2(aes(subset=!isTip, label=node), hjust=-.3, size=1.75) + 
-geom_tiplab(size=1.75)
-
+geom_tiplab(size=1)+
+theme(plot.margin = unit(c(2,2,2,2),"cm")) +
+coord_cartesian(clip="off")
+#Select just the genus of the phylo tree
 bee.tree100$tip.label = word(str_replace(bee.tree100$tip.label, "_", " "),1)  
-
-
 #Add Seladonia
-new_genus_tree <- rtree(1)  # Assuming you have just one new genus
-new_genus_tree$tip.label = "Seladonia"
-new_genus_tree$edge.length <- mean(bee.tree100$edge.length)  # Adjust the length as needed
-bee.tree100 <- bind.tree(bee.tree100, new_genus_tree, where = 60)
-#Add Nomiapis
-new_genus_tree <- rtree(1)  # Assuming you have just one new genus
-new_genus_tree$tip.label = "Nomiapis"
-new_genus_tree$edge.length <- bee.tree100$edge.length  # Adjust the length as needed
-bee.tree100 <- bind.tree(bee.tree100, new_genus_tree, where = 59)
+common_ancestor = getMRCA(bee.tree100, c("Halictus", "Lasioglossum"))
+bee.tree100 = bind.tip(bee.tree100, "Seladonia", edge.length=NULL, where=common_ancestor, position=0)
+#Rename Pseudapis
+bee.tree100$tip.label = str_replace(bee.tree100$tip.label, "Pseudapis", "Nomiapis")
+#Add Flavipanurgus
+common_ancestor = getMRCA(bee.tree100, c("Panurgus", "Panurginus"))
+bee.tree100 = bind.tip(bee.tree100, "Flavipanurgus", edge.length=NULL, where=common_ancestor, position=0)
+## Function for adding a cherry to a tree where a single tip was before
+add.cherry <- function(tree, tip, new.tips) {
+    ## Find the edge leading to the tip
+    tip_id <- match(tip, tree$tip.label)
+    ## Create the new cherry
+    tree_to_add <- ape::stree(length(c(tip, new.tips)))
+    ## Naming the tips
+    tree_to_add$tip.label <- c(tip, new.tips)
+    ## Add 0 branch length
+    tree_to_add$edge.length <- NULL
+    ## Binding both trees
+    return(bind.tree(tree, tree_to_add, where = tip_id))
+}
+## Adding a new sister taxon with NULL branch length
+bee.tree100 = add.cherry(bee.tree100, tip = "Nomioides", new.tips = "Ceylalictus")
+bee.tree100 = add.cherry(bee.tree100, tip = "Rophites", new.tips = "Rhophitoides")
 
-#To provide same lenght...
-existing_branch_length <- existing_tree$edge.length[which(existing_tree$edge[,2] == node)]
 
+#Try to add some data to the phylogenetic tree:
+#Species number
+family_level = bees %>% 
+group_by(Pollinator_genus, Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name),
+          Interactions = length(Pollinator_accepted_name)) %>% 
+rename(label = Pollinator_genus)
 
+family_level1 = bees %>% 
+group_by(Pollinator_genus, Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name),
+          Interactions = log(length(Pollinator_accepted_name)+1))%>% 
+rename(Pollinator_family1= Pollinator_family) %>% 
+rename(Interactions1= Interactions)
 
-bee.tree100$edge.length 
-  
-#Seldaonia:Halictus, Nomiapis:Nomis, Flavipanurgus:Panurgus,
-#Ceylalictus:Halictus, Rhophitoides: Dufourea
-#Those genera are included into these other as they are not in the tree
+#Join with dataframe
+tree_family_interactions <- full_join(bee.tree100, family_level, by="label")
 
-library(ggtree)
-
+#------------------------------------------------------------------#
+#Plot tree
+#------------------------------------------------------------------#
 ggtree(bee.tree100, layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
+geom_text2(aes(subset=!isTip, label=node), hjust=-.3, size=1.75, face="bold") + 
 #geom_tippoint(aes(size= Family_species), colour='cyan4') +
-geom_tiplab(linetype='dashed', linesize=.05, 
-      size=1.75, color= "black", fontface=2)
+geom_tiplab(fontface=2)
 
+#Check how to color by bee family
+ggtree(tree_family_interactions, layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
+  geom_tiplab(fontface=2, aes( label=node))+
+geom_tippoint(aes(size= Spp_number), colour='cyan4') 
+
+
+
+
+library(ggnewscale)
+library(ggtreeExtra)
+
+
+#Circular layour
+p = ggtree(tree_family_interactions, layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
+geom_tippoint(aes(size= Spp_number, fill = Pollinator_family), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = -2.9, size=1.85, fontface=4) +
+labs("log(Species)")+
+scale_size(name = "Species") + guides(fill = "none")
+
+p1 = p + new_scale_fill() +
+         geom_fruit(data=family_level1, geom=geom_bar,
+                    mapping=aes(y=Pollinator_genus, x=Interactions1, fill = Pollinator_family1),
+                    pwidth=0.38, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0.05) +
+theme(legend.margin=margin(0,0,0,0),
+        legend.box.margin=margin(-20,-20,-20,-20))+
+  theme(plot.margin = margin(-10, -20, -10, -10, "pt")) 
+p1
+
+
+#Horizontal layout
+#Circular layour
+p = ggtree(tree_family_interactions,  size=0.2,  alpha=1)+ 
+geom_tippoint(aes(size= Spp_number, fill = Pollinator_family), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0, size=1.85, fontface=4) +
+labs("log(Species)")+
+scale_size(name = "Species") + guides(fill = "none")
+
+p1 = p + new_scale_fill() +
+         geom_fruit(data=family_level1, geom=geom_bar,
+                    mapping=aes(y=Pollinator_genus, x=Interactions1, fill = Pollinator_family1),
+                    pwidth=0.2, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0.08) 
+p1
