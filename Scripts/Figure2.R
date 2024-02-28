@@ -107,24 +107,24 @@ theme(axis.text.x = element_text(angle = 45))
 species = bees %>%  
 mutate(Pollinator_accepted_name = str_replace_all(Pollinator_accepted_name, " ", "_")) %>% 
 distinct() %>% 
-mutate(Pollinator_accepted_name = 
-         str_replace(Pollinator_accepted_name, 
-         "Seladonia", "Halictus"))  %>% 
-mutate(Pollinator_accepted_name = 
-         str_replace(Pollinator_accepted_name, 
-         "Nomiapis", "Nomia")) %>% 
-mutate(Pollinator_accepted_name = 
-         str_replace(Pollinator_accepted_name, 
-         "Ceylalictus", "Halictus")) %>% 
-mutate(Pollinator_accepted_name = 
-         str_replace(Pollinator_accepted_name, 
-         "Flavipanurgus", "Panurgus")) %>% 
-mutate(Pollinator_accepted_name = 
-         str_replace(Pollinator_accepted_name, 
-         "Flavipanurgus", "Panurgus")) %>% 
-mutate(Pollinator_accepted_name = 
-         str_replace(Pollinator_accepted_name, 
-         "Rhophitoides", "Dufourea")) %>% 
+#mutate(Pollinator_accepted_name = 
+#         str_replace(Pollinator_accepted_name, 
+#         "Seladonia", "Halictus"))  %>% 
+#mutate(Pollinator_accepted_name = 
+#         str_replace(Pollinator_accepted_name, 
+#         "Nomiapis", "Nomia")) %>% 
+#mutate(Pollinator_accepted_name = 
+#         str_replace(Pollinator_accepted_name, 
+#         "Ceylalictus", "Halictus")) %>% 
+#mutate(Pollinator_accepted_name = 
+#         str_replace(Pollinator_accepted_name, 
+#         "Flavipanurgus", "Panurgus")) %>% 
+#mutate(Pollinator_accepted_name = 
+#         str_replace(Pollinator_accepted_name, 
+#         "Flavipanurgus", "Panurgus")) %>% 
+#mutate(Pollinator_accepted_name = 
+#         str_replace(Pollinator_accepted_name, 
+#         "Rhophitoides", "Dufourea")) %>% 
 group_by(Pollinator_genus) %>%
 slice_sample(n = 1) %>%
 dplyr::pull(Pollinator_accepted_name)
@@ -277,13 +277,24 @@ geom_tiplab(size=1.75)
 
 bee.tree100$tip.label = word(str_replace(bee.tree100$tip.label, "_", " "),1)  
 
+
+#Add Seladonia
 new_genus_tree <- rtree(1)  # Assuming you have just one new genus
-new_genus_tree$tip.label = "A"
+new_genus_tree$tip.label = "Seladonia"
+new_genus_tree$edge.length <- mean(bee.tree100$edge.length)  # Adjust the length as needed
+bee.tree100 <- bind.tree(bee.tree100, new_genus_tree, where = 60)
+#Add Nomiapis
+new_genus_tree <- rtree(1)  # Assuming you have just one new genus
+new_genus_tree$tip.label = "Nomiapis"
+new_genus_tree$edge.length <- bee.tree100$edge.length  # Adjust the length as needed
+bee.tree100 <- bind.tree(bee.tree100, new_genus_tree, where = 59)
 
-bee.tree100 <- bind.tree(bee.tree100, new_genus_tree, where = 66)
+#To provide same lenght...
+existing_branch_length <- existing_tree$edge.length[which(existing_tree$edge[,2] == node)]
 
 
 
+bee.tree100$edge.length 
   
 #Seldaonia:Halictus, Nomiapis:Nomis, Flavipanurgus:Panurgus,
 #Ceylalictus:Halictus, Rhophitoides: Dufourea
