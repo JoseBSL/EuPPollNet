@@ -1,0 +1,74 @@
+---
+output: pdf_document
+date: "2024-02-29"
+---
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}.", fig.width=10, fig.height=10}
+
+#Load libraries
+library(ggplot2)
+library(ggnewscale)
+library(ggtreeExtra)
+library(ggtree)
+library(ggpattern)
+library(patchwork)
+library(cowplot)
+
+#Read data
+tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
+family_level1 = readRDS("../Data/Manuscript_info/bee_family_info.RData")
+bee_plotting = readRDS("../Data/Manuscript_info/bee_plotting.RData")
+
+#Plot
+p = ggtree(tree_family_interactions,  size=0.5,  alpha=1)+ 
+geom_tippoint(aes(size= Interactions, fill = Pollinator_family), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0.19, size=2.4, fontface=4) +
+labs("log(Species)")+
+scale_size(name = "Species", range = c(0, 5.5)) +
+guides(fill = "none") +
+theme(legend.position = "bottom")
+
+p1 = p + 
+new_scale_fill() +
+geom_fruit(data=family_level1, geom=geom_bar,
+      mapping=aes(y=Pollinator_genus, x=Interactions1, 
+      fill = Pollinator_family1),
+      pwidth=0.19, 
+      orientation="y", 
+      stat="identity",
+      color="black",
+      offset = 0.23,
+      axis.params=list(axis       = "x",
+                         text.size= 1.8,
+                         hjust    = 1,
+                         vjust      = 0.5,
+                         nbreak     = 2),grid.params=list())  +
+theme(legend.position = "bottom")
+
+
+
+
+p2 = ggplot(data = bee_plotting, aes(reorder(Pollinator_family, -Spp_number), 
+       Spp_number, fill = Group, pattern = Group)) +
+geom_col_pattern(position = "dodge",color = "black", pattern_fill = "black") +
+scale_pattern_manual(values = c(A = "stripe", B = "none"), labels= c(A = "SafeNet spp", B = "European spp")) +
+scale_fill_manual(values = c(A = "tan2", B = "black"), labels= c(A = "SafeNet spp", B = "European spp")) + 
+coord_cartesian(expand = FALSE) +
+theme_bw() + 
+ylab("Number of species") +
+xlab("")+
+ggtitle("Bee family coverage") +
+theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, face = "bold"),
+ legend.box.margin=margin(40,40,40,40),
+ legend.position = "bottom")
+
+
+
+p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 1.5, 0.5),rel_widths  = c(0.1, 2, 0.1))
+plot_grid(p1,p2_1, rel_widths = c(2, 2), rel_heights  = c(4, 0.4), align = "none")
+
+
+
+```

@@ -9,6 +9,8 @@ library(stringr)
 library(dplyr)
 library(ggplot2)
 library(ggtree)
+library(ggpattern)
+
 #------------------------------------------------------------------#
 #Load data----
 #------------------------------------------------------------------#
@@ -78,6 +80,9 @@ rename(Pollinator_family = Family,
 filter(Pollinator_family %in% bee_fam) %>% 
 group_by(Pollinator_family) %>% 
 summarise(Spp_number = n_distinct(Pollinator_accepted_name))
+
+unique(factor(bee_list$Genus))
+
 #Explore graphically spp per family
 #Bee species 
 ggplot(bee_list, aes(reorder(Pollinator_family, -Spp_number), Spp_number)) +
@@ -94,7 +99,55 @@ bee_plotting = rbind(bee_family_species, bee_list)
 ggplot(bee_plotting, aes(reorder(Pollinator_family, -Spp_number), Spp_number, fill = Group)) +
 geom_col(position = "dodge") +
 xlab(NULL) +
-theme(axis.text.x = element_text(angle = 45))
+theme(axis.text.x = element_text(angle = 45)) +
+theme_bw() +
+coord_cartesian(clip = "off", expand = FALSE)
+#
+
+
+bee_plotting$Group = factor(bee_plotting$Group, levels= c("B","A"))
+
+
+#Save data
+saveRDS(bee_plotting, "Data/Manuscript_info/bee_plotting.RData")
+#Save plot
+ggplot(data = bee_plotting, aes(reorder(Pollinator_family, -Spp_number), 
+       Spp_number, fill = Group, pattern = Group)) +
+geom_col_pattern(position = "dodge",color = "black", pattern_fill = "black") +
+scale_pattern_manual(values = c(A = "stripe", B = "none"), labels= c(A = "SafeNet spp", B = "European spp")) +
+scale_fill_manual(values = c(A = "tan2", B = "lightblue3"), labels= c(A = "SafeNet spp", B = "European spp")) + 
+coord_cartesian(expand = FALSE) +
+theme_bw() + 
+ylab("Number of species") +
+xlab("")+
+ggtitle("Bee family coverage") +
+theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, face = "bold"))
+
+
+
+#remotes::install_github("coolbutuseless/ggpattern")
+library(ggpattern)
+set.seed(35)
+df <- data.frame(Class = factor(rep(c(1,2),times = 80), labels = c("Math","Science")),
+                 StudyTime = factor(sort(sample(1:4, 16, prob = c(0.25,0.3,0.3,0.15), replace = TRUE)),labels = c("<5","5-10","10-20",">20")),
+                 Nerd = factor(sapply(rep(c(0.1,0.3,0.5,0.8),c(30,50,50,30)), function(x)sample(c("Nerd","NotNerd"),size = 1, prob = c(x,1-x))),levels = c("NotNerd","Nerd")))
+ggplot(data = df, aes(x = Class, fill = StudyTime, pattern = Nerd)) +
+  geom_bar_pattern(position = position_dodge(preserve = "single"),
+                   color = "black", 
+                   pattern_fill = "black",
+                   pattern_angle = 45,
+                   pattern_density = 0.1,
+                   pattern_spacing = 0.025,
+                   pattern_key_scale_factor = 0.6) + 
+  scale_fill_manual(values = colorRampPalette(c("#0066CC","#FFFFFF","#FF8C00"))(4)) +
+  scale_pattern_manual(values = c(Nerd = "stripe", NotNerd = "none")) +
+  labs(x = "Class", y = "Number of Students", pattern = "Nerd?") + 
+  guides(pattern = guide_legend(override.aes = list(fill = "white")),
+         fill = guide_legend(override.aes = list(pattern = "none")))
+
+
+
+
 #------------------------------------------------------------------#
 #Prepare data for bee phylogeny------
 #------------------------------------------------------------------#
@@ -211,7 +264,7 @@ bee.tree100 = add.cherry(bee.tree100, tip = "Rophites", new.tips = "Rhophitoides
 family_level = bees %>% 
 group_by(Pollinator_genus, Pollinator_family) %>% 
 summarise(Spp_number = n_distinct(Pollinator_accepted_name),
-          Interactions = length(Pollinator_accepted_name)) %>% 
+          Interactions = log(length(Pollinator_accepted_name)+1)) %>% 
 rename(label = Pollinator_genus)
 
 family_level1 = bees %>% 
@@ -224,6 +277,11 @@ rename(Interactions1= Interactions)
 #Join with dataframe
 tree_family_interactions <- full_join(bee.tree100, family_level, by="label")
 
+#------------------------------------------------------------------#
+#Save data
+#------------------------------------------------------------------#
+saveRDS(tree_family_interactions, "Data/Manuscript_info/bee_phylo.RData")
+saveRDS(family_level1, "Data/Manuscript_info/bee_family_info.RData")
 #------------------------------------------------------------------#
 #Plot tree
 #------------------------------------------------------------------#
