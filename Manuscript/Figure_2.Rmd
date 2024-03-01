@@ -18,57 +18,67 @@ library(cowplot)
 
 #Read data
 tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
-family_level1 = readRDS("../Data/Manuscript_info/bee_family_info.RData")
-bee_plotting = readRDS("../Data/Manuscript_info/bee_plotting.RData")
+d1 = readRDS("../Data/Manuscript_info/bee_data.RData")
+n = readRDS("../Data/Manuscript_info/node_data.RData")
 
-#Plot
-p = ggtree(tree_family_interactions,  size=0.5,  alpha=1)+ 
-geom_tippoint(aes(size= Interactions, fill = Pollinator_family), color="black", shape=21) +
-geom_tiplab(linetype='dashed', linesize=.05, offset = 0.19, size=2.4, fontface=4) +
-labs("log(Species)")+
-scale_size(name = "Species", range = c(0, 5.5)) +
-guides(fill = "none") +
-theme(legend.position = "bottom")
-
-p1 = p + 
+#Circular layour
+ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 
+geom_tippoint(aes(size= Interactions), fill = "tan2", color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0.062, size=2.5, fontface=1) +
+scale_size(name = "Log(Interactions)", range = c(0,4.5))  +
+theme(legend.position = "bottom") +
 new_scale_fill() +
-geom_fruit(data=family_level1, geom=geom_bar,
-      mapping=aes(y=Pollinator_genus, x=Interactions1, 
-      fill = Pollinator_family1),
-      pwidth=0.19, 
-      orientation="y", 
-      stat="identity",
-      color="black",
-      offset = 0.23,
-      axis.params=list(axis       = "x",
-                         text.size= 1.8,
-                         hjust    = 1,
-                         vjust      = 0.5,
-                         nbreak     = 2),grid.params=list())  +
-theme(legend.position = "bottom")
-
-
-
-
-p2 = ggplot(data = bee_plotting, aes(reorder(Pollinator_family, -Spp_number), 
-       Spp_number, fill = Group, pattern = Group)) +
-geom_col_pattern(position = "dodge",color = "black", pattern_fill = "black") +
-scale_pattern_manual(values = c(A = "stripe", B = "none"), labels= c(A = "SafeNet spp", B = "European spp")) +
-scale_fill_manual(values = c(A = "tan2", B = "black"), labels= c(A = "SafeNet spp", B = "European spp")) + 
-coord_cartesian(expand = FALSE) +
-theme_bw() + 
-ylab("Number of species") +
-xlab("")+
-ggtitle("Bee family coverage") +
-theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1, face = "bold"),
- legend.box.margin=margin(40,40,40,40),
- legend.position = "bottom")
-
-
-
-p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 1.5, 0.5),rel_widths  = c(0.1, 2, 0.1))
-plot_grid(p1,p2_1, rel_widths = c(2, 2), rel_heights  = c(4, 0.4), align = "none")
-
+geom_fruit(data = d1, geom=geom_bar,
+                    mapping=aes(y=Genus1, x=Percent, fill = fam_group),
+                    pwidth=0.1, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0.128,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 2.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 3,
+                         fontface = 2
+                     ),
+         grid.params=list()) +
+guides(fill = "none")+
+scale_fill_manual(values = c(a = "tan2", b = "lightblue3"), guide = "none")+
+geom_fruit(geom=geom_bar,
+                    mapping=aes(y=label, x=Spp_number_Europe),
+                    pwidth=0.1, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 2.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 1,
+                         fontface = 2
+                     ),
+         grid.params=list()) +
+annotate("text", x = 14, y = 70, label = "SafeNet spp\n coverage (%)", size= 2.65, fontface= "bold") +
+annotate("text", x = 15.2, y = 70, label = "European\n species", size= 2.65, fontface= "bold")+
+annotate("text", x = 12.1, y = 70, label = "SafeNet\n interactions", size= 2.65, fontface= "bold")+ 
+new_scale_fill() +
+geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
+annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
+annotate("text", x = 7, y = 6.5, label = "Andrenidae", size= 3)+
+annotate("text", x = 9.5, y = 12.5, label = "Colletidae", size= 3)+
+annotate("text", x = 5.9, y = 17.4, label = "Halictidae", size= 3)+
+annotate("text", x = 2.8, y = 28.6, label = "Apidae", size= 3)+
+annotate("text", x = 2.8, y = 51.3, label = "Megachilidae", size= 3) +
+coord_cartesian(clip = "off")+
+theme(legend.margin=unit(1,"cm"),
+      legend.spacing = unit(1, "cm"),
+      plot.margin = margin(4,0,4,0), 
+      legend.position = c(0.6,0),
+      legend.direction = "horizontal") 
 
 
 ```

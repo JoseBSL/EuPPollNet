@@ -501,8 +501,85 @@ PART A
 Provide number of species per taxonomic group and number of interactions
 Something always of interest: provide % of interactions of _Apis mellifera_?
 
-FIGURE 3 POLLINATOR COVERAGE
 
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic representation of the bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded in the database per genus is depicted with circles of proportional size corresponding to the number of interactions. The coverage of species per genus is depicted with orange and light blue bars, representing the percentage of species included and not included in the database, respectively, out of the total number of species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
+
+#Load libraries
+library(ggplot2)
+library(ggnewscale)
+library(ggtreeExtra)
+library(ggtree)
+library(ggpattern)
+library(patchwork)
+library(cowplot)
+
+#Read data
+tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
+d1 = readRDS("../Data/Manuscript_info/bee_data.RData")
+n = readRDS("../Data/Manuscript_info/node_data.RData")
+
+#Circular layour
+ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 
+geom_tippoint(aes(size= Interactions), fill = "tan2", color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0.063, size=2.9, fontface=1) +
+scale_size(name = "Log(Interactions)", range = c(0,4.5))  +
+theme(legend.position = "bottom") +
+new_scale_fill() +
+geom_fruit(data = d1, geom=geom_bar,
+                    mapping=aes(y=Genus1, x=Percent, fill = fam_group),
+                    pwidth=0.12, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0.137,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 2.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 3,
+                         fontface = 2
+                     ),
+         grid.params=list()) +
+guides(fill = "none")+
+scale_fill_manual(values = c(a = "tan2", b = "lightblue3"), guide = "none")+
+geom_fruit(geom=geom_bar,
+                    mapping=aes(y=label, x=Spp_number_Europe),
+                    pwidth=0.12, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 2.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 1,
+                         fontface = 2
+                     ),
+         grid.params=list()) +
+annotate("text", x = 14.2, y = 70, label = "SafeNet spp\n coverage (%)", size= 3, fontface= "bold") +
+annotate("text", x = 15.7, y = 70, label = "European\n species", size= 3, fontface= "bold")+
+annotate("text", x = 12.1, y = 70, label = "SafeNet\n interactions", size= 3, fontface= "bold")+ 
+new_scale_fill() +
+geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
+annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
+annotate("text", x = 7, y = 6.5, label = "Andrenidae", size= 3)+
+annotate("text", x = 9.5, y = 12.5, label = "Colletidae", size= 3)+
+annotate("text", x = 5.9, y = 17.4, label = "Halictidae", size= 3)+
+annotate("text", x = 2.8, y = 28.6, label = "Apidae", size= 3)+
+annotate("text", x = 2.8, y = 51.3, label = "Megachilidae", size= 3) +
+coord_cartesian(clip = "off")+
+theme(legend.margin=unit(1,"cm"),
+      legend.spacing = unit(1, "cm"),
+      plot.margin = margin(4,0,4,0), 
+      legend.position = c(0.6,0),
+      legend.direction = "horizontal") 
+
+
+```
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. a) Phylogenetic tree of plant families in the Safenet database, showing the number of species per family in logarithmic scale (blue circles) and the total number of interactions recorded per family (gray bars). b) Comparison of the top 50 families with the highest number of species in the SafeNet database against the total number of species recorded for those families at the European level. Species counts are displayed in logarithmic scale for better visualization.", fig.width=8, fig.height=8}
