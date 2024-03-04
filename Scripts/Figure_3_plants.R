@@ -1,40 +1,19 @@
-#----------------------------#
-#In this script we extract the European species from worldflora
-#and check against our list of spp standardise from GBIF
-#We do final edits to match the taxonomy from worldflora
-#In order to know the completeness of our dataset
-#----------------------------#
-#Workflow:
-#1) Read from worldflora and fiter
-#2) Flag wind pollinated taxonomic groups
-#3) Read GBIF species from the final final file AND
-#3) Check matching names with worldflora masterlist
-#4) We edit on the GBIF script for synonyms 
-#4) when accepted on GBIF and are on the masterlist
-#4) when not, we look for the species in the unfiltered masterlist
-#4) and add it manually by species code
-#5) check completeness
-#NOTE1: These last cases are generally exotic species
-#from private gardens, bot gardens, etc
-#We include them for now as the focus are pollinators
-#but think about exclude those from the final metaweb
-#NOTE2: Further work at subspecies level could be done
 
-#Load libraries
-library(dplyr)
-library(rgbif)
-library(stringr)
 library(data.table) #To read long dataset (much faster with fread)
-
-#----------------------------#
-#1) Read from worldflora and fiter----
-#----------------------------#
-#Master list downloaded from:
-#https://kew.iro.bl.uk/concern/datasets/32f77ea6-0f7b-4b2d-b7b3-173ed4ca2d6a?locale=en
-#DOI: 10.34885/jdh2-dr22
+library(rgbif)
+library(dplyr)
+library(stringr)
+library(rgbif)
+library(ggtree)
+library(rtrees)
+library(ggplot2)
+library(ggtreeExtra)
+library(ggnewscale)
 
 #Load plant distribution data
 plants <- fread("Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv")                                 
+#Read interaction data 
+data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
 
 #check cols
 colnames(plants)
@@ -235,7 +214,7 @@ mutate(Pollination = case_when(
 ))
 
 #Other families
-#Wind pollinated families (or Hydrophilous)
+#Wind pollinated families (or Hydrophilous) AND families without EU distribution
 #(checked manually by me with the species on the list)
 #Some key papers helped: 
 #https://doi.org/10.1016/S0169-5347(02)02540-5
@@ -251,7 +230,9 @@ wind_poll_fam = c("Altingiaceae", "Amaranthaceae",
                     "Potamogetonaceae", "Ruppiaceae",
                     "Scheuchzeriaceae", "Ulmaceae",
                     "Urticaceae",  "Zosteraceae",
-                  "Ephedraceae")
+                  "Cupressaceae", "Cymodoceaceae",
+                  "Eucommiaceae", "Francoaceae",
+                  "Pinaceae", "Ephedraceae")
 #Flag wind poll families
 taxPl4 = taxPl4 %>% 
 mutate(Pollination = case_when(
@@ -293,79 +274,136 @@ plant_name_col = taxPl_final %>%
 select(Plant_name) %>% distinct() %>% 
 pull()
 
-#----------------------------#
-#3) Read GBIF species ----
-#----------------------------#
-#Red plant taxonomy and check % of coverage
-data = readRDS("Data/Species_taxonomy/Plant_taxonomy.rds")
-colnames(data)
+#Filter out wind poll families
+taxPl_final = taxPl_final %>% 
+filter(is.na(Pollination))
 
-plant_spp = data %>% 
-select(Rank, Status, 
-Matchtype, Accepted_name) %>% 
-filter(Rank == "SPECIES")%>% 
-select(Accepted_name)    
+#Sample 1 spp per family
+spp_list = taxPl_final %>% 
+group_by(family) %>% 
+slice_sample(n = 1) %>% 
+select(Plant_name, genus, family, order) %>% 
+rename(species = Plant_name,
+       genus = genus,
+       family = family) 
 
-#Gnenerate unique cases from master list
-plant_spp_list = plant_spp %>% 
-distinct() 
-#Check for mismatches
-mismatches = plant_spp_list %>% 
-filter(!Accepted_name %in% plant_name_col) 
 
-#If the value is 0, we can check the completeness now :)
-mismatches1 = mismatches %>% pull()
-mismatches1
+#Retrieve phylogenetic info to build tree
+#Retrieve phylogenetic info
+phylo_output <- get_tree(sp_list = spp_list,  
+                         taxon = "plant")
 
-#We could build something that looks for the unmatched 
-#And add the corrected ones (at the moment is done manually)
+#Visualize tree INTERACTIONS-CIRCULAR
+ggtree(phylo_output, layout='circular',
+       ladderize = T, size=0.1) 
 
-#Check if 0 unmatched records
-plant_checks = ifelse(nrow(mismatches) == 0, 
-       "All plants match masterlist", 
-       "There are mistmatches of plants")
+#Obtain approximate number of species per family
+spp_per_family_Europe = taxPl_final %>%  
+group_by(family, order) %>% 
+summarise(Spp_Europe = n_distinct(Plant_name))
 
-plant_checks
 
-#----------------------------#
-#5) check completeness----
-#----------------------------#
-#Check species without wind poll
-#But first exclude the recorded ones
-#As there are few that are considered wind poll
-#with interactions
+#Rename spp from phylo to family level
+l = tibble(species = str_replace_all(phylo_output$tip.label, "_", " "))
+l1 =left_join(l, spp_list)
+phylo_output$tip.label = l1$family
+#Get database plant data
+#Interactions
+plant_fam_interactions = data %>% 
+filter(Plant_status == "ACCEPTED" & Plant_rank == "SPECIES") %>% 
+filter(!Plant_accepted_name =="Helianthus annuus") %>% 
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+select(Plant_rank, Plant_status,Plant_family,Plant_accepted_name, Interaction) %>% 
+select(Plant_family, Interaction) %>% 
+group_by(Plant_family) %>% 
+summarise(Interactions = log(1+as.integer(sum(Interaction)))) %>% 
+ungroup() 
 
-#Create lis of plant species
-plant_spp_list = plant_spp %>% 
-n_distinct() 
-plant_spp_list
+#Get number of species per family
+plant_fam_species = data %>% 
+filter(Plant_status == "ACCEPTED" & Plant_rank == "SPECIES") %>% 
+filter(!Plant_accepted_name =="Helianthus annuus") %>% 
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+select(Plant_rank, Plant_status,Plant_family,Plant_accepted_name,Plant_order, Interaction) %>% 
+select(Plant_family, Plant_accepted_name, Plant_order) %>% 
+group_by(Plant_family) %>% 
+summarise(Spp_SafeNet = n_distinct(Plant_accepted_name)) %>% 
+ungroup() 
 
-#Generate list
-plant_spp = plant_spp %>% 
-distinct() %>% pull()
-#Separate matched and unmatched
-one = taxPl_final %>%
-filter(Plant_name %in% plant_spp)
-two = taxPl_final %>%
-filter(!Plant_name %in% plant_spp)
-#Exclude wind poll from two
-no_wind_poll = two %>%
-filter(is.na(Pollination)) 
-#Bind excluded matched records back
-all_filtered = bind_rows(no_wind_poll, one)
-#Select unique cases
-all_spp_filtered = all_filtered %>%
-select(Plant_name) %>% 
-n_distinct()
-#Calculate percentage
-#It doesn't change much as there are only few records
-#that are wind poll with interactions recorded
-total_coverage_non_wind = 
-  plant_spp_list/all_spp_filtered *100
-total_coverage_non_wind
+#
+safenet_data = left_join(plant_fam_interactions, plant_fam_species) %>% 
+rename(family = Plant_family) %>% 
+mutate(Group = "A")
 
-saveRDS(total_coverage_non_wind, "Data/Manuscript_info/plant_coverage.RData")
 
-#Remember to trust this if:
-plant_checks
+all = full_join(spp_per_family_Europe, safenet_data, by = "family") 
+#Drop families that are not matching, those are wind poll or gymnos
+all = all %>% 
+filter(!is.na(Spp_Europe))%>% 
+rename(label = family) %>% 
+#mutate(Interactions = case_when(is.na(Interactions) ~ 0, T ~ Interactions)) %>% 
+mutate(Spp_SafeNet = case_when(is.na(Spp_SafeNet) ~ 0, T ~ Spp_SafeNet)) %>% 
+mutate(Group = case_when(is.na(Group) ~ "B", T ~ Group))
 
+#Prepare dataset with percentage of European and missing 
+d = all %>% 
+mutate(Percent = 100 - Spp_SafeNet/Spp_Europe*100) %>% 
+mutate(Percent = case_when(Spp_SafeNet == 0 ~ 100, T ~Percent)) %>% 
+select(Group, Percent, label)
+
+
+a = d %>% mutate(Group = "A")
+b = d %>% 
+mutate(Percent1 = 100-Percent) %>% 
+mutate(Group = "B") %>% 
+select(!Percent) %>% 
+rename(Percent = Percent1)
+
+d1 = bind_rows(a,b) %>% 
+rename(fam_group = Group)
+
+d1$fam_group = factor(d1$fam_group, levels = c("A", "B"))
+
+
+#Join tree with data
+tree_family_interactions = full_join(phylo_output, all, by="label")
+
+
+
+#Save data and plot it in an Rmarkdown
+saveRDS(tree_family_interactions, "Data/Manuscript_info/plant_phylo.RData")
+saveRDS(d1, "Data/Manuscript_info/plant_coverage_phylo_RData")
+
+
+#Check if there are differences in labels and order
+ggtree(tree_family_interactions, layout="circular", size=0.15, open.angle=5, alpha=0.25) +
+geom_tippoint(aes(size= Interactions), fill = "#d0f0c0", color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = -10, size=1.85, fontface=2, hjust=1) +
+scale_size(name = "log(Interactions)", range = c(-1,4)) +
+#xlim(0, 450)  +
+new_scale_fill() +
+geom_fruit(data = d1, geom=geom_bar,
+                    mapping=aes(y=label, x=Percent, fill = fam_group),
+                    pwidth=0.1, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0.022,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 1.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 3,
+                         fontface = 2
+                     ),
+         grid.params=list())+
+guides(fill = "none")+
+scale_fill_manual(values = c(A = "lightgrey", B = "#d0f0c0"), guide = "none") +
+geom_fruit(geom=geom_bar,
+                    mapping=aes(y=label, x=log(Spp_Europe +1)),
+                    pwidth=0.1, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0) 

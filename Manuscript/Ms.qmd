@@ -503,7 +503,7 @@ Something always of interest: provide % of interactions of _Apis mellifera_?
 
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic representation of the bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded in the database per genus is depicted with circles of proportional size corresponding to the number of interactions. The coverage of species per genus is depicted with orange and light blue bars, representing the percentage of species included and not included in the database, respectively, out of the total number of species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic representation of bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
 
 #Load libraries
 library(ggplot2)
@@ -521,14 +521,16 @@ n = readRDS("../Data/Manuscript_info/node_data.RData")
 
 #Circular layour
 ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 
-geom_tippoint(aes(size= Interactions), fill = "tan2", color="black", shape=21) +
+geom_tippoint(aes(size= Interactions, fill = Interactions), color="black", shape=21) +
 geom_tiplab(linetype='dashed', linesize=.05, offset = 0.063, size=2.9, fontface=1) +
-scale_size(name = "Log(Interactions)", range = c(0,4.5))  +
+scale_size(range = c(0,4.5), guide = 'none')  +
+scale_fill_continuous(type = "viridis", direction=-1) + 
+guides(fill=guide_legend(), size = guide_legend()) +
 theme(legend.position = "bottom") +
 new_scale_fill() +
 geom_fruit(data = d1, geom=geom_bar,
                     mapping=aes(y=Genus1, x=Percent, fill = fam_group),
-                    pwidth=0.12, 
+                    pwidth=0.13, 
                     orientation="y", 
                     stat="identity",
                     color="black",
@@ -543,7 +545,7 @@ geom_fruit(data = d1, geom=geom_bar,
                      ),
          grid.params=list()) +
 guides(fill = "none")+
-scale_fill_manual(values = c(a = "tan2", b = "lightblue3"), guide = "none")+
+scale_fill_manual(values = c(a = "tan2", b = "lightgrey"), guide = "none")+
 geom_fruit(geom=geom_bar,
                     mapping=aes(y=label, x=Spp_number_Europe),
                     pwidth=0.12, 
@@ -582,7 +584,7 @@ theme(legend.margin=unit(1,"cm"),
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. a) Phylogenetic tree of plant families in the Safenet database, showing the number of species per family in logarithmic scale (blue circles) and the total number of interactions recorded per family (gray bars). b) Comparison of the top 50 families with the highest number of species in the SafeNet database against the total number of species recorded for those families at the European level. Species counts are displayed in logarithmic scale for better visualization.", fig.width=8, fig.height=8}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of the plant families in the SafeNet database within the context of all flowering plant families occurring in Europe. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
 
 library(ggplot2)
 library(ggtree)
@@ -591,60 +593,50 @@ library(ggtreeExtra)
 library(cowplot)
 
 
-#Save data to plot it in markdown file
-c = readRDS("../Data/Working_files/Figures/data_figure3b.rds")
-tree_family_interactions = readRDS("../Data/Working_files/Figures/data_figure3a1.rds")
-plant_fam_interactions = readRDS("../Data/Working_files/Figures/data_figure3a2.rds")
+#Save data and plot it in an Rmarkdown
+tree_family_interactions = readRDS("../Data/Manuscript_info/plant_phylo.RData")
+d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData")
 
-# The circular layout tree
-p = ggtree(tree_family_interactions, 
-    layout="fan", size=0.1, open.angle=5, alpha=0.5)+ 
-geom_tippoint(aes(size= Family_species), colour='cyan4') +
-geom_tiplab(linetype='dashed', linesize=.05, 
-    size=1.75, color= "black", offset = -45, fontface="bold") +
-labs("log(Species)")+
-scale_size(name = "log(Species #)") +
-ggtitle("a)") +
-theme(plot.title = element_text(vjust = -31, hjust = 0.12, size = 14),
-      legend.position = "bottom")
-
-#Create barplot around circular tree
-p1 = p + 
+#Check if there are differences in labels and order
+ggtree(tree_family_interactions, layout="circular", size=0.15, open.angle=5, alpha=0.25) +
+geom_tippoint(aes(size= Interactions, fill = Interactions), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = -5, size=1.85, fontface=2, hjust=1) +
+scale_size(range = c(0,4), guide = 'none') +
+scale_fill_continuous(type = "viridis", direction=-1) + 
+theme(legend.position = "bottom") +
+guides(fill=guide_legend(), size = guide_legend()) +
 new_scale_fill() +
-geom_fruit(data=plant_fam_interactions, geom=geom_bar,
-   mapping=aes(y=Plant_family1, x=Family_interactions1),
-   pwidth=0.38, 
+geom_fruit(data = d1, geom=geom_bar,
+   mapping=aes(y=label, x=Percent, fill = fam_group),
+   pwidth=0.1, 
    orientation="y", 
-   stat="identity", 
-   color = "black") +
-theme(legend.margin=margin(0,0,0,0),
-   legend.box.margin=margin(-50,-50,-50,-50),
-   plot.margin = margin(-15, -15, -10, -10, "pt")) +
-scale_size(name = "log(species number)", range=c(0,4))
-
-p2 = ggplot() + 
-geom_col(data = c, 
-  aes(x = reorder(Family_names, Spp_per_family), 
-  y = log(Spp_per_family), fill = Group), position=position_dodge(0.1),width=1) +
-xlab(NULL) +
-ylab("log(species number)") +
-theme_bw() +
-theme(axis.text.y = element_text(size = 5, face = "bold", color = "black"),
-      panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-coord_flip(expand = F) +
-scale_fill_manual(name="", values = c("black", "cyan4")) +
-  theme(plot.margin = margin(-10, 0, -10, -10, "pt")) +
-ggtitle("b)")+
-theme(legend.margin=margin(0,0,0,0),
-   legend.box.margin=margin(-10,-10,-10,-10)) +
-  theme(legend.key.size = unit(0.3, 'cm'),
-        legend.position = "bottom",
-        plot.title = element_text(size=14))
-
-p2_1 = plot_grid(NULL,p2,NULL, ncol = 1, rel_heights  = c(1, 1.5, 0.5),rel_widths  = c(0.1, 2, 0.1))
-plot_grid(p1,p2_1, rel_widths = c(16, 7), rel_heights  = c(9, 1), align = "none")
-
-
+   stat="identity",
+   color="black",
+   offset = 0.028,
+   linewidth=0.35,
+   axis.params=list(
+     axis = "x",
+     text.size  = 1.5,
+     hjust  = 1,
+     vjust = 0.5,
+     nbreak = 3,
+     fontface = 2),
+  grid.params=list())+
+guides(fill = "none")+
+scale_fill_manual(values = c(A = "lightgrey", B = "tan2"), guide = "none") +
+geom_fruit(geom=geom_bar,
+    mapping=aes(y=label, x=log(Spp_Europe +1)),
+    pwidth=0.1, 
+    orientation="y", 
+    stat="identity",
+    color="black",
+    offset = 0,
+    linewidth=0.35) +
+theme(legend.margin=unit(1,"cm"),
+      legend.spacing = unit(1, "cm"),
+      plot.margin = margin(4,0,4,0), 
+      legend.position = c(0.5,0.09),
+      legend.direction = "horizontal") 
 
 ```
 
@@ -654,6 +646,8 @@ plot_grid(p1,p2_1, rel_widths = c(16, 7), rel_heights  = c(9, 1), align = "none"
 PART B
 
 Explain habitat and bioregion
+
+
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=6, fig.height=8}
