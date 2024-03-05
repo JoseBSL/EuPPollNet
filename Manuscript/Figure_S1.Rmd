@@ -1,0 +1,147 @@
+---
+output: pdf_document
+date: "2024-02-29"
+---
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}.", fig.width=10, fig.height=4}
+#Prepare figure for supplementary material
+#Coverage across high taxonomic ranks of bees, syrphids and butterflies
+
+#Load libraries
+library(dplyr)
+library(readr)
+library(viridis)
+library(ggplot2)
+#--------------------------------------------------------------------------------------------#
+#Start from bees----
+#Load data
+#Safenet interactions
+data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+#Bee-syrphid Masterlist
+master_list = read_csv("../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
+#Load butterfly masterlist
+master_list1 <- read.delim(file = "../Data/Species_taxonomy/Thesaurus/Butterfly_taxon.txt",
+                    header = T)
+#Bee families
+bee_fam = c("Apidae", "Megachilidae", "Halictidae", 
+            "Andrenidae", "Colletidae","Melittidae")
+
+
+#Species per family within SafeNet
+bee_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Hymenoptera") %>% 
+filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+filter(Pollinator_family %in% bee_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "SafeNet")
+#Species per family within Europe
+bee_spp_europe =  master_list %>% 
+select(Family, Genus, Species, GenusAndSpecies) %>% 
+filter(Family %in% bee_fam) %>% 
+group_by(Family) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+rename(Pollinator_family = Family) %>% 
+mutate(Group = "Europe")
+
+#Bind both datasets for plotting
+bee_fam_coverage = bind_rows(bee_spp_safenet, bee_spp_europe)
+
+p1 = ggplot(bee_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+ylab("Number of species") +
+scale_fill_manual(values = c(viridis(2)))+
+ggtitle("Bee family coverage")
+#--------------------------------------------------------------------------------------------#
+#Continue with syrphids----
+#As we don't have subfamilies, let's obtained them from the master list
+syrphids = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family,Subfamily,  Genus, Species, GenusAndSpecies) %>% 
+rename(Pollinator_accepted_name = GenusAndSpecies)
+#Syrphid species safenet
+syrphid_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_family== "Syrphidae") %>% 
+distinct()
+#Add subfamily info
+syrphid_spp_safenet = left_join(syrphid_spp_safenet, syrphids)
+#Summarise spp per subfamily
+syrphid_spp_safenet = syrphid_spp_safenet %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "SafeNet")
+#Get spp per subfamily at european level
+syrphid_spp_europe = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family, Subfamily, Genus, Species, GenusAndSpecies) %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+syrphid_fam_coverage = bind_rows(syrphid_spp_safenet, syrphid_spp_europe)
+#Plot
+p2 = ggplot(syrphid_fam_coverage, aes(reorder(Subfamily,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c(viridis(2)))+
+ggtitle("Syrphid subfamily coverage")
+#--------------------------------------------------------------------------------------------#
+#Continue with butterflies----
+#Do it at family level
+#Create vector with butterfly families
+butt_fam = c(unique(master_list1$family))
+#Species per family within SafeNet
+butterfly_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Lepidoptera") %>% 
+filter(Pollinator_family %in% butt_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "SafeNet")
+#Species per family within Europe
+butterfly_spp_europe =  master_list1 %>% 
+select(family, genus, scientificName) %>% 
+group_by(family) %>% 
+summarise(Spp_number = n_distinct(scientificName)) %>% 
+rename(Pollinator_family = family) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+butterfly_fam_coverage = bind_rows(butterfly_spp_safenet, butterfly_spp_europe)
+#Plot
+p3 = ggplot(butterfly_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c(viridis(2)))+
+ggtitle("Butterfly family coverage")
+
+#--------------------------------------------------------------------------------------------#
+library(patchwork)
+p1+p2+p3 + plot_layout(guides = "collect") & 
+theme(plot.title = element_text(size = 12, face = "bold"),
+      axis.title.y = element_text(face = "bold"))
+
+
+
+```

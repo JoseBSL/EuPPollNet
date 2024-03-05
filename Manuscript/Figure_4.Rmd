@@ -1,7 +1,5 @@
 ---
-title: "Untitled"
 output: pdf_document
-date: "2024-02-01"
 ---
 
 
@@ -17,6 +15,7 @@ library(lubridate) #To operate with dates
 library(tidyr) #Reshape data (wide format)
 library(stringr) #Fix/modify strings
 library(forcats)
+library(viridis)
 
 ```
 
@@ -105,51 +104,61 @@ c2$Habitat = factor(c2$Habitat, levels = l2)
 #Set the right order of labels
 c2$Pollinator_order = factor(c2$Pollinator_order, levels = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera"))
 
-p1 = ggplot(c2, aes(fill = Pollinator_order, x = Habitat, y = Proportion)) + 
-  geom_bar(position = position_stack(reverse = TRUE), stat = "identity") +
-  theme_bw() +
-  theme(legend.position = "bottom",
-        plot.margin = unit(c(0, 0, 0, 0), "mm"),
-        legend.text = element_text(size = 6),
-        legend.key.size = unit(2, "mm"),
-        legend.spacing.y = unit(0.1, "cm"),
-        legend.box.spacing = unit(0, "pt"),
-        axis.title = element_text(face = "bold", size = 8),
-        axis.text = element_text(size = 6)) +
-  ylab(NULL) +
-  scale_x_continuous(breaks = c(0.25, 0.5, 0.75), labels = c("0.25", "0.5", "0.75")) +
-  theme(strip.text.x = element_text(size = 12, face = "bold"),
-        strip.background = element_rect(
-          color = NA, fill = NA, size = 0.5, linetype = "solid")) +
-  scale_fill_manual(values = c("#ffd67a", "skyblue", "lightpink2", "tomato3"),
-                    name = NULL) +
-  ggforce::facet_col(~ factor(Group, levels = c("Habitat", "Bioregion")), space = "free", scales = "free_x") +
-  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
-  ggtitle("(a)") +
-  theme(plot.title = element_text(size = 10, face = "bold", hjust = -0.25, vjust = 1))
+
+p1 = ggplot(c2, 
+aes(fill=Pollinator_order, y=Proportion, x=Habitat)) + 
+geom_bar(position = position_stack(reverse = TRUE), stat="identity")+
+theme_bw() +
+theme(legend.position = "bottom",
+      plot.margin=unit(c(0,0,0,0), "mm"),
+      legend.text = element_text(size=6),
+      legend.key.size = unit(2, "mm"),
+      legend.spacing.y = unit(0.1, "cm"),
+       legend.box.spacing = unit(0, "pt"),
+      axis.title = element_text(face = "bold", size = 8),
+      axis.text = element_text(size=6),
+      panel.border = element_rect(size=1)) +
+xlab(NULL) +
+scale_y_continuous(breaks = c(0.25, 0.5,0.75), labels = c("0.25", "0.5","0.75"))+
+theme(strip.text.x = element_text(size = 12, face = "bold"),
+    strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid")) +
+scale_fill_manual(values = viridis(4),
+                  name = NULL) +
+coord_flip(expand = FALSE) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
+guides(fill=guide_legend(nrow=2,byrow=TRUE)) +
+ggtitle("(a)") +
+theme(plot.title = element_text(size = 10, face = "bold",hjust = -0.25, vjust = 1))
+
+#c("azure3","steelblue", "wheat2", "tomato3")
+
 #Unify labels
 c1$Habitat = factor(c1$Habitat, levels = l2)
 #Create barplot on the side
-p2 = ggplot(c1, aes(x = Habitat, y = Count)) +
-  geom_col(fill = "black", width = 0.9) +
-  theme_light() +
-  theme(plot.margin = unit(c(0, 0, 0, 0), "mm"),
-        axis.ticks.x = element_blank(), 
-        axis.text.x = element_blank(), 
-        strip.text.y = element_text(size = 12),
-        strip.background = element_rect(
-          color = NA, fill = NA, size = 0.5, linetype = "solid"),
-        axis.title = element_text(face = "bold", size = 8),
-        axis.text = element_text(size = 6)) +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(),
-        panel.border = element_blank(),
-        axis.line = element_line(color = 'black')) +
-  scale_x_continuous(breaks = c(0, 10, 20), labels = c("0", "10", "20"), limits = c(0, 30)) +
-  ylab(NULL) +
-  xlab("Number of studies") +
-  theme(legend.position = "none") +
-  ggforce::facet_row(~ factor(Group, levels = c("Habitat", "Bioregion")), space = "free", scales = "free_x")
+p2 =ggplot(c1, aes(Habitat, Count)) +
+geom_col(fill = "gray25",width = 0.9, color="black", linewidth = 0.4) +
+theme_light() +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+      axis.ticks.y = element_blank(), 
+      axis.ticks.x = element_line(color="black"),
+  axis.text.y = element_blank(), 
+      strip.text.x = element_text(size=12),
+      strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid"),
+  axis.title = element_text(face = "bold", size = 8),
+axis.text = element_text(size=6)) +
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(),
+panel.border = element_blank(),
+axis.line = element_line(color = 'black'),
+plot.margin = margin(0,0,0,0)) +
+scale_y_continuous(breaks = c(0, 10,20), labels = c("0", "10","20"), limits = c(0,30))+
+xlab(NULL) +
+ylab("Number of studies")+
+theme(legend.position = "none")+
+coord_flip(expand = F) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y")
 
 data2 = data %>%  select(Study_id, Year) %>% 
 distinct() %>% 
@@ -157,8 +166,10 @@ group_by(Year) %>%
 summarise(Counts = n())
 
 
+
+
 p3 = ggplot(data2, aes(Year, Counts)) +
-geom_col(fill = "gray10", width = 0.9) +
+geom_col(fill = "gray25", width = 0.9, color="black", linewidth = 0.4) +
 theme_light() +
 theme(plot.margin=unit(c(0,0,0,0), "mm"),
   axis.title.y = element_text(face = "bold", size = 8, vjust = -2),
@@ -166,6 +177,7 @@ theme(plot.margin=unit(c(0,0,0,0), "mm"),
   axis.text.y = element_text(size = 6),
   axis.text.x = element_text(size = 6,  angle = 90), 
   strip.text.x = element_text(size=12),
+   axis.ticks.x = element_line(color="black"),
   strip.background = element_rect(
   color="black", fill=NA, size=0.5, linetype="solid")) + 
 ylab("Number of studies") +
@@ -182,11 +194,9 @@ scale_x_continuous(breaks = seq(min(data2$Year), max(data2$Year), by = 2), limit
 ggtitle("(b)") +
 theme(plot.title = element_text(size = 10, face = "bold",hjust = -0.25, vjust = 1))
 
-p1/p2 + p3
-
-#a = plot_spacer() +  p3 + plot_spacer() + plot_layout(ncol=1, heights= c(9,10,1))
+a = plot_spacer() +  p3 + plot_spacer() + plot_layout(ncol=1, heights= c(9,10,1))
 #Plot panel
-#p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3) 
+p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3) 
 
 
 ```

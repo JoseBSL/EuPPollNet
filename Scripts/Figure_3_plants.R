@@ -378,7 +378,7 @@ saveRDS(d1, "Data/Manuscript_info/plant_coverage_phylo_RData")
 #Check if there are differences in labels and order
 ggtree(tree_family_interactions, layout="circular", size=0.15, open.angle=5, alpha=0.25) +
 geom_tippoint(aes(size= Interactions), fill = "#d0f0c0", color="black", shape=21) +
-geom_tiplab(linetype='dashed', linesize=.05, offset = -10, size=1.85, fontface=2, hjust=1) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = -11, size=1.85, fontface=2, hjust=1) +
 scale_size(name = "log(Interactions)", range = c(-1,4)) +
 #xlim(0, 450)  +
 new_scale_fill() +
@@ -388,7 +388,7 @@ geom_fruit(data = d1, geom=geom_bar,
                     orientation="y", 
                     stat="identity",
                     color="black",
-                    offset = 0.022,
+                    offset = 0.023,
             axis.params=list(
                          axis = "x",
                          text.size  = 1.5,

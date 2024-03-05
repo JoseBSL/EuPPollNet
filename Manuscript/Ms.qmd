@@ -19,22 +19,35 @@ urlcolor: RoyalBlue
 
 ```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
 library(dplyr) #For handling fata 
-library(ggplot2) #For plotting
-library(giscoR) #For plotting
 library(sf) #For handling coordinates and plotting
-library(patchwork)#For plotting
-library(ggstar) #For plotting (cool shapes)
 library(scales) #For plotting (decimals on axes)
 library(lubridate) #To operate with dates
 library(tidyr) #Reshape data (wide format)
 library(stringr) #Fix/modify strings
 library(forcats)
+library(readr)
+#Load libraries for plotting
+library(giscoR) #Maps
+library(ggstar) #cool shapes as points
+library(ggplot2) #general plotting
+library(ggtree) #phylo trees
+library(ggpattern) #cool shapes in barplots
+library(patchwork) #plot organisation
+library(cowplot) #plot organisation
+library(viridis) #colours
+library(ggnewscale)
+library(ggtreeExtra)
 
 ```
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
-#Print number of countries
+#Load data
 data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+#Bee-syrphid Masterlist
+master_list = read_csv("../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
+#Load butterfly masterlist
+master_list1 <- read.delim(file = "../Data/Species_taxonomy/Thesaurus/Butterfly_taxon.txt",
+                    header = T)
 #Country number
 country_number = data %>% 
 select(Country) %>% 
@@ -496,7 +509,7 @@ The different sites per study were classified with a habitat type by the authors
 
 # Results
 
-PART A
+## Taxonomy and taxonomic coverage
 
 Provide number of species per taxonomic group and number of interactions
 Something always of interest: provide % of interactions of _Apis mellifera_?
@@ -504,15 +517,6 @@ Something always of interest: provide % of interactions of _Apis mellifera_?
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic representation of bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
-
-#Load libraries
-library(ggplot2)
-library(ggnewscale)
-library(ggtreeExtra)
-library(ggtree)
-library(ggpattern)
-library(patchwork)
-library(cowplot)
 
 #Read data
 tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
@@ -641,20 +645,14 @@ theme(legend.margin=unit(1,"cm"),
 ```
 
 
+\newpage
+
+## Habitat type and bioclimatic region
 
 
-PART B
-
-Explain habitat and bioregion
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=6, fig.height=8}
 
 
-
-
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=6, fig.height=8}
-
-
-#Read interaction data 
-data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
 #Load data (done it in earlier chunks)
 #Select cols of interest
 data1 = data %>% 
@@ -746,28 +744,32 @@ theme(legend.position = "bottom",
       legend.spacing.y = unit(0.1, "cm"),
        legend.box.spacing = unit(0, "pt"),
       axis.title = element_text(face = "bold", size = 8),
-      axis.text = element_text(size=6)) +
+      axis.text = element_text(size=6),
+      panel.border = element_rect(size=1)) +
 xlab(NULL) +
 scale_y_continuous(breaks = c(0.25, 0.5,0.75), labels = c("0.25", "0.5","0.75"))+
 theme(strip.text.x = element_text(size = 12, face = "bold"),
     strip.background = element_rect(
 color=NA, fill=NA, size=0.5, linetype="solid")) +
-scale_fill_manual(values = c("#ffd67a","skyblue", "lightpink2", "tomato3"),
+scale_fill_manual(values = viridis(4),
                   name = NULL) +
 coord_flip(expand = FALSE) +
 ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
 guides(fill=guide_legend(nrow=2,byrow=TRUE)) +
 ggtitle("(a)") +
-theme(plot.title = element_text(size = 14 ,hjust = -0.25, vjust = -2.5))
+theme(plot.title = element_text(size = 10, face = "bold",hjust = -0.25, vjust = 1))
+
+#c("azure3","steelblue", "wheat2", "tomato3")
 
 #Unify labels
 c1$Habitat = factor(c1$Habitat, levels = l2)
 #Create barplot on the side
 p2 =ggplot(c1, aes(Habitat, Count)) +
-geom_col(fill = "black",width = 0.9) +
+geom_col(fill = "gray25",width = 0.9, color="black", linewidth = 0.4) +
 theme_light() +
 theme(plot.margin=unit(c(0,0,0,0), "mm"),
       axis.ticks.y = element_blank(), 
+      axis.ticks.x = element_line(color="black"),
   axis.text.y = element_blank(), 
       strip.text.x = element_text(size=12),
       strip.background = element_rect(
@@ -777,7 +779,8 @@ axis.text = element_text(size=6)) +
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 panel.background = element_blank(),
 panel.border = element_blank(),
-axis.line = element_line(color = 'black')) +
+axis.line = element_line(color = 'black'),
+plot.margin = margin(0,0,0,0)) +
 scale_y_continuous(breaks = c(0, 10,20), labels = c("0", "10","20"), limits = c(0,30))+
 xlab(NULL) +
 ylab("Number of studies")+
@@ -794,14 +797,15 @@ summarise(Counts = n())
 
 
 p3 = ggplot(data2, aes(Year, Counts)) +
-geom_col(fill = "gray10", width = 0.9) +
+geom_col(fill = "gray25", width = 0.9, color="black", linewidth = 0.4) +
 theme_light() +
 theme(plot.margin=unit(c(0,0,0,0), "mm"),
-  axis.title.y = element_text(face = "bold", size = 8, vjust = -1),
+  axis.title.y = element_text(face = "bold", size = 8, vjust = -2),
   axis.title.x = element_text(face = "bold", size = 8),
   axis.text.y = element_text(size = 6),
   axis.text.x = element_text(size = 6,  angle = 90), 
   strip.text.x = element_text(size=12),
+   axis.ticks.x = element_line(color="black"),
   strip.background = element_rect(
   color="black", fill=NA, size=0.5, linetype="solid")) + 
 ylab("Number of studies") +
@@ -816,7 +820,7 @@ axis.line = element_line(color = 'black')) +
 scale_y_continuous(breaks = c(0, 4,8,12), labels = c("0", "4","8", "12"), limits = c(0,12)) +
 scale_x_continuous(breaks = seq(min(data2$Year), max(data2$Year), by = 2), limits = c(min(data2$Year),max(data2$Year)))+
 ggtitle("(b)") +
-theme(plot.title = element_text(size = 14,hjust = -0.3, vjust = 2))
+theme(plot.title = element_text(size = 10, face = "bold",hjust = -0.25, vjust = 1))
 
 a = plot_spacer() +  p3 + plot_spacer() + plot_layout(ncol=1, heights= c(9,10,1))
 #Plot panel
@@ -826,13 +830,10 @@ p1 + p2 + a +plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=3)
 ```
 
 
-FIGURE 5? CLIFFHANGER OF NETWORK METRICS
+**FIGURE 5?** CLIFFHANGER OF NETWORK METRICS
 
 
-## Taxonomy and taxonomic coverage
-
-
-## Habitat type and bioclimatic region
+\newpage 
 
 
 # Discussion
@@ -857,7 +858,7 @@ We thank all the taxonomist and ecologist that has made this database possible b
 
 # Supplementary material
 
-Supplementary text 1
+**Supplementary text 1**
 
 Habitat definitions:
 
@@ -885,4 +886,133 @@ Habitat definitions:
 
 12) **Moors and heathland**: Low growing woody vegetation characteristic from low fertile soils near the coast or in alpine areas.
 
+
+\newpage
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure S1}. Coverage of the SafeNet species for bees (family level), syrphids (subfamily level) and butterflies (family level) in relation to the total number of European species within these taxonomic groups.", fig.width=10, fig.height=4}
+
+#Prepare figure for supplementary material
+#Coverage across high taxonomic ranks of bees, syrphids and butterflies
+#--------------------------------------------------------------------------------------------#
+#Start from bees----
+#Bee families
+bee_fam = c("Apidae", "Megachilidae", "Halictidae", 
+            "Andrenidae", "Colletidae","Melittidae")
+
+
+#Species per family within SafeNet
+bee_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Hymenoptera") %>% 
+filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+filter(Pollinator_family %in% bee_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "SafeNet")
+#Species per family within Europe
+bee_spp_europe =  master_list %>% 
+select(Family, Genus, Species, GenusAndSpecies) %>% 
+filter(Family %in% bee_fam) %>% 
+group_by(Family) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+rename(Pollinator_family = Family) %>% 
+mutate(Group = "Europe")
+
+#Bind both datasets for plotting
+bee_fam_coverage = bind_rows(bee_spp_safenet, bee_spp_europe)
+
+p1 = ggplot(bee_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+ylab("Number of species") +
+scale_fill_manual(values = c(viridis(2)))+
+ggtitle("Bee family coverage")
+#--------------------------------------------------------------------------------------------#
+#Continue with syrphids----
+#As we don't have subfamilies, let's obtained them from the master list
+syrphids = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family,Subfamily,  Genus, Species, GenusAndSpecies) %>% 
+rename(Pollinator_accepted_name = GenusAndSpecies)
+#Syrphid species safenet
+syrphid_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_family== "Syrphidae") %>% 
+distinct()
+#Add subfamily info
+syrphid_spp_safenet = left_join(syrphid_spp_safenet, syrphids)
+#Summarise spp per subfamily
+syrphid_spp_safenet = syrphid_spp_safenet %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "SafeNet")
+#Get spp per subfamily at european level
+syrphid_spp_europe = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family, Subfamily, Genus, Species, GenusAndSpecies) %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+syrphid_fam_coverage = bind_rows(syrphid_spp_safenet, syrphid_spp_europe)
+#Plot
+p2 = ggplot(syrphid_fam_coverage, aes(reorder(Subfamily,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c(viridis(2)))+
+ggtitle("Syrphid subfamily coverage")
+#--------------------------------------------------------------------------------------------#
+#Continue with butterflies----
+#Do it at family level
+#Create vector with butterfly families
+butt_fam = c(unique(master_list1$family))
+#Species per family within SafeNet
+butterfly_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Lepidoptera") %>% 
+filter(Pollinator_family %in% butt_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "SafeNet")
+#Species per family within Europe
+butterfly_spp_europe =  master_list1 %>% 
+select(family, genus, scientificName) %>% 
+group_by(family) %>% 
+summarise(Spp_number = n_distinct(scientificName)) %>% 
+rename(Pollinator_family = family) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+butterfly_fam_coverage = bind_rows(butterfly_spp_safenet, butterfly_spp_europe)
+#Plot
+p3 = ggplot(butterfly_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c(viridis(2)))+
+ggtitle("Butterfly family coverage")
+
+#--------------------------------------------------------------------------------------------#
+p1+p2+p3 + plot_layout(guides = "collect") & 
+theme(plot.title = element_text(size = 12, face = "bold"),
+      axis.title.y = element_text(face = "bold"))
+
+
+```
 

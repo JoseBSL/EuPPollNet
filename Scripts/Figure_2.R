@@ -53,7 +53,7 @@ bees = data %>%
 select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family, Pollinator_genus)%>%
 filter(Pollinator_rank == "SPECIES") %>% 
 filter(Pollinator_order == "Hymenoptera") %>% 
-filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+#filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
 filter(Pollinator_family %in% bee_fam) %>% 
 mutate(Pollinator_accepted_name = 
    str_replace(Pollinator_accepted_name, 
