@@ -44,8 +44,8 @@ colnames(poll_taxo1)
 #Merge all for now
 plant_taxo1
 data = left_join(master1, plant_taxo1)
+#Bind data
 data1 = left_join(data, poll_taxo1, relationship = "many-to-many")
-
 #Exclude records of plants or pollinators that
 #are considered as unknown
 data1 = data1 %>% 
@@ -78,6 +78,30 @@ data1 = data1 %>%
 relocate(Bioregions, .after = SafeNet_habitat) %>% 
 rename(Bioregion = Bioregions)
 
+
+#Edit cols that are included in the SafeNet database
+#This decision tries to simplify the number of columns while 
+#keep high amount of relevant information
+#Don't add some cols
+#Tasks
+#Create date column
+library(lubridate)
+data1 <- data1 %>%
+  mutate(Month = coalesce(Month, 1),  # Replace NA in Month with 1
+         Day = coalesce(Day, 1),      # Replace NA in Day with 1
+         Date = make_date(Year, Month, Day))
+#Note that dates 1/1 are an artefact
+
+#Select cols and establish final order
+data1 = data1 %>% 
+select(Study_id, Network_id, Site_id, Sampling_method, Authors_habitat, 
+       Corine_land_cover, SafeNet_habitat, Bioregion, Country, Locality,
+       Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
+       Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
+       Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
+       Pollinator_rank, Pollinator_status, Pollinator_matchtype, Pollinator_order, Pollinator_family, 
+       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
+
 #----------------------
 #Save data
 #----------------------
@@ -91,8 +115,29 @@ data2 = data1 %>%
 uncount(Interaction) %>% 
 mutate(Interaction = 1)
 
+#Select cols and establish final order
+data2 = data2 %>% 
+select(Study_id, Network_id, Sampling_method, Authors_habitat, 
+       SafeNet_habitat, Bioregion, Country, Locality,
+       Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
+       Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
+       Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
+       Pollinator_rank, Pollinator_status, Pollinator_matchtype, Pollinator_order, Pollinator_family, 
+       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
+
 #Keep all cols for now
 saveRDS(data2, "Data/3_Final_data/Interactions_uncounted.rds")
+
+#Final version
+data3 = data2 %>% 
+select(Study_id, Network_id, Sampling_method, Authors_habitat, 
+       SafeNet_habitat, Bioregion, Country, Locality,
+       Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
+       Plant_rank, Plant_order, Plant_family, Plant_genus,
+       Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
+       Pollinator_rank, Pollinator_order, Pollinator_family, 
+       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
+saveRDS(data3, "Data/3_Final_data/safenet_database.rds")
 
 
 

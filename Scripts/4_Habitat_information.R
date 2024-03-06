@@ -2,7 +2,8 @@
 #sampling habitat classification across studies
 
 #Load data 
-data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("Data/3_Final_data/Interactions_uncounted.rds") %>% 
+mutate(Corine_land_cover)
 
 #Make sure that each site has only a single coordinate
 #I have fixed some coords on the processing scripts
