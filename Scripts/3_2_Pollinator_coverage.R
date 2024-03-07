@@ -129,9 +129,13 @@ select(Accepted_name)
 #Create vetor of POTENTIAL butterfly species
 potential_lepidoptera1 = potential_lepidoptera %>%   
 pull()
+
+
+but_fam = unique(master_list1$Family)
 #Select OBSERVED LEPIDOPTERA species (ORDER LEVEL NOW)
 observed_lepidoptera = species_cols %>% 
-filter(Order == "Lepidoptera")
+filter(Order == "Lepidoptera") %>% 
+filter(Family %in% but_fam)
 #Now select only accepted species
 observed_lepidoptera = observed_lepidoptera %>% 
 select(Rank, Accepted_name) %>% 

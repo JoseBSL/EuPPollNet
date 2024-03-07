@@ -238,6 +238,8 @@ mutate(Fixed1 = case_when(
     str_detect(Mismatch, "Lasioglossum sp_malachurum-alike") ~ "Lasioglossum malachurum",
     str_detect(Mismatch, "Lasioglossum sp_leucozonium_cedri-type") ~ "Lasioglossum leucozonium",
     str_detect(Mismatch, "Lasioglossum sp_immunitum/malachurum-alike") ~ "Lasioglossum immunitum",
+    str_detect(Mismatch, "Sphaerophoria_scripta_group") ~ "Sphaerophoria scripta",
+
     T ~ word(Mismatch, 1)
 ))
 
@@ -585,6 +587,14 @@ mutate(Fixed = case_when(
   Mismatch == "Halictus tetrazonius-group" ~ "Halictus tetrazonius", #fix
   Mismatch == "Unknown (Melolonthidae) spec. 4" ~ "Melolonthidae", #fix
   Fixed == "Chloromya" ~ "Chloromyia", #typo
+  Mismatch == "Spaherophoria" ~ "Sphaerophoria", #typo
+  Mismatch == "Psythrus rupestris" ~ "Bombus rupestris", #typo
+  Mismatch == "Ochlodes sylvaticus" ~ "Ochlodes sylvanus", #typo
+  Fixed == "Sphaerophoria scripta group" ~ "Sphaerophoria scripta",
+  Fixed == "Zophomya temula" ~ "Zophomyia temula",
+  str_detect(Mismatch, "indet \"lille") ~ "Diptera",
+  str_detect(Mismatch, "indet \"mellem") ~ "Diptera",
+  str_detect(Mismatch, "flue\"") ~ "Diptera",
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
 
@@ -609,7 +619,7 @@ mutate(Uncertainty_type = NA)
 #the original status
 unsure_id = c(" type","aggr.","agg.","[/]", 
               "aff(?![:alpha:])", " cf", " Cf", "[?]",
-              "_agg", "_group", "-group",
+              "_agg", "_group", "-group", " group",
               "_c.f", "malachurum-alike",
               "-.*-", " agg$", " complex", "-Komplex")
 
@@ -646,7 +656,7 @@ species_complex = c("aggr.","agg.","[/]",
                     "_agg", "_group", "-group",  
                      "-.*-", " agg$", " type",
                     "-type", " complex",
-                    " gr ", "-Komplex")
+                    " gr ", "-Komplex", " group")
 
 affinis = c("aff(?![:alpha:])", "malachurum-alike")
 
@@ -713,7 +723,7 @@ select(Name) %>%
 distinct() %>%
 pull()
 #Download taxonomic info from GBIF
-matched_gbif = name_backbone_checklist(name = name)
+matched_gbif = name_backbone_checklist(name = name, kingdom = "animalia")
 #Organise structure of data
 matched_gbif1 = change_str1(matched_gbif)
 #Check species that haven't been found
@@ -730,7 +740,7 @@ select(Name) %>%
 distinct() %>%
 pull()
 #Download taxonomic info from GBIF
-unmatched_gbif = name_backbone_checklist(name= name1)
+unmatched_gbif = name_backbone_checklist(name= name1, kingdom = "animalia")
 #Rename and filter out exact matches
 unmatched_gbif1 = change_str1(unmatched_gbif)
 clean = c("EXACT", "FUZZY")
@@ -772,18 +782,20 @@ poll_data = left_join(gbif_data, processed)
 #This wasn't added because it was accepted with
 #the thesaurus (as it is a correct plant species)
 poll_data = poll_data %>% 
-mutate(Unsure_id = case_when(
-  Fixed_name == "Vaccinium vitis-idaea" ~ "Yes",
-  T ~ Unsure_id)) %>% 
-mutate(Uncertainty_type = case_when(
-  Fixed_name == "Vaccinium vitis-idaea" ~ "Mistake",
-  T ~ Uncertainty_type))
+filter(!Fixed_name == "Vaccinium vitis-idaea")%>% 
+filter(!Fixed_name == "Lomatia")%>% 
+filter(!Fixed_name == "- -") %>% 
+mutate(Accepted_name = case_when(is.na(Accepted_name) & Fixed_name == "Cheloninae" ~ "Cheloninae",
+                                 T ~Accepted_name))
 #Some final safety checkings
 s= poll_data %>% 
 filter(is.na(Accepted_name))
 poll_data %>% 
 filter(is.na(Fixed_name))
-
+s1= poll_data %>% 
+filter(is.na(Order))
+poll_data %>% 
+filter(is.na(Order))
 #Check number 
 poll_data %>% 
 mutate(n_word = 
@@ -955,7 +967,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "51_Petanidou") %>% 
+filter(Study_id == "40_Knight") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

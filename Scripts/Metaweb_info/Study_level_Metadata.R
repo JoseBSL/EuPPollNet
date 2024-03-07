@@ -22,7 +22,10 @@ library(dplyr) #Handling data
 library(tidyr) #Reshape data (wide format)
 #Load data 
 data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
-
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
 #--------------------------------------#
 #2)Prepare date information-----
 #--------------------------------------#

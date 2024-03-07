@@ -35,7 +35,13 @@ mutate(Scientific_name = case_when(
    T ~ Scientific_name)) %>% 
 mutate(Canonical_name = case_when(
    Fixed_name == "Ichneumoninae" ~ "Ichneumoninae",
-   T ~ Canonical_name))
+   T ~ Canonical_name)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Ichneumoninae" ~ "Hymenoptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Ichneumoninae" ~ "Ichneumonidae",
+   T ~ Family))
 #Leucozona
 unmatched_gbif1_not_found = 
 unmatched_gbif1_not_found %>% 
@@ -1691,4 +1697,70 @@ mutate(Rank = case_when(
 mutate(Matchtype = case_when(
    Fixed_name == "Meria" ~ "EXACT",
    T ~ Matchtype))
+
+#Diptera
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Diptera" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Diptera" ~ NA_character_,
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Diptera" ~ NA_character_,
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Diptera" ~ "ORDER",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Diptera" ~ "EXACT",
+   T ~ Matchtype))
+
+
+#Diptera
+unmatched_gbif1_not_found = 
+unmatched_gbif1_not_found %>% 
+mutate(Accepted_name = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Accepted_name)) %>% 
+mutate(Scientific_name = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Scientific_name)) %>% 
+mutate(Canonical_name = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Canonical_name)) %>% 
+mutate(Phylum = case_when(
+   Fixed_name == "Diptera" ~ "Arthropoda",
+   T ~ Phylum)) %>% 
+mutate(Order = case_when(
+   Fixed_name == "Diptera" ~ "Diptera",
+   T ~ Order)) %>% 
+mutate(Family = case_when(
+   Fixed_name == "Diptera" ~ NA_character_,
+   T ~ Family)) %>% 
+mutate(Genus = case_when(
+   Fixed_name == "Diptera" ~ NA_character_,
+   T ~ Genus)) %>% 
+mutate(Rank = case_when(
+   Fixed_name == "Diptera" ~ "ORDER",
+   T ~ Rank)) %>% 
+mutate(Matchtype = case_when(
+   Fixed_name == "Diptera" ~ "EXACT",
+   T ~ Matchtype))
+
+
+
 

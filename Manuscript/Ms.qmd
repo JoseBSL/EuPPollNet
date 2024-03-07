@@ -9,6 +9,7 @@ format:
         \newcommand{\elandscape}{\end{landscape}}
         \usepackage{caption}
         \captionsetup[figure]{labelformat=empty}
+        \captionsetup[table]{labelformat=empty}
 
 bibliography: references.bib
 latex-tinytex: false
@@ -194,6 +195,50 @@ main_orders = data %>%
 filter(Pollinator_order %in% o)
 main_orders_percent = nrow(main_orders) / nrow(data) * 100
 
+#Prepare table with all info 
+#Create variables
+vars = colnames(safenet_database)
+#Create table
+d = tibble(Variable = vars)
+
+d = d %>% 
+mutate(Variable = str_replace(Variable, "Latitude", "Latitude-Longitude")) %>% 
+filter(!Variable == "Longitude")
+
+#Add descriptor
+my_tibble = d %>%
+  mutate(Description = case_when(
+    Variable == "Study_id" ~ "Identifier of the study",
+    Variable == "Network_id" ~ "Identifier of a site sampled within a study",
+    Variable == "Sampling_method" ~ "Type of plant-pollinator sampling",
+    Variable == "Authors_habitat" ~ "Type of habitat as described by the authors",
+    Variable == "SafeNet_habitat" ~ "Type of habitat homogenized across studies",
+    Variable == "Bioregion" ~ "European biogiographical regions",
+    Variable == "Country" ~ "Country where the plant-pollinator interaction was observed",
+    Variable == "Locality" ~ "Locality where the plant-pollinator interaction was observed",
+    Variable == "Latitude-Longitude" ~ "Coordinates of the observed interaction in decimal degrees (two columns)",
+    Variable == "Date" ~ "Year, month and day when the observation took place",
+    Variable == "Interaction" ~ "Number of interactions. By default is 1 as interactions are provided ungrouped",
+    Variable == "Plant_old_name" ~ "Plant species name given by the authors",
+    Variable == "Plant_accepted_name" ~ "Harmonized plant species name in the database",
+    Variable == "Plant_rank" ~ "Taxonomic rank of the observation",
+    Variable == "Plant_order" ~ "Order taxonomic rank of the observed plant species",
+    Variable == "Plant_family" ~ "Family taxonomic rank of the observed plant species",
+    Variable == "Plant_genus" ~ "Genus taxonomic rank of the observed plant species",
+    Variable == "Plant_unsure_id" ~ "Binary category to indicate if the plant species name is unsure (Yes) or not (No)",
+    Variable == "Plant_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
+    Variable == "Pollinator_old_name" ~ "Pollinator species name given by the authors",
+    Variable == "Pollinator_accepted_name" ~ "Harmonized pollinator species name in the database",
+    Variable == "Pollinator_rank" ~ "Taxonomic rank of the observation",
+    Variable == "Pollinator_order" ~ "Order taxonomic rank of the observed pollinator species",
+    Variable == "Pollinator_family" ~ "Family taxonomic rank of the observed pollinator species",
+    Variable == "Pollinator_genus" ~ "Genus taxonomic rank of the observed pollinator species",
+    Variable == "Pollinator_unsure_id" ~ "Binary category to indicate if the pollinator species name is unsure (Yes) or not (No)",
+    Variable == "Pollinator_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
+    TRUE ~ "Other"
+  ))
+
+
 ```
 
 
@@ -237,7 +282,7 @@ plant-pollinator interactions, flowering plants, Angiosperms, pollinators, Hymen
 \endgroup
 \pagebreak
 
-# Introduction
+# 1 | INTRODUCTION
 
 The interaction between plants and pollinators is one of the most well-documented mutualisms on Earth. Plant-pollinator interactions involve a great diversity of species, largely attributed to their coevolutive history [@ollerton2017], and are critically important for terrestrial biodiversity and the human economy. The synergistic effects of climate change with other global change pressures are threatening worldwide biodiversity [@sala2000; @bellard2014], including plant and pollinator species as well as their interactions [@gonzalez2013; @settele2016; @eichenberg2021]. Under this scenario, the increasing availability of biodiversity data plays a major role in our ecological understanding of species and guiding conservation planning [@heberling2021]. However, our knowledge of plant and pollinator species and their network of interactions still exhibits major temporal, spatial and taxonomic biases [@archer2014; @troia2016; @poisot2021; @marshall2024], limiting our ability to effectively protect their biodiversity. 
 
@@ -248,7 +293,7 @@ The interactions between different plant and pollinator species within a communi
 Here, we present the SafeNet database, an acronym derived from the European project Safeguard and plant-pollinator networks, which contains harmonized informative interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the SafeNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). SafeNet aims to cover a wide range of taxonomic groups and habitats while also provides other variables of interest that allow to better control for the ecological context and sampling methods. In addition, SafeNet offers a transparent and accessible workflow of its data management and species harmonization that allow to being reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
 
 
-# Methods
+# 2 | METHODS
 
 ## Data acquisition
 
@@ -531,53 +576,14 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.58, 0.4))
 
 \newpage
 
-#Data structure
+# Data structure
 
-EXPLAIN!!!
+The SafeNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The data is organized in three different files named interaction data, flower count data and metadata. The interaction file contains `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. In addition, information about habitat type and bioclimatic region are also provided in this file. The floral count file contains measurements of floral availability and the unit of measurement, and should be merged with the interaction file by using the old plant name provided by the authors, site, and date if available. Only xxxx% of studies contain floral count information. The metadata file contains [...]
+
+
 
 ```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, fig.height=1, fig.width=10}
 
-#Create variables
-vars = colnames(safenet_database)
-#Create table
-d = tibble(Variable = vars)
-
-d = d %>% 
-mutate(Variable = str_replace(Variable, "Latitude", "Latitude-Longitude")) %>% 
-filter(!Variable == "Longitude")
-
-#Add descriptor
-my_tibble = d %>%
-  mutate(Description = case_when(
-    Variable == "Study_id" ~ "Identifier of the study",
-    Variable == "Network_id" ~ "Identifier of a site sampled within a study",
-    Variable == "Sampling_method" ~ "Type of plant-pollinator sampling",
-    Variable == "Authors_habitat" ~ "Type of habitat as described by the authors",
-    Variable == "SafeNet_habitat" ~ "Type of habitat homogenized across studies",
-    Variable == "Bioregion" ~ "European biogiographical regions",
-    Variable == "Country" ~ "Country where the plant-pollinator interaction was observed",
-    Variable == "Locality" ~ "Locality where the plant-pollinator interaction was observed",
-    Variable == "Latitude-Longitude" ~ "Coordinates of the observed interaction in decimal degrees",
-    Variable == "Date" ~ "Year, month and day when the observation took place",
-    Variable == "Interaction" ~ "Number of interactions. By default is 1 as interactions are provided ungrouped",
-    Variable == "Plant_old_name" ~ "Plant species name given by the authors",
-    Variable == "Plant_accepted_name" ~ "Harmonized plant species name in the database",
-    Variable == "Plant_rank" ~ "Taxonomic rank of the observation",
-    Variable == "Plant_order" ~ "Order taxonomic rank of the observed plant species",
-    Variable == "Plant_family" ~ "Family taxonomic rank of the observed plant species",
-    Variable == "Plant_genus" ~ "Genus taxonomic rank of the observed plant species",
-    Variable == "Plant_unsure_id" ~ "Binary category to indicate if the plant species name is unsure (Yes) or not (No)",
-    Variable == "Plant_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
-    Variable == "Pollinator_old_name" ~ "Pollinator species name given by the authors",
-    Variable == "Pollinator_accepted_name" ~ "Harmonized pollinator species name in the database",
-    Variable == "Pollinator_rank" ~ "Taxonomic rank of the observation",
-    Variable == "Pollinator_order" ~ "Order taxonomic rank of the observed pollinator species",
-    Variable == "Pollinator_family" ~ "Family taxonomic rank of the observed pollinator species",
-    Variable == "Pollinator_genus" ~ "Genus taxonomic rank of the observed pollinator species",
-    Variable == "Pollinator_unsure_id" ~ "Binary category to indicate if the pollinator species name is unsure (Yes) or not (No)",
-    Variable == "Pollinator_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
-    TRUE ~ "Other"
-  ))
 
 kable(my_tibble, booktabs = T, linesep = "\\addlinespace", caption = "\\textbf{Table 1.}") %>%
   kable_styling(full_width = F,font_size = 9) %>% row_spec(0, bold=T) %>% 
@@ -608,7 +614,7 @@ The different sites per study were classified with a habitat type by the authors
 
 \newpage 
 
-# Results
+# 3 | RESULTS
 
 ## Taxonomy and taxonomic coverage
 
@@ -897,8 +903,7 @@ p1 + p2 + plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=2)
 
 \newpage 
 
-
-# Discussion
+# 3 | DISCUSSION
 
 Geographic and taxonomic biases!
 
