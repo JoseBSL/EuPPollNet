@@ -41,3 +41,17 @@ select(Fixed_name, rank, status, matchType,
        genus) %>% 
   rename_all(~str_to_title(.))
 }
+
+#Fix str of data of individual networks
+change_str2 <- function(data) { 
+#Set common structure
+data = data %>% 
+mutate(Day = as.double(Day)) %>% 
+mutate(Month = as.double(Month)) %>% 
+mutate(Year = as.double(Year)) %>% 
+mutate(Site_id = as.character(Site_id)) %>% 
+mutate(Plant_species = as.character(Plant_species)) %>% 
+mutate(Flower_count = as.numeric(Flower_count)) %>% 
+mutate(Units = as.character(Units)) %>% 
+mutate(Comment = as.character(Comment))
+}

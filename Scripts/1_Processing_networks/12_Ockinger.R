@@ -89,6 +89,9 @@ mutate(Units = "Flowers per square meter, 3 per transect. 12 in total per site")
 mutate(Comment = NA) %>% 
 select(Day, Month, Year, Site_id, Plant_species, Flower_count, Units, Comment)
 
+#Set common structure
+flower_count = change_str2(flower_count)
+
 #Split by site, just for createing the listed name in this case
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

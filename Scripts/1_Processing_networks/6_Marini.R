@@ -54,10 +54,10 @@ mutate(Comment = as.character(Comment))
 split_flwdata <- split(FlowerCount, FlowerCount$Survey)
 #Convert to tibbles
 FlowerCount3 <- as_tibble(split_flwdata[[3]]) %>%  select(!Survey)
+#Unify data structure
+FlowerCount3 = change_str2(FlowerCount3)
 #Split by Site_id
 FlowerCount3 = split(FlowerCount3, FlowerCount3$Site_id)
-
-
 
 #Prepare metadata data ----
 

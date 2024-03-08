@@ -52,6 +52,9 @@ mutate(Units = as.character(Units)) %>%
 mutate(Comment = as.character(Comment)) %>% 
 select(!country)
 
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
+
 #Split data into different dataframes based on survey name
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 

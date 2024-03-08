@@ -88,17 +88,11 @@ rename(Site_id = Site_ID, Plant_species = Plant_gen_sp,
 mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
 filter(!Site_id == "Elhongo" & !Site_id =="Lagunadelojillo") #These ids do not match
 
-#Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount = FlowerCount %>%
+filter(Year == 2015 )
 
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)

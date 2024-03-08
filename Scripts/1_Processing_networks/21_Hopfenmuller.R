@@ -66,7 +66,8 @@ flower_count = add_missing_variables(check_flower_count_data, flower_count)
 
 #Order data as template
 flower_count = drop_variables(check_flower_count_data, flower_count) 
-
+#Set common structure
+flower_count = change_str2(FlowerCount)
 #Split interaction data into dataframes within a list
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

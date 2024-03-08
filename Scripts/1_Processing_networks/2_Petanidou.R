@@ -44,6 +44,10 @@ FlowerCount <- flower_count %>%
 select(Day, Month, Year, Site_id, Plant_species, Flower_count) %>%
 mutate(Units = gsub("#", "Number", flower_count$Units)) %>% 
 mutate(Comment = NA_character_)
+
+#Unify data structure
+FlowerCount = change_str2(FlowerCount)
+
  
 #Split interaction data into dataframes within a list
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)

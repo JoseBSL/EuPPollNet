@@ -84,18 +84,8 @@ mutate(Comment = Habitat) #Add habitat in comment col to split datasets
 FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
 #Order data as template
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
-
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
-
+FlowerCount = change_str2(FlowerCount)
 #Split flower count data into dataframes by habitat
 split_flower_count_data <- split(FlowerCount, FlowerCount$Comment) 
 #Convert to tibbles

@@ -40,25 +40,16 @@ FlowerCount = flower_count %>%
   mutate(across(everything(), function(x) str_replace_all(x, "_", " "))) %>% 
   select(!c(Total_flower_cover, Collected_insects))
 
-#Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
-
 #Split data into different dataframes based on survey name
 split_flwdata <- split(FlowerCount, FlowerCount$Survey)
 #Convert to tibbles
 FlowerCount1 <- as_tibble(split_flwdata[[1]]) %>%  select(!Survey)
 
+#Unify data structure
+FlowerCount1 = change_str2(FlowerCount1)
+
 #Split by Site_id
 FlowerCount1 = split(FlowerCount1, FlowerCount1$Site_id)
-
 
 #Prepare metadata data ----
 

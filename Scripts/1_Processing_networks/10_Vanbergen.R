@@ -28,17 +28,8 @@ FlowerCount = FlowerCount %>%
 mutate(Units = paste0(Units, "; ", Inflorescence.type)) %>% 
 select(!Inflorescence.type)
 
-#Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
-
+#Unify data structure
+FlowerCount = change_str2(FlowerCount)
 #Split data into different dataframes based on survey name
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 

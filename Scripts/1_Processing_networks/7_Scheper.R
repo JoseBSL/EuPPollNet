@@ -53,21 +53,12 @@ InteractionData <- split(data, data$Site_id)
 #Prepare flower count data ----
 FlowerCount = read.csv("Data/1_Raw_data/7_Scheper/Flower_count.csv")
 
-#Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
-
+#Unify data structure
+FlowerCount = change_str2(FlowerCount)
+#Create list with sites
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
-
 #Store unique cases of plants and polls
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)

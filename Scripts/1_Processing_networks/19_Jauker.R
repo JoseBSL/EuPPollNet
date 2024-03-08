@@ -74,15 +74,8 @@ site_id_levels = levels(factor(data$Site_id))
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
                      Flower_count = NA, Units = NA, Comment = NA)
 
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
 
 #Split by Site_id
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)

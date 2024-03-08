@@ -26,7 +26,9 @@ InteractionData <- split(data, data$Site_id)
 FlowerCount = read.csv("Data/1_Raw_data/9_Heleno/Flower_count.csv")
 #Common excel mistake on id, fix
 FlowerCount$Site_id <- "Coimbra_2017"
-#Split by site, just for createing the listed name in this case
+#Unify data structure
+FlowerCount = change_str2(FlowerCount)
+#Split by site, just for creating the listed name in this case
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
