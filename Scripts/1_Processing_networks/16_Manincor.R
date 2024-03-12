@@ -18,9 +18,11 @@ data = data %>%
 mutate(Longitude = parzer::parse_lon(Longitude),
          Latitude = parzer::parse_lat(Latitude)) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
-mutate(Coordinate_precision = str_replace(Coordinate_precision, 
-                                          " m", ""))
-
+mutate(Coordinate_precision = str_replace(Coordinate_precision,  " m", "")) %>% 
+mutate(Flower_data = "Upon_request") %>% 
+mutate(Flower_data_merger = NA) 
+  
+  
 #Unify structure of data
 data = change_str(data)
 
@@ -31,35 +33,39 @@ unique(factor(data$Longitude))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount = read_csv("Data/1_Raw_data/16_Manincor/Flower_count.csv", col_names = T)
+#FlowerCount = read_csv("Data/1_Raw_data/16_Manincor/Flower_count.csv", col_names = T)
+#
+##Convert comment col into a single col
+#FlowerCount = FlowerCount %>% 
+#mutate(Comments = paste0(Comment...8, ";",  Comment...9)) %>% 
+#select(!c(Comment...8, Comment...9))
+#
+##Check levels, one is different rename
+#setdiff(levels(factor(FlowerCount$Site_id)), levels(factor(data$Site_id)))
+#
+#FlowerCount = FlowerCount %>% 
+#mutate(Site_id = recode_factor(Site_id,  "Noeux-lès-Auxi" = "Riez_2016"))
+#
+##Set common structure
+#FlowerCount = change_str2(FlowerCount)
+#
+##Split data into different dataframes based on survey name
+#FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+#Flower counts are not reliable at the moment
+#Check levels of Site_id
+site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
-#Convert comment col into a single col
-FlowerCount = FlowerCount %>% 
-mutate(Comment = paste0(Comment...8, ";",  Comment...9)) %>% 
-select(!c(Comment...8, Comment...9))
-
-#Check levels, one is different rename
-setdiff(levels(factor(FlowerCount$Site_id)), levels(factor(data$Site_id)))
-
-FlowerCount = FlowerCount %>% 
-mutate(Site_id = recode_factor(Site_id,  "Noeux-lès-Auxi" = "Riez_2016"))
+FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
+                     Flower_data_merger = NA_character_)
 
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount = change_str2(FlowerCount)
 
-#Split data into different dataframes based on survey name
+#Split by Site_id
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
-
 #Select unique cases of plants and poll
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)

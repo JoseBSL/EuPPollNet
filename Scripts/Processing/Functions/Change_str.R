@@ -20,7 +20,9 @@ mutate(Month = as.double(Month)) %>%
 mutate(Year = as.double(Year)) %>% 
 mutate(Comments = as.character(Comments)) %>% 
 mutate(Temperature = as.double(Temperature)) %>% 
-mutate(Humidity = as.double(Humidity)) 
+mutate(Humidity = as.double(Humidity)) %>% 
+mutate(Flower_data = as.character(Flower_data)) %>% 
+mutate(Flower_data_merger = as.character(Flower_data_merger)) 
 
 }
 
@@ -53,5 +55,6 @@ mutate(Site_id = as.character(Site_id)) %>%
 mutate(Plant_species = as.character(Plant_species)) %>% 
 mutate(Flower_count = as.numeric(Flower_count)) %>% 
 mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+mutate(Comments = as.character(Comments)) %>% 
+mutate(Flower_data_merger = as.character(Flower_data_merger)) 
 }

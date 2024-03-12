@@ -1,2 +1,2 @@
-"Plant_species","Pollinator_species","Interaction","Sampling_method","Sampling_effort_minutes","Sampling_area_square_meters","Site_id","Habitat","Country","Locality","Latitude","Longitude","Coordinate_precision","Elevation","Day","Month","Year","Comments","Temperature","Humidity"
-NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Plant_species","Pollinator_species","Interaction","Sampling_method","Sampling_effort_minutes","Sampling_area_square_meters","Site_id","Habitat","Country","Locality","Latitude","Longitude","Coordinate_precision","Elevation","Day","Month","Year","Comments","Temperature","Humidity","Flower_data","Flower_data_merger"
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

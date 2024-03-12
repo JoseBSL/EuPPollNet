@@ -31,6 +31,16 @@ mutate(Latitude = case_when(Site_id == 2 ~ site_2_lat,
 mutate(Longitude = case_when(Site_id == 2 ~ site_2_lon,
                             TRUE ~ Longitude))
 
+#Add flower coll id
+data = data %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create id to merge with flower count data
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), word(Plant_species,3),
+                                   Site_id, Day, "-", Month, "-", Year)) 
+
 #Unify structure of data
 data = change_str(data)
 
@@ -40,17 +50,10 @@ InteractionData <- split(data, data$Site_id)
 #Prepare flower count data ----
 FlowerCount = read_csv("Data/1_Raw_data/15_Magrach/Flower_count.csv", col_names = T)
 
-#Set common structure
+#Set common colnames
 FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment)) %>% 
-select(!country)
+rename(Comments = Comment) %>% 
+mutate(Flower_data_merger = NA) 
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

@@ -72,7 +72,9 @@ data <- bind_cols(polls,plants, Freq) %>%
   mutate(Comments = NA) %>%
   mutate(Temperature = NA) %>%
   mutate(Humidity = NA) %>% 
-  mutate(Site_id = str_replace(Site_id, "bartomeus_2005_", "")) 
+  mutate(Site_id = str_replace(Site_id, "bartomeus_2005_", "")) %>% 
+  mutate(Flower_data = "Unprocessed") %>% 
+  mutate(Flower_data_merger = NA)
 
 #Set standard data structure
 data = change_str(data)
@@ -83,38 +85,52 @@ names(InteractionData)[i] <- str_replace(levels(factor(data$Site_id)), "bartomeu
 
 }
 
-#Prepare flower count data ----
-flower_count <- read_csv("Data/1_Raw_data/1_Bartomeus/Flower_count.csv")
+##Prepare flower count data ----
+#flower_count <- read_csv("Data/1_Raw_data/1_Bartomeus/Flower_count.csv")
+#
+##Flower counts
+#flower_count = flower_count%>% 
+#mutate(Comments = paste0("Round: ", Round,
+#      ";Flower_number_in_transect: ", Flower_numer_in_transect))
+#
+##Prepare data
+#date_flower_count <- flower_count %>% 
+#  separate(Date, sep="/", into = c("Day", "Month", "Year")) %>%
+#  select(Day, Month, Year)
+##Add leading 0's
+#date_flower_count$Month <- ifelse(as.numeric(date_flower_count$Month) < 10, paste0("0", date_flower_count$Month), date_flower_count$Month)
+#date_flower_count$Year <- 2005
+##Create FlowerCount dataset
+#FlowerCount <- date_flower_count %>% 
+#  bind_cols(flower_count) %>% 
+#  rename(Site_id = Site) %>% 
+#  rename(Flower_count = Flower_numer_in_transect) %>%
+#  mutate(Units = "Flower_units") %>% 
+#  select(Day, Month, Year, Site_id, Plant_species, Flower_count, Units, Comments)
+#
+#FlowerCount = change_str2(FlowerCount)
+#str(FlowerCount)
+#
+##Split flower count by Site_id
+#FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
-#Flower counts
-flower_count = flower_count%>% 
-mutate(Comment = paste0("Round: ", Round,
-      ";Flower_number_in_transect: ", Flower_numer_in_transect))
 
-#Prepare data
-date_flower_count <- flower_count %>% 
-  separate(Date, sep="/", into = c("Day", "Month", "Year")) %>%
-  select(Day, Month, Year)
-#Add leading 0's
-date_flower_count$Month <- ifelse(as.numeric(date_flower_count$Month) < 10, paste0("0", date_flower_count$Month), date_flower_count$Month)
-date_flower_count$Year <- 2005
-#Create FlowerCount dataset
-FlowerCount <- date_flower_count %>% 
-  bind_cols(flower_count) %>% 
-  rename(Site_id = Site) %>% 
-  rename(Flower_count = Flower_numer_in_transect) %>%
-  mutate(Units = "Flower_units") %>% 
-  select(Day, Month, Year, Site_id, Plant_species, Flower_count, Units, Comment)
+#Flower counts are not reliable at the moment
+#Check levels of Site_id
+site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
+FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
+                     Flower_data_merger = NA_character_)
+
+#Set common structure
 FlowerCount = change_str2(FlowerCount)
-str(FlowerCount)
 
-#Split flower count by Site_id
-FlowerCount = split(FlowerCount, FlowerCount$Site_id)
+#Split by Site_id
+FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+
 
 #Prepare metadata data ----
-
-
 #Sum species per site to calculate sampling effort
 for (i in InteractionData) {
 #Generate sum of distinct plants per site
@@ -160,7 +176,7 @@ Sampling_time_species_round_min = 6,
 Sampling_time_total_min = as.character(36 * plant_sum * 12),
 Total_plant_species = nrow(plant_single_cases),
 Total_pollinator_species = nrow(pollinator_single_cases),
-Floral_counts =  "Yes")
+Floral_counts =  "Unprocessed")
 
 #Transpose metadata, so is in long instead of wide
 Metadata = as.data.frame(t(Metadata)) %>%  

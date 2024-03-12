@@ -64,6 +64,15 @@ mutate(Pollinator_species = str_replace(Pollinator_species, "_", " ")) %>%
 ungroup() %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+#Add flower cols info
+data = data %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create col to bind floral and interaction data
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), word(Plant_species,2), Site_id))
+
 #Unify structure of data
 data = change_str(data)
 
@@ -86,8 +95,13 @@ mutate(Year = NA) %>%
 rename(Site_id = Site_name) %>% 
 rename(Flower_count = Flw_abund) %>% 
 mutate(Units = "Flowers per square meter, 3 per transect. 12 in total per site") %>% 
-mutate(Comment = NA) %>% 
-select(Day, Month, Year, Site_id, Plant_species, Flower_count, Units, Comment)
+mutate(Comments = NA) %>% 
+select(Day, Month, Year, Site_id, Plant_species, Flower_count, Units, Comments) %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create col to bind floral and interaction data
+flower_count = flower_count %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), word(Plant_species,2), Site_id))
 
 #Set common structure
 flower_count = change_str2(flower_count)

@@ -13,7 +13,14 @@ data = data %>%
 mutate(Plant_species = str_replace(Plant_species, "_", " ")) %>% 
 mutate(Pollinator_species = str_replace(Pollinator_species, "_", " ")) %>% 
 mutate(Pollinator_species = str_to_sentence(Pollinator_species)) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) 
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create column to merge floral counts
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Day, "-", Month, "-", Year)) 
 
 #Unify structure of data
 data = change_str(data)
@@ -23,13 +30,24 @@ InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
 FlowerCount = read.csv("Data/1_Raw_data/8_Biella/Flower_count.csv")
+
+#Set common colname
+FlowerCount = FlowerCount %>% 
+rename(Comments = Comment) %>% 
+mutate(Flower_count = Comments) %>% 
+mutate(Comments = NA)
+
+#Create column to merge floral counts
+FlowerCount = FlowerCount %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Day, "-", Month, "-", Year)) 
+
 #Unify data structure
 FlowerCount = change_str2(FlowerCount)
 #Split data into different dataframes based on survey name
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
-
 #Store unique cases of plants and polls
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)

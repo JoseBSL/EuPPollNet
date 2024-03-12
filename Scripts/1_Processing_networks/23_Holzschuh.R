@@ -17,6 +17,10 @@ data <- read_csv("Data/1_Raw_data/23_24_25_Holzschuh/Interaction_data.csv")
 #Compare vars
 #compare_variables(check_interaction_data, data)
 
+#Create informative comment column
+data = data %>% 
+mutate(Comments = paste0("Use_it_to_merge_floral_counts",Location_in_site, "_",Round))
+
 #Add interaction col
 data = data %>% 
 mutate(Interaction = 1) %>% 
@@ -24,8 +28,7 @@ mutate(Sampling_method = "Transect") %>%
 mutate(Sampling_effort_minutes = NA) %>% 
 mutate(Sampling_area_square_meters = NA) %>% 
 mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
-      "MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
-mutate(Comment = "Location col indicates transects rounds (1 and 2)")
+      "MFC" = "Mass flowering crop", "SNH" = "Seminatural")) 
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -62,6 +65,10 @@ InteractionData1 <- split(data1, data1$Site_id)
 #Prepare flower count data ----
 FlowerCount <- read_csv("Data/1_Raw_data/23_24_25_Holzschuh/Flower_count.csv")
 
+#Create informative comment column
+FlowerCount = FlowerCount %>% 
+mutate(Comments = paste0("Use_it_to_merge_floral_counts",Location_in_site, "_",Round))
+
 #Compare vars
 compare_variables(check_flower_count_data, FlowerCount)
 
@@ -78,7 +85,7 @@ rename(Flower_count = Flower_cover_percent) %>%
 mutate(Units = "Flower cover/150m2") %>% 
 mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
 "MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
-mutate(Comment = Habitat) #Add habitat in comment col to split datasets
+mutate(Comments = Habitat) #Add habitat in comment col to split datasets
 
 #Add variables
 FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 

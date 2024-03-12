@@ -20,6 +20,12 @@ mutate(Year = year(ymd(Date))) %>%
 mutate(Month = month(ymd(Date))) %>% 
 mutate(Day = day(ymd(Date))) 
 
+#Add flower col to merge with floral data
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+word(Plant_species, 2), Treatment, Site_id, Day, "-", Month, "-", Year))
+
+
 #Add interaction col
 data = data %>% 
 mutate(Interaction = 1) %>% 
@@ -27,11 +33,14 @@ mutate(Sampling_method = "Transect") %>%
 mutate(Habitat = "Grassland") %>% 
 mutate(Locality = NA) %>% 
 mutate(Coordinate_precision = NA) %>% 
-mutate(Comments = NA) %>% 
 mutate(Temperature = NA) %>% 
 mutate(Humidity = NA) %>% 
 mutate(Sampling_effort_minutes = NA) %>% 
-mutate(Sampling_area_square_meters = NA)
+mutate(Sampling_area_square_meters = NA) %>% 
+mutate(Comments = NA) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Sampling_method = "Plot") 
+
   
 #Reorder variables
 data = drop_variables(check_interaction_data, data) 
@@ -39,10 +48,6 @@ data = drop_variables(check_interaction_data, data)
 #Drop this last two columns that are going to be at the metadata
 data = data %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
-
-#Unify level
-data = data %>% 
-mutate(Sampling_method = "Plot")
 
 #Unify structure of data
 data = change_str(data)
@@ -63,8 +68,13 @@ mutate(Year = year(ymd(Date))) %>%
 mutate(Month = month(ymd(Date))) %>% 
 mutate(Day = day(ymd(Date))) %>% 
 rename(Flower_count = Flower_percent_cover) %>% 
-mutate(Units = "Percent cover") %>% 
-mutate(Comment = NA)
+mutate(Units = "Percent cover")  %>% 
+mutate(Comments = NA)
+
+#Column to merge with interaction data
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+word(Plant_species, 2), Treatment, Site_id, Day, "-", Month, "-", Year))
 
 #Order data as template
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
@@ -73,7 +83,7 @@ FlowerCount = drop_variables(check_flower_count_data, FlowerCount)
 FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll

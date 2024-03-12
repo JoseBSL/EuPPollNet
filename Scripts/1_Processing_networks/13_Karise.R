@@ -46,7 +46,9 @@ mutate(Interaction = case_when(is.na(Interaction) ~ 1,
 
 #Fix variable name in sampling method
 data = data %>% 
-mutate(Sampling_method = "Transect")
+mutate(Sampling_method = "Transect") %>% 
+mutate(Flower_data = "No") %>% 
+mutate(Flower_data_merger = NA) 
 
 #Unify structure of data
 data = change_str(data)
@@ -60,7 +62,7 @@ InteractionData <- split(data, data$Site_id)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comment = NA)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA)
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 

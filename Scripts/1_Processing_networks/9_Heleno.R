@@ -14,8 +14,14 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
 #Unify level
 data = data %>% 
-mutate(Sampling_method = "Focal_observation")
+mutate(Sampling_method = "Focal_observation") %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
 
+#Create column to merge floral counts
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id))
 #Unify structure of data
 data = change_str(data)
 
@@ -24,8 +30,20 @@ InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
 FlowerCount = read.csv("Data/1_Raw_data/9_Heleno/Flower_count.csv")
+
+#Set common colname
+FlowerCount = FlowerCount %>% 
+rename(Comments = Comment) %>% 
+mutate(Flower_data_merger = NA) 
+
 #Common excel mistake on id, fix
-FlowerCount$Site_id <- "Coimbra_2017"
+FlowerCount$Site_id = "Coimbra_2017"
+
+#Create column to merge floral counts
+FlowerCount = FlowerCount %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id)) 
+
 #Unify data structure
 FlowerCount = change_str2(FlowerCount)
 #Split by site, just for creating the listed name in this case
@@ -70,8 +88,6 @@ Floral_counts =  "Yes")
 Metadata = as.data.frame(t(Metadata)) %>%  
 rownames_to_column() %>% 
 rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
-
-
 
 #Prepare authorship data ----
 Authorship <- data.frame(

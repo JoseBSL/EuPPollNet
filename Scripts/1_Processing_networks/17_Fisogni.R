@@ -21,7 +21,9 @@ data = read_csv("Data/1_Raw_data/17_Fisogni/Interaction_data.csv")
 data = data %>%
 mutate(Longitude = parzer::parse_lon(Longitude),
          Latitude = parzer::parse_lat(Latitude)) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Flower_data = "No") %>% 
+mutate(Flower_data_merger = NA)
 
 #Unify structure of data
 data = change_str(data)
@@ -37,7 +39,7 @@ InteractionData <- split(data, data$Site_id)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comment = NA)
+                     Flower_count = NA, Units = NA, Comments = NA,  Flower_data_merger = NA_character_)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

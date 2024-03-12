@@ -72,6 +72,12 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
          Temperature, Humidity) %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
+
+#Add cols with flower info
+data = data %>% 
+mutate(Flower_data = "Unprocessed") %>% 
+mutate(Flower_data_merger = NA) 
+
 #Unify structure of data
 data = change_str(data)
 
@@ -84,7 +90,7 @@ InteractionData <- split(data, data$Locality)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comment = NA)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA_character_)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

@@ -9,7 +9,7 @@ source("Scripts/Processing/Functions/Change_str.R")
 data <- read_csv("Data/1_Raw_data/2_Petanidou/Interaction_data.csv")
 
 #Quick clean of the interaction data
-data <- data %>% 
+data = data %>% 
 mutate(Plant_species = word(Plant_species, 1, 2), 
 Pollinator_species = word(Pollinator_species, 1, 2)) %>%
 rename(Latitude = latitude)  %>% 
@@ -20,8 +20,16 @@ mutate(Latitude = as.numeric(Latitude)) %>%
 mutate(Longitude = as.numeric(Longitude)) %>% 
 filter(!is.na(Plant_species)) %>% 
 filter(!is.na(Pollinator_species)) %>% 
-mutate(Day = as.double(Day)) 
+mutate(Day = as.double(Day)) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA)
 
+#Create a column that contains all the info to merge with flower counts
+#This will help to unify across studies
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), 
+                                   word(Plant_species,2), 
+                                   Site_id, Day,"-", Month, "-",Year))
 #Unify level
 data = data %>% 
 mutate(Sampling_method = "Random_census")
@@ -43,7 +51,14 @@ flower_count$Day <- ifelse(as.numeric(flower_count$Day) < 10, paste0("0", flower
 FlowerCount <- flower_count %>%
 select(Day, Month, Year, Site_id, Plant_species, Flower_count) %>%
 mutate(Units = gsub("#", "Number", flower_count$Units)) %>% 
-mutate(Comment = NA_character_)
+mutate(Comments = NA_character_) %>% 
+mutate(Flower_data_merger = NA)
+
+#Id to merge flower counts
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), 
+                                   word(Plant_species,2), 
+                                   Site_id, Day,"-", Month, "-",Year))
 
 #Unify data structure
 FlowerCount = change_str2(FlowerCount)

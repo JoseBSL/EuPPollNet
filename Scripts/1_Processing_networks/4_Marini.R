@@ -15,7 +15,14 @@ data = data %>%
 mutate(across(everything(), function(x) str_replace_all(x,"_", " "))) %>% 
 mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>% 
 mutate(Comments = Survey) %>%   
-select(!c(Survey, Sampling_effort_minutes, Sampling_area_square_meters)) 
+select(!c(Survey, Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create column to merge floral counts
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Day, "-", Month, "-", Year)) 
 
 #Unify level
 data = data %>% 
@@ -35,10 +42,30 @@ InteractionData1 <- split(data1, data1$Site_id)
 #Prepare flower count data ----
 flower_count = read.csv("Data/1_Raw_data/4_5_6_Marini/Flower_count.csv")
 
+#Set common colname
+flower_count = flower_count %>% 
+rename(Comments = Comment)
+
 #Delete all underscores
 FlowerCount = flower_count %>% 
   mutate(across(everything(), function(x) str_replace_all(x, "_", " "))) %>% 
-  select(!c(Total_flower_cover, Collected_insects))
+  select(!c(Total_flower_cover, Collected_insects)) %>% 
+  mutate(Flower_data_merger = NA)
+
+#When merging with interaction data there are few many to many relationships
+#Just 13, small hack to just keep 1
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-Flower_count)) %>%
+mutate(row_number = row_number()) %>%
+distinct() %>%
+filter(row_number == 1) %>%
+select(-row_number)
+
+#Create column to merge floral counts
+FlowerCount = FlowerCount %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Day, "-", Month, "-", Year)) 
+
 
 #Split data into different dataframes based on survey name
 split_flwdata <- split(FlowerCount, FlowerCount$Survey)

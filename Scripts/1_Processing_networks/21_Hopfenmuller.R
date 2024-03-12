@@ -8,7 +8,12 @@ library(lubridate)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/1_Raw_data/21_Hopfenmuller/Interaction_data.csv")
+data = read_csv("Data/1_Raw_data/21_Hopfenmuller/Interaction_data.csv")
+
+#Add lat long as comment col in case they are relevant to merge floral counts
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+word(Plant_species, 2),Site_id, Latitude, Longitude))
 
 #Compare vars
 compare_variables(check_interaction_data, data)
@@ -27,7 +32,8 @@ mutate(Sampling_method = "Variable transect walks") %>%
 mutate(Sampling_effort_minutes = NA) %>% 
 mutate(Sampling_area_square_meters = NA) %>% 
 mutate(Habitat = "Calcareous grassland") %>% 
-mutate(Locality = Site_id) 
+mutate(Locality = Site_id) %>% 
+mutate(Flower_data = "Yes")
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -53,6 +59,11 @@ InteractionData <- split(data,data$Site_id)
 #Prepare flower count data ----
 flower_count <- read_csv("Data/1_Raw_data/21_Hopfenmuller/Flower_count.csv")
 
+#Add lat long as comment col in case they are relevant to merge floral counts
+flower_count = flower_count %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+word(Plant_species, 2),Site_id, Latitude, Longitude))
+
 #Compare vars
 compare_variables(check_flower_count_data, flower_count)
 
@@ -67,7 +78,7 @@ flower_count = add_missing_variables(check_flower_count_data, flower_count)
 #Order data as template
 flower_count = drop_variables(check_flower_count_data, flower_count) 
 #Set common structure
-flower_count = change_str2(FlowerCount)
+flower_count = change_str2(flower_count)
 #Split interaction data into dataframes within a list
 FlowerCount <- split(flower_count, flower_count$Site_id)
 

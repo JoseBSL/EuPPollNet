@@ -15,7 +15,14 @@ mutate(Coordinate_precision = str_replace(Coordinate_precision, " ", "")) %>%
 mutate(Comments = Survey) %>%   
 select(!c(Survey, Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
 mutate(Latitude = as.numeric(Latitude)) %>% 
-mutate(Longitude = as.numeric(Longitude)) 
+mutate(Longitude = as.numeric(Longitude)) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create column to merge floral counts
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Day, "-", Month, "-", Year)) 
 
 #Unify level
 data = data %>% 
@@ -34,21 +41,31 @@ InteractionData2 <- split(data2, data2$Site_id)
 #Prepare flower count data ----
 flower_count = read.csv("Data/1_Raw_data/4_5_6_Marini/Flower_count.csv")
 
+#Set common colname
+flower_count = flower_count %>% 
+rename(Comments = Comment)
+
 #Delete all underscores
 FlowerCount = flower_count %>% 
 mutate(across(everything(), function(x) str_replace_all(x, "_", " "))) %>% 
 select(!c(Total_flower_cover, Collected_insects))
 
-#Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+#When merging with interaction data there are few many to many relationships
+#Just 13, small hack to just keep 1
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-Flower_count)) %>%
+mutate(row_number = row_number()) %>%
+distinct() %>%
+filter(row_number == 1) %>%
+select(-row_number)
+
+#Create column to merge floral counts
+FlowerCount = FlowerCount %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Day, "-", Month, "-", Year)) 
+
+#Unify data structure
+FlowerCount = change_str2(FlowerCount)
 
 #Split data into different dataframes based on survey name
 split_flwdata <- split(FlowerCount, FlowerCount$Survey)

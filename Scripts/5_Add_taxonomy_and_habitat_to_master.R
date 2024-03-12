@@ -137,7 +137,7 @@ select(Study_id, Network_id, Sampling_method, Authors_habitat,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_order, Pollinator_family, 
        Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
-saveRDS(data3, "Data/3_Final_data/safenet_database.rds")
+saveRDS(data3, "Data/3_Final_data/Interaction_data.rds")
 
 
 

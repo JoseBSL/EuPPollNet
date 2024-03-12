@@ -15,7 +15,15 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>%  #Including this info in the metadata
 filter(!is.na(Plant_species)) %>% 
 filter(!is.na(Pollinator_species)) %>% 
-filter(!Pollinator_species == "Unidentified Acari")
+filter(!Pollinator_species == "Unidentified Acari") %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) 
+
+#Create id to merge with flower count data
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), word(Plant_species,3),
+                                   Site_id, Day, "-", Month, "-", Year)) 
+
 
 #Unify structure of data
 data = change_str(data)
@@ -43,6 +51,23 @@ InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ----
 FlowerCount = read_csv("Data/1_Raw_data/11_Clough/Flower_count.csv")
+
+#Set common colname
+FlowerCount = FlowerCount %>% 
+rename(Comments = Comment) %>% 
+mutate(Flower_data_merger = NA) 
+
+#Given the structure of the data and plot design
+#I think I can sum the flower counts per plot and date
+#An maybe add a column of individuals in comments if necessary
+FlowerCount = FlowerCount %>% 
+group_by_at(vars(-Flower_count)) %>% 
+summarise(Flower_count = sum(Flower_count))
+
+#Create id to merge with flower count data
+FlowerCount = FlowerCount %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), word(Plant_species,3),
+                                   Site_id, Day, "-", Month, "-", Year)) 
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

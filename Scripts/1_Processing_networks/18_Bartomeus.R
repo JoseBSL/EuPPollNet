@@ -29,7 +29,9 @@ mutate(Elevation = NA, .after = Coordinate_precision) %>%
 mutate(Comments = NA, .after = Year) %>% 
 mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
 mutate(Sampling_method = "Transects") %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
+mutate(Flower_data = "Unprocessed") %>% 
+mutate(Flower_data_merger = NA)
 
 
 #Add coordinates
@@ -75,26 +77,40 @@ data = change_str(data)
 #Split interaction data into dataframes within a list
 InteractionData <- split(data,data$Site_id)
 
-#Prepare flower count data ----
-FlowerCount <- read_csv("Data/1_Raw_data/18_Bartomeus/Flower_count.csv")
+##Prepare flower count data ----
+#FlowerCount <- read_csv("Data/1_Raw_data/18_Bartomeus/Flower_count.csv")
+#
+##Order cols
+#FlowerCount = FlowerCount %>% 
+#mutate(Units = "Flower_units") %>% 
+#mutate(Comments = "10 counts along the transect") %>% 
+#select(Day, Month, Year, Site_ID, Plant_gen_sp, Flower_abundance, Units, Comments) %>% 
+#rename(Site_id = Site_ID, Plant_species = Plant_gen_sp, 
+#       Flower_count = Flower_abundance) %>% 
+#mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
+#filter(!Site_id == "Elhongo" & !Site_id =="Lagunadelojillo") #These ids do not match
+#
+#FlowerCount = FlowerCount %>%
+#filter(Year == 2015 )
+#
+##Set common structure
+#FlowerCount = change_str2(FlowerCount)
+#
+##Split interaction data into dataframes within a list
+#FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
-#Order cols
-FlowerCount = FlowerCount %>% 
-mutate(Units = "Flower_units") %>% 
-mutate(Comment = "10 counts along the transect") %>% 
-select(Day, Month, Year, Site_ID, Plant_gen_sp, Flower_abundance, Units, Comment) %>% 
-rename(Site_id = Site_ID, Plant_species = Plant_gen_sp, 
-       Flower_count = Flower_abundance) %>% 
-mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
-filter(!Site_id == "Elhongo" & !Site_id =="Lagunadelojillo") #These ids do not match
+#Flower counts are not reliable at the moment
+#Check levels of Site_id
+site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
-FlowerCount = FlowerCount %>%
-filter(Year == 2015 )
+FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
+                     Flower_data_merger = NA_character_)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
-#Split interaction data into dataframes within a list
+#Split by Site_id
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----

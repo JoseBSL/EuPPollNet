@@ -111,7 +111,7 @@ rename(Hymenoptera_percent = Hymenoptera,
 metadata = left_join(dates1, taxo_info1)
 
 #Load data to google sheets
-(ss <- gs4_create("Sampling_details", sheets = metadata))
+(ss <- gs4_create("Study_level", sheets = metadata))
 
 
 
