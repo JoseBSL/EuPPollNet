@@ -7,13 +7,20 @@ source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/1_Raw_data/10_Vanbergen/Interaction_data.csv")
+
 #Create cols of Temperature and humidity
 data = data %>% 
 mutate(Temperature = NA) %>% 
 mutate(Humidity = NA) %>% 
-select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
 mutate(Flower_data = "Unprocessed") %>% 
 mutate(Flower_data_merger = NA) 
+
+#Create column to merge both datasets
+data = data %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_, Day, "-", Month, "-", Year)) 
+
+colnames(data)
 
 #Unify structure of data
 data = change_str(data)
@@ -23,56 +30,19 @@ InteractionData <- split(data, data$Site_id)
 
 
 ##Prepare flower count data ----
-#FlowerCount = read.csv("Data/1_Raw_data/10_Vanbergen/Flower_count.csv")
-#
-##FlowerCount has values with "-"
-##FIx it
-#FlowerCount = FlowerCount %>%
-#separate(Flower_count, into = c("Flower_count1", "Flower_count2"), sep = "-") %>% 
-#mutate(Flower_count1 = ifelse(is.na(Flower_count2),
-#                               Flower_count1,
-#                               (as.numeric(Flower_count1)+as.numeric(Flower_count2))/2)) %>% 
-#rename(Flower_count = Flower_count1) %>% 
-#select(!Flower_count2)
-#
-##Set common colname
-#FlowerCount = FlowerCount %>% 
-#rename(Comments = Comment)
-#
-##Filter out one column but saved the data
-#FlowerCount = FlowerCount %>% 
-#mutate(Units = paste0(Units, "; ", Inflorescence.type)) %>% 
-#select(!Inflorescence.type) %>% 
-#mutate(Flower_data_merger = NA_character_) 
-#
-##Work around to select a single flower count when duplicates
-#FlowerCount = FlowerCount %>%
-#group_by_at(vars(-Flower_count, -Units)) %>%
-#mutate(row_number = row_number()) %>%
-#distinct() %>%
-#filter(row_number == 1) %>%
-#select(-row_number)
-#
-##Unify data structure
-#FlowerCount = change_str2(FlowerCount)
-##Split data into different dataframes based on survey name
-#FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
-#Flower counts are not reliable at the moment
-#Check levels of Site_id
+FlowerCount = read_csv("Data/1_Raw_data/10_Vanbergen/Flower_count.csv")
 
-site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
-FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
-                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+
+
+
+
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
 #Split by Site_id
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
-
-
 
 
 #Prepare metadata data ----
@@ -117,9 +87,10 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = c("Adam J. Vanbergen", "Willem Proesmans"),
-  Orcid = c("0000-0001-8320-5535", "0000-0003-0358-6732"),
-  E_mail = c("adam.vanbergen@inrae.fr", "willem.proesmans@gmail.com"))
+  Coauthor_name = c("Adam J. Vanbergen", "Willem Proesmans", "Emeline Felten", "Emilien Laurent"),
+  Orcid = c("0000-0001-8320-5535", "0000-0003-0358-6732", "",),
+  E_mail = c("adam.vanbergen@inrae.fr", "willem.proesmans@gmail.com", "emeline.felten@inrae.fr",
+             "emilien.laurent@inrae.fr"))
 
 #Save data ----
 #Create metadata list

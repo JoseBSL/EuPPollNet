@@ -48,7 +48,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Unify level
 data = data %>% 
 mutate(Sampling_method = "Transect")%>% 
-mutate(Flower_data = "Unprocessed") %>% 
+mutate(Flower_data = "No") %>% 
 mutate(Flower_data_merger = NA)
 
 #Latitude and longitude are swapped

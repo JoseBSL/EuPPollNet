@@ -14,7 +14,7 @@ data <- read_csv("Data/1_Raw_data/26_27_Castro/Interaction_data1.csv")
 
 #Check col names with template
 compare_variables(check_interaction_data, data)
-
+data = add_missing_variables(check_interaction_data, data)
 #Reorder variables (just in case)
 data = drop_variables(check_interaction_data, data) 
 
@@ -30,7 +30,12 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Do it in a two step process
 data = data %>% 
 mutate(Site_id = str_replace(Site_id, "_CENSO[0-9]+", "")) %>% 
-mutate(Site_id = str_replace(Site_id, "_DAY[0-9]+", ""))
+mutate(Site_id = str_replace(Site_id, "_DAY[0-9]+", "")) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA)
+
+#Create a comment column
+
 
 #Unify structure of data
 data = change_str(data)
@@ -50,11 +55,11 @@ mutate(Site_id = as.character(Site_id)) %>%
 mutate(Plant_species = as.character(Plant_species)) %>% 
 mutate(Flower_count = as.numeric(Flower_count)) %>% 
 mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+mutate(Flower_data_merger = NA)
 
 #Compare vars
 compare_variables(check_flower_count_data, FlowerCount)
-
+FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount)
 #Order data (just in case)
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 #Split flower count data

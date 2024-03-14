@@ -26,7 +26,13 @@ mutate(Interaction = 1) %>%
 mutate(Sampling_method = "Transect") %>% 
 mutate(Sampling_effort_minutes = NA) %>% 
 mutate(Sampling_area_square_meters = NA) %>% 
-mutate(Habitat = "Pastures")
+mutate(Habitat = "Pastures") %>% 
+mutate(Flower_data = "Yes")
+
+#Create floral data merger column
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+word(Plant_species, 2),Site_id, Day, Month, Year))
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -51,6 +57,20 @@ compare_variables(check_flower_count_data, FlowerCount)
 FlowerCount = FlowerCount %>% 
 rename(Flower_count = Flower_cover_m2) %>% 
 mutate(Units = "Flower cover/m2")
+
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+word(Plant_species, 2),Site_id, Day, Month, Year))
+
+#Drop duplicated rows
+#They have same values, does not affect counts
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-Flower_count)) %>%
+mutate(row_number = row_number()) %>%
+distinct() %>%
+filter(row_number == 1) %>%
+select(-row_number)
+
 #Add variables
 FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
 #Order data as template

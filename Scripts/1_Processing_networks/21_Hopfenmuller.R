@@ -57,30 +57,37 @@ InteractionData <- split(data,data$Site_id)
 
 
 #Prepare flower count data ----
-flower_count <- read_csv("Data/1_Raw_data/21_Hopfenmuller/Flower_count.csv")
+#flower_count <- read_csv("Data/1_Raw_data/21_Hopfenmuller/Flower_count.csv")
+#
+##Add lat long as comment col in case they are relevant to merge floral counts
+#flower_count = flower_count %>% 
+#mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
+#word(Plant_species, 2),Site_id, Latitude, Longitude))
+#
+##Compare vars
+#compare_variables(check_flower_count_data, flower_count)
+#
+##Fix names and variable
+#flower_count = flower_count %>% 
+#rename(Flower_count = Flower_units) %>% 
+#mutate(Units = "Flower number")
+#
+##Add variables
+#flower_count = add_missing_variables(check_flower_count_data, flower_count) 
+#
+##Order data as template
+#flower_count = drop_variables(check_flower_count_data, flower_count) 
+##Set common structure
+#flower_count = change_str2(flower_count)
+##Split interaction data into dataframes within a list
+#FlowerCount <- split(flower_count, flower_count$Site_id)
 
-#Add lat long as comment col in case they are relevant to merge floral counts
-flower_count = flower_count %>% 
-mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
-word(Plant_species, 2),Site_id, Latitude, Longitude))
+site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
-#Compare vars
-compare_variables(check_flower_count_data, flower_count)
+FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
+                     Flower_data_merger = NA_character_)
 
-#Fix names and variable
-flower_count = flower_count %>% 
-rename(Flower_count = Flower_units) %>% 
-mutate(Units = "Flower number")
-
-#Add variables
-flower_count = add_missing_variables(check_flower_count_data, flower_count) 
-
-#Order data as template
-flower_count = drop_variables(check_flower_count_data, flower_count) 
-#Set common structure
-flower_count = change_str2(flower_count)
-#Split interaction data into dataframes within a list
-FlowerCount <- split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -121,7 +128,7 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 Authorship <- tibble(
 Coauthor_name = "Sebastian Hopfenmüller",
 Orcid = "0009-0004-5138-6342",
-E_mail = "sebastian.hopfenmueller@uni-wuerzburg.de")
+E_mail = "")
 
 #Save data ----
 #Create metadata list

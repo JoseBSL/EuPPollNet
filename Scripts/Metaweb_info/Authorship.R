@@ -218,6 +218,11 @@ affiliations = affiliations %>%
 mutate(Affiliation1 = case_when(Coauthor_name == "Reinart Feldmann"  ~ 
 "Helmholtz Centre for Environmental Research – UFZ, Leipzig, Germany",
 TRUE ~ Affiliation1)) 
+##Emeline Felten----
+affiliations = affiliations %>% 
+mutate(Affiliation1 = case_when(Coauthor_name == "Emeline Felten"  ~ 
+"Agroécologie, INRAE, Institut Agro, Université de Bourgogne, Université de Bourgogne Franche-Comté, Dijon, France",
+TRUE ~ Affiliation1)) 
 ##Victoria Ferrero----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Victoria Ferrero"  ~ 
@@ -379,6 +384,11 @@ TRUE ~ Affiliation1))
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Carlos Lara-Romero"  ~ 
 "Area of Biodiversity and Conservation, ESCET, Universidad Rey Juan Carlos, Madrid, Spain",
+TRUE ~ Affiliation1))
+##Emilien Laurent-----
+affiliations = affiliations %>% 
+mutate(Affiliation1 = case_when(Coauthor_name == "Emilien Laurent"  ~ 
+"Agroécologie, INRAE, Institut Agro, Université de Bourgogne, Université de Bourgogne Franche-Comté, Dijon, France",
 TRUE ~ Affiliation1))
 ##Michelle Larkin-----
 affiliations = affiliations %>% 
@@ -548,7 +558,7 @@ TRUE ~ Affiliation1))
 ##Willem Proesmans-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Willem Proesmans"  ~ 
-"Forest & Nature Lab, Department of Environment, Ghent University, Melle-Gontrode, Belgium",
+"Agroécologie, INRAE, Institut Agro, Université de Bourgogne, Université de Bourgogne Franche-Comté, Dijon, France",
 TRUE ~ Affiliation1))
 ##Demetra Rakosy-----
 affiliations = affiliations %>% 
@@ -696,7 +706,7 @@ TRUE ~ Affiliation2))
 ##Adam J. Vanbergen-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Adam J. Vanbergen"  ~ 
-"Department of Plant Health and Environment, National Research Institute for Agriculture, Food and Environment, Dijon, France",
+"Agroécologie, INRAE, Institut Agro, Université de Bourgogne, Université de Bourgogne Franche-Comté, Dijon, France",
 TRUE ~ Affiliation1))
 ##Montserrat Vilà-----
 affiliations = affiliations %>% 

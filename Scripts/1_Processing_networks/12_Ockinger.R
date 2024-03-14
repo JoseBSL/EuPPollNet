@@ -9,14 +9,24 @@ source("Scripts/Processing/Functions/Change_str.R")
 #Load interaction data
 data = read_csv2("Data/1_Raw_data/12_Ockinger/Interaction_data.csv")
 
+#Two key things:
+#1)Filter rows without a plant
+data = data %>% 
+filter(!is.na(flw_visited_by_pollin))
+#2)Uncount Pollinator individuals
+#To have a single row with an interaction between a pollinator and a plant
+#Note that visit means survey visit!
+data = data %>% 
+uncount(Pollinator_individuals) 
+
 #Prepare interaction data with the same number of columns
 data = data %>% 
-remove_rownames() %>%
-column_to_rownames(var = '...1') %>% 
+#remove_rownames() %>%
+#column_to_rownames(var = '...1') %>% 
 rename(Plant_species = flw_visited_by_pollin) %>% 
 rename(Pollinator_species = pollin_species) %>% 
 drop_na(Plant_species) %>% 
-rename(Interaction = Visit) %>% 
+mutate(Interaction = 1) %>% 
 mutate(Sampling_method = "Transect") %>% 
 mutate(Year = "2021") %>% 
 mutate(Month = NA) %>% 
@@ -54,14 +64,10 @@ select(Plant_species, Pollinator_species, Interaction, Sampling_method,
          Coordinate_precision, Elevation, Day, Month, Year, Comments,
          Temperature, Humidity) 
 
-#Relocate col in its position
+#Fix species names and select cols of interest
 data = data %>%
-group_by(across(-Interaction)) %>% 
-summarise(Interaction = sum(Interaction, na.rm = TRUE)) %>%    
-relocate(Interaction, .after = Pollinator_species) %>% 
 mutate(Plant_species = str_replace(Plant_species, "_", " ")) %>% 
 mutate(Pollinator_species = str_replace(Pollinator_species, "_", " ")) %>% 
-ungroup() %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this info in the metadata
 
 #Add flower cols info

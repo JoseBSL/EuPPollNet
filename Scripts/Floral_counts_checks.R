@@ -17,8 +17,13 @@ floral_counts =c("2_Petanidou", "4_Marini", "5_Marini",
 
 #Things to do!
 #Flower count data issues: 1_Bartomeus
-a = bind_rows(InteractionData)
-b = bind_rows(FlowerCount)
+a = bind_rows(InteractionData1)
+b = bind_rows(flower_count1)
+
+non_unique_df <- b %>%
+  filter(duplicated(b) | duplicated(b, fromLast = TRUE))
+
+
 str(b)
 str(a)
 

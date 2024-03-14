@@ -25,7 +25,7 @@ mutate(Sampling_effort_minutes = NA) %>%
 mutate(Sampling_area_square_meters = NA) %>% 
 mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
       "MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
-mutate(Comment = "Location col indicates transects rounds (1 and 2)")
+mutate(Comments = "Location col indicates transects rounds (1 and 2)")
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -45,7 +45,8 @@ summarise(FirstLatitude = first(Latitude),
 data = left_join(data, coords) %>% 
 mutate(Latitude = FirstLatitude) %>% 
 mutate(Longitude = FirstLongitude) %>% 
-select(!c(FirstLatitude, FirstLongitude))
+select(!c(FirstLatitude, FirstLongitude))%>% 
+mutate(Flower_data = "No")
 
 #Unify structure of data
 data = change_str(data)
@@ -59,48 +60,62 @@ data2 <- as_tibble(split_intdata[[2]])
 InteractionData2 <- split(data2, data2$Site_id)
 
 #Prepare flower count data ----
-FlowerCount <- read_csv("Data/1_Raw_data/23_24_25_Holzschuh/Flower_count.csv")
+#FlowerCount <- read_csv("Data/1_Raw_data/23_24_25_Holzschuh/Flower_count.csv")
+#
+##Compare vars
+##compare_variables(check_flower_count_data, flower_count)
+#
+##Split date col
+#FlowerCount = FlowerCount %>% 
+#mutate(Date = as.Date(Date, format="%m-%d-%y")) %>% 
+#mutate(Year = year(ymd(Date))) %>% 
+#mutate(Month = month(ymd(Date))) %>% 
+#mutate(Day = day(ymd(Date))) 
+#
+##Rename cols
+#FlowerCount = FlowerCount %>% 
+#rename(Flower_count = Flower_cover_percent) %>% 
+#mutate(Units = "Flower cover/150m2") %>% 
+#mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
+#"MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
+#mutate(Comments = Habitat) #Add habitat in comment col to split datasets
+#
+##Add variables
+#FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
+##Order data as template
+#FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+#
+##Set common structure
+#FlowerCount = FlowerCount %>% 
+#mutate(Day = as.character(Day)) %>% 
+#mutate(Month = as.character(Month)) %>% 
+#mutate(Year = as.numeric(Year)) %>% 
+#mutate(Site_id = as.character(Site_id)) %>% 
+#mutate(Plant_species = as.character(Plant_species)) %>% 
+#mutate(Flower_count = as.numeric(Flower_count)) %>% 
+#mutate(Units = as.character(Units)) %>% 
+#mutate(Comments = as.character(Comments))
+#
+##Split flower count data into dataframes by habitat
+#split_flower_count_data <- split(FlowerCount, FlowerCount$Comment) 
+##Convert to tibbles
+#flower_count2 <- as_tibble(split_flower_count_data[[2]])
+##Split interaction data into dataframes within a list
+#FlowerCount2 <- split(flower_count2, flower_count2$Site_id)
 
-#Compare vars
-#compare_variables(check_flower_count_data, flower_count)
+#Flower counts are not reliable at the moment
+#Check levels of Site_id
+site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
-#Split date col
-FlowerCount = FlowerCount %>% 
-mutate(Date = as.Date(Date, format="%m-%d-%y")) %>% 
-mutate(Year = year(ymd(Date))) %>% 
-mutate(Month = month(ymd(Date))) %>% 
-mutate(Day = day(ymd(Date))) 
-
-#Rename cols
-FlowerCount = FlowerCount %>% 
-rename(Flower_count = Flower_cover_percent) %>% 
-mutate(Units = "Flower cover/150m2") %>% 
-mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
-"MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
-mutate(Comment = Habitat) #Add habitat in comment col to split datasets
-
-#Add variables
-FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
-#Order data as template
-FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+FlowerCount2 = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
+                     Flower_data_merger = NA_character_)
 
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount2 = change_str2(FlowerCount2)
 
-#Split flower count data into dataframes by habitat
-split_flower_count_data <- split(FlowerCount, FlowerCount$Comment) 
-#Convert to tibbles
-flower_count2 <- as_tibble(split_flower_count_data[[2]])
-#Split interaction data into dataframes within a list
-FlowerCount2 <- split(flower_count2, flower_count2$Site_id)
+#Split by Site_id
+FlowerCount2 <- split(FlowerCount2, FlowerCount2$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -126,7 +141,7 @@ Sampling_time_species_round_min = NA,
 Sampling_time_total_min = 2 * 15 * 16 * 2, #2 transects * 15 mins * 16 sites * 2 rounds
 Total_plant_species = nrow(plant_single_cases1),
 Total_pollinator_species = nrow(pollinator_single_cases1),
-Floral_counts =  "Yes")
+Floral_counts =  "Unprocessed")
 
 #Transpose metadata
 Metadata2 = as.data.frame(t(Metadata2)) %>%  
