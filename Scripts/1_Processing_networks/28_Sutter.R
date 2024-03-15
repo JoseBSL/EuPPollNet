@@ -187,18 +187,30 @@ mutate(Year = case_when(
 is.na(Year) ~ 2013, 
 T ~ Year))
 
+#Add other needed cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Comments = NA)
+
 #Unify structure of data
 data = change_str(data)
 
 #Delete dot from plant species
 data = data %>% 
-mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+mutate(Plant_species = str_replace(Plant_species, "[.]", " "))%>% 
+mutate(Pollinator_species = str_replace(Pollinator_species, "[.]", " "))
+
+#Create column to merge with floral data
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Habitat, Month, Year)) 
 
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount <- read_csv("Data/1_Raw_data/28_Sutter/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/28_Sutter/Flower_count.csv")
 #Recode some factors
 FlowerCount = FlowerCount %>% 
 mutate(Species_abbreviation = case_when(
@@ -247,7 +259,14 @@ mutate(Habitat = recode_factor(Habitat, "HA" = "Herbaceous areal 1",
       "WA" = "Woody areal",
       "WL" = "Woody linear",
       "WL2" = "Woody linear 2")) %>% 
-rename(Comment = Inflorescence_unit_used)
+rename(Comments = Inflorescence_unit_used) %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+
+#Create column to merge with floral data
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Habitat, Month, Year)) 
+
 
 #Compare vars
 #compare_variables(check_flower_count_data, flower_count)
@@ -261,12 +280,22 @@ mutate(Site_id = as.character(Site_id)) %>%
 mutate(Plant_species = as.character(Plant_species)) %>% 
 mutate(Flower_count = as.numeric(Flower_count)) %>% 
 mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+mutate(Comments = as.character(Comments)) %>% 
+mutate(Units = "Flowers/m2")
 
+#Unify structure of data
+FlowerCount = change_str2(FlowerCount)
 #Order data (just in case)
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#There are duplicated rorws
+#Fix that, so this does not give trouble when left_join with interactions
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-c(Flower_count,Day))) %>%
+summarise(Flower_count = mean(Flower_count)) 
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll

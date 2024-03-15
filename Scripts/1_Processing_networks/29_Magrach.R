@@ -56,6 +56,28 @@ mutate(Longitude =
   case_when(Site_id == "Cartaya" ~ longitude_cartaya[1],
   TRUE ~ Longitude))
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Comments = NA)
+
+#Delete sp from species names as flower count datadoes not contain it
+data = data %>% 
+mutate(Plant_species = str_replace_all(Plant_species, " sp", ""))
+
+#Set floral merger col as we have floral counts
+#Fix NA's in second word
+data = data %>% 
+mutate(second_word = na_if(word(Plant_species, 2, sep = " "), "NA")) %>% 
+mutate(second_word = ifelse(is.na(second_word), "", second_word))
+
+#Set floral merger col as we have floral counts
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1),second_word, "_",
+                                   Site_id,  "_",Day, "_", Month, "_", Year)) %>% 
+select(!second_word)
+
 #Unify structure of data
 data = change_str(data)
 
@@ -69,6 +91,19 @@ FlowerCount <- read_csv("Data/1_Raw_data/29_30_31_STEP/Flower_count.csv")
 compare_variables(check_flower_count_data, FlowerCount)
 #Select just Spain
 FlowerCount = FlowerCount %>% filter(country == "Spain")
+#Add flower data merger column
+FlowerCount = FlowerCount %>%
+mutate(Flower_data_merger =NA) %>% 
+mutate(Comments = NA)
+
+#Check for double cases
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-Flower_count)) %>%
+mutate(row_number = row_number()) %>%
+distinct() %>%
+filter(row_number == 1) %>%
+select(-row_number)
+
 #Order data as template and drop variables
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 
@@ -81,10 +116,25 @@ mutate(Site_id = as.character(Site_id)) %>%
 mutate(Plant_species = as.character(Plant_species)) %>% 
 mutate(Flower_count = as.numeric(Flower_count)) %>% 
 mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+mutate(Comments = as.character(Comments))
+
+#Set floral merger col as we have floral counts
+#Fix NA's in second word
+FlowerCount = FlowerCount %>% 
+mutate(second_word = na_if(word(Plant_species, 2, sep = " "), "NA")) %>% 
+mutate(second_word = ifelse(is.na(second_word), "", second_word))
+
+#Set floral merger col as we have floral counts
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1),second_word, "_",
+                                   Site_id,  "_",Day, "_", Month, "_", Year)) %>% 
+select(!second_word)
+
+#Unify structure of data
+FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls

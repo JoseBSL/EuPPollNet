@@ -21,7 +21,10 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 
 #Unify level
 data = data %>% 
-mutate(Sampling_method = "Random_census")
+mutate(Sampling_method = "Random_census") %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "No") %>% 
+mutate(Comments = NA)
 
 #Unify structure of data
 data = change_str(data)
@@ -35,7 +38,7 @@ InteractionData2 <- split(data, data$Habitat)
 site_id_levels = levels(factor(data$Habitat))
 
 FlowerCount2 = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comment = NA)
+                     Flower_count = NA, Units = NA, Comment = NA, Flower_data_merger = NA)
 
 FlowerCount2 = FlowerCount2 %>% 
 mutate(Day = as.character(Day)) %>% 

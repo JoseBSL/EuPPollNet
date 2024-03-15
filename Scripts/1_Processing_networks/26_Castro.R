@@ -34,8 +34,10 @@ mutate(Site_id = str_replace(Site_id, "_DAY[0-9]+", "")) %>%
 mutate(Flower_data = "Yes") %>% 
 mutate(Flower_data_merger = NA)
 
-#Create a comment column
-
+#Create a merger column
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1),"_", word(Plant_species, 2),"_", Site_id,"_", ifelse(Day < 19, "10-19", "20-22"))) %>% 
+mutate(Flower_data_merger = str_replace(Flower_data_merger, "-", "_"))
 
 #Unify structure of data
 data = change_str(data)
@@ -55,7 +57,13 @@ mutate(Site_id = as.character(Site_id)) %>%
 mutate(Plant_species = as.character(Plant_species)) %>% 
 mutate(Flower_count = as.numeric(Flower_count)) %>% 
 mutate(Units = as.character(Units)) %>% 
-mutate(Flower_data_merger = NA)
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Comments = NA)
+
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1),"_", word(Plant_species, 2),"_", Site_id,"_", ifelse(Day < 19, "10-19", "20-22"))) %>% 
+mutate(Flower_data_merger = str_replace(Flower_data_merger, "-", "_"))
 
 #Compare vars
 compare_variables(check_flower_count_data, FlowerCount)
@@ -63,7 +71,7 @@ FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount)
 #Order data (just in case)
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 #Split flower count data
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
