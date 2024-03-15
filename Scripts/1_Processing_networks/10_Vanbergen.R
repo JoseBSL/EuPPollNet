@@ -2,48 +2,114 @@
 
 #Load libraries
 library(tidyverse)
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 #Load function to unify structure of data
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
 data = read.csv("Data/1_Raw_data/10_Vanbergen/Interaction_data.csv")
 
+#Check what is missing and what we have
+#compare_variables(check_interaction_data, data)
+
 #Create cols of Temperature and humidity
 data = data %>% 
 mutate(Temperature = NA) %>% 
 mutate(Humidity = NA) %>% 
-mutate(Flower_data = "Unprocessed") %>% 
-mutate(Flower_data_merger = NA) 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA) %>% 
+rename(Plant_species = Best.plant.ID) %>% 
+rename(Pollinator_species = Best.ID) %>% 
+rename(Site_id = Site) %>% 
+mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date)) %>% 
+select(!Date) %>% 
+mutate(Interaction = 1) %>% 
+mutate(Country = "France") %>% 
+mutate(Locality = "Côte d'or") %>% 
+mutate(Sampling_method = "Transect") %>% 
+mutate(Comments = paste("sex", Sex)) %>% 
+select(!Habitat) %>% 
+rename(Habitat = Habitat.EUNIS)
+ 
+#We can add coordinates by loading this other file
+#It is a hit chaotic because we restarted the process in order to merge with floral counts
+#They were at landscape level but without species
+to_add_coordinates = read_csv("Data/1_Raw_data/10_Vanbergen/To_add_coordinates.csv")
+#Select main cols to bind
+to_add_coordinates = to_add_coordinates %>% 
+select(c(Site_id, Latitude, Longitude, Coordinate_precision, Elevation)) %>% 
+distinct()
 
-#Create column to merge both datasets
-data = data %>%  
+#Join this information to interaction data so we include coordinates
+data = left_join(data, to_add_coordinates) 
+
+#Create the Floral merger col
+data = data %>% 
 mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
-                                   Site_, Day, "-", Month, "-", Year)) 
+                                   Site_id, Habitat)) 
 
-colnames(data)
+#Add missing vars
+data = add_missing_variables(check_interaction_data, data) 
+#Reorder variables
+data = drop_variables(check_interaction_data, data) 
+
+#Finally drop sampling effort and square area (it would be added on the metadata)
+data = data %>%
+select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
+
+#One last thing!
+#Drop rows with n/a in poll or plant species
+data = data %>%
+filter(!Pollinator_species == "n/a")%>%
+filter(!Plant_species == "n/a")
 
 #Unify structure of data
 data = change_str(data)
 
 #Split by Site_id
-InteractionData <- split(data, data$Site_id)
-
+InteractionData = split(data, data$Site_id)
+#Looks good now :)
 
 ##Prepare flower count data ----
 FlowerCount = read_csv("Data/1_Raw_data/10_Vanbergen/Flower_count.csv")
 
+#Note!
+#There are rare species not included in the quadrat
+#Maybe they could be given a low symbolic value
+
+#Compare vars
+compare_variables(check_flower_count_data, FlowerCount)
+
+#Rename vars
+FlowerCount = FlowerCount %>% 
+mutate(Day = NA) %>% 
+mutate(Month = NA) %>% 
+mutate(Year = NA) %>% 
+rename(Plant_species = Flower.species) %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Comments = "Spp without counts are rare and could assigned a low representative value -check script of floral counts in raw data folder for further info-") %>% 
+rename(Site_id = Site) %>% 
+mutate(Units = "Mean flowers per quadrat and transect corrected by sampling effort") %>% 
+rename(Flower_count = Weighted.floral.ab) %>% 
+rename(Habitat = Habitat.EUNIS) %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+
+#Create column to merge floral counts 
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
+                                   Site_id, Habitat)) 
 
 
-
-
-
+#Order data as template and drop variables
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
 #Split by Site_id
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
-
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls
@@ -88,7 +154,7 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 #Prepare authorship data ----
 Authorship <- data.frame(
   Coauthor_name = c("Adam J. Vanbergen", "Willem Proesmans", "Emeline Felten", "Emilien Laurent"),
-  Orcid = c("0000-0001-8320-5535", "0000-0003-0358-6732", "",),
+  Orcid = c("0000-0001-8320-5535", "0000-0003-0358-6732", "", ""),
   E_mail = c("adam.vanbergen@inrae.fr", "willem.proesmans@gmail.com", "emeline.felten@inrae.fr",
              "emilien.laurent@inrae.fr"))
 
