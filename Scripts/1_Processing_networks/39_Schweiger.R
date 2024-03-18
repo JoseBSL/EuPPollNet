@@ -27,6 +27,11 @@ data = data %>%
 filter(Plant_species != "no flower") %>% 
 filter(Plant_species != "missing")
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "Yes") 
+
 #Exclude 5 rows with missing coordinates for now
 data = data %>% 
 filter(!is.na(Latitude))
@@ -35,30 +40,37 @@ filter(!is.na(Latitude))
 data = data %>%
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
+#Column to merge with interaction data
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_",
+word(Plant_species, 2), Site_id, "_", Day, "_", Month, "_", Year))
+
 #Unify structure of data
 data = change_str(data)
 
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-FlowerCount <- read_csv("Data/1_Raw_data/39_Schweiger/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/39_Schweiger/Flower_count.csv")
+
+#Comments
+FlowerCount = FlowerCount %>% 
+mutate(Comments = NA) %>% 
+mutate(Flower_data_merger = NA)
+
+#Column to merge with interaction data
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_",
+word(Plant_species, 2), Site_id, "_", Day, "_", Month, "_", Year))
 
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll

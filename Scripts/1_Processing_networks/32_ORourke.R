@@ -19,12 +19,18 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/1_Raw_data/32_to_37_Russo/Interaction_data.csv")
+data = read_csv("Data/1_Raw_data/32_to_37_Russo/Interaction_data.csv")
 
 #Divide col into cols
 levels(factor(data$Site_id))
 data = data %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
 levels(factor(data$Name))
+
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "No") %>% 
+mutate(Comments = NA)
 
 #Recode authors to just their surname
 data = data %>% 
@@ -106,17 +112,10 @@ InteractionData <- split(data, data$Site_id)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comment = NA)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA)
 
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+#Unify structure of data
+FlowerCount = change_str2(FlowerCount)
 
 #Split by Site_id
 FlowerCount <- split(FlowerCount, FlowerCount$Site_id)

@@ -29,31 +29,37 @@ data = data %>%
 mutate(Sampling_method = "Transect") %>% 
 mutate(Site_id = "Gora_Gipsowa")
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data = "Yes") 
+
+#Set merger col
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id))
+
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-FlowerCount <- read_csv("Data/1_Raw_data/46_Knight/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/46_Knight/Flower_count.csv")
 
 #There is one single level of site ID
 #Unify with data 
 FlowerCount = FlowerCount %>% 
-mutate(Site_id = "Gora_Gipsowa")
+mutate(Site_id = "Gora_Gipsowa") %>% 
+mutate(Comments = NA)
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #No misisng vars
-#Set common structure
+#Set merger col
 FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id))
+
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Same levels
 unique(FlowerCount$Site_id) == unique(data$Site_id)

@@ -33,7 +33,7 @@ mutate(Sampling_effort_minutes = NA) %>%
 mutate(Sampling_area_square_meters = NA) %>% 
 mutate(Habitat = "Calcareous grassland") %>% 
 mutate(Locality = Site_id) %>% 
-mutate(Flower_data = "Yes")
+mutate(Flower_data = "No")
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 

@@ -24,12 +24,6 @@ non_unique_df <- b %>%
   filter(duplicated(b) | duplicated(b, fromLast = TRUE))
 
 
-str(b)
-str(a)
-
-
-
-
 d = left_join(a, b, by = join_by(Plant_species, Site_id, Day, Month, Year))
 
 
@@ -49,3 +43,13 @@ z = tibble(species = many_to_many$Plant_species,x = many_to_many$`length(Plant_s
 
 check1 = z %>% 
 filter(!x==x1)
+
+
+
+colnames(data)
+colnames(FlowerCount)
+
+
+d = left_join(data, FlowerCount, by = join_by(Plant_species, Site_id, Focal_habitat,Year, Month, Day, Transect_part_id))
+
+

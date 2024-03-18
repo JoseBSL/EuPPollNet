@@ -13,7 +13,12 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/1_Raw_data/38_Maurer/Interaction_data.csv")
+data = read_csv("Data/1_Raw_data/38_Maurer/Interaction_data.csv")
+
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "No") 
 
 #There are some sites without coordinates
 #I asked Corina and she provided those by mail
@@ -57,7 +62,7 @@ mutate(Habitat = recode_factor(Habitat,
       "potato" = "Potato",
       "sun.flow" = "Sunflower crop",
       "sug.beet" = "Sugar bet crop")) %>% 
-mutate(Country = "Switzerland")
+mutate(Country = "Switzerland") 
 
 #All levels seem ok now
 levels(factor(data$Habitat))
@@ -67,7 +72,16 @@ rename(Comments = Landscape_type) %>%
 mutate(Comments = recode_factor(Comments,
     "Intensive.agriculture" = "Intensive agriculture landscape",
     "Rural.habitat.mosaic" = "Rural habitat mosaic landscape",
-    "Urban" = "Urban landscape"))
+    "Urban" = "Urban landscape")) 
+
+
+#Delete . from plant species
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+
+#Create merger column for flower counts
+data = data %>% 
+mutate(Flower_data_merger = NA)
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -83,64 +97,90 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 #Unify structure of data
 data = change_str(data)
 
-#Delete . from plant species
-data = data %>% 
-mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
-
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-FlowerCount <- read_csv("Data/1_Raw_data/38_Maurer/Flower_count.csv")
-#Rename habitats
-FlowerCount = FlowerCount %>% rename(Habitat = Focal_habitat) %>% 
-mutate(Habitat = recode_factor(Habitat,
-     "OSR" = "Oilseed rape crop",
-     "forest.edge" = "Forest edge",
-     "forest" = "Forest",
-     "ext.meadow" = "Extensively managed meadow",
-     "art.grass" = "Rotational meadow",
-     "fallow" = "Fallow land", 
-     "tree.nur" = "Tree nursery",
-     "pasture" = "Pasture", 
-     "hedge" = "Hedgerow",
-     "orchard" = "Orchard",
-     "roadside" = "Grassy/herb strip next to road",
-     "lawn" = "Frequently mown",
-     "perm.mead" = "Permanent meadow",
-     "ext.mead" = "Extensively managed meadow",
-     "garden" = "Private garden",
-     "flow.fal" = "Sown perennial flowering strip",
-     "bean" = "Bean crop",
-     "potato" = "Potato",
-     "sun.flow" = "Sunflower crop",
-     "sug.beet" = "Sugar bet crop"))
-#Add the general habitat to a comment
-FlowerCount = FlowerCount %>% 
-rename(Comment = Landscape_type) %>% 
-mutate(Comment = recode_factor(Comment,
-      "Intensive.agriculture" = "Intensive agriculture landscape",
-      "Rural.habitat.mosaic" = "Rural habitat mosaic landscape",
-      "Urban" = "Urban landscape"))
+#FlowerCount = read_csv("Data/1_Raw_data/38_Maurer/Flower_count.csv")
+##Rename habitats
+#FlowerCount = FlowerCount %>% rename(Habitat = Focal_habitat) %>% 
+#mutate(Habitat = recode_factor(Habitat,
+#     "OSR" = "Oilseed rape crop",
+#     "forest.edge" = "Forest edge",
+#     "forest" = "Forest",
+#     "ext.meadow" = "Extensively managed meadow",
+#     "art.grass" = "Rotational meadow",
+#     "fallow" = "Fallow land", 
+#     "tree.nur" = "Tree nursery",
+#     "pasture" = "Pasture", 
+#     "hedge" = "Hedgerow",
+#     "orchard" = "Orchard",
+#     "roadside" = "Grassy/herb strip next to road",
+#     "lawn" = "Frequently mown",
+#     "perm.mead" = "Permanent meadow",
+#     "ext.mead" = "Extensively managed meadow",
+#     "garden" = "Private garden",
+#     "flow.fal" = "Sown perennial flowering strip",
+#     "bean" = "Bean crop",
+#     "potato" = "Potato",
+#     "sun.flow" = "Sunflower crop",
+#     "sug.beet" = "Sugar bet crop"))
+##Add the general habitat to a comment
+#FlowerCount = FlowerCount %>% 
+#rename(Comments = Landscape_type) %>% 
+#mutate(Comments = recode_factor(Comments,
+#      "Intensive.agriculture" = "Intensive agriculture landscape",
+#      "Rural.habitat.mosaic" = "Rural habitat mosaic landscape",
+#      "Urban" = "Urban landscape")) %>% 
+#mutate(Flower_data_merger = Comments)
+#
+#
+##Delete . from plant species
+#FlowerCount = FlowerCount %>% 
+#mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+#
+##Create merger column for flower counts
+#FlowerCount = FlowerCount %>% 
+#mutate(Flower_data_merger = paste0(Plant_species,Site_id, Transect_part_id,Habitat, Day, Month, Year))
+#
+##Seems that there are duplicates of flower counts
+##Select just 1
+#FlowerCount = FlowerCount %>%
+#group_by_at(vars(-Flower_count)) %>%
+#mutate(row_number = row_number()) %>%
+#distinct() %>%
+#filter(row_number == 1) %>%
+#select(-row_number)
+#
+##Check vars
+##compare_variables(check_flower_count_data, flower_count)
+##Order data as template
+#FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+#
+##Calculate average flowers per site 
+#FlowerCount = FlowerCount %>%
+#group_by_at(vars(-c(Flower_count))) %>%
+#summarise(Flower_count = mean(Flower_count))
+#
+##Set common structure
+#FlowerCount = change_str2(FlowerCount)
+#
+##Split interaction data into dataframes within a list
+#FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
-#Check vars
-#compare_variables(check_flower_count_data, flower_count)
-#Order data as template
-FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+#Flower counts are not reliable at the moment
+#Check levels of Site_id
+site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
+
+FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
+                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
+                     Flower_data_merger = NA_character_)
 
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount = change_str2(FlowerCount)
 
-#Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+#Split by Site_id
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll

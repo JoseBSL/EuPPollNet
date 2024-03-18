@@ -75,6 +75,26 @@ mutate(Longitude = case_when(Site_id == 1 ~ parse_lon("12°53.798’ E"),
                            Site_id == 5 ~ parse_lon("12°54.869’ E"),
                            Site_id == 6 ~ parse_lon("12°55.112’ E")))
 
+
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Flower_data_merger = NA)
+
+#Edit string in species name
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", ""))
+
+
+
+#Fix NA's in second word
+data = data %>% 
+mutate(third_word = na_if(word(Plant_species, 3, sep = " "), "NA")) %>% 
+mutate(third_word = ifelse(is.na(third_word), "", third_word))
+#Set merger col
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), third_word,"_" ,Site_id, Comments))
+
 #Compare vars
 #compare_variables(check_interaction_data, data)
 #Nothing missing!
@@ -93,35 +113,50 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-FlowerCount <- read_csv("Data/1_Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_areas.csv", locale = locale(encoding = "latin1"))
+FlowerCount = read_csv("Data/1_Raw_data/47_Benadi/Alldata_Benadi_JAE_2013/Flower_areas.csv", locale = locale(encoding = "latin1"))
 
 FlowerCount = FlowerCount %>% 
 rename(Site_id = Plot) %>% 
-rename(Comment = Network) %>% #This col will be useful for merging
+rename(Comments = Network) %>% #This col will be useful for merging
 rename(Flower_count = Area_per_m2) %>% 
 mutate(Units = "Area per m2")
+
+#Edit string in species name
+FlowerCount = FlowerCount %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", ""))
 
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Misisng vars
 #add them
+
+
+#Fix NA's in second word
+FlowerCount = FlowerCount %>% 
+mutate(third_word = na_if(word(Plant_species, 3, sep = " "), "NA")) %>% 
+mutate(third_word = ifelse(is.na(third_word), "", third_word))
+#Set merger col
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), third_word,"_" ,Site_id, Comments))
+
 #Order data as template and drop variables
 FlowerCount = add_missing_variables(check_flower_count_data, FlowerCount) 
 #Order cols
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Minor edit, just few species
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-Flower_count)) %>%
+mutate(row_number = row_number()) %>%
+distinct() %>%
+filter(row_number == 1) %>%
+select(-row_number)
+
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll

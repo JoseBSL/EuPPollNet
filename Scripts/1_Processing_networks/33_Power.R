@@ -16,12 +16,19 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/1_Raw_data/32_to_37_Russo/Interaction_data.csv")
+data = read_csv("Data/1_Raw_data/32_to_37_Russo/Interaction_data.csv")
 
 #Divide col into cols
 levels(factor(data$Site_id))
 data = data %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
 levels(factor(data$Name))
+
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Comments = NA) %>% 
+rename(Plant_species = Plant_Species) 
 
 #Recode authors to just their surname
 data = data %>% 
@@ -41,15 +48,27 @@ data_time = data %>% select(Sampling_effort_minutes)
 #Compare vars
 #compare_variables(check_interaction_data, data)
 
+#Delete underscore from plant species
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "_", " "))
+
+#Create merger col
+#Note that we have calculated the average of flowers per site
+#Was the only way to merge both datasets correctly... (ask authors for further info)
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), "_",
+                                   word(Plant_species,2), "_", Site,"_", Site_number))
+
+
 #Prepare data
 data = data %>% 
-rename(Plant_species = Plant_Species) %>% 
 mutate(Habitat = "Farming grassland") %>% 
 mutate(Locality = "Along south-eastern Ireland") %>% 
 rename(Latitude = "WGS84/ETRS89") %>% 
 rename(Longitude = "WGS84/ETRS89_2") %>% 
 mutate(Site_id = Site) %>% 
 mutate(Sampling_method = "Transects") 
+
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -84,9 +103,6 @@ mutate(Day = as.Date(Day, origin = "2009-01-01")) %>%
 mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 #it seems ok
 
-#Delete underscore from plant species
-data = data %>% 
-mutate(Plant_species = str_replace(Plant_species, "_", " "))
 
 #Unify level
 data = data %>% 
@@ -96,15 +112,20 @@ mutate(Sampling_method = "Transect")
 data = change_str(data)
 
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-FlowerCount <- read_csv("Data/1_Raw_data/32_to_37_Russo/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/32_to_37_Russo/Flower_count.csv")
 
 #Divide col into cols
 levels(factor(FlowerCount$Site_id))
-FlowerCount = FlowerCount %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
-levels(factor(FlowerCount$Name))
+FlowerCount = FlowerCount %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F) %>% 
+mutate(Day = NA) %>% 
+mutate(Month = NA)
+
+#Fix plant names
+FlowerCount = FlowerCount %>%
+mutate(Plant_species =  str_replace(Plant_species, "_", " "))
 
 #Recode authors to just their surname
 FlowerCount = FlowerCount %>% 
@@ -115,30 +136,37 @@ mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
                             "MichelleLarkin" = "Larkin",
                             "CianWhite" = "White"))
 
+
 #Select first the one of Power
 FlowerCount = FlowerCount %>% 
 filter(Name == "Power") %>% 
 mutate(Site_id = Site) %>% 
-mutate(Comment = "Also available FloralArea in mm2")
+mutate(Comments = "Also available FloralArea in m2") %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Units = "Mean abundance per plant species")
+
+#Create unique identifier
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), "_",
+                                   word(Plant_species,2), "_",
+                                   Site, "_", Site_number))
+
 
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Order data as template
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 
+#Calculate average flowers per site 
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-c(Flower_count))) %>%
+summarise(Flower_count = mean(Flower_count))
+
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
@@ -146,7 +174,7 @@ plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
-Metadata <- tibble(
+Metadata = tibble(
 Doi = "https://doi.org/10.1111/j.1365-2664.2010.01949.x",
 Dataset_description = "Two fields from different farms were surveyed in 2009",
 Taxa_recorded = "Bees, hoverflies and butterflies",

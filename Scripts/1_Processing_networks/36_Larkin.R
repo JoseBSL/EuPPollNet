@@ -23,6 +23,12 @@ levels(factor(data$Site_id))
 data = data %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
 levels(factor(data$Name))
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Flower_data = "Yes") %>% 
+mutate(Comments = NA)
+
 #Recode authors to just their surname
 data = data %>% 
   mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
@@ -50,6 +56,17 @@ data = data %>%
   rename(Longitude = "WGS84/ETRS89_2") %>% 
   mutate(Site_id = Site) %>% 
   mutate(Sampling_method = "Transects") 
+
+#Delete underscore from plant species
+data = data %>% 
+mutate(Plant_species = str_replace(Plant_species, "_", " "))
+
+#Create merger col
+#Note that we have calculated the average of flowers per site
+#Was the only way to merge both datasets correctly... (ask authors for further info)
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), "_",
+                                   word(Plant_species,2), "_", Site, "_", Site_number))
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -133,12 +150,17 @@ mutate(Plant_species = str_replace(Plant_species, "_", " "))
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-FlowerCount <- read_csv("Data/1_Raw_data/32_to_37_Russo/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/32_to_37_Russo/Flower_count.csv")
 
 #Divide col into cols
 levels(factor(FlowerCount$Site_id))
-FlowerCount = FlowerCount %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F)
-levels(factor(FlowerCount$Name))
+FlowerCount = FlowerCount %>% separate(Site_id, c("Name", "Site", "Site_number"), remove = F) %>% 
+mutate(Day = NA) %>% 
+mutate(Month = NA)
+
+#Fix plant names
+FlowerCount = FlowerCount %>%
+mutate(Plant_species =  str_replace(Plant_species, "_", " "))
 
 #Recode authors to just their surname
 FlowerCount = FlowerCount %>% 
@@ -153,26 +175,35 @@ FlowerCount = FlowerCount %>%
 FlowerCount = FlowerCount %>% 
   filter(Name == "Larkin") %>% 
   mutate(Site_id = Site) %>% 
-  mutate(Comment = "Also available FloralArea in mm2")
+  mutate(Comments = "Also available FloralArea in mm2")%>% 
+mutate(Units = "Mean abundance per plant species")
+
+
+#Create unique identifier
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species,1), "_",
+                                   word(Plant_species,2), "_",
+                                   Site, "_", Site_number))
 
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Order data as template
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 
-#Set common structure
+#Filter out Not collected -couple of cases that create issues for the mean-
 FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+filter(!Units == "not collected")
+
+#Calculate average flowers per site 
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-c(Flower_count))) %>%
+summarise(Flower_count = mean(Flower_count, na.rm = TRUE))
+
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
 
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll
