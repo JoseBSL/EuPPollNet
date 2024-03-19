@@ -109,11 +109,14 @@ mutate(Flower_data_merger = NA)
 flower_count = flower_count %>% 
 mutate(Flower_data_merger = paste0(word(Plant_species,1), word(Plant_species,2), Site_id))
 
+#Order vars and drop if necessary
+flower_count = drop_variables(check_flower_count_data, flower_count) 
+
 #Set common structure
 flower_count = change_str2(flower_count)
 
 #Split by site, just for createing the listed name in this case
-FlowerCount <- split(flower_count, flower_count$Site_id)
+FlowerCount = split(flower_count, flower_count$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls

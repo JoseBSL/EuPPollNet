@@ -42,10 +42,13 @@ FlowerCount = FlowerCount %>%
 mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
                                    Site_id, Day, "-", Month, "-", Year)) 
 
+#Order data as template and drop variables
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Unify data structure
 FlowerCount = change_str2(FlowerCount)
 #Split data into different dataframes based on survey name
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls

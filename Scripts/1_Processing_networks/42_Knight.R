@@ -44,7 +44,6 @@ mutate(Comments = NA,
 FlowerCount = FlowerCount %>% 
 mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
 
-
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #No misisng vars
@@ -52,6 +51,8 @@ mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
 FlowerCount = FlowerCount %>% 
 mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id))
 
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
@@ -66,7 +67,7 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
 Metadata <- tibble(
-  Doi = NA,
+  Doi = "Unpublished",
   Dataset_description = "We sampled 8 sites,
   4 were old, semi-natural, dry to mesophilic meadows.
   10 transects were placed in each site. Each transect

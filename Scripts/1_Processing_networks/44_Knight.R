@@ -68,7 +68,7 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
 Metadata <- tibble(
-Doi = NA,
+Doi = "Unpublished",
 Dataset_description = "We sample plants, pollinators and
 their interactions in 30 by 2 meter transects across 18
 sites in translyvania. We choose sites that were all

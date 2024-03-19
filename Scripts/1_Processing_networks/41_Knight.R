@@ -46,6 +46,9 @@ mutate(Comments = NA,
 FlowerCount = FlowerCount %>% 
 mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id))
 
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 #Split interaction data into dataframes within a list

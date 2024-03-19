@@ -13,7 +13,7 @@ library(tidyr)
 source("Scripts/Processing/Functions/Change_str.R")
 
 #Prepare interaction data ----
-data <- read_csv("Data/1_Raw_data/50_Hervias-Parejo/Interaction_data.csv", locale = locale(encoding = "latin1"))
+data = read_csv("Data/1_Raw_data/50_Hervias-Parejo/Interaction_data.csv", locale = locale(encoding = "latin1"))
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -29,33 +29,50 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 data = data %>% 
 mutate(Sampling_method = "Focal_observation")
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data = "Yes") 
+
+#Set merger col
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id, "_",
+                                   Day, "_", Month, "_", Year))
+
 #Unify structure of data
 data = change_str(data)
 
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-FlowerCount <- read_csv("Data/1_Raw_data/50_Hervias-Parejo/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/50_Hervias-Parejo/Flower_count.csv")
 #Rename plant spp col
 FlowerCount = FlowerCount %>% 
-rename("Plant_species" = "Plant species")
+rename("Plant_species" = "Plant species") %>% 
+mutate(Comments = NA)
 
-#Check vars
-#compare_variables(check_flower_count_data, flower_count)
-#No misisng vars
-#Set common structure
+#Calculate an averagebut values seem the same so it should give back the same number
 FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+group_by_at(vars(-Flower_count)) %>% 
+summarise(Flower_count = mean(Flower_count))
+
+#Change units as now does not represent total number
+FlowerCount = FlowerCount %>% 
+mutate(Units = "Average flowers per species-site-day")
+
+#Set merger col
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id, "_",
+                                   Day,"_", Month,"_", Year))
+
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls

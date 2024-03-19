@@ -38,17 +38,10 @@ InteractionData2 <- split(data, data$Habitat)
 site_id_levels = levels(factor(data$Habitat))
 
 FlowerCount2 = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comment = NA, Flower_data_merger = NA)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA)
 
-FlowerCount2 = FlowerCount2 %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+#Set common structure
+FlowerCount2 = change_str2(FlowerCount2)
 
 #Split by Site_id
 FlowerCount2 <- split(FlowerCount2, FlowerCount2$Site_id)

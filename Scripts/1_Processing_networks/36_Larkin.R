@@ -199,6 +199,9 @@ FlowerCount = FlowerCount %>%
 group_by_at(vars(-c(Flower_count))) %>%
 summarise(Flower_count = mean(Flower_count, na.rm = TRUE))
 
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 

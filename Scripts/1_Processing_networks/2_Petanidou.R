@@ -60,12 +60,15 @@ mutate(Flower_data_merger = paste0(word(Plant_species,1),
                                    word(Plant_species,2), 
                                    Site_id, Day,"-", Month, "-",Year))
 
+#Order data as template and drop variables
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Unify data structure
 FlowerCount = change_str2(FlowerCount)
 
  
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 

@@ -66,8 +66,8 @@ plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
-Metadata <- tibble(
-Doi = NA,
+Metadata = tibble(
+Doi = "Unpublished",
 Dataset_description = "This dataset documents 71 different sites in the province of Hainaut,
 Wallonia, Belgium. They have been collected for different master thesis and there are sites
 on different habitats. The region is post industrial, so terrils (heat slap),

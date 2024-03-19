@@ -55,6 +55,9 @@ mutate(Comments = NA)
 FlowerCount = FlowerCount %>% 
 mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id))
 
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
@@ -70,7 +73,7 @@ pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
 Metadata <- tibble(
-Doi = "unpublished",
+Doi = "Unpublished",
 Dataset_description = "The study was conducted in the Nature
 Reserve Góra Gipsowa. We established 10 transects, each
 measuring 30x2m. Transects were placed with a minimum

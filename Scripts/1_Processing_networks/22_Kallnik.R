@@ -49,7 +49,7 @@ data = change_str(data)
 InteractionData <- split(data,data$Site_id)
 
 #Prepare flower count data ----
-FlowerCount <- read_csv("Data/1_Raw_data/22_Kallnik/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/22_Kallnik/Flower_count.csv")
 
 #Compare vars
 compare_variables(check_flower_count_data, FlowerCount)

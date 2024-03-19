@@ -78,31 +78,59 @@ mutate(Longitude =
   case_when(Site_id == "Poisses" ~ longitude[1],
   TRUE ~ Longitude))
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data = "Yes") 
+
+
+#Delete leading 0's in month -they give issues when merging floral counts-
+data = data %>% 
+mutate(Month = as.numeric(Month)) %>% 
+mutate(Day = as.numeric(Day))
+
+#Set merger col
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id, "_", Month, "_", Year))
 
 #Unify structure of data
 data = change_str(data)
 
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-FlowerCount <- read_csv("Data/1_Raw_data/51_Petanidou/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/51_Petanidou/Flower_count.csv")
 
-#Check vars
-#compare_variables(check_flower_count_data, flower_count)
-#No misisng vars
-#Set common structure
 FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+rename(Comments = Comment)
+
+#Fix quickly some species names (more could be fixed)
+FlowerCount = FlowerCount %>% 
+mutate(Plant_species = case_when(
+  Plant_species == "Anchusa undulata subsp. hybrida (Ten.) Cout." ~ "Anchusa hybrida",
+  Plant_species == "Ballota acetabulosa (L.) Benth." ~ "Pseudodictamnus acetabulosus",
+  Plant_species == "Legousia speculum-veneris" ~ "Legousia pentagonia",
+  Plant_species == "Lathyrus articulatus L." ~ "Lathyrus clymenum",
+  TRUE ~ Plant_species))
+
+#Set merger col
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id, "_", Month,"_", Year))
+
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Calculate an average of flowers per site and month (we do not have a unique id to merge)
+FlowerCount = FlowerCount %>% 
+group_by_at(vars(-c(Flower_count, Day))) %>% 
+summarise(Flower_count = mean(Flower_count)) %>% 
+mutate(Day = NA)
+
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 

@@ -44,10 +44,13 @@ FlowerCount = FlowerCount %>%
 mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), 
                                    Site_id)) 
 
+#Order data as template and drop variables
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Unify data structure
 FlowerCount = change_str2(FlowerCount)
 #Split by site, just for creating the listed name in this case
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
@@ -55,7 +58,7 @@ FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
 plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
-Metadata <- tibble(
+Metadata = tibble(
 Doi = "https://doi.org/10.1007/s00442-018-4281-5",
 Dataset_description = "This dataset documents flower visits in winter and
 spring in the Botanical Garden of the University of Coimbra.
@@ -90,16 +93,16 @@ rownames_to_column() %>%
 rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
-Authorship <- data.frame(
+Authorship = data.frame(
   Coauthor_name = c("Ruben Heleno", "Francisco López-Núñez", "Catherine J. O’Connor"),
   Orcid = c("0000-0003-2297-006X", "0000-0003-0773-9134", NA),
   E_mail = c("rheleno@uc.pt", "lnfran85@gmail.com", NA))
 
 #Save data ----
 #Create list with all dataframes of interest
-Heleno <- list(InteractionData, FlowerCount, Metadata, Authorship)
+Heleno = list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
-names(Heleno) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
+names(Heleno) = c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data
 #The prefix number depends on the total number of datasets
 #This is the dataset number 9

@@ -29,6 +29,14 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 data = data %>% 
 mutate(Sampling_method = "Focal_observation")
 
+#Add flower info cols
+data = data %>% 
+mutate(Flower_data = "Yes") 
+
+#Set merger col
+data = data %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id, "_",
+                                   Day, "_", Month, "_", Year))
 #Unify structure of data
 data = change_str(data)
 
@@ -36,7 +44,8 @@ data = change_str(data)
 InteractionData <- split(data, data$Site_id)
 
 #Prepare flower count data ---- 
-FlowerCount <- read_csv("Data/1_Raw_data/49_Hervias-Parejo/Flower_count.csv")
+FlowerCount = read_csv("Data/1_Raw_data/49_Hervias-Parejo/Flower_count.csv")%>% 
+mutate(Comments = NA)
 #Rename plant spp col
 FlowerCount = FlowerCount %>% 
 rename("Plant_species" = "Plant species") %>% 
@@ -45,18 +54,32 @@ select(!...9) #extra col from excel
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #No misisng vars
-#Set common structure
+
+#Set merger col
 FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comment = as.character(Comment))
+mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_" , word(Plant_species,2), "_", Site_id, "_",
+                                   Day,"_", Month,"_", Year))
+
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Conduct average per species as we don't have a col to link by individual
+#Seems ok for now, as species had approx homogeneous numbers of flowers
+#But maybe ask Sandra
+FlowerCount = FlowerCount %>% 
+group_by_at(vars(-Flower_count)) %>% 
+summarise(Flower_count = mean(Flower_count))
+
+#Change units as now does not represent total number
+FlowerCount = FlowerCount %>% 
+mutate(Units = "Average flowers per species-site-day") %>% 
+mutate(Comments = "Raw flower counts are available")
+
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
+
 #Split interaction data into dataframes within a list
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 #Store unique cases of plants and polls
@@ -108,7 +131,7 @@ Authorship <- data.frame(
 
 #Save data ----
 #Create metadata list
-Hervias_Parejo <- list(InteractionData, FlowerCount, Metadata, Authorship)
+Hervias_Parejo = list(InteractionData, FlowerCount, Metadata, Authorship)
 #Rename list elements
 names(Hervias_Parejo) <- c("InteractionData", "FlowerCount","Metadata", "Authorship")
 #Save data

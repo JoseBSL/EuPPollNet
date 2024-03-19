@@ -64,6 +64,9 @@ FlowerCount = FlowerCount %>%
 mutate(Flower_data_merger = paste0(word(Plant_species, 1), "_",
 word(Plant_species, 2), Site_id, "_", Day, "_", Month, "_", Year))
 
+#Drop not needed vars
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Check vars
 #compare_variables(check_flower_count_data, flower_count)
 #Set common structure

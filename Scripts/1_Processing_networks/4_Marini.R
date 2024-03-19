@@ -68,9 +68,12 @@ mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2),
 
 
 #Split data into different dataframes based on survey name
-split_flwdata <- split(FlowerCount, FlowerCount$Survey)
+split_flwdata = split(FlowerCount, FlowerCount$Survey)
 #Convert to tibbles
-FlowerCount1 <- as_tibble(split_flwdata[[1]]) %>%  select(!Survey)
+FlowerCount1 = as_tibble(split_flwdata[[1]]) %>%  select(!Survey)
+
+#Order data as template and drop variables
+FlowerCount1 = drop_variables(check_flower_count_data, FlowerCount1) 
 
 #Unify data structure
 FlowerCount1 = change_str2(FlowerCount1)

@@ -55,11 +55,14 @@ FlowerCount = FlowerCount %>%
 rename(Comments = Comment) %>% 
 mutate(Flower_data_merger = NA) 
 
+#Order vars and drop if necessary
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
 #Split data into different dataframes based on survey name
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 

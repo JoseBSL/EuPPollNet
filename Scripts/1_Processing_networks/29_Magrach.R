@@ -108,15 +108,7 @@ select(-row_number)
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
 
 #Set common structure
-FlowerCount = FlowerCount %>% 
-mutate(Day = as.character(Day)) %>% 
-mutate(Month = as.character(Month)) %>% 
-mutate(Year = as.numeric(Year)) %>% 
-mutate(Site_id = as.character(Site_id)) %>% 
-mutate(Plant_species = as.character(Plant_species)) %>% 
-mutate(Flower_count = as.numeric(Flower_count)) %>% 
-mutate(Units = as.character(Units)) %>% 
-mutate(Comments = as.character(Comments))
+FlowerCount = change_str2(FlowerCount)
 
 #Set floral merger col as we have floral counts
 #Fix NA's in second word

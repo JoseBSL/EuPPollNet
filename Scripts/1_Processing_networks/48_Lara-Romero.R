@@ -47,7 +47,7 @@ FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, 
 FlowerCount = change_str2(FlowerCount)
 
 #Split by Site_id
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----
 
