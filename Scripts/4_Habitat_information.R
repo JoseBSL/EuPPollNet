@@ -2,8 +2,7 @@
 #sampling habitat classification across studies
 
 #Load data 
-data = readRDS("Data/3_Final_data/Interactions_uncounted.rds") %>% 
-mutate(Corine_land_cover)
+data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
 
 #Make sure that each site has only a single coordinate
 #I have fixed some coords on the processing scripts
@@ -56,7 +55,7 @@ head(all)
 
 #Restore dataset (to raw conditions to run this)
 data = data %>% 
-select(!c(Corine_land_cover, SafeNet_habitat)) %>% 
+select(!c(SafeNet_habitat)) %>% 
 rename("Habitat" = "Authors_habitat")
 
 #Merge back to dataset with everything
@@ -67,7 +66,7 @@ rename("Corine_land_cover" = "LABEL3")
 habitat = data1 %>% 
 select(Study_id, Network_id, Habitat, Corine_land_cover, Latitude, Longitude) %>% 
 distinct() %>% 
-mutate(Land_cover = Corine_land_cover)
+rename(Land_cover = Corine_land_cover)
 
 #Check by study
 #We are going to standardise according to authors matching
@@ -866,14 +865,11 @@ mutate(Land_cover = recode_factor(Land_cover,
 #Check levels
 levels(factor(habitat$Land_cover))
 
-
-studies = c("12_Ockinger", "19_Jauker",
-            )
 pasture = habitat %>% 
-filter(SafeNet_habitat == "Pastures") %>% 
-study
+filter(Land_cover == "Pastures") 
 
 library(forcats)
+library(ggplot2)
 ggplot(habitat, aes(fct_infreq(Land_cover))) +
 geom_bar(fill = "gray20") +
 theme(axis.text.x = element_text(angle = 60, vjust = 1, hjust=1)) +
@@ -885,9 +881,11 @@ xlab(NULL)
 habitat = habitat %>% 
 rename("Authors_habitat" = "Habitat",
         "SafeNet_habitat" = "Land_cover") %>% 
-select(Study_id, Network_id, Authors_habitat, 
-       Corine_land_cover, SafeNet_habitat, Latitude,
+select(Study_id, Network_id, Authors_habitat, SafeNet_habitat, Latitude,
        Longitude)
+
+check = habitat %>% 
+filter(is.na(Authors_habitat))
 
 #Save data
 saveRDS(habitat, "Data/Working_files/Habitat.rds")

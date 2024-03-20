@@ -88,6 +88,12 @@ FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
                      Flower_data_merger = NA_character_)
 
+#Set common structure
+FlowerCount = change_str2(FlowerCount)
+
+#Split by Site_id
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
+
 
 #Prepare metadata data ----
 #Select unique cases of plants and poll

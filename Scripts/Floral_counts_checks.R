@@ -24,7 +24,7 @@ non_unique_df <- b %>%
   filter(duplicated(b) | duplicated(b, fromLast = TRUE))
 
 
-d = left_join(a, b, by = join_by(Plant_species, Site_id, Day, Month, Year))
+d = left_join(a, b, by = join_by(Plant_species, Site_id))
 
 
 d = left_join(a, b, by = join_by(Flower_data_merger),  suffix=c("",".y"))  %>% 
@@ -49,7 +49,9 @@ filter(!x==x1)
 colnames(data)
 colnames(FlowerCount)
 
+data = data %>% 
+rename(Plant_species = Plant_Species)
 
-d = left_join(data, FlowerCount, by = join_by(Plant_species, Site_id, Focal_habitat,Year, Month, Day, Transect_part_id))
+d = left_join(data, FlowerCount, by = join_by(Plant_species, Site_id, Month,Day, Year))
 
 

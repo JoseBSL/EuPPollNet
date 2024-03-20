@@ -595,6 +595,7 @@ mutate(Fixed = case_when(
   str_detect(Mismatch, "indet \"lille") ~ "Diptera",
   str_detect(Mismatch, "indet \"mellem") ~ "Diptera",
   str_detect(Mismatch, "flue\"") ~ "Diptera",
+  Mismatch == "Ancistocerus ebusianus" ~ "Ancistrocerus ebusianus", #fix
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
 
@@ -967,7 +968,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "40_Knight") %>% 
+filter(Study_id == "37_White") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

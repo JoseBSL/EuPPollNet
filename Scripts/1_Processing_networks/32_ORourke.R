@@ -33,16 +33,16 @@ mutate(Flower_data = "No") %>%
 mutate(Comments = NA)
 
 #Recode authors to just their surname
-data = data %>% 
-mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
-                            "EileenPower" = "Power",
-                            "DaraStanley" = "Stanley",
-                            "SarahMullen" = "Mullen",
-                            "MichelleLarkin" = "Larkin",
-                            "CianWhite" = "White"))
-
+#data = data %>% 
+#mutate(Name = recode_factor(Name,  "AoifeO" = "O’Rourke",
+#                            "EileenPower" = "Power",
+#                            "DaraStanley" = "Stanley",
+#                            "SarahMullen" = "Mullen",
+#                            "MichelleLarkin" = "Larkin",
+#                            "CianWhite" = "White"))
+#
 #Select first the one of O’Rourke
-data = data %>% filter(Name == "O’Rourke")
+data = data %>% filter(Name == "Aoife")
 
 #To calculate sampling effor later on
 data_time = data %>% select(Sampling_effort_minutes)
@@ -51,12 +51,12 @@ data_time = data %>% select(Sampling_effort_minutes)
 #compare_variables(check_interaction_data, data)
 
 data = data %>% 
-rename(Plant_species = Plant_Species) %>% 
+#rename(Plant_species = Plant_Species) %>% 
 mutate(Habitat = "Dune ecosystem") %>% 
 mutate(Locality = "Along south-eastern Ireland") %>% 
 rename(Latitude = "WGS84/ETRS89") %>% 
 rename(Longitude = "WGS84/ETRS89_2") %>% 
-mutate(Site_id = Site_number) %>% 
+#mutate(Site_id = Site_number) %>% 
 mutate(Sampling_method = "Focal_observations") #From the paper I understand that is focal and not transect
 
 #Add missing vars
@@ -87,9 +87,9 @@ data = data %>%
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
 #Try to fix days
-data = data %>% 
-mutate(Day = as.Date(Day, origin = "2011-01-01")) %>% 
-mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
+#data = data %>% 
+#mutate(Day = as.Date(Day, origin = "2011-01-01")) %>% 
+#mutate(Day = format(as.Date(Day,format="%Y-%m-%d"), format = "%d"))
 #it seems ok
 
 #Unify level
@@ -101,10 +101,16 @@ data = change_str(data)
 
 #Delete underscore from plant species
 data = data %>% 
-mutate(Plant_species = str_replace(Plant_species, "_", " "))
+mutate(Plant_species = str_replace(Plant_species, "[.]", " ")) %>% 
+mutate(Pollinator_species = str_replace(Pollinator_species, "[.]", " "))
+
+#Refine Site id
+data = data %>% 
+mutate(Site_id = str_replace(Site_id, "Aoife.O'Rourke_", ""))
+
 
 #Split interaction data into dataframes within a list
-InteractionData <- split(data, data$Site_id)
+InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ----
 #We need to create a list of lists too

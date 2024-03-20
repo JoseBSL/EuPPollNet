@@ -26,7 +26,8 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 
 #Unify level
 data = data %>% 
-mutate(Sampling_method = "Transect")
+mutate(Sampling_method = "Transect") %>% 
+mutate(Habitat = "Grassland")
 
 #Add flower info cols
 data = data %>% 

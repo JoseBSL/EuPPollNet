@@ -7,7 +7,7 @@
 #Workflow:
 #1) Read from worldflora and fiter
 #2) Flag wind pollinated taxonomic groups
-#3) Read GBIF species from the final final file AND
+#3) Read GBIF species from the final file AND
 #3) Check matching names with worldflora masterlist
 #4) We edit on the GBIF script for synonyms 
 #4) when accepted on GBIF and are on the masterlist
@@ -34,7 +34,7 @@ library(data.table) #To read long dataset (much faster with fread)
 #DOI: 10.34885/jdh2-dr22
 
 #Load plant distribution data
-plants <- fread("Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv")                                 
+plants = fread("Data/Species_taxonomy/Thesaurus/wcvp_distribution.csv")                                 
 
 #check cols
 colnames(plants)
@@ -59,7 +59,7 @@ select(!c(continent_code_l1, region_code_l2, area_code_l3,
           introduced, extinct, location_doubtful))
 
 #Load plant sepecies name data
-taxPl <- fread("Data/Species_taxonomy/Thesaurus/wcvp_names.csv")                                 
+taxPl = fread("Data/Species_taxonomy/Thesaurus/wcvp_names.csv")                                 
 
 
 #check cols
@@ -287,6 +287,11 @@ mutate(Pollination = case_when(
 #Final fixes of species names to homogenise
 #This is done with the help of worldflora and GBIF
 taxPl_final = taxPl4 
+
+#Minor edit on masterlist
+taxPl_final = taxPl_final %>% 
+mutate(Plant_name = case_when(taxon_rank == "Species" & Plant_name == "Knautia drymeja" ~ "Knautia drymeia",
+                           T ~ Plant_name))
 #Check total number of species
 taxPl_final %>% select(Plant_name) %>% n_distinct()
 plant_name_col = taxPl_final %>% 

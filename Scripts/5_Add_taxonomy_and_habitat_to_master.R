@@ -115,6 +115,10 @@ data2 = data1 %>%
 uncount(Interaction) %>% 
 mutate(Interaction = 1)
 
+#Safety checking
+missing = data1 %>% 
+filter(is.na(Interaction))
+
 #Select cols and establish final order
 data2 = data2 %>% 
 select(Study_id, Network_id, Sampling_method, Authors_habitat, 

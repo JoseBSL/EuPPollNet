@@ -22,6 +22,7 @@
 #Load libraries
 library(dplyr)
 library(rgbif)
+library(stringr)
 
 #--------------------------------------#
 #1) Load plant spp-----
@@ -388,21 +389,25 @@ Accepted_name == "Aesculus carnea" ~
 Accepted_name == "Dombeya cayeuxii" ~ 
 "Dombeya × cayeuxii", #Internal Accepted name
 Accepted_name == "Galactites tomentosa" ~ 
-  "Galactites tomentosus", #Accepted name
+  "Galactites tomentosus", #Internal Accepted name
 Accepted_name == "Sedum candollei" ~ 
-  "Sedum candolleanum", #Accepted name
+  "Sedum candolleanum", #Internal Accepted name
 Accepted_name == "Fagonia cretica" ~ 
-  "Zygophyllum creticum", #Accepted name
+  "Zygophyllum creticum", #Internal Accepted name
 Accepted_name == "Cervaria rivini" ~ 
-  "Peucedanum cervaria", #Accepted name
+  "Peucedanum cervaria", #Internal Accepted name
 Accepted_name == "Rindera columnae" ~ 
-  "Cynoglossum columnae", #Accepted name
+  "Cynoglossum columnae", #Internal Accepted name
 Accepted_name == "Lysimachia loeflingii" ~ 
-  "Lysimachia arvensis", #Accepted name
+  "Lysimachia arvensis", #Internal Accepted name
 Accepted_name == "Phelipanche ramosa" ~ 
-  "Orobanche ramosa", #Accepted name
+  "Orobanche ramosa", #Internal Accepted name
 Accepted_name == "Thrincia tuberosa" ~ 
   "Leontodon tuberosus", #Accepted name
+Accepted_name == "Aetheorhiza bulbosa" ~ 
+  "Sonchus bulbosus", #Internal Accepted name
+Accepted_name == "Rhaphiolepis bibas" ~ 
+  "Eriobotrya japonica", #Internal Accepted name
 T ~ Accepted_name))
 
 
@@ -414,19 +419,18 @@ mutate(Genus =
     if_else(Genus == word(Plant_data1$Accepted_name, 1), 
             Genus, word(Plant_data1$Accepted_name, 1)))
 
-#Some genera missing, recover form species names when rank genus
-Plant_data1 = Plant_data1 %>% 
-mutate(Genus = 
-if_else(is.na(Genus) & Rank =="GENUS", 
-            word(Plant_data1$Accepted_name, 1), Genus))
-
-
 #Similar case
 #Genus level records are not added as accepted
 Plant_data1 = Plant_data1 %>% 
 mutate(Accepted_name = 
 if_else(is.na(Accepted_name) & Matchtype== "EXACT" & Rank =="GENUS", 
             Canonical_name, Accepted_name))
+
+#Some genera missing, recover form species names when rank genus
+Plant_data1 = Plant_data1 %>% 
+mutate(Genus = 
+if_else(is.na(Genus) & Rank =="GENUS", 
+            word(Plant_data1$Accepted_name, 1), Genus))
 
 #Keep subspecies rank as species
 Plant_data1 = Plant_data1 %>% 
@@ -460,7 +464,7 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "51_Petanidou") %>% 
+filter(Study_id == "37_White") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

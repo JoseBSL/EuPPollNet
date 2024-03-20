@@ -19,7 +19,7 @@ select(Study_id, Longitude, Latitude) %>%
 distinct() 
 
 #Prepare points for extraction
-pt <-  data.frame(x = coords$Longitude, y = coords$Latitude, id = 1:nrow(coords)) %>% 
+pt =  data.frame(x = coords$Longitude, y = coords$Latitude, id = 1:nrow(coords)) %>% 
 ## add geometry column:
 st_as_sf(coords = c('x', 'y'))  %>%  ## set CRS:
 st_set_crs(4326) %>% 
@@ -27,7 +27,7 @@ st_transform(3035)
 
 #Spatial join, by default a left join: 
 #All point are returned, those with no polygon match will have NA values
-result <- st_join(pt, bioregions)
+result = st_join(pt, bioregions)
 #Bind cols
 coords_result = bind_cols(coords, result) 
 
