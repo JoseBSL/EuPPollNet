@@ -26,6 +26,12 @@ library(scales) #For plotting (decimals on axes)
 #Load data
 data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
 
+#Fix dates
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
+
 #Prepare coordinates
 for_plotting = data %>% 
 select(Study_id, Latitude, Longitude) %>% 

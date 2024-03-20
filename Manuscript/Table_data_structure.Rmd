@@ -10,7 +10,7 @@ library(kableExtra)
 library(stringr)
 
 #Prepare table with data structure
-data = readRDS("../Data/3_Final_data/safenet_database.rds")
+data = readRDS("../Data/3_Final_data/Interaction_data.rds")
 
 #Create variables
 vars = colnames(data)
@@ -41,7 +41,7 @@ my_tibble = d %>%
     Variable == "Plant_order" ~ "Order taxonomic rank of the observed plant species",
     Variable == "Plant_family" ~ "Family taxonomic rank of the observed plant species",
     Variable == "Plant_genus" ~ "Genus taxonomic rank of the observed plant species",
-    Variable == "Plant_unsure_id" ~ "Binary category to indicate if the plant species name is unsure (Yes) or not (No)",
+    Variable == "Plant_unsure_id" ~ "Category to indicate if the plant species name is unsure (Yes) or not (No)",
     Variable == "Plant_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
     Variable == "Pollinator_old_name" ~ "Pollinator species name given by the authors",
     Variable == "Pollinator_accepted_name" ~ "Harmonized pollinator species name in the database",
@@ -49,8 +49,11 @@ my_tibble = d %>%
     Variable == "Pollinator_order" ~ "Order taxonomic rank of the observed pollinator species",
     Variable == "Pollinator_family" ~ "Family taxonomic rank of the observed pollinator species",
     Variable == "Pollinator_genus" ~ "Genus taxonomic rank of the observed pollinator species",
-    Variable == "Pollinator_unsure_id" ~ "Binary category to indicate if the pollinator species name is unsure (Yes) or not (No)",
+    Variable == "Pollinator_unsure_id" ~ "Category to indicate if the pollinator species name is unsure (Yes) or not (No)",
     Variable == "Pollinator_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
+        Variable == "Flower_data" ~ "Floral data availability (Yes) or (No)",
+        Variable == "Flower_data_merger" ~ "Column to merge floral data with the interaction dataset",
+
     TRUE ~ "Other"
   ))
 

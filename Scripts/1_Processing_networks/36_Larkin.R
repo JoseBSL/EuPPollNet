@@ -57,10 +57,6 @@ rename(Longitude = "WGS84/ETRS89_2") %>%
 #mutate(Site_id = Site) %>% 
 mutate(Sampling_method = "Transects") 
 
-#Delete underscore from plant species
-data = data %>% 
-mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
-
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
 #Reorder variables
@@ -132,7 +128,7 @@ data = change_str(data)
 #Delete underscore from plant species
 data = data %>% 
 mutate(Plant_species = str_replace(Plant_species, "[.]", " ")) %>% 
-mutate(Pollinator_species = str_replace(Pollinator_species, "[.]", " "))
+mutate(Pollinator_species = str_replace_all(Pollinator_species, "[.]", " "))
 
 #Simplify Site_id
 data = data %>% 

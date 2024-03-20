@@ -53,7 +53,7 @@ mutate(Habitat = "Agricultrual and urban sites with different intensity") %>%
 mutate(Locality = "East Leinster (Ireland)") %>% 
 rename(Latitude = "WGS84/ETRS89") %>% 
 rename(Longitude = "WGS84/ETRS89_2") %>% 
-#mutate(Site_id = Site) %>% 
+mutate(Site_id = Site_number) %>% 
 mutate(Sampling_method = "Transects") 
 
 #Delete underscore from plant species
@@ -108,10 +108,6 @@ mutate(Latitude = FirstLatitude) %>%
 mutate(Longitude = FirstLongitude) %>% 
 select(!c(FirstLatitude, FirstLongitude))
 
-#Fix Stie id column
-data = data %>% 
-mutate(Site_id = str_replace(Site_id,	"Cian.White_", ""))
-
 #Create merger col
 #Note that we have calculated the average of flowers per site
 #Was the only way to merge both datasets correctly... (ask authors for further info)
@@ -123,6 +119,10 @@ mutate(Flower_data_merger = paste0(word(Plant_species,1), "_",
 #Drop interactions with NA
 data = data %>% 
 filter(!is.na(Interaction))
+
+#Fix year
+data = data %>% 
+mutate(Year = 2018)
 
 #Unify structure of data
 data = change_str(data)
@@ -153,7 +153,7 @@ FlowerCount = FlowerCount %>%
 #Select first the one of Power
 FlowerCount = FlowerCount %>% 
 filter(Name == "Cian") %>% 
-#mutate(Site_id = Site) %>% 
+mutate(Site_id = Site_number) %>% 
 mutate(Comments = "Mean flower number/species-site")%>% 
 mutate(Units = "Mean abundance per plant species") %>% 
 mutate(Site_id = str_replace(Site_id, "Cian.White_", ""))
@@ -192,7 +192,7 @@ plant_single_cases = data %>% distinct(Plant_species)
 pollinator_single_cases = data %>%distinct(Pollinator_species)
 
 #Build metadata
-Metadata <- tibble(
+Metadata = tibble(
   Doi = "https://doi.org/10.3389/fevo.2022.806615",
   Dataset_description = "Plant-pollinator communties from
   21 sites on agricultural and urbanised landscapes with different

@@ -9,6 +9,10 @@ source("Scripts/Processing/Functions/Change_str.R")
 #Prepare interaction data ----
 data = read.csv("Data/1_Raw_data/10_Vanbergen/Interaction_data.csv")
 
+#Fix dates
+data = data %>%
+separate(Date, into = c("Day", "Month", "Year"), sep = "/")
+
 #Check what is missing and what we have
 #compare_variables(check_interaction_data, data)
 
@@ -21,10 +25,6 @@ mutate(Flower_data_merger = NA) %>%
 rename(Plant_species = Best.plant.ID) %>% 
 rename(Pollinator_species = Best.ID) %>% 
 rename(Site_id = Site) %>% 
-mutate(Year = lubridate::year(Date), 
-                Month = lubridate::month(Date), 
-                Day = lubridate::day(Date)) %>% 
-select(!Date) %>% 
 mutate(Interaction = 1) %>% 
 mutate(Country = "France") %>% 
 mutate(Locality = "Côte d'or") %>% 

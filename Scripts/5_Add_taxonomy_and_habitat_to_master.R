@@ -63,11 +63,6 @@ rename("Authors_habitat" = "Habitat")
 data1 = left_join(data1, habitat,by = join_by(Study_id, Network_id, Latitude,
 Longitude, Authors_habitat))
 
-#Reorganise structure of data before saving
-colnames(data1)
-data1 = data1 %>% 
-relocate(Corine_land_cover, .after = Authors_habitat) %>% 
-relocate(SafeNet_habitat, .after = Corine_land_cover)
 #----------------------
 #Add bioregion data
 #----------------------
@@ -75,7 +70,6 @@ data1 = left_join(data1, bioregion, by = join_by(Study_id, Latitude,
 Longitude))
 #Relocate column
 data1 = data1 %>% 
-relocate(Bioregions, .after = SafeNet_habitat) %>% 
 rename(Bioregion = Bioregions)
 
 
@@ -95,17 +89,16 @@ data1 <- data1 %>%
 #Select cols and establish final order
 data1 = data1 %>% 
 select(Study_id, Network_id, Site_id, Sampling_method, Authors_habitat, 
-       Corine_land_cover, SafeNet_habitat, Bioregion, Country, Locality,
+       SafeNet_habitat, Bioregion, Country, Locality,
        Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
        Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_status, Pollinator_matchtype, Pollinator_order, Pollinator_family, 
-       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
+       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 
 #----------------------
 #Save data
 #----------------------
-
 #Save data
 saveRDS(data1, "Data/3_Final_data/Interactions.rds")
 
@@ -127,7 +120,7 @@ select(Study_id, Network_id, Sampling_method, Authors_habitat,
        Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_status, Pollinator_matchtype, Pollinator_order, Pollinator_family, 
-       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
+       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 
 #Keep all cols for now
 saveRDS(data2, "Data/3_Final_data/Interactions_uncounted.rds")
@@ -140,7 +133,7 @@ select(Study_id, Network_id, Sampling_method, Authors_habitat,
        Plant_rank, Plant_order, Plant_family, Plant_genus,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_order, Pollinator_family, 
-       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type)
+       Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 saveRDS(data3, "Data/3_Final_data/Interaction_data.rds")
 
 
