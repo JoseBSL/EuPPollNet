@@ -17,6 +17,8 @@ library(sf) #For handling coordinates and plotting
 library(patchwork)#For plotting (binding plots)
 library(ggstar) #For plotting (cool shapes)
 library(scales) #For plotting (decimals on axes)
+library(tidyr)
+library(viridis)
 ```
 
 
@@ -143,7 +145,7 @@ scale_x_continuous(breaks = seq(0, 20, by = 10)) +
 scale_y_continuous(breaks = seq(40, 60, by = 10)) +
 guides(color = "none", size=guide_legend(nrow=1,override.aes = list(starshape =c(15,15, 15), size=c(0.8,1.8,2.8)))) + 
 ggtitle("(a)") +
-theme(plot.title = element_text(vjust = -12, hjust=0.1, size=10))
+theme(plot.title = element_text(vjust = -5, hjust=0.057, size=10))
 
 
 #----------------#
@@ -175,101 +177,100 @@ most_common_poll = poll_spread %>% filter(n_studies_shared == max(n_studies_shar
 select(Pollinator_accepted_name) %>% pull() 
 
 #Plot
-p1 = ggplot(poll_spread, 
-aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
-geom_bar(stat = "identity", 
-           color = "#D55E00",
-           lwd = 0.015, fill = "#D55E00") +
-ylab("Shared pollinators (%)") +
-theme_minimal()+
-theme(axis.text.x = element_blank(),
-  axis.ticks.x=element_blank(),
-  axis.ticks.y = element_line(size = 0.2),
-  plot.title = element_text(size = 8, face = "bold"), 
-  axis.text.y = element_text(size=5),
-  panel.grid.major.x = element_blank(),
-  panel.grid.minor.y = element_blank(),
-  panel.grid.major.y = element_line(size=0.2, linetype =           2)) +
-xlab(NULL) +
-ylab(NULL) + 
-ggtitle("Pollinators")+
-geom_vline(xintercept = quantile_50, linetype="dashed", 
-color = "black", size=0.25) + 
-annotate(geom="text", x=1285, y=0.83, label="50th percentile",          color="black", size = 1.5) +
-annotate(geom="text", x=20, y=0.88, label=most_common_poll[1],         color="black",  fontface = 'italic', size = 1.5)+
-scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
-annotate(geom="text", x=-500, y=1.15, label="(c)",color="black", size = 3.5) +
-coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, max(poll_spread$Percent_total)), clip="off")
-
-#----------------#
-#Plants
-#----------------#
-plant_spread = data %>% 
-select(Plant_rank, Plant_accepted_name, Study_id) %>% 
-group_by(Study_id) %>% 
-filter(Plant_rank == "SPECIES") %>% 
-distinct(Plant_accepted_name) %>% 
-ungroup() %>% 
-count(Plant_accepted_name) %>% 
-rename(n_studies_shared = n) %>% 
-arrange(-n_studies_shared) %>% 
-mutate(Percent_total = n_studies_shared / n_distinct(data$Study_id))
-  
-#Seelect quantile 50% from the total number of species
-spp_number = plant_spread %>%  
-select(Plant_accepted_name) %>% 
-n_distinct()
-df = seq(1, spp_number)
-quantile_50 = quantile(df, 0.5)
-
-#Obtain most common plant for plotting
-most_common_plant = plant_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
-select(Plant_accepted_name) %>% pull() 
-
+#p1 = ggplot(poll_spread, 
+#aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
+#geom_bar(stat = "identity", 
+#           color = "#D55E00",
+#           lwd = 0.015, fill = "#D55E00") +
+#ylab("Shared pollinators (%)") +
+#theme_minimal()+
+#theme(axis.text.x = element_blank(),
+#  axis.ticks.x=element_blank(),
+#  axis.ticks.y = element_line(size = 0.2),
+#  plot.title = element_text(size = 8, face = "bold"), 
+#  axis.text.y = element_text(size=5),
+#  panel.grid.major.x = element_blank(),
+#  panel.grid.minor.y = element_blank(),
+#  panel.grid.major.y = element_line(size=0.2, linetype =           2)) +
+#xlab(NULL) +
+#ylab(NULL) + 
+#ggtitle("Pollinators")+
+#geom_vline(xintercept = quantile_50, linetype="dashed", 
+#color = "black", size=0.25) + 
+#annotate(geom="text", x=1285, y=0.83, label="50th percentile",          color="black", size = #1.5) +
+#annotate(geom="text", x=20, y=0.88, label=most_common_poll[1],         color="black",  #fontface = 'italic', size = 1.5)+
+#scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
+#annotate(geom="text", x=-500, y=1.15, label="(c)",color="black", size = 3.5) +
+#coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, #max(poll_spread$Percent_total)), clip="off")
+#
+##----------------#
+##Plants
+##----------------#
+#plant_spread = data %>% 
+#select(Plant_rank, Plant_accepted_name, Study_id) %>% 
+#group_by(Study_id) %>% 
+#filter(Plant_rank == "SPECIES") %>% 
+#distinct(Plant_accepted_name) %>% 
+#ungroup() %>% 
+#count(Plant_accepted_name) %>% 
+#rename(n_studies_shared = n) %>% 
+#arrange(-n_studies_shared) %>% 
+#mutate(Percent_total = n_studies_shared / n_distinct(data$Study_id))
+#  
+##Seelect quantile 50% from the total number of species
+#spp_number = plant_spread %>%  
+#select(Plant_accepted_name) %>% 
+#n_distinct()
+#df = seq(1, spp_number)
+#quantile_50 = quantile(df, 0.5)
+#
+##Obtain most common plant for plotting
+#most_common_plant = plant_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
+#select(Plant_accepted_name) %>% pull() 
+#
 #Plot
-p2 = ggplot(plant_spread, 
-aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
-geom_bar(stat = "identity", 
-           color = "#009E73",
-           lwd = 0.015, fill = "#009E73") +
-theme_minimal()+
-theme(axis.text.x = element_blank(),
-         axis.ticks.x=element_blank(),
-         axis.ticks.y = element_line(size = 0.2),
-         axis.title.x = element_text(face = "bold", size = 7),            plot.title = element_text(size = 8, face = "bold"),
-         axis.text.y = element_text(size=5),
-         panel.grid.major.x = element_blank(),
-         panel.grid.minor.y = element_blank(),
-         panel.grid.major.y = element_line(size=0.2, linetype =  2),
-      axis.title.y = element_text(face= "bold", size= 7, hjust= -0.01, vjust = 1)) +
-xlab("Species") +
-ylab("Occurrence across studies") + 
-ggtitle("Plants") + 
-geom_vline(xintercept = quantile_50, linetype="dashed", 
-          color = "black", size=0.25) + 
-annotate(geom="text", x=835, y=0.7, label="50th percentile",color="black", size = 1.5) + 
-annotate(geom="text", x=20, y=0.75, label=most_common_plant[1]
-      ,color="black",  fontface = 'italic', size = 1.5)+
-annotate(geom="text", x=20, y=-0.08, label="Common spp."
-      ,color="black",  size = 1.5) +
-annotate(geom="text", x=1200, y=-0.08, label="\'Rare\' spp."
-      ,color="black",  size = 1.5) + 
-scale_y_continuous(breaks = seq(0, 0.6, by= 0.2), expand = c(0, 0), labels = label_number(accuracy = 0.01)) +
-coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),ylim=c(0, max(plant_spread$Percent_total)), clip="off")
+#p2 = ggplot(plant_spread, 
+#aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
+#geom_bar(stat = "identity", 
+#           color = "#009E73",
+#           lwd = 0.015, fill = "#009E73") +
+#theme_minimal()+
+#theme(axis.text.x = element_blank(),
+#         axis.ticks.x=element_blank(),
+#         axis.ticks.y = element_line(size = 0.2),
+#         axis.title.x = element_text(face = "bold", size = 7),            plot.title = #element_text(size = 8, face = "bold"),
+#         axis.text.y = element_text(size=5),
+#         panel.grid.major.x = element_blank(),
+#         panel.grid.minor.y = element_blank(),
+#         panel.grid.major.y = element_line(size=0.2, linetype =  2),
+#      axis.title.y = element_text(face= "bold", size= 7, hjust= -0.01, vjust = 1)) +
+#xlab("Species") +
+#ylab("Occurrence across studies") + 
+#ggtitle("Plants") + 
+#geom_vline(xintercept = quantile_50, linetype="dashed", 
+#          color = "black", size=0.25) + 
+#annotate(geom="text", x=835, y=0.7, label="50th percentile",color="black", size = 1.5) + 
+#annotate(geom="text", x=20, y=0.75, label=most_common_plant[1]
+#      ,color="black",  fontface = 'italic', size = 1.5)+
+#annotate(geom="text", x=20, y=-0.08, label="Common spp."
+#      ,color="black",  size = 1.5) +
+#annotate(geom="text", x=1200, y=-0.08, label="\'Rare\' spp."
+#      ,color="black",  size = 1.5) + 
+#scale_y_continuous(breaks = seq(0, 0.6, by= 0.2), expand = c(0, 0), labels = #label_number(accuracy = 0.01)) +
+#coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),ylim=c(0, #max(plant_spread$Percent_total)), clip="off")
+#
+
 
 data2 = data %>%  select(Study_id, Year) %>% 
 distinct() %>% 
 group_by(Year) %>% 
 summarise(Counts = n())
 
-
-
-
-p3 = ggplot(data2, aes(Year, Counts)) +
+p2  = ggplot(data2, aes(Year, Counts)) +
 geom_col(fill = "gray25", width = 0.9, color="black", linewidth = 0.4) +
 theme_light() +
 theme(plot.margin=unit(c(0,0,0,0), "mm"),
-  axis.title.y = element_text(face = "bold", size = 7, vjust = -1.1),
+  axis.title.y = element_text(face = "bold", size = 7, vjust = -2),
   axis.title.x = element_text(face = "bold", size = 8),
   axis.text.y = element_text(size = 6),
   axis.text.x = element_text(size = 6,  angle = 90), 
@@ -289,12 +290,54 @@ axis.line = element_line(color = 'black')) +
 scale_y_continuous(breaks = c(0, 4,8,12), labels = c("0", "4","8", "12"), limits = c(0,12)) +
 scale_x_continuous(breaks = seq(min(data2$Year), max(data2$Year), by = 2), limits = c(min(data2$Year),max(data2$Year)))+
 ggtitle("(b)") +
-theme(plot.title = element_text(size = 10,hjust = -0.35, vjust = 0.8))
+theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -5))
 
-plot2 = p3 / p1 / p2 
+
+
+
+main_orders = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera")
+#Select main orders
+data1 = data %>% 
+select(Pollinator_order, Pollinator_accepted_name) %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+group_by(Pollinator_order) %>% 
+summarise(Interactions = length(Pollinator_accepted_name)/ nrow(.),
+          Species = n_distinct(Pollinator_accepted_name)/n_distinct(.))
+
+
+# Combine Interactions and Species into a single column
+data_long = pivot_longer(data1, cols = c(Interactions, Species), names_to = "Variable", values_to = "Value")
+
+#Set order of levels for plotting
+data_long$Pollinator_order = factor(data_long$Pollinator_order, levels = c("Coleoptera", "Lepidoptera", "Diptera", "Hymenoptera"))
+
+#Plot
+p3 = ggplot(data_long, aes(x = Variable, y = Value, fill = Pollinator_order)) + 
+geom_bar(stat = "identity", width = 0.7) +
+theme_classic() +
+scale_fill_viridis(discrete=TRUE, direction = -1, name="Pollinator order") +
+xlab(NULL) +
+ylab("Percentage") + 
+scale_y_continuous(labels = percent_format(), expand = c(0, 0)) +
+theme(axis.text = element_text(size=6), 
+     axis.title.y = element_text(face = "bold", size = 7, vjust = -2),  
+     axis.title.x = element_text(face="bold", size = 7),
+     legend.position = "top",
+     legend.title = element_text(size = 5, face = "bold"),
+     legend.text = element_text(size = 5),
+     legend.key.size = unit(3, "mm"),
+     legend.margin=margin(0,0,0,0),
+     legend.box.margin=margin(-8,-5,-5,-5)) +
+guides(fill=guide_legend(nrow=2,byrow=TRUE))+
+ggtitle("(c)") +
+theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -6))
+
+
+#plot2 = p3 / p1 / p2 
+plot2 = p2 / p3 
 
 #Plot everything
-map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.45, 0.8)) 
+map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.485, 0.8)) 
 
 ```
 
