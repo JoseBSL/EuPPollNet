@@ -1,3 +1,6 @@
+
+library(iNEXT)
+library(dplyr)
 #Read data
 data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
 #Select columns of interest
