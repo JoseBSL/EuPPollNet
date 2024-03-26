@@ -22,15 +22,15 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Unify level
 data = data %>% 
 mutate(Sampling_method = "Random_census") %>% 
-mutate(Flower_data_merger = NA) %>% 
 mutate(Flower_data = "No") %>% 
-mutate(Comments = NA)
+mutate(Comments = NA) %>% 
+mutate(Flower_data_merger = Habitat)  
 
 #Unify structure of data
 data = change_str(data)
 
 #Split interaction data into dataframes within a list (separate now by site)
-InteractionData2 <- split(data, data$Habitat)
+InteractionData2 = split(data, data$Habitat)
 
 #Prepare flower count data ----
 #We need to create a list of lists too
@@ -38,7 +38,7 @@ InteractionData2 <- split(data, data$Habitat)
 site_id_levels = levels(factor(data$Habitat))
 
 FlowerCount2 = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount2 = change_str2(FlowerCount2)

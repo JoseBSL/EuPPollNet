@@ -29,7 +29,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters))
 data = data %>% 
 mutate(Sampling_method = "Transect") %>% 
 mutate(Flower_data = "No") %>% 
-mutate(Flower_data_merger = NA) 
+mutate(Flower_data_merger = Site_id) 
 
 #Split interaction data into dataframes within a list
 InteractionData = split(data, data$Site_id)
@@ -41,7 +41,7 @@ InteractionData = split(data, data$Site_id)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA_character_)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

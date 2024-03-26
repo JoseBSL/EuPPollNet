@@ -74,7 +74,7 @@ data <- bind_cols(polls,plants, Freq) %>%
   mutate(Humidity = NA) %>% 
   mutate(Site_id = str_replace(Site_id, "bartomeus_2005_", "")) %>% 
   mutate(Flower_data = "Unprocessed") %>% 
-  mutate(Flower_data_merger = NA)
+  mutate(Flower_data_merger = Site_id)
 
 #Set standard data structure
 data = change_str(data)
@@ -121,13 +121,13 @@ site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
 FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
 #Split by Site_id
-FlowerCount <- split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 
 #Prepare metadata data ----

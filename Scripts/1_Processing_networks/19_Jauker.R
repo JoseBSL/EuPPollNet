@@ -33,7 +33,9 @@ mutate(Year = 2004) %>%
 mutate(Comments = NA) %>% 
 mutate(Temperature = NA) %>% 
 mutate(Humidity = NA) %>% 
-filter(!is.na(Latitude) & !is.na(Longitude)) 
+filter(!is.na(Latitude) & !is.na(Longitude)) %>% 
+mutate(Flower_data = "No") %>% 
+mutate(Flower_data_merger = Site_id)
 #Safety check 
 sum(is.na(data$Latitude)) # There is one site without coordinate that won't be added
 str(data)
@@ -48,8 +50,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Unify level
 data = data %>% 
 mutate(Sampling_method = "Transect")%>% 
-mutate(Flower_data = "No") %>% 
-mutate(Flower_data_merger = NA)
+mutate(Flower_data = "No") 
 
 #Latitude and longitude are swapped
 data = data %>% 
@@ -73,7 +74,7 @@ InteractionData <- split(data,data$Site_id)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA_character_)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

@@ -30,8 +30,7 @@ mutate(Comments = NA, .after = Year) %>%
 mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
 mutate(Sampling_method = "Transects") %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
-mutate(Flower_data = "Unprocessed") %>% 
-mutate(Flower_data_merger = NA)
+mutate(Flower_data = "Unprocessed") 
 
 
 #Add coordinates
@@ -65,7 +64,8 @@ data <- dplyr::inner_join(data, sites, by="Site_id")
 data = data %>% 
 mutate(Latitude = Latitude1) %>% 
 mutate(Longitude = Longitude1) %>% 
-select(!c(Latitude1, Longitude1))
+select(!c(Latitude1, Longitude1))%>% 
+mutate(Flower_data_merger = Site_id)
 
 #Unify level
 data = data %>% 
@@ -105,7 +105,7 @@ site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
 FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

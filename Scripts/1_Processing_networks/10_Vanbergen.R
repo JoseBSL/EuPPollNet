@@ -108,6 +108,12 @@ FlowerCount = drop_variables(check_flower_count_data, FlowerCount)
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
+#keep 1 value of flower count
+##Calculate average flowers per site 
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-c(Flower_count, Day, Month, Year))) %>%
+summarise(Flower_count = mean(Flower_count))
+
 #Split by Site_id
 FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 

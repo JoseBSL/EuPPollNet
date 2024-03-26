@@ -26,11 +26,6 @@ mutate(Pollinator_species = case_when(Pollinator_species == "NA NA" ~ NA_charact
                                  T ~ Pollinator_species)) %>% 
 filter(!is.na(Plant_species) & !is.na(Pollinator_species))
 
-#Create floral data merger column
-data = data %>% 
-mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
-word(Plant_species, 2),Site_id,Location_in_site, Round, Day, Month, Year))
-
 #Add interaction col
 data = data %>% 
 mutate(Interaction = 1) %>% 
@@ -59,7 +54,8 @@ data = left_join(data, coords) %>%
 mutate(Latitude = FirstLatitude) %>% 
 mutate(Longitude = FirstLongitude) %>% 
 select(!c(FirstLatitude, FirstLongitude))%>% 
-mutate(Flower_data = "No")
+mutate(Flower_data = "No") %>% 
+mutate(Flower_data_merger = Site_id)
 
 #Unify structure of data
 data = change_str(data)
@@ -128,7 +124,7 @@ site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
 FlowerCount1 = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount1 = change_str2(FlowerCount1)

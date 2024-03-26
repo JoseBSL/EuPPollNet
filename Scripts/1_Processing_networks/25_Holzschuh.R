@@ -26,7 +26,8 @@ mutate(Sampling_area_square_meters = NA) %>%
 mutate(Habitat = recode_factor(Habitat, "FB" = "Field boundaries", 
       "MFC" = "Mass flowering crop", "SNH" = "Seminatural")) %>% 
 mutate(Comment = "Location col indicates transects rounds (1 and 2)")%>% 
-mutate(Flower_data = "No")
+mutate(Flower_data = "No")%>% 
+mutate(Flower_data_merger = Site_id)
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -97,7 +98,7 @@ site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
 FlowerCount3 = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount3 = change_str2(FlowerCount3)

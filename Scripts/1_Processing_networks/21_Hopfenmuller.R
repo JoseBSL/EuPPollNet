@@ -10,11 +10,6 @@ source("Scripts/Processing/Functions/Change_str.R")
 #Prepare interaction data ----
 data = read_csv("Data/1_Raw_data/21_Hopfenmuller/Interaction_data.csv")
 
-#Add lat long as comment col in case they are relevant to merge floral counts
-data = data %>% 
-mutate(Flower_data_merger = paste0(word(Plant_species, 1), 
-word(Plant_species, 2),Site_id, Latitude, Longitude))
-
 #Compare vars
 compare_variables(check_interaction_data, data)
 
@@ -33,7 +28,8 @@ mutate(Sampling_effort_minutes = NA) %>%
 mutate(Sampling_area_square_meters = NA) %>% 
 mutate(Habitat = "Calcareous grassland") %>% 
 mutate(Locality = Site_id) %>% 
-mutate(Flower_data = "No")
+mutate(Flower_data = "No") %>% 
+mutate(Flower_data_merger = Site_id)
 
 #Add missing vars
 data = add_missing_variables(check_interaction_data, data) 
@@ -86,7 +82,7 @@ site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
 FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

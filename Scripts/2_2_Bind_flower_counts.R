@@ -50,10 +50,6 @@ names(data) <- file_names
 #Prepare data to save it
 all_list = data
 all = bind_rows(data,  .id = 'Study_id')
-#Create another col with study id and network id together so we can count all individuals networks
-flower_counts = all %>% 
-mutate(Study_network_id = paste0(Study_id, Network_id))
 
 #Save floral counts (as final file for now)
-#Needs some checking....
-saveRDS(flower_counts, "Data/3_Final_data/Flower_counts.rds")
+saveRDS(all, "Data/3_Final_data/Flower_counts.rds")

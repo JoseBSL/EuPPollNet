@@ -76,7 +76,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 #Add cols with flower info
 data = data %>% 
 mutate(Flower_data = "Unprocessed") %>% 
-mutate(Flower_data_merger = NA) 
+mutate(Flower_data_merger = Site_id) 
 
 #Unify structure of data
 data = change_str(data)
@@ -90,7 +90,7 @@ InteractionData <- split(data, data$Locality)
 site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA, Month = NA, Year = NA, Site_id = site_id_levels, Plant_species = NA,
-                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = NA_character_)
+                     Flower_count = NA, Units = NA, Comments = NA, Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

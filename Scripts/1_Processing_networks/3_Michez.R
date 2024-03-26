@@ -35,7 +35,7 @@ mutate(Pollinator_species = str_replace(Pollinator_species, "Terrestribombus sp.
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
 mutate(Interaction = as.integer(Interaction)) %>%  
 mutate(Flower_data = "No") %>% 
-mutate(Flower_data_merger = NA)
+mutate(Flower_data_merger = Site_id)
 
 #Unify structure of data
 data = change_str(data)
@@ -50,7 +50,7 @@ site_id_levels = levels(factor(data$Site_id))
 
 FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_, 
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)

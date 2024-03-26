@@ -81,7 +81,7 @@ mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
 
 #Create merger column for flower counts
 data = data %>% 
-mutate(Flower_data_merger = NA)
+mutate(Flower_data_merger = Site_id)
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -174,7 +174,7 @@ site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
 
 FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
                       Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = NA_character_)
+                     Flower_data_merger = site_id_levels)
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
