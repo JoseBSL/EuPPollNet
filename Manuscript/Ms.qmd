@@ -43,8 +43,10 @@ library(kableExtra)
 ```
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
-#Load data
-data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+
+#Read data
+data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")%>% 
+mutate(Network_id = paste0(Study_id, Network_id))  
 #Bee-syrphid Masterlist
 master_list = read_csv("../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
 #Load butterfly masterlist
@@ -654,6 +656,10 @@ For pollinators: (i) we first created a checklist of species names for the most 
 
 To assess the completeness of plant and pollinator species in the SafeNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level.
 
+## Sampling coverage 
+
+bootstraping, inext package
+
 ## Habitat type and bioclimatic region
 
 The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the SafeNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
@@ -670,9 +676,281 @@ The different sites per study were classified with a habitat type by the authors
 Provide number of species per taxonomic group and number of interactions
 Something always of interest: provide % of interactions of _Apis mellifera_?
 
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represents the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrates the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graphs (d-e) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site. Graph (f) shows the accumulation curve of pollinator species across increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel.", fig.width=10, fig.height=6, out.width="115%"}
+
+#Pollinators-----
+poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
+pollinators_curves = readRDS("../Data/Working_files/collectors_curves_pollinators.rds")
+#Create dataset
+d_poll = poll_output$iNextEst$Network_id
+#Check cols
+d_poll$col = d_poll$method
+
+#Now create tibble with same structure
+a_poll = tibble(t = pollinators_curves$Study_sampled, 
+           method = as.character(pollinators_curves$iteration), 
+           qD = pollinators_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_poll1 = bind_rows(d_poll, a_poll)
+d_poll1_point = d_poll1 %>%  filter(method == "observed")
+d_poll1_lines = d_poll1 %>%  filter(!method == "observed")
+
+#Order levels
+d_poll1_lines$col = factor(d_poll1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+p1 = ggplot(d_poll1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col),size = 0.65) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_poll1_point, col = "black", size=2) + 
+ylab("Pollinator species") +
+xlab("Sampling sites") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off")  +
+xlim(0,3000)+
+ylim(0, 3000) +
+ggtitle("(a)") +
+theme(plot.margin = margin(r = 12)) 
+
+#Plants-----
+plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
+plant_curves = readRDS("../Data/Working_files/collectors_curves_plants.rds")
+#Create dataset
+d_plant = plant_output$iNextEst$Network_id
+#Check cols
+d_plant$col = d_plant$method
+
+#Now create tibble with same structure
+a_plant = tibble(t = plant_curves$Study_sampled, 
+           method = as.character(plant_curves$iteration), 
+           qD = plant_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_plant1 = bind_rows(d_plant, a_plant)
+d_plant1_point = d_plant1 %>%  filter(method == "observed")
+d_plant1_lines = d_plant1 %>%  filter(!method == "observed")
+
+#Order levels
+d_plant1_lines$col = factor(d_plant1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+p2 = ggplot(d_plant1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col), size = 0.65) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_plant1_point, col = "black", size=2) + 
+ylab("Plant species") +
+xlab("Sampling sites") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off")  +
+xlim(0,3000)+
+ylim(0, 3000)+
+ggtitle("(b)")+
+theme(plot.margin = margin(r = 12)) 
+
+
+
+#Interactions-----
+int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
+interactions_curves = readRDS("../Data/Working_files/collectors_curves_interactions.rds")
+#Create dataset
+d_int = int_output$iNextEst$Network_id
+#Check cols
+d_int$col = d_int$method
+
+#Now create tibble with same structure
+a_poll = tibble(t = interactions_curves$Study_sampled, 
+           method = as.character(interactions_curves$iteration), 
+           qD = interactions_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_int1 = bind_rows(d_int, a_poll)
+d_int1_point = d_int1 %>%  filter(method == "observed")
+d_int1_lines = d_int1 %>%  filter(!method == "observed")
+
+#Plot
+#Order levels
+d_int1_lines$col = factor(d_int1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+p3 = ggplot(d_int1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col), size = 0.65) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_int1_point, col = "black", size=2) + 
+ylab("Interactions") +
+xlab("Sampling sites") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off")  +
+xlim(0,3000) +
+ylim(0, 30000)+
+ggtitle("(c)")
+
+#----------------#
+#Pollinators
+#----------------#
+#Read data
+data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")%>% 
+mutate(Network_id = paste0(Study_id, Network_id))  
+#First select cols of rank, accepted name and study ID
+#Then select unique levels by study ID
+#Now sum levels (maximum can be as maximum number of studies)
+poll_spread = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Network_id) %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+ungroup() %>% 
+count(Pollinator_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id))
+  
+#Seelect quantile 50% from the total number of species
+spp_number = poll_spread %>%  
+select(Pollinator_accepted_name) %>% 
+n_distinct()
+df = seq(1, spp_number)
+quantile_50 = quantile(df, 0.5)
+
+#Obtain most common pollinator for plotting
+most_common_poll = poll_spread %>% filter(n_networks_shared == max(n_networks_shared)) %>%
+select(Pollinator_accepted_name) %>% pull() 
+
+#Plot
+o1 = ggplot(poll_spread, 
+aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
+geom_bar(stat = "identity", 
+           color = "#D55E00",
+           lwd = 0.03, fill = "#D55E00") +
+ylab("Shared pollinators (%)") +
+theme_minimal()+
+theme(axis.text.x = element_blank(),
+  axis.ticks.x=element_blank(),
+  axis.ticks.y = element_line(size = 0.2),
+  panel.grid.major.x = element_blank(),
+  panel.grid.minor.y = element_blank(),
+  panel.grid.major.y = element_line(size=0.2, linetype = 2)) +
+xlab("Pollinator species") +
+ylab("Occurrence across sampling sites") + 
+geom_vline(xintercept = quantile_50, linetype="dashed", 
+color = "black", size=0.35) + 
+annotate(geom="text", x=1450, y=0.60, label="50th percentile",color="black", size = 3) +
+annotate(geom="text", x=140, y=0.67, label=most_common_poll[1],color="black",  fontface = 'italic', size = 3)+
+annotate(geom="text", x=200, y=-0.05, label="Common spp."
+      ,color="black",  size = 3) +
+annotate(geom="text", x=1800, y=-0.05, label="\'Rare\' spp."
+      ,color="black",  size = 3)  +
+scale_y_continuous(breaks = seq(0, 0.7, by= 0.25), expand = c(0, 0)) + 
+coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),
+                ylim=c(0,0.7), clip="off") +
+ggtitle("(d)")
+
+#----------------#
+#Plants
+#----------------#
+plant_spread = data %>% 
+select(Plant_rank, Network_id, Plant_accepted_name) %>% 
+group_by(Network_id) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+distinct(Plant_accepted_name) %>% 
+ungroup() %>% 
+count(Plant_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id))
+  
+#Seelect quantile 50% from the total number of species
+spp_number = plant_spread %>%  
+select(Plant_accepted_name) %>% 
+n_distinct()
+df = seq(1, spp_number)
+quantile_50 = quantile(df, 0.5)
+
+#Obtain most common plant for plotting
+most_common_plant = plant_spread %>% filter(n_networks_shared == max(n_networks_shared)) %>%
+select(Plant_accepted_name) %>% pull() 
+
+o2 = ggplot(plant_spread, 
+aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
+geom_bar(stat = "identity", 
+           color = "#009E73",
+           lwd = 0.03, fill = "#009E73") +
+theme_minimal()+
+theme(axis.text.x = element_blank(),
+         axis.ticks.x=element_blank(),
+         axis.ticks.y = element_line(size = 0.2),
+         panel.grid.major.x = element_blank(),
+         panel.grid.minor.y = element_blank(),
+         panel.grid.major.y = element_line(size=0.2, linetype =  2)) +
+xlab("Plant species") +
+ylab("Occurrence across sampling sites") + 
+geom_vline(xintercept = quantile_50, linetype="dashed", 
+          color = "black", size=0.35) + 
+annotate(geom="text", x=950, y=0.60, label="50th percentile",color="black", size = 3) + 
+annotate(geom="text", x=100, y=0.4, label=most_common_plant[1]
+      ,color="black",  fontface = 'italic', size = 3)+
+annotate(geom="text", x=150, y=-0.05, label="Common spp."
+      ,color="black",  size = 3) +
+annotate(geom="text", x=1200, y=-0.05, label="\'Rare\' spp."
+      ,color="black",  size = 3) + 
+scale_y_continuous(breaks = seq(0, 0.7, by= 0.25), expand = c(0, 0), labels = label_number(accuracy = 0.01)) +
+coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),
+                ylim=c(0, 0.7), clip="off") +
+ggtitle("(e)")
+
+plant_poll = readRDS("../Data/Working_files/collectors_curves_plant_ploll.rds")
+rarefaction_curve1 = readRDS("../Data/Working_files/rarefaction_curve_plant_poll.rds")
+
+
+#Plot curves
+pp1 = plant_poll %>% 
+ggplot(aes(x = Plant_sampled, y= Unique_spp_cumulative, group = iteration)) +
+geom_line(color = "gray") +
+geom_smooth(data = rarefaction_curve1, 
+  aes(x = Plant_sampled, y = mean_curve), inherit.aes = FALSE,method = "loess", color = "black", size = 0.65, linetype = "solid", se = FALSE, span = 0.5) +  
+geom_point(data = rarefaction_curve1, x = max(rarefaction_curve1$Plant_sampled), y = max(rarefaction_curve1$mean_curve), inherit.aes = FALSE, size=2) +
+ylab("Pollinator species") +
+xlab("Plant species") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off") +
+ggtitle("(f)") +
+scale_x_continuous(breaks = seq(0, 1400, by = 400), limits=c(0,1400)) +
+ylim(0,2500)
+
+
+#Plot all
+a = p1 + p2 + p3 + plot_layout(guides = "collect") & theme(legend.title=element_blank(),
+      axis.title = element_text(size=12, face = "bold"),
+      axis.text = element_text(size=10),
+      plot.title = element_text(size=18))
+b = o1 + o2 + pp1 & 
+  theme(axis.title = element_text(size=12, face = "bold"),
+        axis.text = element_text(size=10),
+      plot.title = element_text(size=18))
+
+a/b
+
+
+```
+
+
+
 phylogenetic and geographical biases
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic representation of bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
 
 #Read data
 tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
@@ -744,7 +1022,7 @@ theme(legend.margin=unit(1,"cm"),
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of the plant families in the SafeNet database within the context of all flowering plant families occurring in Europe. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Phylogenetic representation of the plant families in the SafeNet database within the context of all flowering plant families occurring in Europe. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
 
 library(ggplot2)
 library(ggtree)
@@ -806,17 +1084,8 @@ theme(legend.margin=unit(1,"cm"),
 ## Habitat type and bioclimatic region
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
 
-#Load data (done it in earlier chunks)
-#Select cols of interest
-data1 = data %>% 
-select(Study_id, Network_id, Authors_habitat,
-  SafeNet_habitat, Bioregion,
-  Latitude, Longitude, Day, Month, Year, Plant_rank,
-  Plant_status, Plant_matchtype, Plant_accepted_name,Plant_order,
-  Pollinator_rank, Pollinator_status, Pollinator_matchtype,
-  Pollinator_accepted_name, Pollinator_order, Interaction)
 
 #Prepare orders for filtering
 main_orders = c("Hymenoptera", "Lepidoptera", "Coleoptera", "Diptera")
@@ -834,7 +1103,7 @@ distinct() %>%
 group_by(Bioregion) %>% 
 summarise(Bioregion_count = n()) 
 #Check pols by habitat
-pollinator_percent = data1 %>%
+pollinator_percent = data %>%
 group_by(SafeNet_habitat, Pollinator_order) %>%
 filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
 filter(Pollinator_order %in% main_orders) %>% 
@@ -843,7 +1112,7 @@ group_by(SafeNet_habitat) %>%
 mutate(Proportion = count/sum(count)) %>%
 select(-count) 
 #Check pols by bioregion
-pollinator_percent_bio = data1 %>%
+pollinator_percent_bio = data %>%
 group_by(Bioregion, Pollinator_order) %>%
 filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
 filter(Pollinator_order %in% main_orders) %>% 

@@ -1,5 +1,10 @@
 ---
-output: pdf_document
+output:
+  pdf_document:
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
+- \captionsetup[table]{labelformat=empty}
 ---
 
 
@@ -20,16 +25,21 @@ library(viridis)
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
-
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
 
 #Read interaction data 
 data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
+
 #Load data (done it in earlier chunks)
 #Select cols of interest
 data1 = data %>% 
 select(Study_id, Network_id, Authors_habitat,
-  Corine_land_cover, SafeNet_habitat, Bioregion,
+  SafeNet_habitat, Bioregion,
   Latitude, Longitude, Day, Month, Year, Plant_rank,
   Plant_status, Plant_matchtype, Plant_accepted_name,Plant_order,
   Pollinator_rank, Pollinator_status, Pollinator_matchtype,
@@ -129,8 +139,6 @@ coord_flip(expand = FALSE) +
 ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
 guides(fill=guide_legend(nrow=2,byrow=TRUE)) 
 
-#c("azure3","steelblue", "wheat2", "tomato3")
-
 #Unify labels
 c1$Habitat = factor(c1$Habitat, levels = l2)
 #Create barplot on the side
@@ -161,7 +169,6 @@ ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "fr
 
 #Plot panel
 p1 + p2 + plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=2) 
-
 
 ```
 

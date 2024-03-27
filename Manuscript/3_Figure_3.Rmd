@@ -1,6 +1,10 @@
 ---
-output: pdf_document
-date: "2024-02-29"
+output:
+  pdf_document:
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
+- \captionsetup[table]{labelformat=empty}
 ---
 
 
@@ -23,18 +27,20 @@ n = readRDS("../Data/Manuscript_info/node_data.RData")
 
 #Circular layour
 ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 
-geom_tippoint(aes(size= Interactions), fill = "tan2", color="black", shape=21) +
-geom_tiplab(linetype='dashed', linesize=.05, offset = 0.062, size=2.5, fontface=1) +
-scale_size(name = "Log(Interactions)", range = c(0,4.5))  +
+geom_tippoint(aes(size= Interactions, fill = Interactions), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0.063, size=2.9, fontface=1) +
+scale_size(range = c(0,4.5), guide = 'none')  +
+scale_fill_continuous(type = "viridis", direction=-1) + 
+guides(fill=guide_legend(), size = guide_legend()) +
 theme(legend.position = "bottom") +
 new_scale_fill() +
 geom_fruit(data = d1, geom=geom_bar,
                     mapping=aes(y=Genus1, x=Percent, fill = fam_group),
-                    pwidth=0.1, 
+                    pwidth=0.13, 
                     orientation="y", 
                     stat="identity",
                     color="black",
-                    offset = 0.128,
+                    offset = 0.137,
             axis.params=list(
                          axis = "x",
                          text.size  = 2.5,
@@ -45,10 +51,10 @@ geom_fruit(data = d1, geom=geom_bar,
                      ),
          grid.params=list()) +
 guides(fill = "none")+
-scale_fill_manual(values = c(a = "tan2", b = "lightblue3"), guide = "none")+
+scale_fill_manual(values = c(a = "tan2", b = "lightgrey"), guide = "none")+
 geom_fruit(geom=geom_bar,
                     mapping=aes(y=label, x=Spp_number_Europe),
-                    pwidth=0.1, 
+                    pwidth=0.12, 
                     orientation="y", 
                     stat="identity",
                     color="black",
@@ -62,9 +68,9 @@ geom_fruit(geom=geom_bar,
                          fontface = 2
                      ),
          grid.params=list()) +
-annotate("text", x = 14, y = 70, label = "SafeNet spp\n coverage (%)", size= 2.65, fontface= "bold") +
-annotate("text", x = 15.2, y = 70, label = "European\n species", size= 2.65, fontface= "bold")+
-annotate("text", x = 12.1, y = 70, label = "SafeNet\n interactions", size= 2.65, fontface= "bold")+ 
+annotate("text", x = 14.2, y = 70, label = "SafeNet spp\n coverage (%)", size= 3, fontface= "bold") +
+annotate("text", x = 15.7, y = 70, label = "European\n species", size= 3, fontface= "bold")+
+annotate("text", x = 12.1, y = 70, label = "SafeNet\n interactions", size= 3, fontface= "bold")+ 
 new_scale_fill() +
 geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
 annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
@@ -79,6 +85,8 @@ theme(legend.margin=unit(1,"cm"),
       plot.margin = margin(4,0,4,0), 
       legend.position = c(0.6,0),
       legend.direction = "horizontal") 
+
+
 
 
 ```

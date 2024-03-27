@@ -23,7 +23,7 @@ distinct()
 #Select columns of interest
 data1_plant = data %>% 
 filter(Plant_rank == "SPECIES") %>% 
-select(Study_id,Network_id, Pollinator_accepted_name) %>% 
+select(Study_id,Network_id, Plant_accepted_name) %>% 
 distinct() 
 
 length(unique(data1_plant$Network_id))
@@ -41,7 +41,7 @@ distinct()
 #Data is our dataset with the cols of interest
 #Level: Study_id or Network_id
 #Taxa: Pollinator_accepted_name/Plant_accepted_name/Interaction_id  
-collect = function(data, level_id, taxa) {
+collect = function(data1, level_id, taxa) {
 #Filter studies randomly and sum species per study
 sampled_studies = sample(unique(data %>% pull({{ level_id }})))
 
@@ -94,6 +94,10 @@ xlab("Studies") +
 theme_bw() +
 coord_cartesian(expand = FALSE)
 s2
+
+
+colnames(data1_int)
+
 #Calculate N collectors curves for interactions
 collect_curves = map_dfr(1:100, ~ collect(data1_int, Study_id, Interaction_id), .id="iteration") 
 #Calculate mean across curves
@@ -177,38 +181,52 @@ n1 + n2 + n3
 
 
 #Try now to obtain accumulated plants per pollinator species----
-collect1 = function(data) {
-sampled_pollinator = sample(unique(data1$Pollinator_accepted_name))
+collect1 = function(data1) {
+sampled_plant = sample(unique(data1$Plant_accepted_name))
 data1 %>% 
-filter(Pollinator_accepted_name %in% sampled_pollinator) %>%
-arrange(match(Pollinator_accepted_name, sampled_pollinator)) %>%
-group_by(Plant_accepted_name) %>%
+filter(Plant_accepted_name %in% sampled_plant) %>%
+arrange(match(Plant_accepted_name, sampled_plant)) %>%
+group_by(Pollinator_accepted_name) %>%
 mutate(distinct = row_number() == 1) %>%
 ungroup() %>%
-group_by(Pollinator_accepted_name) %>%
+group_by(Plant_accepted_name) %>%
 mutate(Unique_spp = sum(distinct)) %>%
 ungroup() %>%
-select(Pollinator_accepted_name, Unique_spp) %>%
+select(Plant_accepted_name, Unique_spp) %>%
 distinct() %>%
 mutate(Unique_spp_cumulative = cumsum(Unique_spp)) %>%
-mutate(Pollinator_sampled = row_number())
+mutate(Plant_sampled = row_number())
 }
+
+
+
+#Select columns of interest
+data1 = data %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_rank == "SPECIES" ) %>% 
+filter(Plant_rank == "SPECIES" ) %>% 
+select(Study_id,Network_id, Pollinator_accepted_name, Plant_accepted_name) %>% 
+distinct() 
 
 
 #Calculate N collectors curves for interactions
 collect_curves1 = map_dfr(1:100, ~ collect1(data1), .id="iteration") 
+saveRDS(collect_curves1, "Data/Working_files/collectors_curves_plant_poll.rds")
 #Calculate mean across curves
 rarefaction_curve1 = collect_curves1 %>% 
-group_by(Pollinator_sampled) %>% 
+group_by(Plant_sampled) %>% 
 summarise(mean_curve = mean(Unique_spp_cumulative))
+saveRDS(rarefaction_curve1, "Data/Working_files/rarefaction_curve_plant_poll.rds")
+
 #Plot curves
 pp1 = collect_curves1 %>% 
-ggplot(aes(x = Pollinator_sampled, y= Unique_spp_cumulative, group = iteration)) +
-geom_line(color = "gray") + 
-geom_line(data = rarefaction_curve1, 
-          aes(x = Pollinator_sampled, y =  mean_curve), inherit.aes = FALSE) +
-ylab("Plant species") +
-xlab("Pollinator species") +
+ggplot(aes(x = Plant_sampled, y= Unique_spp_cumulative, group = iteration)) +
+geom_line(color = "gray") +
+geom_smooth(data = rarefaction_curve1, 
+              aes(x = Plant_sampled, y = mean_curve), inherit.aes = FALSE,method = "loess", 
+              color = "black", size = 0.5, linetype = "solid", se = FALSE, span = 0.5) +  
+ylab("Pollinator species") +
+xlab("Plant species") +
 theme_bw() +
-coord_cartesian(expand = FALSE)
-pp1                            
+coord_cartesian(expand = FALSE) 
+pp1                                   

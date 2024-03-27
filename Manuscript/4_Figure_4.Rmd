@@ -1,9 +1,14 @@
 ---
-output: pdf_document
+output:
+  pdf_document:
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
+- \captionsetup[table]{labelformat=empty}
 ---
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}.", fig.width=8, fig.height=8}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}.", fig.width=8, fig.height=8}
 
 library(ggplot2)
 library(ggtree)
