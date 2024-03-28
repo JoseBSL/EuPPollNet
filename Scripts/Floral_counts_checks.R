@@ -12,6 +12,9 @@ d = left_join(a, b, by = join_by(Study_id, Flower_data_merger),  suffix=c("",".y
 
 
 
-na_rows <- which(is.na(a$Flower_data_merger))
-rows_with_na <- meta_count[na_rows, ]
-print(rows_with_na)
+
+check = d %>% 
+filter(Study_id == "26_Scheper") %>% 
+filter(is.na(Flower_data_merger))
+
+
