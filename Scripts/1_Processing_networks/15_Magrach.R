@@ -4,6 +4,8 @@
 library(tidyverse)
 #Load function to unify structure of data
 source("Scripts/Processing/Functions/Change_str.R")
+#Read empty templates to compare with
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 
 #Prepare interaction data ----
 #Load interaction data
@@ -39,7 +41,7 @@ mutate(Flower_data_merger = NA)
 #Create id to merge with flower count data
 data = data %>%  
 mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), word(Plant_species,3),
-                                   Site_id, Day, "-", Month, "-", Year)) 
+                                   Site_id, "_" ,Day, "_", Month, "_", Year)) 
 
 #Unify structure of data
 data = change_str(data)
@@ -54,6 +56,12 @@ FlowerCount = read_csv("Data/1_Raw_data/15_Magrach/Flower_count.csv", col_names 
 FlowerCount = FlowerCount %>% 
 rename(Comments = Comment) %>% 
 mutate(Flower_data_merger = NA) 
+
+#Create id to merge with flower count data
+FlowerCount = FlowerCount %>%  
+mutate(Flower_data_merger = paste0(word(Plant_species,1),word(Plant_species,2), word(Plant_species,3),
+                                   Site_id, "_" ,Day, "_", Month, "_", Year)) 
+
 
 #Order vars and drop if necessary
 FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 

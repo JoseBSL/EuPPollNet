@@ -1,57 +1,17 @@
+#Load library for merging datasets
+library(dplyr)
+#Read data
+a = readRDS("Data/3_Final_data/Interaction_data.rds")
+colnames(a)
+b = readRDS("Data/3_Final_data//Flower_counts.rds")
+colnames(b)
+#See that both datasets has a column named "Flower_data_merger"
+
+#Merge datasets
+d = left_join(a, b, by = join_by(Study_id, Flower_data_merger),  suffix=c("",".y")) %>% select(-ends_with(".y"))
 
 
 
-#23_hols next to check
-
-#Check floral counts
-#Floral count datasets
-no_flower_counts = c("3_Michez", "13_Karise", "14_Dupont", "17_Fisogni")
-
-problematic_floral_counts =c("1_Bartomeus","10_Vanbergen","16_Manincor", "18_Bartomeus",
-                             "21_Hopfenmuller")
-
-floral_counts =c("2_Petanidou", "4_Marini", "5_Marini", 
-                 "6_Marini", "7_Scheper", "8_Biella","9_Heleno",
-                 "11_Clough", "12_Ockinger",
-                 "15_Magrach","20_Hoiss", "22_Kallnik")
-
-#Things to do!
-#Flower count data issues: 1_Bartomeus
-a = bind_rows(InteractionData)
-b = bind_rows(FlowerCount)
-
-non_unique_df <- b %>% 
-  filter(duplicated(b) | duplicated(b, fromLast = TRUE))
-
-
-d = left_join(a, b, by = join_by(Plant_species, Site_id))
-
-
-d = left_join(a, b, by = join_by(Flower_data_merger),  suffix=c("",".y"))  %>% 
-select(-ends_with(".y"))
-
-many_to_many = d %>% 
-  group_by(Plant_species,Site_id,Day,Month,Year) %>% 
-  summarise(length(Plant_species))
-
-
-check = a %>% 
-  group_by(Plant_species,Site_id,Day,Month,Year) %>% 
-  summarise(length(Plant_species))
-
-z = tibble(species = many_to_many$Plant_species,x = many_to_many$`length(Plant_species)`,x1 = check$`length(Plant_species)`)
-
-check1 = z %>% 
-filter(!x==x1)
-
-
-
-colnames(data)
-colnames(FlowerCount)
-
-data = data %>% 
-rename(Plant_species = Plant_Species)
-
-d = left_join(data, FlowerCount, by = join_by(Plant_species, Site_id, Month,Day, Year))
-
-
+na_rows <- which(is.na(a$Flower_data_merger))
+rows_with_na <- meta_count[na_rows, ]
+print(rows_with_na)
