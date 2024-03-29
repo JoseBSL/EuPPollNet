@@ -21,7 +21,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 9_Heleno,Catherine J. O’Connor,NA,NA
 10_Vanbergen,Adam J. Vanbergen,0000-0001-8320-5535,adam.vanbergen@inrae.fr
 10_Vanbergen,Willem Proesmans,0000-0003-0358-6732,willem.proesmans@gmail.com
-10_Vanbergen,Emeline Felten,,emeline.felten@inrae.fr
+10_Vanbergen,Emeline Felten,0009-0005-8159-9426,emeline.felten@inrae.fr
 10_Vanbergen,Emilien Laurent,,emilien.laurent@inrae.fr
 11_Clough,Veronica Hederström,0000-0002-9231-3156,veronica.hederstrom@cec.lu.se
 11_Clough,Theresia Krausl,0000-0003-2849-4279,theresia.krausl@cec.lu.se
@@ -39,12 +39,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 16_Manincor,Nina Hautekèete,0000-0002-6071-5601,nina.hautekeete@univ-lille.fr
 16_Manincor,Yves Piquot,0000-0001-9977-8936,yves.piquot@univ-lille.fr
 16_Manincor,Bertrand Schatz,0000-0003-0135-8154,bertrand.schatz@cefe.cnrs.fr
-16_Manincor,Cédric Vanappelghem,0000-0002-4629-541X,cedric.vanappelghem@espaces-naturels.fr
 16_Manincor,François Massol,0000-0002-4098-955X,francois.massol@univ-lille.fr
-16_Manincor,Clément Mazoyer,0000-0002-5052-326X,clement.mazoyer@univ-lille.fr
-16_Manincor,Paul Moreau,,p35.moreau@gmail.com
-16_Manincor,Eric Schmitt,,eric.schmitt@univ-lille.fr
-16_Manincor,Marie Zélazny,,marie.zelazny@hotmail.fr
 17_Fisogni,Alessandro Fisogni,0000-0001-6179-2767,a.fisogni@gmail.com
 17_Fisogni,Marta Galloni,0000-0001-5304-7820,marta.galloni@unibo.it
 18_Bartomeus,Francisco P. Molina,0000-0003-2425-5246,fpaula.molina@gmail.com
@@ -89,7 +84,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 33_Power,Jane C. Stout,0000-0002-2027-0863,stoutj@tcd.ie
 34_Stanley,Dara Stanley,0000-0001-8948-8409,dara.stanley@ucd.ie
 34_Stanley,Jane C. Stout,0000-0002-2027-0863,stoutj@tcd.ie
-35_Mullen,Sarah Mullen,NA,seramullen@gmail.com
+35_Mullen,Sarah Mullen,NA,mullense@tcd.ie
 36_Larkin,Michelle Larkin,0000-0002-4540-1655,mlarkin@biodiversityireland.ie
 36_Larkin,Dara Stanley,0000-0001-8948-8409,dara.stanley@ucd.ie
 37_White,Cian White,0000-0002-7126-1916,ciwhite@tcd.ie

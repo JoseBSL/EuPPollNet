@@ -87,20 +87,14 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 #Prepare authorship data ----
 Authorship <- data.frame(
 Coauthor_name = c("Natasha de Manincor", "Nina Hautekèete", 
-                  "Yves Piquot", "Bertrand Schatz",
-                  "Cédric Vanappelghem", "François Massol", 
-                  "Clément Mazoyer", "Paul Moreau", 
-                  "Eric Schmitt", "Marie Zélazny"),
+                  "Yves Piquot", "Bertrand Schatz", "François Massol"),
 
 Orcid = c("0000-0001-9696-125X", "0000-0002-6071-5601", 
           "0000-0001-9977-8936", "0000-0003-0135-8154",
-          "0000-0002-4629-541X", "0000-0002-4098-955X", "0000-0002-5052-326X", "",
-          "", ""),
+          "0000-0002-4098-955X"),
 E_mail = c("natasha.demanincor@gmail.com", "nina.hautekeete@univ-lille.fr", 
              "yves.piquot@univ-lille.fr", "bertrand.schatz@cefe.cnrs.fr",
-           "cedric.vanappelghem@espaces-naturels.fr", "francois.massol@univ-lille.fr",
-           "clement.mazoyer@univ-lille.fr", "p35.moreau@gmail.com",
-           "eric.schmitt@univ-lille.fr", "marie.zelazny@hotmail.fr"))
+           "francois.massol@univ-lille.fr"))
 
 #Save data ----
 #Create list with all dataframes of interest

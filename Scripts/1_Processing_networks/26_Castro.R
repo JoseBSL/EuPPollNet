@@ -50,12 +50,12 @@ FlowerCount = read_csv("Data/1_Raw_data/26_27_Castro/Flower_count1.csv") %>%
 mutate(Comments = NA) %>% 
 mutate(Flower_data_merger = NA)
 
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(word(Plant_species, 1),"_", word(Plant_species, 2),"_", Site_id,"_", Day )) %>% 
+mutate(Flower_data_merger = str_replace(Flower_data_merger, "-", "_"))
+
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
-
-FlowerCount = FlowerCount %>% 
-mutate(Flower_data_merger = paste0(word(Plant_species, 1),"_", word(Plant_species, 2),"_", Site_id,"_", ifelse(Day < 19, "10-19", "20-22"))) %>% 
-mutate(Flower_data_merger = str_replace(Flower_data_merger, "-", "_"))
 
 #Compare vars
 compare_variables(check_flower_count_data, FlowerCount)
