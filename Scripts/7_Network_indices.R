@@ -23,8 +23,8 @@ dplyr::mutate(Year = lubridate::year(Date),
                 Day = lubridate::day(Date))
 
 #Exclude honey bees
-data = data %>% 
-filter(Pollinator_accepted_name!= "Apis mellifera")
+#data = data %>% 
+#filter(Pollinator_accepted_name!= "Apis mellifera")
 
 #Check studies with more than 1 year
 c = data %>% 
@@ -32,32 +32,65 @@ group_by(Study_id) %>%
 summarize(n_distinct(Year))
 
 
-
-
 #Prepare data----
 #-Objective- matrix within tibble with Network_id as identifier
 
-#Prepare code to filter more studies
-v = c("13_Karise")
+#Filtering criteria
+#1 Studies with only bumblebees
+#2 Networks larger than 4 plants and 4 poll species
+#3 Networks with more links than species
+
+###-------------------------------------------------------------------#
+#1Prepare code to filter studies with only bumblebees
+v = c("13_Karise", "22_Kallnik")
+subsetting = unique(data$Study_id)
+
 long_format = data %>% 
 mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
 mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+filter(Study_id %in% subsetting) %>% 
 filter(!Study_id %in% v) %>% 
 select(Network_id, Plant_accepted_name, Pollinator_accepted_name) 
-
-#Get vector with network that need to be included (minimum 4 plant and 4 poll species)
-networks_to_include = long_format %>% 
+###-------------------------------------------------------------------#
+#2 Networks larger than 4 plants and 4 poll species
+#Get vector with network that need to be included (minimum 5 plant and 5 poll species)
+v2 = long_format %>% 
 group_by(Network_id) %>% 
 summarise(Poll_spp = n_distinct(Plant_accepted_name),
           Plant_spp = n_distinct(Pollinator_accepted_name)) %>% 
 ungroup() %>% 
-filter(Poll_spp >= 5 & Plant_spp >= 5) %>% 
+filter(Poll_spp >= 4 & Plant_spp >= 4) %>% 
 pull(Network_id)
-
 #Filter by networks that fulfill criteria
 long_format = long_format %>% 
-filter(Network_id %in% networks_to_include)
+filter(Network_id %in% v2)
+###-------------------------------------------------------------------#
+#3 Networks with more links than species
+#Filter out networks with less links than spp
+#Probably undersampling!
+links = long_format %>% 
+group_by(Network_id, Plant_accepted_name, Pollinator_accepted_name) %>%
+distinct() %>% 
+group_by(Network_id) %>% 
+summarise(links = length(Network_id))
 
+spp = long_format %>% 
+group_by(Network_id) %>% 
+summarise(n_plants = n_distinct(Plant_accepted_name),
+          n_polls = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(n_total = n_plants+n_polls)
+
+vector_to_include = left_join(links,spp)
+#Select networks with more links than spp
+v3 = vector_to_include %>% 
+filter(links > n_total) %>% 
+pull(Network_id)
+
+long_format = long_format %>% 
+filter(Network_id %in% v3)
+
+###-------------------------------------------------------------------#
+#Final data organisation before obtaining nestedness metrics 
 #Nest data by study Id
 nested_by_network = long_format %>% 
 nest(Networks = c(Plant_accepted_name, Pollinator_accepted_name))
@@ -88,16 +121,17 @@ ungroup()
 #Normalised nestedness (NODFc)and classic netedness (from Almeida-Neto )
 #Note: Classic_nestedness (nodf_cpp) same as nestednof from vegan package
 #Note: Quality 0 in NODFc makes everything faster (note that is the default value)
-nestedness_by_network = matrices %>%
+metrics_by_network = matrices %>%
 mutate(Normalised_nestedness = map(Matrices, ~ NODFc(.))) %>%
 mutate(Classic_nestedness = map(Matrices, ~ nodf_cpp(.))) %>%
-select(c(Network_id, Normalised_nestedness, Classic_nestedness)) %>% 
-unnest(cols = c(Normalised_nestedness, Classic_nestedness))
+mutate(Connectance = map(Matrices, ~ networklevel(., index="connectance"))) %>%
+select(c(Network_id, Normalised_nestedness, Classic_nestedness, Connectance)) %>% 
+unnest(cols = c(Normalised_nestedness, Classic_nestedness, Connectance))
 
 #Save data
-saveRDS(nestedness_by_network, "Data/Working_files/nestedness_by_network.rds")
+saveRDS(metrics_by_network, "Data/Working_files/metrics_by_network.rds")
 
-#Create null networks, same connectance but different marginal totals
+#Create null networks
 null_networks = matrices %>% 
 mutate(Null_networks = map(Matrices, ~ vaznull(100, .))) %>% 
 select(Network_id, Null_networks) %>% 
@@ -106,9 +140,10 @@ unnest(Null_networks)
 null_metrics_networks = null_networks %>% 
 mutate(Normalised_nestedness = map(Null_networks, ~ NODFc(.))) %>%
 mutate(Classic_nestedness = map(Null_networks, ~ nodf_cpp(.))) %>% 
+mutate(Connectance = map(Null_networks, ~ networklevel(., index="connectance"))) %>%
 select(!Null_networks) %>% 
-unnest(cols = c(Normalised_nestedness, Classic_nestedness)) %>% 
-group_by(Network_id) %>% 
+unnest(cols = c(Normalised_nestedness, Classic_nestedness, Connectance)) %>% 
+group_by(Network_id, Connectance) %>% 
 summarise(Mean_null_normalised_nestedness = mean(Normalised_nestedness),
           Deviation_null_normalised_nestedness = sd(Normalised_nestedness),
           Mean_null_classic_nestedness= mean(Classic_nestedness),
@@ -125,28 +160,26 @@ saveRDS(null_metrics_networks, "Data/Working_files/null_metrics_networks.rds")
 long_format_coords = data %>% 
 mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
 mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
-filter(Study_id %in% v) %>% 
+#filter(Study_id %in% v) %>% 
 select(Network_id, Latitude, Longitude, Bioregion) %>% 
 distinct()
 
 #Merge data
-nestedness_by_network_coords = left_join(nestedness_by_network, long_format_coords)
-
-#Plot!
-p1 = nestedness_by_network_coords %>% 
+metrics_by_network_coords = left_join(metrics_by_network, long_format_coords)
+#Plot
+p1 = metrics_by_network_coords %>% 
 ggplot(aes(Latitude, Normalised_nestedness)) +
 geom_point()
 
-p2 = nestedness_by_network_coords %>% 
+p2 = metrics_by_network_coords %>% 
 ggplot(aes(Longitude, Normalised_nestedness)) +
 geom_point()
 
-
-summary = nestedness_by_network_coords %>% 
+summary = metrics_by_network_coords %>% 
 group_by(Bioregion) %>% 
 tally()
 
-p3 = nestedness_by_network_coords %>% 
+p3 = metrics_by_network_coords %>% 
 ggplot(aes(Bioregion, Normalised_nestedness)) +
 geom_boxplot() +
 geom_text(data = summary,
@@ -166,20 +199,19 @@ summarise(geometric_mean_spp = geometric.mean(c(N_plants, N_pollinators)))
 
 
 #Merge data
-nestedness_by_network_spp_number = left_join(nestedness_by_network, species_number)
-p4 = nestedness_by_network_spp_number %>% 
+metrics_by_network_spp_number = left_join(metrics_by_network, species_number)
+p4 = metrics_by_network_spp_number %>% 
 ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
 geom_point()
 p4
 
-p4 = nestedness_by_network_spp_number %>% 
+p4 = metrics_by_network_spp_number %>% 
 ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
 geom_point() +
 scale_x_log10() +
 xlab("log(geometric mean species)") 
 p4
 #Calculate geometric mean
-
 
 #Obtain total interactions per network
 interactions = long_format %>% 
@@ -188,9 +220,9 @@ summarise(Interactions = n()) %>%
 group_by(Network_id) %>% 
 summarise(interactions_total = sum(Interactions))
 
-nestedness_by_network_interactions = left_join(nestedness_by_network, interactions)
+metrics_by_network_interactions = left_join(metrics_by_network, interactions)
 
-p5 = nestedness_by_network_interactions %>% 
+p5 = metrics_by_network_interactions %>% 
 ggplot(aes(interactions_total, Normalised_nestedness)) +
 geom_point() +
 scale_x_log10() +
@@ -212,13 +244,12 @@ geom_smooth(method = lm, se = FALSE)
 sampling_days = data %>% 
 mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
 mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
-filter(Study_id %in% v) %>% 
 select(Network_id, Date) %>% 
 group_by(Network_id) %>% 
 summarise(Sampling_days = n_distinct(Date)) 
 
-nestedness_by_network_sampling_days = left_join(nestedness_by_network, sampling_days)
-p6 = nestedness_by_network_sampling_days %>% 
+metrics_by_network_sampling_days = left_join(metrics_by_network, sampling_days)
+p6 = metrics_by_network_sampling_days %>% 
 ggplot(aes(Sampling_days, Normalised_nestedness)) +
 geom_point() +
 scale_x_log10() +
@@ -233,7 +264,7 @@ p6
 
 
 
-d = left_join(nestedness_by_network, null_metrics_networks)
+d = left_join(metrics_by_network, null_metrics_networks)
 colnames(d)
 
 d = d %>% 
