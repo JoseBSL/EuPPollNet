@@ -16,16 +16,33 @@ library(ggplot2)
 #Read data
 data = readRDS("Data/3_Final_data/Interaction_data.rds")
 
+#Split date into 3 cols
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
+
+#Exclude honey bees
+data = data %>% 
+filter(Pollinator_accepted_name!= "Apis mellifera")
+
+#Check studies with more than 1 year
+c = data %>% 
+group_by(Study_id) %>% 
+summarize(n_distinct(Year))
+
+
+
+
 #Prepare data----
 #-Objective- matrix within tibble with Network_id as identifier
 
 #Prepare code to filter more studies
-v = unique(data$Study_id)
-
+v = c("13_Karise")
 long_format = data %>% 
-mutate(Network_id = paste0(Study_id, "_", Network_id)) %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
 mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
-filter(Study_id %in% v[1:10]) %>% 
+filter(!Study_id %in% v) %>% 
 select(Network_id, Plant_accepted_name, Pollinator_accepted_name) 
 
 #Get vector with network that need to be included (minimum 4 plant and 4 poll species)
@@ -34,9 +51,8 @@ group_by(Network_id) %>%
 summarise(Poll_spp = n_distinct(Plant_accepted_name),
           Plant_spp = n_distinct(Pollinator_accepted_name)) %>% 
 ungroup() %>% 
-filter(Poll_spp >= 4 & Plant_spp >= 4) %>% 
+filter(Poll_spp >= 5 & Plant_spp >= 5) %>% 
 pull(Network_id)
-
 
 #Filter by networks that fulfill criteria
 long_format = long_format %>% 
@@ -68,7 +84,6 @@ ungroup()
 #Safety check for network 1
 #m = as.matrix(matrices$Matrices[[81]])
 
-
 #Compute network metrics-----
 #Normalised nestedness (NODFc)and classic netedness (from Almeida-Neto )
 #Note: Classic_nestedness (nodf_cpp) same as nestednof from vegan package
@@ -79,9 +94,12 @@ mutate(Classic_nestedness = map(Matrices, ~ nodf_cpp(.))) %>%
 select(c(Network_id, Normalised_nestedness, Classic_nestedness)) %>% 
 unnest(cols = c(Normalised_nestedness, Classic_nestedness))
 
+#Save data
+saveRDS(nestedness_by_network, "Data/Working_files/nestedness_by_network.rds")
+
 #Create null networks, same connectance but different marginal totals
 null_networks = matrices %>% 
-mutate(Null_networks = map(Matrices, ~ vaznull(20, .))) %>% 
+mutate(Null_networks = map(Matrices, ~ vaznull(100, .))) %>% 
 select(Network_id, Null_networks) %>% 
 unnest(Null_networks)
 #Compute nestedness for the nulls 
@@ -96,58 +114,166 @@ summarise(Mean_null_normalised_nestedness = mean(Normalised_nestedness),
           Mean_null_classic_nestedness= mean(Classic_nestedness),
           Deviation_null_classic_nestedness= sd(Classic_nestedness))
 
-#Create dataset for plotting
-a = nestedness_by_network %>% 
-select(Network_id, Normalised_nestedness) %>% 
-mutate(Category = "Observed")
+#Save data
+saveRDS(null_networks, "Data/Working_files/null_networks.rds")
+saveRDS(null_metrics_networks, "Data/Working_files/null_metrics_networks.rds")
 
-b = null_metrics_networks %>% 
-select(Network_id, Mean_null_normalised_nestedness) %>% 
-rename(Normalised_nestedness = Mean_null_normalised_nestedness) %>% 
-mutate(Category = "Null")
-c = bind_rows(a, b)
 
-c1 = c %>% 
-group_by(Study, Category) %>% 
-summarise(average_nestedness = mean(Normalised_nestedness))
 
-#To color by study
-c$Study = str_extract(c$Network_id, "[^_]+")
-ggplot(c, aes(x = Category, y = Normalised_nestedness, col = Study)) +
+#Explore how NODFc changes across the Y-X AXES (latitude-Longitude)
+#Extract columns of interest
+long_format_coords = data %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
+mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+filter(Study_id %in% v) %>% 
+select(Network_id, Latitude, Longitude, Bioregion) %>% 
+distinct()
+
+#Merge data
+nestedness_by_network_coords = left_join(nestedness_by_network, long_format_coords)
+
+#Plot!
+p1 = nestedness_by_network_coords %>% 
+ggplot(aes(Latitude, Normalised_nestedness)) +
+geom_point()
+
+p2 = nestedness_by_network_coords %>% 
+ggplot(aes(Longitude, Normalised_nestedness)) +
+geom_point()
+
+
+summary = nestedness_by_network_coords %>% 
+group_by(Bioregion) %>% 
+tally()
+
+p3 = nestedness_by_network_coords %>% 
+ggplot(aes(Bioregion, Normalised_nestedness)) +
+geom_boxplot() +
+geom_text(data = summary,
+            aes(Bioregion, Inf, label = n), vjust = 1)
+
+library(patchwork)
+p1 + p2 + p3
+
+library('psych') #For geometric mean
+#Calculate geometric mean
+species_number = long_format %>% 
+group_by(Network_id) %>% 
+summarise(N_plants = n_distinct(Plant_accepted_name),
+          N_pollinators = n_distinct(Pollinator_accepted_name)) %>% 
+group_by(Network_id) %>% 
+summarise(geometric_mean_spp = geometric.mean(c(N_plants, N_pollinators)))
+
+
+#Merge data
+nestedness_by_network_spp_number = left_join(nestedness_by_network, species_number)
+p4 = nestedness_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
+geom_point()
+p4
+
+p4 = nestedness_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
 geom_point() +
-geom_line(aes(group = Study), linewidth= 0.1) +
-theme_bw() +
-theme(legend.position = "none")
+scale_x_log10() +
+xlab("log(geometric mean species)") 
+p4
+#Calculate geometric mean
 
-ggplot(c1, aes(x = Category, y = average_nestedness, col = Study)) +
+
+#Obtain total interactions per network
+interactions = long_format %>% 
+group_by(Network_id, Plant_accepted_name, Pollinator_accepted_name) %>%
+summarise(Interactions = n()) %>% 
+group_by(Network_id) %>% 
+summarise(interactions_total = sum(Interactions))
+
+nestedness_by_network_interactions = left_join(nestedness_by_network, interactions)
+
+p5 = nestedness_by_network_interactions %>% 
+ggplot(aes(interactions_total, Normalised_nestedness)) +
 geom_point() +
-geom_line(aes(group = Study), linewidth= 0.5) +
-theme_bw() +
-theme(legend.position = "none")
+scale_x_log10() +
+xlab("log(Interactions)") 
+p5
+
+#Check
+d = left_join(species_number, interactions)
+d %>% 
+ggplot(aes(interactions_total, geometric_mean_spp)) +
+geom_point() +
+scale_x_log10() +
+scale_y_log10() +
+geom_smooth(method = lm, se = FALSE)
+#As expected both are highly correlated
+#Some weird points, worth checking them
+
+#Get number of sampling days per network and check
+sampling_days = data %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
+mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+filter(Study_id %in% v) %>% 
+select(Network_id, Date) %>% 
+group_by(Network_id) %>% 
+summarise(Sampling_days = n_distinct(Date)) 
+
+nestedness_by_network_sampling_days = left_join(nestedness_by_network, sampling_days)
+p6 = nestedness_by_network_sampling_days %>% 
+ggplot(aes(Sampling_days, Normalised_nestedness)) +
+geom_point() +
+scale_x_log10() +
+xlab("Sampling days") 
+p6
+
+#Tasks! Split networks of 2 years in 1 year
+(p1 + p2 + p3) /
+(p4 + p5 + p6)
 
 
 
 
 
-#Create dummy tibble for plotting
-mean = c(mean(nestedness_by_network$Normalised_nestedness),
-         mean(null_metrics_networks$Mean_null_normalised_nestedness))
-
-sd = c(sd(nestedness_by_network$Normalised_nestedness),
-       sd(null_metrics_networks$Mean_null_normalised_nestedness))
-
-d = tibble(mean, sd, var = c("observed", "null"))
+d = left_join(nestedness_by_network, null_metrics_networks)
+colnames(d)
 
 d = d %>% 
-mutate(Upper_sd = mean + sd) %>% 
-mutate(Lower_sd = mean - sd)
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
 
-library(ggplot2)
 
-ggplot(d, aes(var, mean)) +
-geom_point() +
-geom_errorbar(aes(ymin = Lower_sd, ymax = Upper_sd), width = 0.1) +
-ylab("Mean normalised nestedness") +
-xlab("Example: 3 Studies")
+p = 0.05 #cutoff probability 95% confidence
+critical_value <- qnorm(p/2) #double tail probability divide by 2
 
-#Exclude singletones?
+d1 = d %>%
+mutate(infra_over_represented = case_when(
+    z_score < -abs(critical_value) ~ "infra",
+    between(z_score, -abs(critical_value), abs(critical_value)) ~ "no_diff",
+    z_score > abs(critical_value) ~ "over"
+  ))
+
+
+ggplot(d1, aes(x=z_score, color=infra_over_represented, fill=infra_over_represented)) + 
+  geom_histogram(bins = 100, alpha = 0.5, position = "identity",lwd = 0.25)+
+  geom_vline(xintercept = -abs(critical_value))+
+  geom_vline(xintercept = abs(critical_value))+ ylab("Frequency")+  theme_bw() +
+  scale_fill_manual(name="" ,values=c("coral2", "palegreen3", "cyan3"), labels=c("Under-represented",
+                    "No statistical difference", "Over-represented")) +
+  scale_color_manual(name="" ,values=c("coral2", "palegreen3", "cyan3"), labels=c("Under-represented",
+                     "No statistical difference", "Over-represented")) + xlab("Z-score")
+
+
+
+
+
+
+
+#Calculate Z-scores
+nestedness_by_network
+null_metrics_networks
+
+
+colnames(d)
+
+d %>% 
+ggplot(aes(x=z_scores))+
+geom_density(linetype="dashed") +
+geom_vline(xintercept = c(-1.96, 1.96), linetype = "solid", color = "red") 
