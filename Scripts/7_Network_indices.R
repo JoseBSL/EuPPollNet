@@ -48,7 +48,8 @@ subsetting = unique(data$Study_id)
 long_format = data %>% 
 mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
 mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
-filter(Study_id %in% subsetting) %>% 
+  filter(Study_id %in% subsetting) %>% 
+
 filter(!Study_id %in% v) %>% 
 select(Network_id, Plant_accepted_name, Pollinator_accepted_name) 
 ###-------------------------------------------------------------------#
