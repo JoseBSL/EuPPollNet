@@ -48,8 +48,7 @@ subsetting = unique(data$Study_id)
 long_format = data %>% 
 mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
 mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
-  filter(Study_id %in% subsetting) %>% 
-
+  
 filter(!Study_id %in% v) %>% 
 select(Network_id, Plant_accepted_name, Pollinator_accepted_name) 
 ###-------------------------------------------------------------------#
@@ -277,22 +276,47 @@ critical_value <- qnorm(p/2) #double tail probability divide by 2
 
 d1 = d %>%
 mutate(infra_over_represented = case_when(
-    z_score < -abs(critical_value) ~ "infra",
-    between(z_score, -abs(critical_value), abs(critical_value)) ~ "no_diff",
-    z_score > abs(critical_value) ~ "over"
+    z_score < -abs(critical_value) ~ "Under-represented",
+    between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
   ))
 
 
+levels(factor(d1$infra_over_represented))
+
+#Plot
+d1 %>% 
+ggplot(aes(x = z_score) ) +
+geom_histogram(aes(y = ..density..), bins = 65, alpha = 0.5, color = "black", fill = "azure3") +
+stat_function(fun = dnorm,
+              args = list(mean = mean(d1$z_score),
+                          sd = sd(d1$z_score)),
+              n = 1000, inherit.aes = FALSE, color = "gray18") +
+stat_function(data=d1,fun = dnorm, color = "black", linetype = "dashed") +
+theme_bw() +
+coord_cartesian(expand = FALSE)+
+geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "black")+
+geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "black")+ 
+ylab("Density") +
+xlim(-5,9)
+
+
+
+  
+
 ggplot(d1, aes(x=z_score, color=infra_over_represented, fill=infra_over_represented)) + 
-  geom_histogram(bins = 100, alpha = 0.5, position = "identity",lwd = 0.25)+
-  geom_vline(xintercept = -abs(critical_value))+
-  geom_vline(xintercept = abs(critical_value))+ ylab("Frequency")+  theme_bw() +
-  scale_fill_manual(name="" ,values=c("coral2", "palegreen3", "cyan3"), labels=c("Under-represented",
-                    "No statistical difference", "Over-represented")) +
-  scale_color_manual(name="" ,values=c("coral2", "palegreen3", "cyan3"), labels=c("Under-represented",
-                     "No statistical difference", "Over-represented")) + xlab("Z-score")
-
-
+geom_histogram(bins = 200, alpha = 0.5, position = "identity",lwd = 0.2, color = "black")+
+geom_density(data = d1, aes(x=z_score),alpha = 0.3, color = "black") +  # Add density curve
+geom_vline(xintercept = -abs(critical_value), linetype = "longdash")+
+geom_vline(xintercept = abs(critical_value), linetype = "longdash")+ ylab("Frequency")+  theme_bw() +
+scale_fill_manual(name="" ,values=c("Under-represented"= "coral2", 
+                                    "No statistical difference"= "palegreen3", 
+                                   "Over-represented"=  "cyan3")) +
+#scale_color_manual(name="" ,values=c("Under-represented"= "coral2", 
+#                                    "No statistical difference"= "palegreen3", 
+#                                   "Over-represented"=  "cyan3")) + xlab("Z-score") +
+xlim(-9,9) +
+coord_cartesian(expand = FALSE) 
 
 
 
