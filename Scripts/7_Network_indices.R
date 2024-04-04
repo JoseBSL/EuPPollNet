@@ -333,3 +333,43 @@ d %>%
 ggplot(aes(x=z_scores))+
 geom_density(linetype="dashed") +
 geom_vline(xintercept = c(-1.96, 1.96), linetype = "solid", color = "red") 
+
+
+
+
+
+
+#Prepare code with lines proportional to geom_hist
+library(ggplot2)
+library(dplyr)
+
+# Assuming d1 is your data frame
+
+# Pre-calculate density
+density_data <- density(d1$z_score, bw = "SJ")
+density_data = tibble(x=density_data$x, y=density_data$y)
+# Calculate critical value if not defined already
+critical_value <- qnorm(0.975) # For a two-tailed test, change the value accordingly
+
+# Determine the bin width
+bin_width <- diff(range(density_data$x)) / length(density_data$x)
+
+
+f = function(x){
+  dnorm(x)*1.8}
+
+
+# Plot
+d1 %>% 
+  ggplot(aes(x = z_score)) +
+  geom_histogram(aes(y = ..density.. , fill = infra_over_represented), bins = 65, alpha = 0.5, color = "black") +
+geom_histogram(aes(y = ..density.., fill = infra_over_represented), bins = 65, alpha = 0.5, color = "black") +
+    stat_function(data=d1, fun = function(x) dnorm(x, mean = mean(d1$z_score), sd = sd(d1$z_score)) * 2, 
+                  n = 1000, inherit.aes = FALSE, color = "gray18")+
+  geom_function(fun = f, color = "black", linetype = "dashed") +
+  theme_bw() +
+  coord_cartesian(expand = FALSE) +
+  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "black") +
+  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "black") +
+  ylab("Density") +
+  xlim(-5, 9)
