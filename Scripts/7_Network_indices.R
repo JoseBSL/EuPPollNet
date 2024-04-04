@@ -42,7 +42,7 @@ summarize(n_distinct(Year))
 
 ###-------------------------------------------------------------------#
 #1Prepare code to filter studies with only bumblebees
-v = c("13_Karise", "22_Kallnik")
+v = c("9_Heleno", "13_Karise", "22_Kallnik")
 subsetting = unique(data$Study_id)
 
 long_format = data %>% 
@@ -147,7 +147,9 @@ group_by(Network_id, Connectance) %>%
 summarise(Mean_null_normalised_nestedness = mean(Normalised_nestedness),
           Deviation_null_normalised_nestedness = sd(Normalised_nestedness),
           Mean_null_classic_nestedness= mean(Classic_nestedness),
-          Deviation_null_classic_nestedness= sd(Classic_nestedness))
+          Deviation_null_classic_nestedness= sd(Classic_nestedness),
+          Mean_null_connectance = mean(Connectance),
+          Deviation_null_connectance = sd(Connectance))
 
 #Save data
 saveRDS(null_networks, "Data/Working_files/null_networks.rds")
@@ -266,10 +268,8 @@ p6
 
 d = left_join(metrics_by_network, null_metrics_networks)
 colnames(d)
-
 d = d %>% 
 mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
-
 
 p = 0.05 #cutoff probability 95% confidence
 critical_value <- qnorm(p/2) #double tail probability divide by 2
@@ -282,94 +282,23 @@ mutate(infra_over_represented = case_when(
   ))
 
 
-levels(factor(d1$infra_over_represented))
-
-#Plot
-d1 %>% 
-ggplot(aes(x = z_score) ) +
-geom_histogram(aes(y = ..density..), bins = 65, alpha = 0.5, color = "black", fill = "azure3") +
-stat_function(fun = dnorm,
-              args = list(mean = mean(d1$z_score),
-                          sd = sd(d1$z_score)),
-              n = 1000, inherit.aes = FALSE, color = "gray18") +
-stat_function(data=d1,fun = dnorm, color = "black", linetype = "dashed") +
-theme_bw() +
-coord_cartesian(expand = FALSE)+
-geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "black")+
-geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "black")+ 
-ylab("Density") +
-xlim(-5,9)
-
-
-
-  
-
-ggplot(d1, aes(x=z_score, color=infra_over_represented, fill=infra_over_represented)) + 
-geom_histogram(bins = 200, alpha = 0.5, position = "identity",lwd = 0.2, color = "black")+
-geom_density(data = d1, aes(x=z_score),alpha = 0.3, color = "black") +  # Add density curve
-geom_vline(xintercept = -abs(critical_value), linetype = "longdash")+
-geom_vline(xintercept = abs(critical_value), linetype = "longdash")+ ylab("Frequency")+  theme_bw() +
-scale_fill_manual(name="" ,values=c("Under-represented"= "coral2", 
-                                    "No statistical difference"= "palegreen3", 
-                                   "Over-represented"=  "cyan3")) +
-#scale_color_manual(name="" ,values=c("Under-represented"= "coral2", 
-#                                    "No statistical difference"= "palegreen3", 
-#                                   "Over-represented"=  "cyan3")) + xlab("Z-score") +
-xlim(-9,9) +
-coord_cartesian(expand = FALSE) 
-
-
-
-
-
-#Calculate Z-scores
-nestedness_by_network
-null_metrics_networks
-
-
-colnames(d)
-
-d %>% 
-ggplot(aes(x=z_scores))+
-geom_density(linetype="dashed") +
-geom_vline(xintercept = c(-1.96, 1.96), linetype = "solid", color = "red") 
-
-
-
-
-
-
-#Prepare code with lines proportional to geom_hist
-library(ggplot2)
-library(dplyr)
-
-# Assuming d1 is your data frame
-
-# Pre-calculate density
-density_data <- density(d1$z_score, bw = "SJ")
-density_data = tibble(x=density_data$x, y=density_data$y)
-# Calculate critical value if not defined already
-critical_value <- qnorm(0.975) # For a two-tailed test, change the value accordingly
-
-# Determine the bin width
-bin_width <- diff(range(density_data$x)) / length(density_data$x)
-
-
-f = function(x){
-  dnorm(x)*1.8}
-
-
 # Plot
 d1 %>% 
-  ggplot(aes(x = z_score)) +
-  geom_histogram(aes(y = ..density.. , fill = infra_over_represented), bins = 65, alpha = 0.5, color = "black") +
-geom_histogram(aes(y = ..density.., fill = infra_over_represented), bins = 65, alpha = 0.5, color = "black") +
-    stat_function(data=d1, fun = function(x) dnorm(x, mean = mean(d1$z_score), sd = sd(d1$z_score)) * 2, 
-                  n = 1000, inherit.aes = FALSE, color = "gray18")+
-  geom_function(fun = f, color = "black", linetype = "dashed") +
-  theme_bw() +
-  coord_cartesian(expand = FALSE) +
-  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "black") +
-  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "black") +
-  ylab("Density") +
-  xlim(-5, 9)
+ggplot(aes(x = z_score)) +
+geom_histogram(aes(y = ..density.., fill = infra_over_represented), 
+             bins = 100, alpha = 0.5, color = "black", position="stack") +
+stat_function(data=d1, fun = function(x) dnorm(x, mean = mean(d1$z_score), sd = sd(d1$z_score)) * 1.7, 
+                n = 1000, inherit.aes = FALSE, color = "gray18", size=1)+
+theme_bw() +
+coord_cartesian(expand = FALSE) +
+geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+ylab("Density") +
+xlim(-6, 9) +
+ylim(0,0.8) +
+scale_fill_manual(
+    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+    labels = c("Under-represented", "No statistical difference", "Over-represented"),
+    values=c("Under-represented"= "coral2", 
+             "No statistical difference"= "palegreen3", 
+             "Over-represented"=  "cyan3"))
