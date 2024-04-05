@@ -81,7 +81,7 @@ mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
 
 #Create merger column for flower counts
 data = data %>% 
-mutate(Flower_data_merger = Site_id)
+mutate(Flower_data_merger = paste0(Plant_species, Site_id, Transect_part_id))
 
 #Compare vars
 #compare_variables(check_interaction_data, data)
@@ -101,85 +101,76 @@ data = change_str(data)
 InteractionData = split(data, data$Site_id)
 
 #Prepare flower count data ---- The data wasn't collected
-#FlowerCount = read_csv("Data/1_Raw_data/38_Maurer/Flower_count.csv")
-##Rename habitats
-#FlowerCount = FlowerCount %>% rename(Habitat = Focal_habitat) %>% 
-#mutate(Habitat = recode_factor(Habitat,
-#     "OSR" = "Oilseed rape crop",
-#     "forest.edge" = "Forest edge",
-#     "forest" = "Forest",
-#     "ext.meadow" = "Extensively managed meadow",
-#     "art.grass" = "Rotational meadow",
-#     "fallow" = "Fallow land", 
-#     "tree.nur" = "Tree nursery",
-#     "pasture" = "Pasture", 
-#     "hedge" = "Hedgerow",
-#     "orchard" = "Orchard",
-#     "roadside" = "Grassy/herb strip next to road",
-#     "lawn" = "Frequently mown",
-#     "perm.mead" = "Permanent meadow",
-#     "ext.mead" = "Extensively managed meadow",
-#     "garden" = "Private garden",
-#     "flow.fal" = "Sown perennial flowering strip",
-#     "bean" = "Bean crop",
-#     "potato" = "Potato",
-#     "sun.flow" = "Sunflower crop",
-#     "sug.beet" = "Sugar bet crop"))
-##Add the general habitat to a comment
-#FlowerCount = FlowerCount %>% 
-#rename(Comments = Landscape_type) %>% 
-#mutate(Comments = recode_factor(Comments,
-#      "Intensive.agriculture" = "Intensive agriculture landscape",
-#      "Rural.habitat.mosaic" = "Rural habitat mosaic landscape",
-#      "Urban" = "Urban landscape")) %>% 
-#mutate(Flower_data_merger = Comments)
-#
-#
-##Delete . from plant species
-#FlowerCount = FlowerCount %>% 
-#mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
-#
-##Create merger column for flower counts
-#FlowerCount = FlowerCount %>% 
-#mutate(Flower_data_merger = paste0(Plant_species,Site_id, Transect_part_id,Habitat, Day, Month, Year))
-#
-##Seems that there are duplicates of flower counts
-##Select just 1
-#FlowerCount = FlowerCount %>%
-#group_by_at(vars(-Flower_count)) %>%
-#mutate(row_number = row_number()) %>%
-#distinct() %>%
-#filter(row_number == 1) %>%
-#select(-row_number)
-#
-##Check vars
-##compare_variables(check_flower_count_data, flower_count)
-##Order data as template
-#FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
-#
-##Calculate average flowers per site 
-#FlowerCount = FlowerCount %>%
-#group_by_at(vars(-c(Flower_count))) %>%
-#summarise(Flower_count = mean(Flower_count))
-#
-##Set common structure
-#FlowerCount = change_str2(FlowerCount)
-#
-##Split interaction data into dataframes within a list
-#FlowerCount = split(FlowerCount, FlowerCount$Site_id)
+FlowerCount = read_csv("Data/1_Raw_data/38_Maurer/Flower_count.csv")
+#Rename habitats
+FlowerCount = FlowerCount %>% rename(Habitat = Focal_habitat) %>% 
+mutate(Habitat = recode_factor(Habitat,
+     "OSR" = "Oilseed rape crop",
+     "forest.edge" = "Forest edge",
+     "forest" = "Forest",
+     "ext.meadow" = "Extensively managed meadow",
+     "art.grass" = "Rotational meadow",
+     "fallow" = "Fallow land", 
+     "tree.nur" = "Tree nursery",
+     "pasture" = "Pasture", 
+     "hedge" = "Hedgerow",
+     "orchard" = "Orchard",
+     "roadside" = "Grassy/herb strip next to road",
+     "lawn" = "Frequently mown",
+     "perm.mead" = "Permanent meadow",
+     "ext.mead" = "Extensively managed meadow",
+     "garden" = "Private garden",
+     "flow.fal" = "Sown perennial flowering strip",
+     "bean" = "Bean crop",
+     "potato" = "Potato",
+     "sun.flow" = "Sunflower crop",
+     "sug.beet" = "Sugar bet crop"))
+#Add the general habitat to a comment
+FlowerCount = FlowerCount %>% 
+rename(Comments = Landscape_type) %>% 
+mutate(Flower_data_merger = NA) %>% 
+mutate(Day = NA) %>% 
+mutate(Month = NA) %>% 
+mutate(Year = NA) %>% 
+mutate(Comments = NA) %>% 
+mutate(Units = "Average flower n. per square meter and site")
 
-#Flower counts are not reliable at the moment
-#Check levels of Site_id
-site_id_levels = levels(factor(bind_rows(InteractionData)$Site_id))
+#Select cols of interest to be able to merge both
+FlowerCount = FlowerCount %>% 
+select(Site_id, Transect_part_id, Plant_species, Flower_count,
+       Day, Month, Year, Units, Comments)
 
-FlowerCount = tibble(Day = NA_character_, Month = NA_character_, Year = NA, Site_id = site_id_levels, Plant_species = NA_character_,
-                      Flower_count = NA, Units = NA_character_, Comments = NA_character_,
-                     Flower_data_merger = site_id_levels)
+#Delete . from plant species
+FlowerCount = FlowerCount %>% 
+mutate(Plant_species = str_replace(Plant_species, "[.]", " "))
+
+#Create merger column for flower counts
+FlowerCount = FlowerCount %>% 
+mutate(Flower_data_merger = paste0(Plant_species, Site_id, Transect_part_id))
+
+#Seems that there are duplicates of flower counts
+#Select just 1
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-Flower_count)) %>%
+mutate(row_number = row_number()) %>%
+distinct() %>%
+filter(row_number == 1) %>%
+select(-row_number)
+
+#Check vars
+#compare_variables(check_flower_count_data, flower_count)
+#Order data as template
+FlowerCount = drop_variables(check_flower_count_data, FlowerCount) 
+
+#Calculate average flowers per site 
+FlowerCount = FlowerCount %>%
+group_by_at(vars(-c(Flower_count))) %>%
+summarise(Flower_count = mean(Flower_count))
 
 #Set common structure
 FlowerCount = change_str2(FlowerCount)
 
-#Split by Site_id
+#Split interaction data into dataframes within a list
 FlowerCount = split(FlowerCount, FlowerCount$Site_id)
 
 #Prepare metadata data ----

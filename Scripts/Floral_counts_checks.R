@@ -10,8 +10,9 @@ colnames(b)
 a1 = a %>% filter(Study_id == "38_Maurer")
 b1 = b %>% filter(Study_id == "38_Maurer")
 
+
 #Merge datasets
-d = left_join(a1, b1, by = join_by(Study_id, Flower_data_merger),  suffix=c("",".y")) %>% select(-ends_with(".y"))
+d = left_join(a1, b1, by = join_by(Flower_data_merger),  suffix=c("",".y")) %>% select(-ends_with(".y"))
 
 
 

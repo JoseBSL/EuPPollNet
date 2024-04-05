@@ -1,5 +1,5 @@
 ---
-title: "SafeNet: A European database of plant-pollinator interactions"
+title: "EuPPollNet: A European database of plant-pollinator networks"
 format:
   pdf:
     include-in-header: 
@@ -267,9 +267,9 @@ my_tibble = d %>%
 # Abstract
 \vspace*{-5mm}
 
-**Motivation:** Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the SafeNet database, a fully reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time. This database offers an open workflow that allows researchers to track decisions and edit them according to their preferences, while also providing other ecological variables of interest. We hope this database can help researchers to: 1) identify taxonomic, ecological and geographical gaps of knowledge on plant-pollinator interactions; and 2) explore the impacts of global change to guide future conservation planning for both plant and pollinator species.
+**Motivation:** Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the EuPPollNet database, a fully reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time. This database offers an open workflow that allows researchers to track decisions and edit them according to their preferences, while also providing other ecological variables of interest. We hope this database can help researchers to: 1) identify taxonomic, ecological and geographical gaps of knowledge on plant-pollinator interactions; and 2) explore the impacts of global change to guide future conservation planning for both plant and pollinator species.
 
-**Main Types of Variables Included:** SafeNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat type, bio-climatic region and further taxonomic rank information for both plant and pollinator species are also provided. 
+**Main Types of Variables Included:** EuPPollNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat type, bio-climatic region and further taxonomic rank information for both plant and pollinator species are also provided. 
 
 **Spatial location and grain:** The database contains `r prettyNum(n_sites, big.mark=",")` different sampling locations from natural and anthropogenic habitats that fall in `r n_bioregion` different bio-climatic regions. All records are geo-referenced and presented in the World Geodetic System 1984 (WGS84).
 
@@ -294,22 +294,22 @@ Europe is one of the continents with a larger amount of available biodiversity d
 
 The interactions between different plant and pollinator species within a community form complex networks. Macro-ecological analyses of the topology of these networks have revealed common properties across them, such as truncated power-law degree distributions [@jordano1987] or nestedness [@bascompte2003], and has added relevant information of their interaction ecology of plant-pollinator networks across geographic regions [@olesen2002; @traveset2016] and environmental gradients [@ramos2010; @rech2016; @saunders2023]. Although macro-ecological approaches make significant contributions to knowledge, they tend to be rare, and are strongly influenced by the spatio-temporal availability and nature of the data [@burkle2011; @trojelsgaard2013]. For instance, plant-pollinator studies tend to differ in sampling effort and methodology which can impact the structure of the resulting plant-pollinator networks [@gibson2011; @jordano2016]. Further, despite little sampling effort could capture most of the relevant functional species [@hegland2010], most plant-pollinator networks have unobserved interactions because undersampling [@olesen2011; @chacoff2012]. Thus, the lack of strong spatio-temporal coverage along the current intrinsic limitations of sampling plant-pollinator networks, highlight the need of keep gathering and integrating informative species interaction data to properly unravel the different ecological processes at large scales.
 
-Here, we present the SafeNet database, an acronym derived from the European project Safeguard and plant-pollinator networks, which contains harmonized informative interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the SafeNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). SafeNet aims to cover a wide range of taxonomic groups and habitats while also provides other variables of interest that allow to better control for the ecological context and sampling methods. In addition, SafeNet offers a transparent and accessible workflow of its data management and species harmonization that allow to being reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
+Here, we present the EuPPollNet database, an acronym derived from European plant-pollinator networks, which contains harmonized informative interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the EuPPollNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). EuPPollNet aims to cover a wide range of taxonomic groups and habitats while also provides other variables of interest that allow to better control for the ecological context and sampling methods. In addition, EuPPollNet offers a transparent and accessible workflow of its data management and species harmonization that allow to being reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
 
 
 # 2 | METHODS
 
 ## Data acquisition
 
-This database is the result of one of the working packages of the European project Safeguard. The SafeNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent. Data acquisition followed a non-systematic approach. First, data was directly asked to members of the Safeguard project and then, the request was extended to data owners outside of the project. These other studies were identified by direct communication with other colleagues and by directly searching studies on Google Scholar of under-represented regions of countries within the database. To keep high quality standards that will allow robust future ecological research, we only included: 1) studies that contained time- and geo-referenced records of plant-pollinator interactions; 2) studies with phyto-centric plant-pollinator networks with quantitative visitation data. The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**).
+This database is the result of one of the working packages of the European project Safeguard. The EuPPollNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent. Data acquisition followed a non-systematic approach. First, data was directly asked to members of the Safeguard project and then, the request was extended to data owners outside of the project. These other studies were identified by direct communication with other colleagues and by directly searching studies on Google Scholar of under-represented regions of countries within the database. To keep high quality standards that will allow robust future ecological research, we only included: 1) studies that contained time- and geo-referenced records of plant-pollinator interactions; 2) studies with phyto-centric plant-pollinator networks with quantitative visitation data. The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**).
 
 ## Dataset description
 
-SafeNet includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%).
+EuPPollNet includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**). These different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%).
 
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the SafeNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Number of studies by year within the database. (\\textbf{c}) Percentage of shared occurrences of pollinators and plants across studies. Species on the left are highly shared across studies, while species on the right are found only in a few or a single study. As a reference, we have indicated the 50th percentile with a black dashed vertical line."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the EuPPollNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Number of studies by year within the database. (\\textbf{c}) Percentage of shared occurrences of pollinators and plants across studies. Species on the left are highly shared across studies, while species on the right are found only in a few or a single study. As a reference, we have indicated the 50th percentile with a black dashed vertical line."}
 
 #Fix dates
 data = data %>%
@@ -629,7 +629,7 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.485, 0.8))
 
 # Data structure
 
-The SafeNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The data is organized in three different files named interaction data, flower count data and metadata. The interaction file contains `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. In addition, information about habitat type and bioclimatic region are also provided in this file. The floral count file contains measurements of floral availability and the unit of measurement, and should be merged with the interaction file by using the old plant name provided by the authors, site, and date if available. Only xxxx% of studies contain floral count information. The metadata file contains [...]
+The EuPPollNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The data is organized in three different files named interaction data, flower count data and metadata. The interaction file contains `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. In addition, information about habitat type and bioclimatic region are also provided in this file. The floral count file contains measurements of floral availability and the unit of measurement, and should be merged with the interaction file by using the column of "Floral_data_merger. Only xxxx% of studies contain floral count information. The metadata file contains [...]
 
 
 
@@ -654,7 +654,7 @@ For pollinators: (i) we first created a checklist of species names for the most 
 
 ## Taxonomic coverage 
 
-To assess the completeness of plant and pollinator species in the SafeNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level.
+To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level.
 
 ## Sampling coverage 
 
@@ -662,7 +662,7 @@ bootstraping, inext package
 
 ## Habitat type and bioclimatic region
 
-The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the SafeNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
+The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the EuPPollNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
 
 
 
@@ -950,7 +950,7 @@ a/b
 
 phylogenetic and geographical biases
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of bee genera in the SafeNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of bee genera in the EuPPollNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
 
 #Read data
 tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
@@ -1000,9 +1000,9 @@ geom_fruit(geom=geom_bar,
                          fontface = 2
                      ),
          grid.params=list()) +
-annotate("text", x = 14.2, y = 70, label = "SafeNet spp\n coverage (%)", size= 3, fontface= "bold") +
+annotate("text", x = 14.2, y = 70, label = "EuPPollNet spp\n coverage (%)", size= 3, fontface= "bold") +
 annotate("text", x = 15.7, y = 70, label = "European\n species", size= 3, fontface= "bold")+
-annotate("text", x = 12.1, y = 70, label = "SafeNet\n interactions", size= 3, fontface= "bold")+ 
+annotate("text", x = 12.1, y = 70, label = "EuPPollNet\n interactions", size= 3, fontface= "bold")+ 
 new_scale_fill() +
 geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
 annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
@@ -1022,7 +1022,7 @@ theme(legend.margin=unit(1,"cm"),
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Phylogenetic representation of the plant families in the SafeNet database within the context of all flowering plant families occurring in Europe. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in SafeNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Phylogenetic representation of the plant families in the EuPPollNet database within the context of all flowering plant families occurring in Europe. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
 
 library(ggplot2)
 library(ggtree)
@@ -1084,7 +1084,7 @@ theme(legend.margin=unit(1,"cm"),
 ## Habitat type and bioclimatic region
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the EuPPollNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
 
 
 #Prepare orders for filtering
@@ -1167,12 +1167,12 @@ theme(legend.position = "bottom",
       legend.key.size = unit(2, "mm"),
       legend.spacing.y = unit(0.1, "cm"),
        legend.box.spacing = unit(0, "pt"),
-      axis.title = element_text(face = "bold", size = 8),
+      axis.title = element_text(face = "bold", size = 7),
       axis.text = element_text(size=6),
       panel.border = element_rect(size=1)) +
 xlab(NULL) +
 scale_y_continuous(breaks = c(0.25, 0.5,0.75), labels = c("0.25", "0.5","0.75"))+
-theme(strip.text.x = element_text(size = 12, face = "bold"),
+theme(strip.text.x = element_text(size = 10, face = "bold"),
     strip.background = element_rect(
 color=NA, fill=NA, size=0.5, linetype="solid")) +
 scale_fill_manual(values = viridis(4),
@@ -1194,7 +1194,7 @@ theme(plot.margin=unit(c(0,0,0,0), "mm"),
       strip.text.x = element_text(size=12),
       strip.background = element_rect(
 color=NA, fill=NA, size=0.5, linetype="solid"),
-  axis.title = element_text(face = "bold", size = 8),
+  axis.title = element_text(face = "bold", size = 7),
 axis.text = element_text(size=6)) +
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
 panel.background = element_blank(),
@@ -1216,8 +1216,189 @@ p1 + p2 + plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=2)
 ```
 
 
-**FIGURE 5?** CLIFFHANGER OF NETWORK METRICS
 
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graphs (a-b) indicate network connectance and nestedness across the latitudinal range of the studies from the database. In addition, the bioclimatic region where each network is located is indicated with points of different shapes and colours. Graph (c) shows the the association between network connectances and the geometric mean of plant and pollinator species per network. Graph (d) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue).", fig.width=10, fig.height=7, fig.align='center'}
+
+# Load libraries
+
+library(psych)
+# Load data
+data = readRDS("../Data/3_Final_data/Interaction_data.rds")
+metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
+null_networks = readRDS("../Data/Working_files/null_networks.rds")
+null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks.rds")
+
+# Prepare data
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+              Month = lubridate::month(Date), 
+              Day = lubridate::day(Date))
+
+# Subset data for studies with only bumblebees
+v = c("13_Karise", "22_Kallnik")
+subsetting = unique(data$Study_id)
+
+long_format = data %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
+mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+filter(!Study_id %in% v) %>% 
+select(Network_id, Plant_accepted_name, Pollinator_accepted_name)
+
+# Filter networks larger than 4 plants and 4 pollinator species
+v2 = long_format %>% 
+group_by(Network_id) %>% 
+summarise(Poll_spp = n_distinct(Plant_accepted_name),
+          Plant_spp = n_distinct(Pollinator_accepted_name)) %>% 
+ungroup() %>% 
+filter(Poll_spp >= 4 & Plant_spp >= 4) %>% 
+pull(Network_id)
+
+long_format = long_format %>% 
+filter(Network_id %in% v2)
+
+# Filter networks with more links than species
+links = long_format %>% 
+group_by(Network_id, Plant_accepted_name, Pollinator_accepted_name) %>%
+distinct() %>% 
+group_by(Network_id) %>% 
+summarise(links = length(Network_id))
+
+spp = long_format %>% 
+group_by(Network_id) %>% 
+summarise(n_plants = n_distinct(Plant_accepted_name),
+          n_polls = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(n_total = n_plants + n_polls)
+
+vector_to_include = left_join(links, spp)
+
+v3 = vector_to_include %>% 
+filter(links > n_total) %>% 
+pull(Network_id)
+
+long_format = long_format %>% 
+filter(Network_id %in% v3)
+
+# Explore how NODFc changes across the Y-X AXES (latitude-Longitude)
+long_format_coords = data %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
+mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+select(Network_id, Latitude, Longitude, Bioregion) %>% 
+distinct()
+
+# Merge data
+metrics_by_network_coords = left_join(metrics_by_network, long_format_coords)
+
+# Connectance plots
+# 1st Latitude
+p1 = metrics_by_network_coords %>% 
+ggplot(aes(Latitude, Connectance)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.15, size=2.5, alpha=1) +
+theme_bw() +
+ylab("Connectance") +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+))+
+ggtitle("(a)")
+
+
+# 2nd Plot
+p2 = metrics_by_network_coords %>% 
+ggplot(aes(Latitude, Normalised_nestedness)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.15, size=2.5, alpha=1) +
+theme_bw() +
+ylab("NODFc") +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+  )) +
+ggtitle("(b)")
+
+# Merge and process data
+d = left_join(metrics_by_network, null_metrics_networks)
+d = d %>% 
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
+
+p = 0.05 #cutoff probability 95% confidence
+critical_value = qnorm(p/2) #double tail probability divide by 2
+
+d1 = d %>%
+mutate(infra_over_represented = case_when(
+z_score < -abs(critical_value) ~ "Under-represented",
+between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
+  ))
+
+# 2nd Species (geometric mean)
+species_number = long_format %>% 
+group_by(Network_id) %>% 
+summarise(N_plants = n_distinct(Plant_accepted_name),
+          N_pollinators = n_distinct(Pollinator_accepted_name)) %>% 
+group_by(Network_id) %>% 
+summarise(geometric_mean_spp = geometric.mean(c(N_plants, N_pollinators)))
+
+metrics_by_network_spp_number = left_join(metrics_by_network, species_number)
+
+p3 = metrics_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Connectance)) +
+geom_point(pch = 21, fill = "azure3", size=2.5, stroke=0.25, alpha=1) +
+theme_bw() +
+xlab("Species")+
+ggtitle("(c)")
+
+
+# Plot
+p4 = d1 %>% 
+ggplot(aes(x = z_score)) +
+geom_histogram(aes(y = ..density.., fill = infra_over_represented), 
+               bins = 100, alpha = 0.5, color = "black", position = "stack", size=0.1) +
+stat_function(data = d1, fun = function(x) dnorm(x, mean = mean(d1$z_score), sd = sd(d1$z_score)) * 1.7, 
+                n = 1000, inherit.aes = FALSE, color = "gray18", size = 1) +
+theme_bw() +
+coord_cartesian(expand = FALSE) +
+geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red")+
+geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+ylab("Density") +
+xlab("Z scores (NODF)")  +
+xlim(-6, 9) +
+ylim(0, 0.8) +
+scale_fill_manual(name = "Observed NODF against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+ggtitle("(d)")
+
+
+# Layout plots
+a = p1 + p2 + plot_layout(guides = 'collect') & theme(legend.position = "right",
+                                                      legend.justification = "left")
+b = (p3 + p4)  & theme(legend.justification = "left")
+a / b  & theme(axis.title =  element_text(size=16, face="bold"),
+               plot.title = element_text(size=22),
+               panel.border = element_rect(colour = "black",
+               fill=NA, size=1),
+               axis.text=element_text(size=12),
+               legend.text = element_text(size=10),
+               legend.key.size = unit(6, "mm"),
+               legend.spacing.y = unit(0.5, "cm"),
+               legend.box.spacing = unit(0, "pt"),
+               legend.title = element_text(face = "bold"))
+
+```
+
+The level of statistical difference is indicated with different colours.
 
 \newpage 
 
@@ -1275,7 +1456,7 @@ Habitat definitions:
 \newpage
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="105%", fig.cap= "\\textbf{Figure S1}. Coverage of the SafeNet species for bees (family level), syrphids (subfamily level) and butterflies (family level) in relation to the total number of European species within these taxonomic groups.", fig.width=10, fig.height=4}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="105%", fig.cap= "\\textbf{Figure S1}. Coverage of the EuPPollNet species for bees (family level), syrphids (subfamily level) and butterflies (family level) in relation to the total number of European species within these taxonomic groups.", fig.width=10, fig.height=4}
 
 #Prepare figure for supplementary material
 #Coverage across high taxonomic ranks of bees, syrphids and butterflies
@@ -1395,7 +1576,7 @@ ggtitle("Butterfly family coverage")
 
 #--------------------------------------------------------------------------------------------#
 p1+p2+p3 + plot_layout(guides = "collect") & 
-theme(plot.title = element_text(size = 12, face = "bold"),
+theme(plot.title = element_text(size = 14, face = "bold"),
       axis.title.y = element_text(face = "bold"))
 
 
