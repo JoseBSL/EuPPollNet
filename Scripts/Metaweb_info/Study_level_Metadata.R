@@ -35,7 +35,7 @@ select(Study_id, Sampling_method, Day, Month, Year) %>%
 mutate(Date = dmy(paste(Day, Month, Year, sep = "-")))
 #Obtain date information
 dates1 = dates %>% 
-group_by(Study_id, Sampling_method) %>% 
+group_by(Study_id,Year,  Sampling_method) %>% 
 summarise(Min_date = min(Date), 
           Max_date= max(Date), 
           Sampling_days = n_distinct(Date)) %>% 
@@ -55,8 +55,8 @@ TRUE ~ NA))
 #Select cols of interest and prepare data for processing
 taxo_info = data %>% 
 select(Study_id, 
-       Pollinator_accepted_name, Pollinator_order) %>% 
-group_by(Study_id, Pollinator_order) %>% 
+       Pollinator_accepted_name, Year, Pollinator_order) %>% 
+group_by(Study_id,Year, Pollinator_order) %>% 
 count(Pollinator_order) 
 
 #Select any order that is not (Cole, Lepi,Hymeno, Dip)
@@ -107,11 +107,48 @@ rename(Hymenoptera_percent = Hymenoptera,
        Coleoptera_percent = Coleoptera)
 
 
-#Metadata study/network level
+#Metadata study
 metadata = left_join(dates1, taxo_info1)
 
+#Read metadata from authors and incorporate DOI column 
+meta = read_csv("Data/Working_files/Metadata.csv")
+
+doi = meta %>% 
+filter(Metadata_fields == "Doi") %>% 
+select(!Metadata_fields) %>% 
+rename(DOI = Metadata_info) %>% 
+mutate(DOI = str_replace(DOI, " and", ";"))
+
+metadata = left_join(metadata, doi) %>% 
+relocate(DOI, .before = Year)
+
+#Read metadata from authors and incorporate Authors, mails and orcids
+authors = read_csv("Data/Manuscript_info/Authorship.csv")
+
+authors = authors %>% 
+group_by(Study_id) %>% 
+mutate(ID_number = row_number()) %>% 
+mutate(Coauthor_name = paste0(ID_number, ") ", Coauthor_name)) %>% 
+mutate(Orcid = paste0(ID_number, ") ", Orcid)) %>% 
+mutate(E_mail = paste0(ID_number, ") ", E_mail)) %>% 
+mutate(Orcid = str_replace(Orcid, "NA", "")) %>% 
+mutate(E_mail = str_replace(E_mail, "NA", "")) %>% 
+group_by(Study_id) %>%
+summarise(
+Coauthor_Names = paste(Coauthor_name, collapse = ", "),
+Orcids = paste(Orcid, collapse = ", "),
+Emails = paste(E_mail, collapse = ", ")
+)
+
+#Add authors to metadata
+metadata = left_join(metadata, authors)
+
+#Save metadata
+metadata = saveRDS(metadata, "Data/3_Final_data/Metadata.rds")
+
+
 #Load data to google sheets
-(ss <- gs4_create("Study_level", sheets = metadata))
+#(ss <- gs4_create("Study_level", sheets = metadata))
 
 
 

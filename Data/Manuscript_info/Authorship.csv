@@ -105,10 +105,10 @@ Study_id,Coauthor_name,Orcid,E_mail
 41_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
 41_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
 41_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
-41_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+41_Knight,Reinart Feldmann,0009-0009-6004-0702,reinart.feldmann@ufz.de
 41_Knight,Lena Neuenkamp,0000-0001-6108-5720,lena-neuenkamp@web.de
 42_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
-42_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+42_Knight,Reinart Feldmann,0009-0009-6004-0702,reinart.feldmann@ufz.de
 42_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
 42_Knight,Robert Tropek,0000-0001-7499-6259,robert.tropek@gmail.com
 42_Knight,Jana Jersáková,0000-0003-0169-801X,jersa@centrum.cz
@@ -124,7 +124,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 45_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
 45_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
 45_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
-45_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+45_Knight,Reinart Feldmann,0009-0009-6004-0702,reinart.feldmann@ufz.de
 45_Knight,Arkadiusz Nowak,0000-0001-8638-0208,anowak@uni.opole.pl
 45_Knight,Sebastian Świerszcz,0000-0003-2035-0035,seb.swierszcz@gmail.com
 45_Knight,Elisabeth Kühn,0000-0001-8894-2462,elisabeth.kuehn@ufz.de
@@ -132,11 +132,11 @@ Study_id,Coauthor_name,Orcid,E_mail
 46_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
 46_Knight,Elena Motivans Švara,0000-0002-2407-9564,elena.motivans@ufz.de
 46_Knight,Valentin Ştefan,0000-0002-4757-8008,valentin.stefan@idiv.de
-46_Knight,Reinart Feldmann,,reinart.feldmann@ufz.de
+46_Knight,Reinart Feldmann,0009-0009-6004-0702,reinart.feldmann@ufz.de
 46_Knight,Arkadiusz Nowak,0000-0001-8638-0208,anowak@uni.opole.pl
 46_Knight,Sebastian Świerszcz,0000-0003-2035-0035,seb.swierszcz@gmail.com
 46_Knight,Elisabeth Kühn,0000-0001-8894-2462,elisabeth.kuehn@ufz.de
-47_Benadi,Gita Benadi,,
+47_Benadi,Gita Benadi,,gita.benadi@wildlife.uni-freiburg.de
 48_Lara-Romero,Carlos Lara-Romero,0000-0003-0962-0567,carlos.lara@urjc.es
 48_Lara-Romero,José M. Iriondo,0000-0003-2710-3889,carlos.lara@urjc.es
 48_Lara-Romero,Javier Morente-López,0000-0001-9141-8581,carlos.lara@urjc.es

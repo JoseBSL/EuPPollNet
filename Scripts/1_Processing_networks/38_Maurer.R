@@ -18,7 +18,7 @@ data = read_csv("Data/1_Raw_data/38_Maurer/Interaction_data.csv")
 #Add flower info cols
 data = data %>% 
 mutate(Flower_data_merger = NA) %>% 
-mutate(Flower_data = "No") 
+mutate(Flower_data = "Yes") 
 
 #There are some sites without coordinates
 #I asked Corina and she provided those by mail

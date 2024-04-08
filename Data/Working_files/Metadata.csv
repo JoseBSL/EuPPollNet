@@ -25,7 +25,7 @@ Sites are invaded or non invaded, and 50*50m; situated at least 300 m apart."
 1_Bartomeus,Sampling_time_total_min,48816
 1_Bartomeus,Total_plant_species,9
 1_Bartomeus,Total_pollinator_species,26
-1_Bartomeus,Floral_counts,Yes
+1_Bartomeus,Floral_counts,Unprocessed
 2_Petanidou,Doi,NA
 2_Petanidou,Dataset_description,"This dataset documents 6 different sites in Chios Island
 Greece. The purpose of the samplings was to study post-fire succession
@@ -56,7 +56,7 @@ Hymenoptera (with the exception of Formicidae), Diptera
 2_Petanidou,Total_plant_species,64
 2_Petanidou,Total_pollinator_species,206
 2_Petanidou,Floral_counts,Yes
-3_Michez,Doi,NA
+3_Michez,Doi,Unpublished
 3_Michez,Dataset_description,"This dataset documents 71 different sites in the province of Hainaut,
 Wallonia, Belgium. They have been collected for different master thesis and there are sites
 on different habitats. The region is post industrial, so terrils (heat slap),
@@ -254,9 +254,9 @@ each subtransect in different habitat types."
 10_Vanbergen,Sampling_time_details,NA
 10_Vanbergen,Sampling_time_species_round_min,120
 10_Vanbergen,Sampling_time_total_min,4320
-10_Vanbergen,Total_plant_species,176
-10_Vanbergen,Total_pollinator_species,280
-10_Vanbergen,Floral_counts,Yes
+10_Vanbergen,Total_plant_species,174
+10_Vanbergen,Total_pollinator_species,281
+10_Vanbergen,Floral_counts,Unprocessed
 11_Clough,Doi,NA
 11_Clough,Dataset_description,"This dataset documents 18 different sites in southernmost Sweden
 (Scania) along a gradient of landscape scale land-use composition.
@@ -563,9 +563,9 @@ with corresponding surveys of floral abundance."
 23_Holzschuh,Sampling_time_details,15 mins per site and per round
 23_Holzschuh,Sampling_time_species_round_min,NA
 23_Holzschuh,Sampling_time_total_min,960
-23_Holzschuh,Total_plant_species,113
-23_Holzschuh,Total_pollinator_species,158
-23_Holzschuh,Floral_counts,Yes
+23_Holzschuh,Total_plant_species,107
+23_Holzschuh,Total_pollinator_species,124
+23_Holzschuh,Floral_counts,Unprocessed
 24_Holzschuh,Doi,https://doi.org/10.1111/ele.12657
 24_Holzschuh,Dataset_description,Two year dataset of bees and hoverflies on three habitats of Germany
 24_Holzschuh,Taxa_recorded,Bees and hoverflies
@@ -581,9 +581,9 @@ with corresponding surveys of floral abundance."
 24_Holzschuh,Sampling_time_details,15 mins per site and per round
 24_Holzschuh,Sampling_time_species_round_min,NA
 24_Holzschuh,Sampling_time_total_min,960
-24_Holzschuh,Total_plant_species,113
-24_Holzschuh,Total_pollinator_species,158
-24_Holzschuh,Floral_counts,Yes
+24_Holzschuh,Total_plant_species,107
+24_Holzschuh,Total_pollinator_species,124
+24_Holzschuh,Floral_counts,Unprocessed
 25_Holzschuh,Doi,https://doi.org/10.1111/ele.12657
 25_Holzschuh,Dataset_description,Two year dataset of bees and hoverflies on three habitats of Germany
 25_Holzschuh,Taxa_recorded,Bees and hoverflies
@@ -599,8 +599,8 @@ with corresponding surveys of floral abundance."
 25_Holzschuh,Sampling_time_details,15 mins per site and per round
 25_Holzschuh,Sampling_time_species_round_min,NA
 25_Holzschuh,Sampling_time_total_min,960
-25_Holzschuh,Total_plant_species,113
-25_Holzschuh,Total_pollinator_species,158
+25_Holzschuh,Total_plant_species,107
+25_Holzschuh,Total_pollinator_species,124
 25_Holzschuh,Floral_counts,Yes
 26_Castro,Doi,https://doi.org/10.1007/s10530-013-0457-4
 26_Castro,Dataset_description,"This dataset documents 1 site in the surroundings of
@@ -708,7 +708,7 @@ Status and Trends of European Pollinators (STEP)"
 30_Smith,Total_pollinator_species,105
 30_Smith,Floral_counts,Yes
 31_Roberts,Doi,https://doi.org/10.1111/ele.12657
-31_Roberts,Dataset_description,"This is the Swedish dataset from the project
+31_Roberts,Dataset_description,"This is the English dataset from the project
 Status and Trends of European Pollinators (STEP)"
 31_Roberts,Taxa_recorded,Bees and syrphids
 31_Roberts,Sampling_year,2012 and 2013
@@ -732,7 +732,7 @@ Status and Trends of European Pollinators (STEP)"
 32_ORourke,Sampling_year,2011
 32_ORourke,Country,Ireland
 32_ORourke,Habitat,Dunes
-32_ORourke,Sampling_sites,8
+32_ORourke,Sampling_sites,24
 32_ORourke,Sampling_rounds,NA
 32_ORourke,Sampling_method,Focal observations
 32_ORourke,Sampling_area_details,1m2 per plant species at each 30 min round
@@ -750,7 +750,7 @@ Status and Trends of European Pollinators (STEP)"
 33_Power,Sampling_year,2009
 33_Power,Country,Ireland
 33_Power,Habitat,Farming grassland
-33_Power,Sampling_sites,20
+33_Power,Sampling_sites,54
 33_Power,Sampling_rounds,3
 33_Power,Sampling_method,Transects
 33_Power,Sampling_area_details,Transects 100 x 2m transect
@@ -768,7 +768,7 @@ Status and Trends of European Pollinators (STEP)"
 34_Stanley,Sampling_year,2009
 34_Stanley,Country,Ireland
 34_Stanley,Habitat,Farming grassland
-34_Stanley,Sampling_sites,25
+34_Stanley,Sampling_sites,83
 34_Stanley,Sampling_rounds,3
 34_Stanley,Sampling_method,Transects
 34_Stanley,Sampling_area_details,4 transects of 100 x 2 m per site
@@ -786,7 +786,7 @@ Status and Trends of European Pollinators (STEP)"
 35_Mullen,Sampling_year,2010 and 2011
 35_Mullen,Country,Ireland
 35_Mullen,Habitat,Pastures
-35_Mullen,Sampling_sites,19
+35_Mullen,Sampling_sites,107
 35_Mullen,Sampling_rounds,NA
 35_Mullen,Sampling_method,Transects
 35_Mullen,Sampling_area_details,NA
@@ -804,7 +804,7 @@ Status and Trends of European Pollinators (STEP)"
 36_Larkin,Sampling_year,2017
 36_Larkin,Country,Ireland
 36_Larkin,Habitat,Farming grassland
-36_Larkin,Sampling_sites,22
+36_Larkin,Sampling_sites,23
 36_Larkin,Sampling_rounds,3
 36_Larkin,Sampling_method,Transects
 36_Larkin,Sampling_area_details,Transect of 250 x 2m
@@ -969,7 +969,7 @@ Status and Trends of European Pollinators (STEP)"
 41_Knight,Total_plant_species,39
 41_Knight,Total_pollinator_species,101
 41_Knight,Floral_counts,Yes
-42_Knight,Doi,NA
+42_Knight,Doi,Unpublished
 42_Knight,Dataset_description,"We sampled 8 sites,
   4 were old, semi-natural, dry to mesophilic meadows.
   10 transects were placed in each site. Each transect
@@ -1022,7 +1022,7 @@ land."
 43_Knight,Total_plant_species,50
 43_Knight,Total_pollinator_species,203
 43_Knight,Floral_counts,No
-44_Knight,Doi,NA
+44_Knight,Doi,Unpublished
 44_Knight,Dataset_description,"We sample plants, pollinators and
 their interactions in 30 by 2 meter transects across 18
 sites in translyvania. We choose sites that were all
@@ -1085,7 +1085,7 @@ sweeping nets"
 45_Knight,Total_plant_species,33
 45_Knight,Total_pollinator_species,110
 45_Knight,Floral_counts,Yes
-46_Knight,Doi,unpublished
+46_Knight,Doi,Unpublished
 46_Knight,Dataset_description,"The study was conducted in the Nature
 Reserve Góra Gipsowa. We established 10 transects, each
 measuring 30x2m. Transects were placed with a minimum

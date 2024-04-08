@@ -114,7 +114,7 @@ Authorship <- data.frame(
                     "Sebastian Świerszcz", "Elisabeth Kühn"),
   Orcid = c("0000-0003-0318-1567", "0000-0001-8010-4990",
             "0000-0002-2407-9564", "0000-0002-4757-8008",
-            "", "0000-0001-8638-0208", "0000-0003-2035-0035",
+            "0009-0009-6004-0702", "0000-0001-8638-0208", "0000-0003-2035-0035",
             "0000-0001-8894-2462"),
   E_mail = c("tiffany.knight@idiv.de", "demetra.rakosy@gmail.com",
              "elena.motivans@ufz.de", "valentin.stefan@idiv.de",

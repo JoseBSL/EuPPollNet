@@ -123,7 +123,7 @@ select(Study_id, Network_id, Sampling_method, Authors_habitat,
        Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 
 #Keep all cols for now
-saveRDS(data2, "Data/3_Final_data/Interactions_uncounted.rds")
+saveRDS(data2, "Data/Working_files/Interactions_uncounted.rds")
 
 #Final version
 data3 = data2 %>% 

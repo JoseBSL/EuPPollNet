@@ -102,7 +102,7 @@ Authorship <- data.frame(
                     "Demetra Rakosy", "Robert Tropek", 
                     "Jana Jersáková"),
   
-  Orcid = c("0000-0003-0318-1567", "", "0000-0001-8010-4990", 
+  Orcid = c("0000-0003-0318-1567", "0009-0009-6004-0702", "0000-0001-8010-4990", 
             "0000-0001-7499-6259", "0000-0003-0169-801X"),
   E_mail = c("tiffany.knight@idiv.de", "reinart.feldmann@ufz.de",
              "demetra.rakosy@gmail.com", "robert.tropek@gmail.com",
