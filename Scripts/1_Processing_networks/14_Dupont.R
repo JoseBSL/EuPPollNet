@@ -75,7 +75,7 @@ select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) #Including this
 
 #Add cols with flower info
 data = data %>% 
-mutate(Flower_data = "Unprocessed") %>% 
+mutate(Flower_data = "No") %>% 
 mutate(Flower_data_merger = Site_id) 
 
 #Unify structure of data

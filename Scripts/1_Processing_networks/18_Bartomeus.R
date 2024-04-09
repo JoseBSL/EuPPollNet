@@ -30,7 +30,7 @@ mutate(Comments = NA, .after = Year) %>%
 mutate(Site_id = str_replace_all(Site_id, "_", "")) %>% 
 mutate(Sampling_method = "Transects") %>% 
 select(!c(Sampling_effort_minutes, Sampling_area_square_meters)) %>% 
-mutate(Flower_data = "Unprocessed") 
+mutate(Flower_data = "No") 
 
 
 #Add coordinates

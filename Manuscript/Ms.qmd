@@ -243,7 +243,7 @@ my_tibble = d %>%
     TRUE ~ "Other"
   ))
 
-
+#Check number of species and percentage of interactions of poll. groups
 main_orders = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera")
 
 order_info = data %>% 
@@ -255,6 +255,14 @@ summarise(Interactions = length(Pollinator_accepted_name)/ nrow(.) *100,
 
 Hymenoptera_interactions = order_info %>% filter(Pollinator_order == "Hymenoptera") %>%
 select(Interactions) %>% pull()
+
+#Check percentage of studies with flower counts
+floral_counts_percent = data  %>%
+select(Study_id, Flower_data) %>% 
+distinct() %>% 
+group_by(Flower_data) %>% 
+summarise(Percentage = n()/ nrow(.)*100) %>% 
+filter(Flower_data == "Yes")
 
 ```
 
@@ -641,19 +649,12 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.485, 0.8))
 
 # Data structure
 
-The EuPPollNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The data is organized in two different files named interaction data and flower count data. The interaction file contains `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. In addition, information about habitat type and bioclimatic region are also provided in this file. The floral count file contains measurements of floral availability and the unit of measurement, and should be merged with the interaction file by using the column of "Flower_data_merger". 
-
-EXPLAIN WHY IS IN A SEPARATE DATASET
-
-Only xxxx% of studies contain floral count information. The metadata file contains [...]
-
-Prepare final metadata
-
+The EuPPollNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The file contains a total of `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. Information about habitat type and bioclimatic region are also provided in this file. In addition, the interaction dataset includes a column that describes the presence or absence of floral counts for each study. The flower count data is provided in a separate file given that one third of studies lack floral measurements and that the units differ greatly across studies. Finally, metadata at the study level is provided, including information about the authors, digital object identifier if available, sampling time and taxonomic coverage of the main pollinator groups for each study.
 
 ```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, fig.height=1, fig.width=10}
 
 
-kable(my_tibble, booktabs = T, linesep = "\\addlinespace", caption = "\\textbf{Table 1.}") %>%
+kable(my_tibble, booktabs = T, linesep = "\\addlinespace", caption = "\\textbf{Table 1.} Column names and their descriptions within the EuPPollNet database.") %>%
   kable_styling(full_width = F,font_size = 9) %>% row_spec(0, bold=T) %>% 
 kable_styling(position = "center")
 
@@ -661,9 +662,14 @@ kable_styling(position = "center")
 ```
 
 
+## Sampling coverage 
+
+The completeness of the EuPPollNet database was evaluated by exploring the rarefied accumulation curves of plant and pollinator species and their interactions across the different sampling sites. In addition, the accumulation curve of pollinator species with increasing number plant species was also explored. The rarefied and extrapolated sampling curves were obtained with the help of the **iNEXT** package [@hsieh2016]. This was complemented with 100 random accumulation curves obtained programmatically to guide the visualization of the different rarefied curves.
+
+
 ## Taxonomic harmonization
 
-All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For transparency, we have included in the database the old species name, the new assigned name, and, if name of the species is uncertain (e.g., species complex or species alike).
+All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For transparency, we have included in the database the old species name, the new assigned name, and, if the name of the species is uncertain (e.g., species complex or species alike).
 
 For plants: (i) we initially verify exact matches with the GBIF species checklist; (ii) select unmatched cases and fix orthographic errors; (iii) retrieve again taxonomic information for those unmatched cases, evaluate accuracy of fuzzing matching and programmatically fix records that are still not found; (iv) finally, we used the World Flora Taxonomic Backbone [@govaerts2021\; WFO, July 7, 2022] as the ultimate filter for taxonomic information as we used it to calculate the plant taxonomic coverage of our database.
 
@@ -673,15 +679,15 @@ For pollinators: (i) we first created a checklist of species names for the most 
 
 To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level.
 
-## Sampling coverage 
-
-bootstraping, inext package
 
 ## Habitat type and bioclimatic region
 
 The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the EuPPollNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
 
 
+## Network analyses
+
+To get a general overview of some of the main aspects of these set of plant-pollinator networks, we evaluated how connectance and nestedness change across the latitudinal range of studies and bioclimatic regions. In addition, we explored the association between connectance and number of species per network (i.e., geometric mean of plants and pollinators), and if the different networks are more or less nested than expected by chance. Importantly, we implemented two different metrics of nestedness given the different analytical objectives. Common metrics of nestedness are highly correlated to network size, limiting our ability to compare this metric across networks. To avoid this, we implemented a normalised version of nestedness (NODFc) that corrects by connectance and the number of species [@song2017]. This metric was calculated with the help of the **maxnodf** package [@hoeppke2021], which employs a computational efficient approach to calculate it. However, to compare if networks are more or less nested than expected by chance, we employed the traditional z-score approach with the widely used nestedness metric (NODF) from @almeida2008, as this approach allow us to compare our results with previous published nestedness analyses in plant-pollinator networks and only compares each unique network against their randomized versions. We calculated 100 null models for each network with the help of the _vaznull_ function from the package **Bipartite** [@dormann2008] that implements the null model from @vazquez2005. These null networks have the same connectance and number of plant and pollinator species as the empirical ones, but different marginal totals. In other words, interactions are reshuffled with almost equal probabilities to their relative abundances. Finally, connectance was estimated for each network by using the function _networklevel_ from **Bipartite**.
 
 
 \newpage 
@@ -1426,6 +1432,12 @@ The level of statistical difference is indicated with different colours.
 # 3 | DISCUSSION
 
 Geographic and taxonomic biases!
+Supporting reference:
+https://doi.org/10.1111/ecog.05926
+
+Networks, ref:
+
+https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
 
 Contextualise European diversity of plant and pollinator species with global biodiveristy
 

@@ -73,7 +73,7 @@ data <- bind_cols(polls,plants, Freq) %>%
   mutate(Temperature = NA) %>%
   mutate(Humidity = NA) %>% 
   mutate(Site_id = str_replace(Site_id, "bartomeus_2005_", "")) %>% 
-  mutate(Flower_data = "Unprocessed") %>% 
+  mutate(Flower_data = "No") %>% 
   mutate(Flower_data_merger = Site_id)
 
 #Set standard data structure
