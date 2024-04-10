@@ -96,3 +96,25 @@ saveRDS(int_output, "Data/Working_files/interactions_sampling_coverage.rds")
 #Plot
 ggiNEXT(int_output, type=1) 
 
+#Pollinators by plant
+poll_plant_data = data %>% 
+filter(Plant_rank == "SPECIES") %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+select(Pollinator_accepted_name, Plant_accepted_name) %>% 
+distinct() 
+#Count occurrences of each poll species by  plant
+poll_plant_result = poll_plant_data %>%
+count(Plant_accepted_name, Pollinator_accepted_name) %>% 
+group_by(Pollinator_accepted_name) %>% 
+summarise(Incidence = sum(n))
+#Generate incidence matrix with number of sampling units at the begining
+pp = matrix(c(length(unique(poll_plant_data$Plant_accepted_name)) , 
+          poll_plant_result %>% pull(Incidence)),  
+          ncol = 1)
+row.names(pp) = c("Plot", poll_plant_result %>% pull(Pollinator_accepted_name))
+pp = data.frame(pp)
+colnames(pp) = "Plant_id"
+#Calculate sampling coverage
+plant_poll_output = iNEXT(pp, datatype = 'incidence_freq')
+#Save output
+saveRDS(plant_poll_output, "Data/Working_files/plant_poll_spp_sampling_coverage.rds")

@@ -288,7 +288,7 @@ filter(Flower_data == "Yes")
 # Abstract
 \vspace*{-5mm}
 
-**Motivation:** Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the EuPPollNet database, a fully reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time. This database offers an open workflow that allows researchers to track decisions and edit them according to their preferences, while also providing other ecological variables of interest. We hope this database can help researchers to: 1) identify taxonomic, ecological and geographical gaps of knowledge on plant-pollinator interactions; and 2) explore the impacts of global change to guide future conservation planning for both plant and pollinator species.
+**Motivation:** Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the EuPPollNet database, a fully reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time. This database offers an open workflow that allows researchers to track decisions and edit them according to their preferences, while also providing other ecological variables of interest. Furthermore, this work provides an in-depth assessment of the taxonomic and sampling coverage of the database at the European level, complemented by analyses of key structural properties in plant-pollinator networks. We hope this database can help researchers to: 1) identify taxonomic, ecological and geographical gaps of knowledge on plant-pollinator interactions; and 2) explore the impacts of global change to guide future conservation planning for both plant and pollinator species.
 
 **Main Types of Variables Included:** EuPPollNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat type, bio-climatic region and further taxonomic rank information for both plant and pollinator species are also provided. 
 
@@ -303,7 +303,7 @@ filter(Flower_data == "Yes")
 **KEYWORDS**\
 \begingroup
 \small
-plant-pollinator interactions, flowering plants, Angiosperms, pollinators, Hymenoptera, Diptera, Lepidoptera, Coleoptera, Europe
+plant-pollinator networks, plant-pollinator interactions, flowering plants, Angiosperms, pollinators, nestedness, connectance
 \endgroup
 \pagebreak
 
@@ -313,9 +313,9 @@ The interaction between plants and pollinators is one of the most well-documente
 
 Europe is one of the continents with a larger amount of available biodiversity data [@proencca2017], yet still exhibits major gaps [@wetzel2018; @bennett2018]. While species checklists need to be treated carefully, especially at a macro-ecological scale [@grenie2023], the growing number of European plant and pollinator checklists along with occurrence data, is setting a foundation for the conservation of its flora and their pollinators. However, species richness is just one component of biodiversity and documenting the interaction between plants and pollinators is essential for understanding the fate of the species within an ecosystem [@jordano2016]. Numerous works have studied plant-pollinator interactions in the last decades, originating thousands of plant-pollinator interaction networks worldwide. Several initiatives have tried to integrate plant-pollinator interaction data into databases such as *Mangal* [@poisot2016] or *GloBI* [@poelen2014], resulting in numerous large scale comparative analyses that have enhanced our understanding of the ecology of plants and pollinators [e.g., European wild bee data trends\; @marshall2024]. Despite all these resources, Europe lacks accessible harmonized plant-pollinator interaction data that allow researchers to evaluate the state of the art of plant-pollinator interactions at European level, which will guide research efforts, conservation planning and will set a foundation for future global change research. 
 
-The interactions between different plant and pollinator species within a community form complex networks. Macro-ecological analyses of the topology of these networks have revealed common properties across them, such as truncated power-law degree distributions [@jordano1987] or nestedness [@bascompte2003], and has added relevant information of their interaction ecology of plant-pollinator networks across geographic regions [@olesen2002; @traveset2016] and environmental gradients [@ramos2010; @rech2016; @saunders2023]. Although macro-ecological approaches make significant contributions to knowledge, they tend to be rare, and are strongly influenced by the spatio-temporal availability and nature of the data [@burkle2011; @trojelsgaard2013]. For instance, plant-pollinator studies tend to differ in sampling effort and methodology which can impact the structure of the resulting plant-pollinator networks [@gibson2011; @jordano2016]. Further, despite little sampling effort could capture most of the relevant functional species [@hegland2010], most plant-pollinator networks have unobserved interactions because undersampling [@olesen2011; @chacoff2012]. Thus, the lack of strong spatio-temporal coverage along the current intrinsic limitations of sampling plant-pollinator networks, highlight the need of keep gathering and integrating informative species interaction data to properly unravel the different ecological processes at large scales.
+The interactions between different plant and pollinator species within a community form complex networks. Macro-ecological analyses of the topology of these networks have revealed common properties across them, such as truncated power-law degree distributions [@jordano1987] or nestedness [@bascompte2003], and has added relevant information of their interaction ecology of plant-pollinator networks across geographic regions [@olesen2002; @traveset2016] and environmental gradients [@ramos2010; @rech2016; @saunders2023]. Although macro-ecological approaches make significant contributions to knowledge, they tend to be rare, and are strongly influenced by the spatio-temporal availability and nature of the data [@burkle2011; @trojelsgaard2013]. For instance, plant-pollinator studies tend to differ in sampling effort and methodology which can impact the structure of the resulting plant-pollinator networks [@gibson2011; @jordano2016]. Further, despite little sampling effort could capture most of the relevant functional species [@hegland2010], most plant-pollinator networks have unobserved interactions because undersampling [@olesen2011; @chacoff2012]. Thus, the lack of strong spatio-temporal coverage along the current intrinsic limitations of sampling plant-pollinator networks, highlight the need of keep gathering and integrating informative species interaction data to properly unravel the different ecological processes that shape plant-pollinator interactions at large scales.
 
-Here, we present the EuPPollNet database, an acronym derived from European plant-pollinator networks, which contains harmonized informative interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the EuPPollNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). EuPPollNet aims to cover a wide range of taxonomic groups and habitats, while also providing other variables of interest that allow to better control for the ecological context and sampling methods. In addition, EuPPollNet offers a transparent and accessible workflow of its data management and species harmonization that allow to being reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
+Here, we present the EuPPollNet database, an acronym derived from European plant-pollinator networks, which contains harmonized informative interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the EuPPollNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). To understand the scope of the database, we examine the taxonomic and sampling coverage of the different plant and pollinator species at European level with the help of the most up-to-date species checklists and rarefaction analyses. In addition, we investigate how two key structural metrics of plant-pollinator networks, such as connectance and nestedness, change across the latitudinal range of studies and bioclimatic regions. Finally, we also examine whether plant-pollinator networks fulfill the expectation of being more nested than null expectations. EuPPollNet aims to cover a wide range of taxonomic groups and habitats, while also providing other variables of interest that allow to better control for the ecological context and sampling methods. In addition, EuPPollNet offers a transparent and accessible workflow of its data management and species harmonization that allow to being reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
 
 
 # 2 | METHODS
@@ -647,7 +647,7 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.485, 0.8))
 
 \newpage
 
-# Data structure
+## Data structure
 
 The EuPPollNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The file contains a total of `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. Information about habitat type and bioclimatic region are also provided in this file. In addition, the interaction dataset includes a column that describes the presence or absence of floral counts for each study. The flower count data is provided in a separate file given that one third of studies lack floral measurements and that the units differ greatly across studies. Finally, metadata at the study level is provided, including information about the authors, digital object identifier if available, sampling time and taxonomic coverage of the main pollinator groups for each study.
 
@@ -694,17 +694,55 @@ To get a general overview of some of the main aspects of these set of plant-poll
 
 # 3 | RESULTS
 
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
+plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
+int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
+plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
 
-The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figure 1b**).
+#Coverage
+poll_coverage = poll_output$DataInfo$SC *100
+plant_coverage = plant_output$DataInfo$SC *100
+int_coverage = int_output$DataInfo$SC *100
+plant_poll_coverage = plant_poll_output$DataInfo$SC *100
 
 
-## Taxonomy and taxonomic coverage
+#Increase doubling effort
+##Pollinators
+poll_increase = poll_output$iNextEst$Network_id
+poll_increase1 = poll_increase %>% filter(method == "observed") %>% pull(qD)
+poll_increase2 = poll_increase %>% filter(t == max(t)) %>% pull(qD)
+poll_increase3 = (poll_increase2-poll_increase1)/poll_increase1 * 100
+##Plants
+plant_increase = plant_output$iNextEst$Network_id
+plant_increase1 = plant_increase %>% filter(method == "observed") %>% pull(qD)
+plant_increase2 = plant_increase %>% filter(t == max(t)) %>% pull(qD)
+plant_increase3 = (plant_increase2-plant_increase1)/plant_increase1 * 100
+##Interactions
+int_increase = int_output$iNextEst$Network_id
+int_increase1 = int_increase %>% filter(method == "observed") %>% pull(qD)
+int_increase2 = int_increase %>% filter(t == max(t)) %>% pull(qD)
+int_increase3 = (int_increase2-int_increase1)/int_increase1 * 100
+##Pollinator by plant
+plant_poll_increase = plant_poll_output$iNextEst$Plant_id
+plant_poll_increase1 = plant_poll_increase %>% filter(method == "observed") %>% pull(qD)
+plant_poll_increase2 = plant_poll_increase %>% filter(t == max(t)) %>% pull(qD)
+plant_poll_increase3 = (plant_poll_increase2-plant_poll_increase1)/plant_poll_increase1 * 100
+```
 
-Provide number of species per taxonomic group and number of interactions
-Something always of interest: provide % of interactions of _Apis mellifera_?
+## Sampling coverage 
+
+The estimated sampling coverage of plant and pollinator species within the database across the different sampling sites is approximately `r round(poll_coverage)`% for both taxonomic groups. This suggest that the rarefied accumulation curves of both plant and pollinator species exhibit already a "quasi-asymptotic" growth of species richness by considering the current number of sampling sites or networks (**Figure 2a-2b**). The predicted observed species richness by doubling the sampling effort on the already sampled habitat types within the database will only increase pollinator richness by `r format(round(poll_increase3, 2), nsmall=2)`% and plant richness by `r format(round(plant_increase3, 2), nsmall=2)`%. However, the sampling coverage of interactions is `r format(round(int_coverage, 2), nsmall=2)`%, and by doubling the sampling effort the predicted number of unique interactions recorded will have approximately a twofold increase (`r format(round(int_increase3, 2), nsmall=2)`%; **Figure 2c**). Similarly, to the plant and pollinator species accumulation curves across sampling sites, when we consider the accumulated pollinator richness across sampled plant species, this curve also shows a "quasi-asymptotic" growth with a sampling coverage value of `r format(round(plant_poll_coverage, 2), nsmall=2)`%. The predicted increase of recorded pollinator species by sampling the double of plant species would be `r format(round(plant_poll_increase3, 2), nsmall=2)`%.
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represents the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrates the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graphs (d-e) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site. Graph (f) shows the accumulation curve of pollinator species across increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel.", fig.width=10, fig.height=6, out.width="115%"}
+
+Maybe fix last graph? And add it 1st of the last panel (**Figure 2d**)
+
+The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figures 2e-2f**). For instance, xxxxxxxxx.
+
+The estimated sampling coverage when we consider plants, 
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represents the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrates the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site.", fig.width=10, fig.height=6, out.width="115%"}
 
 #Pollinators-----
 poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
@@ -883,7 +921,7 @@ annotate(geom="text", x=1800, y=-0.05, label="\'Rare\' spp."
 scale_y_continuous(breaks = seq(0, 0.7, by= 0.25), expand = c(0, 0)) + 
 coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),
                 ylim=c(0,0.7), clip="off") +
-ggtitle("(d)")
+ggtitle("(e)")
 
 #----------------#
 #Plants
@@ -936,46 +974,77 @@ annotate(geom="text", x=1200, y=-0.05, label="\'Rare\' spp."
 scale_y_continuous(breaks = seq(0, 0.7, by= 0.25), expand = c(0, 0), labels = label_number(accuracy = 0.01)) +
 coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),
                 ylim=c(0, 0.7), clip="off") +
-ggtitle("(e)")
+ggtitle("(f)")
 
-plant_poll = readRDS("../Data/Working_files/collectors_curves_plant_ploll.rds")
-rarefaction_curve1 = readRDS("../Data/Working_files/rarefaction_curve_plant_poll.rds")
+#Pollinator by plant species
+plant_poll_curves = readRDS("../Data/Working_files/collectors_curves_plant_ploll.rds")
+plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
 
+#Create dataset
+d_pp = plant_poll_output$iNextEst$Plant_id
+#Check cols
+d_pp$col = d_pp$method
 
-#Plot curves
-pp1 = plant_poll %>% 
-ggplot(aes(x = Plant_sampled, y= Unique_spp_cumulative, group = iteration)) +
-geom_line(color = "gray") +
-geom_smooth(data = rarefaction_curve1, 
-  aes(x = Plant_sampled, y = mean_curve), inherit.aes = FALSE,method = "loess", color = "black", size = 0.65, linetype = "solid", se = FALSE, span = 0.5) +  
-geom_point(data = rarefaction_curve1, x = max(rarefaction_curve1$Plant_sampled), y = max(rarefaction_curve1$mean_curve), inherit.aes = FALSE, size=2) +
+#Now create tibble with same structure
+a_poll = tibble(t = plant_poll_curves$Plant_sampled, 
+           method = as.character(plant_poll_curves$iteration), 
+           qD = plant_poll_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_pp1 = bind_rows(d_pp, a_poll)
+d_pp1_point = d_pp1 %>%  filter(method == "observed")
+d_pp1_lines = d_pp1 %>%  filter(!method == "observed")
+
+#Plot
+#Order levels
+d_pp1_lines$col = factor(d_pp1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+pp1 = ggplot(d_pp1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col)) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_pp1_point, col = "black") + 
 ylab("Pollinator species") +
 xlab("Plant species") +
 theme_bw() +
 coord_cartesian(expand = FALSE, clip = "off") +
-ggtitle("(f)") +
-scale_x_continuous(breaks = seq(0, 1400, by = 400), limits=c(0,1400)) +
-ylim(0,2500)
-
+ggtitle("(d)") +
+scale_x_continuous(breaks = seq(0, 2800, by = 1000), limits=c(0,2800)) +
+scale_y_continuous(breaks = seq(0, 2600, by = 1000), limits=c(0,2600)) +
+theme(legend.position = "none")
 
 #Plot all
-a = p1 + p2 + p3 + plot_layout(guides = "collect") & theme(legend.title=element_blank(),
+p1 + p2 + p3 + pp1 + o1 + o2 + plot_layout(guides = "collect", nrow = 2, ncol=3) & theme(legend.title=element_blank(),
       axis.title = element_text(size=12, face = "bold"),
       axis.text = element_text(size=10),
       plot.title = element_text(size=18))
-b = o1 + o2 + pp1 & 
-  theme(axis.title = element_text(size=12, face = "bold"),
-        axis.text = element_text(size=10),
-      plot.title = element_text(size=18))
 
-a/b
+#a/b
 
 
 ```
 
+\newpage
+
+## Taxonomic coverage
+
+The database contains xxxx species of pollinators and xxxx species of plants. Most species of pollinators are Hymenoptera species (%), and most of these species are bees (%).
 
 
-phylogenetic and geographical biases
+Provide number of species per taxonomic group and number of interactions
+Something always of interest: provide % of interactions of _Apis mellifera_?
+
+## Habitat type and bioclimatic region
+
+## Network properties
+
+
+
+
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of bee genera in the EuPPollNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
 
@@ -1107,8 +1176,6 @@ theme(legend.margin=unit(1,"cm"),
 
 
 \newpage
-
-## Habitat type and bioclimatic region
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the EuPPollNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
@@ -1425,11 +1492,12 @@ a / b  & theme(axis.title =  element_text(size=16, face="bold"),
 
 ```
 
-The level of statistical difference is indicated with different colours.
 
 \newpage 
 
 # 3 | DISCUSSION
+
+Although Europe...
 
 Geographic and taxonomic biases!
 Supporting reference:
@@ -1509,7 +1577,7 @@ filter(!Pollinator_accepted_name == "Apis mellifera") %>%
 filter(Pollinator_family %in% bee_fam) %>% 
 group_by(Pollinator_family) %>% 
 summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
-mutate(Group = "SafeNet")
+mutate(Group = "EuPPollNet")
 #Species per family within Europe
 bee_spp_europe =  master_list %>% 
 select(Family, Genus, Species, GenusAndSpecies) %>% 
@@ -1530,7 +1598,7 @@ theme_bw() +
 theme(axis.text.x = element_text(angle = 45, hjust =1),
       panel.border = element_rect(size=1)) +
 ylab("Number of species") +
-scale_fill_manual(values = c(viridis(2)))+
+scale_fill_manual(values = c("tan2", "lightgrey"))+
 ggtitle("Bee family coverage")
 #--------------------------------------------------------------------------------------------#
 #Continue with syrphids----
@@ -1551,7 +1619,7 @@ syrphid_spp_safenet = left_join(syrphid_spp_safenet, syrphids)
 syrphid_spp_safenet = syrphid_spp_safenet %>% 
 group_by(Subfamily) %>% 
 summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
-mutate(Group = "SafeNet")
+mutate(Group = "EuPPollNet")
 #Get spp per subfamily at european level
 syrphid_spp_europe = master_list %>% 
 filter(Family == "Syrphidae") %>% 
@@ -1570,7 +1638,7 @@ ylab(NULL) +
 theme_bw() +
 theme(axis.text.x = element_text(angle = 45, hjust =1),
       panel.border = element_rect(size=1)) +
-scale_fill_manual(values = c(viridis(2)))+
+scale_fill_manual(values = c("tan2", "lightgrey"))+
 ggtitle("Syrphid subfamily coverage")
 #--------------------------------------------------------------------------------------------#
 #Continue with butterflies----
@@ -1585,7 +1653,7 @@ filter(Pollinator_order == "Lepidoptera") %>%
 filter(Pollinator_family %in% butt_fam) %>% 
 group_by(Pollinator_family) %>% 
 summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
-mutate(Group = "SafeNet")
+mutate(Group = "EuPPollNet")
 #Species per family within Europe
 butterfly_spp_europe =  master_list1 %>% 
 select(family, genus, scientificName) %>% 
@@ -1604,12 +1672,12 @@ ylab(NULL) +
 theme_bw() +
 theme(axis.text.x = element_text(angle = 45, hjust =1),
       panel.border = element_rect(size=1)) +
-scale_fill_manual(values = c(viridis(2)))+
+scale_fill_manual(values = c("tan2", "lightgrey"))+
 ggtitle("Butterfly family coverage")
 
 #--------------------------------------------------------------------------------------------#
 p1+p2+p3 + plot_layout(guides = "collect") & 
-theme(plot.title = element_text(size = 14, face = "bold"),
+theme(plot.title = element_text(size = 13, face = "bold"),
       axis.title.y = element_text(face = "bold"))
 
 

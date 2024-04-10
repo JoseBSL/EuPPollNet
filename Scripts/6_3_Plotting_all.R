@@ -246,20 +246,44 @@ coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),
                 ylim=c(0, 0.7), clip="off") +
 ggtitle("(e)")
 
-plant_poll = readRDS("Data/Working_files/collectors_curves_plant_ploll.rds")
-#Plot curves
-pp1 = plant_poll %>% 
-ggplot(aes(x = Plant_sampled, y= Unique_spp_cumulative, group = iteration)) +
-geom_line(color = "gray") +
-geom_smooth(data = rarefaction_curve1, 
-              aes(x = Plant_sampled, y = mean_curve), inherit.aes = FALSE,method = "loess", 
-              color = "black", size = 0.5, linetype = "solid", se = FALSE, span = 0.5) +  
+#Pollinator by plant species
+plant_poll_curves = readRDS("Data/Working_files/collectors_curves_plant_ploll.rds")
+plant_poll_output = readRDS("Data/Working_files/plant_poll_spp_sampling_coverage.rds")
+
+#Create dataset
+d_pp = plant_poll_output$iNextEst$Plant_id
+#Check cols
+colnames(d_pp)
+d_pp$col = d_pp$method
+
+#Now create tibble with same structure
+a_poll = tibble(t = plant_poll_curves$Plant_sampled, 
+           method = as.character(plant_poll_curves$iteration), 
+           qD = plant_poll_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_pp1 = bind_rows(d_pp, a_poll)
+d_pp1_point = d_pp1 %>%  filter(method == "observed")
+d_pp1_lines = d_pp1 %>%  filter(!method == "observed")
+
+#Plot
+#Order levels
+d_pp1_lines$col = factor(d_pp1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+pp1 = ggplot(d_pp1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col)) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_pp1_point, col = "black") + 
 ylab("Pollinator species") +
 xlab("Plant species") +
 theme_bw() +
 coord_cartesian(expand = FALSE) +
-ggtitle("(f)")
-pp1                            
+ggtitle("(f)")                          
 
 
 #Plot all
@@ -267,3 +291,6 @@ a = p1 + p2 + p3 + plot_layout(guides = "collect") & theme(legend.title=element_
 b = o1 + o2 + pp1
 
 a/b
+
+
+
