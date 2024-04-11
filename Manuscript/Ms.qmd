@@ -326,7 +326,7 @@ This database is the result of one of the working packages of the European proje
 
 ## Dataset description
 
-The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**). The different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant, from `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. Most of the pollinator species in the database belong to the orders Hymenoptera and Diptera, each comprising approximately 1,000 species. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**).
+The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**). The different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant. Most of the pollinator species in the database belong to the orders Hymenoptera and Diptera, each comprising approximately 1,000 species. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**).
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the EuPPollNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Number of studies by year within the database. (\\textbf{c}) Number of species and interactions across the 4 main pollinator orders at European level."}
@@ -695,6 +695,8 @@ To get a general overview of some of the main aspects of these set of plant-poll
 # 3 | RESULTS
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+
+#Sampling coverage outputs
 poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
 plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
 int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
@@ -705,7 +707,6 @@ poll_coverage = poll_output$DataInfo$SC *100
 plant_coverage = plant_output$DataInfo$SC *100
 int_coverage = int_output$DataInfo$SC *100
 plant_poll_coverage = plant_poll_output$DataInfo$SC *100
-
 
 #Increase doubling effort
 ##Pollinators
@@ -728,19 +729,63 @@ plant_poll_increase = plant_poll_output$iNextEst$Plant_id
 plant_poll_increase1 = plant_poll_increase %>% filter(method == "observed") %>% pull(qD)
 plant_poll_increase2 = plant_poll_increase %>% filter(t == max(t)) %>% pull(qD)
 plant_poll_increase3 = (plant_poll_increase2-plant_poll_increase1)/plant_poll_increase1 * 100
+
+#Prepare results from common and rare poll across sampling sites
+#Pollinators
+poll_spread = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Network_id) %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+ungroup() %>% 
+count(Pollinator_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id)*100)
+#Check number of studies under 1%
+poll_total = nrow(poll_spread)
+polls_under_one_percent = poll_spread %>% 
+filter(Percent_total<1) %>% 
+nrow()
+polls_under_one_percent = polls_under_one_percent/poll_total * 100
+#Find most common pollinator
+most_common_poll = poll_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Pollinator_accepted_name)
+#Find most common poll percent
+most_common_poll_percent = poll_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Percent_total)
+#Plants
+plant_spread = data %>% 
+select(Plant_rank, Network_id, Plant_accepted_name) %>% 
+group_by(Network_id) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+distinct(Plant_accepted_name) %>% 
+ungroup() %>% 
+count(Plant_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id)*100)
+#Check number of studies under 1%
+plant_total = nrow(plant_spread)
+plants_under_one_percent = plant_spread %>% 
+filter(Percent_total<1) %>% 
+nrow()
+plants_under_one_percent = plants_under_one_percent/plant_total * 100  
+#Find most common plant
+most_common_plant = plant_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Plant_accepted_name)
+#Find most common plant percent
+most_common_plant_percent = plant_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Percent_total)
 ```
 
 ## Sampling coverage 
 
-The estimated sampling coverage of plant and pollinator species within the database across the different sampling sites is approximately `r round(poll_coverage)`% for both taxonomic groups. This suggest that the rarefied accumulation curves of both plant and pollinator species exhibit already a "quasi-asymptotic" growth of species richness by considering the current number of sampling sites or networks (**Figure 2a-2b**). The predicted observed species richness by doubling the sampling effort on the already sampled habitat types within the database will only increase pollinator richness by `r format(round(poll_increase3, 2), nsmall=2)`% and plant richness by `r format(round(plant_increase3, 2), nsmall=2)`%. However, the sampling coverage of interactions is `r format(round(int_coverage, 2), nsmall=2)`%, and by doubling the sampling effort the predicted number of unique interactions recorded will have approximately a twofold increase (`r format(round(int_increase3, 2), nsmall=2)`%; **Figure 2c**). Similarly, to the plant and pollinator species accumulation curves across sampling sites, when we consider the accumulated pollinator richness across sampled plant species, this curve also shows a "quasi-asymptotic" growth with a sampling coverage value of `r format(round(plant_poll_coverage, 2), nsmall=2)`%. The predicted increase of recorded pollinator species by sampling the double of plant species would be `r format(round(plant_poll_increase3, 2), nsmall=2)`%.
-
-
-
-Maybe fix last graph? And add it 1st of the last panel (**Figure 2d**)
-
-The majority of plant and pollinator species tend to be regionally specific, with only a minor portion of them being shared across a broad range of studies (**Figures 2e-2f**). For instance, xxxxxxxxx.
-
-The estimated sampling coverage when we consider plants, 
+The estimated sampling coverage of plant and pollinator species within the database across the different sampling sites is approximately `r round(poll_coverage)`% for both taxonomic groups. This suggest that the rarefied accumulation curves of both plant and pollinator species exhibit already a "quasi-asymptotic" growth of species richness by considering the current number of sampling sites or networks (**Figure 2a-2b**). The predicted observed species richness by doubling the sampling effort on the already sampled habitat types within the database will only increase pollinator richness by `r format(round(poll_increase3, 2), nsmall=2)`% and plant richness by `r format(round(plant_increase3, 2), nsmall=2)`%. However, the sampling coverage of interactions is `r format(round(int_coverage, 2), nsmall=2)`%, and by doubling the sampling effort the predicted number of unique interactions recorded will have approximately a twofold increase (`r format(round(int_increase3, 2), nsmall=2)`%; **Figure 2c**). Similarly, to the plant and pollinator species accumulation curves across sampling sites, when we consider the accumulated pollinator richness across sampled plant species, this curve also shows a "quasi-asymptotic" growth with a sampling coverage value of `r format(round(plant_poll_coverage, 2), nsmall=2)`%. The predicted recorded pollinator species by doubling the number of plants sampled is expected to increase by `r format(round(plant_poll_increase3, 2), nsmall=2)`% (**Figure 2d**). In addition, when we explore how common or rare are plant and pollinator species across all sampling sites, we find that the majority of plant and pollinator species tend to be regionally specific, and only a minor portion of them is being shared across a broad range of sampling sites (**Figures 2e-2f**). For instance, most plants (`r format(round(plants_under_one_percent, 2), nsmall=2)`%) and pollinators (`r format(round(polls_under_one_percent, 2), nsmall=2)`%) are exclusively found in less than 1% of sampling sites; and the most common plant (*`r most_common_plant`*) and pollinator (*`r most_common_poll`*) species are only found in `r format(round(most_common_plant_percent, 2), nsmall=2)`% and `r format(round(most_common_poll_percent, 2), nsmall=2)`% of sampling sites, respectively.
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represents the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrates the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site.", fig.width=10, fig.height=6, out.width="115%"}
 
@@ -1030,9 +1075,63 @@ p1 + p2 + p3 + pp1 + o1 + o2 + plot_layout(guides = "collect", nrow = 2, ncol=3)
 
 \newpage
 
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+#Taxonomic coverage outputs
+#Find number of plant and pollinator species
+##Pollinators
+poll_spp = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+nrow(.)
+##Plants
+plant_spp = data %>% 
+select(Plant_rank, Plant_accepted_name) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+distinct(Plant_accepted_name) %>% 
+nrow(.)
+
+#Overall plant coverage
+plant_coverage = readRDS("../Data/Manuscript_info/plant_coverage.RData")
+
+#Average plant family coverage
+d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData")
+mean_plant_fam_cov = d1 %>% 
+ungroup() %>% 
+filter(fam_group =="B") %>% 
+summarise(mean_plant_fam_cov = mean(Percent)) %>% 
+pull()
+
+
+```
+
+
 ## Taxonomic coverage
 
-The database contains xxxx species of pollinators and xxxx species of plants. Most species of pollinators are Hymenoptera species (%), and most of these species are bees (%).
+The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of flowering plants occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. There are x% of families without recorded interactions and the absence of information seems to not follow strongly phylogenetic constraints (OUTPUT lambda)
+
+
+
+The estimated sampling coverage of plant species at European level is x% (**Figure 4**). The three families with higher number of interactions within the database are xxxxx (%), xxxxxx (%) and xxxxx (%). Despite these species have a high number of interactions within the database, the number of species recorded within the database in comparison with the total number of species at European level reveals a low coverage of interactions for most of the species of these families.
+
+
+
+
+The most common order of plants is Asterales with Asteraceae being the family with highest number of species within the database.
+
+
+The database coverage of plants at European level is x% and the pollinator coverage when considering bees x%, syrphids x% and butterflies x%. 
+
+
+
+
+
+Most species of pollinators are Hymenoptera species (%), and most of these species are bees (%).
+
+
+**Figure 3**
+**Figure 4**
+**Figure S1**
 
 
 Provide number of species per taxonomic group and number of interactions
