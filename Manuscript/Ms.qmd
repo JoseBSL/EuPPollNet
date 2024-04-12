@@ -27,6 +27,7 @@ library(tidyr) #Reshape data (wide format)
 library(stringr) #Fix/modify strings
 library(forcats)
 library(readr)
+library(phytools)
 #Load libraries for plotting
 library(giscoR) #Maps
 library(ggstar) #cool shapes as points
@@ -1095,20 +1096,44 @@ nrow(.)
 plant_coverage = readRDS("../Data/Manuscript_info/plant_coverage.RData")
 
 #Average plant family coverage
-d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData")
+d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData") %>% 
+filter(fam_group == "B")
+#Average coverage per family
 mean_plant_fam_cov = d1 %>% 
 ungroup() %>% 
-filter(fam_group =="B") %>% 
 summarise(mean_plant_fam_cov = mean(Percent)) %>% 
 pull()
 
+#Percent of families with interaction records
+all_fam = nrow(d1)
+fam_with_data = d1 %>% 
+filter(Percent > 0) %>% 
+nrow()
+percent_plant_fam_with_data = fam_with_data/all_fam * 100
+
+#Calculate phylogenetic signal of presence-absence information
+#Read data and plot it
+tree = readRDS("../Data/Manuscript_info/plant_phylo.RData")
+#Create binary trait to calculate phylo
+phylo_trait = d1 %>% 
+mutate(categorical = case_when(Percent > 0 ~ 1, TRUE ~ 0)) %>% 
+#select(label, categorical) %>% 
+ungroup() 
+#Check phylogenetic signal
+d1 = d1 %>% arrange(factor(label, levels = tree@phylo$tip.label))
+phylo_signal_plant = phylosig(tree@phylo, phylo_trait$categorical, method="lambda", test=TRUE)
+lambda_phylosig_plants = phylo_signal_plant$lambda
+p_phylosig_plants = phylo_signal_plant$P
 
 ```
 
 
 ## Taxonomic coverage
 
-The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of flowering plants occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. There are x% of families without recorded interactions and the absence of information seems to not follow strongly phylogenetic constraints (OUTPUT lambda)
+The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of flowering plants occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Most plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%) and the presence or absence of interaction data seems not to follow a phylogenetic pattern (RESULT).
+
+`r lambda_phylosig_plants`
+`r p_phylosig_plants`
 
 
 
