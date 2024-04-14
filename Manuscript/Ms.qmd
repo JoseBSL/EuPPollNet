@@ -265,6 +265,27 @@ group_by(Flower_data) %>%
 summarise(Percentage = n()/ nrow(.)*100) %>% 
 filter(Flower_data == "Yes")
 
+#Check percentage of apis mellifera records
+all_records = data %>% nrow(.) 
+apis_records = data %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>% 
+nrow(.)
+apis_percent = apis_records/all_records * 100
+#Check average pecentage of interactions of apis by net
+a = data %>% 
+group_by(Network_id) %>% 
+summarise(n_interactions = length(Pollinator_accepted_name))
+b = data %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>% 
+summarise(n_interactions_apis = length(Pollinator_accepted_name))
+c = left_join(a,b)
+apis_average_network = c %>% 
+mutate(apis_percent_net = n_interactions_apis/ n_interactions *100) %>% 
+ungroup() %>% 
+summarise(mean_apis_percent_net = mean(apis_percent_net, na.rm=T)) %>% 
+pull()
+
 ```
 
 
@@ -327,7 +348,7 @@ This database is the result of one of the working packages of the European proje
 
 ## Dataset description
 
-The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**). The different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant. Most of the pollinator species in the database belong to the orders Hymenoptera and Diptera, each comprising approximately 1,000 species. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**).
+The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**). The different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant. Most of the pollinator species in the database belong to the orders Hymenoptera and Diptera, each comprising approximately 1,000 species. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably,  _Apis mellifera_ represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the EuPPollNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Number of studies by year within the database. (\\textbf{c}) Number of species and interactions across the 4 main pollinator orders at European level."}
@@ -1121,7 +1142,11 @@ mutate(categorical = case_when(Percent > 0 ~ 1, TRUE ~ 0)) %>%
 ungroup() 
 #Check phylogenetic signal
 d1 = d1 %>% arrange(factor(label, levels = tree@phylo$tip.label))
-phylo_signal_plant = phylosig(tree@phylo, phylo_trait$categorical, method="lambda", test=TRUE)
+
+v = phylo_trait$categorical
+names(v) = tree@phylo$tip.label
+
+phylo_signal_plant = phylosig(tree@phylo, v, method="lambda", test=TRUE)
 lambda_phylosig_plants = phylo_signal_plant$lambda
 p_phylosig_plants = phylo_signal_plant$P
 
@@ -1130,37 +1155,17 @@ p_phylosig_plants = phylo_signal_plant$P
 
 ## Taxonomic coverage
 
-The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of flowering plants occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Most plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%) and the presence or absence of interaction data seems not to follow a phylogenetic pattern (RESULT).
-
-`r lambda_phylosig_plants`
-`r p_phylosig_plants`
+The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species seems not to follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). 
 
 
-
-The estimated sampling coverage of plant species at European level is x% (**Figure 4**). The three families with higher number of interactions within the database are xxxxx (%), xxxxxx (%) and xxxxx (%). Despite these species have a high number of interactions within the database, the number of species recorded within the database in comparison with the total number of species at European level reveals a low coverage of interactions for most of the species of these families.
-
-
-
-
-The most common order of plants is Asterales with Asteraceae being the family with highest number of species within the database.
-
-
-The database coverage of plants at European level is x% and the pollinator coverage when considering bees x%, syrphids x% and butterflies x%. 
-
-
-
-
-
-Most species of pollinators are Hymenoptera species (%), and most of these species are bees (%).
-
+Pollinators:
 
 **Figure 3**
-**Figure 4**
+
 **Figure S1**
 
 
 Provide number of species per taxonomic group and number of interactions
-Something always of interest: provide % of interactions of _Apis mellifera_?
 
 ## Habitat type and bioclimatic region
 
