@@ -163,6 +163,9 @@ bee.tree100 = bind.tip(bee.tree100, "Parammobatodes", edge.length=NULL, where=co
 common_ancestor = getMRCA(bee.tree100, c("Pasites", "Ammobates"))
 bee.tree100 = bind.tip(bee.tree100, "Chiasmognathus", edge.length=NULL, where=common_ancestor, position=0)
 
+#Save tree, cannot calculate phylo signal with this last additions
+saveRDS(bee.tree100, "Data/Manuscript_info/bee.tree100.rds")
+
 ## Function for adding a cherry to a tree where a single tip was before
 add.cherry <- function(tree, tip, new.tips) {
     ## Find the edge leading to the tip
@@ -172,16 +175,24 @@ add.cherry <- function(tree, tip, new.tips) {
     ## Naming the tips
     tree_to_add$tip.label <- c(tip, new.tips)
     ## Add 0 branch length
-    tree_to_add$edge.length <- NULL
+    branch_length = tidytree::as_tibble(bee.tree100)
+    bl = branch_length %>%  filter(label==tip) %>%  pull(branch.length)
+    tree_to_add$edge.length <- bl
     ## Binding both trees
     return(bind.tree(tree, tree_to_add, where = tip_id))
 }
-## Adding a new sister taxon with NULL branch length
+
+a = bee.tree100
+## Adding a new sister taxon with branch length equal to tip
 bee.tree100 = add.cherry(bee.tree100, tip = "Nomioides", new.tips = "Ceylalictus")
 bee.tree100 = add.cherry(bee.tree100, tip = "Rophites", new.tips = "Rhophitoides")
 bee.tree100 = add.cherry(bee.tree100, tip = "Panurgus", new.tips = "Flavipanurgus")
 bee.tree100 = add.cherry(bee.tree100, tip = "Ancyla", new.tips = "Tarsalia")
 bee.tree100 = add.cherry(bee.tree100, tip = "Stelis", new.tips = "Ensliniana")
+
+
+
+
 
 #Now prepare data for plotting
 #European bee spescies data

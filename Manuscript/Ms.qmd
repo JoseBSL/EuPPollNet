@@ -1150,22 +1150,89 @@ phylo_signal_plant = phylosig(tree@phylo, v, method="lambda", test=TRUE)
 lambda_phylosig_plants = phylo_signal_plant$lambda
 p_phylosig_plants = phylo_signal_plant$P
 
+#Load pollinator coverage
+bee_coverage = readRDS("../Data/Manuscript_info/bee_coverage.RData")
+syrphid_coverage = readRDS("../Data/Manuscript_info/syrphid_coverage.RData")
+lepidoptera_coverage = readRDS("../Data/Manuscript_info/lepidoptera_coverage.RData")
+#Check percentage of interactions from bees with and without apis
+#Check percentage of bees in the database
+bee_fam = c("Apidae", "Megachilidae", "Halictidae",
+            "Andrenidae", "Colletidae", "Melittidae")
+all_rows = data %>% nrow(.)
+#
+bee_rows = data %>%
+filter(Pollinator_family %in% bee_fam) %>% 
+nrow(.)
+#Bee interactions
+bee_interactions_percent = bee_rows/all_rows *100
+#Eclude now apis
+bee_rows_non_apis = data %>%
+filter(Pollinator_family %in% bee_fam) %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>% 
+nrow(.)
+#
+bee_interactions_non_apis_percent = bee_rows_non_apis/bee_rows *100
+
+#Coverage across bee genera
+d1 = readRDS("../Data/Manuscript_info/bee_data.RData")
+all_rows_bees = d1 %>%  
+filter(fam_group == "a") %>% 
+nrow(.)
+#
+data_bees = d1 %>%  
+filter(fam_group == "a") %>% 
+mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>% 
+filter(Percent > 0) %>% 
+nrow(.)
+#
+bee_genera_percent_coverage = data_bees/all_rows_bees
+#Check average coverage across bee genera
+average_coverage_bee_genera = d1 %>% 
+filter(fam_group == "a") %>% 
+mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>% 
+ungroup() %>% 
+summarise(average_coverage_bee_genera = mean(Percent)) %>% 
+pull()
+
+#Calculate phylogenetic signal of presence-absence information
+##Read data and plot it
+tree = readRDS("../Data/Manuscript_info/bee.tree100.rds")
+##Create binary trait to calculate phylo
+phylo_trait = d1 %>% 
+filter(fam_group == "a") %>% 
+mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>% 
+mutate(categorical = case_when(Percent > 0 ~ 1, TRUE ~ 0)) %>% 
+ungroup() 
+##Conduct left join to tibble of tip labels to organise order
+v = tibble(Genus1 = tree$tip.label) %>% 
+mutate(Genus1 = str_to_title(word(Genus1,1,sep = "_")))
+#
+v1 = left_join(v, phylo_trait)
+#
+v2 = v1$categorical
+names(v2) = tree$tip.label
+#
+phylo_signal_bees = phylosig(tree, v2, method="lambda", test=TRUE)
+lambda_phylosig_bees = phylo_signal_bees$lambda
+p_phylosig_bees = phylo_signal_bees$P
+
 ```
 
 
 ## Taxonomic coverage
 
-The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species seems not to follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). 
+The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species seems not to follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). The coverage of the main taxonomic groups of pollinators at European level is `r format(round(bee_coverage, 2), nsmall=2)`% for bees, `r format(round(syrphid_coverage, 2), nsmall=2)`% for syrphids and `r format(round(lepidoptera_coverage, 2), nsmall=2)`% for butterflies (see **Figure S1** for coverage at the family level for bees and butterflies, and at the subfamily level for syrphids). Bees constitute `r format(round(bee_interactions_percent, 2), nsmall=2)`% of the interactions of the database, and `r format(round(bee_interactions_non_apis_percent, 2), nsmall=2)`% of the interactions when excluding honey bees.
 
 
-Pollinators:
+
+`r format(round(bee_genera_percent_coverage, 2), nsmall=2)`% of bee genera have at least one species with interaction records within the database and the average coverage at the genus level is `r format(round(average_coverage_bee_genera, 2), nsmall=2)`%. Notably, the presence or absence of interactions records seems or not seems to follow any sort of phylogenetic signal (($\lambda$ = `r format(round(lambda_phylosig_bees, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_bees, 2), nsmall=2)`)).
+
+
+
 
 **Figure 3**
 
-**Figure S1**
 
-
-Provide number of species per taxonomic group and number of interactions
 
 ## Habitat type and bioclimatic region
 
