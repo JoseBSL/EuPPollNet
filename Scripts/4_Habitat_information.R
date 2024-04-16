@@ -912,7 +912,7 @@ select(Study_id, Network_id, Authors_habitat, SafeNet_habitat, Latitude,
        Longitude)
 
 check = habitat %>% 
-filter(is.na(Authors_habitat))
+filter(is.na(SafeNet_habitat))
 
 #Save data
 saveRDS(habitat, "Data/Working_files/Habitat.rds")

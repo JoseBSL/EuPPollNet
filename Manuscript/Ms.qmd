@@ -1216,6 +1216,39 @@ phylo_signal_bees = phylosig(tree, v2, method="lambda", test=TRUE)
 lambda_phylosig_bees = phylo_signal_bees$lambda
 p_phylosig_bees = phylo_signal_bees$P
 
+#Check number of studies by habitat
+studies_by_habitat = data %>% 
+select(Study_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+slice_max(Habitat_count, n = 3) %>% 
+mutate(EuPPollNet_habitat = tolower(EuPPollNet_habitat))
+#Check number of sampling sites by habitat
+networks_by_habitat = data %>% 
+select(Network_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+slice_max(Habitat_count, n = 3) %>% 
+mutate(EuPPollNet_habitat = tolower(EuPPollNet_habitat))
+#Check number of studies by bioregion
+studies_by_bioregion = data %>% 
+select(Study_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+slice_max(Bioregion_count, n = 3) %>% 
+mutate(Bioregion = tolower(Bioregion))
+#Check number of sampling sites by bioregion
+networks_by_bioregion = data %>% 
+select(Network_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+slice_max(Bioregion_count, n = 3) %>% 
+mutate(Bioregion = tolower(Bioregion))
+
 ```
 
 
@@ -1357,6 +1390,11 @@ theme(legend.margin=unit(1,"cm"),
 
 
 ## Habitat type and bioclimatic region
+
+The proportion of the major pollinator orders within the database differed across habitats and bioclimatic regions (**Figure 5**). As expected, Hymenoptera was the main taxonomic order on the majority of habitats, exceeded only by Diptera on the habitat categories of riparian vegetation, moors and heathland, and alpine grasslands. Overall, the proportion of Lepidoptera and Coleoptera was low across all habitats but Coleoptera showed a notably increase in sclerophyllous vegetation and beaches, dunes and sands habitat categories. Similar patterns were observed when exploring the pollinator proportions by bioclimatic region. In this particular case, Hymenoptera was the predominant order in all bioclimatic regions with Diptera taking more importance in Alpine and Atlantic regions. Again, Lepidoptera shows low proportions across all bioclimatic regions and Coleptera seems to be only relevant in Mediterranean regions at European level. Notably, the number of studies (**Figure 5**) and sampling sites (**Figure S2**) also differs across habitats and bioclimatic regions. The habitats sampled by a higher number of studies in the database are `r studies_by_habitat$EuPPollNet_habitat[[1]]` (`r studies_by_habitat$Habitat_count[[1]]`), `r studies_by_habitat$EuPPollNet_habitat[[2]]` (`r studies_by_habitat$Habitat_count[[2]]`) and `r studies_by_habitat$EuPPollNet_habitat[[3]]` (`r studies_by_habitat$Habitat_count[[3]]`). However, the habitats that contain a higher number of sampling sites are `r networks_by_habitat$EuPPollNet_habitat[[1]]` (`r networks_by_habitat$Habitat_count[[1]]`), `r networks_by_habitat$EuPPollNet_habitat[[2]]` (`r networks_by_habitat$Habitat_count[[2]]`) and `r networks_by_habitat$EuPPollNet_habitat[[3]]` (`r networks_by_habitat$Habitat_count[[3]]`). The bioclimatic regions with a higher number of studies are `r studies_by_bioregion$Bioregion[[1]]` (`r studies_by_bioregion$Bioregion_count[[1]]`), `r studies_by_bioregion$Bioregion[[2]]` (`r studies_by_bioregion$Bioregion_count[[2]]`) and `r studies_by_bioregion$Bioregion[[3]]` (`r studies_by_bioregion$Bioregion_count[[3]]`); and the ones that contain a higher number of sampling sites are `r networks_by_bioregion$Bioregion[[1]]` (`r networks_by_bioregion$Bioregion_count[[1]]`), `r networks_by_bioregion$Bioregion[[2]]` (`r networks_by_bioregion$Bioregion_count[[2]]`) and `r networks_by_bioregion$Bioregion[[3]]` (`r networks_by_bioregion$Bioregion_count[[3]]`). 
+
+
+
 
 
 
@@ -1866,6 +1904,50 @@ ggtitle("Butterfly family coverage")
 p1+p2+p3 + plot_layout(guides = "collect") & 
 theme(plot.title = element_text(size = 13, face = "bold"),
       axis.title.y = element_text(face = "bold"))
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="100%", fig.cap= "\\textbf{Figure S2}. Barplot indicating the number of sampling sites by habitat and bioclimatic region within the database.", fig.width=8, fig.height=8}
+
+#Check number of studies by habitat
+habitat = data %>% 
+select(Network_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat_bioregion = EuPPollNet_habitat) %>% 
+rename(Count = Habitat_count)
+
+#Check number of studies by bioregion
+bioregion = data %>% 
+select(Network_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat_bioregion = Bioregion) %>% 
+rename(Count = Bioregion_count)
+
+
+c = bind_rows(habitat, bioregion)
+
+ggplot(c, aes(Habitat_bioregion, Count)) +
+geom_col(fill = "gray25",width = 0.9, color="black", linewidth = 0.4) +
+theme_bw()+
+coord_flip(expand = F) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")),
+        space = "free", scales = "free_y") +
+ylab("Sampling sites") +
+xlab(NULL) +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+      axis.ticks.x = element_line(color="black"),
+      strip.text.x = element_text(size=12),
+      strip.background = element_rect(size=0.5, linetype="solid"),
+  axis.title = element_text(face = "bold", size = 12),
+axis.text = element_text(size=10))
 
 
 ```
