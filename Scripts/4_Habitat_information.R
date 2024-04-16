@@ -1,6 +1,7 @@
 #Extract habitat type by coordinates and create a "homogeneous"
 #sampling habitat classification across studies
 
+library(dplyr)
 #Load data 
 data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
 
@@ -217,7 +218,7 @@ mutate(Land_cover =
 #8_Biella
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "8_Biella" ~ "Natural grasslands",
+  case_when(Study_id == "8_Biella" ~ "Alpine grasslands",
     TRUE ~ Land_cover))
 #9_Heleno
 habitat = habitat %>% 
@@ -358,10 +359,11 @@ habitat = habitat %>%
 mutate(Land_cover = 
   case_when(Study_id == "14_Dupont" ~ "Moors and heathland",
     TRUE ~ Land_cover))
-#15_Magrach (Grasslands) Quite happy with the classification of Corine
+#15_Magrach (Grasslands) By the look of it maybe semi-alpine 
+#add it at alpine for simplicity
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "15_Magrach" ~ "Natural grasslands",
+  case_when(Study_id == "15_Magrach" ~ "Alpine grasslands",
     TRUE ~ Land_cover))
 
 #16_Manincor (Grasslands)
@@ -499,69 +501,82 @@ mutate(Land_cover =
     TRUE ~ Land_cover))
 
 #33_Power
-power_habitats = data %>% 
-filter(Study_id == "33_Power") %>% 
-distinct(Network_id) %>% pull()
-
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(
-    Study_id == "33_Power" & Network_id == power_habitats[1]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[2]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[3]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[4]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[5]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[6]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[7]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[8]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[9]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[10]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[11]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[12]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[13]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[14]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[15]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[16]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[17]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[18]~ "Pastures (agricultural matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[19]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "33_Power" & Network_id == power_habitats[20]~ "Pastures (agricultural/vegetation matrix)",
+  case_when(Study_id == "33_Power" ~ "Pastures",
     TRUE ~ Land_cover))
 
-#34_Stanley
-stanley_habitats = data %>% 
-filter(Study_id == "34_Stanley") %>% 
-distinct(Network_id) %>% pull()
+#Habitats have changed... Doing it with less resolution
+#power_habitats = data %>% 
+#filter(Study_id == "33_Power") %>% 
+#distinct(Network_id) %>% pull()
+#
+#habitat = habitat %>% 
+#mutate(Land_cover = 
+#  case_when(
+#    Study_id == "33_Power" & Network_id == power_habitats[1]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[2]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[3]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[4]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[5]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[6]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[7]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[8]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[9]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[10]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[11]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[12]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[13]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[14]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[15]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[16]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[17]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[18]~ "Pastures (agricultural matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[19]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "33_Power" & Network_id == power_habitats[20]~ "Pastures (agricultural/vegetation matrix)",
+#    TRUE ~ Land_cover))
 
+#34_Stanley
+#Pastures 
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[1]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[2]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[3]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[4]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[5]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[6]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[7]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[8]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[9]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[10]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[11]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[12]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[13]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[14]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[15]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[16]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[17]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[18]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[19]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[20]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[21]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[22]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[23]~ "Pastures (agricultural matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[24]~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "34_Stanley" & Network_id == stanley_habitats[25]~ "Pastures (agricultural matrix)",
-        TRUE ~ Land_cover))
+  case_when(Study_id == "34_Stanley" ~ "Pastures",
+    TRUE ~ Land_cover))
+
+#stanley_habitats = data %>% 
+#filter(Study_id == "34_Stanley") %>% 
+#distinct(Network_id) %>% pull()
+#
+#habitat = habitat %>% 
+#mutate(Land_cover = 
+#  case_when(
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[1]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[2]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[3]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[4]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[5]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[6]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[7]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[8]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[9]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[10]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[11]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[12]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[13]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[14]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[15]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[16]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[17]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[18]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[19]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[20]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[21]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[22]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[23]~ "Pastures (agricultural matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[24]~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "34_Stanley" & Network_id == stanley_habitats[25]~ "Pastures (agricultural matrix)",
+#        TRUE ~ Land_cover))
+#
 
 #35_Mullen
 habitat = habitat %>% 
@@ -599,6 +614,8 @@ mutate(Land_cover =
     Study_id == "36_Larkin" & Network_id == larkin_habitats[20]~ "Pastures (agricultural/vegetation matrix)",
     Study_id == "36_Larkin" & Network_id == larkin_habitats[21]~ "Pastures (vegetation matrix)",
     Study_id == "36_Larkin" & Network_id == larkin_habitats[22]~ "Pastures (agricultural/vegetation matrix)",
+    Study_id == "36_Larkin" & Network_id == larkin_habitats[23]~ "Pastures (vegetation matrix)",
+
         TRUE ~ Land_cover))
 
 #37_White
@@ -697,11 +714,11 @@ distinct(Network_id) %>% pull()
 habitat = habitat %>% 
 mutate(Land_cover = 
   case_when(
-    Study_id == "41_Knight" & Network_id == knight_habitats[1] ~ "Pastures (vegetation matrix)",
+    Study_id == "41_Knight" & Network_id == knight_habitats[1] ~ "Forest/woodland",
     Study_id == "41_Knight" & Network_id == knight_habitats[2] ~ "Pastures (agricultural/vegetation matrix)",
     Study_id == "41_Knight" & Network_id == knight_habitats[3] ~ "Pastures (vegetation matrix)",
-    Study_id == "41_Knight" & Network_id == knight_habitats[4] ~ "Pastures (vegetation matrix)",
-    Study_id == "41_Knight" & Network_id == knight_habitats[5] ~ "Pastures (agricultural/vegetation matrix)",
+    Study_id == "41_Knight" & Network_id == knight_habitats[4] ~ "Forest/woodland",
+    Study_id == "41_Knight" & Network_id == knight_habitats[5] ~ "Forest/woodland",
     Study_id == "41_Knight" & Network_id == knight_habitats[6] ~ "Pastures (agricultural/vegetation matrix)",
     TRUE ~ Land_cover)) 
 
@@ -746,32 +763,37 @@ mutate(Land_cover =
     TRUE ~ Land_cover))  
 
 #44_Knight
-knight4_habitats = data %>% 
-filter(Study_id == "44_Knight") %>% 
-distinct(Network_id) %>% pull()
-    
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(
-    Study_id == "44_Knight" & Network_id == knight4_habitats[1] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[2] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[3] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[4] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight3_habitats[5] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[6] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[7] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[8] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[9] ~ "Pastures (vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[10] ~ "Pastures (agricultural matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[11] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[12] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[13] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[14] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[15] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[16] ~ "Pastures (agricultural matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[17] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "44_Knight" & Network_id == knight4_habitats[18] ~ "Pastures (agricultural/vegetation matrix)",
-    TRUE ~ Land_cover))  
+  case_when(Study_id == "44_Knight" ~ "Pastures",
+    TRUE ~ Land_cover))
+
+#knight4_habitats = data %>% 
+#filter(Study_id == "44_Knight") %>% 
+#distinct(Network_id) %>% pull()
+    
+#habitat = habitat %>% 
+#mutate(Land_cover = 
+#  case_when(
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[1] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[2] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[3] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[4] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight3_habitats[5] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[6] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[7] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[8] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[9] ~ "Pastures (vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[10] ~ "Pastures (agricultural matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[11] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[12] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[13] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[14] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[15] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[16] ~ "Pastures (agricultural matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[17] ~ "Pastures (agricultural/vegetation matrix)",
+#    Study_id == "44_Knight" & Network_id == knight4_habitats[18] ~ "Pastures (agricultural/vegetation matrix)",
+#    TRUE ~ Land_cover))  
 
 #45_Knight
 knight5_habitats = data %>% 
@@ -801,19 +823,24 @@ distinct(Network_id) %>% pull()
 
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(
-    Study_id == "47_Benadi" & Network_id == benadi_habitats[1] ~ "Natural grasslands",
-    Study_id == "47_Benadi" & Network_id == benadi_habitats[2] ~ "Pastures (vegetation matrix)",
-    Study_id == "47_Benadi" & Network_id == benadi_habitats[3] ~ "Pastures (vegetation matrix)",
-    Study_id == "47_Benadi" & Network_id == benadi_habitats[4] ~ "Pastures (vegetation matrix)",
-    Study_id == "47_Benadi" & Network_id == benadi_habitats[5] ~ "Natural grasslands",
-    Study_id == "47_Benadi" & Network_id == benadi_habitats[6] ~ "Natural grasslands",
-    TRUE ~ Land_cover))  
+  case_when(Study_id == "47_Benadi" ~ "Alpine grasslands",
+    TRUE ~ Land_cover))
+
+#habitat = habitat %>% 
+#mutate(Land_cover = 
+#  case_when(
+#    Study_id == "47_Benadi" & Network_id == benadi_habitats[1] ~ "Natural grasslands",
+#    Study_id == "47_Benadi" & Network_id == benadi_habitats[2] ~ "Pastures (vegetation matrix)",
+#    Study_id == "47_Benadi" & Network_id == benadi_habitats[3] ~ "Pastures (vegetation matrix)",
+#    Study_id == "47_Benadi" & Network_id == benadi_habitats[4] ~ "Pastures (vegetation matrix)",
+#    Study_id == "47_Benadi" & Network_id == benadi_habitats[5] ~ "Natural grasslands",
+#    Study_id == "47_Benadi" & Network_id == benadi_habitats[6] ~ "Natural grasslands",
+#    TRUE ~ Land_cover))  
 
 #48_Lara-Romero
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "48_Lara-Romero" ~ "Natural grasslands",
+  case_when(Study_id == "48_Lara-Romero" ~ "Alpine grasslands",
     TRUE ~ Land_cover))
 
 #49_Hervias-Parejo

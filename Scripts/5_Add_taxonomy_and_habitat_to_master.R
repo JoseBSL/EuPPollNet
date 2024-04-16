@@ -14,6 +14,11 @@ poll_taxo = readRDS("Data/Species_taxonomy/Pollinator_taxonomy.rds")
 habitat = readRDS("Data/Working_files/Habitat.rds")
 bioregion = readRDS("Data/Working_files/Bioregion.rds")
 
+#We have now renamed the database to EuPPollNet
+colnames(habitat)
+habitat = habitat %>%  
+rename(EuPPollNet_habitat = SafeNet_habitat)
+
 #Read master file
 master = readRDS("Data/Working_files/Building_metaweb.rds")
 
@@ -89,7 +94,7 @@ data1 <- data1 %>%
 #Select cols and establish final order
 data1 = data1 %>% 
 select(Study_id, Network_id, Site_id, Sampling_method, Authors_habitat, 
-       SafeNet_habitat, Bioregion, Country, Locality,
+       EuPPollNet_habitat, Bioregion, Country, Locality,
        Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
        Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
@@ -115,7 +120,7 @@ filter(is.na(Interaction))
 #Select cols and establish final order
 data2 = data2 %>% 
 select(Study_id, Network_id, Sampling_method, Authors_habitat, 
-       SafeNet_habitat, Bioregion, Country, Locality,
+       EuPPollNet_habitat, Bioregion, Country, Locality,
        Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
        Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
@@ -128,7 +133,7 @@ saveRDS(data2, "Data/Working_files/Interactions_uncounted.rds")
 #Final version
 data3 = data2 %>% 
 select(Study_id, Network_id, Sampling_method, Authors_habitat, 
-       SafeNet_habitat, Bioregion, Country, Locality,
+       EuPPollNet_habitat, Bioregion, Country, Locality,
        Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
        Plant_rank, Plant_order, Plant_family, Plant_genus,
        Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 

@@ -215,7 +215,7 @@ my_tibble = d %>%
     Variable == "Network_id" ~ "Identifier of a site sampled within a study",
     Variable == "Sampling_method" ~ "Type of plant-pollinator sampling",
     Variable == "Authors_habitat" ~ "Type of habitat as described by the authors",
-    Variable == "SafeNet_habitat" ~ "Type of habitat homogenized across studies",
+    Variable == "EuPPollNet_habitat" ~ "Type of habitat homogenized across studies",
     Variable == "Bioregion" ~ "European biogiographical regions",
     Variable == "Country" ~ "Country where the plant-pollinator interaction was observed",
     Variable == "Locality" ~ "Locality where the plant-pollinator interaction was observed",
@@ -1185,7 +1185,7 @@ mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>%
 filter(Percent > 0) %>% 
 nrow(.)
 #
-bee_genera_percent_coverage = data_bees/all_rows_bees
+bee_genera_percent_coverage = data_bees/all_rows_bees * 100
 #Check average coverage across bee genera
 average_coverage_bee_genera = d1 %>% 
 filter(fam_group == "a") %>% 
@@ -1221,25 +1221,7 @@ p_phylosig_bees = phylo_signal_bees$P
 
 ## Taxonomic coverage
 
-The database contains a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species seems not to follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). The coverage of the main taxonomic groups of pollinators at European level is `r format(round(bee_coverage, 2), nsmall=2)`% for bees, `r format(round(syrphid_coverage, 2), nsmall=2)`% for syrphids and `r format(round(lepidoptera_coverage, 2), nsmall=2)`% for butterflies (see **Figure S1** for coverage at the family level for bees and butterflies, and at the subfamily level for syrphids). Bees constitute `r format(round(bee_interactions_percent, 2), nsmall=2)`% of the interactions of the database, and `r format(round(bee_interactions_non_apis_percent, 2), nsmall=2)`% of the interactions when excluding honey bees.
-
-
-
-`r format(round(bee_genera_percent_coverage, 2), nsmall=2)`% of bee genera have at least one species with interaction records within the database and the average coverage at the genus level is `r format(round(average_coverage_bee_genera, 2), nsmall=2)`%. Notably, the presence or absence of interactions records seems or not seems to follow any sort of phylogenetic signal (($\lambda$ = `r format(round(lambda_phylosig_bees, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_bees, 2), nsmall=2)`)).
-
-
-
-
-**Figure 3**
-
-
-
-## Habitat type and bioclimatic region
-
-## Network properties
-
-
-
+The database contains a total of `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The coverage of the main pollinators groups occurring in Europe is `r format(round(bee_coverage, 2), nsmall=2)`% for bees, `r format(round(syrphid_coverage, 2), nsmall=2)`% for syrphids and `r format(round(lepidoptera_coverage, 2), nsmall=2)`% for butterflies (see **Figure S1** for coverage at the family level for bees and butterflies, and at the subfamily level for syrphids). Bees constitute `r format(round(bee_interactions_percent, 2), nsmall=2)`% of the interactions of the database, and `r format(round(bee_interactions_non_apis_percent, 2), nsmall=2)`% of the interactions when excluding honey bees. Within the database, `r format(round(bee_genera_percent_coverage, 2), nsmall=2)`% of bee genera have at least one species with interaction records, and the average coverage at the bee genus level is `r format(round(average_coverage_bee_genera, 2), nsmall=2)`% (**Figure 3**). In addition, the presence or absence of interactions records for bees seems not to follow any sort of phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_bees, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_bees, 2), nsmall=2)`). The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species also seems not to follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). 
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of bee genera in the EuPPollNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
@@ -1374,6 +1356,12 @@ theme(legend.margin=unit(1,"cm"),
 \newpage
 
 
+## Habitat type and bioclimatic region
+
+
+
+
+
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the EuPPollNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
 
 
@@ -1382,9 +1370,9 @@ main_orders = c("Hymenoptera", "Lepidoptera", "Coleoptera", "Diptera")
 
 #Check number of studies by habitat
 habitat = data %>% 
-select(Study_id, SafeNet_habitat) %>% 
+select(Study_id, EuPPollNet_habitat) %>% 
 distinct() %>%  
-group_by(SafeNet_habitat) %>% 
+group_by(EuPPollNet_habitat) %>% 
 summarise(Habitat_count = n()) 
 #Check number of studies by bioregion
 bioregion = data %>% 
@@ -1394,11 +1382,11 @@ group_by(Bioregion) %>%
 summarise(Bioregion_count = n()) 
 #Check pols by habitat
 pollinator_percent = data %>%
-group_by(SafeNet_habitat, Pollinator_order) %>%
+group_by(EuPPollNet_habitat, Pollinator_order) %>%
 filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
 filter(Pollinator_order %in% main_orders) %>% 
 summarise(count = n()) %>%
-group_by(SafeNet_habitat) %>%
+group_by(EuPPollNet_habitat) %>%
 mutate(Proportion = count/sum(count)) %>%
 select(-count) 
 #Check pols by bioregion
@@ -1413,7 +1401,7 @@ select(-count)
 #Preparing datasets for horizontal plot
 a1 = habitat %>% 
 mutate(Group = "Habitat") %>% 
-rename(Habitat = SafeNet_habitat) %>% 
+rename(Habitat = EuPPollNet_habitat) %>% 
 rename(Count = Habitat_count)
 
 b1 = bioregion %>% 
@@ -1431,7 +1419,7 @@ rename(Habitat = Bioregion)
 
 b2 = pollinator_percent %>% 
 mutate(Group = "Habitat") %>% 
-rename(Habitat = SafeNet_habitat)
+rename(Habitat = EuPPollNet_habitat)
 #Bind rows
 c2 = bind_rows(a2, b2) 
 
@@ -1505,6 +1493,9 @@ p1 + p2 + plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=2)
 
 ```
 
+\newpage
+
+## Network properties
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graphs (a-b) indicate network connectance and nestedness across the latitudinal range of the studies from the database. In addition, the bioclimatic region where each network is located is indicated with points of different shapes and colours. Graph (c) shows the the association between network connectances and the geometric mean of plant and pollinator species per network. Graph (d) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue).", fig.width=10, fig.height=7, fig.align='center'}
