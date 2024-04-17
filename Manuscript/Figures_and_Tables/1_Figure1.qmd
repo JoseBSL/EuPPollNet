@@ -26,7 +26,7 @@ library(viridis)
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
 
 #Load data
-data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("../../Data/3_Final_data/Interactions_uncounted.rds")
 
 #Fix dates
 data = data %>%

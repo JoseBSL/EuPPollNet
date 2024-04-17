@@ -1,0 +1,2015 @@
+---
+title: "EuPPollNet: A European database of plant-pollinator networks"
+format:
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+        \usepackage{caption}
+        \captionsetup[figure]{labelformat=empty}
+        \captionsetup[table]{labelformat=empty}
+
+bibliography: references.bib
+latex-tinytex: false
+link-citations: TRUE
+linkcolor: RoyalBlue
+urlcolor: RoyalBlue
+---
+
+```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+library(dplyr) #For handling fata 
+library(sf) #For handling coordinates and plotting
+library(scales) #For plotting (decimals on axes)
+library(lubridate) #To operate with dates
+library(tidyr) #Reshape data (wide format)
+library(stringr) #Fix/modify strings
+library(forcats)
+library(readr)
+library(phytools)
+#Load libraries for plotting
+library(giscoR) #Maps
+library(ggstar) #cool shapes as points
+library(ggplot2) #general plotting
+library(ggtree) #phylo trees
+library(ggpattern) #cool shapes in barplots
+library(patchwork) #plot organisation
+library(cowplot) #plot organisation
+library(viridis) #colours
+library(ggnewscale)
+library(ggtreeExtra)
+library(kableExtra)
+
+#In case of conflicts select the main dplyr functions
+library(conflicted)
+conflicts_prefer(dplyr::filter)
+conflicts_prefer(dplyr::select)
+
+```
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+
+#Read data
+data = readRDS("../Data/Working_files/Interactions_uncounted.rds")%>% 
+mutate(Network_id = paste0(Study_id, Network_id))  
+#Bee-syrphid Masterlist
+master_list = read_csv("../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
+#Load butterfly masterlist
+master_list1 <- read.delim(file = "../Data/Species_taxonomy/Thesaurus/Butterfly_taxon.txt",
+                    header = T)
+#Prepare table with data structure (as it would be made available to others)
+safenet_database = readRDS("../Data/3_Final_data/Interaction_data.rds")
+
+
+#Work around to get the three cols
+#Note that month 1 and day 1 indicates the presence of a missing value
+#At least in Europe :)
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
+
+#Country number
+country_number = data %>% 
+select(Country) %>% 
+n_distinct()
+#Study number
+study_number = data %>% 
+select(Study_id) %>% 
+n_distinct()
+#Average study number
+studies_by_country = data %>% 
+group_by(Country) %>% 
+summarise(study_number = n_distinct(Study_id)) %>% 
+summarise(mean(study_number)) %>% 
+pull()
+#$\bar{x}_\frac{studies}{country}$ = `r studies_by_country`
+#Sampling method
+Sampling_method = data %>% 
+group_by(Study_id) %>% 
+distinct(Sampling_method) %>%  
+ungroup() %>% 
+count(Sampling_method) %>% 
+mutate(percent_method = n/sum(n) *100) %>% 
+mutate(Sampling_method = recode_factor(Sampling_method, "Transect" = "transects"))
+#1st most common sampling methodology
+most_common_method = Sampling_method %>% 
+filter(percent_method == max(percent_method)) 
+#Minimum year
+min_year = data %>% 
+select(Year) %>% 
+slice(which.min(Year)) %>% 
+pull()
+#Maximum year
+max_year = data %>% 
+select(Year) %>% 
+slice(which.max(Year)) %>% 
+pull()
+#Number of interactions
+interaction_number = nrow(data)
+#Check number of accepted pollinators
+pollinator_spp_number = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+select(Pollinator_accepted_name) %>% 
+n_distinct()
+#Check number of plant species
+plant_spp_number = data %>% 
+select(Plant_rank, Plant_status, 
+Plant_matchtype, Plant_accepted_name) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+select(Plant_accepted_name) %>% 
+n_distinct()
+#Extract percentage of studies conducted during a single year
+dates = data %>% 
+select(Study_id, Network_id,Sampling_method, Day, Month, Year) %>% 
+mutate(Date = dmy(paste(Day, Month, Year, sep = "-"))) %>% 
+group_by(Study_id) %>% 
+summarise(Count = n_distinct(Year))
+#Filter studies with only one year
+one_year = dates %>% 
+filter(Count == 1) %>% 
+pull() %>% 
+length() / nrow(dates) * 100
+#Obtain date information
+dates = data %>% 
+select(Study_id, Network_id,Sampling_method, Day, Month, Year) %>% 
+mutate(Date = dmy(paste(Day, Month, Year, sep = "-")))
+
+dates1 = dates %>% 
+group_by(Study_id, Network_id, Sampling_method) %>% 
+summarise(Min_date = min(Date), 
+          Max_date= max(Date), 
+          Sampling_days = n_distinct(Date)) %>% 
+mutate(Sampling_period = as.numeric(Max_date - Min_date)) %>% 
+mutate(Study_number = as.integer(str_extract(Study_id, "[^_]+")), 
+       .before=Study_id) %>% 
+arrange(Study_number) %>% 
+mutate(Sampling_period = case_when(!is.na(Sampling_period) ~ Sampling_period + 1,
+TRUE ~ NA)) %>% 
+mutate(Sampling_days = case_when(!is.na(Sampling_period) ~ Sampling_days,
+TRUE ~ NA))
+#Extract min and max number of sampling days
+min_sampling_day = dates1 %>% pull(Sampling_days) %>% min(na.rm = TRUE)
+max_sampling_day = dates1 %>% pull(Sampling_days) %>% max(na.rm = TRUE)
+#Extract average of sampling days across networks and studies
+average_sampling_days = dates1 %>% 
+ungroup() %>% 
+group_by(Study_id) %>% 
+summarise(mean_sampling_days = mean(Sampling_days, na.rm = TRUE)) %>% 
+ungroup() %>% 
+summarise(mean(mean_sampling_days, na.rm = TRUE)) %>% 
+pull()
+#Check number of distinct sampling sites
+n_sites = data %>% 
+select(Latitude, Longitude) %>% 
+distinct() %>% 
+nrow(.)
+#Check number of distinct bioregions
+n_bioregion = data %>% 
+select(Bioregion) %>% 
+distinct()  %>% 
+nrow(.)
+#Read author list 
+authors = readr::read_csv("../Data/Manuscript_info/Authorship_ordered.csv")
+#Print authors
+authors = authors %>% 
+summarise(col = paste(Coauthor_name_aff, collapse="| ")) %>% 
+pull()
+#Read affiliation list 
+aff_list = readr::read_csv("../Data/Manuscript_info/Affiliation_list.csv")
+aff_list = aff_list %>% 
+summarise(col = paste0(Aff_number_Aff, "\\",sep="")) %>% 
+pull()
+
+#Interactions at species level
+species_level = data %>% 
+filter(Plant_rank == "SPECIES") %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Plant_status == "ACCEPTED") %>% 
+filter(Pollinator_status == "ACCEPTED") %>% 
+nrow(.)
+species_level_int = species_level / nrow(data) * 100
+#Read here plant and pollinator coverage
+bee_coverage = readRDS("../Data/Manuscript_info/bee_coverage.RData")
+lepidoptera_coverage = readRDS("../Data/Manuscript_info/lepidoptera_coverage.RData")
+syrphid_coverage = readRDS("../Data/Manuscript_info/syrphid_coverage.RData")
+plant_coverage = readRDS("../Data/Manuscript_info/plant_coverage.RData")
+
+#Main orders percentage
+o = c("Hymenoptera", "Lepidoptera", "Diptera", "Coleoptera")
+main_orders = data %>% 
+filter(Pollinator_order %in% o)
+main_orders_percent = nrow(main_orders) / nrow(data) * 100
+
+#Prepare table with all info 
+#Create variables
+vars = colnames(safenet_database)
+#Create table
+d = tibble(Variable = vars)
+
+d = d %>% 
+mutate(Variable = str_replace(Variable, "Latitude", "Latitude-Longitude")) %>% 
+filter(!Variable == "Longitude")
+
+#Add descriptor
+my_tibble = d %>%
+  mutate(Description = case_when(
+    Variable == "Study_id" ~ "Identifier of the study",
+    Variable == "Network_id" ~ "Identifier of a site sampled within a study",
+    Variable == "Sampling_method" ~ "Type of plant-pollinator sampling",
+    Variable == "Authors_habitat" ~ "Type of habitat as described by the authors",
+    Variable == "EuPPollNet_habitat" ~ "Type of habitat homogenized across studies",
+    Variable == "Bioregion" ~ "European biogiographical regions",
+    Variable == "Country" ~ "Country where the plant-pollinator interaction was observed",
+    Variable == "Locality" ~ "Locality where the plant-pollinator interaction was observed",
+    Variable == "Latitude-Longitude" ~ "Coordinates of the observed interaction in decimal degrees",
+    Variable == "Date" ~ "Year, month and day when the observation took place",
+    Variable == "Interaction" ~ "Number of interactions. By default is 1 as interactions are provided ungrouped",
+    Variable == "Plant_old_name" ~ "Plant species name given by the authors",
+    Variable == "Plant_accepted_name" ~ "Harmonized plant species name in the database",
+    Variable == "Plant_rank" ~ "Taxonomic rank of the observation",
+    Variable == "Plant_order" ~ "Order taxonomic rank of the observed plant species",
+    Variable == "Plant_family" ~ "Family taxonomic rank of the observed plant species",
+    Variable == "Plant_genus" ~ "Genus taxonomic rank of the observed plant species",
+    Variable == "Plant_unsure_id" ~ "Category to indicate if the plant species name is unsure (Yes) or not (No)",
+    Variable == "Plant_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
+    Variable == "Pollinator_old_name" ~ "Pollinator species name given by the authors",
+    Variable == "Pollinator_accepted_name" ~ "Harmonized pollinator species name in the database",
+    Variable == "Pollinator_rank" ~ "Taxonomic rank of the observation",
+    Variable == "Pollinator_order" ~ "Order taxonomic rank of the observed pollinator species",
+    Variable == "Pollinator_family" ~ "Family taxonomic rank of the observed pollinator species",
+    Variable == "Pollinator_genus" ~ "Genus taxonomic rank of the observed pollinator species",
+    Variable == "Pollinator_unsure_id" ~ "Category to indicate if the pollinator species name is unsure (Yes) or not (No)",
+    Variable == "Pollinator_uncertainty_type" ~ "If the name is unsure, type of species uncertainty is provided",
+        Variable == "Flower_data" ~ "Floral data availability (Yes) or (No)",
+        Variable == "Flower_data_merger" ~ "Column to merge floral data with the interaction dataset",
+
+    TRUE ~ "Other"
+  ))
+
+#Check number of species and percentage of interactions of poll. groups
+main_orders = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera")
+
+order_info = data %>% 
+select(Pollinator_order, Pollinator_accepted_name) %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+group_by(Pollinator_order) %>% 
+summarise(Interactions = length(Pollinator_accepted_name)/ nrow(.) *100,
+          Species = n_distinct(Pollinator_accepted_name)) 
+
+Hymenoptera_interactions = order_info %>% filter(Pollinator_order == "Hymenoptera") %>%
+select(Interactions) %>% pull()
+
+#Check percentage of studies with flower counts
+floral_counts_percent = data  %>%
+select(Study_id, Flower_data) %>% 
+distinct() %>% 
+group_by(Flower_data) %>% 
+summarise(Percentage = n()/ nrow(.)*100) %>% 
+filter(Flower_data == "Yes")
+
+#Check percentage of apis mellifera records
+all_records = data %>% nrow(.) 
+apis_records = data %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>% 
+nrow(.)
+apis_percent = apis_records/all_records * 100
+#Check average pecentage of interactions of apis by net
+a = data %>% 
+group_by(Network_id) %>% 
+summarise(n_interactions = length(Pollinator_accepted_name))
+b = data %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>% 
+summarise(n_interactions_apis = length(Pollinator_accepted_name))
+c = left_join(a,b)
+apis_average_network = c %>% 
+mutate(apis_percent_net = n_interactions_apis/ n_interactions *100) %>% 
+ungroup() %>% 
+summarise(mean_apis_percent_net = mean(apis_percent_net, na.rm=T)) %>% 
+pull()
+
+```
+
+
+\vspace*{-14mm}
+
+
+`r authors`
+
+**Corresponding author**= barragansljose@gmail.com\
+*All authors excluding the first three and last are ordered alphabetically*
+
+\begingroup
+\small
+
+`r aff_list`
+
+\small
+\endgroup
+
+\pagebreak
+
+# Abstract
+\vspace*{-5mm}
+
+**Motivation:** Pollinators play a crucial role in maintaining Earth's terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. However, their diversity and role as pollinators are increasingly compromised by rapid human-induced environmental changes. One of the major challenges for pollinator conservation, is the lack of robust generalisable data across space and time to comprehend the conservation status and population trends among different pollinator species. Here, we present the EuPPollNet database, a fully reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time. This database offers an open workflow that allows researchers to track decisions and edit them according to their preferences, while also providing other ecological variables of interest. Furthermore, this work provides an in-depth assessment of the taxonomic and sampling coverage of the database at the European level, complemented by analyses of key structural properties in plant-pollinator networks. We hope this database can help researchers to: 1) identify taxonomic, ecological and geographical gaps of knowledge on plant-pollinator interactions; and 2) explore the impacts of global change to guide future conservation planning for both plant and pollinator species.
+
+**Main Types of Variables Included:** EuPPollNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat type, bio-climatic region and further taxonomic rank information for both plant and pollinator species are also provided. 
+
+**Spatial location and grain:** The database contains `r prettyNum(n_sites, big.mark=",")` different sampling locations from natural and anthropogenic habitats that fall in `r n_bioregion` different bio-climatic regions. All records are geo-referenced and presented in the World Geodetic System 1984 (WGS84).
+
+**Time period and grain:** Species interaction data was recorded between `r min_year` and `r max_year`. All records are time-referenced and most of the studies documented interactions in a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%).
+
+**Major taxa and level of measurement:** The database contains interaction data at the species level for `r format(round(species_level_int, 2), nsmall = 2)`% of the records, including a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database covers `r format(round(plant_coverage, 2), nsmall = 2)`% of the European species of flowering plants. The main focus of this database are insect pollinators and accounts for `r format(round(bee_coverage, 2), nsmall = 2)`% of bees, `r format(round(lepidoptera_coverage, 2), nsmall = 2)`% of butterflies and `r format(round(syrphid_coverage, 2), nsmall = 2)`% of syrphids species at the European level.
+
+**Software format:** The database was built with R software and is stored as ".rds" and ".csv" formats. The construction of the database is fully reproducible and can be accessed at the following PERMANENT LINKS.
+
+**KEYWORDS**\
+\begingroup
+\small
+plant-pollinator networks, plant-pollinator interactions, flowering plants, Angiosperms, pollinators, nestedness, connectance
+\endgroup
+\pagebreak
+
+# 1 | INTRODUCTION
+
+The interaction between plants and pollinators is one of the most well-documented mutualisms on Earth. Plant-pollinator interactions involve a great diversity of species, largely attributed to their coevolutive history [@ollerton2017], and are critically important for terrestrial biodiversity and the human economy. The synergistic effects of climate change with other global change pressures are threatening worldwide biodiversity [@sala2000; @bellard2014], including plant and pollinator species as well as their interactions [@gonzalez2013; @settele2016; @eichenberg2021]. Under this scenario, the increasing availability of biodiversity data plays a major role in our ecological understanding of species and guiding conservation planning [@heberling2021]. However, our knowledge of plant and pollinator species and their network of interactions still exhibits major temporal, spatial and taxonomic biases [@archer2014; @troia2016; @poisot2021; @marshall2024], limiting our ability to effectively protect their biodiversity. 
+
+Europe is one of the continents with a larger amount of available biodiversity data [@proencca2017], yet still exhibits major gaps [@wetzel2018; @bennett2018]. While species checklists need to be treated carefully, especially at a macro-ecological scale [@grenie2023], the growing number of European plant and pollinator checklists along with occurrence data, is setting a foundation for the conservation of its flora and their pollinators. However, species richness is just one component of biodiversity and documenting the interaction between plants and pollinators is essential for understanding the fate of the species within an ecosystem [@jordano2016]. Numerous works have studied plant-pollinator interactions in the last decades, originating thousands of plant-pollinator interaction networks worldwide. Several initiatives have tried to integrate plant-pollinator interaction data into databases such as *Mangal* [@poisot2016] or *GloBI* [@poelen2014], resulting in numerous large scale comparative analyses that have enhanced our understanding of the ecology of plants and pollinators [e.g., European wild bee data trends\; @marshall2024]. Despite all these resources, Europe lacks accessible harmonized plant-pollinator interaction data that allow researchers to evaluate the state of the art of plant-pollinator interactions at European level, which will guide research efforts, conservation planning and will set a foundation for future global change research. 
+
+The interactions between different plant and pollinator species within a community form complex networks. Macro-ecological analyses of the topology of these networks have revealed common properties across them, such as truncated power-law degree distributions [@jordano1987] or nestedness [@bascompte2003], and has added relevant information of their interaction ecology of plant-pollinator networks across geographic regions [@olesen2002; @traveset2016] and environmental gradients [@ramos2010; @rech2016; @saunders2023]. Although macro-ecological approaches make significant contributions to knowledge, they tend to be rare, and are strongly influenced by the spatio-temporal availability and nature of the data [@burkle2011; @trojelsgaard2013]. For instance, plant-pollinator studies tend to differ in sampling effort and methodology which can impact the structure of the resulting plant-pollinator networks [@gibson2011; @jordano2016]. Further, despite little sampling effort could capture most of the relevant functional species [@hegland2010], most plant-pollinator networks have unobserved interactions because of undersampling [@olesen2011; @chacoff2012]. Thus, the lack of strong spatio-temporal coverage along the current intrinsic limitations of sampling plant-pollinator networks, highlight the need to keep gathering and integrating informative species interaction data to properly unravel the different ecological processes that shape plant-pollinator interactions at large scales.
+
+Here, we present the EuPPollNet database, an acronym derived from European plant-pollinator networks, which contains harmonized informative interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the EuPPollNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). To understand the scope of the database, we examine the taxonomic and sampling coverage of the different plant and pollinator species at European level with the help of the most up-to-date species checklists and rarefaction analyses. In addition, we investigate how two key structural metrics of plant-pollinator networks, such as connectance and nestedness, change across the latitudinal range of studies and bioclimatic regions. Finally, we also examine whether plant-pollinator networks fulfill the expectation of being more nested than null expectations. EuPPollNet aims to cover a wide range of taxonomic groups and habitats, while also providing other variables of interest that allow better control for the ecological context and sampling methods. In addition, EuPPollNet offers a transparent and accessible workflow of its data management and species harmonization that allows it to be reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
+
+
+# 2 | METHODS
+
+## Data acquisition
+
+This database is the result of one of the working packages of the European project Safeguard. The EuPPollNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent. Data acquisition followed a non-systematic approach. First, data was directly asked to members of the Safeguard project and then, the request was extended to data owners outside of the project. These other studies were identified by direct communication with other colleagues and by directly searching studies on Google Scholar of under-represented regions within the database. To keep high quality standards that will allow robust future ecological research, we only included studies meeting the following criteria: 1) studies that contained time- and geo-referenced records of plant-pollinator interactions; and 2) studies with phyto-centric plant-pollinator networks with quantitative visitation data.
+
+## Dataset description
+
+The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` on `r country_number` different countries (**Figure 1a** and **Figure 1b**). The different studies differ in sampling effort and methodology, although most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions, considering interaction as the contact of a given pollinator to the reproductive structure of a particular plant. Most of the pollinator species in the database belong to the orders Hymenoptera and Diptera, each comprising approximately 1,000 species. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably,  _Apis mellifera_ represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Approximate locations of the studies of the EuPPollNet database showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Number of studies by year within the database. (\\textbf{c}) Number of species and interactions across the 4 main pollinator orders at European level."}
+
+#Fix dates
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
+
+#Prepare coordinates
+for_plotting = data %>% 
+select(Study_id, Latitude, Longitude) %>% 
+distinct()
+#Get countries and transfrom coordinates
+countries <- gisco_get_countries(
+resolution = 20) %>%
+st_transform(3035) %>% 
+sf::st_as_sf(crs = 4326)
+
+#Number of plant and poll species per network
+#-----------------------#
+#Pollinators------
+#-----------------------#
+#Check unique number of pollinator species
+PollNumber_by_ID = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Study_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+select(Pollinator_accepted_name, Study_id) %>% 
+group_by(Study_id) %>% 
+summarise(Pollinator_counts = n_distinct(Pollinator_accepted_name))
+#Merge now with spp counts by network dataset
+poll_data = left_join(PollNumber_by_ID, for_plotting, by = "Study_id")
+#Create duplicate cord columns to operate on them
+poll_data$coords <- data.frame(
+Longitude = poll_data$Longitude, Latitude = poll_data$Latitude)
+#Set coordinates
+poll_data$coords_sf = st_as_sf(poll_data$coords, 
+  coords = c("Longitude", "Latitude"), crs = 4326)
+#Plot map of Europe
+#Very noisy with many coordinates per point,
+#Let's select a unique coordinate by study
+poll_data1 =  poll_data %>% 
+distinct(Study_id, .keep_all = TRUE)
+
+#-----------------------#
+#Plants-----
+#-----------------------#
+#Check unique number of plant species
+PlantNumber_by_ID = data %>% 
+select(Plant_rank, Plant_accepted_name, Study_id) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+select(Plant_accepted_name, Study_id) %>% 
+group_by(Study_id) %>% 
+summarise(Plant_counts = n_distinct(Plant_accepted_name))
+#Merge now with spp counts by network dataset
+plant_data = left_join(PlantNumber_by_ID, for_plotting, by = "Study_id")
+#Create duplicate cord columns to operate on them
+plant_data$coords <- data.frame(
+Longitude = plant_data$Longitude, Latitude = plant_data$Latitude)
+#Set coordinates
+plant_data$coords_sf = st_as_sf(plant_data$coords, 
+  coords = c("Longitude", "Latitude"), crs = 4326)
+#Plot map of Europe
+#Very noisy with many coordinates per point,
+#Let's select a unique coordinate by study
+plant_data1 =  plant_data %>% 
+distinct(Study_id, .keep_all = TRUE)
+
+#Add vars
+plant_data1$Group = "Plant"
+poll_data1$Group = "Pollinator"
+#Rename cols
+plant_data2 = plant_data1 %>% 
+rename(Counts = Plant_counts)
+poll_data2 = poll_data1 %>% 
+rename(Counts = Pollinator_counts)
+#Bind rows
+all_data = bind_rows(plant_data2, poll_data2)
+
+
+#Try to plot both together (same plot)
+map = ggplot(countries) +
+geom_sf(fill="floralwhite",color = "black", 
+        alpha = 1,linewidth=0.1) + 
+geom_star(data = all_data, alpha=1,aes(x= Longitude, y=Latitude,
+           size=Counts, starshape = Group, color= Group))+  
+coord_sf(crs = st_crs(3035), default_crs = st_crs(4326),
+         xlim = c(-14, 39), ylim = c(37, 70))+
+theme(panel.grid.major = element_blank(), 
+      legend.position = ("top"),
+      legend.box = "vertical",
+      legend.background = element_blank(),
+      legend.box.background = element_blank(),
+      legend.key = element_blank(), 
+      legend.title = element_text(face ="bold",  size = 6),
+      legend.box.spacing = unit(0.2, "cm"),
+      legend.margin=margin(0,0,0,0),
+        legend.box.margin=margin(-10,-10,-10,-10),
+      axis.text = element_text(size=6,                  face="bold"),
+      axis.title = element_text(face="bold", size = 8),
+         legend.text = element_text(size = 6),                           legend.direction="horizontal",
+         legend.spacing.y = unit(-0.3, "cm"),
+      legend.title.align=0.5) +
+theme(panel.background = element_rect(fill = "aliceblue"),
+        panel.border = element_rect(colour = "black",
+        fill=NA, size=1)) + 
+ scale_size_continuous(name= "Species counts",range = c(0, 3.75))+
+scale_color_manual(values=c("#009E73", "#D55E00"),
+         guide="none") +
+scale_starshape_manual(name = "Taxonomic group",             values = c(15, 7),
+             guide=guide_legend(reverse=TRUE,
+             override.aes=list(
+                 size=2,
+                 color=c("Pollinator"= "#D55E00","Plant"="#009E73")))) +
+  ylab("Latitude") +
+xlab("Longitude") +
+scale_x_continuous(breaks = seq(0, 20, by = 10)) +
+scale_y_continuous(breaks = seq(40, 60, by = 10)) +
+guides(color = "none", size=guide_legend(nrow=1,override.aes = list(starshape =c(15,15, 15), size=c(0.8,1.8,2.8)))) + 
+ggtitle("(a)") +
+theme(plot.title = element_text(vjust = -5, hjust=0.057, size=10))
+
+
+#----------------#
+#Pollinators
+#----------------#
+#First select cols of rank, accepted name and study ID
+#Then select unique levels by study ID
+#Now sum levels (maximum can be as maximum number of studies)
+poll_spread = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Study_id) %>% 
+group_by(Study_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+ungroup() %>% 
+count(Pollinator_accepted_name) %>% 
+rename(n_studies_shared = n) %>% 
+arrange(-n_studies_shared) %>% 
+mutate(Percent_total = n_studies_shared / n_distinct(data$Study_id))
+  
+#Seelect quantile 50% from the total number of species
+spp_number = poll_spread %>%  
+select(Pollinator_accepted_name) %>% 
+n_distinct()
+df = seq(1, spp_number)
+quantile_50 = quantile(df, 0.5)
+
+#Obtain most common pollinator for plotting
+most_common_poll = poll_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
+select(Pollinator_accepted_name) %>% pull() 
+
+#Plot
+#p1 = ggplot(poll_spread, 
+#aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
+#geom_bar(stat = "identity", 
+#           color = "#D55E00",
+#           lwd = 0.015, fill = "#D55E00") +
+#ylab("Shared pollinators (%)") +
+#theme_minimal()+
+#theme(axis.text.x = element_blank(),
+#  axis.ticks.x=element_blank(),
+#  axis.ticks.y = element_line(size = 0.2),
+#  plot.title = element_text(size = 8, face = "bold"), 
+#  axis.text.y = element_text(size=5),
+#  panel.grid.major.x = element_blank(),
+#  panel.grid.minor.y = element_blank(),
+#  panel.grid.major.y = element_line(size=0.2, linetype =           2)) +
+#xlab(NULL) +
+#ylab(NULL) + 
+#ggtitle("Pollinators")+
+#geom_vline(xintercept = quantile_50, linetype="dashed", 
+#color = "black", size=0.25) + 
+#annotate(geom="text", x=1285, y=0.83, label="50th percentile",          color="black", size = #1.5) +
+#annotate(geom="text", x=20, y=0.88, label=most_common_poll[1],         color="black",  #fontface = 'italic', size = 1.5)+
+#scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
+#annotate(geom="text", x=-500, y=1.15, label="(c)",color="black", size = 3.5) +
+#coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, #max(poll_spread$Percent_total)), clip="off")
+#
+##----------------#
+##Plants
+##----------------#
+#plant_spread = data %>% 
+#select(Plant_rank, Plant_accepted_name, Study_id) %>% 
+#group_by(Study_id) %>% 
+#filter(Plant_rank == "SPECIES") %>% 
+#distinct(Plant_accepted_name) %>% 
+#ungroup() %>% 
+#count(Plant_accepted_name) %>% 
+#rename(n_studies_shared = n) %>% 
+#arrange(-n_studies_shared) %>% 
+#mutate(Percent_total = n_studies_shared / n_distinct(data$Study_id))
+#  
+##Seelect quantile 50% from the total number of species
+#spp_number = plant_spread %>%  
+#select(Plant_accepted_name) %>% 
+#n_distinct()
+#df = seq(1, spp_number)
+#quantile_50 = quantile(df, 0.5)
+#
+##Obtain most common plant for plotting
+#most_common_plant = plant_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
+#select(Plant_accepted_name) %>% pull() 
+#
+#Plot
+#p2 = ggplot(plant_spread, 
+#aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
+#geom_bar(stat = "identity", 
+#           color = "#009E73",
+#           lwd = 0.015, fill = "#009E73") +
+#theme_minimal()+
+#theme(axis.text.x = element_blank(),
+#         axis.ticks.x=element_blank(),
+#         axis.ticks.y = element_line(size = 0.2),
+#         axis.title.x = element_text(face = "bold", size = 7),            plot.title = #element_text(size = 8, face = "bold"),
+#         axis.text.y = element_text(size=5),
+#         panel.grid.major.x = element_blank(),
+#         panel.grid.minor.y = element_blank(),
+#         panel.grid.major.y = element_line(size=0.2, linetype =  2),
+#      axis.title.y = element_text(face= "bold", size= 7, hjust= -0.01, vjust = 1)) +
+#xlab("Species") +
+#ylab("Occurrence across studies") + 
+#ggtitle("Plants") + 
+#geom_vline(xintercept = quantile_50, linetype="dashed", 
+#          color = "black", size=0.25) + 
+#annotate(geom="text", x=835, y=0.7, label="50th percentile",color="black", size = 1.5) + 
+#annotate(geom="text", x=20, y=0.75, label=most_common_plant[1]
+#      ,color="black",  fontface = 'italic', size = 1.5)+
+#annotate(geom="text", x=20, y=-0.08, label="Common spp."
+#      ,color="black",  size = 1.5) +
+#annotate(geom="text", x=1200, y=-0.08, label="\'Rare\' spp."
+#      ,color="black",  size = 1.5) + 
+#scale_y_continuous(breaks = seq(0, 0.6, by= 0.2), expand = c(0, 0), labels = #label_number(accuracy = 0.01)) +
+#coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),ylim=c(0, #max(plant_spread$Percent_total)), clip="off")
+#
+
+
+data2 = data %>%  select(Study_id, Year) %>% 
+distinct() %>% 
+group_by(Year) %>% 
+summarise(Counts = n())
+
+p2  = ggplot(data2, aes(Year, Counts)) +
+geom_col(fill = "gray25", width = 0.9, color="black", linewidth = 0.4) +
+theme_light() +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+  axis.title.y = element_text(face = "bold", size = 7, vjust = -2),
+  axis.title.x = element_text(face = "bold", size = 8),
+  axis.text.y = element_text(size = 6),
+  axis.text.x = element_text(size = 6,  angle = 90), 
+  strip.text.x = element_text(size=12),
+   axis.ticks.x = element_line(color="black"),
+  strip.background = element_rect(
+  color="black", fill=NA, size=0.5, linetype="solid")) + 
+ylab("Number of studies") +
+coord_cartesian(expand = F, clip = "off") + 
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+  panel.background = element_blank(),
+  panel.border = element_rect(colour = "black", fill=NA, size=1)) +
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(),
+panel.border = element_blank(),
+axis.line = element_line(color = 'black')) +
+scale_y_continuous(breaks = c(0, 4,8,12), labels = c("0", "4","8", "12"), limits = c(0,12)) +
+scale_x_continuous(breaks = seq(min(data2$Year), max(data2$Year), by = 2), limits = c(min(data2$Year),max(data2$Year)))+
+ggtitle("(b)") +
+theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -5))
+
+
+
+
+main_orders = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera")
+#Select main orders
+data1 = data %>% 
+select(Pollinator_order, Pollinator_accepted_name) %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+group_by(Pollinator_order) %>% 
+summarise(Species = n_distinct(Pollinator_accepted_name)/n_distinct(.),
+          Interactions = length(Pollinator_accepted_name)/ nrow(.))
+
+
+# Combine Interactions and Species into a single column
+data_long = pivot_longer(data1, cols = c(Interactions, Species), names_to = "Variable", values_to = "Value")
+
+#Set order of levels for plotting
+data_long$Pollinator_order = factor(data_long$Pollinator_order, levels = c("Coleoptera", "Lepidoptera", "Diptera", "Hymenoptera"))
+
+#Plot
+p3 = ggplot(data_long, aes(x = Variable, y = Value, fill = Pollinator_order)) + 
+geom_bar(stat = "identity", width = 0.7) +
+theme_classic() +
+scale_fill_viridis(discrete=TRUE, direction = -1, name="Pollinator order") +
+xlab(NULL) +
+ylab("Percentage") + 
+scale_y_continuous(labels = percent_format(), expand = c(0, 0)) +
+theme(axis.text = element_text(size=6), 
+     axis.title.y = element_text(face = "bold", size = 7, vjust = -2),  
+     axis.title.x = element_text(face="bold", size = 7),
+     legend.position = "top",
+     legend.title = element_text(size = 5, face = "bold"),
+     legend.text = element_text(size = 5),
+     legend.key.size = unit(3, "mm"),
+     legend.margin=margin(0,0,0,0),
+     legend.box.margin=margin(-8,-5,-5,-5)) +
+guides(fill=guide_legend(nrow=2,byrow=TRUE))+
+ggtitle("(c)") +
+theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -6))
+
+
+#plot2 = p3 / p1 / p2 
+plot2 = p2 / p3 
+
+#Plot everything
+map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.485, 0.8)) 
+
+
+```
+
+\newpage
+
+## Data structure
+
+The EuPPollNet database is available in both .csv and .rds formats. The .csv file contains data in long format, while the .rds file stores the data in a list structure, with networks organized within each study. The file contains a total of `r nrow(my_tibble) + 1` columns that depict where and when the plant-pollinator interaction was observed (**Table 1**). To provide a standard unit of plant-pollinator interaction across studies, each row depicts a single interaction between a plant and a pollinator species. To build a plant-pollinator network matrix at a site level, authors only need to group interactions by plant and pollinator species, site and study. Information about habitat type and bioclimatic region are also provided in this file. In addition, the interaction dataset includes a column that describes the presence or absence of floral counts for each study. The flower count data is provided in a separate file given that one third of studies lack floral measurements and that the units differ greatly across studies. Finally, metadata at the study level is provided, including information about the authors, digital object identifier if available, sampling time and taxonomic coverage of the main pollinator groups for each study.
+
+```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, fig.height=1, fig.width=10}
+
+
+kable(my_tibble, booktabs = T, linesep = "\\addlinespace", caption = "\\textbf{Table 1.} Column names and their descriptions within the EuPPollNet database.") %>%
+  kable_styling(full_width = F,font_size = 9) %>% row_spec(0, bold=T) %>% 
+kable_styling(position = "center")
+
+
+```
+
+
+## Sampling coverage 
+
+The completeness of the EuPPollNet database was evaluated by exploring the rarefied accumulation curves of plant and pollinator species and their interactions across the different sampling sites. In addition, the accumulation curve of pollinator species with increasing number plant species was also explored. The rarefied and extrapolated sampling curves were obtained with the help of the **iNEXT** package [@hsieh2016]. This was complemented with 100 random accumulation curves obtained programmatically to guide the visualization of the different rarefied curves.
+
+
+## Taxonomic harmonization
+
+All plant and pollinator species names were checked and standardized according to large scale taxonomic databases. To ensure reproducibility of the workflow, we have conducted this harmonization in R with **rgbif** [@chamberlain2022] as pivotal package to check for species names and retrieve further taxonomic information (i.e., phylum, order, family and genus) from the Global Biodiversity Information Facility (GBIF). The protocol for plants and pollinators is similar but slightly different given the availability of the different taxonomic resources. For transparency, we have included in the database the old species name, the new assigned name, and, if the name of the species is uncertain (e.g., species complex or species alike).
+
+For plants: (i) we initially verify exact matches with the GBIF species checklist; (ii) select unmatched cases and fix orthographic errors; (iii) retrieve again taxonomic information for those unmatched cases, evaluate accuracy of fuzzing matching and programmatically fix records that are still not found; (iv) finally, we used the World Flora Taxonomic Backbone [@govaerts2021\; WFO, July 7, 2022] as the ultimate filter for taxonomic information as we used it to calculate the plant taxonomic coverage of our database.
+
+For pollinators: (i) we first created a checklist of species names for the most representative pollinator groups at European level by combining the recently published checklists of bees [@ghisbain2023], syrphids [@kovcic2023] and butterflies [@wiemers2018]; (ii) then, we compared pollinator species names against the checklist and recovered some unmatched cases with restrictive fuzzy matching by using **stringdist** package [@van2014]; (iii) we programmatically fixed unmatched records when necessary and retrieved the taxonomic information for all species from GBIF; (iv) we fixed the non-found cases in the GBIF checklist and made sure that all species names from bees, syrphids and butterflies were named according to their respective species checklists.
+
+## Taxonomic coverage 
+
+To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level. Finally, to evaluate if the presence-absence of interaction records for bees and flowering plants follows a phylogenetic pattern within the database, we calculated with the the phylogenetic signal with the help of the function _phylosig_ from the **phytools** package. 
+
+## Habitat type and bioclimatic region
+
+The different sites per study were classified with a habitat type by the authors. As these habitats are not standardized across studies, they were standardized with the additional help of land cover information and visual checks on current satellite imagery. For each georeferenced site, the land cover information was extracted from Corine Land Cover (CLC, version 2018) with the help of the Terra package [@hijmans2022]. Based on the habitat classification from the authors and the CLC classification, we created habitat categories that intend to summarize the diversity of habitats in the EuPPollNet database (see habitat type definition in supplementary material). These categories allow a quick comparison and understanding of the habitat types from the database. However, we advise authors to revise this classification if they intend to rely on this field for their analyses as this is a non-fully objective process. Moreover, Europe is characterized by a great variety of environmental conditions that harbor different biota. Thus, to allow authors to explore set of studies that share similar environmental conditions and species, we assigned to each site a biogeographical region. The biogeographical regions were downloaded from the European Environment Agency (version 2016) and were matched to the different sites with the help of a spatial joint from the **sf** package [@pebesma2018].
+
+
+## Network analyses
+
+To get a general overview of some of the main aspects of these set of plant-pollinator networks, we evaluated how connectance and nestedness change across the latitudinal range of studies and bioclimatic regions. We implemented linear models, with the network metrics as the response variable, and both latitude and bioclimatic region as predictors in two separate models. Finally, with the help of a Tukey test from the package _emmeans_, we evaluated if nestedness and connectance differ statistically across bioclimatic regions. In addition, we explored the association between connectance and nestedness with the number of species per network (i.e., geometric mean of plants and pollinators) by conducting Kendall rank correlation coefficient. Finally, we evaluated if the different networks are more or less nested than expected by chance. Importantly, we implemented two different metrics of nestedness given the different analytical objectives. Common metrics of nestedness are highly correlated to network size, limiting our ability to compare this metric across networks. To avoid this, we implemented a normalised version of nestedness (NODFc) that corrects by connectance and the number of species [@song2017]. This metric was calculated with the help of the **maxnodf** package [@hoeppke2021], which employs a computational efficient approach to calculate it. However, to compare if networks are more or less nested than expected by chance, we employed the traditional z-score approach with the widely used nestedness metric (NODF) from @almeida2008, as this approach allow us to compare our results with previous published nestedness analyses in plant-pollinator networks and only compares each unique network against their randomized versions. We calculated 100 null models for each network with the help of the _vaznull_ function from the package **Bipartite** [@dormann2008] that implements the null model from @vazquez2005. These null networks have the same connectance and number of plant and pollinator species as the empirical ones, but different marginal totals. In other words, interactions are reshuffled with almost equal probabilities to their relative abundances. Connectance was estimated for each network by using the function _networklevel_ from **Bipartite**.
+
+
+\newpage 
+
+# 3 | RESULTS
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+
+#Sampling coverage outputs
+poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
+plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
+int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
+plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
+
+#Coverage
+poll_coverage = poll_output$DataInfo$SC *100
+plant_coverage = plant_output$DataInfo$SC *100
+int_coverage = int_output$DataInfo$SC *100
+plant_poll_coverage = plant_poll_output$DataInfo$SC *100
+
+#Increase doubling effort
+##Pollinators
+poll_increase = poll_output$iNextEst$Network_id
+poll_increase1 = poll_increase %>% filter(method == "observed") %>% pull(qD)
+poll_increase2 = poll_increase %>% filter(t == max(t)) %>% pull(qD)
+poll_increase3 = (poll_increase2-poll_increase1)/poll_increase1 * 100
+##Plants
+plant_increase = plant_output$iNextEst$Network_id
+plant_increase1 = plant_increase %>% filter(method == "observed") %>% pull(qD)
+plant_increase2 = plant_increase %>% filter(t == max(t)) %>% pull(qD)
+plant_increase3 = (plant_increase2-plant_increase1)/plant_increase1 * 100
+##Interactions
+int_increase = int_output$iNextEst$Network_id
+int_increase1 = int_increase %>% filter(method == "observed") %>% pull(qD)
+int_increase2 = int_increase %>% filter(t == max(t)) %>% pull(qD)
+int_increase3 = (int_increase2-int_increase1)/int_increase1 * 100
+##Pollinator by plant
+plant_poll_increase = plant_poll_output$iNextEst$Plant_id
+plant_poll_increase1 = plant_poll_increase %>% filter(method == "observed") %>% pull(qD)
+plant_poll_increase2 = plant_poll_increase %>% filter(t == max(t)) %>% pull(qD)
+plant_poll_increase3 = (plant_poll_increase2-plant_poll_increase1)/plant_poll_increase1 * 100
+
+#Prepare results from common and rare poll across sampling sites
+#Pollinators
+poll_spread = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Network_id) %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+ungroup() %>% 
+count(Pollinator_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id)*100)
+#Check number of studies under 1%
+poll_total = nrow(poll_spread)
+polls_under_one_percent = poll_spread %>% 
+filter(Percent_total<1) %>% 
+nrow()
+polls_under_one_percent = polls_under_one_percent/poll_total * 100
+#Find most common pollinator
+most_common_poll = poll_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Pollinator_accepted_name)
+#Find most common poll percent
+most_common_poll_percent = poll_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Percent_total)
+#Plants
+plant_spread = data %>% 
+select(Plant_rank, Network_id, Plant_accepted_name) %>% 
+group_by(Network_id) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+distinct(Plant_accepted_name) %>% 
+ungroup() %>% 
+count(Plant_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id)*100)
+#Check number of studies under 1%
+plant_total = nrow(plant_spread)
+plants_under_one_percent = plant_spread %>% 
+filter(Percent_total<1) %>% 
+nrow()
+plants_under_one_percent = plants_under_one_percent/plant_total * 100  
+#Find most common plant
+most_common_plant = plant_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Plant_accepted_name)
+#Find most common plant percent
+most_common_plant_percent = plant_spread %>% 
+filter(Percent_total == max(Percent_total)) %>% 
+pull(Percent_total)
+```
+
+## Sampling coverage 
+
+The estimated sampling coverage of plant and pollinator species within the database across the different sampling sites is approximately `r round(poll_coverage)`% for both taxonomic groups. This suggest that the rarefied accumulation curves of both plant and pollinator species exhibit already a "quasi-asymptotic" growth of species richness by considering the current number of sampling sites or networks (**Figure 2a-2b**). The predicted observed species richness by doubling the sampling effort on the already sampled habitat types within the database will only increase pollinator richness by `r format(round(poll_increase3, 2), nsmall=2)`% and plant richness by `r format(round(plant_increase3, 2), nsmall=2)`%. However, the sampling coverage of interactions is `r format(round(int_coverage, 2), nsmall=2)`%, and by doubling the sampling effort the predicted number of unique interactions recorded will have approximately a twofold increase (`r format(round(int_increase3, 2), nsmall=2)`%; **Figure 2c**). Similarly, to the plant and pollinator species accumulation curves across sampling sites, when we consider the accumulated pollinator richness across sampled plant species, this curve also shows a "quasi-asymptotic" growth with a sampling coverage value of `r format(round(plant_poll_coverage, 2), nsmall=2)`%. The predicted recorded pollinator species by doubling the number of plants sampled is expected to increase by `r format(round(plant_poll_increase3, 2), nsmall=2)`% (**Figure 2d**). In addition, when we explore how common or rare are plant and pollinator species across all sampling sites, we find that the majority of plant and pollinator species tend to be regionally specific, and only a minor portion of them is being shared across a broad range of sampling sites (**Figures 2e-2f**). For instance, most plants (`r format(round(plants_under_one_percent, 2), nsmall=2)`%) and pollinators (`r format(round(polls_under_one_percent, 2), nsmall=2)`%) are exclusively found in less than 1% of sampling sites; and the most common plant (*`r most_common_plant`*) and pollinator (*`r most_common_poll`*) species are only found in `r format(round(most_common_plant_percent, 2), nsmall=2)`% and `r format(round(most_common_poll_percent, 2), nsmall=2)`% of sampling sites, respectively.
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represent the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrate the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across an increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site.", fig.width=10, fig.height=6, out.width="115%"}
+
+#Pollinators-----
+poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
+pollinators_curves = readRDS("../Data/Working_files/collectors_curves_pollinators.rds")
+#Create dataset
+d_poll = poll_output$iNextEst$Network_id
+#Check cols
+d_poll$col = d_poll$method
+
+#Now create tibble with same structure
+a_poll = tibble(t = pollinators_curves$Study_sampled, 
+           method = as.character(pollinators_curves$iteration), 
+           qD = pollinators_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_poll1 = bind_rows(d_poll, a_poll)
+d_poll1_point = d_poll1 %>%  filter(method == "observed")
+d_poll1_lines = d_poll1 %>%  filter(!method == "observed")
+
+#Order levels
+d_poll1_lines$col = factor(d_poll1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+p1 = ggplot(d_poll1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col),size = 0.65) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_poll1_point, col = "black", size=2) + 
+ylab("Pollinator species") +
+xlab("Sampling sites") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off")  +
+xlim(0,3000)+
+ylim(0, 3000) +
+ggtitle("(a)") +
+theme(plot.margin = margin(r = 12)) 
+
+#Plants-----
+plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
+plant_curves = readRDS("../Data/Working_files/collectors_curves_plants.rds")
+#Create dataset
+d_plant = plant_output$iNextEst$Network_id
+#Check cols
+d_plant$col = d_plant$method
+
+#Now create tibble with same structure
+a_plant = tibble(t = plant_curves$Study_sampled, 
+           method = as.character(plant_curves$iteration), 
+           qD = plant_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_plant1 = bind_rows(d_plant, a_plant)
+d_plant1_point = d_plant1 %>%  filter(method == "observed")
+d_plant1_lines = d_plant1 %>%  filter(!method == "observed")
+
+#Order levels
+d_plant1_lines$col = factor(d_plant1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+p2 = ggplot(d_plant1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col), size = 0.65) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_plant1_point, col = "black", size=2) + 
+ylab("Plant species") +
+xlab("Sampling sites") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off")  +
+xlim(0,3000)+
+ylim(0, 3000)+
+ggtitle("(b)")+
+theme(plot.margin = margin(r = 12)) 
+
+
+
+#Interactions-----
+int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
+interactions_curves = readRDS("../Data/Working_files/collectors_curves_interactions.rds")
+#Create dataset
+d_int = int_output$iNextEst$Network_id
+#Check cols
+d_int$col = d_int$method
+
+#Now create tibble with same structure
+a_poll = tibble(t = interactions_curves$Study_sampled, 
+           method = as.character(interactions_curves$iteration), 
+           qD = interactions_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_int1 = bind_rows(d_int, a_poll)
+d_int1_point = d_int1 %>%  filter(method == "observed")
+d_int1_lines = d_int1 %>%  filter(!method == "observed")
+
+#Plot
+#Order levels
+d_int1_lines$col = factor(d_int1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+p3 = ggplot(d_int1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col), size = 0.65) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_int1_point, col = "black", size=2) + 
+ylab("Interactions") +
+xlab("Sampling sites") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off")  +
+xlim(0,3000) +
+ylim(0, 30000)+
+ggtitle("(c)")
+
+#----------------#
+#Pollinators
+#----------------#
+#Read data
+data = readRDS("../Data/Working_files/Interactions_uncounted.rds")%>% 
+mutate(Network_id = paste0(Study_id, Network_id))  
+#First select cols of rank, accepted name and study ID
+#Then select unique levels by study ID
+#Now sum levels (maximum can be as maximum number of studies)
+poll_spread = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Network_id) %>% 
+group_by(Network_id) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+ungroup() %>% 
+count(Pollinator_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id))
+  
+#Seelect quantile 50% from the total number of species
+spp_number = poll_spread %>%  
+select(Pollinator_accepted_name) %>% 
+n_distinct()
+df = seq(1, spp_number)
+quantile_50 = quantile(df, 0.5)
+
+#Obtain most common pollinator for plotting
+most_common_poll = poll_spread %>% filter(n_networks_shared == max(n_networks_shared)) %>%
+select(Pollinator_accepted_name) %>% pull() 
+
+#Plot
+o1 = ggplot(poll_spread, 
+aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
+geom_bar(stat = "identity", 
+           color = "#D55E00",
+           lwd = 0.03, fill = "#D55E00") +
+ylab("Shared pollinators (%)") +
+theme_minimal()+
+theme(axis.text.x = element_blank(),
+  axis.ticks.x=element_blank(),
+  axis.ticks.y = element_line(size = 0.2),
+  panel.grid.major.x = element_blank(),
+  panel.grid.minor.y = element_blank(),
+  panel.grid.major.y = element_line(size=0.2, linetype = 2)) +
+xlab("Pollinator species") +
+ylab("Occurrence across sampling sites") + 
+geom_vline(xintercept = quantile_50, linetype="dashed", 
+color = "black", size=0.35) + 
+annotate(geom="text", x=1450, y=0.60, label="50th percentile",color="black", size = 3) +
+annotate(geom="text", x=140, y=0.67, label=most_common_poll[1],color="black",  fontface = 'italic', size = 3)+
+annotate(geom="text", x=200, y=-0.05, label="Common spp."
+      ,color="black",  size = 3) +
+annotate(geom="text", x=1800, y=-0.05, label="\'Rare\' spp."
+      ,color="black",  size = 3)  +
+scale_y_continuous(breaks = seq(0, 0.7, by= 0.25), expand = c(0, 0)) + 
+coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),
+                ylim=c(0,0.7), clip="off") +
+ggtitle("(e)")
+
+#----------------#
+#Plants
+#----------------#
+plant_spread = data %>% 
+select(Plant_rank, Network_id, Plant_accepted_name) %>% 
+group_by(Network_id) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+distinct(Plant_accepted_name) %>% 
+ungroup() %>% 
+count(Plant_accepted_name) %>% 
+rename(n_networks_shared = n) %>% 
+arrange(-n_networks_shared) %>% 
+mutate(Percent_total = n_networks_shared / n_distinct(data$Network_id))
+  
+#Seelect quantile 50% from the total number of species
+spp_number = plant_spread %>%  
+select(Plant_accepted_name) %>% 
+n_distinct()
+df = seq(1, spp_number)
+quantile_50 = quantile(df, 0.5)
+
+#Obtain most common plant for plotting
+most_common_plant = plant_spread %>% filter(n_networks_shared == max(n_networks_shared)) %>%
+select(Plant_accepted_name) %>% pull() 
+
+o2 = ggplot(plant_spread, 
+aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
+geom_bar(stat = "identity", 
+           color = "#009E73",
+           lwd = 0.03, fill = "#009E73") +
+theme_minimal()+
+theme(axis.text.x = element_blank(),
+         axis.ticks.x=element_blank(),
+         axis.ticks.y = element_line(size = 0.2),
+         panel.grid.major.x = element_blank(),
+         panel.grid.minor.y = element_blank(),
+         panel.grid.major.y = element_line(size=0.2, linetype =  2)) +
+xlab("Plant species") +
+ylab("Occurrence across sampling sites") + 
+geom_vline(xintercept = quantile_50, linetype="dashed", 
+          color = "black", size=0.35) + 
+annotate(geom="text", x=950, y=0.60, label="50th percentile",color="black", size = 3) + 
+annotate(geom="text", x=100, y=0.4, label=most_common_plant[1]
+      ,color="black",  fontface = 'italic', size = 3)+
+annotate(geom="text", x=150, y=-0.05, label="Common spp."
+      ,color="black",  size = 3) +
+annotate(geom="text", x=1200, y=-0.05, label="\'Rare\' spp."
+      ,color="black",  size = 3) + 
+scale_y_continuous(breaks = seq(0, 0.7, by= 0.25), expand = c(0, 0), labels = label_number(accuracy = 0.01)) +
+coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),
+                ylim=c(0, 0.7), clip="off") +
+ggtitle("(f)")
+
+#Pollinator by plant species
+plant_poll_curves = readRDS("../Data/Working_files/collectors_curves_plant_ploll.rds")
+plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
+
+#Create dataset
+d_pp = plant_poll_output$iNextEst$Plant_id
+#Check cols
+d_pp$col = d_pp$method
+
+#Now create tibble with same structure
+a_poll = tibble(t = plant_poll_curves$Plant_sampled, 
+           method = as.character(plant_poll_curves$iteration), 
+           qD = plant_poll_curves$Unique_spp_cumulative,
+           col = "collectors")
+
+#Bind datasets 
+d_pp1 = bind_rows(d_pp, a_poll)
+d_pp1_point = d_pp1 %>%  filter(method == "observed")
+d_pp1_lines = d_pp1 %>%  filter(!method == "observed")
+
+#Plot
+#Order levels
+d_pp1_lines$col = factor(d_pp1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+#Plot
+pp1 = ggplot(d_pp1_lines, aes(x = t, y = qD, group = method, color = col)) +
+geom_line(aes(linetype = col)) +
+scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
+scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
+geom_ribbon(aes(ymin = qD.LCL, 
+    ymax=qD.UCL, fill = col),alpha=0.2, colour = NA, show.legend = FALSE)+
+scale_fill_manual(values = c("gray", "black", "red")) +
+geom_point(data = d_pp1_point, col = "black") + 
+ylab("Pollinator species") +
+xlab("Plant species") +
+theme_bw() +
+coord_cartesian(expand = FALSE, clip = "off") +
+ggtitle("(d)") +
+scale_x_continuous(breaks = seq(0, 2800, by = 1000), limits=c(0,2800)) +
+scale_y_continuous(breaks = seq(0, 2600, by = 1000), limits=c(0,2600)) +
+theme(legend.position = "none")
+
+#Plot all
+p1 + p2 + p3 + pp1 + o1 + o2 + plot_layout(guides = "collect", nrow = 2, ncol=3) & theme(legend.title=element_blank(),
+      axis.title = element_text(size=12, face = "bold"),
+      axis.text = element_text(size=10),
+      plot.title = element_text(size=18))
+
+#a/b
+
+
+```
+
+\newpage
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+#Taxonomic coverage outputs
+#Find number of plant and pollinator species
+##Pollinators
+poll_spp = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+distinct(Pollinator_accepted_name) %>% 
+nrow(.)
+##Plants
+plant_spp = data %>% 
+select(Plant_rank, Plant_accepted_name) %>% 
+filter(Plant_rank == "SPECIES") %>% 
+distinct(Plant_accepted_name) %>% 
+nrow(.)
+
+#Overall plant coverage
+plant_coverage = readRDS("../Data/Manuscript_info/plant_coverage.RData")
+
+#Average plant family coverage
+d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData") %>% 
+filter(fam_group == "B")
+#Average coverage per family
+mean_plant_fam_cov = d1 %>% 
+ungroup() %>% 
+summarise(mean_plant_fam_cov = mean(Percent)) %>% 
+pull()
+
+#Percent of families with interaction records
+all_fam = nrow(d1)
+fam_with_data = d1 %>% 
+filter(Percent > 0) %>% 
+nrow()
+percent_plant_fam_with_data = fam_with_data/all_fam * 100
+
+#Calculate phylogenetic signal of presence-absence information
+#Read data and plot it
+tree = readRDS("../Data/Manuscript_info/plant_phylo.RData")
+#Create binary trait to calculate phylo
+phylo_trait = d1 %>% 
+mutate(categorical = case_when(Percent > 0 ~ 1, TRUE ~ 0)) %>% 
+#select(label, categorical) %>% 
+ungroup() 
+#Check phylogenetic signal
+d1 = d1 %>% arrange(factor(label, levels = tree@phylo$tip.label))
+
+v = phylo_trait$categorical
+names(v) = tree@phylo$tip.label
+
+phylo_signal_plant = phylosig(tree@phylo, v, method="lambda", test=TRUE)
+lambda_phylosig_plants = phylo_signal_plant$lambda
+p_phylosig_plants = phylo_signal_plant$P
+
+#Load pollinator coverage
+bee_coverage = readRDS("../Data/Manuscript_info/bee_coverage.RData")
+syrphid_coverage = readRDS("../Data/Manuscript_info/syrphid_coverage.RData")
+lepidoptera_coverage = readRDS("../Data/Manuscript_info/lepidoptera_coverage.RData")
+#Check percentage of interactions from bees with and without apis
+#Check percentage of bees in the database
+bee_fam = c("Apidae", "Megachilidae", "Halictidae",
+            "Andrenidae", "Colletidae", "Melittidae")
+all_rows = data %>% nrow(.)
+#
+bee_rows = data %>%
+filter(Pollinator_family %in% bee_fam) %>% 
+nrow(.)
+#Bee interactions
+bee_interactions_percent = bee_rows/all_rows *100
+#Eclude now apis
+bee_rows_non_apis = data %>%
+filter(Pollinator_family %in% bee_fam) %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>% 
+nrow(.)
+#
+bee_interactions_non_apis_percent = bee_rows_non_apis/bee_rows *100
+
+#Coverage across bee genera
+d1 = readRDS("../Data/Manuscript_info/bee_data.RData")
+all_rows_bees = d1 %>%  
+filter(fam_group == "a") %>% 
+nrow(.)
+#
+data_bees = d1 %>%  
+filter(fam_group == "a") %>% 
+mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>% 
+filter(Percent > 0) %>% 
+nrow(.)
+#
+bee_genera_percent_coverage = data_bees/all_rows_bees * 100
+#Check average coverage across bee genera
+average_coverage_bee_genera = d1 %>% 
+filter(fam_group == "a") %>% 
+mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>% 
+ungroup() %>% 
+summarise(average_coverage_bee_genera = mean(Percent)) %>% 
+pull()
+
+#Calculate phylogenetic signal of presence-absence information
+##Read data and plot it
+tree = readRDS("../Data/Manuscript_info/bee.tree100.rds")
+##Create binary trait to calculate phylo
+phylo_trait = d1 %>% 
+filter(fam_group == "a") %>% 
+mutate(Percent = case_when(is.na(Percent) ~ 0, TRUE ~ Percent)) %>% 
+mutate(categorical = case_when(Percent > 0 ~ 1, TRUE ~ 0)) %>% 
+ungroup() 
+##Conduct left join to tibble of tip labels to organise order
+v = tibble(Genus1 = tree$tip.label) %>% 
+mutate(Genus1 = str_to_title(word(Genus1,1,sep = "_")))
+#
+v1 = left_join(v, phylo_trait)
+#
+v2 = v1$categorical
+names(v2) = tree$tip.label
+#
+phylo_signal_bees = phylosig(tree, v2, method="lambda", test=TRUE)
+lambda_phylosig_bees = phylo_signal_bees$lambda
+p_phylosig_bees = phylo_signal_bees$P
+
+#Check number of studies by habitat
+studies_by_habitat = data %>% 
+select(Study_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+slice_max(Habitat_count, n = 3) %>% 
+mutate(EuPPollNet_habitat = tolower(EuPPollNet_habitat))
+#Check number of sampling sites by habitat
+networks_by_habitat = data %>% 
+select(Network_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+slice_max(Habitat_count, n = 3) %>% 
+mutate(EuPPollNet_habitat = tolower(EuPPollNet_habitat))
+#Check number of studies by bioregion
+studies_by_bioregion = data %>% 
+select(Study_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+slice_max(Bioregion_count, n = 3) %>% 
+mutate(Bioregion = tolower(Bioregion))
+#Check number of sampling sites by bioregion
+networks_by_bioregion = data %>% 
+select(Network_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+slice_max(Bioregion_count, n = 3) %>% 
+mutate(Bioregion = tolower(Bioregion))
+
+```
+
+
+## Taxonomic coverage
+
+The database contains a total of `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The coverage of the main pollinators groups occurring in Europe is `r format(round(bee_coverage, 2), nsmall=2)`% for bees, `r format(round(syrphid_coverage, 2), nsmall=2)`% for syrphids and `r format(round(lepidoptera_coverage, 2), nsmall=2)`% for butterflies (see **Figure S1** for coverage at the family level for bees and butterflies, and at the subfamily level for syrphids). Bees constitute `r format(round(bee_interactions_percent, 2), nsmall=2)`% of the interactions of the database, and `r format(round(bee_interactions_non_apis_percent, 2), nsmall=2)`% of the interactions when excluding honey bees. Within the database, `r format(round(bee_genera_percent_coverage, 2), nsmall=2)`% of bee genera have at least one species with interaction records, and the average coverage at the bee genus level is `r format(round(average_coverage_bee_genera, 2), nsmall=2)`% (**Figure 3**). In addition, the presence or absence of interactions records for bees seems not to follow any sort of phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_bees, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_bees, 2), nsmall=2)`). The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 4**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species also seems not to follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). 
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 3}. Phylogenetic representation of bee genera in the EuPPollNet database within the context of all European bee genera. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
+
+#Read data
+tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
+d1 = readRDS("../Data/Manuscript_info/bee_data.RData")
+n = readRDS("../Data/Manuscript_info/node_data.RData")
+
+#Circular layour
+ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 
+geom_tippoint(aes(size= Interactions, fill = Interactions), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0.063, size=2.9, fontface=1) +
+scale_size(range = c(0,4.5), guide = 'none')  +
+scale_fill_continuous(type = "viridis", direction=-1) + 
+guides(fill=guide_legend(), size = guide_legend()) +
+theme(legend.position = "bottom") +
+new_scale_fill() +
+geom_fruit(data = d1, geom=geom_bar,
+                    mapping=aes(y=Genus1, x=Percent, fill = fam_group),
+                    pwidth=0.13, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0.137,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 2.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 3,
+                         fontface = 2
+                     ),
+         grid.params=list()) +
+guides(fill = "none")+
+scale_fill_manual(values = c(a = "tan2", b = "lightgrey"), guide = "none")+
+geom_fruit(geom=geom_bar,
+                    mapping=aes(y=label, x=Spp_number_Europe),
+                    pwidth=0.12, 
+                    orientation="y", 
+                    stat="identity",
+                    color="black",
+                    offset = 0,
+            axis.params=list(
+                         axis = "x",
+                         text.size  = 2.5,
+                         hjust  = 1,
+                         vjust = 0.5,
+                         nbreak = 1,
+                         fontface = 2
+                     ),
+         grid.params=list()) +
+annotate("text", x = 14.2, y = 70, label = "EuPPollNet spp\n coverage (%)", size= 3, fontface= "bold") +
+annotate("text", x = 15.7, y = 70, label = "European\n species", size= 3, fontface= "bold")+
+annotate("text", x = 12.1, y = 70, label = "EuPPollNet\n interactions", size= 3, fontface= "bold")+ 
+new_scale_fill() +
+geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
+annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
+annotate("text", x = 7, y = 6.5, label = "Andrenidae", size= 3)+
+annotate("text", x = 9.5, y = 12.5, label = "Colletidae", size= 3)+
+annotate("text", x = 5.9, y = 17.4, label = "Halictidae", size= 3)+
+annotate("text", x = 2.8, y = 28.6, label = "Apidae", size= 3)+
+annotate("text", x = 2.8, y = 51.3, label = "Megachilidae", size= 3) +
+coord_cartesian(clip = "off")+
+theme(legend.margin=unit(1,"cm"),
+      legend.spacing = unit(1, "cm"),
+      plot.margin = margin(4,0,4,0), 
+      legend.position = c(0.6,0),
+      legend.direction = "horizontal") 
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Phylogenetic representation of the plant families in the EuPPollNet database within the context of all flowering plant families occurring in Europe. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
+
+library(ggplot2)
+library(ggtree)
+library(ggnewscale)
+library(ggtreeExtra)
+library(cowplot)
+
+
+#Save data and plot it in an Rmarkdown
+tree_family_interactions = readRDS("../Data/Manuscript_info/plant_phylo.RData")
+d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData")
+
+#Check if there are differences in labels and order
+ggtree(tree_family_interactions, layout="circular", size=0.15, open.angle=5, alpha=0.25) +
+geom_tippoint(aes(size= Interactions, fill = Interactions), color="black", shape=21) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = -5, size=1.85, fontface=2, hjust=1) +
+scale_size(range = c(0,4), guide = 'none') +
+scale_fill_continuous(type = "viridis", direction=-1) + 
+theme(legend.position = "bottom") +
+guides(fill=guide_legend(), size = guide_legend()) +
+new_scale_fill() +
+geom_fruit(data = d1, geom=geom_bar,
+   mapping=aes(y=label, x=Percent, fill = fam_group),
+   pwidth=0.1, 
+   orientation="y", 
+   stat="identity",
+   color="black",
+   offset = 0.028,
+   linewidth=0.35,
+   axis.params=list(
+     axis = "x",
+     text.size  = 1.5,
+     hjust  = 1,
+     vjust = 0.5,
+     nbreak = 3,
+     fontface = 2),
+  grid.params=list())+
+guides(fill = "none")+
+scale_fill_manual(values = c(A = "lightgrey", B = "tan2"), guide = "none") +
+geom_fruit(geom=geom_bar,
+    mapping=aes(y=label, x=log(Spp_Europe +1)),
+    pwidth=0.1, 
+    orientation="y", 
+    stat="identity",
+    color="black",
+    offset = 0,
+    linewidth=0.35) +
+theme(legend.margin=unit(1,"cm"),
+      legend.spacing = unit(1, "cm"),
+      plot.margin = margin(4,0,4,0), 
+      legend.position = c(0.5,0.09),
+      legend.direction = "horizontal") 
+
+```
+
+
+\newpage
+
+
+## Habitat type and bioclimatic region
+
+The proportion of the major pollinator orders within the database differed across habitats and bioclimatic regions (**Figure 5**). As expected, Hymenoptera was the main taxonomic order on the majority of habitats, exceeded only by Diptera on the habitat categories of riparian vegetation, moors and heathland, and alpine grasslands. Overall, the proportion of Lepidoptera and Coleoptera was low across all habitats but Coleoptera showed a notably increase in sclerophyllous vegetation and beaches, dunes and sands habitat categories. Similar patterns were observed when exploring the pollinator proportions by bioclimatic region. In this particular case, Hymenoptera was the predominant order in all bioclimatic regions with Diptera taking more importance in Alpine and Atlantic regions. Again, Lepidoptera shows low proportions across all bioclimatic regions and Coleoptera seems to be only relevant in Mediterranean regions at European level. Notably, the number of studies (**Figure 5**) and sampling sites (**Figure S2**) also differs across habitats and bioclimatic regions. The habitats sampled by a higher number of studies in the database are `r studies_by_habitat$EuPPollNet_habitat[[1]]` (`r studies_by_habitat$Habitat_count[[1]]`), `r studies_by_habitat$EuPPollNet_habitat[[2]]` (`r studies_by_habitat$Habitat_count[[2]]`) and `r studies_by_habitat$EuPPollNet_habitat[[3]]` (`r studies_by_habitat$Habitat_count[[3]]`). However, the habitats that contain a higher number of sampling sites are `r networks_by_habitat$EuPPollNet_habitat[[1]]` (`r networks_by_habitat$Habitat_count[[1]]`), `r networks_by_habitat$EuPPollNet_habitat[[2]]` (`r networks_by_habitat$Habitat_count[[2]]`) and `r networks_by_habitat$EuPPollNet_habitat[[3]]` (`r networks_by_habitat$Habitat_count[[3]]`). The bioclimatic regions with a higher number of studies are `r studies_by_bioregion$Bioregion[[1]]` (`r studies_by_bioregion$Bioregion_count[[1]]`), `r studies_by_bioregion$Bioregion[[2]]` (`r studies_by_bioregion$Bioregion_count[[2]]`) and `r studies_by_bioregion$Bioregion[[3]]` (`r studies_by_bioregion$Bioregion_count[[3]]`); and the ones that contain a higher number of sampling sites are `r networks_by_bioregion$Bioregion[[1]]` (`r networks_by_bioregion$Bioregion_count[[1]]`), `r networks_by_bioregion$Bioregion[[2]]` (`r networks_by_bioregion$Bioregion_count[[2]]`) and `r networks_by_bioregion$Bioregion[[3]]` (`r networks_by_bioregion$Bioregion_count[[3]]`). 
+
+
+
+
+
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the EuPPollNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can contribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
+
+
+#Prepare orders for filtering
+main_orders = c("Hymenoptera", "Lepidoptera", "Coleoptera", "Diptera")
+
+#Check number of studies by habitat
+habitat = data %>% 
+select(Study_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) 
+#Check number of studies by bioregion
+bioregion = data %>% 
+select(Study_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) 
+#Check pols by habitat
+pollinator_percent = data %>%
+group_by(EuPPollNet_habitat, Pollinator_order) %>%
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+summarise(count = n()) %>%
+group_by(EuPPollNet_habitat) %>%
+mutate(Proportion = count/sum(count)) %>%
+select(-count) 
+#Check pols by bioregion
+pollinator_percent_bio = data %>%
+group_by(Bioregion, Pollinator_order) %>%
+filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+summarise(count = n()) %>%
+group_by(Bioregion) %>%
+mutate(Proportion = count/sum(count)) %>%
+select(-count) 
+#Preparing datasets for horizontal plot
+a1 = habitat %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat = EuPPollNet_habitat) %>% 
+rename(Count = Habitat_count)
+
+b1 = bioregion %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat = Bioregion) %>% 
+rename(Count = Bioregion_count)
+
+#Bind datasets
+c1 = bind_rows(a1,b1)
+
+#Create datasets and rename cols
+a2 = pollinator_percent_bio %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat = Bioregion) 
+
+b2 = pollinator_percent %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat = EuPPollNet_habitat)
+#Bind rows
+c2 = bind_rows(a2, b2) 
+
+#Prepare to set ordered labels
+l2 = c2 %>% 
+filter(Pollinator_order == "Hymenoptera") %>% 
+arrange((Proportion)) %>% 
+pull(Habitat)
+#Set order of labels
+c2$Habitat = factor(c2$Habitat, levels = l2)
+
+#Set the right order of labels
+c2$Pollinator_order = factor(c2$Pollinator_order, levels = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera"))
+
+
+p1 = ggplot(c2, 
+aes(fill=Pollinator_order, y=Proportion, x=Habitat)) + 
+geom_bar(position = position_stack(reverse = TRUE), stat="identity")+
+theme_bw() +
+theme(legend.position = "bottom",
+      plot.margin=unit(c(0,0,0,0), "mm"),
+      legend.text = element_text(size=6),
+      legend.key.size = unit(2, "mm"),
+      legend.spacing.y = unit(0.1, "cm"),
+       legend.box.spacing = unit(0, "pt"),
+      axis.title = element_text(face = "bold", size = 7),
+      axis.text = element_text(size=6),
+      panel.border = element_rect(size=1)) +
+xlab(NULL) +
+scale_y_continuous(breaks = c(0.25, 0.5,0.75), labels = c("0.25", "0.5","0.75"))+
+theme(strip.text.x = element_text(size = 10, face = "bold"),
+    strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid")) +
+scale_fill_manual(values = viridis(4),
+                  name = NULL) +
+coord_flip(expand = FALSE) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y") +
+guides(fill=guide_legend(nrow=2,byrow=TRUE)) 
+
+#Unify labels
+c1$Habitat = factor(c1$Habitat, levels = l2)
+#Create barplot on the side
+p2 =ggplot(c1, aes(Habitat, Count)) +
+geom_col(fill = "gray25",width = 0.9, color="black", linewidth = 0.4) +
+theme_light() +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+      axis.ticks.y = element_blank(), 
+      axis.ticks.x = element_line(color="black"),
+  axis.text.y = element_blank(), 
+      strip.text.x = element_text(size=12),
+      strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid"),
+  axis.title = element_text(face = "bold", size = 7),
+axis.text = element_text(size=6)) +
+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+panel.background = element_blank(),
+panel.border = element_blank(),
+axis.line = element_line(color = 'black'),
+plot.margin = margin(0,0,0,0)) +
+scale_y_continuous(breaks = c(0, 10,20), labels = c("0", "10","20"), limits = c(0,30))+
+xlab(NULL) +
+ylab("Number of studies")+
+theme(legend.position = "none")+
+coord_flip(expand = F) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")), space = "free", scales = "free_y")
+
+
+#Plot panel
+p1 + p2 + plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=2) 
+
+
+```
+
+\newpage
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+
+#Outputs calculated in script 7_3
+#Load lm output connectance ~ latitude
+connectance_lat_r2= readRDS("../Data/Manuscript_info/connectance_lat_r2.rds")
+connectance_lat_pval = readRDS("../Data/Manuscript_info/connectance_lat_pval.rds")
+#Load lm output nestedness ~ latitude
+normalised_nestedness_lat_r2 = readRDS("../Data/Manuscript_info/normalised_nestedness_lat_r2.rds")
+normalised_nestedness_lat_pval = readRDS("../Data/Manuscript_info/normalised_nestedness_lat_pval.rds")
+#Load values of connectance
+min_connectance = readRDS("../Data/Manuscript_info/min_connectance.rds")
+max_connectance = readRDS("../Data/Manuscript_info/max_connectance.rds")
+mean_connectance = readRDS("../Data/Manuscript_info/mean_connectance.rds")
+#Load values of nestedness
+min_nodfc = readRDS("../Data/Manuscript_info/min_nodfc.rds")
+max_nodfc = readRDS("../Data/Manuscript_info/max_nodfc.rds")
+mean_nodfc = readRDS("../Data/Manuscript_info/mean_nodfc.rds")
+#Load kendall corr from connectance and spp
+connectance_spp_mean_corr_tau = readRDS("../Data/Manuscript_info/connectance_spp_mean_corr_tau.rds")
+connectance_spp_mean_corr_pval = readRDS("../Data/Manuscript_info/connectance_spp_mean_corr_pval.rds")
+#Load kendall corr from nestedness and spp
+normalised_nestedness_spp_mean_corr_tau = readRDS("../Data/Manuscript_info/normalised_nestedness_spp_mean_corr_tau.rds")
+normalised_nestedness_spp_mean_corr_pval = readRDS("../Data/Manuscript_info/normalised_nestedness_spp_mean_corr_pval.rds")
+#Load z values
+#Save data
+z_percent = readRDS("../Data/Manuscript_info/z_percent.rds")
+no_diff_z_percent = z_percent %>% 
+filter(infra_over_represented == "No statistical difference") %>% 
+pull(percent)
+over_z_percent = z_percent %>% 
+filter(infra_over_represented == "Over-represented") %>% 
+pull(percent)
+under_z_percent = z_percent %>% 
+filter(infra_over_represented == "Under-represented") %>% 
+pull(percent)
+
+```
+
+## Network properties
+
+Connectance and nestedness did not change across the latitudinal range of studies (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). However, differences were found for connectance but not nestedness across bioclimatic regions. Specifically, the alpine region differed statistically in connectance to the other bioclimatic regions (Tukey test _P_ < 0.01). In addition, the atlantic and continental bioclimatic regions also showed statistical meaningful differences in connectance (Tukey test _P_ < 0.01). Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and followed an negative exponential relationship with the geometric mean of plant and pollinator species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6c**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S3**). Finally, we found that `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, `r round(no_diff_z_percent, 2)`% showed no statistical difference, and `r round(under_z_percent, 2)`% were less nested than null expectations (**Figure 6d**).
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graphs (a-b) indicate network connectance and nestedness across the latitudinal range of the studies from the database. In addition, the bioclimatic region where each network is located is indicated with points of different shapes and colours. Graph (c) shows the association between network connectance and the geometric mean of plant and pollinator species per network. Graph (d) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue).", fig.width=10, fig.height=7, fig.align='center'}
+
+# Load libraries
+
+library(psych)
+# Load data
+data = readRDS("../Data/3_Final_data/Interaction_data.rds")
+metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
+null_networks = readRDS("../Data/Working_files/null_networks.rds")
+null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks.rds")
+
+# Prepare data
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+              Month = lubridate::month(Date), 
+              Day = lubridate::day(Date))
+
+# Subset data for studies with only bumblebees
+v = c("13_Karise", "22_Kallnik")
+subsetting = unique(data$Study_id)
+
+long_format = data %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
+mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+filter(!Study_id %in% v) %>% 
+select(Network_id, Plant_accepted_name, Pollinator_accepted_name)
+
+# Filter networks larger than 4 plants and 4 pollinator species
+v2 = long_format %>% 
+group_by(Network_id) %>% 
+summarise(Poll_spp = n_distinct(Plant_accepted_name),
+          Plant_spp = n_distinct(Pollinator_accepted_name)) %>% 
+ungroup() %>% 
+filter(Poll_spp >= 4 & Plant_spp >= 4) %>% 
+pull(Network_id)
+
+long_format = long_format %>% 
+filter(Network_id %in% v2)
+
+# Filter networks with more links than species
+links = long_format %>% 
+group_by(Network_id, Plant_accepted_name, Pollinator_accepted_name) %>%
+distinct() %>% 
+group_by(Network_id) %>% 
+summarise(links = length(Network_id))
+
+spp = long_format %>% 
+group_by(Network_id) %>% 
+summarise(n_plants = n_distinct(Plant_accepted_name),
+          n_polls = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(n_total = n_plants + n_polls)
+
+vector_to_include = left_join(links, spp)
+
+v3 = vector_to_include %>% 
+filter(links > n_total) %>% 
+pull(Network_id)
+
+long_format = long_format %>% 
+filter(Network_id %in% v3)
+
+# Explore how NODFc changes across the Y-X AXES (latitude-Longitude)
+long_format_coords = data %>% 
+mutate(Network_id = paste0(Study_id, "_", Network_id, "_", Year)) %>% 
+mutate(Network_id = str_replace_all(Network_id, " ","_")) %>% 
+select(Network_id, Latitude, Longitude, Bioregion) %>% 
+distinct()
+
+# Merge data
+metrics_by_network_coords = left_join(metrics_by_network, long_format_coords)
+
+# Connectance plots
+# 1st Latitude
+p1 = metrics_by_network_coords %>% 
+ggplot(aes(Latitude, Connectance)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.15, size=2.5, alpha=1) +
+theme_bw() +
+ylab("Connectance") +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+))+
+ggtitle("(a)")
+
+
+# 2nd Plot
+p2 = metrics_by_network_coords %>% 
+ggplot(aes(Latitude, Normalised_nestedness)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.15, size=2.5, alpha=1) +
+theme_bw() +
+ylab("NODFc") +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+  )) +
+ggtitle("(b)")
+
+# Merge and process data
+d = left_join(metrics_by_network, null_metrics_networks)
+d = d %>% 
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
+
+p = 0.05 #cutoff probability 95% confidence
+critical_value = qnorm(p/2) #double tail probability divide by 2
+
+d1 = d %>%
+mutate(infra_over_represented = case_when(
+z_score < -abs(critical_value) ~ "Under-represented",
+between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
+  ))
+
+# 2nd Species (geometric mean)
+species_number = long_format %>% 
+group_by(Network_id) %>% 
+summarise(N_plants = n_distinct(Plant_accepted_name),
+          N_pollinators = n_distinct(Pollinator_accepted_name)) %>% 
+group_by(Network_id) %>% 
+summarise(geometric_mean_spp = geometric.mean(c(N_plants, N_pollinators)))
+
+metrics_by_network_spp_number = left_join(metrics_by_network, species_number)
+
+p3 = metrics_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Connectance)) +
+geom_point(pch = 21, fill = "azure3", size=2.5, stroke=0.25, alpha=1) +
+theme_bw() +
+xlab("Species")+
+ggtitle("(c)")
+
+
+# Plot
+p4 = d1 %>% 
+ggplot(aes(x = z_score)) +
+geom_histogram(aes(y = ..density.., fill = infra_over_represented), 
+               bins = 100, alpha = 0.5, color = "black", position = "stack", size=0.1) +
+stat_function(data = d1, fun = function(x) dnorm(x, mean = mean(d1$z_score), sd = sd(d1$z_score)) * 1.7, 
+                n = 1000, inherit.aes = FALSE, color = "gray18", size = 1) +
+theme_bw() +
+coord_cartesian(expand = FALSE) +
+geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red")+
+geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+ylab("Density") +
+xlab("Z scores (NODF)")  +
+xlim(-6, 9) +
+ylim(0, 0.8) +
+scale_fill_manual(name = "Observed NODF against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+ggtitle("(d)")
+
+
+# Layout plots
+a = p1 + p2 + plot_layout(guides = 'collect') & theme(legend.position = "right",
+                                                      legend.justification = "left")
+b = (p3 + p4)  & theme(legend.justification = "left")
+a / b  & theme(axis.title =  element_text(size=16, face="bold"),
+               plot.title = element_text(size=22),
+               panel.border = element_rect(colour = "black",
+               fill=NA, size=1),
+               axis.text=element_text(size=12),
+               legend.text = element_text(size=10),
+               legend.key.size = unit(6, "mm"),
+               legend.spacing.y = unit(0.5, "cm"),
+               legend.box.spacing = unit(0, "pt"),
+               legend.title = element_text(face = "bold"))
+
+```
+
+
+\newpage 
+
+# 3 | DISCUSSION
+
+Although Europe...
+
+Geographic and taxonomic biases!
+Supporting reference:
+https://doi.org/10.1111/ecog.05926
+
+Networks, ref:
+
+https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
+
+Contextualise European diversity of plant and pollinator species with global biodiveristy
+
+\newpage
+
+# References
+
+::: {#refs}
+:::
+
+
+# Acknowledgments
+
+We thank all the taxonomist and ecologist that has made this database possible by contributing with their fieldwork data. This research was funded by the H2020 European project Safeguard (101003476).
+
+# Author contributions
+
+# Supplementary material
+
+**Supplementary text 1**
+
+Habitat definitions:
+
+1) **Ruderal vegetation**: Plants growing on highly disturbed sites such as road sides or mineral extraction sites. 
+
+2) **Agricultural margings**: Sides of crops that can include any type of vegetation from low growing plants to trees.
+
+3) **Green urban areas**: Parks, private gardens or small pastures within an  urban setting. Botanical gardens are included in this category.
+
+4) **Agricultural land**: Includes any type of crop and any type of vegetation growing within them. 
+
+5) **Forest/woodland understory**: Any plant community sampled under a wooded group of plants. The forest could be embedded in an agricultural setting or in a fully natural scenario. We have included here agro-forestry areas and open to dense forest. Note that we have excluded from this category forest that contains sclerophyllous vegetation. 
+
+6) **Semi-natural grassland**: Low growing plant community with relatively low disturbances but under low pressure such as seasonal mowing or extensive grazing.
+
+7) **Pastures**: Any type of low growing plant community that is highly influenced by human disturbance. For instance, agriculture, mowing, moderate to high grazing or urban environments. Note that this category also includes old pastures with regrowth of woody vegetation.
+
+8) **Sclerophyllous vegetation**: Any type of system with a dominant shrub community adapted to drought. Typical of the Mediterranean region. Note, that we have include in this category also woodlands (open coniferous forest) where the shrub community was the main focus of the study.
+
+9) **Beaches, dunes, sands**: Plant communities growing on sandy soil.
+
+10) **Riparian vegetation**: Plant communities growing on river margins. 
+
+10) **Natural grassslands**: Low growing plant communities with little or none human disturbance. Often located in high elevation areas within Europe.
+
+12) **Moors and heathland**: Low growing woody vegetation characteristic from low fertile soils near the coast or in alpine areas.
+
+
+\newpage
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="105%", fig.cap= "\\textbf{Figure S1}. Coverage of the EuPPollNet species for bees (family level), syrphids (subfamily level) and butterflies (family level) in relation to the total number of European species within these taxonomic groups.", fig.width=10, fig.height=4}
+
+#Prepare figure for supplementary material
+#Coverage across high taxonomic ranks of bees, syrphids and butterflies
+#--------------------------------------------------------------------------------------------#
+#Start from bees----
+#Bee families
+bee_fam = c("Apidae", "Megachilidae", "Halictidae", 
+            "Andrenidae", "Colletidae","Melittidae")
+
+
+#Species per family within SafeNet
+bee_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Hymenoptera") %>% 
+filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+filter(Pollinator_family %in% bee_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "EuPPollNet")
+#Species per family within Europe
+bee_spp_europe =  master_list %>% 
+select(Family, Genus, Species, GenusAndSpecies) %>% 
+filter(Family %in% bee_fam) %>% 
+group_by(Family) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+rename(Pollinator_family = Family) %>% 
+mutate(Group = "Europe")
+
+#Bind both datasets for plotting
+bee_fam_coverage = bind_rows(bee_spp_safenet, bee_spp_europe)
+
+p1 = ggplot(bee_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+ylab("Number of species") +
+scale_fill_manual(values = c("tan2", "lightgrey"))+
+ggtitle("Bee family coverage")
+#--------------------------------------------------------------------------------------------#
+#Continue with syrphids----
+#As we don't have subfamilies, let's obtained them from the master list
+syrphids = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family,Subfamily,  Genus, Species, GenusAndSpecies) %>% 
+rename(Pollinator_accepted_name = GenusAndSpecies)
+#Syrphid species safenet
+syrphid_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_family== "Syrphidae") %>% 
+distinct()
+#Add subfamily info
+syrphid_spp_safenet = left_join(syrphid_spp_safenet, syrphids)
+#Summarise spp per subfamily
+syrphid_spp_safenet = syrphid_spp_safenet %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "EuPPollNet")
+#Get spp per subfamily at european level
+syrphid_spp_europe = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family, Subfamily, Genus, Species, GenusAndSpecies) %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+syrphid_fam_coverage = bind_rows(syrphid_spp_safenet, syrphid_spp_europe)
+#Plot
+p2 = ggplot(syrphid_fam_coverage, aes(reorder(Subfamily,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c("tan2", "lightgrey"))+
+ggtitle("Syrphid subfamily coverage")
+#--------------------------------------------------------------------------------------------#
+#Continue with butterflies----
+#Do it at family level
+#Create vector with butterfly families
+butt_fam = c(unique(master_list1$family))
+#Species per family within SafeNet
+butterfly_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Lepidoptera") %>% 
+filter(Pollinator_family %in% butt_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "EuPPollNet")
+#Species per family within Europe
+butterfly_spp_europe =  master_list1 %>% 
+select(family, genus, scientificName) %>% 
+group_by(family) %>% 
+summarise(Spp_number = n_distinct(scientificName)) %>% 
+rename(Pollinator_family = family) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+butterfly_fam_coverage = bind_rows(butterfly_spp_safenet, butterfly_spp_europe)
+#Plot
+p3 = ggplot(butterfly_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c("tan2", "lightgrey"))+
+ggtitle("Butterfly family coverage")
+
+#--------------------------------------------------------------------------------------------#
+p1+p2+p3 + plot_layout(guides = "collect") & 
+theme(plot.title = element_text(size = 14, face = "bold"),
+      axis.title = element_text(face = "bold", size = 14),
+      axis.text = element_text(face = "bold", size = 12))
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="90%", fig.cap= "\\textbf{Figure S2}. Barplot indicating the number of sampling sites by habitat and bioclimatic region within the database.", fig.width=8, fig.height=8}
+
+#Check number of studies by habitat
+habitat = data %>% 
+select(Network_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat_bioregion = EuPPollNet_habitat) %>% 
+rename(Count = Habitat_count)
+
+#Check number of studies by bioregion
+bioregion = data %>% 
+select(Network_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat_bioregion = Bioregion) %>% 
+rename(Count = Bioregion_count)
+
+
+c = bind_rows(habitat, bioregion)
+
+ggplot(c, aes(Habitat_bioregion, Count)) +
+geom_col(fill = "gray25",width = 0.9, color="black", linewidth = 0.4) +
+theme_bw()+
+coord_flip(expand = F) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")),
+        space = "free", scales = "free_y") +
+ylab("Sampling sites") +
+xlab(NULL) +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+      axis.ticks.x = element_line(color="black"),
+      strip.text.x = element_text(size=14, face = "bold"),
+      strip.background = element_rect(size=0.5, linetype="solid"),
+  axis.title = element_text(face = "bold", size = 12),
+axis.text = element_text(size=10))
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="80%", fig.cap= "\\textbf{Figure S3}. Association between nestedness (NODFc) and the geometric mean of plan and pollinator species per network", fig.width=3, fig.height=3}
+
+metrics_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
+geom_point(pch = 21, fill = "azure3", size=1.5, stroke=0.25, alpha=1) +
+theme_bw() +
+xlab("Species") +
+ylab("Normalised nestedness (NODFc)") +
+theme(
+    axis.title = element_text(face = "bold", size = 10),
+    axis.text = element_text(size = 8))
+
+
+```

@@ -21,9 +21,9 @@ library(patchwork)
 library(cowplot)
 
 #Read data
-tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
-d1 = readRDS("../Data/Manuscript_info/bee_data.RData")
-n = readRDS("../Data/Manuscript_info/node_data.RData")
+tree_family_interactions= readRDS("../../Data/Manuscript_info/bee_phylo.RData")
+d1 = readRDS("../../Data/Manuscript_info/bee_data.RData")
+n = readRDS("../../Data/Manuscript_info/node_data.RData")
 
 #Circular layour
 ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 

@@ -28,7 +28,7 @@ library(viridis)
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the SafeNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can countribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of pollinators in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
 
 #Read interaction data 
-data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("../../Data/3_Final_data/Interactions_uncounted.rds")
 
 data = data %>%
 dplyr::mutate(Year = lubridate::year(Date), 

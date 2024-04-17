@@ -1,7 +1,7 @@
 ---
 title: "EuPPollNet: A European database of plant-pollinator networks"
 format:
-  pdf:
+  docx:
     include-in-header: 
       text: |
         \usepackage{lscape}
@@ -13,6 +13,7 @@ format:
 
 bibliography: references.bib
 latex-tinytex: false
+prefer-html: true
 link-citations: TRUE
 linkcolor: RoyalBlue
 urlcolor: RoyalBlue
@@ -1949,7 +1950,7 @@ ggtitle("Butterfly family coverage")
 p1+p2+p3 + plot_layout(guides = "collect") & 
 theme(plot.title = element_text(size = 14, face = "bold"),
       axis.title = element_text(face = "bold", size = 14),
-      axis.text = element_text(face = "bold", size = 14))
+      axis.text = element_text(face = "bold", size = 1))
 
 
 ```

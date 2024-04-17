@@ -16,8 +16,8 @@ library(ggnewscale)
 library(ggtreeExtra)
 library(viridis)
 #Save data and plot it in an Rmarkdown
-tree_family_interactions = readRDS("../Data/Manuscript_info/plant_phylo.RData")
-d1 = readRDS("../Data/Manuscript_info/plant_coverage_phylo_RData")
+tree_family_interactions = readRDS("../../Data/Manuscript_info/plant_phylo.RData")
+d1 = readRDS("../../Data/Manuscript_info/plant_coverage_phylo_RData")
 
 #Check if there are differences in labels and order
 ggtree(tree_family_interactions, layout="circular", size=0.15, open.angle=5, alpha=0.25) +

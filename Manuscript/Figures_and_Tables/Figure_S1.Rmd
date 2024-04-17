@@ -18,11 +18,11 @@ library(ggplot2)
 #Start from bees----
 #Load data
 #Safenet interactions
-data = readRDS("../Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("../../Data/3_Final_data/Interactions_uncounted.rds")
 #Bee-syrphid Masterlist
-master_list = read_csv("../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
+master_list = read_csv("../../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
 #Load butterfly masterlist
-master_list1 <- read.delim(file = "../Data/Species_taxonomy/Thesaurus/Butterfly_taxon.txt",
+master_list1 <- read.delim(file = "../../Data/Species_taxonomy/Thesaurus/Butterfly_taxon.txt",
                     header = T)
 #Bee families
 bee_fam = c("Apidae", "Megachilidae", "Halictidae", 

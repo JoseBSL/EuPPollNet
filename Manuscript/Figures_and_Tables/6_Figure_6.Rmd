@@ -17,10 +17,10 @@ library(stringr)
 library(patchwork)
 library(psych)
 # Load data
-data = readRDS("../Data/3_Final_data/Interaction_data.rds")
-metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
-null_networks = readRDS("../Data/Working_files/null_networks.rds")
-null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks.rds")
+data = readRDS("../../Data/3_Final_data/Interaction_data.rds")
+metrics_by_network = readRDS("../../Data/Working_files/metrics_by_network.rds")
+null_networks = readRDS("../../Data/Working_files/null_networks.rds")
+null_metrics_networks = readRDS("../../Data/Working_files/null_metrics_networks.rds")
 
 # Prepare data
 data = data %>%

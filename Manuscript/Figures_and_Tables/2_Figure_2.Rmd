@@ -35,8 +35,8 @@ library(kableExtra)
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represents the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrates the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site.", fig.width=10, fig.height=6, out.width="115%"}
 
 #Pollinators-----
-poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
-pollinators_curves = readRDS("../Data/Working_files/collectors_curves_pollinators.rds")
+poll_output = readRDS("../../Data/Working_files/pollinator_sampling_coverage.rds")
+pollinators_curves = readRDS("../../Data/Working_files/collectors_curves_pollinators.rds")
 #Create dataset
 d_poll = poll_output$iNextEst$Network_id
 #Check cols
@@ -74,8 +74,8 @@ ggtitle("(a)") +
 theme(plot.margin = margin(r = 12)) 
 
 #Plants-----
-plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
-plant_curves = readRDS("../Data/Working_files/collectors_curves_plants.rds")
+plant_output = readRDS("../../Data/Working_files/plant_sampling_coverage.rds")
+plant_curves = readRDS("../../Data/Working_files/collectors_curves_plants.rds")
 #Create dataset
 d_plant = plant_output$iNextEst$Network_id
 #Check cols
@@ -115,8 +115,8 @@ theme(plot.margin = margin(r = 12))
 
 
 #Interactions-----
-int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
-interactions_curves = readRDS("../Data/Working_files/collectors_curves_interactions.rds")
+int_output = readRDS("../../Data/Working_files/interactions_sampling_coverage.rds")
+interactions_curves = readRDS("../../Data/Working_files/collectors_curves_interactions.rds")
 #Create dataset
 d_int = int_output$iNextEst$Network_id
 #Check cols
@@ -157,7 +157,7 @@ ggtitle("(c)")
 #Pollinators
 #----------------#
 #Read data
-data = readRDS("../Data/Working_files/Interactions_uncounted.rds")%>% 
+data = readRDS("../../Data/Working_files/Interactions_uncounted.rds")%>% 
 mutate(Network_id = paste0(Study_id, Network_id))  
 #First select cols of rank, accepted name and study ID
 #Then select unique levels by study ID
@@ -267,8 +267,8 @@ coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),
 ggtitle("(f)")
 
 #Pollinator by plant species
-plant_poll_curves = readRDS("../Data/Working_files/collectors_curves_plant_ploll.rds")
-plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
+plant_poll_curves = readRDS("../../Data/Working_files/collectors_curves_plant_ploll.rds")
+plant_poll_output = readRDS("../../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
 
 #Create dataset
 d_pp = plant_poll_output$iNextEst$Plant_id
