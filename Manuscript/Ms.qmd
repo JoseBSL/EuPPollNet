@@ -41,6 +41,11 @@ library(ggnewscale)
 library(ggtreeExtra)
 library(kableExtra)
 
+#In case of conflicts select the main dplyr functions
+library(conflicted)
+conflicts_prefer(dplyr::filter)
+conflicts_prefer(dplyr::select)
+
 ```
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
@@ -699,8 +704,7 @@ For pollinators: (i) we first created a checklist of species names for the most 
 
 ## Taxonomic coverage 
 
-To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level.
-
+To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level. Finally, to evaluate if the presence-absence of interaction records for bees and flowering plants follows a phylogenetic pattern within the database, we calculated with the the phylogenetic signal with the help of the function _phylosig_ from the **phytools** package. 
 
 ## Habitat type and bioclimatic region
 
@@ -709,7 +713,7 @@ The different sites per study were classified with a habitat type by the authors
 
 ## Network analyses
 
-To get a general overview of some of the main aspects of these set of plant-pollinator networks, we evaluated how connectance and nestedness change across the latitudinal range of studies and bioclimatic regions. In addition, we explored the association between connectance and number of species per network (i.e., geometric mean of plants and pollinators), and if the different networks are more or less nested than expected by chance. Importantly, we implemented two different metrics of nestedness given the different analytical objectives. Common metrics of nestedness are highly correlated to network size, limiting our ability to compare this metric across networks. To avoid this, we implemented a normalised version of nestedness (NODFc) that corrects by connectance and the number of species [@song2017]. This metric was calculated with the help of the **maxnodf** package [@hoeppke2021], which employs a computational efficient approach to calculate it. However, to compare if networks are more or less nested than expected by chance, we employed the traditional z-score approach with the widely used nestedness metric (NODF) from @almeida2008, as this approach allow us to compare our results with previous published nestedness analyses in plant-pollinator networks and only compares each unique network against their randomized versions. We calculated 100 null models for each network with the help of the _vaznull_ function from the package **Bipartite** [@dormann2008] that implements the null model from @vazquez2005. These null networks have the same connectance and number of plant and pollinator species as the empirical ones, but different marginal totals. In other words, interactions are reshuffled with almost equal probabilities to their relative abundances. Finally, connectance was estimated for each network by using the function _networklevel_ from **Bipartite**.
+To get a general overview of some of the main aspects of these set of plant-pollinator networks, we evaluated how connectance and nestedness change across the latitudinal range of studies and bioclimatic regions. We implemented linear models, with the network metrics as the response variable, and both latitude and bioclimatic region as predictors in two separate models. Finally, with the help of a Tukey test from the package _emmeans_, we evaluated if nestedness and connectance differ statistically across bioclimatic regions. In addition, we explored the association between connectance and nestedness with the number of species per network (i.e., geometric mean of plants and pollinators) by conducting Kendall rank correlation coefficient. Finally, we evaluated if the different networks are more or less nested than expected by chance. Importantly, we implemented two different metrics of nestedness given the different analytical objectives. Common metrics of nestedness are highly correlated to network size, limiting our ability to compare this metric across networks. To avoid this, we implemented a normalised version of nestedness (NODFc) that corrects by connectance and the number of species [@song2017]. This metric was calculated with the help of the **maxnodf** package [@hoeppke2021], which employs a computational efficient approach to calculate it. However, to compare if networks are more or less nested than expected by chance, we employed the traditional z-score approach with the widely used nestedness metric (NODF) from @almeida2008, as this approach allow us to compare our results with previous published nestedness analyses in plant-pollinator networks and only compares each unique network against their randomized versions. We calculated 100 null models for each network with the help of the _vaznull_ function from the package **Bipartite** [@dormann2008] that implements the null model from @vazquez2005. These null networks have the same connectance and number of plant and pollinator species as the empirical ones, but different marginal totals. In other words, interactions are reshuffled with almost equal probabilities to their relative abundances. Connectance was estimated for each network by using the function _networklevel_ from **Bipartite**.
 
 
 \newpage 
@@ -1533,7 +1537,48 @@ p1 + p2 + plot_layout(widths = c(4,2, 2.5),heights= c(10,10,4), ncol=2)
 
 \newpage
 
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+
+#Outputs calculated in script 7_3
+#Load lm output connectance ~ latitude
+connectance_lat_r2= readRDS("../Data/Manuscript_info/connectance_lat_r2.rds")
+connectance_lat_pval = readRDS("../Data/Manuscript_info/connectance_lat_pval.rds")
+#Load lm output nestedness ~ latitude
+normalised_nestedness_lat_r2 = readRDS("../Data/Manuscript_info/normalised_nestedness_lat_r2.rds")
+normalised_nestedness_lat_pval = readRDS("../Data/Manuscript_info/normalised_nestedness_lat_pval.rds")
+#Load values of connectance
+min_connectance = readRDS("../Data/Manuscript_info/min_connectance.rds")
+max_connectance = readRDS("../Data/Manuscript_info/max_connectance.rds")
+mean_connectance = readRDS("../Data/Manuscript_info/mean_connectance.rds")
+#Load values of nestedness
+min_nodfc = readRDS("../Data/Manuscript_info/min_nodfc.rds")
+max_nodfc = readRDS("../Data/Manuscript_info/max_nodfc.rds")
+mean_nodfc = readRDS("../Data/Manuscript_info/mean_nodfc.rds")
+#Load kendall corr from connectance and spp
+connectance_spp_mean_corr_tau = readRDS("../Data/Manuscript_info/connectance_spp_mean_corr_tau.rds")
+connectance_spp_mean_corr_pval = readRDS("../Data/Manuscript_info/connectance_spp_mean_corr_pval.rds")
+#Load kendall corr from nestedness and spp
+normalised_nestedness_spp_mean_corr_tau = readRDS("../Data/Manuscript_info/normalised_nestedness_spp_mean_corr_tau.rds")
+normalised_nestedness_spp_mean_corr_pval = readRDS("../Data/Manuscript_info/normalised_nestedness_spp_mean_corr_pval.rds")
+#Load z values
+#Save data
+z_percent = readRDS("../Data/Manuscript_info/z_percent.rds")
+no_diff_z_percent = z_percent %>% 
+filter(infra_over_represented == "No statistical difference") %>% 
+pull(percent)
+over_z_percent = z_percent %>% 
+filter(infra_over_represented == "Over-represented") %>% 
+pull(percent)
+under_z_percent = z_percent %>% 
+filter(infra_over_represented == "Under-represented") %>% 
+pull(percent)
+
+```
+
 ## Network properties
+
+Connectance and nestedness did not change across the latitudinal range of studies (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). However, differences were found for connectance but not nestedness across bioclimatic regions. Specifically, the alpine region differed statistically in connectance to the other bioclimatic regions (Tukey test _P_ < 0.01). In addition, the atlantic and continental bioclimatic regions also showed statistical meaningful differences in connectance (Tukey test _P_ < 0.01). Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and followed an negative exponential relationship with the geometric mean of plant and pollinator species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6c**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S3**). Finally, we found that `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, `r round(no_diff_z_percent, 2)`% showed no statistical difference, and `r round(under_z_percent, 2)`% were less nested than null expectations (**Figure 6d**).
+
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graphs (a-b) indicate network connectance and nestedness across the latitudinal range of the studies from the database. In addition, the bioclimatic region where each network is located is indicated with points of different shapes and colours. Graph (c) shows the the association between network connectances and the geometric mean of plant and pollinator species per network. Graph (d) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue).", fig.width=10, fig.height=7, fig.align='center'}
@@ -1902,14 +1947,15 @@ ggtitle("Butterfly family coverage")
 
 #--------------------------------------------------------------------------------------------#
 p1+p2+p3 + plot_layout(guides = "collect") & 
-theme(plot.title = element_text(size = 13, face = "bold"),
-      axis.title.y = element_text(face = "bold"))
+theme(plot.title = element_text(size = 14, face = "bold"),
+      axis.title = element_text(face = "bold", size = 14),
+      axis.text = element_text(face = "bold", size = 14))
 
 
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="100%", fig.cap= "\\textbf{Figure S2}. Barplot indicating the number of sampling sites by habitat and bioclimatic region within the database.", fig.width=8, fig.height=8}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="90%", fig.cap= "\\textbf{Figure S2}. Barplot indicating the number of sampling sites by habitat and bioclimatic region within the database.", fig.width=8, fig.height=8}
 
 #Check number of studies by habitat
 habitat = data %>% 
@@ -1944,7 +1990,7 @@ ylab("Sampling sites") +
 xlab(NULL) +
 theme(plot.margin=unit(c(0,0,0,0), "mm"),
       axis.ticks.x = element_line(color="black"),
-      strip.text.x = element_text(size=12),
+      strip.text.x = element_text(size=14, face = "bold"),
       strip.background = element_rect(size=0.5, linetype="solid"),
   axis.title = element_text(face = "bold", size = 12),
 axis.text = element_text(size=10))
@@ -1952,3 +1998,18 @@ axis.text = element_text(size=10))
 
 ```
 
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="80%", fig.cap= "\\textbf{Figure S3}. Association between nestedness (NODFc) and the geometric mean of plan and pollinator species per network", fig.width=3, fig.height=3}
+
+metrics_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
+geom_point(pch = 21, fill = "azure3", size=1.5, stroke=0.25, alpha=1) +
+theme_bw() +
+xlab("Species") +
+ylab("Normalised nestedness (NODFc)") +
+theme(
+    axis.title = element_text(face = "bold", size = 10),
+    axis.text = element_text(size = 8))
+
+
+```
