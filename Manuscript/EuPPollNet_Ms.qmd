@@ -342,7 +342,7 @@ Europe is one of the continents with a larger amount of available biodiversity d
 
 The interactions between different plant and pollinator species within a community form complex networks. Macro-ecological analyses of the topology of these networks have revealed common properties across them, such as truncated power-law degree distributions [@jordano1987] or nestedness [@bascompte2003]. In addition, this type of large scale analyses can help understanding landscape level processes that cannot be explored at the community level, such as ecological patterns across geographic regions [@olesen2002; @traveset2016] or environmental gradients [@ramos2010; @rech2016; @saunders2023]. Although macro-ecological approaches make significant contributions to knowledge, they tend to be rare, and are strongly influenced by the spatio-temporal availability and nature of the data [@burkle2011; @trojelsgaard2013]. For instance, plant-pollinator studies tend to differ in sampling effort and methodology which can impact the structure of the resulting plant-pollinator networks [@gibson2011; @jordano2016]. Further, despite little sampling effort could capture most of the relevant functional species [@hegland2010], most plant-pollinator networks have unobserved interactions because undersampling [@olesen2011; @chacoff2012]. Thus, the lack of strong spatio-temporal coverage, along with the current intrinsic limitations of sampling plant-pollinator networks, highlight the need of keep gathering and integrating informative species interaction data to properly unravel the different ecological processes that shape plant-pollinator interactions at large scales.
 
-Here, we present the EuPPollNet database, an acronym derived from European plant-pollinator networks, which contains harmonized information on interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the EuPPollNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). To understand the scope of the database, we examine the taxonomic and sampling coverage of the different plant and pollinator species at European level with the help of the most up-to-date species checklists and rarefaction analyses. In addition, we investigate how two key structural metrics of plant-pollinator networks, such as connectance and nestedness, change across the latitudinal range of studies and bioclimatic regions. Finally, we also examine whether plant-pollinator networks fulfill the expectation of being more nested than null expectations. EuPPollNet aims to cover a wide range of taxonomic groups and habitats, while also providing other variables of interest that allow better control for the ecological context and sampling methods. In addition, EuPPollNet offers a transparent and accessible workflow of its data management and species harmonization that allows it to be reused and keep building on it over time. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
+Here, we present the EuPPollNet database, an acronym derived from European plant-pollinator networks, which contains harmonized information on interaction data of plants and pollinators at European level. The primary focus of the pollinator taxonomic groups is on the main orders of entomofauna that visit and pollinate flowering plants in Europe. These include insect species from the orders Hymenoptera, Diptera, Lepidoptera, and Coleoptera [@potts2015], which comprise almost the totality of recorded interactions in the EuPPollNet database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). To understand the scope of the database, we examine the taxonomic and sampling coverage of the different plant and pollinator species at European level with the help of the most up-to-date species checklists and rarefaction analyses. In addition, we investigate how two key structural metrics of plant-pollinator networks, such as connectance and nestedness, change across the latitudinal range of studies and bioclimatic regions. Finally, we also examine whether plant-pollinator networks fulfill the expectation of being more nested than null expectations. EuPPollNet aims to cover a wide range of taxonomic groups and habitats, while also providing other variables of interest that allow better control for the ecological context and sampling methods. In addition, EuPPollNet offers a transparent and accessible workflow of its data management and species harmonization that allows it to be reused and keep building on it over time. This database provides a large number of community-level networks with curated and harmonized data, distinguishing it from other currently available resources that contain plant-pollinator interactions. We expect that this database will help to evaluate macro-ecological processes and current gaps of plant-pollinator interactions at European level.
 
 
 # 2 | METHODS
@@ -813,7 +813,7 @@ pull(Percent_total)
 
 The estimated sampling coverage of plant and pollinator species within the database across the different sampling sites is approximately `r round(poll_coverage)`% for both taxonomic groups. This suggests that the rarefied accumulation curves of both plant and pollinator species exhibit already a "quasi-asymptotic" growth of species richness by considering the current number of sampling sites or networks (**Figure 2a-2b**). The predicted observed species richness by doubling the sampling effort on the already sampled habitat types within the database will only increase pollinator richness by `r format(round(poll_increase3, 2), nsmall=2)`% and plant richness by `r format(round(plant_increase3, 2), nsmall=2)`%. However, the sampling coverage of interactions is `r format(round(int_coverage, 2), nsmall=2)`%, and by doubling the sampling effort the predicted number of unique interactions recorded will have approximately a twofold increase (`r format(round(int_increase3, 2), nsmall=2)`%; **Figure 2c**). Similarly, to the plant and pollinator species accumulation curves across sampling sites, when we consider the accumulated pollinator richness across sampled plant species, this curve also shows a "quasi-asymptotic" growth with a sampling coverage value of `r format(round(plant_poll_coverage, 2), nsmall=2)`%. The predicted recorded pollinator species by doubling the number of plants sampled is expected to increase by `r format(round(plant_poll_increase3, 2), nsmall=2)`% (**Figure 2d**). In addition, when we explore how common or rare are plant and pollinator species across all sampling sites, we find that the majority of plant and pollinator species tend to be regionally specific, and only a minor portion of them is being shared across a broad range of sampling sites (**Figures 2e-2f**). For instance, most plants (`r format(round(plants_under_one_percent, 2), nsmall=2)`%) and pollinators (`r format(round(polls_under_one_percent, 2), nsmall=2)`%) are exclusively found in less than 1% of sampling sites; and the most common plant (*`r most_common_plant`*) and pollinator (*`r most_common_poll`*) species are only found in `r format(round(most_common_plant_percent, 2), nsmall=2)`% and `r format(round(most_common_poll_percent, 2), nsmall=2)`% of sampling sites, respectively.
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represent the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrate the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across an increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site.", fig.width=10, fig.height=6, out.width="115%"}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 2}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their interactions across sampling sites. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represent the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrate the extrapolated curve for approximately 3000 sampling sites. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across an increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across sampling sites. Species on the left (i.e., common) are found in many sampling sites, while species on the right (i.e., rare) are found in few or only a single sampling site. Note that indeed \\textit{Apis mellifera} is the most common pollinator but was excluded from this visualization.", fig.width=10, fig.height=6, out.width="115%"}
 
 #Pollinators-----
 poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
@@ -1398,32 +1398,33 @@ theme(legend.margin=unit(1,"cm"),
 The proportion of the major pollinator orders within the database differed across habitats and bioclimatic regions (**Figure 5**). As expected, Hymenoptera was the main taxonomic order on the majority of habitats, exceeded only by Diptera on the habitat categories of riparian vegetation, moors and heathland, and alpine grasslands. Overall, the proportion of Lepidoptera and Coleoptera was low across all habitats but Coleoptera showed a notably increase in sclerophyllous vegetation and beaches, dunes and sands habitat categories. Similar patterns were observed when exploring the pollinator proportions by bioclimatic region. In this particular case, Hymenoptera was the predominant order in all bioclimatic regions with Diptera taking more importance in Alpine and Atlantic regions. Again, Lepidoptera shows low proportions across all bioclimatic regions and Coleoptera seems to be only relevant in Mediterranean regions at European level. Notably, the number of studies (**Figure 5**) and sampling sites (**Figure S2**) also differs across habitats and bioclimatic regions. The habitats sampled by a higher number of studies in the database are `r studies_by_habitat$EuPPollNet_habitat[[1]]` (`r studies_by_habitat$Habitat_count[[1]]`), `r studies_by_habitat$EuPPollNet_habitat[[2]]` (`r studies_by_habitat$Habitat_count[[2]]`) and `r studies_by_habitat$EuPPollNet_habitat[[3]]` (`r studies_by_habitat$Habitat_count[[3]]`). However, the habitats that contain a higher number of sampling sites are `r networks_by_habitat$EuPPollNet_habitat[[1]]` (`r networks_by_habitat$Habitat_count[[1]]`), `r networks_by_habitat$EuPPollNet_habitat[[2]]` (`r networks_by_habitat$Habitat_count[[2]]`) and `r networks_by_habitat$EuPPollNet_habitat[[3]]` (`r networks_by_habitat$Habitat_count[[3]]`). The bioclimatic regions with a higher number of studies are `r studies_by_bioregion$Bioregion[[1]]` (`r studies_by_bioregion$Bioregion_count[[1]]`), `r studies_by_bioregion$Bioregion[[2]]` (`r studies_by_bioregion$Bioregion_count[[2]]`) and `r studies_by_bioregion$Bioregion[[3]]` (`r studies_by_bioregion$Bioregion_count[[3]]`); and the ones that contain a higher number of sampling sites are `r networks_by_bioregion$Bioregion[[1]]` (`r networks_by_bioregion$Bioregion_count[[1]]`), `r networks_by_bioregion$Bioregion[[2]]` (`r networks_by_bioregion$Bioregion_count[[2]]`) and `r networks_by_bioregion$Bioregion[[3]]` (`r networks_by_bioregion$Bioregion_count[[3]]`). 
 
 
-
-
-
-
-
-
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 5}. Proportion of the major pollinator orders by habitat types and bioclimatic regions in the EuPPollNet database. The orders, from left to right, include Hymenoptera, Diptera, Lepidoptera and Coleoptera. The horizontal barplot on the right indicates the number of studies that were conducted on each habitat type or bioclimatic region. Note that a single study can contribute to more than one habitat or bioclimatic region. Areas with a greater number of studies are more likely to depict accurate proportions of the different pollinator orders in those systems.", fig.width=4.5, fig.height=8, fig.align='center'}
 
 
 #Prepare orders for filtering
 main_orders = c("Hymenoptera", "Lepidoptera", "Coleoptera", "Diptera")
 
+#Karise is a very large study that only sampled bumblebees and
+#is providing unrealistic results for the Boreal region
+#Filter out
+#Maybe add to caption?
+data1 = data %>% 
+filter(!Study_id == "13_Karise")
+
 #Check number of studies by habitat
-habitat = data %>% 
+habitat = data1 %>% 
 select(Study_id, EuPPollNet_habitat) %>% 
 distinct() %>%  
 group_by(EuPPollNet_habitat) %>% 
 summarise(Habitat_count = n()) 
 #Check number of studies by bioregion
-bioregion = data %>% 
+bioregion = data1 %>% 
 select(Study_id, Bioregion) %>% 
 distinct() %>%  
 group_by(Bioregion) %>% 
 summarise(Bioregion_count = n()) 
 #Check pols by habitat
-pollinator_percent = data %>%
+pollinator_percent = data1 %>%
 group_by(EuPPollNet_habitat, Pollinator_order) %>%
 filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
 filter(Pollinator_order %in% main_orders) %>% 
@@ -1432,7 +1433,7 @@ group_by(EuPPollNet_habitat) %>%
 mutate(Proportion = count/sum(count)) %>%
 select(-count) 
 #Check pols by bioregion
-pollinator_percent_bio = data %>%
+pollinator_percent_bio = data1 %>%
 group_by(Bioregion, Pollinator_order) %>%
 filter(Pollinator_accepted_name!= "Apis mellifera") %>% 
 filter(Pollinator_order %in% main_orders) %>% 
@@ -1577,7 +1578,7 @@ pull(percent)
 
 ## Network properties
 
-Connectance and nestedness did not change across the latitudinal range of studies (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ = `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). However, differences were found for connectance but not nestedness across bioclimatic regions. Specifically, the alpine region differed statistically in connectance to the other bioclimatic regions (Tukey test _P_ < 0.01). In addition, the atlantic and continental bioclimatic regions also showed statistical meaningful differences in connectance (Tukey test _P_ < 0.01). Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and as expected, followed an negative exponential relationship with the geometric mean of plant and pollinator species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6c**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and as expected for this metric, were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S3**). Finally, we found that only `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, with `r round(no_diff_z_percent, 2)`% showing no statistical difference, and none being less nested than null expectations (**Figure 6d**).
+Connectance and nestedness did not show relevant trends across the latitudinal range of studies (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ = `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). However, differences were found for connectance but not nestedness across bioclimatic regions. Specifically, the alpine region differed statistically in connectance to the other bioclimatic regions (Tukey test _P_ < 0.01). In addition, the atlantic and continental bioclimatic regions also showed statistical meaningful differences in connectance (Tukey test _P_ < 0.01). Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and as expected, followed an negative exponential relationship with the geometric mean of plant and pollinator species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6c**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and as expected for this metric, were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S3**). Finally, we found that only `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, with `r round(no_diff_z_percent, 2)`% showing no statistical difference, and none being less nested than null expectations (**Figure 6d**).
 
 
 
@@ -1767,11 +1768,9 @@ a / b  & theme(axis.title =  element_text(size=16, face="bold"),
 
 # 3 | DISCUSSION
 
-Things to do:
--Habitat Figure: Patterns of boreal are weird --> Comment in results or discussion
--Figure 2 Bombus por encima de Apis, explain that Apis is not included
--Intro: Somewhere, bur maybe later, we should mention what we add. 1) Way more networks than those on Mangal or Webof life (which you should cite). 2) curated metadata and harmonization, 3) Community level data and not only isolated interactions as in GloBI.
--Network properties / significance issue
+
+
+
 
 
 Although Europe...
