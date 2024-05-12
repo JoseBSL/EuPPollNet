@@ -1768,15 +1768,17 @@ a / b  & theme(axis.title =  element_text(size=16, face="bold"),
 
 # 3 | DISCUSSION
 
-EuPPollNet offers the largest set of plant-pollinator networks and plant-pollinator studies compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million of interaction records. Plant and pollinator species are rarely shared across multiple sites, indicating that their observed diversity strongly depends on the local context. While the overall sampling coverage of plant and pollinator species is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (e.g., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). Given that most of the plant-pollinator networks from the database are sampled on pastures, and habitat heterogeneity is a crucial factor in understanding pollinator diversity [@hass2018; @martinez2022], adding studies on other habitat types is likely to rapidly increase the species coverage.
+EuPPollNet offers the largest set of plant-pollinator networks and plant-pollinator studies compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million of interaction records. Plant and pollinator species are rarely shared across multiple sites, indicating that their observed diversity strongly depends on the local context. While the overall sampling coverage of plant and pollinator species is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (e.g., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). Given that most of the plant-pollinator networks from the database are sampled on pastures, and habitat heterogeneity is a crucial factor in understanding pollinator diversity at European level [@kleijn2015; @hass2018; @martinez2022], adding studies on other habitat types is likely to rapidly increase species coverage.
 
 
+Maybe something about: With relatively little sampling effort a large fraction of species are captured but strong efforts are needed to fully capture species within an habitat. 
 
+Link with interactions 
 
-Check for more references of habitat heterogeneity
-Interactions|Add reference
-
-
+Interactions:
+Sampling area, spp accumulation vs interactions:
+https://doi.org/10.1890/12-0367.1
+Sampling completeness 
 
 
 Paragraph
