@@ -1768,10 +1768,18 @@ a / b  & theme(axis.title =  element_text(size=16, face="bold"),
 
 # 3 | DISCUSSION
 
-EuPPollNet offers the largest set of plant-pollinator networks and plant-pollinator studies compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million of interaction records. Plant and pollinator species are rarely shared across multiple sites, indicating that their observed diversity strongly depends on the local context. While the overall sampling coverage of plant and pollinator species is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (e.g., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). Given that most of the plant-pollinator networks from the database are sampled on pastures, and habitat heterogeneity is a crucial factor in understanding pollinator diversity at European level [@kleijn2015; @hass2018; @martinez2022], adding studies on other habitat types is likely to rapidly increase species coverage.
+EuPPollNet offers the largest set of plant-pollinator networks and plant-pollinator studies compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million of interaction records. While the overall sampling coverage of species and interactions is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (e.g., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). Given that most of the plant-pollinator networks from the database are sampled on pastures, and habitat heterogeneity is a crucial factor in understanding pollinator diversity at European level [@kleijn2015; @hass2018; @martinez2022], adding studies on other habitat types is likely to result in a rapid increase of the coverage of plant and pollinator species and their interactions. Plant and pollinator species are rarely shared across multiple sites, indicating that there are few "common" species and many "rare" ones at the metaweb or continental level. This high number of "rare" species results in an upward slope of the species or interaction accumulation curves [@thompson2003]. In other words, minimal sampling efforts are capturing a substantial number of species and interactions, but achieving a comprehensive inventory will require of numerous sampling events within and across habitats, particularly for plant-pollinator interactions.
+
+Taxonomy paragraph?
+
+Despite a similar number of Hymenoptera and Diptera species, most of the interactions were done by Hymenoptera species (i.e., mainly bees). Notably, 
+
+Ollerton
+Contextualise European diversity of plant and pollinator species with global biodiveristy
 
 
-Maybe something about: With relatively little sampling effort a large fraction of species are captured but strong efforts are needed to fully capture species within an habitat. 
+Network metric paragraph?
+This higher number of pollinator species compared to plants seems to be a common feature of phytocentric sampled plant-pollinator networks [@jordano2016].
 
 Link with interactions 
 
@@ -1779,13 +1787,14 @@ Interactions:
 Sampling area, spp accumulation vs interactions:
 https://doi.org/10.1890/12-0367.1
 Sampling completeness 
+ [e.g., @chacoff2012]
+
+
 
 
 Paragraph
 
-Sampling and taxonomic coverage
 Habitat type and bioclimatic region 
-Network properties
 
 Minor things to say
 -Presence of honey bees in context with previous studies
@@ -1799,10 +1808,7 @@ Supporting reference:
 https://doi.org/10.1111/ecog.05926
 
 Networks, ref:
-
 https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
-
-Contextualise European diversity of plant and pollinator species with global biodiveristy
 
 
 
