@@ -1784,13 +1784,23 @@ Bees conducted the majority of the interactions at the metaweb level, but their 
 
 This higher number of pollinator species compared to plants seems to be a common feature of phytocentric sampled plant-pollinator networks [@jordano2016].
 
-Link with interactions 
+visitation networks
 
-Connectance
+Link with interactions --> 
+
+More species less connectance, which increases the number of missing links.
+
+
+
+
+
+
 Nestedness
 Pattern across latitude
 
+Missing links?
 
+networks condense information but this workflow allo possibility to explore species phenology... and more
 
 Interactions:
 Sampling area, spp accumulation vs interactions:
@@ -1803,6 +1813,9 @@ https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
 
 
 **Conclusion paragraph**
+
+foundation for future work
+
 Geographic and taxonomic biases!
 Supporting reference:
 https://doi.org/10.1111/ecog.05926
