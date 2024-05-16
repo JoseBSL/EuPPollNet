@@ -1252,6 +1252,13 @@ group_by(Bioregion) %>%
 summarise(Bioregion_count = n()) %>% 
 slice_max(Bioregion_count, n = 3) %>% 
 mutate(Bioregion = tolower(Bioregion))
+#Check percentage of Apis mellifera across networks
+apis_percent_networks = data %>% 
+filter(Pollinator_accepted_name == "Apis mellifera") %>%
+group_by(Study_id) %>% 
+mutate(Apis = "Yes") %>% 
+distinct(Study_id, Apis) %>% 
+nrow() / nlevels(factor(data$Study_id)) *100
 
 ```
 
@@ -1770,12 +1777,8 @@ a / b  & theme(axis.title =  element_text(size=16, face="bold"),
 
 EuPPollNet offers the largest set of plant-pollinator networks and plant-pollinator studies compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million of interaction records. While the overall sampling coverage of species and interactions is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (e.g., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). Given that most of the plant-pollinator networks from the database are sampled on pastures, and habitat heterogeneity is a crucial factor in understanding pollinator diversity at European level [@kleijn2015; @hass2018; @martinez2022], adding studies on other habitat types is likely to result in a rapid increase of the coverage of plant and pollinator species and their interactions. Plant and pollinator species were rarely shared across multiple sites, indicating that there are few "common" species and many "rare" ones at the metaweb or continental level. This high number of "rare" species results in an upward slope of the species or interaction accumulation curves [@thompson2003]. In other words, minimal sampling efforts are capturing a substantial number of species and interactions, but achieving a comprehensive inventory will require of numerous sampling events within and across habitats, particularly for plant-pollinator interactions.
 
-Bees conducted the majority of the interactions at the metaweb level, but their relative relevance changed across habitats and bioclimatic regions. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were especially fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only species rich in the Mediterranean region. Although the networks from the database are visitation networks and do not capture pollinator efficiency [@ballantyne2015], the high proportion of beetles as floral visitors in the Mediterranean provides further support for their role as pollinators in this region [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. Although Europe contains a little number of butterfly species compared to other areas of the world [@ollerton2017], their relevance as pollinators is likely under-estimated within this database as sampling methodologies for other insects pollinators (e.g., bees or flies) generally require less sampling distance and cover less space. Honey bees did one third of the total recorded interactions per network, highlighting their high abundances in natural communities and possibly impacting negatively wild pollinators.
+Bees conducted the majority of the interactions at the metaweb level, but their relative relevance changed across habitats and bioclimatic regions. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were especially fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only species rich in the Mediterranean region. Although the networks from the database are visitation networks and do not capture pollinator efficiency [@ballantyne2015], the high proportion of beetles as floral visitors in the Mediterranean provides further support for their role as pollinators in this region [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. While Europe contains fewer butterfly species than other regions of the world [@ollerton2017], their relevance as pollinators is likely underestimated within this database. This is because a large fraction (~40%) of studies did not sample butterflies, and conventional sampling methods for monitoring other insect pollinators (e.g., bees or flies) may be inadequate for sampling plant-butterfly interactions [@isaac2011]. Honey bees were present in `r round(apis_percent_networks, 1)`% of networks and conducted in average a third of the total interactions per network. This proportion is higher that the one found when considering only natural communities at a global scale [~13%\; @hung2018], which highlights the need of further work evaluating how honey bees and their management impact natural pollinator communities.
 
-
-
--Presence of honey bees in context with previous studies
-Maybe cite Proc B and myself?
 
 **Network paragraph**
 
@@ -1783,13 +1786,19 @@ This higher number of pollinator species compared to plants seems to be a common
 
 Link with interactions 
 
+Connectance
+Nestedness
+Pattern across latitude
+
+
+
 Interactions:
 Sampling area, spp accumulation vs interactions:
 https://doi.org/10.1890/12-0367.1
 Sampling completeness 
  [e.g., @chacoff2012]
  
- Networks, ref:
+Networks, ref:
 https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
 
 
