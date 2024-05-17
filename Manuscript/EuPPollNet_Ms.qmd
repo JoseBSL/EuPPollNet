@@ -197,6 +197,11 @@ lepidoptera_coverage = readRDS("../Data/Manuscript_info/lepidoptera_coverage.RDa
 syrphid_coverage = readRDS("../Data/Manuscript_info/syrphid_coverage.RData")
 plant_coverage = readRDS("../Data/Manuscript_info/plant_coverage.RData")
 
+#Calculate mean coverage and deviation
+coverage = c(bee_coverage, syrphid_coverage, lepidoptera_coverage)
+mean_coverage = mean(coverage)
+sd_coverage = sd(coverage)
+
 #Main orders percentage
 o = c("Hymenoptera", "Lepidoptera", "Diptera", "Coleoptera")
 main_orders = data %>% 
@@ -704,7 +709,9 @@ For pollinators: (i) we first created a checklist of species names for the most 
 
 ## Taxonomic coverage 
 
-To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level. Finally, to evaluate if the presence-absence of interaction records for bees and flowering plants follows a phylogenetic pattern within the database, we calculated its phylogenetic signal  at genus and family level, respectively. The phylogenetic signal was calculated by using the _phylosig_ function from the **phytools** package [@revell2012]. We extracted the phylogenetic information for bees from a genus level phylogeny [@hedtke2013] and processed it with the help of the packages **ape** [@paradis2019], **MCMCglmm** [@hadfield2010] and **phytools**; and for plants the phylogenetic tree was obtained from a species level PLANT phylogeny [@smith2018] with the help of **rtree** package [@li2023].
+To assess the completeness of plant and pollinator species in the EuPPollNet database at European level, we used the aforementioned checklists for plants and pollinators. Specifically for plants, we refined the checklist to include only European flowering plants and excluded taxonomic groups not associated with biotic pollination. We did this by first excluding the families considered to have exclusively a wind pollination mode [see @culley2002], and then by filtering out the genera with wind or non-biotic pollination from families that exhibit both biotic and non-biotic pollination modes. Additionally, we manually included some exotic species and added unresolved species names that were not present in the accepted names of the checklist at the current version of usage. For pollinators, we compared only the taxonomic coverage of bees, syrphids and butterflies by using their species checklists at European level. The potential number of pollinator species at European level was estimated by adding the total number of species of bees, syrphids, and flies from the checklists, along with the extrapolated number of species from other insect pollinators. This extrapolated number was estimated by assuming that the sampling coverage of these other insect pollinators is equal to the average coverage across bees, syrphids, and butterflies (mean coverage = `r round(mean_coverage, 2)`; sd = `r round(sd_coverage,2)`).
+
+Finally, to evaluate if the presence-absence of interaction records for bees and flowering plants follows a phylogenetic pattern within the database, we calculated its phylogenetic signal  at genus and family level, respectively. The phylogenetic signal was calculated by using the _phylosig_ function from the **phytools** package [@revell2012]. We extracted the phylogenetic information for bees from a genus level phylogeny [@hedtke2013] and processed it with the help of the packages **ape** [@paradis2019], **MCMCglmm** [@hadfield2010] and **phytools**; and for plants the phylogenetic tree was obtained from a species level plant phylogeny [@smith2018] with the help of **rtree** package [@li2023].
 
 ## Habitat type and bioclimatic region
 
@@ -1779,10 +1786,20 @@ EuPPollNet offers the largest set of plant-pollinator networks and plant-pollina
 
 Bees conducted the majority of the interactions at the metaweb level, but their relative relevance changed across habitats and bioclimatic regions. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were especially fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only species rich in the Mediterranean region. Although the networks from the database are visitation networks and do not capture pollinator efficiency [@ballantyne2015], the high proportion of beetles as floral visitors in the Mediterranean provides further support for their role as pollinators in this region [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. While Europe contains fewer butterfly species than other regions of the world [@ollerton2017], their relevance as pollinators is likely underestimated within this database. This is because a large fraction (~40%) of studies did not sample butterflies, and conventional sampling methods for monitoring other insect pollinators (e.g., bees or flies) may be inadequate for sampling plant-butterfly interactions [@isaac2011]. Honey bees were present in `r round(apis_percent_networks, 1)`% of networks and conducted in average a third of the total interactions per network. This proportion is higher that the one found when considering only natural communities at a global scale [~13%\; @hung2018], which highlights the need of further work evaluating how honey bees and their management impact natural pollinator communities.
 
+Although Europe contains a much larger number of flowering plants than pollinator species (~4 to 1 ratio), the observed number of pollinator species almost doubled the one of observed plant species. This seems a common feature of phytocentric plant-pollinator networks, which tend to overlook rare plant species and capture a higher proportion of pollinator species [REF].
 
-**Network paragraph**
 
-This higher number of pollinator species compared to plants seems to be a common feature of phytocentric sampled plant-pollinator networks [@jordano2016].
+
+
+Discuss this
+
+
+The number of pollinator species almost doubled the number of plant species within the database. This is a common aspect in phytocentric networks [@jordano2016], where an observer records the different pollinators that land on the reproductive structures of plants, resulting in a higher number of pollinator species per plant. 
+
+Link with connectance now?
+
+Discuss that other type of informative networks could be useful an increase connectance?
+
 
 visitation networks
 

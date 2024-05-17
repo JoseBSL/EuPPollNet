@@ -164,9 +164,21 @@ lepidoptera_coverage
 #Final checks before saving!
 c(bee_checks, syrphid_checks, lepidoptera_checks)
 
-#Save
+#Save coverage
 saveRDS(bee_coverage, "Data/Manuscript_info/bee_coverage.RData")
 saveRDS(syrphid_coverage, "Data/Manuscript_info/syrphid_coverage.RData")
 saveRDS(lepidoptera_coverage, "Data/Manuscript_info/lepidoptera_coverage.RData")
-
-
+#Save species
+bees_spp = length(unique_obs_bees)
+syrphid_spp = length(unique_obs_syrphids)
+lepidoptera_spp = length(unique_obs_lepidoptera)
+saveRDS(bees_spp, "Data/Manuscript_info/bee_spp.RData")
+saveRDS(syrphid_spp, "Data/Manuscript_info/syrphid_spp.RData")
+saveRDS(lepidoptera_spp, "Data/Manuscript_info/lepidoptera_spp.RData")
+#Save potential species main groups
+bee_potential_spp = length(potential_bees1)
+syrphid_potential_spp = length(potential_syrphids1)
+lepidoptera_potential_spp = length(potential_lepidoptera1)
+saveRDS(bee_potential_spp, "Data/Manuscript_info/bee_potential_spp.RData")
+saveRDS(syrphid_potential_spp, "Data/Manuscript_info/syrphid_potential_spp.RData")
+saveRDS(lepidoptera_potential_spp, "Data/Manuscript_info/lepidoptera_potential_spp.RData")
