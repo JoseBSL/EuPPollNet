@@ -1786,17 +1786,20 @@ EuPPollNet offers the largest set of plant-pollinator networks and plant-pollina
 
 Bees conducted the majority of the interactions at the metaweb level, but their relative relevance changed across habitats and bioclimatic regions. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were especially fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only species rich in the Mediterranean region. Although the networks from the database are visitation networks and do not capture pollinator efficiency [@ballantyne2015], the high proportion of beetles as floral visitors in the Mediterranean provides further support for their role as pollinators in this region [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. While Europe contains fewer butterfly species than other regions of the world [@ollerton2017], their relevance as pollinators is likely underestimated within this database. This is because a large fraction (~40%) of studies did not sample butterflies, and conventional sampling methods for monitoring other insect pollinators (e.g., bees or flies) may be inadequate for sampling plant-butterfly interactions [@isaac2011]. Honey bees were present in `r round(apis_percent_networks, 1)`% of networks and conducted in average a third of the total interactions per network. This proportion is higher that the one found when considering only natural communities at a global scale [~13%\; @hung2018], which highlights the need of further work evaluating how honey bees and their management impact natural pollinator communities.
 
-Although Europe contains a much larger number of flowering plants than pollinator species (~4 to 1 ratio), the observed number of pollinator species almost doubled the one of observed plant species. This seems a common feature of phytocentric plant-pollinator networks, which tend to overlook rare plant species and capture a higher proportion of pollinator species [REF].
+Although Europe contains a much larger number of flowering plants than pollinator species (~4 to 1 ratio), the observed number of pollinator species almost doubled the one of plants in the database. This could be explained by the fact that all networks are phytocentric, resulting in sampling bias towards pollinator species [@jordano2016; @vizentin2018]. While animal-centred sampling is likely to increase the plant-pollinator species ratio [e.g., @encinas2023], the spatial scale and environmental context of the sampled communities will also influence their observed diversity, especially given the ability to move of pollinators and the sessile nature of plants. As expected [@jordano1987], we found that network connectance decreased exponentially with the number of species. The less connected networks were the Alpine ones as they were the ones with higher number of species.
+
+
+#Task: Calcular residual connectance. 
 
 
 
 
-Discuss this
+
+with more species had lower connectance .
 
 
-The number of pollinator species almost doubled the number of plant species within the database. This is a common aspect in phytocentric networks [@jordano2016], where an observer records the different pollinators that land on the reproductive structures of plants, resulting in a higher number of pollinator species per plant. 
+Finish this paragraph with an idea of how sampling can bias our view and that is important to be aware of that when understanding plant-pollinator patterns
 
-Link with connectance now?
 
 Discuss that other type of informative networks could be useful an increase connectance?
 
