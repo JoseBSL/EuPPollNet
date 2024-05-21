@@ -1,4 +1,7 @@
-# Evaluate statistical differences between network indices
+#Explore how nestedness is associated with Latitude and how 
+#it changes compared to null expextations
+#Note! We use 2 different metrics of Nestedness 
+#given the different questions
 
 #Load libraries
 library(ggplot2)
@@ -72,27 +75,11 @@ distinct()
 # Merge data
 metrics_by_network_coords = left_join(metrics_by_network, long_format_coords)
 
-#Explore distribution of connectance
-metrics_by_network_coords %>% 
-ggplot(aes(Connectance)) +
-geom_histogram()
-
-#Run model of connectance -latitude
-connectance_lat = lm(Connectance ~ Latitude, data = metrics_by_network_coords)
-#Get a nice summary from broom package
-connectance_lat = glance(connectance_lat)
-#Save values to load them in r markdown
-connectance_lat_r2 = connectance_lat$adj.r.squared
-connectance_lat_pval = connectance_lat$p.value[[1]]
-#Save values
-saveRDS(connectance_lat_r2, "Data/Manuscript_info/connectance_lat_r2.rds")
-saveRDS(connectance_lat_pval, "Data/Manuscript_info/connectance_lat_pval.rds")
-
 #Explore distribution of nestedness
 metrics_by_network_coords %>% 
 ggplot(aes(Normalised_nestedness)) +
 geom_histogram()
-#Run model of connectance -latitude
+#Run model of nestedness -latitude
 normalised_nestedness_lat = lm(Normalised_nestedness ~ Latitude, data = metrics_by_network_coords)
 normalised_nestedness_lat = glance(normalised_nestedness_lat)
 #Save values to load them in r markdown
@@ -104,29 +91,10 @@ normalised_nestedness_lat_pval = ceiling(normalised_nestedness_lat_pval * 100) /
 saveRDS(normalised_nestedness_lat_r2, "Data/Manuscript_info/normalised_nestedness_lat_r2.rds")
 saveRDS(normalised_nestedness_lat_pval, "Data/Manuscript_info/normalised_nestedness_lat_pval.rds")
 
-#Expore statististical differences of connectance across bioclimatic regions
-connectance_bioregion = lm(Connectance ~ Bioregion, data = metrics_by_network_coords)
-marginal = emmeans(connectance_bioregion, "Bioregion")
-pairs(marginal)
+#Explore statistical differences of normalised nestedness acros bioregion
 normalised_nestedness = lm(normalised_nestedness ~ Bioregion, data = metrics_by_network_coords)
 marginal = emmeans(normalised_nestedness, "Bioregion")
 pairs(marginal)
-
-
-#Find min, max values of connectance
-min_connectance = metrics_by_network_coords %>%  
-slice_min(Connectance) %>% 
-pull(Connectance)
-#
-max_connectance = metrics_by_network_coords %>%  
-slice_max(Connectance) %>% 
-pull(Connectance)
-#
-mean_connectance = mean(metrics_by_network_coords$Connectance)
-#Save values
-saveRDS(min_connectance[[1]], "Data/Manuscript_info/min_connectance.rds")
-saveRDS(max_connectance[[1]], "Data/Manuscript_info/max_connectance.rds")
-saveRDS(mean_connectance[[1]], "Data/Manuscript_info/mean_connectance.rds")
 
 #Find min, max values of normalised nestedness
 min_nodfc = metrics_by_network_coords %>%  
@@ -155,6 +123,8 @@ group_by(Network_id) %>%
 summarise(geometric_mean_spp = geometric.mean(c(N_plants, N_pollinators)))
 
 metrics_by_network_spp_number = left_join(metrics_by_network, species_number)
+#Save this tibble
+saveRDS(metrics_by_network_spp_number, "Data/Working_files/metrics_by_network_spp_number.rds")
 
 p3 = metrics_by_network_spp_number %>% 
 ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
@@ -165,20 +135,6 @@ ylab("Normalised nestedness (NODFc)")
 p3
 
 
-
-#Calculate correlation between metrics and species mean
-##Connectance
-connectance_geometric_mean_corr = 
-   cor.test(metrics_by_network_spp_number$geometric_mean_spp, 
-   metrics_by_network_spp_number$Connectance,
-   method = "kendall")
-#Prepare outputs to be saved
-connectance_spp_mean_corr_tau = connectance_geometric_mean_corr$estimate[[1]]
-connectance_spp_mean_corr_pval = connectance_geometric_mean_corr$p.value
-
-#Save
-saveRDS(connectance_spp_mean_corr_tau, "Data/Manuscript_info/connectance_spp_mean_corr_tau.rds")
-saveRDS(connectance_spp_mean_corr_pval, "Data/Manuscript_info/connectance_spp_mean_corr_pval.rds")
 ##Nestedness
 normalised_nestedness_geometric_mean_corr = 
    cor.test(metrics_by_network_spp_number$geometric_mean_spp, 
@@ -208,7 +164,6 @@ between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical di
     z_score > abs(critical_value) ~ "Over-represented"
   ))
 
-
 #Calculate percentages
 colnames(d1)
 z_percent = d1 %>% 
@@ -220,7 +175,6 @@ to_bind = tibble(infra_over_represented = "Under-represented", percent = 0)
 z_percent1 = bind_rows(z_percent, to_bind)
 #Save data
 saveRDS(z_percent1, "Data/Manuscript_info/z_percent.rds")
-
 
 no_dif_z = z_percent %>% 
 filter(infra_over_represented == "No statistical difference")
