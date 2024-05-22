@@ -41,17 +41,6 @@ d_metrics %>%
 ggplot(aes(Connectance)) +
 geom_histogram()
 
-#Run model of connectance -latitude
-connectance_lat = lm(Connectance ~ Latitude, data = d_metrics)
-#Get a nice summary from broom package
-connectance_lat = glance(connectance_lat)
-#Save values to load them in r markdown
-connectance_lat_r2 = connectance_lat$adj.r.squared
-connectance_lat_pval = connectance_lat$p.value[[1]]
-#Save values
-saveRDS(connectance_lat_r2, "Data/Manuscript_info/connectance_lat_r2.rds")
-saveRDS(connectance_lat_pval, "Data/Manuscript_info/connectance_lat_pval.rds")
-
 #Calculate geometric mean of species
 library(psych)
 species_number = data %>% 
@@ -77,49 +66,62 @@ metrics$log_geometric_mean_spp = log(metrics$geometric_mean_spp)
 #install.packages("betareg")
 library(betareg)
 model = betareg(Connectance ~ log_geometric_mean_spp, data = metrics)
+summary(model)
+
+saveRDS(metrics, "Data/Manuscript_info/Figure6_connectance_species.rds")
 p1 = ggplot(metrics, aes(x = log_geometric_mean_spp, y = Connectance))+
 geom_point(pch = 21, fill = "azure3") +
-geom_line(aes(y = predict(model, d_metrics)), colour= "black")+
+geom_line(aes(y = predict(model, metrics)), colour= "black")+
 xlab("log(Species)") +
 theme_bw()
-
+p1
 #Extract residuals
-d_metrics$residual_conectance = residuals(model, type = "response")
+metrics$residual_conectance = residuals(model, type = "response")
 #Check distribution
 ggplot(metrics, aes(x=residual_conectance)) +
 geom_histogram()
 #Looks ok for lm
-model1 = lm(residual_conectance ~ Latitude , data = metrics)
-summary(model1)
+residual_conectance_latitude = lm(residual_conectance ~ Latitude , data = metrics)
+summary(residual_conectance_latitude)
+glance(residual_conectance_latitude)
+#Get a nice summary from broom package
+connectance_lat = glance(residual_conectance_latitude)
+#Save values to load them in r markdown
+connectance_lat_r2 = connectance_lat$adj.r.squared
+connectance_lat_pval = connectance_lat$p.value[[1]]
+#Save values
+saveRDS(connectance_lat_r2, "Data/Manuscript_info/connectance_lat_r2.rds")
+saveRDS(connectance_lat_pval, "Data/Manuscript_info/connectance_lat_pval.rds")
+
 #Predict values with confidence intervals
 prediction_intervals <- predict(
-  model1, 
+  residual_conectance_latitude, 
   newdata = d_metrics, 
   interval = "confidence")
+
 #Add to dataset
-d_metrics = cbind(d_metrics, prediction_intervals)
+metrics = cbind(metrics, prediction_intervals)
 #Plot (provisional)
 ggplot(data = metrics, aes(x=Latitude, 
        y=residual_conectance,
        color=Bioregion)) +
 geom_point() +
-geom_line(data = d_metrics,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
-geom_ribbon(data = d_metrics, 
+geom_line(data = metrics,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
+geom_ribbon(data = metrics, 
     aes(x=Latitude,ymin = lwr, ymax = upr), inherit.aes = FALSE,
     fill = "grey70", alpha= 0.3) +
 theme_bw()
-
 saveRDS(metrics, "Data/Manuscript_info/residual_connectance.rds")
-
+saveRDS(metrics, "Data/Manuscript_info/Figure6_connectance_latitude.rds")
 #Final plot
 p2 = ggplot(data = metrics, aes(x=Latitude, 
        y=residual_conectance,
        color=Bioregion)) +
 geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.25, size=2) +
-geom_ribbon(data = d_metrics, 
+geom_ribbon(data = metrics, 
     aes(x=Latitude,ymin = lwr, ymax = upr), inherit.aes = FALSE,
     fill = "grey70", alpha= 0.3) +
-geom_line(data = d_metrics,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
+geom_line(data = metrics,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
 scale_fill_viridis_d() +
 scale_colour_viridis_d() +
 scale_shape_manual(values = c(
@@ -157,15 +159,15 @@ marginal = emmeans(connectance_bioregion, "Bioregion")
 pairs(marginal)
 
 #Find min, max values of connectance
-min_connectance = metrics_by_network_coords %>%  
+min_connectance = metrics %>%  
 slice_min(Connectance) %>% 
 pull(Connectance)
 #
-max_connectance = metrics_by_network_coords %>%  
+max_connectance = metrics %>%  
 slice_max(Connectance) %>% 
 pull(Connectance)
 #
-mean_connectance = mean(metrics_by_network_coords$Connectance)
+mean_connectance = mean(metrics$Connectance)
 #Save values
 saveRDS(min_connectance[[1]], "Data/Manuscript_info/min_connectance.rds")
 saveRDS(max_connectance[[1]], "Data/Manuscript_info/max_connectance.rds")

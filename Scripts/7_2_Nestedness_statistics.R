@@ -2,6 +2,7 @@
 #it changes compared to null expextations
 #Note! We use 2 different metrics of Nestedness 
 #given the different questions
+#In this script we prepare Figure 6b and 6d and supplementary s3 
 
 #Load libraries
 library(ggplot2)
@@ -80,19 +81,52 @@ metrics_by_network_coords %>%
 ggplot(aes(Normalised_nestedness)) +
 geom_histogram()
 #Run model of nestedness -latitude
-normalised_nestedness_lat = lm(Normalised_nestedness ~ Latitude, data = metrics_by_network_coords)
-normalised_nestedness_lat = glance(normalised_nestedness_lat)
+model_normalised_nestedness_lat= lm(Normalised_nestedness ~ Latitude, data = metrics_by_network_coords)
+normalised_nestedness_lat = glance(model_normalised_nestedness_lat)
 #Save values to load them in r markdown
 normalised_nestedness_lat_r2 = normalised_nestedness_lat$adj.r.squared
 normalised_nestedness_lat_pval = normalised_nestedness_lat$p.value[[1]]
 normalised_nestedness_lat_pval = ceiling(normalised_nestedness_lat_pval * 100) / 100
-
 #Save values
 saveRDS(normalised_nestedness_lat_r2, "Data/Manuscript_info/normalised_nestedness_lat_r2.rds")
 saveRDS(normalised_nestedness_lat_pval, "Data/Manuscript_info/normalised_nestedness_lat_pval.rds")
+#Predict values with confidence intervals
+prediction_intervals <- predict(
+  model_normalised_nestedness_lat, 
+  newdata = metrics_by_network_coords, 
+  interval = "confidence")
+#Add to dataset
+metrics_by_network_coords = cbind(metrics_by_network_coords, prediction_intervals)
+
+#Save data for plotting
+saveRDS(metrics_by_network_coords, "Data/Manuscript_info/nestedness_latitude.rds")
+
+# 2nd Plot
+p2 = metrics_by_network_coords %>% 
+ggplot(aes(Latitude, Normalised_nestedness)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.25, size=2) +
+theme_bw() +
+ylab("NODFc") +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+  )) +
+geom_line(data = metrics_by_network_coords,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
+geom_ribbon(data = metrics_by_network_coords, 
+    aes(x=Latitude,ymin = lwr, ymax = upr), inherit.aes = FALSE,
+    fill = "grey70", alpha= 0.3) +
+theme_bw()+
+ggtitle("(b)")
+p2
+
 
 #Explore statistical differences of normalised nestedness acros bioregion
-normalised_nestedness = lm(normalised_nestedness ~ Bioregion, data = metrics_by_network_coords)
+normalised_nestedness = lm(Normalised_nestedness ~ Bioregion, data = metrics_by_network_coords)
 marginal = emmeans(normalised_nestedness, "Bioregion")
 pairs(marginal)
 
@@ -178,3 +212,30 @@ saveRDS(z_percent1, "Data/Manuscript_info/z_percent.rds")
 
 no_dif_z = z_percent %>% 
 filter(infra_over_represented == "No statistical difference")
+
+
+saveRDS(d1, "Data/Manuscript_info/nestedness_z_scores.rds")
+# Plot
+p4 = d1 %>% 
+  ggplot(aes(x = z_score)) +
+  geom_histogram(aes(y = ..density.., fill = infra_over_represented), 
+                 bins = 100, alpha = 0.5, color = "black", position = "stack") +
+  stat_function(data = d1, fun = function(x) dnorm(x, mean = mean(d1$z_score), sd = sd(d1$z_score)) * 1.7, 
+                n = 1000, inherit.aes = FALSE, color = "gray18", size = 1) +
+  theme_bw() +
+  coord_cartesian(expand = FALSE) +
+  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+  ylab("Density") +
+  xlab("Z scores (NODFc)")  +
+  xlim(-6, 9) +
+  ylim(0, 0.8) +
+  scale_fill_manual(name = "Observed against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+ggtitle("(d)")
+
+p4

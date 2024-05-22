@@ -16,6 +16,9 @@ lepidoptera_coverage = readRDS("Data/Manuscript_info/lepidoptera_coverage.RData"
 coverage = c(bee_coverage, syrphid_coverage, lepidoptera_coverage)
 average_coverage = mean(coverage)
 average_coverage
+
+#Check range
+max(coverage) - min(coverage)
 #Calculate number of species across main groups
 bees_spp = readRDS("Data/Manuscript_info/bee_spp.RData")
 syrphid_spp = readRDS("Data/Manuscript_info/syrphid_spp.RData")
@@ -43,3 +46,16 @@ potential_spp_main_groups = bee_potential_spp + syrphid_potential_spp + lepidopt
 total_expected_spp = potential_spp_main_groups + extrapolated_other_spp
 total_expected_spp 
 # Approximately 5000 species
+
+
+
+
+#Read here plant and pollinator coverage
+bee_coverage = readRDS("Data/Manuscript_info/bee_coverage.RData")
+lepidoptera_coverage = readRDS("Data/Manuscript_info/lepidoptera_coverage.RData")
+syrphid_coverage = readRDS("Data/Manuscript_info/syrphid_coverage.RData")
+
+#Calculate mean coverage and deviation
+coverage = c(bee_coverage + syrphid_coverage + plant_coverage)
+mean_coverage = mean(coverage)
+sd_coverage = sd(coverage)

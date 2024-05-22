@@ -1,0 +1,112 @@
+# Load libraries
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(patchwork)
+
+# Load plots generated in scripts 7_2_Nestedness and 7_2_Connectance
+
+connectance_species = readRDS("Data/Manuscript_info/Figure6_connectance_species.rds")
+connectance_latitude = readRDS("Data/Manuscript_info/Figure6_connectance_latitude.rds")
+nestedness_z_scores = readRDS("Data/Manuscript_info/nestedness_z_scores.rds")
+nestedness_latitude = readRDS("Data/Manuscript_info/nestedness_latitude.rds")
+
+#Prepare first connectance plots
+library(betareg)
+model = betareg(Connectance ~ log_geometric_mean_spp, data = connectance_species)
+p1 = ggplot(connectance_species, aes(x = log_geometric_mean_spp, y = Connectance))+
+geom_point(pch = 21, fill = "azure3") +
+geom_line(aes(y = predict(model, connectance_species)), colour= "black")+
+xlab("log(Species)") +
+theme_bw() +
+ggtitle("(a)")
+
+p1
+
+p3 = connectance_latitude %>% 
+ggplot(aes(Latitude, residual_conectance)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.25, size=2) +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+  )) +
+geom_line(data = connectance_latitude,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
+geom_ribbon(data = connectance_latitude, 
+    aes(x=Latitude,ymin = lwr, ymax = upr), inherit.aes = FALSE,
+    fill = "grey70", alpha= 0.3) +
+theme_bw()+
+ylab("Residual connectance") +
+ggtitle("(c)")
+p3
+
+
+
+#Prepare now nestedness plots
+# Plot
+
+p = 0.05 #cutoff probability 95% confidence
+critical_value = qnorm(p/2) #double tail probability divide by 2
+
+nestedness_z_scores = nestedness_z_scores %>%
+mutate(infra_over_represented = case_when(
+z_score < -abs(critical_value) ~ "Under-represented",
+between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
+  ))
+
+p2 = nestedness_z_scores %>% 
+ggplot(aes(x = z_score)) +
+geom_histogram(aes(y = ..density.., fill = infra_over_represented), 
+               bins = 100, alpha = 0.5, color = "black", position = "stack") +
+stat_function(data = nestedness_z_scores, fun = function(x) dnorm(x, mean = mean(nestedness_z_scores$z_score), sd = sd(nestedness_z_scores$z_score)) * 1.7, 
+              n = 1000, inherit.aes = FALSE, color = "gray18", size = 1) +
+theme_bw() +
+coord_cartesian(expand = FALSE) +
+geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+ylab("Density") +
+xlab("Z scores (NODF)")  +
+xlim(-6, 9) +
+ylim(0, 0.8) +
+scale_fill_manual(name = "Observed against null",
+                  limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                  labels = c("Less nested", "No difference", "More nested"),
+                  values = c("Under-represented" = "coral2", 
+                             "No statistical difference" = "palegreen3", 
+                             "Over-represented" = "cyan3")) +
+ggtitle("(b)")
+
+p2
+
+# 2nd Plot
+p4 = nestedness_latitude %>% 
+ggplot(aes(Latitude, Normalised_nestedness)) +
+geom_point(aes(fill = Bioregion, shape = Bioregion), stroke = 0.25, size=2) +
+theme_bw() +
+ylab("NODFc") +
+scale_fill_viridis_d() +
+scale_colour_viridis_d() +
+scale_shape_manual(values = c(
+  "Alpine" = 21,  # Circle
+  "Atlantic" = 22, # Triangle
+  "Boreal" = 23,   # Square
+  "Continental" = 24,  # Diamond
+  "Mediterranean" = 25  # Cross
+  )) +
+geom_line(data = nestedness_latitude,aes(x=Latitude, y = fit), inherit.aes = FALSE)+
+geom_ribbon(data = nestedness_latitude, 
+    aes(x=Latitude,ymin = lwr, ymax = upr), inherit.aes = FALSE,
+    fill = "grey70", alpha= 0.3) +
+theme_bw()+
+ggtitle("(d)")
+p4
+
+# Layout plots
+a = (p1 + p2) 
+b = p3 + p4 + plot_layout(guides = 'collect') & theme(legend.position = "right")
+a / b
