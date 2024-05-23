@@ -172,3 +172,13 @@ mean_connectance = mean(metrics$Connectance)
 saveRDS(min_connectance[[1]], "Data/Manuscript_info/min_connectance.rds")
 saveRDS(max_connectance[[1]], "Data/Manuscript_info/max_connectance.rds")
 saveRDS(mean_connectance[[1]], "Data/Manuscript_info/mean_connectance.rds")
+
+
+#Quick check
+resid_connectance_nestedness = 
+cor.test(metrics$residual_conectance, 
+metrics$Normalised_nestedness,
+method = "kendall")
+
+
+
