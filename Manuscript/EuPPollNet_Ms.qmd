@@ -1733,12 +1733,8 @@ Bees conducted the majority of the interactions at the metaweb level, but their 
 
 Although Europe contains a much larger number of flowering plants than pollinator species (~4 to 1 ratio), the observed number of pollinator species almost doubled the one of plants in the database. This could be explained by the fact that all networks are phytocentric, resulting in sampling bias towards pollinator species [@jordano2016; @vizentin2018]. While animal-centred sampling is likely to increase the plant:pollinator species ratio [e.g., @encinas2023], the spatial scale and environmental context of the sampled communities will also influence their observed diversity, especially given the ability to move of pollinators and the sessile nature of plants. As expected [@jordano1987], we found that network connectance decreased exponentially with the number of species. Overall, latitude did not explain major changes in residual connectance or normalised nestedness of the plant-pollinator networks. Consistent with @olesen2002, residual connectance was lower at higher latitudes, while normalised nestedness, which is negatively correlated with residual connectance, increased towards higher latitudes. Given their correlation, the potential ecological explanations that can help understanding these structural patterns can be similar. For instance, networks at lower latitudes in Europe are exposed to higher temperatures and are bee-dominated, which can result in higher visitation rates [@arroyo1985; @classen2015; @herrera2019]; and, the level of pollinator generalization seems to be higher at lower latitudes [@schleuning2012]. Therefore, these different factors can increase the possible number of connections that can be established between plants and pollinators for a given network size, resulting in more connected networks but less nested ones in comparison to networks at higher latitudes. In addition, while one third of networks were more nested than expected by chance, two thirds of them did not show statistical difference with null expectations. This goes against the common view that most plant-pollinator networks are nested [@bascompte2003], and supports the idea that despite a strong tendency towards it, being nested is not the rule fo this large set of plant-pollinator networks. 
 
-Despite this database covering a wide range of habitats across `r country_number` European countries, some areas such as Eastern Europe and the Mediterranean region are evidently under-represented. This reflects the lack of plant-pollinator community data in highly relevant regions of pollinator diversity [REFs] and could help explain the limited taxonomic coverage found of plant and pollinator species at the European level. This is especially relevant as Eastern Europe is expected to continue developing and use their vast natural resources [@bennett2018] and the Mediterranean region is likely to be severely impacted by climate change [@jaworski2022; @duchenne2020; @pareja2023]. Although some of the most well studied countries in Europe (e.g., Belgium or The Netherlands) seem to have suffered most of the plant and pollinator biodiversity loss at the end of the 20th century [@carvalheiro2013], plant-polllinator communities in Europe and across the globe still suffer from major threads such as climate change [REFs], land use change [REFs], or the introduction of alien species [@vila2009; @vanbergen2018]. 
 
-Improve this idea but something like this: -make it more discussion style-
-
-Recording their interactions and understanding plant-pollinator community assembleges now is essential to understand the trends of biodiversity, as shown by the importance of historical or time series datasets.  
-
+Despite this database covering a wide range of habitats across `r country_number` countries, it contains geographical biases that can impact our understanding of plant-pollinator communities [@hughes2021]. For instance, most plant-pollinator networks belongs to central Europe, while Eastern Europe and the Mediterranean region are under-represented. This is consistent with previous studies which also report lack of plant-pollinator data for those regions [REFs], highlighting that this database reflects existing patterns in data availability despite the absence of a systematic search for studies. This is especially relevant as Eastern Europe is expected to continue developing and use their vast natural resources [@bennett2018], and the Mediterranean region is likely to be severely impacted by climate change [@jaworski2022; @duchenne2020; @pareja2023]. These areas are well known for their rich pollinator diversity, and their under-representation is likely contributing to the low taxonomic coverage of this database.
 
 
 
@@ -1750,30 +1746,27 @@ Finally, these networks have different sampling effort and employ different meto
 Finish this paragraph with an idea of how sampling can bias our view and that is important to be aware of that when understanding plant-pollinator patterns
 Discuss that other type of informative networks could be useful a increase connectance?
 
-Link with interactions --> 
-
-More species less connectance, which increases the number of missing links.
-
-
-networks condense information but this workflow allo possibility to explore species phenology... and more
-
-Interactions:
-Sampling area, spp accumulation vs interactions:
-https://doi.org/10.1890/12-0367.1
-Sampling completeness 
- [e.g., @chacoff2012]
- 
 Networks, ref:
 https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
 
 
+**Maybe for the concluding paragraph**:
+
+Although some of the most well studied countries in Europe (e.g., Belgium or The Netherlands) seem to have suffered most of the plant and pollinator biodiversity loss at the end of the 20th century [@carvalheiro2013], plant-polllinator communities in Europe and across the globe still suffer from major threads such as climate change [REFs], land use change [REFs], or the introduction of alien species [@vila2009; @vanbergen2018]. 
+
+Improve this idea but something like this: -make it more discussion style-
+
+Recording their interactions and understanding plant-pollinator community assembleges now is essential to understand the trends of biodiversity, as shown by the importance of historical or time series datasets.  
+
+
+
+
+
+
+
 **Conclusion paragraph**
 
-foundation for future work
 
-Geographic and taxonomic biases!
-Supporting reference:
-https://doi.org/10.1111/ecog.05926
 
 
 \newpage
