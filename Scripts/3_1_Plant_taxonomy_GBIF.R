@@ -367,7 +367,7 @@ Accepted_name == "Laburnum watereri" ~
 Accepted_name == "Centranthus ruber" ~ 
 "Valeriana rubra", #Internal Accepted name
 Accepted_name == "Petunia atkinsiana" ~ 
-"Valeriana rubra", #Internal Accepted name
+"Petunia hybrida", #Internal Accepted name
 Accepted_name == "Begonia semperflorens" ~ 
 "Begonia cucullata", #Internal Accepted name
 Accepted_name == "Crocosmia crocosmiiflora" ~ 
