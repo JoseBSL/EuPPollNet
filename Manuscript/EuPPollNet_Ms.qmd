@@ -1592,12 +1592,16 @@ pull(percent)
 under_z_percent = z_percent %>% 
 filter(infra_over_represented == "Under-represented") %>% 
 pull(percent)
+#Load correlation outputs of residual connectance and nestednes
+resid_connectance_nestedness_corr_tau = readRDS("../Data/Manuscript_info/resid_connectance_nestedness_tau.rds")
+resid_connectance_nestedness_corr_pval = readRDS("../Data/Manuscript_info/resid_connectance_nestedness_pval.rds")
+
 
 ```
 
 ## Network properties
 
-Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and as expected, followed an negative exponential relationship with the number of species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6a**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and as expected for this metric, were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S3**). We found that only `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, with `r round(no_diff_z_percent, 2)`% showing no statistical difference, and none being less nested than null expectations (**Figure 6b**). Latitude explained little of the observed variability of residual connectance and nestedness across networks (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ = `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). Overall, networks towards higher latitudes showed lower residual connectance and higher nestedness that networks located in lower latitudes. Note that residual connectance and normalised nestedness have a moderate negative correlation (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`).
+Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and as expected, followed an negative exponential relationship with the number of species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6a**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and as expected for this metric, were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S3**). We found that only `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, with `r round(no_diff_z_percent, 2)`% showing no statistical difference, and none being less nested than null expectations (**Figure 6b**). Latitude explained little of the observed variability of residual connectance and nestedness across networks (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ = `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). Overall, networks towards higher latitudes showed lower residual connectance and higher nestedness that networks located in lower latitudes. Note that residual connectance and normalised nestedness showed a moderate negative correlation (Kendall $\tau$ = `r round(resid_connectance_nestedness_corr_tau, 2)`, _P_ = `r round(resid_connectance_nestedness_corr_pval, 2)`).
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graph (a) shows the association between network connectance and the geometric mean of plant and pollinator species per network on a log-scale with the respective fitted line from a Beta regression. Graph (b) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue). Graphs (c-d) show the fitted regression of residual connectance and nestedness across the latitudinal range of the studies from the database. In addition, the bioclimatic region of each network is indicated with points of different shapes and colours.", fig.width=10, fig.height=7, fig.align='center'}
@@ -1731,59 +1735,57 @@ EuPPollNet offers the largest set of plant-pollinator networks and plant-pollina
 
 Bees conducted the majority of the interactions at the metaweb level, but their relative relevance changed across habitats and bioclimatic regions. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were especially fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only species rich in the Mediterranean region. Although the networks from the database are visitation networks and do not capture pollinator efficiency [@ballantyne2015], the high proportion of beetles as floral visitors in the Mediterranean provides further support for their role as pollinators in this region [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. While Europe contains fewer butterfly species than other regions of the world [@ollerton2017], their relevance as pollinators is likely underestimated within this database. This is because a large fraction of studies (~40%) did not sample butterflies, and conventional sampling methods for monitoring other insect pollinators (e.g., bees or flies) may be inadequate for sampling plant-butterfly interactions [@isaac2011]. Honey bees were present in `r round(apis_percent_networks, 1)`% of networks and conducted in average a third of the total interactions per network. Indeed, this proportion is higher that the one found when considering only natural communities at a global scale [~13%\; @hung2018], which highlights their key role as potential pollinator of many flowering plants. However, high honey bee densities can have negative impacts on wild pollinators and the plants they visit [@steffan2000; @geldmann2018; @herrera2020], emphasising the need to evaluate these impacts and implement actions if necessary.
 
-Although Europe contains a much larger number of flowering plants than pollinator species (~4 to 1 ratio), the observed number of pollinator species almost doubled the one of plants in the database. This could be explained by the fact that all networks are phytocentric, resulting in sampling bias towards pollinator species [@jordano2016; @vizentin2018]. While animal-centred sampling is likely to increase the plant:pollinator species ratio [e.g., @encinas2023], the spatial scale and environmental context of the sampled communities will also influence their observed diversity, especially given the ability to move of pollinators and the sessile nature of plants. As expected [@jordano1987], we found that network connectance decreased exponentially with the number of species. Overall, latitude did not explain major changes in residual connectance or normalised nestedness across networks. However, consistent with @olesen2002, residual connectance -the deviation from the expected connectance for a given network size- was lower at higher latitudes, while normalised nestedness, which is negatively correlated with residual connectance, increased towards higher latitudes. Thus, giving their association and that both metrics capture structural properties of species interactions, the potential ecological explanations that can help understanding their latitudinal trends can be similar. For instance, networks at lower latitudes in Europe are exposed to higher temperatures and are bee-dominated, which can result in higher visitation rates [@arroyo1985; @classen2015; @herrera2019], and the overall level of pollinator generalization seems to be higher at lower latitudes [@schleuning2012]. Therefore, we hypothesise that these different factors can increase the possible number of connections that can be established between plants and pollinators for a given network size, resulting in more connected networks but less nested ones in comparison to networks at higher latitudes. This higher proportion of generalists could result in a more even number of links per species, deviating more from a perfect nested or hierarchical structure of the network. Finally, while one third of networks were more nested than expected by chance, two thirds did not show statistical difference with null expectations. Therefore, while this supports the idea that plant-pollinator networks tend to be nested [@bascompte2003], this result suggests that nestedness could be a less prevalent feature than previously thought for plant-pollinator networks.
+Although Europe contains a much larger number of flowering plants than pollinator species (~4 to 1 ratio), the observed number of pollinator species almost doubled the one of plants in the database. This could be explained by the fact that all networks are phytocentric, resulting in sampling bias towards pollinator species [@jordano2016; @vizentin2018]. While animal-centred sampling is likely to increase the plant:pollinator species ratio [e.g., @encinas2023], the spatial scale and environmental context of the sampled communities will also influence their observed diversity, especially given the ability to move of pollinators and the sessile nature of plants. As expected [@jordano1987], we found that network connectance decreased exponentially with the number of species. Overall, latitude did not explain major changes in residual connectance or normalised nestedness across networks. However, consistent with @olesen2002, residual connectance -the deviation from the expected connectance for a given network size- was lower at higher latitudes, while normalised nestedness, which is negatively correlated with residual connectance, increased towards higher latitudes. Thus, giving their association and that both metrics capture structural properties of species interactions, the potential ecological explanations that can help understanding their latitudinal trends can be similar. For instance, networks at lower latitudes in Europe are exposed to higher temperatures and are bee-dominated, which can result in higher visitation rates [@arroyo1985; @classen2015; @herrera2019], and the overall level of pollinator generalization seems to be higher at lower latitudes [@schleuning2012]. Therefore, we hypothesise that these different factors can increase the possible number of connections that can be established between plants and pollinators for a given network size, resulting in more connected networks but less nested ones, as these networks are likely to deviate more from a perfect nested or hierarchical structure compared to networks at higher latitudes. Finally, while one third of networks were more nested than expected by chance, two thirds did not show statistical difference with null expectations. Therefore, while this supports the idea that plant-pollinator networks tend to be nested [@bascompte2003], this result suggests that nestedness could be a less prevalent feature than previously thought for plant-pollinator networks.
 
-Despite this database covering a wide range of habitats across `r country_number` countries, it contains geographical biases that can impact our understanding of plant-pollinator communities [@hughes2021]. For instance, most plant-pollinator networks belongs to central Europe, while Eastern Europe and the Mediterranean region are under-represented. This is consistent with previous studies which also report lack of plant-pollinator data for those regions [@bennett2018; @marshall2024], highlighting that this database shows existing patterns in data availability despite the absence of a systematic search for studies. This is especially relevant as Eastern Europe is expected to continue developing and use their vast natural resources [@sutcliffe2015], and the Mediterranean region is likely to be severely impacted by climate change [@jaworski2022; @duchenne2020; @pareja2023]. These areas are well known for their rich pollinator diversity [@milivcic2018; @reverte2023], and their under-representation is likely contributing to the low taxonomic coverage of this database at the European level. Although some of the most well studied countries in Europe (e.g., Belgium or The Netherlands) seem to have suffered most of the plant and pollinator biodiversity loss at the end of the 20th century [@carvalheiro2013], plant-polllinator communities in Europe and across the globe still suffer from major threads such as climate change [REFs], land use change [@reidsma2006; @batary2015], or the introduction of alien species [@vila2009; @vanbergen2018]. Therefore, continuous monitoring programs of plant-pollinator communities are needed in order to evaluate 
+Despite this database covering a wide range of habitats across `r country_number` countries, it contains geographical biases that can impact our understanding of plant-pollinator communities [@hughes2021]. For instance, most plant-pollinator networks belongs to central Europe, while Eastern Europe and the Mediterranean region are under-represented. This is consistent with previous studies which also report lack of plant-pollinator data for those regions [@bennett2018; @marshall2024], highlighting that this database shows existing patterns in data availability despite the absence of a systematic search for studies. This is especially relevant as Eastern Europe is expected to continue developing and use their vast natural resources [@sutcliffe2015], and the Mediterranean region is likely to be severely impacted by climate change [@jaworski2022; @duchenne2020; @pareja2023]. These areas are well known for their rich pollinator diversity [@milivcic2018; @reverte2023], and their under-representation is likely contributing to the low taxonomic coverage of this database at the European level. Although some of the most well studied countries in Europe (e.g., Belgium or The Netherlands) seem to have suffered most of the plant and pollinator biodiversity loss at the end of the 20th century [@carvalheiro2013], plant-polllinator communities in Europe and across the globe still suffer from major threads such as climate change [@bartomeus2011; @duchenne2020], land use change [@reidsma2006; @batary2015], or the introduction of alien species [@vila2009; @vanbergen2018]. Therefore, continuous monitoring programs are needed in order to evaluate spatio-temporal changes of species and their interactions across different European habitats and regions. This will allow local and large scale analyses of the status and trends of plant-pollinator communities, effectively informing management and conservation actions.
 
-are essential to understand temporal and spatial changes in order to preserve their biodiversity.
-
-
---> Methodology, impact the structure of the network
-
-
-Finally, these networks have different sampling effort and employ different metodologies which can impact the resulting structure of interactions [REF].
-
-Finish this paragraph with an idea of how sampling can bias our view and that is important to be aware of that when understanding plant-pollinator patterns
-Discuss that other type of informative networks could be useful a increase connectance?
-
-Networks, ref:
-https://www.biorxiv.org/content/10.1101/2020.04.02.021691v1.abstract
-
-
-**Maybe for the concluding paragraph**:
-
-
-
-Improve this idea but something like this: -make it more discussion style-
-
-Recording their interactions and understanding plant-pollinator community assembleges now is essential to understand the trends of biodiversity, as shown by the importance of historical or time series datasets.  
-
-Hence, this emphasize how this database can help understanding ecological questions from plant-pollinator networks and its potential implications for future research questions.
-
-
-
-
-
-**Conclusion paragraph**
-
-
+In conclusion, the EuPPollNet database enables researchers to explore spatial, taxonomic and structural properties of plant-pollinator networks within Europe. Importantly, the networks of the database differ in sampling effort and methodology, which can largely impact the resulting structure of interactions [@rivera2012; @chacoff2012]. In contrast to previous databases, EuPPollNet provides interaction data along with sampling information that could help researchers to better control and select the most suitable networks for their research questions. Here, we have shown how connectance and nestedness change across their latitudinal range and that nestedness is not a ubiquitous feature of all plant-pollinator networks. Although further evaluations of these findings are needed, this illustrates the numerous questions that can be answered with this set of networks. The reproducible workflow allows researchers to adapt and reuse this database, enabling the continuous addition of new networks to better evaluate the status and spatio-temporal trends of plant-pollinator communities. Finally, we hope this database becomes an iterative resource that keeps growing and improving over time to better understand and conserve European biodiversity.
 
 
 \newpage
 
-# References
+# REFERENCES
 
 ::: {#refs}
 :::
 
 
-# Acknowledgments
+# ACKNOWLEDGEMENTS
 
-We thank all the taxonomist and ecologist that has made this database possible by contributing with their fieldwork data. This research was funded by the H2020 European project Safeguard (101003476).
+We thank all the taxonomist and ecologist that has made this database possible by contributing with their fieldwork data. 
 
-# Author contributions
+# FUNDING INFORMATION
 
-# Supplementary material
+This research was funded by the H2020 European project Safeguard (101003476).
+
+# CONFLICT OF INTEREST
+
+None.
+
+# DATA AVAILABILITY
+
+All data and code to produce of this database and manuscript are available at Zenodo (LINK) and Github (LINK).
+
+\newpage
+
+# SUPPORTING INFORMATION
+
+**Title**: EuPPollNet: A European database of plant-pollinator networks
+
+**Authors**: `r authors`
+
+**Contains**:
+
+- Supplementary text 1
+
+- Figure S1
+
+- Figure S2
+
+- Figure S3
+
+
+\newpage
 
 **Supplementary text 1**
 
@@ -1982,14 +1984,14 @@ theme(plot.margin=unit(c(0,0,0,0), "mm"),
       axis.ticks.x = element_line(color="black"),
       strip.text.x = element_text(size=14, face = "bold"),
       strip.background = element_rect(size=0.5, linetype="solid"),
-  axis.title = element_text(face = "bold", size = 12),
+  axis.title = element_text(face = "bold", size = 14),
 axis.text = element_text(size=10))
 
 
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="80%", fig.cap= "\\textbf{Figure S3}. Association between nestedness (NODFc) and the geometric mean of plan and pollinator species per network", fig.width=3, fig.height=3}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="60%", fig.cap= "\\textbf{Figure S3}. Association between nestedness (NODFc) and the geometric mean of plan and pollinator species per network", fig.width=3, fig.height=3}
 
 
 metrics_by_network_spp_number = readRDS("../Data/Working_files/metrics_by_network_spp_number.rds")

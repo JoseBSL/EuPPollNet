@@ -179,6 +179,11 @@ resid_connectance_nestedness =
 cor.test(metrics$residual_conectance, 
 metrics$Normalised_nestedness,
 method = "kendall")
-
+#Prepare outputs to be saved
+resid_connectance_nestedness_corr_tau = resid_connectance_nestedness$estimate[[1]]
+resid_connectance_nestedness_corr_pval = resid_connectance_nestedness$p.value
+#Save
+saveRDS(resid_connectance_nestedness_corr_tau, "Data/Manuscript_info/resid_connectance_nestedness_tau.rds")
+saveRDS(resid_connectance_nestedness_corr_pval, "Data/Manuscript_info/resid_connectance_nestedness_pval.rds")
 
 
