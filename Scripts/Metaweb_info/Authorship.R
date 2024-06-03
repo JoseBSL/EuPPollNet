@@ -41,12 +41,6 @@ write_csv(data, "Data/Manuscript_info/Authorship.csv")
 data = read_csv("Data/Manuscript_info/Authorship.csv")
 #Include Nerea Montes and Will Glenny
 colnames(data)
-#Add rows
-data = data %>% 
-add_row(Study_id = NA_character_, 
-        Coauthor_name = "Will Glenny", 
-        Orcid = "0000-0002-2522-3775", 
-        E_mail = "willglenny@gmail.com")
 #Exclude Gita Benadi. Gita didn't want to be included as is longer active in science
 data = data %>% 
 filter(!Coauthor_name == "Gita Benadi")
@@ -70,6 +64,14 @@ ordered_authors = ordered_data %>%
 ordered_authors = bind_rows(ordered_authors, last_info)
 #Add Tiffany second 
 ordered_authors = bind_rows(second_info, ordered_authors)
+
+#Add rows
+ordered_authors = ordered_authors %>% 
+add_row(Study_id = NA_character_, 
+        Coauthor_name = "Will Glenny", 
+        Orcid = "0000-0002-2522-3775", 
+        E_mail = "willglenny@gmail.com", .before = 2)
+
 #Add rows
 ordered_authors = ordered_authors %>% 
 add_row(Study_id = NA_character_, 
@@ -100,11 +102,11 @@ mutate(Affiliation1 = case_when(Coauthor_name == "Jose B. Lanuza"  ~
 "Estación Biológica de Doñana (EBD-CSIC), Seville, Spain",
 TRUE ~ NA_character_)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Jose B. Lanuza"  ~ 
-"German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig",
+"Martin Luther University Halle-Wittenberg, Institute of Biology, Halle, Germany",
 TRUE ~ NA_character_)) %>% 
 mutate(Affiliation3 = case_when(Coauthor_name == "Jose B. Lanuza"  ~ 
-"Martin Luther University Halle-Wittenberg, Institute of Biology, Halle, Germany",
-TRUE ~ NA_character_))
+"German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig",
+TRUE ~ NA_character_)) 
 ##Tiffany Knight-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Tiffany M. Knight"  ~ 
@@ -121,6 +123,15 @@ affiliations = affiliations %>%
 mutate(Affiliation1 = case_when(Coauthor_name == "Nerea Montes-Perez"  ~ 
 "Estación Biológica de Doñana (EBD-CSIC), Seville, Spain",
 TRUE ~ Affiliation1))
+##Will Glenny-----
+affiliations = affiliations %>% 
+mutate(Affiliation1 = case_when(Coauthor_name == "Will Glenny"  ~ 
+"German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig",
+TRUE ~ Affiliation1)) %>% 
+mutate(Affiliation2 = case_when(Coauthor_name == "Will Glenny"  ~ 
+"Department of Community Ecology, Helmholtz Centre for Environmental Research – UFZ, Halle, Germany",
+TRUE ~ Affiliation2))
+
 ##Paola Acuña-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Paola Acuña"  ~ 
@@ -137,7 +148,7 @@ mutate(Affiliation1 = case_when(Coauthor_name == "Maddi Artamendi" ~
 "Basque Centre for Climate Change-BC3, Leioa, Spain",
 TRUE ~ Affiliation1)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Maddi Artamendi" ~ 
-"Universidad del Pais Vasco, EuskalHerriko Unibertsitatea (UPV-EHU), Leioa, Spain",
+"Universidad del País Vasco, EuskalHerriko Unibertsitatea (UPV-EHU), Leioa, Spain",
 TRUE ~ Affiliation2))
 ##Isabelle Badenhausser----
 affiliations = affiliations %>% 
@@ -258,11 +269,7 @@ affiliations = affiliations %>%
 mutate(Affiliation1 = case_when(Coauthor_name == "Elena Gazzea"  ~ 
 "Department of Agronomy, Food, Natural Resources, Animals and Environment, University of Padua, Padua, Italy",
 TRUE ~ Affiliation1))
-##Will Glenny-----
-affiliations = affiliations %>% 
-mutate(Affiliation1 = case_when(Coauthor_name == "Will Glenny"  ~ 
-"Department of Community Ecology, Helmholtz Centre for Environmental Research – UFZ, Halle, Germany",
-TRUE ~ Affiliation1))
+
 ##Irina Goia-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Irina Goia"  ~ 

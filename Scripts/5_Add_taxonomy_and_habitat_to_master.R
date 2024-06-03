@@ -91,13 +91,18 @@ data1 <- data1 %>%
          Date = make_date(Year, Month, Day))
 #Note that dates 1/1 are an artefact
 
+#Rename some cols
+data1 = data1 %>% 
+rename(Plant_original_name = Plant_old_name,
+       Pollinator_original_name = Pollinator_old_name)
+
 #Select cols and establish final order
 data1 = data1 %>% 
 select(Study_id, Network_id, Site_id, Sampling_method, Authors_habitat, 
        EuPPollNet_habitat, Bioregion, Country, Locality,
-       Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
+       Latitude, Longitude, Date, Interaction, Plant_original_name, Plant_accepted_name,
        Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
-       Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
+       Plant_unsure_id, Plant_uncertainty_type, Pollinator_original_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_status, Pollinator_matchtype, Pollinator_order, Pollinator_family, 
        Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 
@@ -121,9 +126,9 @@ filter(is.na(Interaction))
 data2 = data2 %>% 
 select(Study_id, Network_id, Sampling_method, Authors_habitat, 
        EuPPollNet_habitat, Bioregion, Country, Locality,
-       Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
+       Latitude, Longitude, Date, Interaction, Plant_original_name, Plant_accepted_name,
        Plant_rank, Plant_status, Plant_matchtype, Plant_order, Plant_family, Plant_genus,
-       Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
+       Plant_unsure_id, Plant_uncertainty_type, Pollinator_original_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_status, Pollinator_matchtype, Pollinator_order, Pollinator_family, 
        Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 
@@ -134,9 +139,9 @@ saveRDS(data2, "Data/Working_files/Interactions_uncounted.rds")
 data3 = data2 %>% 
 select(Study_id, Network_id, Sampling_method, Authors_habitat, 
        EuPPollNet_habitat, Bioregion, Country, Locality,
-       Latitude, Longitude, Date, Interaction, Plant_old_name, Plant_accepted_name,
+       Latitude, Longitude, Date, Interaction, Plant_original_name, Plant_accepted_name,
        Plant_rank, Plant_order, Plant_family, Plant_genus,
-       Plant_unsure_id, Plant_uncertainty_type, Pollinator_old_name, Pollinator_accepted_name, 
+       Plant_unsure_id, Plant_uncertainty_type, Pollinator_original_name, Pollinator_accepted_name, 
        Pollinator_rank, Pollinator_order, Pollinator_family, 
        Pollinator_genus, Pollinator_unsure_id, Pollinator_uncertainty_type, Flower_data, Flower_data_merger)
 saveRDS(data3, "Data/3_Final_data/Interaction_data.rds")

@@ -914,5 +914,9 @@ select(Study_id, Network_id, Authors_habitat, SafeNet_habitat, Latitude,
 check = habitat %>% 
 filter(is.na(SafeNet_habitat))
 
+#Recode to intensive grassland
+habitat = habitat %>%  
+mutate(SafeNet_habitat = recode_factor(SafeNet_habitat, "Pastures" = "Intensive grasslands")) %>% 
+mutate(SafeNet_habitat = recode_factor(SafeNet_habitat, "Semi-natural grassland" = "Semi-natural grasslands"))
 #Save data
 saveRDS(habitat, "Data/Working_files/Habitat.rds")
