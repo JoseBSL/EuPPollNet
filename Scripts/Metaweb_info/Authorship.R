@@ -32,9 +32,9 @@ for (i in 1:length(file_names)) {
 #Rename list and 
 names(data) <- file_names
 data = as_tibble(bind_rows(data,  .id = 'Study_id'))
+
 #Save metadata file
 write_csv(data, "Data/Manuscript_info/Authorship.csv")
-
 
 #Order authors in the right order----
 #Read data
@@ -835,6 +835,15 @@ affiliations1 = affiliations
 d1 = left_join(affiliations1, numbers_affiliation1, by = join_by(Affiliation1))
 d2 = left_join(d1, numbers_affiliation2, by = join_by(Affiliation2))
 d3 = left_join(d2, numbers_affiliation3, by = join_by(Affiliation3))
+
+#Export to google sheets
+#Load data to google sheets
+d3_to_google_sheets = d3 %>% 
+select(Study_id, Coauthor_name, Orcid, E_mail, 
+       Affiliation1, Affiliation2, Affiliation3)
+
+library(googlesheets4) #To upload to google sheets
+gs4_create("EuPPollNet", sheets = d3_to_google_sheets)
 
 #Almost there! We need to add the numbers of each group to the others...
 #Select cols of interest
