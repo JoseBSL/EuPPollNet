@@ -151,7 +151,11 @@ spp_code = c("2682000",#Brassica arvensis
              "3211150", #Taraxacum levigatum
              "3075260", #Picris angustifolia
              "3290297", #Candollea mollis 
-             "3074512" #Hypochaeris cretensis
+             "3074512", #Hypochaeris cretensis
+             "2901791", #Eriobotrya japonica
+             "3062456", #Sonchus bulbosus
+             "125568", #Mentha verticillata
+             "2549705" #Petunia × hybrida
              ) 
 #Save those plants from unfiltered master file
 taxPl_excluded1 = taxPl %>%

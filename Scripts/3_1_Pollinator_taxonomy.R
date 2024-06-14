@@ -596,9 +596,14 @@ mutate(Fixed = case_when(
   str_detect(Mismatch, "indet \"mellem") ~ "Diptera",
   str_detect(Mismatch, "flue\"") ~ "Diptera",
   Mismatch == "Ancistocerus ebusianus" ~ "Ancistrocerus ebusianus", #fix
+  Mismatch == "Pyrelia rapax" ~ "Pyrellia rapax",
+  Mismatch == "Cantharis vigricans" ~ "Cantharis nigricans",
+  Mismatch == "Alleculinae sp1" ~ "Tenebrionidae",
+  Mismatch == "Diplazontinae sp1" ~ "Ichneumonidae",
+  Mismatch == "Procridinae sp1" ~ "Zygaenidae",
+  Mismatch == "Scolia flava" ~ "Scolia",
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
-
 
 #Very few subfamilies (write them at family level)
 #GBIF Does not find them at subfamily level
@@ -725,6 +730,8 @@ distinct() %>%
 pull()
 #Download taxonomic info from GBIF
 matched_gbif = name_backbone_checklist(name = name, kingdom = "animalia")
+#Save static version so the code is reproducible
+#saveRDS(matched_gbif, "Data/Species_taxonomy/GBIF_downloads/gbif_names_polls_v1_11_6_24")
 #Organise structure of data
 matched_gbif1 = change_str1(matched_gbif)
 #Check species that haven't been found
@@ -742,6 +749,8 @@ distinct() %>%
 pull()
 #Download taxonomic info from GBIF
 unmatched_gbif = name_backbone_checklist(name= name1, kingdom = "animalia")
+#Save static version so the code is reproducible
+#saveRDS(unmatched_gbif, "Data/Species_taxonomy/GBIF_downloads/gbif_names_polls_v2_11_6_24")
 #Rename and filter out exact matches
 unmatched_gbif1 = change_str1(unmatched_gbif)
 clean = c("EXACT", "FUZZY")
@@ -805,7 +814,6 @@ filter(n_word>1) %>%
 filter(is.na(Unsure_id)) %>% 
 distinct(Accepted_name) 
 #1580 accepted different species
-
 
 #Here we conduct some last edits
 #There are some species that are accepted in GBIF BUT
@@ -914,6 +922,18 @@ mutate(Accepted_name = case_when(
    Accepted_name == "Tetraloniella graja" ~ "Tetralonia graja",  #Synonym
    Accepted_name == "Halictus haesitans" ~ "Lasioglossum haesitans",  #Synonym
    Accepted_name == "Tetraloniella alticincta" ~ "Tetralonia alticincta",  #Synonym
+   Accepted_name == "Halictus gavarnicus" ~ "Seladonia gavarnica",  #Synonym
+   Accepted_name == "Chrysogaster mediterranea" ~ "Chrysogaster mediterraneus",  #Synonym
+   Accepted_name == "Lycaeides idas" ~ "Plebejus idas",  #Synonym
+   Accepted_name == "Loweia tityrus" ~ "Lycaena tityrus",  #Synonym
+   Accepted_name == "Nordmannia ilicis" ~ "Satyrium ilicis",  #Synonym
+   Accepted_name == "Damora pandora" ~ "Argynnis pandora",  #Synonym
+   Accepted_name == "Leptidea sinapsis" ~ "Leptidea sinapis",  #Synonym
+   Accepted_name == "Maculinea teleius" ~ "Phengaris teleius",  #Synonym
+   Accepted_name == "Vacciniina optilete" ~ "Agriades optilete",  #Synonym
+   Accepted_name == "Colias croceus" ~ "Colias crocea",  #Synonym
+   Accepted_name == "Ochlodes venata" ~ "Ochlodes sylvanus",  #Synonym
+   Accepted_name == "Erebia alberganus" ~ "Erebia albergana",  #Synonym
 
     T ~ Accepted_name))
 
@@ -968,7 +988,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "37_White") %>% 
+filter(Study_id == "52_Hadrava") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

@@ -7,7 +7,7 @@ library(sf)
 library(dplyr)
 
 #Load data 
-data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("Data/Working_files/Interactions_uncounted.rds")
 
 ##Read shapefile:
 bioregions <- sf::read_sf('Data/Working_files/Bio_Regions/BiogeoRegions2016.shp')

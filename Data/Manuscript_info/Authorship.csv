@@ -4,7 +4,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 2_Petanidou,Georgios Nakas,0000-0003-3023-5831,nakas.g@geo.aegean.gr
 3_Michez,Denis Michez,0000-0001-8880-1838,denis.michez@umons.ac.be
 3_Michez,William Fiordaliso,0000-0002-9667-6800,william.fiordaliso@umons.ac.be
-3_Michez,Sara Reverte,0000-0002-2924-3394,sara.revertes@umons.ac.be
+3_Michez,Sara Reverte,0000-0002-2924-3394,sara.revertesaiz@umons.ac.be
 4_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@phd.unipd.it
 4_Marini,Lorenzo Marini,0000-0001-7429-7685,lorenzo.marini@unipd.it
 5_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@phd.unipd.it
@@ -46,12 +46,19 @@ Study_id,Coauthor_name,Orcid,E_mail
 18_Bartomeus,Ignasi Bartomeus,0000-0001-7893-4389,nacho.bartomeus@gmail.com
 19_Jauker,Birgit Jauker,0000-0001-5027-9351,birgit.jauker@allzool.bio.uni-giessen.de
 19_Jauker,Frank Jauker,0000-0003-4137-9072,jaukerf@gmail.com
+19_Jauker,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
 20_Hoiss,Bernhard Hoiss,NA,bernhard.hoiss@anl.bayern.de
-21_Hopfenmuller,Sebastian Hopfenmüller,0009-0004-5138-6342,
-22_Kallnik,Katharina Kallnik,NA,katharina.kallnik@uni-wuerzburg.de
+20_Hoiss,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
+21_Hopfenmuller,Sebastian Hopfenmüller,0009-0004-5138-6342,sebastian_hopfenmueller@web.de
+21_Hopfenmuller,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
+22_Kallnik,Katharina Kallnik,,katharina.kallnik@uni-wuerzburg.de
+22_Kallnik,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
 23_Holzschuh,Andrea Holzschuh,0000-0002-5235-4746,andrea.holzschuh@uni-wuerzburg.de
+23_Holzschuh,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
 24_Holzschuh,Andrea Holzschuh,0000-0002-5235-4746,andrea.holzschuh@uni-wuerzburg.de
+24_Holzschuh,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
 25_Holzschuh,Andrea Holzschuh,0000-0002-5235-4746,andrea.holzschuh@uni-wuerzburg.de
+25_Holzschuh,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
 26_Castro,Sílvia Castro,0000-0002-7358-6685,scastro@bot.uc.pt
 26_Castro,Victoria Ferrero,0000-0002-2091-8957,vferrv@unileon.es
 26_Castro,Joana Costa,0000-0002-9784-8272,jfmc.biologia@gmail.com
@@ -67,7 +74,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 29_Magrach,Ainhoa Magrach,0000-0003-2155-7556,ainhoa.magrach@bc3research.org
 29_Magrach,Ignasi Bartomeus,0000-0001-7893-4389,nacho.bartomeus@gmail.com
 29_Magrach,Montserrat Vilà,000-0003-3171-8261,montse.vila@ebd.csic.es
-29_Magrach,Juan Pedro González-Varo,0000-0003-1439-6475,juanpe@ebd.csic.es
+29_Magrach,Juan Pedro González-Varo,0000-0003-1439-6475,juanpe.varo@uca.es
 30_Smith,Henrik G. Smith,0000-0002-2289-889X,henrik.smith@biol.lu.se
 30_Smith,Maj Rundlöf,0000-0003-3014-1544,maj.rundlof@biol.lu.se
 30_Smith,Ante Vujić,0000-0002-8819-8079,vujic_ante@yahoo.com
@@ -92,8 +99,8 @@ Study_id,Coauthor_name,Orcid,E_mail
 38_Maurer,Corina Maurer,0000-0001-8103-4111,corina.m181@gmail.com
 38_Maurer,Matthias Albrecht,0000-0001-5518-3455,matthias.albrecht@agroscope.admin.ch
 39_Schweiger,Oliver Schweiger,0000-0001-8779-2335,oliver.schweiger@ufz.de
-39_Schweiger,Jonna Heuschele,0009-0005-3242-9412,jonna.heuschele@ufz.de
-39_Schweiger,Yicong Liu,,yicong.liu@ufz.de
+39_Schweiger,Jonna M. Heuschele,0009-0005-3242-9412,jonna.heuschele@ufz.de
+39_Schweiger,Yicong Liu,0009-0003-2573-8132,liu.yicong@ufz.de
 39_Schweiger,Christophe Dominik,0000-0001-6310-1632,christophe.dominik@ufz.de
 40_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
 40_Knight,Joanne M. Bennett,0000-0002-7883-3577,joanne.bennett@anu.edu.au
@@ -149,3 +156,4 @@ Study_id,Coauthor_name,Orcid,E_mail
 50_Hervias-Parejo,Pau Enric Serra,0000-0001-6674-3710,pau.enric.serra@gmail.com
 51_Petanidou,Theodora Petanidou,0000-0003-1883-0945,tpet@aegean.gr
 51_Petanidou,Georgios Nakas,0000-0003-3023-5831,nakas.g@geo.aegean.gr
+52_Hadrava,Jiří Hadrava,0000-0003-3247-6399,HadravaJirka@seznam.cz

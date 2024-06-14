@@ -51,6 +51,9 @@ name = Plant_spp %>% pull()
 #--------------------------------------#
 #Download taxonomic info from GBIF
 gbif_names = name_backbone_checklist(name= name, kingdom='plants')
+#Save (in case GBIF names are updated)
+#saveRDS(gbif_names, "Data/Species_taxonomy/GBIF_downloads/gbif_names_plants_v1_11_6_24")
+
 #Organise structure of data
 gbif_names = change_str1(gbif_names) 
 
@@ -218,6 +221,8 @@ mutate(Fixed_name = case_when(
   Old_name == "Cichorieae sp." ~ "Asteraceae", #fix
   Fixed_name == "no data" ~ "Unknown", #fix
  str_detect(Fixed_name, "Compositae") ~ "Asteraceae", #fix
+  Fixed_name == "Myosotis palustris" ~ "Myosotis scorpioides", #fix
+  Fixed_name == "Sedum reflexum" ~ "Petrosedum rupestre", #fix
   T ~ Fixed_name)) %>% 
 mutate(Fixed_name =  gsub("[0-9]+", "", Fixed_name)) %>% 
 mutate(Fixed_name =  str_replace(Fixed_name, 
@@ -231,6 +236,9 @@ pattern =  paste(pattern_spp, collapse = "|"), ""))
 #retrieve data and check if now everything works
 name1 = Plant_spp %>% select(Fixed_name) %>% distinct() %>%  pull()
 gbif_names1 = name_backbone_checklist(name= name1, kingdom='plants')
+#Save to have a static version
+#saveRDS(gbif_names1, "Data/Species_taxonomy/GBIF_downloads/gbif_names_plants_v2_11_6_24")
+
 #Organise structure of data
 gbif_names1 = change_str1(gbif_names1) 
 #Check unmatched records again and see if fuzzy records are corrected
@@ -274,7 +282,6 @@ T ~ NA_character_
 #Bind cols of uncertainty
 Plant_data1 = left_join(Plant_data, Plant_spp1)
 
-
 #Add some final accepted names that are not being included
 Plant_data1 = Plant_data1 %>% 
 mutate(Accepted_name = case_when(
@@ -282,7 +289,6 @@ mutate(Accepted_name = case_when(
   Fixed_name == "Hieracium" ~ "Hieracium",
   T ~ Accepted_name
 ))
-
 
 #--------------------------------------#
 #7) Some last edits according to worldflora-----
@@ -408,6 +414,10 @@ Accepted_name == "Aetheorhiza bulbosa" ~
   "Sonchus bulbosus", #Internal Accepted name
 Accepted_name == "Rhaphiolepis bibas" ~ 
   "Eriobotrya japonica", #Internal Accepted name
+Accepted_name == "Petunia hybrida" ~ 
+  "Petunia × hybrida", #Internal Accepted name
+Accepted_name == "Centaurea apiculata" ~ 
+  "Centaurea scabiosa", #Internal Accepted name
 T ~ Accepted_name))
 
 
@@ -446,6 +456,14 @@ mutate(Family = case_when(Genus == "Thesium" ~ "Santalaceae",
 Plant_data1 = Plant_data1 %>% 
 mutate(Family = case_when(Genus == "Heliotropium" ~ "Boraginaceae",
                         T ~ Family))
+
+#Accepted name
+Plant_data1 = Plant_data1 %>% 
+mutate(Accepted_name = case_when(
+Accepted_name == "Petunia hybrida" ~ "Petunia × hybrida",
+Accepted_name == "Senecio erraticus" ~ "Jacobaea erratica",
+                        T ~ Accepted_name))
+
 #--------------------------------------#
 #8) Save pollinator taxonomy-------
 #--------------------------------------#
@@ -464,7 +482,7 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "37_White") %>% 
+filter(Study_id == "52_Hadrava") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

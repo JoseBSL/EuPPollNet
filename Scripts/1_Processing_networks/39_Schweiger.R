@@ -127,9 +127,9 @@ Metadata = as.data.frame(t(Metadata)) %>%
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = c("Oliver Schweiger", "Jonna Heuschele", "Yicong Liu", "Christophe Dominik"),
-  Orcid = c("0000-0001-8779-2335", "0009-0005-3242-9412", "", "0000-0001-6310-1632"),
-  E_mail = c("oliver.schweiger@ufz.de", "jonna.heuschele@ufz.de", "yicong.liu@ufz.de", "christophe.dominik@ufz.de"))
+  Coauthor_name = c("Oliver Schweiger", "Jonna M. Heuschele", "Yicong Liu", "Christophe Dominik"),
+  Orcid = c("0000-0001-8779-2335", "0009-0005-3242-9412", "0009-0003-2573-8132", "0000-0001-6310-1632"),
+  E_mail = c("oliver.schweiger@ufz.de", "jonna.heuschele@ufz.de", "liu.yicong@ufz.de", "christophe.dominik@ufz.de"))
 
 #Save data ----
 #Create metadata list

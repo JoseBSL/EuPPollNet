@@ -3,7 +3,7 @@
 
 library(dplyr)
 #Load data 
-data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("Data/Working_files/Interactions_uncounted.rds")
 
 #Make sure that each site has only a single coordinate
 #I have fixed some coords on the processing scripts
@@ -56,7 +56,7 @@ head(all)
 
 #Restore dataset (to raw conditions to run this)
 data = data %>% 
-select(!c(SafeNet_habitat)) %>% 
+select(!c(EuPPollNet_habitat)) %>% 
 rename("Habitat" = "Authors_habitat")
 
 #Merge back to dataset with everything
@@ -868,6 +868,66 @@ mutate(Land_cover =
 case_when(Study_id == "51_Petanidou" ~ "Sclerophyllous vegetation",
 TRUE ~ Land_cover))
 
+#52_Hadrava
+hadrava_habitats = data %>% 
+filter(Study_id == "52_Hadrava") %>% 
+mutate(Network_id = Network_id) %>%   
+distinct(Network_id) %>% pull()
+
+
+habitat = habitat %>% 
+mutate(Habitat = as.character(Habitat)) %>% 
+mutate(Land_cover = 
+  case_when(
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[2] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[3] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[4] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[5] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[6] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[7] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[8] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[9] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[10] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[11] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[12] ~ "Green urban areas",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[13] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[14] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[15] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[16] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[17] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[18] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[19] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[20] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[21] ~ "Green urban areas",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[22] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[23] ~ "Alpine grasslands",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[24] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[25] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[26] ~ "Beaches, dunes, sands",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[27] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[29-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[30-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[31-1] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[32-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[33-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[34-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[35-1] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[36-1] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[37-1] ~ "Forest/woodland",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[38-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[39-1] ~ "Forest/woodland",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[40-1] ~ "Ruderal vegetation",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[41-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[42-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[43-1] ~ "Semi-natural grassland",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[44-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[45-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[46-1] ~ "Moors and heathland",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[47-1] ~ "Semi-natural grassland",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[48-1] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[49-1] ~ "Pastures",
+    TRUE ~ Land_cover))  
 
 #Check for mistakes
 #Rename coniferous forest to forest
@@ -913,6 +973,7 @@ select(Study_id, Network_id, Authors_habitat, SafeNet_habitat, Latitude,
 
 check = habitat %>% 
 filter(is.na(SafeNet_habitat))
+check
 
 #Recode to intensive grassland
 habitat = habitat %>%  
