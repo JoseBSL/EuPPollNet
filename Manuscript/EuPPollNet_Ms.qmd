@@ -323,6 +323,39 @@ nrow(.)
 
 spp_percent_main_order = pollinator_spp_main_orders/pollinator_spp *100
 
+#Calculate percentage of studies that recorded the main 4 orders
+metadata = readRDS("../Data/3_Final_data/Metadata.rds")
+#Some studies are divided by year
+#Get an average of the pollinator percentages across years first
+#Fix NA's
+metadata_study = metadata %>%
+group_by(Study_id) %>% 
+mutate(Hymenoptera_percent = as.numeric(na_if(Hymenoptera_percent, "NA"))) %>%  
+mutate(Diptera_percent = as.numeric(na_if(Diptera_percent, "NA"))) %>%  
+mutate(Lepidoptera_percent = as.numeric(na_if(Lepidoptera_percent, "NA"))) %>%  
+mutate(Coleoptera_percent = as.numeric(na_if(Coleoptera_percent, "NA"))) 
+#Calculate average
+mean_study = metadata_study  %>% 
+summarise(Hymenoptera_percent = mean(Hymenoptera_percent, na.rm = T),
+          Diptera_percent = mean(Diptera_percent, na.rm = T),
+          Lepidoptera_percent = mean(Lepidoptera_percent, na.rm = T),
+          Coleoptera_percent = mean(Coleoptera_percent, na.rm = T)) %>% 
+ mutate(across(c(Hymenoptera_percent, Diptera_percent, Lepidoptera_percent, Coleoptera_percent),
+                ~ ifelse(is.nan(.), NA, .))) 
+#Now calculate percentage of studies that record any of these 4 orders
+mean_percent_order = mean_study %>%
+  summarise(
+    Hymenoptera_percent_metaweb = sum(!is.na(Hymenoptera_percent)) / nrow(.) * 100,
+    Diptera_percent_metaweb = sum(!is.na(Diptera_percent)) / nrow(.) * 100,
+    Lepidoptera_percent_metaweb = sum(!is.na(Lepidoptera_percent)) / nrow(.) * 100,
+    Coleoptera_percent_metaweb = sum(!is.na(Coleoptera_percent)) / nrow(.) * 100)
+
+Hymenoptera_percent_metaweb = mean_percent_order$Hymenoptera_percent_metaweb
+Diptera_percent_metaweb = mean_percent_order$Diptera_percent_metaweb
+Lepidoptera_percent_metaweb = mean_percent_order$Lepidoptera_percent_metaweb
+Coleoptera_percent_metaweb = mean_percent_order$Coleoptera_percent_metaweb
+
+
 ```
 
 
@@ -390,7 +423,11 @@ The EuPPollNet database includes published and unpublished studies compiled init
 
 ## Dataset description
 
-The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` in `r country_number` different countries (**Figure 1a** and **Figure 1b**). The studies differ in sampling effort and methodology, and thus documenting sampling methods and sampling effort is an important feature of EuPPollNet. Most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location for an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as the sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions. Most of the pollinator species belong to the orders Hymenoptera, Diptera, Lepidoptera and Coleoptera (`r format(round(spp_percent_main_order, 2), nsmall = 2)`%), which account for nearly all interactions in this database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). Species that belong to other orders `r format(round(100-spp_percent_main_order, 2), nsmall = 2)`% are not explored in this study as they conduct a minor fraction of the total interactions (`r format(round(100-main_orders_percent, 2), nsmall = 2)`%). Hymenoptera and Diptera contain the highest number of species comprising each approximately 1,000 species in the database. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably, the western honey bee, _Apis mellifera_, represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
+The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` in `r country_number` different countries (**Figure 1a** and **Figure 1b**). The studies differ in sampling effort and methodology, and thus documenting sampling methods and sampling effort is an important feature of EuPPollNet. Most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location for an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as the sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%).
+
+`r format(round(Hymenoptera_percent_metaweb, 2), nsmall = 2)`% of the studies documented interactions from Hymenoptera, `r format(round(Diptera_percent_metaweb, 2), nsmall = 2)`% from Diptera, `r format(round(Lepidoptera_percent_metaweb, 2), nsmall = 2)`% from Lepidoptera, and `r format(round(Coleoptera_percent_metaweb, 2), nsmall = 2)`% from Coleoptera. 
+
+The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions. Most of the pollinator species belong to the orders Hymenoptera, Diptera, Lepidoptera and Coleoptera (`r format(round(spp_percent_main_order, 2), nsmall = 2)`%), which account for nearly all interactions in this database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). Species that belong to other orders `r format(round(100-spp_percent_main_order, 2), nsmall = 2)`% are not explored in this study as they conduct a minor fraction of the total interactions (`r format(round(100-main_orders_percent, 2), nsmall = 2)`%). Hymenoptera and Diptera contain the highest number of species comprising each approximately 1,000 species in the database. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably, the western honey bee, _Apis mellifera_, represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
 
 
 
