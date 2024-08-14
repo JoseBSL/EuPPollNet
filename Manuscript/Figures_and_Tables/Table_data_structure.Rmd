@@ -17,9 +17,9 @@ vars = colnames(data)
 #Create table
 d = tibble(Variable = vars)
 
-d = d %>% 
-mutate(Variable = str_replace(Variable, "Latitude", "Latitude-Longitude")) %>% 
-filter(!Variable == "Longitude")
+#d = d %>% 
+#mutate(Variable = str_replace(Variable, "Latitude", "Latitude-Longitude")) %>% 
+#filter(!Variable == "Longitude")
 
 #Add descriptor
 my_tibble = d %>%
@@ -32,7 +32,9 @@ my_tibble = d %>%
     Variable == "Bioregion" ~ "European biogiographical regions",
     Variable == "Country" ~ "Country where the plant-pollinator interaction was observed",
     Variable == "Locality" ~ "Locality where the plant-pollinator interaction was observed",
-    Variable == "Latitude-Longitude" ~ "Coordinates of the observed interaction in decimal degrees",
+    Variable == "Latitude" ~ "North-south position of the observed interaction in decimal degrees",
+        Variable == "Longitude" ~ "East-west position of the observed interaction in decimal degrees",
+
     Variable == "Date" ~ "Year, month and day when the observation took place",
     Variable == "Interaction" ~ "Number of interactions. By default is 1 as interactions are provided ungrouped",
     Variable == "Plant_old_name" ~ "Plant species name given by the authors",
