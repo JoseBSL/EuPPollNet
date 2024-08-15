@@ -984,10 +984,10 @@ nrow() / nlevels(factor(data$Study_id)) *100
 
 ## Taxonomic coverage
 
-Europe hosts approximately 5,000 species of pollinators and 25,000 species of plants that rely on animal pollination. EuPPollNet contains a total of `r prettyNum(pollinator_spp_number, big.mark=",")` pollinators and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The coverage of the main pollinator groups occurring in Europe is `r format(round(bee_coverage, 2), nsmall=2)`% for bees, `r format(round(syrphid_coverage, 2), nsmall=2)`% for syrphids and `r format(round(lepidoptera_coverage, 2), nsmall=2)`% for butterflies (see **Figure S1** for coverage at the family level for bees and butterflies, and at the subfamily level for syrphids). Bees constitute `r format(round(bee_interactions_percent, 2), nsmall=2)`% of the interactions in EuPPollNet, and `r format(round(bee_interactions_non_apis_percent, 2), nsmall=2)`% of the interactions when excluding honey bees. Within the database, `r format(round(bee_genera_percent_coverage, 2), nsmall=2)`% of bee genera have at least one species with interaction records, and the average coverage of species at the bee genus level is `r format(round(average_coverage_bee_genera, 2), nsmall=2)`% (**Figure 2**). The presence or absence of interaction records for bees does not follow a phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_bees, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_bees, 2), nsmall=2)`). The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 3**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species also does not follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). 
+Europe hosts approximately 5,000 species of pollinators and 25,000 species of plants that benefit from animal pollination. EuPPollNet contains a total of `r prettyNum(pollinator_spp_number, big.mark=",")` pollinators and `r prettyNum(plant_spp_number, big.mark=",")` plant species. The coverage of the main pollinator groups occurring in Europe is `r format(round(bee_coverage, 2), nsmall=2)`% for bees, `r format(round(syrphid_coverage, 2), nsmall=2)`% for syrphids and `r format(round(lepidoptera_coverage, 2), nsmall=2)`% for butterflies (see **Figure S1** for coverage at the family level for bees and butterflies, and at the subfamily level for syrphids). Bees constitute `r format(round(bee_interactions_percent, 2), nsmall=2)`% of the interactions in EuPPollNet, and `r format(round(bee_interactions_non_apis_percent, 2), nsmall=2)`% of the interactions when excluding honey bees. Within the database, `r format(round(bee_genera_percent_coverage, 2), nsmall=2)`% of bee genera have at least one species with interaction records, and the average coverage of species at the bee genus level is `r format(round(average_coverage_bee_genera, 2), nsmall=2)`% (**Figure 2**). The presence or absence of interaction records for bees does not follow a phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_bees, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_bees, 2), nsmall=2)`). The database coverage of all flowering plant species occurring in Europe is `r format(round(plant_coverage, 2), nsmall=2)`% (**Figure 3**), with an average coverage of `r format(round(mean_plant_fam_cov, 2), nsmall=2)`% at the plant family level. Approximately, half of the plant families have at least one species with interaction records (`r format(round(percent_plant_fam_with_data, 2), nsmall=2)`%), and the presence or absence of interaction data for the different plant species also does not follow a statistically relevant phylogenetic pattern ($\lambda$ = `r format(round(lambda_phylosig_plants, 2), nsmall=2)`; _P_ = `r format(round(p_phylosig_plants, 2), nsmall=2)`). 
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic and taxonomic coverage of the bee genera at European level. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Grey bars indicate the total number of species per genus at the European level."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.width=10, fig.height=10, fig.cap= "\\textbf{Figure 2}. Phylogenetic and taxonomic coverage of the bee genera at European level. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of bee species per genus at the European level. Dark grey bars indicate the total number of species per genus at the European level."}
 
 #Read data
 tree_family_interactions= readRDS("../Data/Manuscript_info/bee_phylo.RData")
@@ -1009,11 +1009,11 @@ geom_fruit(data = d1, geom=geom_bar,
                     orientation="y", 
                     stat="identity",
                     color="black",
-                    offset = 0.137,
+                    offset = 0.146,
             axis.params=list(
                          axis = "x",
                          text.size  = 2.5,
-                         hjust  = 1,
+                         hjust  = 1.2,
                          vjust = 0.5,
                          nbreak = 3,
                          fontface = 2
@@ -1031,15 +1031,15 @@ geom_fruit(geom=geom_bar,
             axis.params=list(
                          axis = "x",
                          text.size  = 2.5,
-                         hjust  = 1,
+                         hjust  = -0.2,
                          vjust = 0.5,
-                         nbreak = 1,
+                         nbreak = 3,
                          fontface = 2
                      ),
          grid.params=list()) +
-annotate("text", x = 14.2, y = 70, label = "EuPPollNet spp\n coverage (%)", size= 3, fontface= "bold") +
-annotate("text", x = 15.7, y = 70, label = "European\n species", size= 3, fontface= "bold")+
-annotate("text", x = 12.1, y = 70, label = "EuPPollNet\n interactions", size= 3, fontface= "bold")+ 
+annotate("text", x = 14.35, y = 70, label = "EuPPollNet spp\n coverage (%)", size= 3, fontface= "bold") +
+annotate("text", x = 16, y = 70, label = "European\n species", size= 3, fontface= "bold")+
+annotate("text", x = 12.3, y = 70, label = "EuPPollNet\n interactions", size= 3, fontface= "bold")+ 
 new_scale_fill() +
 geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
 annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
@@ -1958,7 +1958,7 @@ theme(axis.text.x = element_text(angle = 45, hjust =1),
       panel.border = element_rect(size=1)) +
 ylab("Number of species") +
 scale_fill_manual(values = c("tan2", "lightgrey"))+
-ggtitle("Bee family coverage")
+ggtitle("Bee families")
 #--------------------------------------------------------------------------------------------#
 #Continue with syrphids----
 #As we don't have subfamilies, let's obtained them from the master list
@@ -1989,16 +1989,23 @@ mutate(Group = "Europe")
 #Bind both datasets for plotting
 syrphid_fam_coverage = bind_rows(syrphid_spp_safenet, syrphid_spp_europe)
 #Plot
-p2 = ggplot(syrphid_fam_coverage, aes(reorder(Subfamily,-Spp_number), Spp_number, fill = Group)) +
-geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
-coord_cartesian(expand = FALSE) +
-xlab(NULL) +
-ylab(NULL) +
-theme_bw() +
-theme(axis.text.x = element_text(angle = 45, hjust =1),
-      panel.border = element_rect(size=1)) +
-scale_fill_manual(values = c("tan2", "lightgrey"))+
-ggtitle("Syrphid subfamily coverage")
+# Plot for syrphid subfamily coverage with adjusted margins
+p2 = ggplot(syrphid_fam_coverage, aes(reorder(Subfamily, -Spp_number), Spp_number, fill = Group)) +
+  geom_bar(stat="identity", width = .5, position = "dodge", color = "black") +
+  coord_cartesian(expand = FALSE) +
+  xlab(NULL) +
+  ylab(NULL) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.border = element_rect(size = 1),
+    plot.title = element_text(size = 14, face = "bold", margin = margin(b = 10)),
+    axis.title = element_text(face = "bold", size = 14),
+    axis.text = element_text(face = "bold", size = 12),
+    plot.margin = margin(10, 10, 20, 10)  # Adjusting the margins
+  ) +
+  scale_fill_manual(values = c("tan2", "lightgrey")) +
+  ggtitle("Syrphid subfamilies")
 #--------------------------------------------------------------------------------------------#
 #Continue with butterflies----
 #Do it at family level
@@ -2032,7 +2039,7 @@ theme_bw() +
 theme(axis.text.x = element_text(angle = 45, hjust =1),
       panel.border = element_rect(size=1)) +
 scale_fill_manual(values = c("tan2", "lightgrey"))+
-ggtitle("Butterfly family coverage")
+ggtitle("Butterfly families")
 
 #--------------------------------------------------------------------------------------------#
 p1+p2+p3 + plot_layout(guides = "collect") & 
