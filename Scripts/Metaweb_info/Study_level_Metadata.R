@@ -127,8 +127,7 @@ relocate(DOI, .before = Year)
 #Add qualitative info of what orders where sampled
 #Based on authors info
 metadata = metadata %>% 
-mutate(Taxa_recorded = NA_character_) %>%
-mutate(Comment_taxa_recorded = NA_character_)
+mutate(Taxa_recorded = NA_character_) 
 
 #Studies by recorded floral visitors
 all_pollinators = c("1_Bartomeus", "2_Petanidou", 
@@ -161,26 +160,21 @@ bees_syrphids_and_butterflies = c("32_ORourke", "33_Power",
 hymenoptera_diptera_lepidoptera = c("40_Knight", "41_Knight",
                                     "42_Knight", "43_Knight",
                                     "44_Knight", "45_Knight",
-                                    "46_Knight", "4_Marini",
-                                    "5_Marini")
+                                    "46_Knight")
 
 metadata = metadata %>% 
 mutate(Taxa_recorded = case_when(
   Study_id %in% all_pollinators ~ "Hymenoptera, Diptera, Lepidoptera and Coleoptera",
   Study_id %in% only_bees ~ "Bees",
-  Study_id %in% only_bumblebees ~ "Bumbleees",
+  Study_id %in% only_bumblebees ~ "Bumblebees",
   Study_id %in% bees_and_syrphids ~ "Bees and syrphids",
   Study_id %in% bees_syrphids_and_butterflies ~ "Bees, syrphids and butterflies",
   Study_id %in% hymenoptera_diptera_lepidoptera~ "Hymenoptera, Diptera and Lepidoptera",
-  Study_id == "17_Fisogni" ~ "Hymenoptera, Diptera and Coleoptera",
   Study_id == "21_Hopfenmuller" ~ "Hymenoptera",
-  TRUE ~ Taxa_recorded)) %>% 
-mutate(Comment_taxa_recorded = case_when(
-  Study_id == "4_Marini" ~ "Apoidea, hoverflies, conopids, tachinid flies, butterflies",
-  Study_id == "5_Marini" ~ "Apoidea, hoverflies, conopids, tachinid flies, butterflies",
-  Study_id == "17_Fisogni" ~ "Hymenoptera, Coleoptera and Diptera (Bombyliidae and Syrphidae)",
-TRUE ~ Comment_taxa_recorded))
-
+  Study_id == "4_Marini" ~ "Bees, syrphids, conopids, tachinid flies and butterflies",
+  Study_id == "5_Marini" ~ "Bees, syrphids, conopids, tachinid flies and butterflies",
+  Study_id == "17_Fisogni" ~ "Hymenoptera, syrphids, bombylids and Coleoptera",
+  TRUE ~ Taxa_recorded))
 
 #Read metadata from authors and incorporate Authors, mails and orcids
 authors = read_csv("Data/Manuscript_info/Authorship.csv")
