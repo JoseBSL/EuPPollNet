@@ -997,7 +997,7 @@ n = readRDS("../Data/Manuscript_info/node_data.RData")
 #Circular layour
 ggtree(tree_family_interactions, size=0.6, open.angle=1, alpha=1)+ 
 geom_tippoint(aes(size= Interactions, fill = Interactions), color="black", shape=21) +
-geom_tiplab(linetype='dashed', linesize=.05, offset = 0.063, size=2.9, fontface=1) +
+geom_tiplab(linetype='dashed', linesize=.05, offset = 0.065, size=2.9, fontface=1) +
 scale_size(range = c(0,4.5), guide = 'none')  +
 scale_fill_continuous(type = "viridis", direction=-1) + 
 guides(fill=guide_legend(), size = guide_legend()) +
@@ -1009,7 +1009,7 @@ geom_fruit(data = d1, geom=geom_bar,
                     orientation="y", 
                     stat="identity",
                     color="black",
-                    offset = 0.146,
+                    offset = 0.148,
             axis.params=list(
                          axis = "x",
                          text.size  = 2.5,
@@ -1039,15 +1039,20 @@ geom_fruit(geom=geom_bar,
          grid.params=list()) +
 annotate("text", x = 14.35, y = 70, label = "EuPPollNet spp\n coverage (%)", size= 3, fontface= "bold") +
 annotate("text", x = 16, y = 70, label = "European\n species", size= 3, fontface= "bold")+
-annotate("text", x = 12.3, y = 70, label = "EuPPollNet\n interactions", size= 3, fontface= "bold")+ 
+annotate("text", x = 12.2, y = 70, label = "EuPPollNet\n interactions", size= 3, fontface= "bold")+ 
 new_scale_fill() +
-geom_hilight(data=n, aes(node=node), type = "roundrect", fill = "orange") +
-annotate("text", x = 7.5, y = 2.8, label = "Melittidae", size= 3)+
-annotate("text", x = 7, y = 6.5, label = "Andrenidae", size= 3)+
-annotate("text", x = 9.5, y = 12.5, label = "Colletidae", size= 3)+
-annotate("text", x = 5.9, y = 17.4, label = "Halictidae", size= 3)+
-annotate("text", x = 2.8, y = 28.6, label = "Apidae", size= 3)+
-annotate("text", x = 2.8, y = 51.3, label = "Megachilidae", size= 3) +
+geom_point2(aes(subset=node==131), color='orange', size=3) +
+geom_point2(aes(subset=node==84), color='orange', size=3) +
+geom_point2(aes(subset=node==73), color='orange', size=3) +
+geom_point2(aes(subset=node==74), color='orange', size=3) +
+geom_point2(aes(subset=node==111), color='orange', size=3)+
+geom_point2(aes(subset=node==91), color='orange', size=3) +
+annotate("text", x = 9.45, y = 2.7, label = "Melittidae", size= 3)+
+annotate("text", x = 7.3, y = 6.4, label = "Andrenidae", size= 3)+
+annotate("text", x = 10.4, y = 12.4, label = "Colletidae", size= 3)+
+annotate("text", x = 5.45, y = 17.3, label = "Halictidae", size= 3)+
+annotate("text", x = 2.55, y = 28.5, label = "Apidae", size= 3)+
+annotate("text", x = 2.25, y = 51.2, label = "Megachilidae", size= 3) +
 coord_cartesian(clip = "off")+
 theme(legend.margin=unit(1,"cm"),
       legend.spacing = unit(1, "cm"),
