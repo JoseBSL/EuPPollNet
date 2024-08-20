@@ -698,7 +698,7 @@ theme(axis.text = element_text(size=6),
 guides(fill=guide_legend(nrow=2,byrow=TRUE))+
 ggtitle("(c)") +
 theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -6)) +
-scale_x_discrete(labels = c("Species\n (2172)", "Interactions\n (358,049)"))
+scale_x_discrete(labels = c("Species\n (2,172)", "Interactions\n (358,049)"))
 
 
 
