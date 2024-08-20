@@ -504,7 +504,7 @@ select(!c(Fixed1))
 
 #Conduct last fixes
 #----------------------------#
-#2)Fix synonyms typos (with help of worldflora)-----
+#2)Fix synonyms typos-----
 #----------------------------#
 
 #Note, each case has been searched manually and assessed
@@ -602,6 +602,14 @@ mutate(Fixed = case_when(
   Mismatch == "Diplazontinae sp1" ~ "Ichneumonidae",
   Mismatch == "Procridinae sp1" ~ "Zygaenidae",
   Mismatch == "Scolia flava" ~ "Scolia",
+  Mismatch == "Lenipithema humilis" ~ "Linepithema humile", #typo
+  Mismatch == "Componotus ruber" ~ "Camponotus ruber", #typo
+  Mismatch == "Componotus lateralis" ~ "Camponotus lateralis", #typo
+  Mismatch == "Dasysyrphus balteatus" ~ "Episyrphus balteatus", #typo
+  Mismatch == "Temnothorax algiricus" ~ "Temnothorax", #Higher rank
+  Mismatch == "Gelechioidea sp1" ~ "Lepidoptera", #Higher rank
+  Mismatch == "Chalcidoidea sp1" ~ "Hymenoptera", #Higher rank
+  Mismatch == "Yponomeutoidea sp1" ~ "Lepidoptera", #Higher rank
   T ~ Fixed)) %>% 
   rename(Old_name = Mismatch, Name = Fixed) 
 
@@ -988,7 +996,7 @@ levels(factor(all$Study_id))
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "52_Hadrava") %>% 
+filter(Study_id == "53_Libran-embid") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

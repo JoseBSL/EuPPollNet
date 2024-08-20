@@ -444,14 +444,14 @@ Overall, EuPPollNet aims to cover a wide range of taxonomic groups and habitats,
 
 ## Data acquisition
 
-The EuPPollNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent. As this database is the result of one of the work packages of the European project Safeguard (Safeguarding European wild pollinators; https://doi.org/10.3030/101003476), first, data was directly requested from members of the Safeguard project. Second, the request was extended to data owners outside of the project. These other data owners were identified by direct communication with colleagues suggested by Safeguard members and by directly searching for studies on Google Scholar of under-represented regions within the database. To maintain high quality standards that will support robust future ecological research, we only included studies that met the following criteria: 1) studies containing time- and geo-referenced records of plant-pollinator interactions; and 2) studies that quantify interactions by documenting them as the contact between a pollinator and the reproductive structure of a specific plant being sampled (i.e., phyto-centric networks).
+The EuPPollNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent as defined by the European Environment Agency [@stanners1995]. As this database is the result of one of the work packages of the European project Safeguard (Safeguarding European wild pollinators; https://doi.org/10.3030/101003476), first, data was directly requested from members of the Safeguard project. Second, the request was extended to data owners outside of the project. These other data owners were identified by direct communication with colleagues suggested by Safeguard members and by directly searching for studies on Google Scholar of under-represented regions within the database. To maintain high quality standards that will support robust future ecological research, we only included studies that met the following criteria: 1) studies containing time- and geo-referenced records of plant-pollinator interactions; and 2) studies that quantify interactions by documenting them as the contact between a pollinator and the reproductive structure of a specific plant being sampled (i.e., phyto-centric networks).
 
 ## Dataset description
 
 The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` in `r country_number` different countries (**Figure 1a** and **Figure 1b**). The studies differ in sampling effort and methodology, and thus documenting sampling methods and sampling effort is an important feature of EuPPollNet. Most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location for an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and documented interactions mostly by using `r  most_common_method[[1]]` as the sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). All the studies documented interactions with Hymenopterans (with `r format(round(all_hymnoptera_percent, 2), nsmall = 2)`% considering all Hymenopterans, `r format(round(bee_percent, 2), nsmall = 2)`% only wild bees and `r format(round(bumblee_percent, 2), nsmall = 2)`% only bumblebees), `r format(round(Diptera_percent_metaweb, 2), nsmall = 2)`% documented interactions with Dipterans (with `r format(round(all_diptera_percent, 2), nsmall = 2)`% considering all Dipterans, `r format(round(syrphid_percent, 2), nsmall = 2)`% only syrphids and `r format(round(other_diptera_percent, 2), nsmall = 2)`% recorded syrphids plus bombylids or tachinid flies), `r format(round(Lepidoptera_percent_metaweb, 2), nsmall = 2)`% with Lepidopterans, and `r format(round(Coleoptera_percent_metaweb, 2), nsmall = 2)`% with Coleopterans. The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions. Most of the pollinator species belong to the orders Hymenoptera, Diptera, Lepidoptera and Coleoptera (`r format(round(spp_percent_main_order, 2), nsmall = 2)`%), which account for nearly all interactions in this database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). Species that belong to other orders `r format(round(100-spp_percent_main_order, 2), nsmall = 2)`% are not explored in this study as they conduct a minor fraction of the total interactions (`r format(round(100-main_orders_percent, 2), nsmall = 2)`%). Hymenoptera and Diptera contain the highest number of species comprising each approximately 1,000 species in the database. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably, the western honey bee, _Apis mellifera_, represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Locations of the studies in EuPPollNet showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have focused only on the European region with studies and selected a single location per study. (\\textbf{b}) Number of studies by year in EuPPollNet. (\\textbf{c}) Number of species and interactions across the four main pollinator orders in EuPPollNet."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Locations of the studies in EuPPollNet across the European continent, showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have selected only a single location per study. (\\textbf{b}) Number of studies by year in EuPPollNet. (\\textbf{c}) Proportion of species and interactions across the four main pollinator orders in EuPPollNet, excluding interactions from \\textit{Apis mellifera}. The total number of species and interactions is indicated in parentheses at the bottom."}
 
 #Fix dates
 data = data %>%
@@ -601,90 +601,6 @@ quantile_50 = quantile(df, 0.5)
 most_common_poll = poll_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
 select(Pollinator_accepted_name) %>% pull() 
 
-#Plot
-#p1 = ggplot(poll_spread, 
-#aes(reorder(Pollinator_accepted_name,-Percent_total), Percent_total)) +
-#geom_bar(stat = "identity", 
-#           color = "#D55E00",
-#           lwd = 0.015, fill = "#D55E00") +
-#ylab("Shared pollinators (%)") +
-#theme_minimal()+
-#theme(axis.text.x = element_blank(),
-#  axis.ticks.x=element_blank(),
-#  axis.ticks.y = element_line(size = 0.2),
-#  plot.title = element_text(size = 8, face = "bold"), 
-#  axis.text.y = element_text(size=5),
-#  panel.grid.major.x = element_blank(),
-#  panel.grid.minor.y = element_blank(),
-#  panel.grid.major.y = element_line(size=0.2, linetype =           2)) +
-#xlab(NULL) +
-#ylab(NULL) + 
-#ggtitle("Pollinators")+
-#geom_vline(xintercept = quantile_50, linetype="dashed", 
-#color = "black", size=0.25) + 
-#annotate(geom="text", x=1285, y=0.83, label="50th percentile",          color="black", size = #1.5) +
-#annotate(geom="text", x=20, y=0.88, label=most_common_poll[1],         color="black",  #fontface = 'italic', size = 1.5)+
-#scale_y_continuous(breaks = seq(0, 0.75, by= 0.25), expand = c(0, 0)) + 
-#annotate(geom="text", x=-500, y=1.15, label="(c)",color="black", size = 3.5) +
-#coord_cartesian(xlim=c(0, nlevels(factor(poll_spread$Pollinator_accepted_name))),ylim=c(0, #max(poll_spread$Percent_total)), clip="off")
-#
-##----------------#
-##Plants
-##----------------#
-#plant_spread = data %>% 
-#select(Plant_rank, Plant_accepted_name, Study_id) %>% 
-#group_by(Study_id) %>% 
-#filter(Plant_rank == "SPECIES") %>% 
-#distinct(Plant_accepted_name) %>% 
-#ungroup() %>% 
-#count(Plant_accepted_name) %>% 
-#rename(n_studies_shared = n) %>% 
-#arrange(-n_studies_shared) %>% 
-#mutate(Percent_total = n_studies_shared / n_distinct(data$Study_id))
-#  
-##Seelect quantile 50% from the total number of species
-#spp_number = plant_spread %>%  
-#select(Plant_accepted_name) %>% 
-#n_distinct()
-#df = seq(1, spp_number)
-#quantile_50 = quantile(df, 0.5)
-#
-##Obtain most common plant for plotting
-#most_common_plant = plant_spread %>% filter(n_studies_shared == max(n_studies_shared)) %>%
-#select(Plant_accepted_name) %>% pull() 
-#
-#Plot
-#p2 = ggplot(plant_spread, 
-#aes(reorder(Plant_accepted_name,-Percent_total), Percent_total, fill = Plant_accepted_name)) +
-#geom_bar(stat = "identity", 
-#           color = "#009E73",
-#           lwd = 0.015, fill = "#009E73") +
-#theme_minimal()+
-#theme(axis.text.x = element_blank(),
-#         axis.ticks.x=element_blank(),
-#         axis.ticks.y = element_line(size = 0.2),
-#         axis.title.x = element_text(face = "bold", size = 7),            plot.title = #element_text(size = 8, face = "bold"),
-#         axis.text.y = element_text(size=5),
-#         panel.grid.major.x = element_blank(),
-#         panel.grid.minor.y = element_blank(),
-#         panel.grid.major.y = element_line(size=0.2, linetype =  2),
-#      axis.title.y = element_text(face= "bold", size= 7, hjust= -0.01, vjust = 1)) +
-#xlab("Species") +
-#ylab("Occurrence across studies") + 
-#ggtitle("Plants") + 
-#geom_vline(xintercept = quantile_50, linetype="dashed", 
-#          color = "black", size=0.25) + 
-#annotate(geom="text", x=835, y=0.7, label="50th percentile",color="black", size = 1.5) + 
-#annotate(geom="text", x=20, y=0.75, label=most_common_plant[1]
-#      ,color="black",  fontface = 'italic', size = 1.5)+
-#annotate(geom="text", x=20, y=-0.08, label="Common spp."
-#      ,color="black",  size = 1.5) +
-#annotate(geom="text", x=1200, y=-0.08, label="\'Rare\' spp."
-#      ,color="black",  size = 1.5) + 
-#scale_y_continuous(breaks = seq(0, 0.6, by= 0.2), expand = c(0, 0), labels = #label_number(accuracy = 0.01)) +
-#coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),ylim=c(0, #max(plant_spread$Percent_total)), clip="off")
-#
-
 
 data2 = data %>%  select(Study_id, Year) %>% 
 distinct() %>% 
@@ -721,16 +637,42 @@ theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -5))
 
 
 main_orders = c("Hymenoptera", "Diptera", "Lepidoptera", "Coleoptera")
-#Select main orders
-data1 = data %>% 
-select(Pollinator_order, Pollinator_accepted_name) %>% 
+
+#Calculate spp number and interactions separately
+data1_spp = data %>% 
+select(Pollinator_order, Pollinator_accepted_name, Pollinator_rank) %>% 
 filter(Pollinator_order %in% main_orders) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
 group_by(Pollinator_order) %>% 
-summarise(Species = n_distinct(Pollinator_accepted_name)/n_distinct(.),
-          Interactions = length(Pollinator_accepted_name)/ nrow(.))
+summarise(Species = n_distinct(Pollinator_accepted_name)/n_distinct(.))
 
+data1_int = data %>% 
+filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+select(Pollinator_order, Pollinator_accepted_name, Pollinator_rank) %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+#filter(Pollinator_rank == "SPECIES") %>% 
+group_by(Pollinator_order) %>% 
+summarise(Interactions = length(Pollinator_accepted_name)/ nrow(.))
 
-# Combine Interactions and Species into a single column
+data1 = left_join(data1_spp, data1_int)
+
+#Select main orders
+spp = data %>% 
+select(Pollinator_order, Pollinator_accepted_name, Pollinator_rank) %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+filter(Pollinator_rank == "SPECIES") %>% 
+summarise(Species = n_distinct(Pollinator_accepted_name)) %>% 
+pull()
+#Select main orders
+int = data %>% 
+filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+select(Pollinator_order, Pollinator_accepted_name, Pollinator_rank) %>% 
+filter(Pollinator_order %in% main_orders) %>% 
+#filter(Pollinator_rank == "SPECIES") %>% 
+summarise(Interactions = length(Pollinator_accepted_name)) %>% 
+pull()
+
+#Combine Interactions and Species into a single column
 data_long = pivot_longer(data1, cols = c(Interactions, Species), names_to = "Variable", values_to = "Value")
 
 #Set order of levels for plotting
@@ -755,7 +697,9 @@ theme(axis.text = element_text(size=6),
      legend.box.margin=margin(-8,-5,-5,-5)) +
 guides(fill=guide_legend(nrow=2,byrow=TRUE))+
 ggtitle("(c)") +
-theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -6))
+theme(plot.title = element_text(size = 10,hjust = -0.3, vjust = -6)) +
+scale_x_discrete(labels = c("Species\n (2172)", "Interactions\n (358,049)"))
+
 
 
 #plot2 = p3 / p1 / p2 
@@ -802,7 +746,7 @@ Finally, to evaluate if the presence-absence of interaction records for bees and
 
 ## Sampling coverage 
 
-The completeness of the EuPPollNet database was evaluated by exploring the rarefied accumulation curves of plant and pollinator species and their interactions across the different networks. In addition, an outstanding question in ecology is how many pollinators are required to pollinate flowering plants [e.g., @kleijn2015 for crops]. To that end, we also calculated the accumulation curve of pollinator species with an increasing number of plant species. The rarefied and extrapolated sampling curves were obtained using the **iNEXT** package [@hsieh2016]. The different rarefied curves were complemented with 100 boostrapped accumulation curves.
+The completeness of the EuPPollNet database was evaluated by exploring the rarefied accumulation curves of plant and pollinator species and their interactions across the different networks. In addition, we computed the  accumulation curve of pollinator species with an increasing number of plant species as an indicator for how many pollinator species are likely responsible for the pollination of flowering plants [e.g., @kleijn2015 for crops]. The rarefied and extrapolated sampling curves were obtained using the **iNEXT** package [@hsieh2016]. The different rarefied curves were complemented with 100 bootstrapped accumulation curves.
 
 ## Habitat type and bioclimatic region
 

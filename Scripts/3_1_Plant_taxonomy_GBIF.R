@@ -223,6 +223,7 @@ mutate(Fixed_name = case_when(
  str_detect(Fixed_name, "Compositae") ~ "Asteraceae", #fix
   Fixed_name == "Myosotis palustris" ~ "Myosotis scorpioides", #fix
   Fixed_name == "Sedum reflexum" ~ "Petrosedum rupestre", #fix
+  Fixed_name == "Ophrys tethredinifera" ~ "Ophrys tenthredinifera", #fix
   T ~ Fixed_name)) %>% 
 mutate(Fixed_name =  gsub("[0-9]+", "", Fixed_name)) %>% 
 mutate(Fixed_name =  str_replace(Fixed_name, 
@@ -418,6 +419,10 @@ Accepted_name == "Petunia hybrida" ~
   "Petunia × hybrida", #Internal Accepted name
 Accepted_name == "Centaurea apiculata" ~ 
   "Centaurea scabiosa", #Internal Accepted name
+Accepted_name == "Centaurium discolor" ~ 
+  "Centaurium maritimum", #Internal Accepted name
+Accepted_name == "Geranium caespitosum" ~ 
+  "Geranium berteroanum", #Internal Accepted name
 T ~ Accepted_name))
 
 
@@ -482,7 +487,7 @@ all = left_join(master, Plant_data1)
 #Do this fo every new dataset that we add
 #Last one being checked is written within the filter argument
 subset_check = all %>% 
-filter(Study_id == "52_Hadrava") %>% 
+filter(Study_id == "53_Libran-embid") %>% 
 select(Old_name, Fixed_name, Rank, Status, Matchtype, Accepted_name, Unsure_id) %>% 
 distinct()
 

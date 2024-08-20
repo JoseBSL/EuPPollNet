@@ -929,6 +929,19 @@ mutate(Land_cover =
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[49-1] ~ "Pastures",
     TRUE ~ Land_cover))  
 
+
+#53_Libran-embid
+habitat = habitat %>% 
+mutate(Land_cover = 
+case_when(Study_id == "53_Libran-embid" ~ "Sclerophyllous vegetation",
+TRUE ~ Land_cover))
+
+#54_Lazaro
+habitat = habitat %>% 
+mutate(Land_cover = 
+case_when(Study_id == "54_Lazaro" ~ "Sclerophyllous vegetation",
+TRUE ~ Land_cover))
+
 #Check for mistakes
 #Rename coniferous forest to forest
 habitat = habitat %>% 
