@@ -1868,7 +1868,7 @@ Habitat definitions:
 \newpage
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure S1}. Location of all networks in the EuPPollNet database coloured by bioregion."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure S1}. Geographical location of all networks in the EuPPollNet database coloured by bioregion."}
 
 #Read data
 data = readRDS("../Data/Working_files/Interactions_uncounted.rds")%>% 
