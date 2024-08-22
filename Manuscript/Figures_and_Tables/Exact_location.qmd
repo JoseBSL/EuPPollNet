@@ -1,0 +1,87 @@
+---
+latex-tinytex: false
+format:
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+---
+
+```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+library(dplyr) #For handling fata 
+library(ggplot2) #For plotting
+library(giscoR) #For plotting
+library(sf) #For handling coordinates and plotting
+library(patchwork)#For plotting (binding plots)
+library(ggstar) #For plotting (cool shapes)
+library(scales) #For plotting (decimals on axes)
+library(tidyr)
+library(viridis)
+```
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "Figure 1"}
+
+#Load data
+data = readRDS("../../Data/3_Final_data/Interaction_data.rds")
+
+#Fix dates
+data = data %>%
+dplyr::mutate(Year = lubridate::year(Date), 
+                Month = lubridate::month(Date), 
+                Day = lubridate::day(Date))
+
+#Prepare coordinates
+for_plotting = data %>% 
+select(Study_id, Latitude, Longitude, Bioregion) %>% 
+distinct()
+#Get countries and transfrom coordinates
+countries <- gisco_get_countries(
+resolution = 20) %>%
+st_transform(3035) %>% 
+sf::st_as_sf(crs = 4326)
+
+
+#Try to plot both together (same plot)
+map = ggplot(countries) +
+geom_sf(fill="floralwhite",color = "black", 
+        alpha = 1,linewidth=0.1) + 
+geom_point(data = for_plotting, alpha=0.75,size=1.2,pch=21,stroke = 0.25,aes(x= Longitude, y=Latitude, fill= Bioregion))+  
+coord_sf(crs = st_crs(3035), default_crs = st_crs(4326),
+         xlim = c(-14, 39), ylim = c(37, 70))+
+theme(panel.grid.major = element_blank(), 
+     legend.key = element_blank(), 
+     legend.text = element_text(size = 6), 
+     legend.title = element_text(face ="bold",  size = 8),
+     legend.spacing.x=unit(-0.5, "lines"), 
+     legend.key.width=unit(0.5, "lines"), 
+     legend.box.margin=margin(-10,-10,-10,-10),
+     axis.text = element_text(size=6,face="bold"),
+     axis.title = element_text(face="bold", size = 8),
+) +
+theme(panel.background = element_rect(fill = "aliceblue"),
+        panel.border = element_rect(colour = "black",
+        fill=NA, size=1)) + 
+ scale_size_continuous(name= "Species counts",range = c(0, 3.75))  +
+ylab("Latitude") +
+xlab("Longitude") +
+scale_x_continuous(breaks = seq(0, 20, by = 10)) +
+scale_y_continuous(breaks = seq(40, 60, by = 10)) +
+guides(fill = guide_legend(override.aes = list(size = 1.5, byrow = TRUE))) +
+scale_fill_manual(values = c("purple3", 
+                               "dodgerblue3", 
+                               "cyan4", 
+                               "forestgreen",
+                               "orange2",
+                               "tomato3",
+                               "khaki2"))
+
+
+#Plot everything
+map 
+```
+
+
