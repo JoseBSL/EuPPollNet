@@ -44,8 +44,8 @@ Study_id,Coauthor_name,Orcid,E_mail
 17_Fisogni,Marta Galloni,0000-0001-5304-7820,marta.galloni@unibo.it
 18_Bartomeus,Francisco P. Molina,0000-0003-2425-5246,fpaula.molina@gmail.com
 18_Bartomeus,Ignasi Bartomeus,0000-0001-7893-4389,nacho.bartomeus@gmail.com
-19_Jauker,Birgit Jauker,0000-0001-5027-9351,birgit.jauker@allzool.bio.uni-giessen.de
-19_Jauker,Frank Jauker,0000-0003-4137-9072,jaukerf@gmail.com
+19_Jauker,Birgit Jauker,0000-0001-5027-9351,birgit.jauker@fg.bio.uni-giessen.de
+19_Jauker,Frank Jauker,0000-0003-4137-9072,Frank.Jauker@umwelt.uni-giessen.de
 19_Jauker,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
 20_Hoiss,Bernhard Hoiss,NA,bernhard.hoiss@anl.bayern.de
 20_Hoiss,Ingolf Steffan-Dewenter,0000-0003-1359-3944,ingolf.steffan@uni-wuerzburg.de
@@ -77,9 +77,9 @@ Study_id,Coauthor_name,Orcid,E_mail
 29_Magrach,Juan Pedro González-Varo,0000-0003-1439-6475,juanpe.varo@uca.es
 30_Smith,Henrik G. Smith,0000-0002-2289-889X,henrik.smith@biol.lu.se
 30_Smith,Maj Rundlöf,0000-0003-3014-1544,maj.rundlof@biol.lu.se
-30_Smith,Ante Vujić,0000-0002-8819-8079,vujic_ante@yahoo.com
+30_Smith,Ante Vujić,0000-0002-8819-8079,ante.vujic@dbe.uns.ac.rs
 30_Smith,Ricardo Bommarco,0000-0001-8888-0476,Riccardo.Bommarco@slu.se
-31_Roberts,Stuart P. M. Roberts,,aas03spr@reading.ac.uk
+31_Roberts,Stuart P. M. Roberts,0000-0002-5473-4718,spmr@msn.com
 31_Roberts,Jennifer B. Wickens,0000-0003-0475-6780,jenniferwickens1987@hotmail.com
 31_Roberts,Victoria B. Wickens,0000-0002-2295-0635,victoriawickens1987@hotmail.com
 31_Roberts,Simon G. Potts,0000-0002-2045-980X,s.g.potts@reading.ac.uk
@@ -118,7 +118,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 42_Knight,Reinart Feldmann,0009-0009-6004-0702,reinart.feldmann@ufz.de
 42_Knight,Demetra Rakosy,0000-0001-8010-4990,demetra.rakosy@gmail.com
 42_Knight,Robert Tropek,0000-0001-7499-6259,robert.tropek@gmail.com
-42_Knight,Jana Jersáková,0000-0003-0169-801X,jersa@centrum.cz
+42_Knight,Jana Jersáková,0000-0003-0169-801X,jersa@prf.jcu.cz
 43_Knight,Tiffany M. Knight,0000-0003-0318-1567,tiffany.knight@idiv.de
 43_Knight,Leana Zoller,0000-0002-7161-6529,Leana.Zoller@colorado.edu
 43_Knight,Øystein H. Opedal,0000-0002-7841-6933,oystein.opedal@biol.lu.se
@@ -157,9 +157,9 @@ Study_id,Coauthor_name,Orcid,E_mail
 51_Petanidou,Theodora Petanidou,0000-0003-1883-0945,tpet@aegean.gr
 51_Petanidou,Georgios Nakas,0000-0003-3023-5831,nakas.g@geo.aegean.gr
 52_Hadrava,Jiří Hadrava,0000-0003-3247-6399,HadravaJirka@seznam.cz
-53_Libran-embid,Felipe Librán-Embid,0000-0003-4898-4494,feliem3@gmail.com
-53_Libran-embid,Ingo Grass,0000-0001-7788-1940,ingo.grass@uni-hohenheim.de
-53_Libran-embid,Teja Tscharntke,0000-0002-4482-3178,ttschar@gwdg.de
+53_Libran-Embid,Felipe Librán-Embid,0000-0003-4898-4494,feliem3@gmail.com
+53_Libran-Embid,Ingo Grass,0000-0001-7788-1940,ingo.grass@uni-hohenheim.de
+53_Libran-Embid,Teja Tscharntke,0000-0002-4482-3178,ttschar@gwdg.de
 54_Lazaro,Amparo Lázaro,0000-0001-5626-4134,amparo.lazaro@imedea.uib-csic.es
 54_Lazaro,Carmelo Gómez-Martínez,0000-0003-1449-0138,cgomez@imedea.uib-csic.es
 54_Lazaro,Miguel A. González-Estévez,,mgonzalez@imedea.uib-csic.es

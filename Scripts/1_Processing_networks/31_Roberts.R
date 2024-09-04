@@ -143,9 +143,9 @@ Metadata = as.data.frame(t(Metadata)) %>%
 Authorship <- tibble(
 Coauthor_name = c("Stuart P. M. Roberts", "Jennifer B. Wickens",
      "Victoria B. Wickens", "Simon G. Potts"),
-Orcid = c("", "0000-0003-0475-6780", "0000-0002-2295-0635",
+Orcid = c("0000-0002-5473-4718", "0000-0003-0475-6780", "0000-0002-2295-0635",
     "0000-0002-2045-980X"),
-E_mail = c("aas03spr@reading.ac.uk","jenniferwickens1987@hotmail.com",
+E_mail = c("spmr@msn.com","jenniferwickens1987@hotmail.com",
            "victoriawickens1987@hotmail.com", "s.g.potts@reading.ac.uk"))
 
 #Save data ----

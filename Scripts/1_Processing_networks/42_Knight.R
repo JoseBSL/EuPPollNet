@@ -106,7 +106,7 @@ Authorship <- data.frame(
             "0000-0001-7499-6259", "0000-0003-0169-801X"),
   E_mail = c("tiffany.knight@idiv.de", "reinart.feldmann@ufz.de",
              "demetra.rakosy@gmail.com", "robert.tropek@gmail.com",
-             "jersa@centrum.cz"))
+             "jersa@prf.jcu.cz"))
 
 #Save data ----
 #Create metadata list
