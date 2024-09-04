@@ -6,6 +6,7 @@
 library(tidyverse)
 #Load function to unify structure of data
 source("Scripts/Processing/Functions/Change_str.R")
+source("Scripts/Processing/Functions/Empty_templates.R") #Read empty templates to compare with
 
 #Prepare interaction data ----
 data = read.csv("Data/1_Raw_data/4_5_6_Marini/Interaction_data.csv")
@@ -139,7 +140,7 @@ Metadata1 = as.data.frame(t(Metadata1)) %>%
 Authorship1 <- data.frame(
   Coauthor_name = c("Andree Cappellari", "Lorenzo Marini"),
   Orcid = c("0000-0002-6726-1323", "0000-0001-7429-7685"),
-  E_mail = c("andree.cappellari@phd.unipd.it", "lorenzo.marini@unipd.it"))
+  E_mail = c("andree.cappellari@unipd.it", "lorenzo.marini@unipd.it"))
 
 #Save data ----
 #Create list with all dataframes of interest

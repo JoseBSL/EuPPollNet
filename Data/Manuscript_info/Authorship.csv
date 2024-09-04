@@ -5,9 +5,9 @@ Study_id,Coauthor_name,Orcid,E_mail
 3_Michez,Denis Michez,0000-0001-8880-1838,denis.michez@umons.ac.be
 3_Michez,William Fiordaliso,0000-0002-9667-6800,william.fiordaliso@umons.ac.be
 3_Michez,Sara Reverte,0000-0002-2924-3394,sara.revertesaiz@umons.ac.be
-4_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@phd.unipd.it
+4_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@unipd.it
 4_Marini,Lorenzo Marini,0000-0001-7429-7685,lorenzo.marini@unipd.it
-5_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@phd.unipd.it
+5_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@unipd.it
 5_Marini,Lorenzo Marini,0000-0001-7429-7685,lorenzo.marini@unipd.it
 6_Marini,Andree Cappellari,0000-0002-6726-1323,andree.cappellari@phd.unipd.it
 6_Marini,Elena Gazzea,0000-0002-3253-2146,elena.gazzea@phd.unipd.it
@@ -157,3 +157,9 @@ Study_id,Coauthor_name,Orcid,E_mail
 51_Petanidou,Theodora Petanidou,0000-0003-1883-0945,tpet@aegean.gr
 51_Petanidou,Georgios Nakas,0000-0003-3023-5831,nakas.g@geo.aegean.gr
 52_Hadrava,Jiří Hadrava,0000-0003-3247-6399,HadravaJirka@seznam.cz
+53_Libran-embid,Felipe Librán-Embid,0000-0003-4898-4494,feliem3@gmail.com
+53_Libran-embid,Ingo Grass,0000-0001-7788-1940,ingo.grass@uni-hohenheim.de
+53_Libran-embid,Teja Tscharntke,0000-0002-4482-3178,ttschar@gwdg.de
+54_Lazaro,Amparo Lázaro,0000-0001-5626-4134,amparo.lazaro@imedea.uib-csic.es
+54_Lazaro,Carmelo Gómez-Martínez,0000-0003-1449-0138,cgomez@imedea.uib-csic.es
+54_Lazaro,Miguel A. González-Estévez,,mgonzalez@imedea.uib-csic.es

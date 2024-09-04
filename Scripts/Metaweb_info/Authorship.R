@@ -191,15 +191,8 @@ TRUE ~ Affiliation3))
 ##Paolo Biella-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Paolo Biella"  ~ 
-"Department of Zoology, Faculty of Science, University of South Bohemia, České Budějovice, Czech Republic",
-TRUE ~ Affiliation1)) %>% 
-mutate(Affiliation2 = case_when(Coauthor_name == "Paolo Biella"  ~ 
-"Institute of Entomology, Biology Centre of the Academy of Sciences of the Czech Republic, České Budějovice,
-Czech Republic",
-TRUE ~ Affiliation2)) %>% 
-mutate(Affiliation3 = case_when(Coauthor_name == "Paolo Biella"  ~ 
-"Department of Earth and Environment Sciences (sect. Landscape Ecology), University of Pavia, Pavia, Italy",
-TRUE ~ Affiliation3))
+"ZooPlantLab, Department of Biotechnology and Biosciences, University of Milano-Bicocca, Milan, Italy",
+TRUE ~ Affiliation1)) 
 ##Ricardo Bommarco----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Ricardo Bommarco"  ~ 
@@ -209,10 +202,7 @@ TRUE ~ Affiliation1))
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Andree Cappellari"  ~ 
 "Department of Agronomy, Food, Natural Resources, Animals and Environment, University of Padua, Padua, Italy",
-TRUE ~ Affiliation1)) %>% 
-mutate(Affiliation2 = case_when(Coauthor_name == "Andree Cappellari"  ~ 
-"Department of Biology and Biotechnology “Charles Darwin”, Sapienza University of Rome, Rome, Italy",
-TRUE ~ Affiliation2))
+TRUE ~ Affiliation1)) 
 ##Sílvia Castro-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Sílvia Castro"  ~ 
@@ -261,12 +251,12 @@ TRUE ~ Affiliation1))
 ##William Fiordaliso----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "William Fiordaliso"  ~ 
-"Laboratoire de Zoologie, Institut de recherche des Biosciences, Université de Mons, Mons, Belgium",
+"Ecologie des Interactions et Changements Globaux, Institut de recherche des Biosciences, Université de Mons, Mons, Belgium",
 TRUE ~ Affiliation1))
 ##Alessandro Fisogni----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Alessandro Fisogni"  ~ 
-"Evo-Eco-Paleo, CNRS, Université de Lille, Lille, France",
+"Univ. Lille, CNRS, UMR 8198 - Evo-Eco-Paleo, F-59000 Lille, France",
 TRUE ~ Affiliation1))
 ##Una Fitzpatrick----
 affiliations = affiliations %>% 
@@ -276,7 +266,7 @@ TRUE ~ Affiliation1))
 ##Marta Galloni----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Marta Galloni"  ~ 
-"Department of Evolutionary Experimental Biology (BES), University of Bologna, Bologna, Italy",
+"Department of Biological, Geological and Environmental Sciences (BiGeA), University of Bologna, Bologna, Italy",
 TRUE ~ Affiliation1))
 ##Hugo Gaspar----
 affiliations = affiliations %>% 
@@ -303,7 +293,7 @@ TRUE ~ Affiliation1))
 ##Nina Hautekèete-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Jiří Hadrava"  ~ 
-"Department of Zoology, Faculty of Science, Charles University, Prague, Czech Republic",
+"Univ. Lille, CNRS, UMR 8198 - Evo-Eco-Paleo, F-59000 Lille, France",
 TRUE ~ Affiliation1))
 
 ##Nina Hautekèete-----
@@ -352,7 +342,7 @@ TRUE ~ Affiliation1))
 ##Sebastian Hopfenmüller----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Sebastian Hopfenmüller"  ~ 
-"Department of Animal Ecology and Tropical Biology, Biocenter, University of Würzburg, Würzburg, Germany",
+"Cultural Landscape Günztal Foundation, Ottobeuren, Germany",
 TRUE ~ Affiliation1))
 ##José M. Iriondo----
 affiliations = affiliations %>% 
@@ -362,12 +352,12 @@ TRUE ~ Affiliation1))
 ##Birgit Jauker-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Birgit Jauker"  ~ 
-"Department of Animal Ecology, Justus Liebig University Giessen, Giessen, Germany",
+"Justus Liebig University Giessen, Giessen, Germany",
 TRUE ~ Affiliation1))
 ##Frank Jauker-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Frank Jauker"  ~ 
-"Department of Animal Ecology, Justus Liebig University Giessen, Giessen, Germany",
+"Institute of Landscape Ecology and Resource Management, Justus Liebig University Giessen, Giessen, Germany",
 TRUE ~ Affiliation1))
 ##Jana Jersáková-----
 affiliations = affiliations %>% 
@@ -467,7 +457,7 @@ TRUE ~ Affiliation1))
 ##Natasha de Manincor-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Natasha de Manincor"  ~ 
-"Evo-Eco-Paleo, CNRS, Université de Lille, Lille, France",
+"Univ. Lille, CNRS, UMR 8198 - Evo-Eco-Paleo, F-59000 Lille, France",
 TRUE ~ Affiliation1))%>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Natasha de Manincor"  ~ 
 "Laboratoire de Zoologie, Institut de recherche des Biosciences, Université de Mons, Mons, Belgium",
@@ -487,7 +477,7 @@ TRUE ~ Affiliation1))
 ##François Massol------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "François Massol"  ~ 
-"Evo-Eco-Paleo, CNRS, Université de Lille, Lille, France",
+"Univ. Lille, CNRS, UMR 8198 - Evo-Eco-Paleo, F-59000 Lille, France",
 TRUE ~ Affiliation1))
 ##Corina Maurer------
 affiliations = affiliations %>% 
@@ -517,7 +507,7 @@ TRUE ~ Affiliation1))
 ##Georgios Nakas------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Georgios Nakas"  ~ 
-"Department of Geography, University of the Aegean, Mytilene, Greece",
+"Laboratory of Biogeography & Ecology, Department of Geography, University of the Aegean, Mytilene, Greece",
 TRUE ~ Affiliation1))
 ##Lena Neuenkamp-------
 affiliations = affiliations %>% 
@@ -569,12 +559,12 @@ TRUE ~ Affiliation1))
 ##Theodora Petanidou------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Theodora Petanidou"  ~ 
-"Department of Geography, University of the Aegean, Mytilene, Greece",
+"Laboratory of Biogeography & Ecology, Department of Geography, University of the Aegean, Mytilene, Greece",
 TRUE ~ Affiliation1))
 ##Yves Piquot------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Yves Piquot"  ~ 
-"Evo-Eco-Paleo, CNRS, Université de Lille, Lille, France",
+"Univ. Lille, CNRS, UMR 8198 - Evo-Eco-Paleo, F-59000 Lille, France",
 TRUE ~ Affiliation1))
 ##Simon G. Potts------
 affiliations = affiliations %>% 
@@ -590,7 +580,7 @@ TRUE ~ Affiliation1))
 affiliations = affiliations %>%  
 mutate(Affiliation1 = case_when(Coauthor_name == "Willem Proesmans"  ~ 
 "Laboratoire de Zoologie, Institut de recherche des Biosciences, Université de Mons, Mons, Belgium",
-TRUE ~ Affiliation1))
+TRUE ~ Affiliation1)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Willem Proesmans"  ~ 
 "Agroécologie, INRAE, Institut Agro, Université de Bourgogne, Université de Bourgogne Franche-Comté, Dijon, France",
 TRUE ~ Affiliation2))
@@ -626,7 +616,7 @@ TRUE ~ Affiliation1))
 ##Bertrand Schatz-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Bertrand Schatz"  ~ 
-"CEFE, EPHE-PSL, CNRS, University of Montpellier - University of Paul Valéry, Montpellier, France",
+"CEFE, CNRS, University of Montpellier, EPHE, IRD, Montpellier, France",
 TRUE ~ Affiliation1))
 ##Jeroen Scheper-----
 affiliations = affiliations %>% 

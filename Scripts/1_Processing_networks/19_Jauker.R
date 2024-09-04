@@ -123,7 +123,7 @@ Metadata = as.data.frame(t(Metadata)) %>%
 Authorship <- data.frame(
   Coauthor_name = c("Birgit Jauker", "Frank Jauker", "Ingolf Steffan-Dewenter"),
   Orcid = c("0000-0001-5027-9351", "0000-0003-4137-9072", "0000-0003-1359-3944"),
-  E_mail = c("birgit.jauker@allzool.bio.uni-giessen.de", "jaukerf@gmail.com",
+  E_mail = c("birgit.jauker@fg.bio.uni-giessen.de", "Frank.Jauker@umwelt.uni-giessen.de",
              "ingolf.steffan@uni-wuerzburg.de"))
 
 #Save data ----
