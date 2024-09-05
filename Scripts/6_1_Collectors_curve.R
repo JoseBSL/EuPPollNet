@@ -26,8 +26,6 @@ filter(Plant_rank == "SPECIES") %>%
 select(Study_id,Network_id, Plant_accepted_name) %>% 
 distinct() 
 
-length(unique(data1_plant$Network_id))
-length(unique(plant_data$Network_id))
 
 #Select columns of interest
 data1_int = data %>% 
@@ -180,7 +178,7 @@ n3
 n1 + n2 + n3
 
 
-#Try now to obtain accumulated plants per pollinator species----
+#Try now to obtain accumulated pollinatora per plant species----
 collect1 = function(data1) {
 sampled_plant = sample(unique(data1$Plant_accepted_name))
 data1 %>% 
@@ -202,11 +200,13 @@ mutate(Plant_sampled = row_number())
 
 #Select columns of interest
 data1 = data %>% 
-group_by(Network_id) %>% 
 filter(Pollinator_rank == "SPECIES" ) %>% 
 filter(Plant_rank == "SPECIES" ) %>% 
-select(Study_id,Network_id, Pollinator_accepted_name, Plant_accepted_name) %>% 
+select(Pollinator_accepted_name, Plant_accepted_name) %>% 
 distinct() 
+
+unique(factor(data1$Plant_accepted_name)) #1373
+unique(factor(data1$Pollinator_accepted_name)) #2200
 
 
 #Calculate N collectors curves for interactions

@@ -1086,25 +1086,26 @@ plant_poll_coverage = plant_poll_output$DataInfo$SC *100
 
 #Increase doubling effort
 ##Pollinators
-poll_increase = poll_output$iNextEst$Network_id
-poll_increase1 = poll_increase %>% filter(method == "observed") %>% pull(qD)
+poll_increase = poll_output$iNextEst$coverage_based
+poll_increase1 = poll_increase %>% filter(Method == "Observed") %>% pull(qD)
 poll_increase2 = poll_increase %>% filter(t == max(t)) %>% pull(qD)
 poll_increase3 = (poll_increase2-poll_increase1)/poll_increase1 * 100
 ##Plants
-plant_increase = plant_output$iNextEst$Network_id
-plant_increase1 = plant_increase %>% filter(method == "observed") %>% pull(qD)
+plant_increase = plant_output$iNextEst$coverage_based
+plant_increase1 = plant_increase %>% filter(Method == "Observed") %>% pull(qD)
 plant_increase2 = plant_increase %>% filter(t == max(t)) %>% pull(qD)
 plant_increase3 = (plant_increase2-plant_increase1)/plant_increase1 * 100
 ##Interactions
-int_increase = int_output$iNextEst$Network_id
-int_increase1 = int_increase %>% filter(method == "observed") %>% pull(qD)
+int_increase = int_output$iNextEst$coverage_based
+int_increase1 = int_increase %>% filter(Method == "Observed") %>% pull(qD)
 int_increase2 = int_increase %>% filter(t == max(t)) %>% pull(qD)
 int_increase3 = (int_increase2-int_increase1)/int_increase1 * 100
 ##Pollinator by plant
-plant_poll_increase = plant_poll_output$iNextEst$Plant_id
-plant_poll_increase1 = plant_poll_increase %>% filter(method == "observed") %>% pull(qD)
+plant_poll_increase = plant_poll_output$iNextEst$coverage_based
+plant_poll_increase1 = plant_poll_increase %>% filter(Method == "Observed") %>% pull(qD)
 plant_poll_increase2 = plant_poll_increase %>% filter(t == max(t)) %>% pull(qD)
 plant_poll_increase3 = (plant_poll_increase2-plant_poll_increase1)/plant_poll_increase1 * 100
+
 
 #Prepare results from common and rare poll across sampling sites
 #Pollinators
@@ -1169,25 +1170,30 @@ The estimated sampling coverage of plant and pollinator species within EuPPollNe
 poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
 pollinators_curves = readRDS("../Data/Working_files/collectors_curves_pollinators.rds")
 #Create dataset
-d_poll = poll_output$iNextEst$Network_id
+d_poll = poll_output$iNextEst$coverage_based
 #Check cols
-d_poll$col = d_poll$method
+d_poll$col = d_poll$Method
 
 #Now create tibble with same structure
 a_poll = tibble(t = pollinators_curves$Study_sampled, 
-           method = as.character(pollinators_curves$iteration), 
+           Method = as.character(pollinators_curves$iteration), 
            qD = pollinators_curves$Unique_spp_cumulative,
-           col = "collectors")
+           col = "Randomizations")
 
 #Bind datasets 
 d_poll1 = bind_rows(d_poll, a_poll)
-d_poll1_point = d_poll1 %>%  filter(method == "observed")
-d_poll1_lines = d_poll1 %>%  filter(!method == "observed")
+d_poll1_point = d_poll1 %>%  filter(Method == "Observed")
+d_poll1_lines = d_poll1 %>%  filter(!Method == "Observed")
 
+#Fix levels
+d_poll1_lines = d_poll1_lines %>% 
+mutate(col = case_when(Method == "Rarefaction" ~ "Interpolated",
+                       Method == "Extrapolation" ~ "Extrapolated",
+                       T ~ col))
 #Order levels
-d_poll1_lines$col = factor(d_poll1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+d_poll1_lines$col = factor(d_poll1_lines$col, levels = c("Randomizations", "Interpolated", "Extrapolated"))
 #Plot
-p1 = ggplot(d_poll1_lines, aes(x = t, y = qD, group = method, color = col)) +
+p1 = ggplot(d_poll1_lines, aes(x = t, y = qD, group = Method, color = col)) +
 geom_line(aes(linetype = col),size = 0.65) +
 scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
 scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
@@ -1204,29 +1210,36 @@ ylim(0, 3000) +
 ggtitle("(a)") +
 theme(plot.margin = margin(r = 12)) 
 
+
 #Plants-----
 plant_output = readRDS("../Data/Working_files/plant_sampling_coverage.rds")
 plant_curves = readRDS("../Data/Working_files/collectors_curves_plants.rds")
 #Create dataset
-d_plant = plant_output$iNextEst$Network_id
+d_plant = plant_output$iNextEst$coverage_based
 #Check cols
-d_plant$col = d_plant$method
-
+d_plant$col = d_plant$Method
 #Now create tibble with same structure
 a_plant = tibble(t = plant_curves$Study_sampled, 
-           method = as.character(plant_curves$iteration), 
+           Method = as.character(plant_curves$iteration), 
            qD = plant_curves$Unique_spp_cumulative,
-           col = "collectors")
+           col = "Randomizations")
 
 #Bind datasets 
 d_plant1 = bind_rows(d_plant, a_plant)
-d_plant1_point = d_plant1 %>%  filter(method == "observed")
-d_plant1_lines = d_plant1 %>%  filter(!method == "observed")
+d_plant1_point = d_plant1 %>%  filter(Method == "Observed")
+d_plant1_lines = d_plant1 %>%  filter(!Method == "Observed")
 
+#Fix levels
+d_plant1_lines = d_plant1_lines %>% 
+mutate(col = case_when(Method == "Rarefaction" ~ "Interpolated",
+                       Method == "Extrapolation" ~ "Extrapolated",
+                       T ~ col))
 #Order levels
-d_plant1_lines$col = factor(d_plant1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+d_plant1_lines$col = factor(d_plant1_lines$col, levels = c("Randomizations", "Interpolated", "Extrapolated"))
+
+
 #Plot
-p2 = ggplot(d_plant1_lines, aes(x = t, y = qD, group = method, color = col)) +
+p2 = ggplot(d_plant1_lines, aes(x = t, y = qD, group = Method, color = col)) +
 geom_line(aes(linetype = col), size = 0.65) +
 scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
 scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
@@ -1249,26 +1262,30 @@ theme(plot.margin = margin(r = 12))
 int_output = readRDS("../Data/Working_files/interactions_sampling_coverage.rds")
 interactions_curves = readRDS("../Data/Working_files/collectors_curves_interactions.rds")
 #Create dataset
-d_int = int_output$iNextEst$Network_id
+d_int = int_output$iNextEst$coverage_based
 #Check cols
-d_int$col = d_int$method
+d_int$col = d_int$Method
 
 #Now create tibble with same structure
 a_poll = tibble(t = interactions_curves$Study_sampled, 
-           method = as.character(interactions_curves$iteration), 
+           Method = as.character(interactions_curves$iteration), 
            qD = interactions_curves$Unique_spp_cumulative,
-           col = "collectors")
+           col = "Randomizations")
 
 #Bind datasets 
 d_int1 = bind_rows(d_int, a_poll)
-d_int1_point = d_int1 %>%  filter(method == "observed")
-d_int1_lines = d_int1 %>%  filter(!method == "observed")
+d_int1_point = d_int1 %>%  filter(Method == "Observed")
+d_int1_lines = d_int1 %>%  filter(!Method == "Observed")
 
-#Plot
+#Fix levels
+d_int1_lines = d_int1_lines %>% 
+mutate(col = case_when(Method == "Rarefaction" ~ "Interpolated",
+                       Method == "Extrapolation" ~ "Extrapolated",
+                       T ~ col))
 #Order levels
-d_int1_lines$col = factor(d_int1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+d_int1_lines$col = factor(d_int1_lines$col, levels = c("Randomizations", "Interpolated", "Extrapolated"))
 #Plot
-p3 = ggplot(d_int1_lines, aes(x = t, y = qD, group = method, color = col)) +
+p3 = ggplot(d_int1_lines, aes(x = t, y = qD, group = Method, color = col)) +
 geom_line(aes(linetype = col), size = 0.65) +
 scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
 scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
@@ -1402,26 +1419,30 @@ plant_poll_curves = readRDS("../Data/Working_files/collectors_curves_plant_ploll
 plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
 
 #Create dataset
-d_pp = plant_poll_output$iNextEst$Plant_id
+d_pp = plant_poll_output$iNextEst$coverage_based
 #Check cols
-d_pp$col = d_pp$method
+d_pp$col = d_pp$Method
 
 #Now create tibble with same structure
 a_poll = tibble(t = plant_poll_curves$Plant_sampled, 
-           method = as.character(plant_poll_curves$iteration), 
+           Method = as.character(plant_poll_curves$iteration), 
            qD = plant_poll_curves$Unique_spp_cumulative,
-           col = "collectors")
+           col = "Randomizations")
 
 #Bind datasets 
 d_pp1 = bind_rows(d_pp, a_poll)
-d_pp1_point = d_pp1 %>%  filter(method == "observed")
-d_pp1_lines = d_pp1 %>%  filter(!method == "observed")
+d_pp1_point = d_pp1 %>%  filter(Method == "Observed")
+d_pp1_lines = d_pp1 %>%  filter(!Method == "Observed")
 
-#Plot
+#Fix levels
+d_pp1_lines = d_pp1_lines %>% 
+mutate(col = case_when(Method == "Rarefaction" ~ "Interpolated",
+                       Method == "Extrapolation" ~ "Extrapolated",
+                       T ~ col))
 #Order levels
-d_pp1_lines$col = factor(d_pp1_lines$col, levels = c("collectors", "interpolated", "extrapolated"))
+d_pp1_lines$col = factor(d_pp1_lines$col, levels = c("Randomizations", "Interpolated", "Extrapolated"))
 #Plot
-pp1 = ggplot(d_pp1_lines, aes(x = t, y = qD, group = method, color = col)) +
+pp1 = ggplot(d_pp1_lines, aes(x = t, y = qD, group = Method, color = col)) +
 geom_line(aes(linetype = col)) +
 scale_colour_manual(values = c("gray", "black", "red"), labels = c("Randomizations", "Interpolated", "Extrapolated")) +
 scale_linetype_manual(values = c("solid", "solid", "dashed"),  labels = c("Randomizations", "Interpolated", "Extrapolated")) + 
@@ -1435,7 +1456,7 @@ theme_bw() +
 coord_cartesian(expand = FALSE, clip = "off") +
 ggtitle("(d)") +
 scale_x_continuous(breaks = seq(0, 2800, by = 1000), limits=c(0,2800)) +
-scale_y_continuous(breaks = seq(0, 2600, by = 1000), limits=c(0,2600)) +
+scale_y_continuous(breaks = seq(0, 2800, by = 1000), limits=c(0,2600)) +
 theme(legend.position = "none")
 
 #Plot all

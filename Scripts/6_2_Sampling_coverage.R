@@ -102,7 +102,11 @@ filter(Plant_rank == "SPECIES") %>%
 filter(Pollinator_rank == "SPECIES") %>% 
 select(Pollinator_accepted_name, Plant_accepted_name) %>% 
 distinct() 
-#Count occurrences of each poll species by  plant
+
+unique(factor(poll_plant_data$Plant_accepted_name)) #1373
+unique(factor(poll_plant_data$Pollinator_accepted_name)) #2200
+
+#Count occurrences of each poll species by plant
 poll_plant_result = poll_plant_data %>%
 count(Plant_accepted_name, Pollinator_accepted_name) %>% 
 group_by(Pollinator_accepted_name) %>% 
