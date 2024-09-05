@@ -62,11 +62,22 @@ xlab("Species")+
 ggtitle("(a)")
 p1
 
+metrics %>% 
+ggplot(aes(Connectance)) +
+geom_histogram()
+
+
 metrics$log_geometric_mean_spp = log(metrics$geometric_mean_spp)
 #install.packages("betareg")
 library(betareg)
 model = betareg(Connectance ~ log_geometric_mean_spp, data = metrics)
 summary(model)
+qqnorm(model$residuals, main = "Q-Q Plot of Residuals")
+qqline(model$residuals)
+
+bp_test_result <- lmtest::bptest(model)
+residuals <- residuals(model)
+shapiro_test_result <- stats::shapiro.test(metrics$Connectance)
 
 saveRDS(metrics, "Data/Manuscript_info/Figure6_connectance_species.rds")
 p1 = ggplot(metrics, aes(x = log_geometric_mean_spp, y = Connectance))+
