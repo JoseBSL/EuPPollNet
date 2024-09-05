@@ -151,7 +151,7 @@ TRUE ~ Affiliation2))
 ##Paola Acuña-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Paola Acuña"  ~ 
-"Department of Plant Biology, Faculty of Science, University of Vigo, Spain",
+"Department of Plant Biology, Faculty of Science, University of Vigo, Vigo, Spain",
 TRUE ~ Affiliation1))
 ##Matthias Albrecht-----
 affiliations = affiliations %>% 
@@ -222,7 +222,7 @@ mutate(Affiliation1 = case_when(Coauthor_name == "Joana Costa"  ~
 "Department of Life Sciences, Centre for Functional Ecology, University of Coimbra, Coimbra, Portugal",
 TRUE ~ Affiliation1)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Joana Costa"  ~ 
-"Linking Landscape, Environment, Agriculture and Food, Instituto Superior de Agronomia, University of Lisbon, Portugal",
+"Linking Landscape, Environment, Agriculture and Food, School of Agriculture, University of Lisbon, Portugal",
 TRUE ~ Affiliation2))
 
 ##Christophe Dominik----
@@ -589,7 +589,7 @@ TRUE ~ Affiliation1))
 ##Eileen F. Power-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Eileen F. Power"  ~ 
-"Botany, School of Natural Sciences, Trinity College Dublin, Dublin 2, Ireland",
+"Botany, School of Natural Sciences, Trinity College Dublin, Dublin, Ireland",
 TRUE ~ Affiliation1))
 ##Willem Proesmans-----
 affiliations = affiliations %>%  
@@ -673,7 +673,7 @@ TRUE ~ Affiliation2))
 ##Dara Stanley------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Dara Stanley"  ~ 
-"School of Agriculture and Food Science, University College Dublin, Dublin 4, Ireland",
+"School of Agriculture and Food Science, University College Dublin, Dublin, Ireland",
 TRUE ~ Affiliation1))
 ##Valentin Ştefan------
 affiliations = affiliations %>% 
@@ -693,7 +693,7 @@ TRUE ~ Affiliation1))
 ##Jane C. Stout------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Jane C. Stout"  ~ 
-"Botany, School of Natural Sciences, Trinity College Dublin, Dublin 2, Ireland",
+"Botany, School of Natural Sciences, Trinity College Dublin, Dublin, Ireland",
 TRUE ~ Affiliation1))
 ##Louis Sutter------
 affiliations = affiliations %>% 
@@ -795,7 +795,7 @@ mutate(Affiliation2 = case_when(Coauthor_name == "Leana Zoller"  ~
 "German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig",
 TRUE ~ Affiliation2)) %>% 
 mutate(Affiliation3 = case_when(Coauthor_name == "Leana Zoller"  ~ 
-"Department of Ecology & Evolutionary Biology, University of Colorado Boulder, Colorado, USA",
+"Department of Ecology & Evolutionary Biology, University of Colorado, Boulder, CO, USA",
 TRUE ~ Affiliation3))
 ##Ignasi Bartomeus------
 affiliations = affiliations %>% 
