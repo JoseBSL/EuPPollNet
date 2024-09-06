@@ -1415,7 +1415,7 @@ coord_cartesian(xlim=c(0, nlevels(factor(plant_spread$Plant_accepted_name))),
 ggtitle("(f)")
 
 #Pollinator by plant species
-plant_poll_curves = readRDS("../Data/Working_files/collectors_curves_plant_ploll.rds")
+plant_poll_curves = readRDS("../Data/Working_files/collectors_curves_plant_poll.rds")
 plant_poll_output = readRDS("../Data/Working_files/plant_poll_spp_sampling_coverage.rds")
 
 #Create dataset
@@ -1890,7 +1890,7 @@ Habitat definitions:
 \newpage
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="110%", fig.cap= "\\textbf{Figure S1}. Geographical location of all networks in the EuPPollNet database coloured by bioregion."}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure S1}. Geographical location of all networks in the EuPPollNet database coloured by bioregion."}
 
 #Read data
 data = readRDS("../Data/Working_files/Interactions_uncounted.rds")%>% 
@@ -1918,7 +1918,7 @@ theme(panel.grid.major = element_blank(),
      legend.key = element_blank(), 
      legend.text = element_text(size = 6), 
      legend.title = element_text(face ="bold",  size = 8),
-     legend.spacing.x=unit(-0.5, "lines"), 
+     legend.spacing.x=unit(0.5, "lines"), 
      legend.key.width=unit(0.5, "lines"), 
      legend.box.margin=margin(-10,-10,-10,-10),
      axis.text = element_text(size=6,face="bold"),

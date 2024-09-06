@@ -933,7 +933,7 @@ mutate(Land_cover =
 #53_Libran-embid
 habitat = habitat %>% 
 mutate(Land_cover = 
-case_when(Study_id == "53_Libran-embid" ~ "Sclerophyllous vegetation",
+case_when(Study_id == "53_Libran-Embid" ~ "Pastures",
 TRUE ~ Land_cover))
 
 #54_Lazaro
