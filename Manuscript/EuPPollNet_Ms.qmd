@@ -444,12 +444,12 @@ Overall, EuPPollNet aims to cover a wide range of taxonomic groups and habitats,
 
 ## Data acquisition
 
-The EuPPollNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent as defined by the European Environment Agency [@stanners1995]. As this database is the result of one of the work packages of the European project Safeguard (Safeguarding European wild pollinators; https://doi.org/10.3030/101003476), first, data was directly requested from members of the Safeguard project in May 2022. Second, the request was extended to data owners outside of the project, with data collection concluding in August 2024. These other data owners were identified by direct communication with colleagues suggested by Safeguard members and by directly searching for studies on Google Scholar of under-represented regions within the database. While Google Scholar lacks reproducibility [@gusenbauer2020], it still remains the most comprehensive search engine to date [@gusenbauer2019]. This approach maximized the potential number of studies that could be incorporated in this database. The search strings used were "*plant-pollinator interactions*" and "*plant-pollinator networks*". To maintain high quality standards that will support robust future ecological research, we only included studies that met the following criteria: 1) studies containing time- and geo-referenced records of plant-pollinator interactions; and 2) studies that quantify interactions by documenting the contact between a floral visitor - referred to as a 'pollinator' throughout the manuscript, even though the pollination efficiency is not evaluated - and the reproductive structure of a specific sampled plant (i.e., phyto-centric networks).
+The EuPPollNet database includes published and unpublished studies compiled initially by a wide number of researchers and institutions within the European continent as defined by the European Environment Agency [@stanners1995]. As this database is the result of one of the work packages of the European project Safeguard (Safeguarding European wild pollinators; https://doi.org/10.3030/101003476), first, data was directly requested from members of the Safeguard project in May 2022. Second, the request was extended to data owners outside of the project, with data collection concluding in August 2024. These other data owners were identified by direct communication with colleagues suggested by Safeguard members and by directly searching for studies on Google Scholar of under-represented regions within the database. While Google Scholar lacks reproducibility [@gusenbauer2020], it still remains the most comprehensive search engine to date [@gusenbauer2019]. This approach maximized the potential number of studies that could be incorporated in this database. The search strings used were '*plant-pollinator interactions*' and '*plant-pollinator networks*'. To maintain high quality standards that will support robust future ecological research, we only included studies that met the following criteria: 1) studies containing time- and geo-referenced records of plant-pollinator interactions; and 2) studies that quantify interactions by documenting the contact between a floral visitor - referred to as a 'pollinator' throughout the manuscript, even though the pollination efficiency is not evaluated - and the reproductive structure of a specific sampled plant (i.e., phyto-centric networks).
 
 
 ## Dataset description
 
-The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` in `r country_number` different countries (**Figure 1a** and **Figure 1b**; see **Figure S1** for exact locations). The studies differ in sampling effort and methodology, and thus documenting sampling methods and sampling effort is an important feature of EuPPollNet. Most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location for an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and exclusively sampled diurnal plant-pollinator interactions, with `r  most_common_method[[1]]` being the most common sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). All the studies documented interactions with Hymenopterans (with `r format(round(all_hymnoptera_percent, 2), nsmall = 2)`% considering all Hymenopterans, `r format(round(bee_percent, 2), nsmall = 2)`% only wild bees and `r format(round(bumblee_percent, 2), nsmall = 2)`% only bumblebees), `r format(round(Diptera_percent_metaweb, 2), nsmall = 2)`% documented interactions with Dipterans (with `r format(round(all_diptera_percent, 2), nsmall = 2)`% considering all Dipterans, `r format(round(syrphid_percent, 2), nsmall = 2)`% only syrphids and `r format(round(other_diptera_percent, 2), nsmall = 2)`% recorded syrphids plus bombylids or tachinid flies), `r format(round(Lepidoptera_percent_metaweb, 2), nsmall = 2)`% with Lepidopterans, and `r format(round(Coleoptera_percent_metaweb, 2), nsmall = 2)`% with Coleopterans. The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions. Most of the pollinator species belong to the orders Hymenoptera, Diptera, Lepidoptera and Coleoptera (`r format(round(spp_percent_main_order, 2), nsmall = 2)`%), which account for nearly all interactions in this database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). Species that belong to other orders `r format(round(100-spp_percent_main_order, 2), nsmall = 2)`% are not explored in this study as they conduct a minor fraction of the total interactions (`r format(round(100-main_orders_percent, 2), nsmall = 2)`%). Hymenoptera and Diptera contain the highest number of species comprising each approximately 1,000 species in the database. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably, the western honey bee, _Apis mellifera_, represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
+The database contains `r study_number` independent published and unpublished studies conducted during the time period `r min_year` - `r max_year` in `r country_number` different countries (**Figure 1a** and **Figure 1b**; see **Figure S1** for exact locations). The studies differ in sampling effort and methodology, and thus documenting sampling methods and sampling effort is an important feature of EuPPollNet. Most studies took place within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%), sampled a given location for an average of `r format(round(average_sampling_days, 2), nsmall=2)` days, and exclusively sampled diurnal plant-pollinator interactions, with `r  most_common_method[[1]]` being the most common sampling method (`r format(round(most_common_method[[3]], 2), nsmall = 2)`%). All the studies documented interactions with Hymenopterans (with `r format(round(all_hymnoptera_percent, 2), nsmall = 2)`% considering all Hymenopterans, `r format(round(bee_percent, 2), nsmall = 2)`% only wild bees and `r format(round(bumblee_percent, 2), nsmall = 2)`% only bumblebees), `r format(round(Diptera_percent_metaweb, 2), nsmall = 2)`% documented interactions with Dipterans (with `r format(round(all_diptera_percent, 2), nsmall = 2)`% considering all Dipterans, `r format(round(syrphid_percent, 2), nsmall = 2)`% only syrphids and `r format(round(other_diptera_percent, 2), nsmall = 2)`% recorded syrphids plus bombylids or tachinid flies), `r format(round(Lepidoptera_percent_metaweb, 2), nsmall = 2)`% with Lepidopterans, and `r format(round(Coleoptera_percent_metaweb, 2), nsmall = 2)`% with Coleopterans. The database includes a total of `r prettyNum(interaction_number, big.mark=",")` distinct interactions. Most of the pollinator species belong to the orders Hymenoptera, Diptera, Lepidoptera and Coleoptera (`r format(round(spp_percent_main_order, 2), nsmall = 2)`%), which account for nearly all interactions in this database (`r format(round(main_orders_percent, 2), nsmall = 2)`%). Species that belong to other orders (`r format(round(100-spp_percent_main_order, 2), nsmall = 2)`%) are not explored in this study as they conduct a minor fraction of the total interactions (`r format(round(100-main_orders_percent, 2), nsmall = 2)`%). Hymenoptera and Diptera contain the highest number of species comprising each approximately 1,000 species in the database. However, the majority of plant-pollinator interactions are from Hymenoptera species (`r format(round(Hymenoptera_interactions, 2), nsmall = 2)`%; **Figure 1c**). Notably, the western honey bee, _Apis mellifera_, represents `r format(round(apis_percent, 2), nsmall = 2)`% of the total interaction records from the database and an average of `r format(round(apis_average_network, 2), nsmall = 2)`% of the total interactions per network.
 
 
 ```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="105%", fig.cap= "\\textbf{Figure 1}. (\\textbf{a}) Locations of the studies in EuPPollNet across the European continent, showing the total number of pollinator (i.e., orange heptagon) and plant (i.e., green circles) species per study. The sizes of these shapes are proportional to the respective species counts. For visualization purposes, we have selected only a single location per study. (\\textbf{b}) Number of studies by year in EuPPollNet. (\\textbf{c}) Proportion of species and interactions across the four main pollinator orders in EuPPollNet, excluding interactions from \\textit{Apis mellifera}. The total number of species and interactions is indicated in parentheses at the bottom."}
@@ -716,12 +716,15 @@ map + plot_spacer() + plot2 + plot_layout(widths = c(2.1, -0.485, 0.8))
 
 ## Data structure
 
-The EuPPollNet database is available in both .csv and .rds formats and contains a total of `r nrow(my_tibble) + 1` columns (**Table 1**), where each row represents a single interaction between a plant and a pollinator species. These columns include information about the study and network identifiers (columns 1 and 2), sampling method (3), habitat type as described by the author, and a unified habitat classification across studies (4 and 5), bioregion where the network is located (6), country, locality, and latitude-longitude coordinates (7 to 10), date of the interaction (11), number of interactions (12), taxonomic information about plants (13 to 20), taxonomic information about pollinators (21 to 28), and information about the availability of floral count data (29). The flower count data is provided in a separate file (.csv or .rds) and can be merged with the interaction data through the "Flower_data_merger" column (30). Note that although two-thirds of studies include information on floral abundance, the methods and units vary greatly across studies. To construct a plant-pollinator network matrix within a single flowering season at the site level, users should group interactions by plant and pollinator species, site, study, and year. Finally, metadata at the study level is provided in a separate file, including information about the authors, digital object identifier (if available), sampling time, and taxonomic coverage of the main pollinator groups for each study.
+The EuPPollNet database is available in both .csv and .rds formats and contains a total of `r nrow(my_tibble)` columns (**Table 1**), where each row represents a single interaction between a plant and a pollinator species. These columns include information about the study and network identifiers (columns 1 and 2), sampling method (3), habitat type as described by the author, and a unified habitat classification across studies (4 and 5), bioregion where the network is located (6), country, locality, and latitude-longitude coordinates (7 to 10), date of the interaction (11), number of interactions (12), taxonomic information about plants (13 to 20), taxonomic information about pollinators (21 to 28), and information about the availability of floral count data (29). The flower count data is provided in a separate file (.csv or .rds) and can be merged with the interaction data through the "Flower_data_merger" column (30). Note that although two-thirds of studies include information on floral abundance, the methods and units vary greatly across studies. To construct a plant-pollinator network matrix within a single flowering season at the site level, users should group interactions by plant and pollinator species, site, study, and year. Finally, metadata at the study level is provided in a separate file, including information about the authors, digital object identifier (if available), sampling time, and taxonomic coverage of the main pollinator groups for each study.
 
 \newpage
 
 ```{r, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, fig.height=1, fig.width=10}
 
+#Small edit to column number
+my_tibble = my_tibble %>% 
+mutate(Variable = paste0(seq(1:length(Variable)),". ", Variable))
 
 kable(my_tibble, booktabs = T, linesep = "\\addlinespace", caption = "\\textbf{Table 1.} Column names and their descriptions within the EuPPollNet database.") %>%
   kable_styling(full_width = F,font_size = 9) %>% row_spec(0, bold=T) %>% 
@@ -757,9 +760,9 @@ We describe the habitat type for each site using information from Corine Land Co
 
 ## Network analyses
 
-To provide a general overview of the structure of plant-pollinator networks in EuPPollNet, we quantified connectance and nestedness for each network in binary form (i.e., presence-absence) and examined how these network metrics change across different latitudes and bioclimatic regions in Europe. We selected these two network metrics as they are commonly evaluated in plant-pollinator network studies and capture structural properties with a straightforward interpretation. We implemented “standardised” versions of connectance and nestedness to account for the effect of sampling effort on network metrics. As connectance is negatively associated with network size [@jordano1987], we evaluated how network connectance was associated with the number of species (i.e., log of geometric mean of plants and pollinators) and extracted the residuals from this association (i.e., residual connectance) as a measurement of corrected connectance. The relationship between residual connectance and species richness was investigated using beta regression. This approach was chosen because connectance displays a non-normal distribution with continuous values bounded between 0 and 1. The model was implemented using the betareg package [@cribari2010]. We used NODFc to compare nestedness across networks, as it corrects by connectance and the number of species [@song2017]. This metric was calculated using the **maxnodf** package [@hoeppke2021]. Both residual connectance and NODFc were used as dependent variables to evaluate their association with latitude. In addition, to quantify how connectance and nestedness change with network size, we determined their association with the number of species per network using the Kendall rank correlation coefficient.
+To provide a general overview of the structure of plant-pollinator networks in EuPPollNet, we quantified connectance and nestedness for each network and examined how these network metrics change across different latitudes and bioclimatic regions in Europe. We selected these two network metrics as they are commonly evaluated in plant-pollinator network studies and capture structural properties with a straightforward interpretation. We implemented “standardised” versions of connectance and nestedness to account for the effect of sampling effort on network metrics. As connectance is negatively associated with network size [@jordano1987], we evaluated how network connectance was associated with the number of species (i.e., log of geometric mean of plants and pollinators) and extracted the residuals from this association (i.e., residual connectance) as a measurement of corrected connectance. The relationship between residual connectance and species richness was investigated using a beta regression. This approach was chosen because connectance displays a non-normal distribution with continuous values bounded between 0 and 1. The model was implemented using the betareg package [@cribari2010]. We used NODFc to compare nestedness across networks, as it corrects by connectance and the number of species in comparison to other nestedness metrics that change with network size [@song2017]. This metric was calculated using the **maxnodf** package [@hoeppke2021]. Both residual connectance and NODFc were used as dependent variables to evaluate their association with latitude. In addition, to quantify how connectance and nestedness change with network size, we determined their association with the number of species per network using the Kendall rank correlation coefficient.
 
-Finally, to compare if networks are more or less nested than expected by chance, we employed the traditional z-score approach with the widely used nestedness metric (NODF) from @almeida2008. The z-score approach allows us to compare our results with previous published nestedness analyses in plant-pollinator networks and only compares each unique network against their randomized versions. We calculated 100 null models for each network with the help of the _vaznull_ function from the package **bipartite** [@dormann2008]. These null networks have the same connectance and number of plant and pollinator species as the empirical ones, but different marginal totals. Both connectance and nestedness (NODF) were estimated for each network by using the function _networklevel_ from **bipartite**.
+Finally, to compare if networks are more or less nested than expected by chance, we employed the traditional z-score approach with the widely used nestedness metric (NODF) from @almeida2008. The z-score approach allows us to compare our results with previous published nestedness analyses in plant-pollinator networks and only compares each unique network against their randomized versions, avoiding the influence of network size. As NODF is a metric computed from binary matrices, we calculated 100 null models for the binarized version of each network using the 'curveball' algorithm [@strona2014]. This algorithm implements the configuration model (i.e. random rewiring of all links, without self-links or double links) and thus keeps the exact number of connections per species (i.e., realised degree). Since null model selection can significantly influence statistical results [@kaiser2015], we also implemented the 'quasiswap_count' algorithm, which is a non-sequential algorithm for quantitative networks that maintains constant connectance and the number of connections per species. Each empirical network was randomized 100 times using each method. These null models were implemented with the **vegan** [@oksanen2013] package. Both connectance and nestedness (NODF) were estimated for each network using the function _networklevel_ from **bipartite**.
 
 \newpage 
 
@@ -1010,7 +1013,7 @@ theme(legend.margin=unit(1,"cm"),
 ```
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. Phylogenetic and taxonomic coverage of the plant families at European level. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 3}. Phylogenetic and taxonomic coverage of the plant families at European level. The number of interactions recorded per genus in the database is illustrated using circles, with their sizes proportional to the number of interactions on a logarithmic scale. Additionally, a gradient of colors ranging from yellow to dark purple aids in this visualization. The coverage of species recorded in EuPPollNet per genus at the European level is depicted with orange and light grey bars, representing the percentage of species included and not included in the database, respectively, out of the total number of flowering plant species per family at the European level. Dark grey bars indicate the total number of species per family at the European level on logarithmic scale.", fig.width=8, fig.height=8}
 
 library(ggplot2)
 library(ggtree)
@@ -1164,7 +1167,7 @@ pull(Percent_total)
 
 The estimated sampling coverage of plant and pollinator species within EuPPollNet across the different networks is approximately `r round(poll_sampling_coverage)`% for both taxonomic groups. This suggests that the rarefied accumulation curves of both plant and pollinator species exhibit already a "quasi-asymptotic" growth of species richness by considering the current number of networks (**Figure 4a-4b**). The predicted observed species richness by doubling the sampling effort on the already sampled habitat types within the database will only increase pollinator richness by `r format(round(poll_increase3, 2), nsmall=2)`% and plant richness by `r format(round(plant_increase3, 2), nsmall=2)`%. However, the sampling coverage of interactions is `r format(round(int_coverage, 2), nsmall=2)`%, and by doubling the sampling effort the predicted number of unique interactions recorded will have approximately a twofold increase (`r format(round(int_increase3, 2), nsmall=2)`%; **Figure 4c**). When we consider the accumulated pollinator richness across sampled plant species, this curve also shows a “quasi-asymptotic” growth with a sampling coverage value of `r format(round(plant_poll_coverage, 2), nsmall=2)`%. The predicted recorded pollinator species by doubling the number of plants sampled is expected to increase by `r format(round(plant_poll_increase3, 2), nsmall=2)`% (**Figure 4d**). We find that a small portion of plant species and pollinator species are shared across a broad range of networks and that most plant (`r format(round(plants_under_one_percent, 2), nsmall=2)`%) and pollinator (`r format(round(polls_under_one_percent, 2), nsmall=2)`%) species are exclusively found in less than 1% of networks (**Figures 4e-4f**). The most common plant (*`r most_common_plant`*) and pollinator (*`r most_common_poll`* when excluding *Apis mellifera*) species are found in `r format(round(most_common_plant_percent, 2), nsmall=2)`% and `r format(round(most_common_poll_percent, 2), nsmall=2)`% of networks, respectively.
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and their unique pairwise interactions across networks. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represent the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrate the extrapolated curve for approximately 3000 networks. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across an increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across networks. Species on the left (i.e., common) are found in many networks, while species on the right (i.e., rare) are found in few or only a single network. Note that \\textit{Apis mellifera} is the most common pollinator but was excluded from this visualization.", fig.width=10, fig.height=6, out.width="115%"}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 4}. Graphs (a-b-c) indicate the accumulation curves for pollinators, plants, and the number of unique pairwise interactions across networks. Grey solid lines represent 100 randomized accumulation curves, the black solid lines represent the interpolated curve (i.e., the mean across curves), and the red dashed lines illustrate the extrapolated curve for approximately 3000 networks. The solid black points indicate the number of species and interactions contained in the database. Graph (d) shows the accumulation curve of pollinator species across an increasing number of plant species. This last graph uses the same color and shape structure as the ones in the top panel. Graphs (e-f) indicate the percentage of occurrence (i.e., incidence) of plant and pollinator species across networks. Species on the left (i.e., common) are found in many networks, while species on the right (i.e., rare) are found in few or only a single network. Note that \\textit{Apis mellifera} is the most common pollinator but was excluded from this visualization.", fig.width=10, fig.height=6, out.width="115%"}
 
 #Pollinators-----
 poll_output = readRDS("../Data/Working_files/pollinator_sampling_coverage.rds")
@@ -1298,7 +1301,7 @@ xlab("Networks") +
 theme_bw() +
 coord_cartesian(expand = FALSE, clip = "off")  +
 xlim(0,3000) +
-ylim(0, 30000)+
+ylim(0, 35000)+
 ggtitle("(c)")
 
 #----------------#
@@ -1350,7 +1353,7 @@ xlab("Pollinator species") +
 ylab("Occurrence across networks") + 
 geom_vline(xintercept = quantile_50, linetype="dashed", 
 color = "black", size=0.35) + 
-annotate(geom="text", x=1450, y=0.60, label="50th percentile",color="black", size = 3) +
+annotate(geom="text", x=1590, y=0.60, label="50th percentile",color="black", size = 3) +
 annotate(geom="text", x=140, y=0.67, label=most_common_poll[1],color="black",  fontface = 'italic', size = 3)+
 annotate(geom="text", x=200, y=-0.05, label="Common spp."
       ,color="black",  size = 3) +
@@ -1402,7 +1405,7 @@ xlab("Plant species") +
 ylab("Occurrence across networks") + 
 geom_vline(xintercept = quantile_50, linetype="dashed", 
           color = "black", size=0.35) + 
-annotate(geom="text", x=950, y=0.60, label="50th percentile",color="black", size = 3) + 
+annotate(geom="text", x=1010, y=0.60, label="50th percentile",color="black", size = 3) + 
 annotate(geom="text", x=100, y=0.4, label=most_common_plant[1]
       ,color="black",  fontface = 'italic', size = 3)+
 annotate(geom="text", x=150, y=-0.05, label="Common spp."
@@ -1456,7 +1459,7 @@ theme_bw() +
 coord_cartesian(expand = FALSE, clip = "off") +
 ggtitle("(d)") +
 scale_x_continuous(breaks = seq(0, 2800, by = 1000), limits=c(0,2800)) +
-scale_y_continuous(breaks = seq(0, 2800, by = 1000), limits=c(0,2600)) +
+scale_y_continuous(breaks = seq(0, 3000, by = 1000), limits=c(0,3000)) +
 theme(legend.position = "none")
 
 #Plot all
@@ -1648,30 +1651,69 @@ connectance_spp_mean_corr_pval = readRDS("../Data/Manuscript_info/connectance_sp
 normalised_nestedness_spp_mean_corr_tau = readRDS("../Data/Manuscript_info/normalised_nestedness_spp_mean_corr_tau.rds")
 normalised_nestedness_spp_mean_corr_pval = readRDS("../Data/Manuscript_info/normalised_nestedness_spp_mean_corr_pval.rds")
 #Load z values
-#Save data
-z_percent = readRDS("../Data/Manuscript_info/z_percent.rds")
-no_diff_z_percent = z_percent %>% 
+#VAZNULL
+z_percent_vaznull = readRDS("../Data/Manuscript_info/z_percent_vaznull.rds")
+no_diff_z_percent_vaznull = z_percent_vaznull %>% 
 filter(infra_over_represented == "No statistical difference") %>% 
 pull(percent)
-over_z_percent = z_percent %>% 
+over_z_percent_vaznull = z_percent_vaznull %>% 
 filter(infra_over_represented == "Over-represented") %>% 
 pull(percent)
-under_z_percent = z_percent %>% 
+under_z_percent_vaznull = z_percent_vaznull %>% 
 filter(infra_over_represented == "Under-represented") %>% 
 pull(percent)
+#CURVEBALL
+z_percent_curveball = readRDS("../Data/Manuscript_info/z_percent_curveball.rds")
+no_diff_z_percent_curveball = z_percent_curveball %>% 
+filter(infra_over_represented == "No statistical difference") %>% 
+pull(percent)
+over_z_percent_curveball = z_percent_curveball %>% 
+filter(infra_over_represented == "Over-represented") %>% 
+pull(percent)
+under_z_percent_curveball = z_percent_curveball %>% 
+filter(infra_over_represented == "Under-represented") %>% 
+pull(percent)
+
+#QUASISWAP
+z_percent_quasiswap = readRDS("../Data/Manuscript_info/z_percent_quasiswap.rds")
+
+no_diff_z_percent_quasiswap = z_percent_quasiswap %>% 
+filter(infra_over_represented == "No statistical difference") %>% 
+pull(percent)
+over_z_percent_quasiswap = z_percent_quasiswap %>% 
+filter(infra_over_represented == "Over-represented") %>% 
+pull(percent)
+under_z_percent_quasiswap = z_percent_quasiswap %>% 
+filter(infra_over_represented == "Under-represented") %>% 
+pull(percent)
+#rd2
+z_percent_rd2 = readRDS("../Data/Manuscript_info/z_percent_rd2.rds")
+
+no_diff_z_percent_rd2 = z_percent_rd2 %>% 
+filter(infra_over_represented == "No statistical difference") %>% 
+pull(percent)
+over_z_percent_rd2 = z_percent_rd2 %>% 
+filter(infra_over_represented == "Over-represented") %>% 
+pull(percent)
+under_z_percent_rd2 = z_percent_rd2 %>% 
+filter(infra_over_represented == "Under-represented") %>% 
+pull(percent)
+
+
 #Load correlation outputs of residual connectance and nestednes
 resid_connectance_nestedness_corr_tau = readRDS("../Data/Manuscript_info/resid_connectance_nestedness_tau.rds")
 resid_connectance_nestedness_corr_pval = readRDS("../Data/Manuscript_info/resid_connectance_nestedness_pval.rds")
+
 
 
 ```
 
 ## Network properties
 
-Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and followed a negative exponential relationship with the number of species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6a**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S4**). We found that only `r round(over_z_percent, 2)`% of networks were statistically more nested than expected by chance, with `r round(no_diff_z_percent, 2)`% showing no statistical difference, and none being less nested than null expectations (**Figure 6b**). Latitude explained little of the observed variability of residual connectance and nestedness across networks (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6a**; NODFc: R$^2$ = `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6b**). Overall, networks towards higher latitudes showed lower residual connectance and higher nestedness than networks located at lower latitudes. Note that residual connectance and normalised nestedness showed a moderate negative correlation (Kendall $\tau$ = `r round(resid_connectance_nestedness_corr_tau, 2)`, _P_ = `r round(resid_connectance_nestedness_corr_pval, 2)`).
+Connectance values ranged between `r round(min_connectance, 2)` to `r round(max_connectance, 2)` ($\bar{x}$ = `r round(mean_connectance, 2)`) and followed a negative exponential relationship with the number of species per network (Kendall $\tau$ = `r round(connectance_spp_mean_corr_tau, 2)`, _P_ < 0.01; **Figure 6a**). Nestedness values (NODFc) ranged between `r round(min_nodfc, 2)` to `r round(max_nodfc, 2)` ($\bar{x}$ = `r round(mean_nodfc, 2)`), and were independent of the mean number of species (Kendall $\tau$ = `r round(normalised_nestedness_spp_mean_corr_tau, 2)`, _P_ = `r round(normalised_nestedness_spp_mean_corr_pval, 2)`; **Figure S4**). Empirical networks did not show statistically different nestedness to the simulated ones (**Figure 6b** and **Figure S5**). The 'curveball' method for binary networks resulted in `r round(under_z_percent_curveball, 2)`% of networks statistically less nested than null expectations, `r round(no_diff_z_percent_curveball, 2)`% showing no difference, and `r round(over_z_percent_curveball, 2)`% being more nested. The 'quasiswap_count' algorithm for quantitative networks resulted in `r round(under_z_percent_quasiswap, 2)`% of networks being less nested, `r round(no_diff_z_percent_quasiswap, 2)`% showing no difference and `r round(over_z_percent_quasiswap, 2)`% being more nested. Although latitude has a statistically significant impact on residual connectance, it explains only a small portion of the observed variability in residual connectance and nestedness across networks. (connectance: R$^2$ = `r round(connectance_lat_r2, 2)`, _P_ = `r round(connectance_lat_pval, 2)`, **Figure 6c**; NODFc: R$^2$ = `r round(normalised_nestedness_lat_r2, 2)`, _P_ = `r round(normalised_nestedness_lat_pval, 2)`, **Figure 6d**). Overall, networks towards higher latitudes showed lower residual connectance and higher nestedness than networks located at lower latitudes. Note that residual connectance and normalised nestedness showed a moderate negative correlation (Kendall $\tau$ = `r round(resid_connectance_nestedness_corr_tau, 2)`, _P_ = `r round(resid_connectance_nestedness_corr_pval, 2)`).
 
 
-```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graph (a) shows the association between network connectance and the geometric mean of plant and pollinator species per network on a log-scale with the respective fitted line from a Beta regression. Graph (b) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue). Graphs (c-d) show the fitted regression of residual connectance and nestedness across the latitudinal range of the studies from the database. The bioclimatic region of each network is indicated with points of different shapes and colours.", fig.width=10, fig.height=7, fig.align='center'}
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure 6}. Graph (a) shows the association between network connectance and the geometric mean of plant and pollinator species per network on a log-scale with the respective fitted line from a Beta regression. Graph (b) shows the distribution of z-scores when comparing the nestedness from the empirical networks with their randomised counterparts (100 null models for each network with the curveball algorithm). The vertical red dashed lines represent the z critical value for a two tailed test with alpha = 0.05. Z-scores to the left of the first vertical red dashed line indicate that networks are less nested than expected by chance (red), those between the two dashed lines indicate no statistical difference from random expectations (green), and those to the right indicate that networks are more nested than expected by chance (blue). Graphs (c-d) show the fitted regression of residual connectance and nestedness across the latitudinal range of the studies from the database. The bioclimatic region of each network is indicated with points of different shapes and colours.", fig.width=10, fig.height=7, fig.align='center'}
 
 # Load libraries
 library(dplyr)
@@ -1719,39 +1761,58 @@ ggtitle("(c)")
 
 
 
-#Prepare now nestedness plots
-# Plot
+null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks_quasiswap.rds")
+metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
+
+#Finally, find % of networks that differ statistically
+# Merge and process data
+d = left_join(metrics_by_network, null_metrics_networks, by = "Network_id")
+
+d = d %>% 
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
+d = d %>% filter(!is.na((z_score))) 
+
+
 p = 0.05 #cutoff probability 95% confidence
 critical_value = qnorm(p/2) #double tail probability divide by 2
 
-nestedness_z_scores = nestedness_z_scores %>%
+d1 = d %>%
 mutate(infra_over_represented = case_when(
 z_score < -abs(critical_value) ~ "Under-represented",
 between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
     z_score > abs(critical_value) ~ "Over-represented"
   ))
 
-p2 = nestedness_z_scores %>% 
-ggplot(aes(x = z_score)) +
-geom_histogram(aes(y = ..density.., fill = infra_over_represented), 
-               bins = 100, alpha = 0.5, color = "black", position = "stack") +
-stat_function(data = nestedness_z_scores, fun = function(x) dnorm(x, mean = mean(nestedness_z_scores$z_score), sd = sd(nestedness_z_scores$z_score)) * 1.7, 
-              n = 1000, inherit.aes = FALSE, color = "gray18", size = 1) +
-theme_bw() +
-coord_cartesian(expand = FALSE) +
-geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
-geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
-ylab("Density") +
-xlab("Z scores (NODF)")  +
-xlim(-6, 9) +
-ylim(0, 0.8) +
-scale_fill_manual(name = "Observed against null",
-                  limits = c("Under-represented", "No statistical difference", "Over-represented"),
-                  labels = c("Less nested", "No difference", "More nested"),
-                  values = c("Under-represented" = "coral2", 
-                             "No statistical difference" = "palegreen3", 
-                             "Over-represented" = "cyan3")) +
-ggtitle("(b)")
+#Calculate percentages
+z_percent = d1 %>% 
+group_by(infra_over_represented) %>% 
+summarise(percent = length(infra_over_represented)/nrow(.) * 100)
+
+no_dif_z = z_percent %>% 
+filter(infra_over_represented == "No statistical difference")
+
+
+p2 = d1 %>% 
+  ggplot(aes(x = z_score)) +
+  geom_histogram(aes(y = ..count.., fill = infra_over_represented), 
+                 bins = 60, alpha = 0.5, color = "black", position = "stack") +
+  theme_bw() +
+  coord_cartesian(expand = FALSE) +
+  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+  ylab("Number of networks") +
+  xlab("Z scores (NODF)")  +
+ # xlim(-6, 9) +
+ # ylim(0, 0.8) +
+  scale_fill_manual(name = "Observed against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+ggtitle("(b)")+
+xlim(-6,6)
+
 
 
 # 2nd Plot
@@ -1798,15 +1859,17 @@ a / b  & theme(axis.title =  element_text(size=16, face="bold"),
 
 # 3 | DISCUSSION
 
-EuPPollNet offers the largest set of plant-pollinator studies and networks compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million interaction records. While the overall sampling coverage of species and interactions is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (i.e., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). However, although our study likely has a higher pollinator coverage, as we did not exclude non-pollinating species (e.g., predators, herbivores, parasites) from the checklists, this likely reflects that most plant and pollinator species are rare and geographically restricted. For example given that most of the plant-pollinator networks from the database are sampled on intensive grasslands, and habitat heterogeneity is a crucial factor in understanding pollinator diversity at European level [@kleijn2015; @hass2018; @martinez2022], adding studies on other habitat types is likely to result in a rapid increase of the coverage of plant and pollinator species and their interactions. Indeed, plant and pollinator species were rarely shared across multiple sites, indicating that there are few "common" species and many "rare" ones at the metaweb or continental level. This high number of "rare" species results in an upward slope of the species or interaction accumulation curves [@thompson2003]. In other words, minimal sampling efforts are capturing a substantial number of species and interactions, but achieving a comprehensive inventory will require numerous sampling events within and across habitats, particularly for plant-pollinator interactions.
+EuPPollNet offers the largest set of plant-pollinator studies and networks compiled to date at European level. The database contains `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species with over a million interaction records. While the overall sampling coverage of species and interactions is relatively high across the sampled sites, the taxonomic coverage of plants and the main pollinator groups at the European level is still relatively low (i.e., `r round(plant_coverage, 1)`% for flowering plants and `r round(bee_coverage, 1)`% for bee species). However, although our study likely has a higher pollinator coverage, as we did not exclude non-pollinating species (e.g., predators, herbivores, parasites) from the checklists, this likely reflects that most plant and pollinator species are rare and geographically restricted. For example, given that most of the plant-pollinator networks from the database are sampled on intensive grasslands, and habitat heterogeneity is a crucial factor in understanding pollinator diversity at European level [@kleijn2015; @hass2018; @martinez2022], adding studies on other habitat types is likely to result in a rapid increase of the coverage of plant and pollinator species and their interactions. Indeed, plant and pollinator species were rarely shared across multiple sites, indicating that there are few "common" species and many "rare" ones at the metaweb or continental level. This high number of "rare" species results in an upward slope of the species or interaction accumulation curves [@thompson2003]. In other words, minimal sampling efforts are capturing a substantial number of species and interactions, but achieving a comprehensive inventory will require numerous sampling events within and across habitats, particularly for plant-pollinator interactions.
 
-Bees are responsible for the majority of the sampled interactions at the metaweb level. As not all surveys included all pollinator groups, this result may partly be influenced by the taxonomic groups sampled across studies. However, the relevance of bees and other pollinator orders for network topology changed across habitats and bioclimatic regions in accordance to the literature. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only commonly documented as floral visitors in the Mediterranean region. This study cannot determine whether pollination ecologists traditionally document flower-beetle interactions only in the Mediterranean, or if there are fewer flower visitations by beetles outside this region. Nevertheless, the high proportion of beetles as floral visitors provides further support for their potential role as pollinators in the Mediterranean [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. While Europe contains fewer butterfly species than other regions of the world [@ollerton2017], their relevance as pollinators is likely underestimated within this database. This is because a large fraction of studies (~40%) did not sample butterflies, and conventional sampling methods for monitoring other insect pollinators (e.g., bees or flies) may be inadequate for sampling plant-butterfly interactions [@isaac2011]. Honey bees were present in `r round(apis_percent_networks, 1)`% of networks and conducted on average a third of the total interactions per network. The proportion of honey bees in networks across Europe is higher than in natural communities (i.e., large unmanaged assemblages of plant species) across the world [~13%\; @hung2018], potentially reflecting the dominance of intensive grasslands habitats in EuPPollNet, the highly generalised nature of honeybees, the important role that honeybees are playing as pollinators in Europe, and/or because beekeeping is widely practiced in Europe [@steffan2000; @magrach2017; @herrera2020].	
+Bees are responsible for the majority of the sampled interactions at the metaweb level. As not all surveys included all pollinator groups, this result may partly be influenced by the taxonomic groups sampled across studies. However, the relevance of bees and other pollinator orders for network topology changed across habitats and bioclimatic regions in accordance to the literature. For instance, plant-pollinator communities in the Mediterranean were dominated by bees, while communities in Alpine or Boreal regions were fly species rich or fly-dominated. These patterns are consistent with our current understanding of bee diversity, which peaks in dry or temperate areas [@orr2021; @leclercq2023]; and with the fact that colder environments (i.e., altitude and latitude wise) harbor a larger fraction of fly pollinators compared to other taxa [@elberling1999; @lefebvre2018]. In addition, beetles were only commonly documented as floral visitors in the Mediterranean region. This study cannot determine whether pollination ecologists traditionally document flower-beetle interactions only in the Mediterranean, or if there are fewer flower visitations by beetles outside this region. Nevertheless, the high proportion of beetles as floral visitors provides further support for their potential role as pollinators in the Mediterranean [@herrera2019; @leon2022]. The number of butterfly species and interactions were relatively low compared to the other taxa. While Europe contains fewer butterfly species than other regions of the world [@ollerton2017], their relevance as pollinators is likely underestimated within this database. This is because a large fraction of studies (~40%) did not sample butterflies, and conventional sampling methods for monitoring other insect pollinators (e.g., bees or flies) may be inadequate for sampling plant-butterfly interactions [@isaac2011]. Honey bees were present in `r round(apis_percent_networks, 1)`% of networks and conducted on average a third of the total interactions per network. The proportion of honey bees in networks across Europe is higher than in natural communities (i.e., large unmanaged assemblages of plant species) across the world [~13%\; @hung2018]. This potentially reflects the dominance of intensive grassland habitats in EuPPollNet, the highly generalised nature of honey bees, their native status and the important role that honeybees are playing as pollinators in Europe, and/or the widespread practice of beekeeping in Europe [@steffan2000; @magrach2017; @herrera2020].	
 
 Although Europe contains a much larger number of flowering plants than pollinator species (~5 to 1 ratio according to our extrapolation from checklists), the observed number of pollinator species in the database was almost double that of the plants. This could be explained by the fact that all networks are phytocentric, resulting in sampling bias towards pollinator species [@jordano2016; @vizentin2018]. While animal-centered sampling is likely to increase the plant-pollinator species ratio [e.g., @encinas2023], the spatial scale and environmental context of the sampled communities will also influence their observed diversity, especially given the ability to move of pollinators and the sessile nature of plants. In addition, we found that the accumulation curve of pollinators per plant species does not saturate, which indicates low redundancy of pollinators and that many are regionally “rare”. Rare pollinators can be functionally important for plant species at the landscape level [@winfree2018; @simpson2022], highlighting the need to conduct further sampling events to identify these rare species across different regions and to effectively understand and protect plant-pollinator biodiversity.
 
-Consistent with @olesen2002, we find that residual connectance (i.e., the deviation from the expected connectance for a given network size) was lower at higher latitudes, while normalised nestedness increased towards higher latitudes. Networks at lower latitudes in Europe are exposed to higher temperatures, which can result in higher visitation rates [@arroyo1985; @classen2015; @herrera2019], and the overall level of pollinator generalization is known to be higher at lower latitudes [@schleuning2012]. These factors should increase the number of possible connections that can be established between plants and pollinators for a given network size, resulting in more connected and less nested networks at lower latitudes. Finally, one third of networks were more nested than expected by chance. While this supports the idea that plant-pollinator networks tend to be nested [@bascompte2003], this result also suggests that nestedness could be a less prevalent feature than previously thought for plant-pollinator networks [@payrato2019].
+Consistent with @olesen2002, we find that residual connectance (i.e., the deviation from the expected connectance for a given network size) was lower at higher latitudes, while normalised nestedness increased towards higher latitudes. Networks at lower latitudes in Europe are exposed to higher temperatures, which can result in higher visitation rates [@arroyo1985; @classen2015; @herrera2019], and the overall level of pollinator generalization is known to be higher at lower latitudes [@schleuning2012]. These factors should increase the number of possible connections that can be established between plants and pollinators for a given network size, resulting in more connected and less nested networks at lower latitudes. Finally, most empirical networks (~85%) showed a non-nested structure. This result opposes to the idea that plant-pollinator networks tend to be nested [@bascompte2003], and support recent findings showing that nestedness is not a prevalent feature in plant-pollinator networks [@payrato2019].
 
-Despite this database covering a wide range of habitats across `r country_number` countries, it contains geographical biases that can impact our understanding of plant-pollinator communities [@hughes2021]. For instance, most plant-pollinator networks are sampled from central Europe, while Eastern Europe and the Mediterranean region are underrepresented. This is consistent with previous studies which also report lack of plant-pollinator data for those regions [@bennett2018; @marshall2024], highlighting that this database shows existing patterns in data availability despite the absence of a systematic search for studies. This lack of data is especially relevant for Eastern Europe which has vast landscapes of high quality semi-natural grasslands but is experiencing rapid land use change [@sutcliffe2015], and the Mediterranean region is likely to be severely impacted by climate change [@jaworski2022; @duchenne2020; @pareja2023]. These areas are well known for their rich pollinator diversity [@milivcic2018; @reverte2023], and their under-representation is likely contributing to the low taxonomic coverage of this database at the European level. Although some of the most well studied countries in Europe (e.g., Belgium, The Netherlands) have already experienced land use change and biodiversity loss at the end of the 20th century [@carvalheiro2013], plant-pollinator communities in Europe and across the globe still face current and future threats from climate change [@bartomeus2011; @duchenne2020], land use change [@reidsma2006; @batary2015], and the introduction of alien species [@vila2009; @vanbergen2018]. Therefore, continuous monitoring programs are needed in order to evaluate spatio-temporal changes of species and their interactions across different European habitats and regions. This will allow local and large scale analyses of the status and trends of plant-pollinator communities, effectively informing management and conservation actions.
+
+Despite this database covers a wide range of habitats across `r country_number` countries, it contains temporal and geographical biases that can impact our understanding of plant-pollinator communities [@hughes2021]. For instance, none of the studies in this database sampled nocturnal pollinators, which can impact our view of network structure [@garcia2024], and most studies were conducted during a single flowering season, limiting our ability to evaluate temporal trends of plant-pollinator communities in the face of environmental changes [@alarcon2008; @chacoff2018]. In addition, most plant-pollinator networks are sampled from central Europe, while Eastern Europe and the Mediterranean region are underrepresented. This is consistent with previous studies which also report lack of plant-pollinator data for those regions [@bennett2018; @marshall2024], highlighting that this database shows existing patterns in data availability despite the absence of a systematic search for studies. The lack of data for Eastern Europe, which contains vast landscapes with semi-natural grasslands experiencing rapid land use change [@sutcliffe2015], and for the Mediterranean region, which is severely impacted by climate change [@jaworski2022; @duchenne2020; @pareja2023], is particularly concerning. These areas are well known for their rich pollinator diversity [@milivcic2018; @reverte2023], and their under-representation is likely contributing to the low taxonomic coverage of this database at the European level. Although some of the most well studied countries in Europe (e.g., Belgium, The Netherlands) have already experienced land use change and biodiversity loss at the end of the 20th century [@carvalheiro2013], plant-pollinator communities in Europe and across the globe still face current and future threats from climate change [@bartomeus2011; @duchenne2020], land use change [@reidsma2006; @batary2015], and the introduction of alien species [@vila2009; @vanbergen2018]. Therefore, continuous monitoring programs are needed in order to evaluate spatio-temporal changes of species and their interactions across different European habitats and regions. This will allow local and large scale analyses of the status and trends of plant-pollinator communities, effectively informing management and conservation actions.
+
 
 In conclusion, the EuPPollNet database enables researchers to explore spatial, taxonomic and structural properties of plant-pollinator networks within Europe. In contrast to previous databases, EuPPollNet provides interaction data along with sampling information that could help researchers to better control for sampling effort and completeness and to select the most suitable networks for their research questions. Here, we have shown how connectance and nestedness change across their latitudinal range and that nestedness is not a ubiquitous feature of all plant-pollinator networks. These analyses aim to highlight the variability present across Europe in the structure of plant-pollinator networks and illustrate the  opportunities available to develop and test questions about spatio-temporal network change using EuPPollNet. The reproducible workflow allows researchers to adapt and reuse this database, enabling the continuous addition of new networks to better evaluate the status and trends of plant-pollinator communities. Finally, we hope this database becomes an iterative resource that keeps growing and improving over time to better understand and conserve European biodiversity.
 
@@ -2123,10 +2186,12 @@ xlab(NULL) +
 theme(plot.margin=unit(c(0,0,0,0), "mm"),
       axis.ticks.x = element_line(color="black"),
       strip.text.x = element_text(size=14, face = "bold"),
-      strip.background = element_rect(size=0.5, linetype="solid"),
   axis.title = element_text(face = "bold", size = 14),
-axis.text = element_text(size=10))
-
+axis.text = element_text(size=10),
+    strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid"),
+panel.border = element_rect(colour = "black",
+        fill=NA, size=1)) 
 
 ```
 
@@ -2146,5 +2211,67 @@ theme(
     axis.title = element_text(face = "bold", size = 10),
     axis.text = element_text(size = 8))
 
+```
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="90%", fig.width=12, fig.height= 8, fig.cap="\\textbf{Figure S5}. Distribution of z-scores comparing the nestedness of empirical networks with their randomized counterparts with the 'quasiswap_count' algorithm (100 null models for each network). The quasiswap_count algorithm maintains row and column sums with fixed connectance."}
+
+library(dplyr)
+library(ggplot2)
+
+null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks_quasiswap.rds")
+metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
+
+#Finally, find % of networks that differ statistically
+# Merge and process data
+d = left_join(metrics_by_network, null_metrics_networks, by = "Network_id")
+
+d = d %>% 
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
+d = d %>% filter(!is.na((z_score))) 
+
+
+p = 0.05 #cutoff probability 95% confidence
+critical_value = qnorm(p/2) #double tail probability divide by 2
+
+d1 = d %>%
+mutate(infra_over_represented = case_when(
+z_score < -abs(critical_value) ~ "Under-represented",
+between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
+  ))
+
+#Calculate percentages
+z_percent = d1 %>% 
+group_by(infra_over_represented) %>% 
+summarise(percent = length(infra_over_represented)/nrow(.) * 100)
+
+no_dif_z = z_percent %>% 
+filter(infra_over_represented == "No statistical difference")
+
+# Plot
+ d1 %>% 
+  ggplot(aes(x = z_score)) +
+  geom_histogram(aes(y = ..count.., fill = infra_over_represented), 
+                 bins = 50, alpha = 0.5, color = "black", position = "stack") +
+  theme_bw() +
+  coord_cartesian(expand = FALSE) +
+  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+  ylab("Number of networks") +
+  xlab("Z scores (NODFc)")  +
+ # xlim(-6, 9) +
+ # ylim(0, 0.8) +
+  scale_fill_manual(name = "Observed against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+xlim(-6,6) +
+theme(plot.title = element_text(size = 24),
+      text = element_text(size = 20),
+      axis.title  = element_text(face="bold"))
 
 ```
