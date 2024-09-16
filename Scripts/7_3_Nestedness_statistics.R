@@ -184,7 +184,7 @@ saveRDS(normalised_nestedness_spp_mean_corr_pval, "Data/Manuscript_info/normalis
 
 #Finally, find % of networks that differ statistically
 # Merge and process data
-d = left_join(metrics_by_network, null_metrics_networks)
+d = left_join(metrics_by_network, null_metrics_networks, by = "Network_id")
 d = d %>% 
 mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
 

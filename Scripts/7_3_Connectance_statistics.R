@@ -9,7 +9,8 @@
 #Load libraries
 library(dplyr)
 library(ggplot2)
-
+library(broom)
+library(emmeans)
 #Read general data
 data = readRDS("Data/3_Final_data/Interaction_data.rds")
 
