@@ -363,7 +363,7 @@ mutate(Land_cover =
 #add it at alpine for simplicity
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "15_Magrach" ~ "Alpine grasslands",
+  case_when(Study_id == "15_Magrach" ~ "Semi-natural grassland",
     TRUE ~ Land_cover))
 
 #16_Manincor (Grasslands)
@@ -441,10 +441,32 @@ mutate(Land_cover =
   case_when(Study_id == "24_Holzschuh" ~ "Cropland",
     TRUE ~ Land_cover))
 #25_Holzschuh
+holzschuh_habitats = data %>% 
+filter(Study_id == "25_Holzschuh") %>% 
+distinct(Network_id) %>% pull()
+
+
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "25_Holzschuh" ~ "Pastures (agricultural/vegetation matrix)",
+  case_when(
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[1] ~ "Forest/woodland",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[2] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[3] ~ "Forest/woodland",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[4] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[5] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[6] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[7] ~ "Forest/woodland",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[8] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[9] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[10] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[11] ~ "Forest/woodland",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[12] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[13] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[14] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[15] ~ "Pastures",
+    Study_id == "25_Holzschuh" & Network_id == holzschuh_habitats[16] ~ "Pastures",
     TRUE ~ Land_cover))
+
 
 #26_Castro (seems ok with Corine)
 habitat = habitat %>% 
@@ -703,7 +725,7 @@ mutate(Land_cover =  case_when(
 #40_Knight    
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "40_Knight" ~ "Pastures (agricultural/vegetation matrix)",
+  case_when(Study_id == "40_Knight" ~ "Semi-natural grassland",
     TRUE ~ Land_cover)) 
 
 #41_Knight
@@ -715,9 +737,9 @@ habitat = habitat %>%
 mutate(Land_cover = 
   case_when(
     Study_id == "41_Knight" & Network_id == knight_habitats[1] ~ "Forest/woodland",
-    Study_id == "41_Knight" & Network_id == knight_habitats[2] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "41_Knight" & Network_id == knight_habitats[3] ~ "Pastures (vegetation matrix)",
-    Study_id == "41_Knight" & Network_id == knight_habitats[4] ~ "Forest/woodland",
+    Study_id == "41_Knight" & Network_id == knight_habitats[2] ~ "Semi-natural grassland",
+    Study_id == "41_Knight" & Network_id == knight_habitats[3] ~ "Semi-natural grassland",
+    Study_id == "41_Knight" & Network_id == knight_habitats[4] ~ "Semi-natural grassland",
     Study_id == "41_Knight" & Network_id == knight_habitats[5] ~ "Forest/woodland",
     Study_id == "41_Knight" & Network_id == knight_habitats[6] ~ "Pastures (agricultural/vegetation matrix)",
     TRUE ~ Land_cover)) 
@@ -748,12 +770,12 @@ distinct(Network_id) %>% pull()
 habitat = habitat %>% 
 mutate(Land_cover = 
   case_when(
-    Study_id == "43_Knight" & Network_id == knight3_habitats[1] ~ "Pastures (vegetation matrix)",
-    Study_id == "43_Knight" & Network_id == knight3_habitats[2] ~ "Pastures (vegetation matrix)",
+    Study_id == "43_Knight" & Network_id == knight3_habitats[1] ~ "Forest/woodland",
+    Study_id == "43_Knight" & Network_id == knight3_habitats[2] ~ "Semi-natural grassland",
     Study_id == "43_Knight" & Network_id == knight3_habitats[3] ~ "Pastures (urban/vegetation matrix)",
     Study_id == "43_Knight" & Network_id == knight3_habitats[4] ~ "Pastures (urban/vegetation matrix)",
     Study_id == "43_Knight" & Network_id == knight3_habitats[5] ~ "Pastures (agricultural/vegetation matrix)",
-    Study_id == "43_Knight" & Network_id == knight3_habitats[6] ~ "Pastures (vegetation matrix)",
+    Study_id == "43_Knight" & Network_id == knight3_habitats[6] ~ "Semi-natural grassland",
     Study_id == "43_Knight" & Network_id == knight3_habitats[7] ~ "Pastures (agricultural/vegetation matrix)",
     Study_id == "43_Knight" & Network_id == knight3_habitats[8] ~ "Pastures (agricultural/vegetation matrix)",
     Study_id == "43_Knight" & Network_id == knight3_habitats[9] ~ "Pastures (agricultural/vegetation matrix)",
@@ -765,13 +787,13 @@ mutate(Land_cover =
 #44_Knight
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "44_Knight" ~ "Pastures",
+  case_when(Study_id == "44_Knight" ~ "Semi-natural grassland",
     TRUE ~ Land_cover))
 
 #knight4_habitats = data %>% 
 #filter(Study_id == "44_Knight") %>% 
 #distinct(Network_id) %>% pull()
-    
+#    
 #habitat = habitat %>% 
 #mutate(Land_cover = 
 #  case_when(
@@ -813,7 +835,7 @@ mutate(Land_cover =
 #46_Knight
 habitat = habitat %>% 
 mutate(Land_cover = 
-  case_when(Study_id == "46_Knight" ~ "Pastures (agricultural/vegetation matrix)",
+  case_when(Study_id == "46_Knight" ~ "Semi-natural grassland",
     TRUE ~ Land_cover))
 
 #47_Benadi
@@ -881,8 +903,8 @@ mutate(Land_cover =
   case_when(
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[1] ~ "Pastures",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[2] ~ "Pastures",
-    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[3] ~ "Pastures",
-    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[4] ~ "Pastures",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[3] ~ "Semi-natural grassland",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[4] ~ "Semi-natural grassland",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[5] ~ "Pastures",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[6] ~ "Pastures",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[7] ~ "Pastures",
@@ -901,7 +923,7 @@ mutate(Land_cover =
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[20] ~ "Pastures",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[21] ~ "Green urban areas",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[22] ~ "Ruderal vegetation",
-    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[23] ~ "Alpine grasslands",
+    Study_id == "52_Hadrava" & Network_id == hadrava_habitats[23] ~ "Semi-natural grassland",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[24] ~ "Ruderal vegetation",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[25] ~ "Pastures",
     Study_id == "52_Hadrava" & Network_id == hadrava_habitats[26] ~ "Beaches, dunes, sands",
@@ -942,6 +964,18 @@ mutate(Land_cover =
 case_when(Study_id == "54_Lazaro" ~ "Sclerophyllous vegetation",
 TRUE ~ Land_cover))
 
+
+#Check altitude of sites
+elevation = readRDS("Data/Working_files/Elevation.rds") 
+
+#Back convert to tibble
+coordinates = sf::st_coordinates(elevation)
+elevation = tibble(Longitude = coordinates[,1], 
+       Latitude = coordinates[,2],
+       Altitude = elevation$elevation)
+#Bind datasets
+habitat = left_join(habitat, elevation, by = c("Longitude", "Latitude"))
+
 #Check for mistakes
 #Rename coniferous forest to forest
 habitat = habitat %>% 
@@ -960,7 +994,18 @@ mutate(Land_cover = recode_factor(Land_cover,
                "Botanical garden" = "Green urban areas",
               "Agro-forestry areas" = "Forest/woodland",
               "Forest" = "Forest/woodland",
-              "Transitional woodland-shrub" = "Forest/woodland"))
+              "Transitional woodland-shrub" = "Forest/woodland",
+              "Alpine grasslands" = "Montane to alpine grasslands"))
+
+
+#Semi-natural habitats above 1000m rename it to montane or alpine
+habitat = habitat %>% 
+mutate(Land_cover = 
+case_when(Land_cover == "Semi-natural grassland" &
+            Altitude >= 1000
+ ~ "Montane to alpine grasslands",
+TRUE ~ Land_cover))
+
 
 #Check levels
 levels(factor(habitat$Land_cover))
