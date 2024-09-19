@@ -4,5 +4,4 @@
 
 Task 1.5: Mapping European Pollinator species interactions and community assembly
 
-Article: EuPPollNet: A European database of plant-pollinator networks 
-:bee:
+Article: EuPPollNet: A European database of plant-pollinator networks
