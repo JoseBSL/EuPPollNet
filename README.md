@@ -5,5 +5,4 @@
 Task 1.5: Mapping European Pollinator species interactions and community assembly
 
 Article: EuPPollNet: A European database of plant-pollinator networks 
-:bee: :blossom:	:fly:	:cherry_blossom:	:butterfly:	 :tulip:	:beetle:	:sunflower:	
-
+:bee:
