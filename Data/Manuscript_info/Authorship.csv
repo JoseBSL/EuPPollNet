@@ -23,6 +23,7 @@ Study_id,Coauthor_name,Orcid,E_mail
 10_Vanbergen,Willem Proesmans,0000-0003-0358-6732,willem.proesmans@gmail.com
 10_Vanbergen,Emeline Felten,0009-0005-8159-9426,emeline.felten@inrae.fr
 10_Vanbergen,Emilien Laurent,,emilien.laurent@inrae.fr
+10_Vanbergen,Nathan Cyrille,0009-0003-1102-928X,nathan.cyrille.pro@gmail.com
 11_Clough,Veronica Hederström,0000-0002-9231-3156,veronica.hederstrom@cec.lu.se
 11_Clough,Theresia Krausl,0000-0003-2849-4279,theresia.krausl@cec.lu.se
 11_Clough,Yann Clough,0000-0002-2901-7602,yann.clough@cec.lu.se
@@ -157,9 +158,9 @@ Study_id,Coauthor_name,Orcid,E_mail
 51_Petanidou,Theodora Petanidou,0000-0003-1883-0945,tpet@aegean.gr
 51_Petanidou,Georgios Nakas,0000-0003-3023-5831,nakas.g@geo.aegean.gr
 52_Hadrava,Jiří Hadrava,0000-0003-3247-6399,HadravaJirka@seznam.cz
-53_Libran-Embid,Felipe Librán-Embid,0000-0003-4898-4494,feliem3@gmail.com
-53_Libran-Embid,Ingo Grass,0000-0001-7788-1940,ingo.grass@uni-hohenheim.de
-53_Libran-Embid,Teja Tscharntke,0000-0002-4482-3178,ttschar@gwdg.de
+53_Libran-embid,Felipe Librán-Embid,0000-0003-4898-4494,feliem3@gmail.com
+53_Libran-embid,Ingo Grass,0000-0001-7788-1940,ingo.grass@uni-hohenheim.de
+53_Libran-embid,Teja Tscharntke,0000-0002-4482-3178,ttschar@gwdg.de
 54_Lazaro,Amparo Lázaro,0000-0001-5626-4134,amparo.lazaro@imedea.uib-csic.es
 54_Lazaro,Carmelo Gómez-Martínez,0000-0003-1449-0138,cgomez@imedea.uib-csic.es
 54_Lazaro,Miguel A. González-Estévez,,mgonzalez@imedea.uib-csic.es
