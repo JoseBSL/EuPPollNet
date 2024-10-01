@@ -127,7 +127,7 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 Authorship <- data.frame(
   Coauthor_name = c("Sandra Hervias-Parejo", "Anna Traveset"),
   Orcid = c("0000-0002-5377-3619", "0000-0002-1816-1334"),
-  E_mail = c("shervias@imedea.uib-csic.es", "atraveset@imedea.uib-csic.es"))
+  E_mail = c("shervias@imedea.uib-csic.es", "atraveset@csic.es"))
 
 #Save data ----
 #Create metadata list

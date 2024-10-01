@@ -99,7 +99,7 @@ rename(Metadata_fields = rowname, Metadata_info= V1) %>% as_tibble()
 
 #Prepare authorship data ----
 Authorship <- data.frame(
-  Coauthor_name = c("Denis Michez", "William Fiordaliso", "Sara Reverte"),
+  Coauthor_name = c("Denis Michez", "William Fiordaliso", "Sara Reverté"),
   Orcid = c("0000-0001-8880-1838", "0000-0002-9667-6800", "0000-0002-2924-3394"),
   E_mail = c("denis.michez@umons.ac.be", "william.fiordaliso@umons.ac.be", 
              "sara.revertesaiz@umons.ac.be"))

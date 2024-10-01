@@ -144,7 +144,7 @@ Authorship <- data.frame(
             "0000-0002-6285-4357",
             "0000-0001-6674-3710"),
   E_mail = c("shervias@imedea.uib-csic.es", 
-             "atraveset@imedea.uib-csic.es",
+             "atraveset@csic.es",
              "pau.colom.montojo@gmail.com",
              "rafel.beltran.mas@hotmail.com",
              "pau.enric.serra@gmail.com"))

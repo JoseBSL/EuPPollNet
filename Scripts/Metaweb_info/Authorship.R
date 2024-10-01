@@ -227,7 +227,7 @@ TRUE ~ Affiliation2))
 ##Nathan Cyrille-----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Nathan Cyrille"  ~ 
-"Biogeosciences, UMR 6282 CNRS, University of Burgundy, Dijon, France",
+"Biogéosciences, UMR 6282 CNRS, University of Burgundy, Dijon, France",
 TRUE ~ Affiliation1)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Nathan Cyrille"  ~ 
 "Agroecology, INRAE, Institut Agro, University of Burgundy, University of Burgundy Franche-Comté, Dijon, France",
@@ -342,11 +342,8 @@ mutate(Affiliation1 = case_when(Coauthor_name == "Jonna M. Heuschele"  ~
 "German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig",
 TRUE ~ Affiliation1)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Jonna M. Heuschele"  ~ 
-"Department of Biodiversity and People, Helmholtz Centre for Environmental Research - UFZ, Leipzig, Germany",
-TRUE ~ Affiliation2)) %>% 
-mutate(Affiliation3 = case_when(Coauthor_name == "Jonna M. Heuschele"  ~ 
 "Department of Community Ecology, Helmholtz Centre for Environmental Research - UFZ, Halle, Germany",
-TRUE ~ Affiliation3))
+TRUE ~ Affiliation2))
 ##Bernhard Hoiss----
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Bernhard Hoiss"  ~ 
@@ -519,7 +516,7 @@ TRUE ~ Affiliation1))
 ##Javier Morente-López------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Javier Morente-López"  ~ 
-"Department of Plant Evolutionary Ecology, Goethe-University Frankfurt, Frankfurt am Main, Germany",
+"Plant Evolutionary Ecology, Institute of Ecology, Evolution and Diversity, Faculty of Biological Sciences, Goethe University Frankfurt, Max-von-Laue-Str. 13, 60438, Frankfurt am Main, Germany",
 TRUE ~ Affiliation1))
 ##Sarah Mullen------
 affiliations = affiliations %>% 
@@ -616,9 +613,9 @@ TRUE ~ Affiliation2)) %>%
 mutate(Affiliation3 = case_when(Coauthor_name == "Demetra Rakosy"  ~ 
 "Thünen-Institute of Biodiversity, Braunschweig, Germany",
 TRUE ~ Affiliation3))
-##Sara Reverte----
+##Sara Reverté----
 affiliations = affiliations %>% 
-mutate(Affiliation1 = case_when(Coauthor_name == "Sara Reverte"  ~ 
+mutate(Affiliation1 = case_when(Coauthor_name == "Sara Reverté"  ~ 
 "Laboratory of Zoology, Research Institute of Biosciences, University of Mons, Mons, Belgium",
 TRUE ~ Affiliation1))
 ##Stuart P. M. Roberts----
@@ -835,10 +832,10 @@ TRUE ~ Affiliation1))
 ##Felipe Librán-Embid------
 affiliations = affiliations %>% 
 mutate(Affiliation1 = case_when(Coauthor_name == "Felipe Librán-Embid"  ~ 
-"Agroecology, University of Göttingen, Göttingen, Germany",
+"Institute of Animal Ecology and Systematics, Justus Liebig University of Gießen, Germany",
 TRUE ~ Affiliation1)) %>% 
 mutate(Affiliation2 = case_when(Coauthor_name == "Felipe Librán-Embid"  ~ 
-"Zoological Biodiversity, Institute of Geobotany, Leibniz University of Hannover, Hannover, Germany",
+"Agroecology, University of Göttingen, Göttingen, Germany",
 TRUE ~ Affiliation2))
 
 ##Teja Tscharntke------

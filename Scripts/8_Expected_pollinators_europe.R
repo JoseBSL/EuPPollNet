@@ -3,7 +3,7 @@
 #Load libraries
 library(dplyr)
 #Load data 
-data = readRDS("Data/3_Final_data/Interactions_uncounted.rds")
+data = readRDS("Data/3_Final_data/Interaction_data.rds")
 data = data %>%
 dplyr::mutate(Year = lubridate::year(Date), 
                 Month = lubridate::month(Date), 
@@ -35,6 +35,8 @@ n_distinct()
 other_spp = pollinator_spp_number - spp_main_groups
 #Let's assume constant coverage and extrapolate potential number of species
 extrapolated_other_spp = other_spp + other_spp * (1-average_coverage/100)
+saveRDS(extrapolated_other_spp, "Data/Manuscript_info/other_taxa_potential_spp.RData")
+
 #Add number of species of main groups now
 bee_potential_spp = readRDS("Data/Manuscript_info/bee_potential_spp.RData")
 syrphid_potential_spp = readRDS("Data/Manuscript_info/syrphid_potential_spp.RData")
