@@ -6,6 +6,8 @@
 
 * [Abstract](#Abstract)
 
+* [Usage](#Usage)
+
 * [Citation guidelines](#Citation-guidelines)
 
 
@@ -31,6 +33,9 @@
 
 - **Software format**: The database was built with the R programming language and is stored as “.rds” and “.csv” formats. The construction of the database is fully reproducible and can be accessed in this repository.
 
+### Usage
+
+The [interaction data](Data/3_Final_data/Interaction_data.rds) and [flower count data](Data/3_Final_data/Flower_counts.rds) data can be found in the folder **Data/3_Final_data/** and both datasets can be merged by the Flower_data_merger column. Raw networks can be accessed at **Data/1_Raw_data/** and all code to produce this work is located in the **Scripts/** folder.
 
 ### Citation guidelines
 
