@@ -35,7 +35,8 @@
 
 ### Usage
 
-The [interaction data](Data/3_Final_data/Interaction_data.rds) and [flower count data](Data/3_Final_data/Flower_counts.rds) data can be found in the folder **Data/3_Final_data/** and both datasets can be merged by the Flower_data_merger column. Raw networks can be accessed at **Data/1_Raw_data/** and all code to produce this work is located in the **Scripts/** folder.
+The [interaction data](Data/3_Final_data/Interaction_data.rds) and [flower count data](Data/3_Final_data/Flower_counts.rds) data can be found in the folder `Data/3_Final_data/` and both datasets can be merged by the 'Flower_data_merger' column. Raw networks can be accessed at `Data/1_Raw_data/` and all code to produce this work is located in the `Scripts/` folder. To run the scripts, it is advised to use `renv::restore()` to restore the libraries to their required versions. The `renv.lock` file contains specific information about the version of each library.
+
 
 ### Citation guidelines
 
