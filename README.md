@@ -6,9 +6,7 @@
 
 * [Abstract](#Abstract)
 
-* [Citation guidelines](#Citation guidelines)
-
-
+* [Citation guidelines](#Citation-guidelines)
 
 
 ### Project
