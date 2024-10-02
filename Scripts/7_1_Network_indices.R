@@ -117,16 +117,32 @@ ungroup()
 #Safety check for network 1
 #m = as.matrix(matrices$Matrices[[81]])
 
+
+#Define the nestedness function (bascompte)
+nestedness_temp = function(interaction_matrix) {
+# Calculate nestedness using the nestedtemp function
+s = nestedtemp(interaction_matrix)
+# Return the statistic
+return(s$statistic/100)
+
+classic_nestedness = function(interaction_matrix){
+# Calculate nestedness using the nestedtemp function
+s = nestednodf(interaction_matrix)
+# Return the statistic
+return(s$statistic[3]/100)
+}
+}
 #Compute network metrics-----
 #Normalised nestedness (NODFc)and classic netedness (from Almeida-Neto )
 #Note: Classic_nestedness (nodf_cpp) same as nestednof from vegan package
 #Note: Quality 0 in NODFc makes everything faster (note that is the default value)
 metrics_by_network = matrices %>%
 mutate(Normalised_nestedness = map(Matrices, ~ NODFc(.))) %>%
-mutate(Classic_nestedness = map(Matrices, ~ nodf_cpp(.))) %>%
+mutate(Classic_nestedness = map(Matrices, ~ classic_nestedness(.))) %>%
+mutate(Nestedness_temp = map(Matrices, ~ nestedness_temp(.))) %>%
 mutate(Connectance = map(Matrices, ~ networklevel(., index="connectance"))) %>%
-select(c(Network_id, Normalised_nestedness, Classic_nestedness, Connectance)) %>% 
-unnest(cols = c(Normalised_nestedness, Classic_nestedness, Connectance))
+select(c(Network_id, Normalised_nestedness, Classic_nestedness,Nestedness_temp, Connectance)) %>% 
+unnest(cols = c(Normalised_nestedness, Classic_nestedness, Nestedness_temp, Connectance))
 
 #Save data
 saveRDS(metrics_by_network, "Data/Working_files/metrics_by_network.rds")

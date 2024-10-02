@@ -28,6 +28,7 @@ null_networks = matrices %>%
   select(Network_id, Null_networks)%>%
   unnest(Null_networks)
 
+
 #Compute nestedness for the nulls 
 null_metrics_networks = null_networks %>% 
 mutate(Classic_nestedness = map(Null_networks, ~ nodf_cpp(.))) %>% 
