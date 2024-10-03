@@ -1,0 +1,494 @@
+---
+title: "EuPPollNet: A European database of plant-pollinator networks"
+format:
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+        \usepackage{caption}
+        \captionsetup[figure]{labelformat=empty}
+        \captionsetup[table]{labelformat=empty}
+        \usepackage{lineno}
+        \linenumbers
+bibliography: references.bib
+csl: apa_7th.csl
+latex-tinytex: false
+link-citations: TRUE
+linkcolor: RoyalBlue
+urlcolor: RoyalBlue
+---
+
+
+```{r Load libraries, echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE}
+
+library(dplyr)
+library(sf)
+library(ggplot2)
+library(giscoR)
+library(readr)
+library(patchwork)
+#Read author list 
+authors = readr::read_csv("../Data/Manuscript_info/Authorship_ordered.csv")
+#Print authors
+authors = authors %>% 
+summarise(col = paste(Coauthor_name_aff, collapse="| ")) %>% 
+pull()
+#Read affiliation list 
+aff_list = readr::read_csv("../Data/Manuscript_info/Affiliation_list.csv")
+aff_list = aff_list %>% 
+summarise(col = paste0(Aff_number_Aff, "\\",sep="")) %>% 
+pull()
+
+#Bee-syrphid Masterlist
+master_list = read_csv("../Data/Species_taxonomy/Thesaurus/Master_bees_syrphids.csv")
+#Load butterfly masterlist
+master_list1 <- read.delim(file = "../Data/Species_taxonomy/Thesaurus/Butterfly_taxon.txt",
+                    header = T)
+
+
+```
+
+# SUPPORTING INFORMATION
+
+**Title**: EuPPollNet: A European database of plant-pollinator networks
+
+**Contains**:
+
+- Supplementary text 1
+
+- Figure S1
+
+- Figure S2
+
+- Figure S3
+
+- Figure S4
+
+- Figure S5
+
+- Figure S6
+
+
+
+\newpage
+
+**Supplementary text 1**
+
+EuPPollNet habitat definitions adapted from authors and CORINE Land Cover (CLC). To guide these definitions, they are connected to habitat types defined in the European Nature Information System (EUNIS 2021; <https://eunis.eea.europa.eu/habitats-code-browser-revised.jsp>). Specific examples from EUNIS habitats are provided when they can be precisely linked to EuPPollNet habitat types.
+
+1) **Ruderal vegetation**: Plants growing on highly disturbed sites such as road sides or mineral extraction sites. This category partially matches the category of ‘vegetated man made habitats’ from EUNIS (code **V**; e.g., category of ‘dry perennial anthropogenic herbaceous vegetation’, code **V38** ).
+
+2) **Agricultural margins**: Sides of crops that can include any type of vegetation from low growing plants to trees. This category partially matches the category of ‘vegetated man made habitats’ from EUNIS (code **V**; e.g., category of ‘hedgerows’, code **V4** ).
+
+3) **Green urban areas**: Parks, private gardens or small pastures within an urban setting. Botanical gardens are included in this category. This category partially matches the category of ‘vegetated man made habitats’ from EUNIS (code **V**; e.g., category of ‘cultivated areas of gardens and parks’, code **V2** ).
+
+4) **Agricultural land**: Includes any type of crop and any type of vegetation growing within them. This category partially matches the category of ‘vegetated man made habitats’ from EUNIS (code **V**; e.g., category of ‘intensive unmixed crops’, code **V11** ). 
+
+5) **Forest/woodland understory**: Any plant community sampled within a wooded group of plants. The forest may be situated in an agricultural setting or in a fully natural scenario. We have included agroforestry areas as well as open to dense forests in this category but excluded forest that contains sclerophyllous vegetation. This category is similar to the **EUNIS habitat type**  ‘forest and other wooded land’ (code **T**). 
+
+6) **Semi-natural grassland**: Acidic, neutral, or calcareous unimproved grasslands located at elevations lower than 1000 m that are managed extensively through mowing or grazing but have not been improved, i.e., they have never received significant fertilizer or herbicide inputs. This category partially matches the category of ‘grasslands and lands dominated by forbs, mosses or lichens’ from EUNIS (code **R** ). 
+
+7) **Intensive grassland**: Communities dominated by non-woody, low-growing plants that are heavily influenced by human disturbance, such as agriculture, mowing, moderate to high grazing, or urban environments. The plant composition is generally dominated by graminoid species. This category partially matches the EUNIS categories of ‘vegetated man made habitats’ (code **V**; e.g., category of ‘artificial grasslands and herb dominated habitats’, code **V4** ) and ‘grasslands and lands dominated by forbs, mosses or lichens’ (code **R** ). 
+
+
+8) **Sclerophyllous vegetation**: Any type of system with a dominant shrub community adapted to drought. Typical of the Mediterranean region. Note, that we have included in this category also woodlands (open coniferous forest) where the shrub community was the main focus of the study. This category partially matches the **EUNIS habitat type**  ‘forest and other wooded land’ (code **T**). 
+
+9) **Beaches, dunes, sands**: Plant communities growing on sandy soil.  This category partially matches the **EUNIS habitat type**  ‘coastal habitats’ (code **N**). 
+
+10) **Riparian vegetation**: Plant communities growing on river margins. This category partially matches the **EUNIS habitat type**  ‘forest and other wooded land’ (code **T**) but also the category of ‘inland waters’ which is currently under review.
+
+10) **Montane to alpine grasslands**: Communities dominated by non-woody, low-growing plants that experience little or no human disturbance and are found in high-elevation areas (>1,000 m). This category partially matches the category of ‘grasslands and lands dominated by forbs, mosses or lichens’ from EUNIS (code **R**; e.g., alpine and subalpine grasslands with code  **R4**). 
+
+12) **Moors and heathland**: Low-growing woody vegetation (i.e., typically < 5 m) that is characteristic of poorly fertile soils where environmental conditions prevent the natural formation of forests. This category is similar to the **EUNIS habitat type** ‘heathland, scrub and tundra’ (code **S**).
+
+
+\newpage
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="95%", fig.cap= "\\textbf{Figure S1}. Geographical location of all networks in the EuPPollNet database coloured by bioregion."}
+
+#Read data
+data = readRDS("../Data/Working_files/Interactions_uncounted.rds")%>% 
+mutate(Network_id = paste0(Study_id, Network_id))  
+
+#Prepare coordinates
+for_plotting = data %>% 
+select(Study_id, Latitude, Longitude, Bioregion) %>% 
+distinct()
+#Get countries and transfrom coordinates
+countries <- gisco_get_countries(
+resolution = 20) %>%
+st_transform(3035) %>% 
+sf::st_as_sf(crs = 4326)
+
+
+#Try to plot both together (same plot)
+map = ggplot(countries) +
+geom_sf(fill="floralwhite",color = "black", 
+        alpha = 1,linewidth=0.1) + 
+geom_point(data = for_plotting, alpha=0.75,size=1.2,pch=21,stroke = 0.25,aes(x= Longitude, y=Latitude, fill= Bioregion))+  
+coord_sf(crs = st_crs(3035), default_crs = st_crs(4326),
+         xlim = c(-14, 39), ylim = c(37, 70))+
+theme(panel.grid.major = element_blank(), 
+     legend.key = element_blank(), 
+     legend.text = element_text(size = 6), 
+     legend.title = element_text(face ="bold",  size = 8),
+     legend.spacing.x=unit(0.5, "lines"), 
+     legend.key.width=unit(0.5, "lines"), 
+     legend.box.margin=margin(-10,-10,-10,-10),
+     axis.text = element_text(size=6,face="bold"),
+     axis.title = element_text(face="bold", size = 8),
+) +
+theme(panel.background = element_rect(fill = "aliceblue"),
+        panel.border = element_rect(colour = "black",
+        fill=NA, size=1)) + 
+ scale_size_continuous(name= "Species counts",range = c(0, 3.75))  +
+ylab("Latitude") +
+xlab("Longitude") +
+scale_x_continuous(breaks = seq(0, 20, by = 10)) +
+scale_y_continuous(breaks = seq(40, 60, by = 10)) +
+guides(fill = guide_legend(override.aes = list(size = 1.5, byrow = TRUE))) +
+scale_fill_manual(values = c("purple3", 
+                               "dodgerblue3", 
+                               "cyan4", 
+                               "forestgreen",
+                               "orange2",
+                               "tomato3",
+                               "khaki2"))
+
+#Plot everything
+map 
+```
+
+\newpage
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="105%", fig.cap= "\\textbf{Figure S2}. Coverage of the EuPPollNet species for bees (family level), syrphids (subfamily level) and butterflies (family level) in relation to the total number of European species within these taxonomic groups.", fig.width=10, fig.height=4}
+
+#Prepare figure for supplementary material
+#Coverage across high taxonomic ranks of bees, syrphids and butterflies
+#--------------------------------------------------------------------------------------------#
+#Start from bees----
+#Bee families
+bee_fam = c("Apidae", "Megachilidae", "Halictidae", 
+            "Andrenidae", "Colletidae","Melittidae")
+
+
+#Species per family within SafeNet
+bee_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Hymenoptera") %>% 
+filter(!Pollinator_accepted_name == "Apis mellifera") %>% 
+filter(Pollinator_family %in% bee_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "EuPPollNet")
+#Species per family within Europe
+bee_spp_europe =  master_list %>% 
+select(Family, Genus, Species, GenusAndSpecies) %>% 
+filter(Family %in% bee_fam) %>% 
+group_by(Family) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+rename(Pollinator_family = Family) %>% 
+mutate(Group = "Europe")
+
+#Bind both datasets for plotting
+bee_fam_coverage = bind_rows(bee_spp_safenet, bee_spp_europe)
+
+p1 = ggplot(bee_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+ylab("Number of species") +
+scale_fill_manual(values = c("tan2", "lightgrey"))+
+ggtitle("Bee families")
+#--------------------------------------------------------------------------------------------#
+#Continue with syrphids----
+#As we don't have subfamilies, let's obtained them from the master list
+syrphids = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family,Subfamily,  Genus, Species, GenusAndSpecies) %>% 
+rename(Pollinator_accepted_name = GenusAndSpecies)
+#Syrphid species safenet
+syrphid_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_family== "Syrphidae") %>% 
+distinct()
+#Add subfamily info
+syrphid_spp_safenet = left_join(syrphid_spp_safenet, syrphids)
+#Summarise spp per subfamily
+syrphid_spp_safenet = syrphid_spp_safenet %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "EuPPollNet")
+#Get spp per subfamily at european level
+syrphid_spp_europe = master_list %>% 
+filter(Family == "Syrphidae") %>% 
+select(Family, Subfamily, Genus, Species, GenusAndSpecies) %>% 
+group_by(Subfamily) %>% 
+summarise(Spp_number = n_distinct(GenusAndSpecies)) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+syrphid_fam_coverage = bind_rows(syrphid_spp_safenet, syrphid_spp_europe)
+#Plot
+# Plot for syrphid subfamily coverage with adjusted margins
+p2 = ggplot(syrphid_fam_coverage, aes(reorder(Subfamily, -Spp_number), Spp_number, fill = Group)) +
+  geom_bar(stat="identity", width = .5, position = "dodge", color = "black") +
+  coord_cartesian(expand = FALSE) +
+  xlab(NULL) +
+  ylab(NULL) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.border = element_rect(size = 1),
+    plot.title = element_text(size = 14, face = "bold", margin = margin(b = 10)),
+    axis.title = element_text(face = "bold", size = 14),
+    axis.text = element_text(face = "bold", size = 12),
+    plot.margin = margin(10, 10, 20, 10)  # Adjusting the margins
+  ) +
+  scale_fill_manual(values = c("tan2", "lightgrey")) +
+  ggtitle("Syrphid subfamilies")
+#--------------------------------------------------------------------------------------------#
+#Continue with butterflies----
+#Do it at family level
+#Create vector with butterfly families
+butt_fam = c(unique(master_list1$family))
+#Species per family within SafeNet
+butterfly_spp_safenet = data %>% 
+select(Pollinator_rank, Pollinator_accepted_name, Pollinator_order, Pollinator_family)%>%
+filter(Pollinator_rank == "SPECIES") %>% 
+filter(Pollinator_order == "Lepidoptera") %>% 
+filter(Pollinator_family %in% butt_fam) %>% 
+group_by(Pollinator_family) %>% 
+summarise(Spp_number = n_distinct(Pollinator_accepted_name)) %>% 
+mutate(Group = "EuPPollNet")
+#Species per family within Europe
+butterfly_spp_europe =  master_list1 %>% 
+select(family, genus, scientificName) %>% 
+group_by(family) %>% 
+summarise(Spp_number = n_distinct(scientificName)) %>% 
+rename(Pollinator_family = family) %>% 
+mutate(Group = "Europe")
+#Bind both datasets for plotting
+butterfly_fam_coverage = bind_rows(butterfly_spp_safenet, butterfly_spp_europe)
+#Plot
+p3 = ggplot(butterfly_fam_coverage, aes(reorder(Pollinator_family,-Spp_number), Spp_number, fill = Group)) +
+geom_bar(stat="identity", width=.5, position = "dodge", color = "black") +
+coord_cartesian(expand = FALSE) +
+xlab(NULL) +
+ylab(NULL) +
+theme_bw() +
+theme(axis.text.x = element_text(angle = 45, hjust =1),
+      panel.border = element_rect(size=1)) +
+scale_fill_manual(values = c("tan2", "lightgrey"))+
+ggtitle("Butterfly families")
+
+#--------------------------------------------------------------------------------------------#
+p1+p2+p3 + plot_layout(guides = "collect") & 
+theme(plot.title = element_text(size = 14, face = "bold"),
+      axis.title = element_text(face = "bold", size = 14),
+      axis.text = element_text(face = "bold", size = 12))
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="90%", fig.cap= "\\textbf{Figure S3}. Barplot indicating the number of networks by habitat and bioclimatic region within the database.", fig.width=8, fig.height=8}
+
+#Filter out 2 bioregions that only have a small study with data of a single day
+data = data %>% 
+filter(!Bioregion == "Steppic") %>% 
+filter(!Bioregion == "Pannonian") 
+
+#Check number of studies by habitat
+habitat = data %>% 
+select(Network_id, EuPPollNet_habitat) %>% 
+distinct() %>%  
+group_by(EuPPollNet_habitat) %>% 
+summarise(Habitat_count = n()) %>% 
+mutate(Group = "Habitat") %>% 
+rename(Habitat_bioregion = EuPPollNet_habitat) %>% 
+rename(Count = Habitat_count)
+
+#Check number of studies by bioregion
+bioregion = data %>% 
+select(Network_id, Bioregion) %>% 
+distinct() %>%  
+group_by(Bioregion) %>% 
+summarise(Bioregion_count = n()) %>% 
+mutate(Group = "Bioregion") %>% 
+rename(Habitat_bioregion = Bioregion) %>% 
+rename(Count = Bioregion_count)
+
+
+c = bind_rows(habitat, bioregion)
+
+ggplot(c, aes(Habitat_bioregion, Count)) +
+geom_col(fill = "gray25",width = 0.9, color="black", linewidth = 0.4) +
+theme_bw()+
+coord_flip(expand = F) +
+ggforce::facet_col(~ factor(Group, levels=c("Habitat","Bioregion")),
+        space = "free", scales = "free_y") +
+ylab("Networks") +
+xlab(NULL) +
+theme(plot.margin=unit(c(0,0,0,0), "mm"),
+      axis.ticks.x = element_line(color="black"),
+      strip.text.x = element_text(size=14, face = "bold"),
+  axis.title = element_text(face = "bold", size = 14),
+axis.text = element_text(size=10),
+    strip.background = element_rect(
+color=NA, fill=NA, size=0.5, linetype="solid"),
+panel.border = element_rect(colour = "black",
+        fill=NA, size=1)) 
+
+```
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="60%", fig.cap= "\\textbf{Figure S4}. Association between nestedness (NODFc) and the geometric mean of plant and pollinator species per network", fig.width=3, fig.height=3}
+
+
+metrics_by_network_spp_number = readRDS("../Data/Working_files/metrics_by_network_spp_number.rds")
+
+metrics_by_network_spp_number %>% 
+ggplot(aes(geometric_mean_spp, Normalised_nestedness)) +
+geom_point(pch = 21, fill = "azure3", size=1.5, stroke=0.25, alpha=1) +
+theme_bw() +
+xlab("Species") +
+ylab("Normalised nestedness (NODFc)") +
+theme(
+    axis.title = element_text(face = "bold", size = 10),
+    axis.text = element_text(size = 8))
+
+```
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="90%", fig.width=12, fig.height= 8, fig.cap="\\textbf{Figure S5}. Distribution of z-scores comparing the nestedness of empirical networks with their randomized counterparts with the 'quasiswap_count' algorithm (100 null models for each network). The quasiswap_count algorithm maintains row and column sums with fixed connectance."}
+
+library(dplyr)
+library(ggplot2)
+
+null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks_quasiswap.rds")
+metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
+
+#Finally, find % of networks that differ statistically
+# Merge and process data
+d = left_join(metrics_by_network, null_metrics_networks, by = "Network_id")
+
+d = d %>% 
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
+d = d %>% filter(!is.na((z_score))) 
+
+
+p = 0.05 #cutoff probability 95% confidence
+critical_value = qnorm(p/2) #double tail probability divide by 2
+
+d1 = d %>%
+mutate(infra_over_represented = case_when(
+z_score < -abs(critical_value) ~ "Under-represented",
+between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
+  ))
+
+#Calculate percentages
+z_percent = d1 %>% 
+group_by(infra_over_represented) %>% 
+summarise(percent = length(infra_over_represented)/nrow(.) * 100)
+
+no_dif_z = z_percent %>% 
+filter(infra_over_represented == "No statistical difference")
+
+# Plot
+ d1 %>% 
+  ggplot(aes(x = z_score)) +
+  geom_histogram(aes(y = ..count.., fill = infra_over_represented), 
+                 bins = 50, alpha = 0.5, color = "black", position = "stack") +
+  theme_bw() +
+  coord_cartesian(expand = FALSE) +
+  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+  ylab("Number of networks") +
+  xlab("Z scores (NODFc)")  +
+ # xlim(-6, 9) +
+ # ylim(0, 0.8) +
+  scale_fill_manual(name = "Observed against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+xlim(-6,6) +
+theme(plot.title = element_text(size = 24),
+      text = element_text(size = 20),
+      axis.title  = element_text(face="bold"))
+
+```
+
+
+\newpage
+
+
+
+```{r echo=FALSE, message=FALSE, cache=FALSE, warning=FALSE, out.width="90%", fig.width=12, fig.height= 8, fig.cap="\\textbf{Figure S6}. Distribution of z-scores comparing the nestedness (NODF) of empirical networks with their randomized counterparts with the probabilistic null model from Bascompte et al., 2003 (100 null models for each network). This is a less restrictive approach, as it does not completely constrain the realized species degree distributions. In a nutshell, the null model first calculates the probability of interaction for each cell, and then if a random number between 0 and 1 exceeds this probability, an observed interaction is assigned to the cell. This shows that when the realised degree is not fully constrained, the number of networks that are statistically more nested is notably higher, highlighting that the nested structure is likely a byproduct of the species degree distribution."}
+
+library(dplyr)
+library(ggplot2)
+
+#Read data
+null_metrics_networks = readRDS("../Data/Working_files/null_metrics_networks_nullmodel2.rds")
+metrics_by_network = readRDS("../Data/Working_files/metrics_by_network.rds")
+
+#Finally, find % of networks that differ statistically
+# Merge and process data
+d = left_join(metrics_by_network, null_metrics_networks, by = "Network_id")
+d = d %>% 
+mutate(z_score = (Classic_nestedness - Mean_null_classic_nestedness) / Deviation_null_classic_nestedness)
+
+p = 0.05 #cutoff probability 95% confidence
+critical_value = qnorm(p/2) #double tail probability divide by 2
+
+d1 = d %>%
+mutate(infra_over_represented = case_when(
+z_score < -abs(critical_value) ~ "Under-represented",
+between(z_score, -abs(critical_value), abs(critical_value)) ~ "No statistical difference",
+    z_score > abs(critical_value) ~ "Over-represented"
+  ))
+
+#Calculate percentages
+z_percent = d1 %>% 
+group_by(infra_over_represented) %>% 
+summarise(percent = length(infra_over_represented)/nrow(.) * 100)
+
+# Plot
+ d1 %>% 
+  ggplot(aes(x = z_score)) +
+  geom_histogram(aes(y = ..count.., fill = infra_over_represented), 
+                 bins = 50, alpha = 0.5, color = "black", position = "stack") +
+  theme_bw() +
+  coord_cartesian(expand = FALSE) +
+  geom_vline(xintercept = -abs(critical_value), linetype = "longdash", colour = "red") +
+  geom_vline(xintercept = abs(critical_value), linetype = "longdash", colour = "red") +
+  ylab("Number of networks") +
+  xlab("Z scores (NODFc)")  +
+ # xlim(-6, 9) +
+ # ylim(0, 0.8) +
+  scale_fill_manual(name = "Observed against null",
+                    limits = c("Under-represented", "No statistical difference", "Over-represented"),
+                    labels = c("Less nested", "No difference", "More nested"),
+                    values = c("Under-represented" = "coral2", 
+                               "No statistical difference" = "palegreen3", 
+                               "Over-represented" = "cyan3")) +
+xlim(-6,6) +
+theme(plot.title = element_text(size = 24),
+      text = element_text(size = 20),
+      axis.title  = element_text(face="bold"))
+
+
+
+```

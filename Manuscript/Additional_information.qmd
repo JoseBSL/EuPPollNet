@@ -1,0 +1,33 @@
+---
+title: "EuPPollNet: A European database of plant-pollinator networks"
+format:
+  pdf:
+    include-in-header: 
+      text: |
+        \usepackage{lscape}
+        \newcommand{\blandscape}{\begin{landscape}}
+        \newcommand{\elandscape}{\end{landscape}}
+        \usepackage{caption}
+        \captionsetup[figure]{labelformat=empty}
+        \captionsetup[table]{labelformat=empty}
+        \usepackage{lineno}
+        \linenumbers
+bibliography: references.bib
+csl: apa_7th.csl
+latex-tinytex: false
+link-citations: TRUE
+linkcolor: RoyalBlue
+urlcolor: RoyalBlue
+---
+
+# ACKNOWLEDGEMENTS
+
+We thank all the taxonomists and ecologists that has made this database possible by contributing with their fieldwork data. 
+
+# FUNDING INFORMATION
+
+This research was funded by the H2020 European project Safeguard (101003476) and by the Federal State of Saxony-Anhalt (MLU-BioDivFund). RT was supported by the Czech Science Foundation (Project No. 21-24186M). NDM, NH, YP and FM were financially supported by the ANR ARSENIC project (grant no. 14-CE02-0012), the ANR NGB project (grant no. 17-CE32- 011), the Region Nord-Pas-de-Calais, the CNRS, the French Ministère de l'Enseignement Supérieur et de la Recherche, the Hauts-de-France Region and the European Regional Funds.
+
+# CONFLICT OF INTEREST
+
+None.
