@@ -405,7 +405,7 @@ other_diptera_percent = diptera_percent_by_group$other_diptera_studies
 
 **Major taxa and level of measurement:** The database contains interaction data at the species level for `r format(round(species_level_int, 2), nsmall = 2)`% of the records, including a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database covers `r format(round(plant_coverage, 2), nsmall = 2)`% of the European species of flowering plants, `r format(round(bee_coverage, 2), nsmall = 2)`% of bees, `r format(round(lepidoptera_coverage, 2), nsmall = 2)`% of butterflies, and `r format(round(syrphid_coverage, 2), nsmall = 2)`% of syrphid species at the European level.
 
-**Software format:** The database was built with the R programming language and is stored as “.rds” and “.csv” formats. The construction of the database is fully reproducible and can be accessed at the following link: <https://github.com/JoseBSL/EuPPollNet.git>.
+**Software format:** The database was built with the R programming language and is stored as “.rds” and “.csv” formats. The construction of the database is fully reproducible and can be accessed at the following link: <https://doi.org/10.5281/zenodo.13885274>.
 
 
 **KEYWORDS**\
@@ -1887,5 +1887,5 @@ In conclusion, the EuPPollNet database enables researchers to explore spatial, t
 
 # DATA AVAILABILITY
 
-All data and code to produce of this database and manuscript are available at Zenodo (LINK) and Github (<https://github.com/JoseBSL/EuPPollNet.git>).
+All data and code to produce of this database and manuscript are available at Zenodo (<https://doi.org/10.5281/zenodo.13885274>) and Github (<https://github.com/JoseBSL/EuPPollNet.git>).
 
