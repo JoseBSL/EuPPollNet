@@ -31,3 +31,8 @@ This research was funded by the H2020 European project Safeguard (101003476) and
 # CONFLICT OF INTEREST
 
 None.
+
+# DATA AVAILABILITY
+
+All data and code to produce of this database and manuscript are available at Zenodo (<https://doi.org/10.5281/zenodo.13885274>) and Github (<https://github.com/JoseBSL/EuPPollNet.git>).
+

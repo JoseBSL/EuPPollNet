@@ -69,7 +69,7 @@ We thank all the taxonomists and ecologists that has made this database possible
 
 **Biosketch**: 
 
-Dr. Jose B. Lanuza is a long term collaborator of Dr. Ignasi Bartomeus. Their work focuses on understanding the ecological processes that drive plant-pollinator interactions at different ecological scales. This research is another piece of the puzzle that will contribute to our understanding of how interactions change with various environmental drivers. Our work has primarily involved flowering plants and pollinators, where we have addressed questions related to their coexistence, interaction probability, and ecology. We have created the first database of Iberian bees for Spain and are strong advocates for reproducible science; this work is a perfect example of it. Further examples of the ongoing work and past projects can be consulted at Ignasi Bartomeus lab web page: <https://bartomeuslab.com/projects/>.
+Dr. Jose B. Lanuza is a long term collaborator of Dr. Ignasi Bartomeus. Their work focuses on understanding the ecological processes that drive plant-pollinator interactions at different ecological scales. This research is another piece of the puzzle that will contribute to our understanding of how interactions change with various environmental drivers. Their work has primarily involved flowering plants and pollinators, where they have addressed questions related to their coexistence, interaction probability, and ecology. They have created the first database of Iberian bees for Spain and are strong advocates for reproducible science; this work is a perfect example of it. Further examples of the ongoing work and past projects can be consulted at Ignasi Bartomeus lab web page: <https://bartomeuslab.com/projects/>.
 
 
 

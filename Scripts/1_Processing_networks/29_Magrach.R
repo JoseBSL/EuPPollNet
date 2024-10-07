@@ -166,7 +166,7 @@ Authorship <- tibble(
 Coauthor_name = c("Ainhoa Magrach", 
 "Ignasi Bartomeus", "Montserrat Vilà", "Juan Pedro González-Varo"),
 Orcid = c("0000-0003-2155-7556", "0000-0001-7893-4389",
-          "000-0003-3171-8261", "0000-0003-1439-6475"),
+          "0000-0003-3171-8261", "0000-0003-1439-6475"),
 E_mail = c("ainhoa.magrach@bc3research.org", "nacho.bartomeus@gmail.com",
            "montse.vila@ebd.csic.es", "juanpe.varo@uca.es"))
 

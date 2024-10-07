@@ -395,17 +395,19 @@ other_diptera_percent = diptera_percent_by_group$other_diptera_studies
 
 \vspace*{-5mm}
 
-**Motivation:** Pollinators play a crucial role in maintaining Earth’s terrestrial biodiversity and human food production by mediating sexual reproduction for most flowering plants. Indeed, the network of interactions formed by plants and pollinators constitutes the backbone of plant-pollinator community stability and functioning. However, rapid human-induced environmental changes are compromising the long-term persistence of plant-pollinator interaction networks. One of the major challenges for pollinator conservation is the lack of robust generalisable data capturing how plant-pollinator communities are structured across space and time. Here, we present the EuPPollNet (European Plant-Pollinator Networks) database, a fully open and reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time, along with other ecological variables of interest. This database offers an open workflow that allows researchers to track data-curation decisions and edit them according to their preferences. We present the taxonomic and sampling coverage of EuPPollNet, and summarize key structural properties in plant-pollinator networks. We hope EuPPollNet will stimulate future research that fills the taxonomic, ecological, and geographical data gaps on plant-pollinator interactions that we have identified. Further, the variation in the structure of the networks in EuPPollNet provides a strong basis for future studies aimed at quantifying drivers of plant-pollinator network change and guiding future conservation planning for plants and pollinators.
+**Motivation:** Pollinators play a crucial role in maintaining Earth’s terrestrial biodiversity. However, rapid human-induced environmental changes are compromising the long-term persistence of plant-pollinator interactions.  Unfortunately, we lack robust generalisable data capturing how plant-pollinator communities are structured across space and time. Here, we present the EuPPollNet (European Plant-Pollinator Networks) database, a fully open and reproducible European-level database containing harmonized taxonomic data on plant-pollinator interactions referenced in both space and time, along with other ecological variables of interest. In addition, we evaluate the taxonomic and sampling coverage of EuPPollNet, and summarize key structural properties in plant-pollinator networks. We believe EuPPollNet will stimulate research to address data gaps in plant-pollinator interactions and guide future efforts in conservation planning.
 
-**Main Types of Variables Included:** EuPPollNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r prettyNum(n_networks, big.mark=",")` distinct networks (i.e., distinct sampling event in space or time), which belong to `r study_number` different studies distributed across `r country_number` European countries. In addition, information about sampling methodology, habitat type, bio-climatic region, and further taxonomic rank information for both plant and pollinator species are also provided (i.e., genus, family and order). 
+**Main Types of Variables Included:** EuPPollNet contains `r prettyNum(interaction_number, big.mark=",")` interactions between plants and pollinators from `r prettyNum(n_networks, big.mark=",")` distinct networks, which belong to `r study_number` different studies distributed across `r country_number` European countries. Information about sampling methodology, habitat type, bio-climatic region, and further taxonomic rank information are also provided.
 
-**Spatial location and grain:** The database contains `r prettyNum(n_sites, big.mark=",")` different sampling locations from `r n_habitats` different natural and anthropogenic habitats that fall in `r n_bioregion` different bio-climatic regions. All records are geo-referenced and presented in the World Geodetic System 1984 (WGS84).
+**Spatial location and grain:** The database contains `r prettyNum(n_sites, big.mark=",")` different sampling locations from `r n_habitats` different natural and anthropogenic habitats that fall in `r n_bioregion` different bio-climatic regions. All records are geo-referenced and presented in the World Geodetic System 1984 (WGS84). 
 
-**Time period and grain:** Species interaction data was collected between `r min_year` and `r max_year`. All records are time-referenced and most of the studies documented interactions within a single flowering season (`r format(round(one_year, 2), nsmall = 2)`%).
+**Time period and grain:** Species interaction data was collected between `r min_year` and `r max_year`. 
+
 
 **Major taxa and level of measurement:** The database contains interaction data at the species level for `r format(round(species_level_int, 2), nsmall = 2)`% of the records, including a total of `r prettyNum(plant_spp_number, big.mark=",")` plant and `r prettyNum(pollinator_spp_number, big.mark=",")` pollinator species. The database covers `r format(round(plant_coverage, 2), nsmall = 2)`% of the European species of flowering plants, `r format(round(bee_coverage, 2), nsmall = 2)`% of bees, `r format(round(lepidoptera_coverage, 2), nsmall = 2)`% of butterflies, and `r format(round(syrphid_coverage, 2), nsmall = 2)`% of syrphid species at the European level.
 
-**Software format:** The database was built with the R programming language and is stored as “.rds” and “.csv” formats. The construction of the database is fully reproducible and can be accessed at the following link: <https://doi.org/10.5281/zenodo.13885274>.
+
+**Software format:** The database was built with R and is stored in “.rds” and “.csv” formats. Its construction is fully reproducible and can be accessed at: <https://doi.org/10.5281/zenodo.13897566>.
 
 
 **KEYWORDS**\
@@ -1883,9 +1885,9 @@ In conclusion, the EuPPollNet database enables researchers to explore spatial, t
 ::: {#refs}
 :::
 
-
-
 # DATA AVAILABILITY
 
-All data and code to produce of this database and manuscript are available at Zenodo (<https://doi.org/10.5281/zenodo.13885274>) and Github (<https://github.com/JoseBSL/EuPPollNet.git>).
+All data and code to produce of this database and manuscript are available at Zenodo (<https://doi.org/10.5281/zenodo.13897566>).
+
+
 
